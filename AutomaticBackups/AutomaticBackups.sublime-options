@@ -1,7 +1,0 @@
-# Options for the Automatic Backups package
-
-# Where will backups be saved? Uncomment to specify your own location. Otherwise at <my documents>\Sublime Text Backups
-# backupDir c:\backups
-
-# should files be backed up?
-enabled true
