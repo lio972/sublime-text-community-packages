@@ -1,0 +1,4 @@
+packagedownloader.py
+packagedownloaderplugin.py
+README.txt
+Default.sublime-keymap
