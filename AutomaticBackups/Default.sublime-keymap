@@ -1,0 +1,5 @@
+<bindings>
+  <!-- navigateBackups -->
+    <binding key="ctrl+alt+leftbracket" command="navigateBackups backward"/>
+    <binding key="ctrl+alt+rightbracket" command="navigateBackups forward"/>
+</bindings>
