@@ -7,4 +7,5 @@ TO INSTALL:
 
   * download the package from http://www.sublimetextwiki.com/sublime-packages/PackageDownloader.sublime-package
   * save it to c:\program files\sublime text\Pristine packages
-  * lastly, restart Sublime Text, and press ctrl+alt+d, then ctrl+alt+p (for 'Download Packages'). This will download all the most recent packages.
+  * restart Sublime Text
+  * There will now be a menu item to download packages at Tools | Packages | Package Downloader | Download Packages. This will download all the most recent packages. You will need to restart Sublime Text after each download.
