@@ -1,9 +1,10 @@
 import sublime, sublimeplugin, webbrowser, time
 from comtypes.client import CreateObject
 
-# see  MozLab, http://hyperstruct.net/projects/mozlab,
+# See MozLab, http://hyperstruct.net/projects/mozlab,
 # from telnetlib import Telnet
-#self.firefox = Telnet('localhost', 4242)
+# self.firefox = Telnet('localhost', 4242)
+# self.firefox.write('BrowserReload()')
 
 class InternetExplorerCommand(sublimeplugin.TextCommand):
     ie = None
