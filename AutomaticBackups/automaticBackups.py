@@ -60,7 +60,7 @@ class NavigateBackupsCommand(sublimeplugin.TextCommand):
     self.justReverted = False
 
   def isEnabled(self, view, args):
-    return True
+    return view.fileName()
 
 class AutomaticBackupsPlugin(sublimeplugin.Plugin):  
   """Creates an automatic backup of every file you save. This
