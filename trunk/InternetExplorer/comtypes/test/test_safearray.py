@@ -5,6 +5,7 @@ from ctypes import *
 from ctypes.wintypes import BOOL
 from comtypes.test.find_memleak import find_memleak
 from comtypes import BSTR, IUnknown
+from comtypes.test import is_resource_enabled
 
 from comtypes.automation import VARIANT, IDispatch, VT_ARRAY, VT_VARIANT, \
      VT_I4, VT_R4, VT_R8, VT_BSTR, VARIANT_BOOL, VT_DATE, VT_CY
@@ -157,20 +158,89 @@ class SafeArrayTestCase(unittest.TestCase):
         sa = t.from_param([True, False, True, False])
         self.failUnlessEqual(sa[0], (True, False, True, False))
 
-    # not yet implemented 
-##    def test_VT_UNKNOWN(self):
-##        a = _midlSAFEARRAY(POINTER(IUnknown))
-##        t = _midlSAFEARRAY(POINTER(IUnknown))
-##        self.failUnless(a is t)
+    def test_VT_UNKNOWN_1(self):
+        a = _midlSAFEARRAY(POINTER(IUnknown))
+        t = _midlSAFEARRAY(POINTER(IUnknown))
+        self.failUnless(a is t)
 
-##        from comtypes.typeinfo import CreateTypeLib
-##        punk = CreateTypeLib("spam").QueryInterface(IUnknown) # will never be saved to disk
-##        refcnt_before = punk.AddRef(), punk.Release()
-##        t.from_param([punk, punk, punk])
-##        import gc; gc.collect(); gc.collect()
-##        refcnt_after = punk.AddRef(), punk.Release()
-##        # This test leaks COM refcounts of the punk object.  Don't know why.
-##        ##self.failUnlessEqual(refcnt_before, refcnt_after)
+        def com_refcnt(o):
+            "Return the COM refcount of an interface pointer"
+            import gc; gc.collect(); gc.collect()
+            o.AddRef()
+            return o.Release()
+
+        from comtypes.typeinfo import CreateTypeLib, ICreateTypeLib
+        punk = CreateTypeLib("spam").QueryInterface(IUnknown) # will never be saved to disk
+
+        # initial refcount
+        initial = com_refcnt(punk)
+
+        # This should increase the refcount by 1
+        sa = t.from_param([punk])
+        self.failUnlessEqual(initial + 1, com_refcnt(punk))
+
+        # Unpacking the array must not change the refcount, and must
+        # return an equal object.
+        self.failUnlessEqual((punk,), sa[0])
+        self.failUnlessEqual(initial + 1, com_refcnt(punk))
+
+        del sa
+        self.failUnlessEqual(initial, com_refcnt(punk))
+
+        sa = t.from_param([None])
+        self.failUnlessEqual((POINTER(IUnknown)(),), sa[0])
+        
+
+    def test_VT_UNKNOWN_multi(self):
+        a = _midlSAFEARRAY(POINTER(IUnknown))
+        t = _midlSAFEARRAY(POINTER(IUnknown))
+        self.failUnless(a is t)
+
+        def com_refcnt(o):
+            "Return the COM refcount of an interface pointer"
+            import gc; gc.collect(); gc.collect()
+            o.AddRef()
+            return o.Release()
+
+        from comtypes.typeinfo import CreateTypeLib, ICreateTypeLib
+        punk = CreateTypeLib("spam").QueryInterface(IUnknown) # will never be saved to disk
+
+        # initial refcount
+        initial = com_refcnt(punk)
+
+        # This should increase the refcount by 4
+        sa = t.from_param((punk,) * 4)
+        self.failUnlessEqual(initial + 4, com_refcnt(punk))
+
+        # Unpacking the array must not change the refcount, and must
+        # return an equal object.
+        self.failUnlessEqual((punk,)*4, sa[0])
+        self.failUnlessEqual(initial + 4, com_refcnt(punk))
+
+        del sa
+        self.failUnlessEqual(initial, com_refcnt(punk))
+
+        # This should increase the refcount by 2
+        sa = t.from_param((punk, None, punk, None))
+        self.failUnlessEqual(initial + 2, com_refcnt(punk))
+
+        null = POINTER(IUnknown)()
+        self.failUnlessEqual((punk, null, punk, null), sa[0])
+
+        del sa
+        self.failUnlessEqual(initial, com_refcnt(punk))
+
+        # repeat same test, with 2 different com pointers
+
+        plib = CreateTypeLib("foo")
+        a, b = com_refcnt(plib), com_refcnt(punk)
+        sa = t.from_param([plib, punk, plib])
+
+####        self.failUnlessEqual((plib, punk, plib), sa[0])
+        self.failUnlessEqual((a+2, b+1), (com_refcnt(plib), com_refcnt(punk)))
+
+        del sa
+        self.failUnlessEqual((a, b), (com_refcnt(plib), com_refcnt(punk)))
 
     def test_UDT(self):
         from comtypes.gen.TestComServerLib import MYCOLOR
@@ -188,67 +258,68 @@ class SafeArrayTestCase(unittest.TestCase):
         bytes = find_memleak(doit)
         self.failIf(bytes, "Leaks %d bytes" % bytes)
 
-try:
-    import pythoncom
-except ImportError:
-    # pywin32 not installed...
-    pass
-else:
-    # pywin32 is available.  The pythoncom dll contains two handy
-    # exported functions that allow to create a VARIANT from a Python
-    # object, also a function that unpacks a VARIANT into a Python
-    # object.
-    #
-    # This allows us to create und unpack SAFEARRAY instances
-    # contained in VARIANTs, and check for consistency with the
-    # comtypes code.
-    
-    _dll = PyDLL(pythoncom.__file__)
+if is_resource_enabled("pythoncom"):
+    try:
+        import pythoncom
+    except ImportError:
+        # pywin32 not installed...
+        pass
+    else:
+        # pywin32 is available.  The pythoncom dll contains two handy
+        # exported functions that allow to create a VARIANT from a Python
+        # object, also a function that unpacks a VARIANT into a Python
+        # object.
+        #
+        # This allows us to create und unpack SAFEARRAY instances
+        # contained in VARIANTs, and check for consistency with the
+        # comtypes code.
 
-    # c:/sf/pywin32/com/win32com/src/oleargs.cpp 213
-    # PyObject *PyCom_PyObjectFromVariant(const VARIANT *var)
-    unpack = _dll.PyCom_PyObjectFromVariant
-    unpack.restype = py_object
-    unpack.argtypes = POINTER(VARIANT),
+        _dll = PyDLL(pythoncom.__file__)
 
-    # c:/sf/pywin32/com/win32com/src/oleargs.cpp 54
-    # BOOL PyCom_VariantFromPyObject(PyObject *obj, VARIANT *var)
-    _pack = _dll.PyCom_VariantFromPyObject
-    _pack.argtypes = py_object, POINTER(VARIANT)
-    _pack.restype = BOOL
-    def pack(obj):
-        var = VARIANT()
-        result = _pack(obj, byref(var))
-        return var
+        # c:/sf/pywin32/com/win32com/src/oleargs.cpp 213
+        # PyObject *PyCom_PyObjectFromVariant(const VARIANT *var)
+        unpack = _dll.PyCom_PyObjectFromVariant
+        unpack.restype = py_object
+        unpack.argtypes = POINTER(VARIANT),
 
-    class PyWinTest(unittest.TestCase):
-        def test_1dim(self):
-            data = (1, 2, 3)
-            variant = pack(data)
-            self.failUnlessEqual(variant.value, data)
-            self.failUnlessEqual(unpack(variant), data)
+        # c:/sf/pywin32/com/win32com/src/oleargs.cpp 54
+        # BOOL PyCom_VariantFromPyObject(PyObject *obj, VARIANT *var)
+        _pack = _dll.PyCom_VariantFromPyObject
+        _pack.argtypes = py_object, POINTER(VARIANT)
+        _pack.restype = BOOL
+        def pack(obj):
+            var = VARIANT()
+            result = _pack(obj, byref(var))
+            return var
 
-        def test_2dim(self):
-            data = ((1, 2, 3), (4, 5, 6), (7, 8, 9))
-            variant = pack(data)
-            self.failUnlessEqual(variant.value, data)
-            self.failUnlessEqual(unpack(variant), data)
+        class PyWinTest(unittest.TestCase):
+            def test_1dim(self):
+                data = (1, 2, 3)
+                variant = pack(data)
+                self.failUnlessEqual(variant.value, data)
+                self.failUnlessEqual(unpack(variant), data)
 
-        def test_3dim(self):
-            data = ( ( (1, 2), (3, 4), (5, 6) ),
-                     ( (7, 8), (9, 10), (11, 12) ) )
-            variant = pack(data)
-            self.failUnlessEqual(variant.value, data)
-            self.failUnlessEqual(unpack(variant), data)
+            def test_2dim(self):
+                data = ((1, 2, 3), (4, 5, 6), (7, 8, 9))
+                variant = pack(data)
+                self.failUnlessEqual(variant.value, data)
+                self.failUnlessEqual(unpack(variant), data)
 
-        def test_4dim(self):
-            data = ( ( ( ( 1,  2), ( 3,  4) ),
-                       ( ( 5,  6), ( 7,  8) ) ),
-                     ( ( ( 9, 10), (11, 12) ),
-                       ( (13, 14), (15, 16) ) ) )
-            variant = pack(data)
-            self.failUnlessEqual(variant.value, data)
-            self.failUnlessEqual(unpack(variant), data)
+            def test_3dim(self):
+                data = ( ( (1, 2), (3, 4), (5, 6) ),
+                         ( (7, 8), (9, 10), (11, 12) ) )
+                variant = pack(data)
+                self.failUnlessEqual(variant.value, data)
+                self.failUnlessEqual(unpack(variant), data)
+
+            def test_4dim(self):
+                data = ( ( ( ( 1,  2), ( 3,  4) ),
+                           ( ( 5,  6), ( 7,  8) ) ),
+                         ( ( ( 9, 10), (11, 12) ),
+                           ( (13, 14), (15, 16) ) ) )
+                variant = pack(data)
+                self.failUnlessEqual(variant.value, data)
+                self.failUnlessEqual(unpack(variant), data)
 
 if __name__ == "__main__":
     unittest.main()
