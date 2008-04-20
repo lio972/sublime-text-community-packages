@@ -1,4 +1,4 @@
-import unittest as ut
+import unittest
 
 import comtypes
 import comtypes.client
@@ -6,7 +6,7 @@ import comtypes.client
 import comtypes.test
 comtypes.test.requires("ui")
 
-class Test(ut.TestCase):
+class Test(unittest.TestCase):
     def tearDown(self):
         if hasattr(self, "w1"):
             self.w1.Quit()
@@ -37,7 +37,13 @@ class Test(ut.TestCase):
         import time
         time.sleep(1)
         
-        self.assertRaises(comtypes.COMError, lambda: w2.Visible)
+        try:
+            w2.Visible
+        except comtypes.COMError, err:
+            variables = err.hresult, err.text, err.details
+            self.failUnlessEqual(variables, err[:])
+        else:
+            raise AssertionError("COMError not raised")
 
         self.assertRaises(WindowsError, comtypes.client.GetActiveObject, "Word.Application")
             

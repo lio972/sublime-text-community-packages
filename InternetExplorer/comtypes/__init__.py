@@ -1,10 +1,32 @@
 import new, types, sys, os
 
-__version__ = "0.4.1"
+__version__ = "0.4.2"
 
 from ctypes import *
 from _ctypes import COMError
 from comtypes import partial
+
+try:
+    COMError()
+except TypeError:
+    pass
+else:
+    # Python 2.5 and 2.5.1 have a bug in the COMError implementation:
+    # The type has no __init__ method, and no hresult, text, and
+    # details instance vars.  Work around this bug by monkeypatching
+    # COMError.
+    def monkeypatch_COMError():
+        def __init__(self, hresult, text, details):
+            self.hresult = hresult
+            self.text = text
+            self.details = details
+            super(COMError, self).__init__(hresult, text, details)
+        COMError.__init__ = __init__
+        def __repr__(self):
+            return "%s(%r, %r, %r)" % (self.__class__.__name__, self.hresult, self.text, self.details)
+        COMError.__repr__ = __repr__
+    monkeypatch_COMError()
+    del monkeypatch_COMError
 
 import logging
 logger = logging.getLogger(__name__)
@@ -224,7 +246,13 @@ class _cominterface_meta(type):
                 #     pptinfo[0] = a_com_interface_pointer
                 #     return S_OK
                 if index != 0:
-                    raise IndexError("Invalid index %s, must be 0" % index)
+                    # CopyComPointer, which is in _ctypes, does only
+                    # handle an index of 0.  This code does what
+                    # CopyComPointer should do if index != 0.
+                    if bool(value):
+                        value.AddRef()
+                    super(_, self).__setitem__(index, value)
+                    return
                 from _ctypes import CopyComPointer
                 CopyComPointer(value, self)
 
@@ -232,9 +260,14 @@ class _cominterface_meta(type):
 
     def __setattr__(self, name, value):
         if name == "_methods_":
+            # XXX I'm no longer sure why the code generator generates
+            # "_methods_ = []" in the interface definition, and later
+            # overrides this by "Interface._methods_ = [...]
+##            assert self.__dict__.get("_methods_", None) is None
             self._make_methods(value)
             self._make_specials()
         elif name == "_disp_methods_":
+            assert self.__dict__.get("_disp_methods_", None) is None
             self._make_dispmethods(value)
             self._make_specials()
         type.__setattr__(self, name, value)
@@ -328,6 +361,9 @@ class _cominterface_meta(type):
         for m in methods:
             what, name, idlflags, restype, argspec = m
 
+            # is it a property set or property get?
+            is_prop = False
+
             # argspec is a sequence of tuples, each tuple is:
             # ([paramflags], type, name)
             try:
@@ -337,6 +373,7 @@ class _cominterface_meta(type):
             if what == "DISPPROPERTY": # DISPPROPERTY
                 assert not argspec # XXX does not yet work for properties with parameters
                 accessor = self._disp_property(memid, idlflags)
+                is_prop = True
                 setattr(self, name, accessor)
             elif what == "DISPMETHOD": # DISPMETHOD
                 # argspec is a tuple of (idlflags, type, name[,
@@ -346,14 +383,26 @@ class _cominterface_meta(type):
                 if 'propget' in idlflags:
                     nargs = len(argspec)
                     properties.setdefault((name, nargs), [None, None, None])[0] = method
+                    is_prop = True
                 elif 'propput' in idlflags:
                     nargs = len(argspec)-1
                     properties.setdefault((name, nargs), [None, None, None])[1] = method
+                    is_prop = True
                 elif 'propputref' in idlflags:
                     nargs = len(argspec)-1
                     properties.setdefault((name, nargs), [None, None, None])[2] = method
+                    is_prop = True
                 else:
                     setattr(self, name, method)
+            # COM is case insensitive.
+            #
+            # For a method, this is the real name.  For a property,
+            # this is the name WITHOUT the _set_ or _get_ prefix.
+            if self._case_insensitive_:
+                self.__map_case__[name.lower()] = name
+                if is_prop:
+                    self.__map_case__[name[5:].lower()] = name[5:]
+
         for (name, nargs), methods in properties.items():
             # methods contains [propget or None, propput or None, propputref or None]
             if methods[1] and methods[2]:
@@ -382,6 +431,10 @@ class _cominterface_meta(type):
             else:
                 assert len(methods) <= 2
                 setattr(self, name, property(*methods))
+
+            # COM is case insensitive
+            if self._case_insensitive_:
+                self.__map_case__[name.lower()] = name
 
     # Some ideas, (not only) related to disp_methods:
     #
