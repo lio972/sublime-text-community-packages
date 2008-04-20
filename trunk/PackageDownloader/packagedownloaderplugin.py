@@ -14,7 +14,7 @@ class DownloadPackagesOnSublimeTextWikiCommand(sublimeplugin.ApplicationCommand)
     
     else:  
       packages = "\n".join(packageList)
-      msg = "Downloaded these packages;\n\n  " + packages +\
+      msg = "Downloaded these packages;\n\n" + packages +\
              "\n\nPackages will be installed next time you start Sublime Text."
              
     sublime.messageBox(msg)
