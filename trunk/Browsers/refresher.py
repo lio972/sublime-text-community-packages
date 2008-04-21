@@ -1,13 +1,40 @@
-import sublime, sublimeplugin, webbrowser, time, re, os, sys
+# coding: utf8
+
+############################   UNICODE SYS.PATH   ##############################
+
+# This is to deal with conflicts between multiple installations of comtypes and
+# to make sure that the absolute paths set to deal with that are unicode  safe. 
+
+from ctypes import windll, create_unicode_buffer, sizeof
+
+import os, sys, sublime
+
+unicodeFileName = os.path.join( sublime.packagesPath(),
+                                unicode('Browsers', 'utf8') )
+                                # mainly 4 when using 山科 氷魚 
+
+buf = create_unicode_buffer(512)
+if not windll.kernel32.GetShortPathNameW(unicodeFileName, buf, sizeof(buf)):
+    raise Exception('Error with GetShortPathNameW')
+    
+sys.path.append(buf.value)
+
+os.chdir('../') # change directory so don't try and do relative import as the
+                # directory changes all the time.
+
+################################################################################
+
+
+import sublimeplugin, webbrowser, time, re
 from subprocess import Popen
+
+# sys.path should have been updated by livepreview
+
 from comtypes.client import CreateObject
 from telnetlib import Telnet
-from ctypes import windll
 from functools import partial
 
 from windows import FocusRestorer, activateApp
-
-sys.path.append(os.path.join(sublime.packagesPath(), "Browsers"))
 
 debug = 0
 MozLabURL = "http://repo.hyperstruct.net/mozlab/current/mozlab-current.xpi"
@@ -119,7 +146,7 @@ class BrowsersCommand(sublimeplugin.TextCommand):
             if self.ie and self.ie.Visible:
                 self.firefox.write('BrowserReloadWithFlags(16)\n')
                 self.syncBrowsers()
-                sublime.setTimeout(self.alternateBrowsers, 3000)
+                # sublime.setTimeout(self.alternateBrowsers, 3000)
                                              
         except Exception, e: 
             if debug: print 'onPostSave: ', e
