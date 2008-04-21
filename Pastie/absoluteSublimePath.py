@@ -27,7 +27,8 @@ def addSublimePackage2SysPath(packageName='', module=''):
     unicodeFileName = os.path.join ( 
     
         sublime.packagesPath(), packageName, "Lib", module
-    )
+    
+    ).rstrip('\\')  #Just in case there is no module
         
             
     buf = create_unicode_buffer(512)
