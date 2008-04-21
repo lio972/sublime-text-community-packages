@@ -1,0 +1,1 @@
+Due to sys.path conflicts please only use one comtypes installation (module used for communicating with InternetExplorer). This package supercedes "InternetExplorer", so if installed, removed it before installing this package.
