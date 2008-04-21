@@ -1,8 +1,8 @@
 from functools import partial
 import sublime, time, sys, os
 
-pkgPath = os.path.join(sublime.packagesPath(), "Browsers/Lib")
-sys.path.append(pkgPath)
+pkgPath = os.path.join(sublime.packagesPath(), "Browsers")
+sys.path.append(pkgPath + "\\Lib")
 
 from comtypes.client import CreateObject                   
 ie = CreateObject("InternetExplorer.Application")
