@@ -2,32 +2,14 @@
 
 from __future__ import with_statement
 
-############################   UNICODE SYS.PATH   ##############################
+from absoluteSublimePath import addSublimePackage2SysPath
 
-# This is to deal with conflicts between multiple installations of comtypes and
-# to make sure that the absolute paths set to deal with that are unicode  safe. 
+addSublimePackage2SysPath(u'Browsers')
 
-from ctypes import windll, create_unicode_buffer, sizeof
+import sublimeplugin, time, threading, Queue, re, smartypants, textile, os, sys\
+     , sublime
 
-import os, sys, sublime
-
-unicodeFileName = os.path.join( sublime.packagesPath(),
-                                unicode('Browsers', 'utf8') )
-                                # mainly 4 when using 山科 氷魚 
-
-buf = create_unicode_buffer(512)
-if not windll.kernel32.GetShortPathNameW(unicodeFileName, buf, sizeof(buf)):
-    raise Exception('Error with GetShortPathNameW')
-    
-sys.path.append(buf.value)
-
-os.chdir('../') # change directory so don't try and do relative import as the
-                # directory changes all the time.
-
-################################################################################
-
-import sublimeplugin, time, threading, Queue, re, smartypants, textile
-
+from ctypes import windll
 from comtypes.client import CreateObject
 from comtypes import COMError
 

@@ -1,35 +1,13 @@
 # coding: utf8
 
-############################   UNICODE SYS.PATH   ##############################
-
-# This is to deal with conflicts between multiple installations of comtypes and
-# to make sure that the absolute paths set to deal with that are unicode  safe. 
-
-from ctypes import windll, create_unicode_buffer, sizeof
-
-import os, sys, sublime
-
-unicodeFileName = os.path.join( sublime.packagesPath(),
-                                unicode('Browsers', 'utf8') )
-                                # mainly 4 when using 山科 氷魚 
-
-buf = create_unicode_buffer(512)
-if not windll.kernel32.GetShortPathNameW(unicodeFileName, buf, sizeof(buf)):
-    raise Exception('Error with GetShortPathNameW')
-    
-sys.path.append(buf.value)
-
-os.chdir('../') # change directory so don't try and do relative import as the
-                # directory changes all the time.
-
-################################################################################
-
-
-import sublimeplugin, webbrowser, time, re
+import sublimeplugin, webbrowser, time, re, os, sys, sublime
 from subprocess import Popen
 
-# sys.path should have been updated by livepreview
+from absoluteSublimePath import addSublimePackage2SysPath
 
+addSublimePackage2SysPath(u'Browsers')
+
+from ctypes import windll
 from comtypes.client import CreateObject
 from telnetlib import Telnet
 from functools import partial
