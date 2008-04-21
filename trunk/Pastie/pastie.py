@@ -4,11 +4,14 @@ import sublime, sublimeplugin, sys, webbrowser, pidgin, threading, os
 from functools import partial
 
 from absoluteSublimePath import addAbsoluteSublimeSysPath
-os.chdir('../')
+
 for egg in ("clientform-0.2.7-py2.5.egg", "mechanize-0.1.7b-py2.5.egg"):
-    addAbsoluteSublimeSysPath( os.path.join('Pastie', egg) )
-     
+    addSublimePackage2SysPath(os.path.join('Pastie', egg))
+
+os.chdir('../')     
 from mechanize import Browser 
+
+DEFAULT_SYNTAX = 'plain_text'
 
 syntax_map = {}
 syntax_map["Packages/C++/C.tmLanguage"] = "c"
@@ -58,10 +61,10 @@ class PastieServiceCommand(sublimeplugin.TextCommand):
         sel = view.sel()[0]
         region = sublime.Region(0, view.size()) if sel.empty() else sel
         
-        if view.fileName().endswith('.php'):
+        if view.fileName().endswith('.php'): 
             syntax = 'php'
-        else:
-            syntax = syntax_map.get(view.options().get('syntax'), 'plain_text')
+        else: 
+            syntax = syntax_map.get(view.options().get('syntax'), DEFAULT_SYNTAX)
         
         make_private = 'private' in args
         
@@ -69,11 +72,15 @@ class PastieServiceCommand(sublimeplugin.TextCommand):
         threading.Thread(target = partial(
             self.pastie, view.substr(region), syntax, make_private)
         ).start()
-        sublime.statusMessage("Pastie thread started")
+        
+        sublime.statusMessage("Pastie in progress")
             
     def finish(self, paste):
         sublime.setClipboard(paste)
         webbrowser.open(paste)
+        
+        #TODO: make setting for people to set own regex for window class/text
+        #      use activate app
         sublime.setTimeout(pidgin.activate_pidgin, 1000)
         
         # Make sure people don't send twice accidentally

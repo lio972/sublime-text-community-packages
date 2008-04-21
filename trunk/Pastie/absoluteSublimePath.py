@@ -8,11 +8,13 @@ from ctypes import windll, create_unicode_buffer, sizeof
 
 import os, sys, sublime
 
-def addAbsoluteSublimeSysPath(unicodePath):
+def addSublimePackage2SysPath(unicodePath):
     unicodeFileName = os.path.join( sublime.packagesPath(), unicodePath )
             
     buf = create_unicode_buffer(512)
     if not windll.kernel32.GetShortPathNameW(unicodeFileName, buf, sizeof(buf)):
         raise Exception('Error with GetShortPathNameW')
-        
-    sys.path.append(buf.value)
+    
+    path = buf.value
+    if path not in sys.path:    
+        sys.path.append(buf.value)
