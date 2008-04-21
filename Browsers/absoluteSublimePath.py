@@ -2,11 +2,11 @@
 
 ############################   UNICODE SYS.PATH   ##############################
 
-from ctypes import windll, create_unicode_buffer, sizeof
+from ctypes import windll, create_unicode_buffer
 
 import os, sys, sublime
 
-def addSublimePackage2SysPath(unicodePath):
+def addSublimePackage2SysPath(packageName='', module=''):
     """                    
     
     usage:
@@ -19,24 +19,27 @@ def addSublimePackage2SysPath(unicodePath):
         
             or
         
-        addSublimePackage2SysPath(u'RegexBuddy')
+        addSublimePackage2SysPath(u'RegexBuddy')
+
     
     """
-    if not isinstance(unicodePath, unicode):
-        raise Exception("'unicodePath' paramater must be unicode")
+        
+    unicodeFileName = os.path.join ( 
     
-    unicodeFileName = os.path.join( sublime.packagesPath(), unicodePath )
+        sublime.packagesPath(), packageName, "Lib", module
+    
+    ).rstrip('\\')  #Just in case there is no module
+        
             
     buf = create_unicode_buffer(512)
-    if not windll.kernel32.GetShortPathNameW(unicodeFileName, buf, sizeof(buf)):
+    if not windll.kernel32.GetShortPathNameW(unicodeFileName, buf, len(buf)):
         
         sublime.messageBox (
-      
-          'There was an error getting 8.3 shortfile names for the packages. ' 
+
+          'There was an error getting 8.3 shortfile names for %s package. ' 
           'These are relied upon as python does not support unicode for its '
           'module paths. Make sure shortpath names are ENABLED and take steps '
-          'to make sure they have been created before trying again.'
-      
+          'to make sure they have been created before trying again.' % packageName
         )
         
         import webbrowser
@@ -45,13 +48,8 @@ def addSublimePackage2SysPath(unicodePath):
         
         raise Exception('Error with GetShortPathNameW')
     
-    path = buf.value
-    if path not in sys.path:    
-        sys.path.append(buf.value)
-    
-    # Be sure not use relative import, as that is whole purpose of the function
-    
-    try: os.chdir('C:\\')
-    except: pass
-    
+    path = buf.value.encode('ascii')
+    if path not in sys.path:
+        sys.path.append(path)
+        
 ################################################################################
