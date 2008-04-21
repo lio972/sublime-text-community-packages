@@ -1,4 +1,4 @@
-Downloads all packages at http://www.sublimetextwiki.com/sublime-packages. When you restart sublime, these packages will be installed and run. Currectly, this list is;
+Downloads all packages at http://www.sublimetextwiki.com/sublime-packages. When you restart sublime, these packages will be installed and run. Currently, this list is;
 
   * AutomaticBackupsPlugin
   * PackageDownloaderPlugin
