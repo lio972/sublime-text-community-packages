@@ -74,8 +74,11 @@ class BrowsersCommand(sublimeplugin.TextCommand):
         
     def run(self, view, args):
         restoreFocus = FocusRestorer()
-        curFile = 'file:///' + view.fileName().replace('\\','/')
         
+        fn  = view.fileName()
+        if fn: curFile = 'file:///' + fn.replace('\\','/')
+        else: curFile = ''
+            
         if not self.ie or not self.firefox:
             self.readyIE()
             self.ie.Visible = True
