@@ -1,0 +1,5 @@
+<bindings>
+    <binding key="ctrl+alt+i" command="browsers"/>
+    <binding key="ctrl+alt+shift+i" command="browsers alternate"/>
+    <binding key="ctrl+shift+p" command="livePreview"/>
+</bindings>
