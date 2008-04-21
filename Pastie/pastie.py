@@ -6,9 +6,8 @@ from functools import partial
 from absoluteSublimePath import addSublimePackage2SysPath
 
 for egg in ("clientform-0.2.7-py2.5.egg", "mechanize-0.1.7b-py2.5.egg"):
-    addSublimePackage2SysPath(os.path.join('Pastie', egg))
+    addSublimePackage2SysPath(os.path.join(u'Pastie', egg))
 
-os.chdir('../')     
 from mechanize import Browser 
 
 DEFAULT_SYNTAX = 'plain_text'
@@ -80,11 +79,11 @@ class PastieServiceCommand(sublimeplugin.TextCommand):
         webbrowser.open(paste)
         
         #TODO: make setting for people to set own regex for window class/text
-        #      use activate app
+        #      use activateApp
         sublime.setTimeout(pidgin.activate_pidgin, 1000)
         
         # Make sure people don't send twice accidentally
-        sublime.setTimeout(self.finished, 3000)
+        sublime.setTimeout(self.finished, 5000)
     
     def finished(self):
         self.working = False
