@@ -1,0 +1,4 @@
+<bindings>
+    <binding key="ctrl+f12" command="pastieService"/>
+    <binding key="ctrl+alt+f12" command="pastieService private"/>
+</bindings>
