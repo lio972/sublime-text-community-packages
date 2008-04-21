@@ -1,13 +1,13 @@
 # REMEMBER TO DONATE TO PASTIE IF YOU USE THE SERVICE A LOT
 
-import sublime, sublimeplugin, sys, webbrowser, pidgin, threading
-
+import sublime, sublimeplugin, sys, webbrowser, pidgin, threading, os
 from functools import partial
-from os import path
 
-for egg in ["clientform-0.2.7-py2.5.egg", "mechanize-0.1.7b-py2.5.egg"]:
-    sys.path.append(path.join(sublime.packagesPath(), 'Pastie', egg))
-    
+from absoluteSublimePath import addAbsoluteSublimeSysPath
+os.chdir('../')
+for egg in ("clientform-0.2.7-py2.5.egg", "mechanize-0.1.7b-py2.5.egg"):
+    addAbsoluteSublimeSysPath( os.path.join('Pastie', egg) )
+     
 from mechanize import Browser 
 
 syntax_map = {}
