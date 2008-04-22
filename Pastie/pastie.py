@@ -51,10 +51,12 @@ class PastieServiceCommand(sublimeplugin.TextCommand):
             
             response = pastie.open(form.click())
 
-            sublime.setTimeout( partial(self.finish, response.geturl()), 1)
+            sublime.setTimeout(partial(self.finish, response.geturl()), 1)
         
         except Exception, e:
-            sublime.setTimeout( partial(self.failed, e),  1)
+            import traceback
+            
+            sublime.setTimeout(partial(self.failed, traceback.format_exc(e)), 1)
                     
     def run(self, view, args):
         if self.working:
@@ -89,9 +91,16 @@ class PastieServiceCommand(sublimeplugin.TextCommand):
         # Make sure people don't send twice accidentally
         sublime.setTimeout(self.finished, 5000)
     
-    def failed(self, exception):
-        sublime.messageBox("Pastie failed:  \n\n%s" % exception)
-        self.finished()
+    def failed(self, exc):
+        try:
+            sublime.setClipboard(exc)
+            
+            sublime.messageBox (
+                "Pastie failed (traceback on clipboard):  \n\n%s" % exc
+            )
+                        
+        finally:
+            self.finished()
     
     def finished(self):
         self.working = False
