@@ -1,17 +1,28 @@
 # REMEMBER TO DONATE TO PASTIE IF YOU USE THE SERVICE A LOT
 
-import sublime, sublimeplugin, sys, webbrowser, pidgin, threading, os
+import sublime, sublimeplugin, sys, webbrowser, threading, os
 from functools import partial
+from pidgin import activateApp
 
 from absoluteSublimePath import addSublimePackage2SysPath
 
 for egg in ("clientform-0.2.7-py2.5.egg", "mechanize-0.1.7b-py2.5.egg"):
     addSublimePackage2SysPath(packageName='Pastie', module=egg)
 
-from mechanize import Browser 
+from mechanize import Browser
+
+### SETTTINGS ###
 
 DEFAULT_SYNTAX = 'plain_text'
+ENCODE_AS = 'utf8'
 
+# Get window spy and get your irc clients toplevel window class and set a regex
+# to match window title text 
+
+activateIrcClient = partial( activateApp,
+                             classMatch = "gdkWindowToplevel",
+                             textMatch  = "^(#|NickServ|ChanServ|freenode)" )
+                              
 syntax_map = {}
 syntax_map["Packages/C++/C.tmLanguage"] = "c"
 syntax_map["Packages/CSS/CSS.tmLanguage"] = "css" 
@@ -42,7 +53,7 @@ class PastieServiceCommand(sublimeplugin.TextCommand):
             pastie.set_handle_robots(False)
             
             form['paste[parser]'] = [lang]
-            form['paste[body]'] = input_text.encode('utf8')
+            form['paste[body]'] = input_text.encode(ENCODE_AS)
             form['paste[authorization]'] = 'burger'
             
             if private:
@@ -83,10 +94,8 @@ class PastieServiceCommand(sublimeplugin.TextCommand):
     def finish(self, paste):
         sublime.setClipboard(paste)
         webbrowser.open(paste)
-        
-        #TODO: make setting for people to set own regex for window class/text
-        #      use activateApp
-        sublime.setTimeout(pidgin.activate_pidgin, 1000)
+
+        sublime.setTimeout(activateIrcClient, 1000)
         
         # Make sure people don't send twice accidentally
         sublime.setTimeout(self.finished, 5000)

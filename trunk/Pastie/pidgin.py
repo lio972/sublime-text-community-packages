@@ -1,4 +1,4 @@
-import ctypes
+import ctypes, re
 from ctypes import windll
 
 def enum_windows():
@@ -29,13 +29,15 @@ def text(handle):
         if ret:
             textval = buffer_.value
     return textval
-
-def activate_pidgin():
-    windows = [(h, classname(h), text(h)) for h in enum_windows()]
-    pidgin = [w for w in windows if 'gdkWindowToplevel' == w[1] \
-                and "Buddy List" != w[2]]
+            
+def findAppHandle(classMatch='', textMatch=''):
+    classRX, textRX = map(re.compile, [classMatch, textMatch])
     
-    for w in pidgin:
-        if w[2].startswith(("#", "NickServ", "ChanServ", "freenode")):
-            windll.user32.SetForegroundWindow(w[0])
-            break
+    windows = [(h, classname(h), text(h)) for h in enum_windows()]
+    app = [w for w in windows if classRX.match(w[1]) and textRX.match(w[2])]
+    return app[0][0] if app else 0# len(app) == 1 else 0
+        
+def activateApp(classMatch='', textMatch=''):
+    h = findAppHandle(classMatch, textMatch)
+    if h: windll.user32.SetForegroundWindow(h)
+    return h
