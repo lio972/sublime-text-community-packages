@@ -25,7 +25,7 @@ ENCODE_AS = 'utf8'
 # sendKeys it will send them
 
 # Don't send a zillion pastes while setting up irc client activation
-TESTING_IRC_CLIENT = 1   
+TESTING_IRC_CLIENT = 0
 
 activateIrcClient = partial( activateApp,
 
