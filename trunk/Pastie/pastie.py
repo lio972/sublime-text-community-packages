@@ -32,26 +32,30 @@ class PastieServiceCommand(sublimeplugin.TextCommand):
     working = False
     
     def pastie(self, input_text, lang='python', private = False):
-        pastie = Browser()
-        pastie.open(r'http://pastie.caboo.se/pastes/new')
+        try:
+            pastie = Browser()
+            pastie.open(r'http://pastie.caboo.se/pastes/new')
+            
+            form = [x for x in pastie.forms()][1]
+            
+            form.set_all_readonly(False)    
+            pastie.set_handle_robots(False)
+            
+            form['paste[parser]'] = [lang]
+            form['paste[body]'] = input_text
+            form['paste[authorization]'] = 'burger'
+            
+            if private:
+                form.controls[1].selected = True
+                form.controls[2]._value = '1'
+            
+            response = pastie.open(form.click())
+
+            sublime.setTimeout( partial(self.finish, response.geturl()), 1)
         
-        form = [x for x in pastie.forms()][1]
-        
-        form.set_all_readonly(False)    
-        pastie.set_handle_robots(False)
-        
-        form['paste[parser]'] = [lang]
-        form['paste[body]'] = input_text
-        form['paste[authorization]'] = 'burger'
-        
-        if private:
-            form.controls[1].selected = True
-            form.controls[2]._value = '1'
-        
-        response = pastie.open(form.click())
-        
-        sublime.setTimeout(partial(self.finish, response.geturl()), 1)
-        
+        except Exception, e:
+            sublime.setTimeout( partial(self.failed, e),  1)
+                    
     def run(self, view, args):
         if self.working:
             sublime.statusMessage("Pastie already in progress! Be patient!")
@@ -84,6 +88,10 @@ class PastieServiceCommand(sublimeplugin.TextCommand):
         
         # Make sure people don't send twice accidentally
         sublime.setTimeout(self.finished, 5000)
+    
+    def failed(self, exception):
+        sublime.messageBox("Pastie failed:  \n\n%s" % exception)
+        self.finished()
     
     def finished(self):
         self.working = False
