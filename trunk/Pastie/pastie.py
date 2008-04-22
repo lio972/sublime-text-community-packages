@@ -42,7 +42,7 @@ class PastieServiceCommand(sublimeplugin.TextCommand):
             pastie.set_handle_robots(False)
             
             form['paste[parser]'] = [lang]
-            form['paste[body]'] = input_text
+            form['paste[body]'] = input_text.encode('utf8')
             form['paste[authorization]'] = 'burger'
             
             if private:
