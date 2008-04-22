@@ -1,4 +1,4 @@
-import ctypes, re
+import ctypes, re, SendKeys
 from ctypes import windll
 
 def enum_windows():
@@ -37,7 +37,17 @@ def findAppHandle(classMatch='', textMatch=''):
     app = [w for w in windows if classRX.match(w[1]) and textRX.match(w[2])]
     return app[0][0] if app else 0# len(app) == 1 else 0
         
-def activateApp(classMatch='', textMatch=''):
-    h = findAppHandle(classMatch, textMatch)
-    if h: windll.user32.SetForegroundWindow(h)
+
+def activateApp( windowClassMatch='', 
+                 windowTitleTextMatch='', 
+                 sendKeysOnlyIfTextMatch='', 
+                 sendKeys=''):
+                    
+    h = findAppHandle(windowClassMatch, windowTitleTextMatch)
+    if h:
+        windll.user32.SetForegroundWindow(h)
+        if sendKeys:
+            alwaysSend = sendKeysOnlyIfTextMatch is ''
+            if re.search(sendKeysOnlyIfTextMatch, text(h)) or alwaysSend:
+                SendKeys.SendKeys(sendKeys)
     return h

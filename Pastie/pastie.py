@@ -1,4 +1,4 @@
-# REMEMBER TO DONATE TO PASTIE IF YOU USE THE SERVICE A LOT
+################################## IMPORTS #####################################
 
 import sublime, sublimeplugin, sys, webbrowser, threading, os
 from functools import partial
@@ -6,37 +6,55 @@ from pidgin import activateApp
 
 from absoluteSublimePath import addSublimePackage2SysPath
 
+addSublimePackage2SysPath(packageName='Pastie')
+
 for egg in ("clientform-0.2.7-py2.5.egg", "mechanize-0.1.7b-py2.5.egg"):
     addSublimePackage2SysPath(packageName='Pastie', module=egg)
 
 from mechanize import Browser
 
-### SETTTINGS ###
+################################## SETTTINGS ###################################
 
 DEFAULT_SYNTAX = 'plain_text'
 ENCODE_AS = 'utf8'
 
+############################ IRC CLIENT SETTINGS ###############################
+
 # Get window spy and get your irc clients toplevel window class and set a regex
-# to match window title text 
+# to match window title text, if sendKeysOnlyIfTextMatch matches and there are 
+# sendKeys it will send them
+
+# Don't send a zillion pastes while setting up irc client activation
+TESTING_IRC_CLIENT = 1   
 
 activateIrcClient = partial( activateApp,
-                             classMatch = "gdkWindowToplevel",
-                             textMatch  = "^(#|NickServ|ChanServ|freenode)" )
-                              
-syntax_map = {}
-syntax_map["Packages/C++/C.tmLanguage"] = "c"
-syntax_map["Packages/CSS/CSS.tmLanguage"] = "css" 
-syntax_map["Packages/Rails/HTML (Rails).tmLanguage"] = "html_rails"
-syntax_map["Packages/HTML/HTML.tmLanguage"] = "html"
-syntax_map["Packages/Java/Java.tmLanguage"] = "java" 
-syntax_map["Packages/JavaScript/JavaScript.tmLanguage"] = "javascript"
-syntax_map["Packages/PHP/PHP.tmLanguage"] = "php"
-syntax_map["Packages/Text/Plain text.tmLanguage"] = "plain_text"
-syntax_map["Packages/Python/Python.tmLanguage"] =  "python"
-syntax_map["Packages/Ruby/Ruby.tmLanguage"] =  "ruby"
-syntax_map["Packages/Rails/Ruby on Rails.tmLanguage"] = "ruby_on_rails"
-syntax_map["Packages/SQL/SQL.tmLanguage"] = "sql"
-syntax_map["Packages/ShellScript/Shell-Unix-Generic.tmLanguage"] = "shell-unix-generic"
+
+                       windowClassMatch = "gdkWindowToplevel",
+                  windowTitleTextMatch  = "(^#|.*?Serv|.*?freenode)",
+                
+                sendKeysOnlyIfTextMatch = "^#",
+                             sendKeys   = "^v" )
+
+#http://www.rutherfurd.net/python/sendkeys/ for SendKeys documentation
+        
+################################################################################        
+                  
+SYNTAXES = {}
+SYNTAXES["Packages/C++/C.tmLanguage"] = "c"
+SYNTAXES["Packages/CSS/CSS.tmLanguage"] = "css" 
+SYNTAXES["Packages/Rails/HTML (Rails).tmLanguage"] = "html_rails"
+SYNTAXES["Packages/HTML/HTML.tmLanguage"] = "html"
+SYNTAXES["Packages/Java/Java.tmLanguage"] = "java"
+SYNTAXES["Packages/JavaScript/JavaScript.tmLanguage"] = "javascript"
+SYNTAXES["Packages/PHP/PHP.tmLanguage"] = "php"
+SYNTAXES["Packages/Text/Plain text.tmLanguage"] = "plain_text"
+SYNTAXES["Packages/Python/Python.tmLanguage"] =  "python"
+SYNTAXES["Packages/Ruby/Ruby.tmLanguage"] =  "ruby"
+SYNTAXES["Packages/Rails/Ruby on Rails.tmLanguage"] = "ruby_on_rails"
+SYNTAXES["Packages/SQL/SQL.tmLanguage"] = "sql"
+SYNTAXES["Packages/ShellScript/Shell-Unix-Generic.tmLanguage"] = "shell-unix-generic"
+
+################################################################################
 
 
 class PastieServiceCommand(sublimeplugin.TextCommand):
@@ -44,26 +62,31 @@ class PastieServiceCommand(sublimeplugin.TextCommand):
     
     def pastie(self, input_text, lang='python', private = False):
         try:
-            pastie = Browser()
-            pastie.open(r'http://pastie.caboo.se/pastes/new')
+            if not TESTING_IRC_CLIENT:    
+                pastie = Browser()
+                pastie.open(r'http://pastie.caboo.se/pastes/new')
+                
+                form = [x for x in pastie.forms()][1]
+                
+                form.set_all_readonly(False)    
+                pastie.set_handle_robots(False)
+                
+                form['paste[parser]'] = [lang]
+                form['paste[body]'] = input_text.encode(ENCODE_AS)
+                form['paste[authorization]'] = 'burger'
+                
+                if private:
+                    form.controls[1].selected = True
+                    form.controls[2]._value = '1'
+                
+                response = pastie.open(form.click())
+    
+                url = response.geturl()
+            else: 
+                url = 'http://www.google.com.au' 
             
-            form = [x for x in pastie.forms()][1]
-            
-            form.set_all_readonly(False)    
-            pastie.set_handle_robots(False)
-            
-            form['paste[parser]'] = [lang]
-            form['paste[body]'] = input_text.encode(ENCODE_AS)
-            form['paste[authorization]'] = 'burger'
-            
-            if private:
-                form.controls[1].selected = True
-                form.controls[2]._value = '1'
-            
-            response = pastie.open(form.click())
+            sublime.setTimeout(partial(self.finish, url), 1)
 
-            sublime.setTimeout(partial(self.finish, response.geturl()), 1)
-        
         except Exception, e:
             import traceback
             
@@ -80,7 +103,7 @@ class PastieServiceCommand(sublimeplugin.TextCommand):
         if view.fileName().endswith('.php'): 
             syntax = 'php'
         else: 
-            syntax = syntax_map.get(view.options().get('syntax'), DEFAULT_SYNTAX)
+            syntax = SYNTAXES.get(view.options().get('syntax'), DEFAULT_SYNTAX)
         
         make_private = 'private' in args
         
