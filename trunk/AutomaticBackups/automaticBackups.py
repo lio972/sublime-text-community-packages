@@ -74,7 +74,7 @@ class NavigateBackupsCommand(sublimeplugin.TextCommand):
   def buffer(self, view):
     with file(self.backupFullPath) as old_file:
       view.erase(sublime.Region(0, view.size()))
-      view.insert(0, old_file.read())
+      view.insert(0, unicode(old_file.read(), 'utf8'))
 
     sublime.statusMessage("%s [%s of %s]" %\
         (self.backup, self.index+1, len(self.foundBackupFiles)-1))
