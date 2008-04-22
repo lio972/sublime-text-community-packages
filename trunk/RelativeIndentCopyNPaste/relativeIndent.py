@@ -2,14 +2,14 @@ import sublime, sublimeplugin, re
 
 class RelativeIndentPasteCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
-        selection = sublime.getClipboard()
+        selection = sublime.getClipboard().replace("\r\n", "\n")
         spacesList = []
         spaces = 0
         
         split = selection.split("\n")
         for l in split:
             for ch in l:
-                if ch.isspace(): spaces += 1
+                if ch == '\t' or ch == ' ': spaces += 1
                 else:
                     spacesList.append(spaces)
                     spaces = 0
