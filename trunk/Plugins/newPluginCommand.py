@@ -24,6 +24,7 @@ class NewPluginCommand(sublimeplugin.WindowCommand):
         
         pluginDir = os.path.join(sublime.packagesPath(), pluginName)
 
+        #Create the directories
         try: os.mkdir(pluginDir)
         except: 
             sublime.errorMessage('Failed to make plugin dir %s' % pluginDir) 
@@ -32,12 +33,16 @@ class NewPluginCommand(sublimeplugin.WindowCommand):
         keymapFile = os.path.join(pluginDir, 'Default.sublime-keymap')
         pluginFile = os.path.join(pluginDir, '%s.py' % pluginName)
         
-        with open(pluginFile, 'w') as fh: pass
-         
+        #Create the files
+        with open(pluginFile, 'w') as fh: pass         
         with open(keymapFile, 'w') as fh: 
             fh.write("<bindings>\n<!-- 4 %s Package -->\n</bindings>" % pluginName)
         
         self.callbacks[pluginFile] = 'pluginSnippet'
+        
+        # You can't have a blank sublime-keymap unfortunately
+        # Hacky workaround
+        
         self.callbacks[keymapFile] = \
                 "move lines 1;" * 2 + r"insertAndDecodeCharacters \n;" +\
                 "move lines -1;" + r"insertAndDecodeCharacters \t;" +\
@@ -51,6 +56,10 @@ class NewPluginCommand(sublimeplugin.WindowCommand):
         
         fn = view.fileName()
         if fn in self.callbacks:
+            
+            # onActivated is called twice... and on the first time 
+            # runCommand does not work... this is a hacky workaround
+            
             self.callbackComplete[fn] += 1            
             if self.callbackComplete[fn] == 2:
                 for cmd in self.callbacks[fn].split(';'):
