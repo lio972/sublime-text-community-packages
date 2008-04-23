@@ -1,20 +1,24 @@
 from __future__ import with_statement
 
 import sublime, sublimeplugin, os, sys, time
+
+from functools import partial
+from collections import defaultdict
     
-class NewPluginCommand(sublimeplugin.TextCommand):
+class NewPluginCommand(sublimeplugin.WindowCommand):
     """
     
     NewPlugin command makes a new plugin dir and a keymap and .py file
     
     """
     
-    def isEnabled(self, view, args):
+    callbacks = {}
+    callbackComplete = defaultdict(int)
+    
+    def isEnabled(self, window, args):
         return args and len(args[0]) > 0
     
-    def run(self, view, args):
-        window = view.window()
-        
+    def run(self, window, args):        
         pluginName = args[1]
         camelName = pluginName[0].lower() + pluginName[1:] 
         
@@ -32,11 +36,28 @@ class NewPluginCommand(sublimeplugin.TextCommand):
          
         with open(keymapFile, 'w') as fh: 
             fh.write("<bindings>\n<!-- 4 %s Package -->\n</bindings>" % pluginName)
+        
+        self.callbacks[pluginFile] = 'pluginSnippet'
+        self.callbacks[keymapFile] = \
+                "move lines 1;" * 2 + r"insertAndDecodeCharacters \n;" +\
+                "move lines -1;" + r"insertAndDecodeCharacters \t;" +\
+                "insertSnippet 'Packages/Plugins/newKeyMap.sublime-snippet'"        
 
-        for f in (keymapFile, pluginFile): view.window().openFile(f)
+        for f in (keymapFile, pluginFile):             
+            window.openFile(f)
         
+    def onActivated(self, view):
+        if not self.callbacks: return
         
-        
+        fn = view.fileName()
+        if fn in self.callbacks:
+            self.callbackComplete[fn] += 1            
+            if self.callbackComplete[fn] == 2:
+                for cmd in self.callbacks[fn].split(';'):
+                    view.runCommand(cmd.strip())
+                del self.callbacks[fn]
+            
+            
 ################################################################################
 
 
@@ -44,7 +65,7 @@ IMPORTS = "import sublime, sublimeplugin${0:, os, sys}"
 
 MAIN = """
 class ${1:$PARAM1}Command(sublimeplugin.${3:Text}Command):
-    %s $1 for $2 %s
+    %s ${1:$PARAM1} for $2 %s
     
     def isEnabled(self, ${4:view}, args):
         if 1:
