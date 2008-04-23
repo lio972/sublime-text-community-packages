@@ -1,6 +1,6 @@
 <bindings>
-    <binding key="ctrl+alt+shift+p" command="editPreference 'Default\\Options\\User File Type.sublime-options'" />
-    <binding key="ctrl+alt+shift+k" command="editPreference 'User\\Default.sublime-keymap'" />
+    <binding key="ctrl+alt+shift+p" command="editPreference 'Default/Options/User File Type.sublime-options'" />
+    <binding key="ctrl+alt+shift+k" command="editPreference 'User/Default.sublime-keymap'" />
     
     <binding key="ctrl+alt+shift+k,ctrl+alt+shift+k" command="editPreferenceContextual shortcutKeys" />
     <binding key="ctrl+alt+shift+p,ctrl+alt+shift+p" command="editPreferenceContextual preferences" />
@@ -10,7 +10,4 @@
     <binding key="/keymap|binding/,tab" command="insertSnippet 'Packages/EditPreferences/newKeyMap.sublime-snippet'">
         <context name="selector" value="text.xml"/>
     </binding>
-
 </bindings>
-
-
