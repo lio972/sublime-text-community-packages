@@ -1,0 +1,11 @@
+<bindings>
+    <binding key="/plugin/,tab" command="pluginSnippet">
+        <!-- <context name="selector" value="text.html - meta.tag - source, meta.scope.between-tag-pair.html"/> -->
+    </binding>    
+    <binding key="/newplug ([a-zA-Z]+)\b/,tab" command="newPlugin $1">
+        <!-- <context name="selector" value="text.html - meta.tag - source, meta.scope.between-tag-pair.html"/> -->
+    </binding>
+    <binding key="/keymap|binding/,tab" command="insertSnippet 'Packages/Plugins/newKeyMap.sublime-snippet'">
+        <!-- <context name="selector" value="text.html - meta.tag - source, meta.scope.between-tag-pair.html"/> -->
+    </binding>
+</bindings>

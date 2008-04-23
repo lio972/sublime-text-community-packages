@@ -1,0 +1,6 @@
+<bindings>
+
+    <binding key="ctrl+alt+shift+k" command="editPreference 'User\\Default.sublime-keymap'" />
+    <binding key="ctrl+alt+shift+l" command="listShortcutKeys" />
+    <binding key="ctrl+alt+shift+p" command="editPreference 'Default\\Options\\Default File Type.sublime-options'" />
+</bindings>
