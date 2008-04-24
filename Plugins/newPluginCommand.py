@@ -9,14 +9,18 @@ from collections import defaultdict
     
 class NewPluginCommand(sublimeplugin.WindowCommand):
     callbacks = {}
-    callbackComplete = defaultdict(int)
+    activationNumber = defaultdict(int)
     
     def run(self, window, args):
+        # Get the plugins name
+        
         pluginName = args[1]
         camelName = pluginName[0].lower() + pluginName[1:]
         
         pluginDir = join(sublime.packagesPath(), pluginName)
-
+        
+        # Make a directory to house the plugin and copy in commonly used Lib's
+        
         try: os.makedirs(pluginDir)
         except: 
             sublime.errorMessage('Failed to make plugin dir %s' % pluginDir)
@@ -25,13 +29,21 @@ class NewPluginCommand(sublimeplugin.WindowCommand):
         libs = join(sublime.packagesPath(), "Plugins\\Lib")
         os.popen('xcopy /e "%s" "%s"' % (libs, pluginDir))
             
+        # Create the files
+
         keymapFile = join(pluginDir, 'Default.sublime-keymap')
         pluginFile = join(pluginDir, '%s.py' % pluginName)
         
         with open(pluginFile, 'w') as fh: fh.close()
         with open(keymapFile, 'w') as fh:
             fh.write("<bindings>\n<!-- 4 %s Package -->\n</bindings>" % pluginName)
+            fh.close()
 
+        # We want to automate inserting snippets with tab-stops but can not open
+        # a file and then manipulate it's view so have to set a makeshift event
+        # handler. When onActivated() if the fileName() is in the callbacks dict
+        # then those callbacks (commands) will be run
+        
         self.callbacks[pluginFile] = 'pluginSnippet'
         self.callbacks[keymapFile] = (
         
@@ -40,8 +52,9 @@ class NewPluginCommand(sublimeplugin.WindowCommand):
                 "insertSnippet 'Packages/Plugins/newKeyMap.sublime-snippet' %s"\
                 % camelName
         )
-                
-
+        
+        #Open both the files, triggering onActivated event
+        
         for f in (keymapFile, pluginFile):             
             window.openFile(f)
         
@@ -50,15 +63,25 @@ class NewPluginCommand(sublimeplugin.WindowCommand):
         
         fn = view.fileName()
         if fn in self.callbacks:
-            self.callbackComplete[fn] += 1            
-            if self.callbackComplete[fn] == 2:
+            
+            # onActivated get's called twice and the first time it doesn't 
+            # get proper access to the view and the ability to runCommand()
+            # When we are finished we musst delete the callback from the dict 
+            # so it's not called repeatedly. This is a workaround. 
+            
+            self.activationNumber[fn] += 1            
+            if self.activationNumber[fn] == 2:
                 for cmd in self.callbacks[fn].split(';'):
                     view.runCommand(cmd)
+                
+                # Tidy up
                 del self.callbacks[fn]
             
             
 ################################################################################
+################################################################################
 
+# Snippet templates
 
 IMPORTS = ( "import sublime, sublimeplugin${0:, os, sys}\n\n"
             "from absoluteSublimePath import addSublimePackage2SysPath\n"
@@ -138,8 +161,8 @@ getString set erase has
 class PluginSnippetCommand(sublimeplugin.TextCommand):
     """ 
     
-    Inserts a new plugin snippet thats contents depend on the current file.
-    If file is essentially empty it will insert common imports and also insert
+    Inserts a new plugin snippet thats contents depend on the current buffer.
+    If buffer is essentially empty it will insert common imports and also insert
     all the event handlers for reference.
     
     """
@@ -147,24 +170,23 @@ class PluginSnippetCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
         fn = view.fileName()
         if fn:
-            rootName = os.path.splitext(split(fn)[1])[0]
-            plugName = rootName[0].upper() + rootName[1:]
+            basePlugName = os.path.splitext(split(fn)[1])[0]
+            plugName = basePlugName[0].upper() + basePlugName[1:]
         else:
-            plugName = rootName = 'MyPlugin'
+            plugName = basePlugName = 'MyPlugin'
         
         buffer = view.substr(sublime.Region(0, view.size()))
         snip = []
         
-        if "import sublime" not in buffer:
-            snip.append(IMPORTS % rootName)
+        # Build the snippet based on what's arleady in the buffer. Don't need 
+        # imports if they are already there.
         
+        if "import sublime" not in buffer: snip.append(IMPORTS % basePlugName)
+
+        # Always wan't a new class MyPlugin.....
         snip.append(MAIN)
-        
-        # if not ['any' for event in EVENTS.split() if event in buffer]:
-        if 'class' not in buffer:
-            snip.append(HANDLERS)
-        
-        if "__completions__" not in buffer:
-            snip.append(COMPLETIONS)
+
+        if 'class' not in buffer: snip.append(HANDLERS)
+        if "__completions__" not in buffer: snip.append(COMPLETIONS)
             
         view.runCommand('insertInlineSnippet', ["\n".join(snip),  plugName])
