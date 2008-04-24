@@ -43,45 +43,50 @@ class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
     """ RelativeIndentSnippet: insert snippets maintaining indentation  """
     
     def run(self, view, args):
-        newsel = view.line(view.sel()[0])
-        view.sel().clear()
-        view.sel().add(newsel)
-        
-        selection = view.substr(newsel)
-        if selection.strip():
-            view.runCommand("moveTo bol extend")
-        
-        fn = normpath(join(split(sublime.packagesPath())[0], args[0]))
-        
-        PARAM = "$PARAM%s" % len(args)
-        
+        fn = normpath(join(split(sublime.packagesPath())[0], args[0]))        
         with open(fn) as fh:
             soup = BeautifulSoup(fh)
             snippet = soup.content.contents[0]
-            snippet = snippet.replace("$SELECTION", PARAM)
         
-        snippet = snippet.replace("\t", view.options().get('tabSize') * " ")
+        SELECTION = "$SELECTION"
         
         paramIndex = None
-        for l in [l for l in snippet.split("\n") if PARAM in l]:
-            paramMatch = re.search(r"\$.*?(\%s).?" % PARAM , l)
+        for l in [l for l in snippet.split("\n") if SELECTION  in l]:
+            paramMatch = re.search(r"\$.*?(\%s).?" % SELECTION , l)
             if paramMatch:
                 paramIndex = paramMatch.span()[0]
                 break
             else:
-                paramIndex = l.find(PARAM)
+                paramIndex = l.find(SELECTION)
                 if paramIndex == -1: paramIndex == None
                 else: break
 
         if paramIndex is None: return
+
+        tab = view.options().get('tabSize') * " "
+
+        # Expand Selection to line
+        for i, sel in enumerate(view.sel()):
+            if sel.empty(): continue
+            newsel = view.line(sel)
+            view.sel().subtract(sel)
+            view.sel().add(newsel)
         
-        selection = stripPreceding( selection, 
+        # Insert at the right point
+        # TODO: do this by altering regions
+        
+        if not view.sel()[0].empty():
+            view.runCommand("moveTo bol extend")
+        
+        # Strip out preceding characters if any      
+        for sel in view.sel():
+            if sel.empty(): continue
+            selstr = view.substr(sel).replace("\t", tab)
+            
+            selstr = stripPreceding(selstr,
                                     padding = paramIndex * " ", 
                                     rstrip = False )
-                
-        view.runCommand('insertInlineSnippet', [snippet] + args[1:] + [selection])
-        
-        # Get view.substr( of line() region of the first selection 
-        # Strip preceding characters
-        # Find the index of the $PARAM1 command
-        # Pad the rest of the selection with that much 
+            view.replace(sel, selstr)
+
+        # Insert the snippet
+        view.runCommand('insertSnippet', args)
