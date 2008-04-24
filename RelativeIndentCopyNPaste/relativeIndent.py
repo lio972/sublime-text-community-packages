@@ -42,36 +42,32 @@ class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
     
     def run(self, view, args):
         tabSize = view.options().get('tabSize')
-        tab = tabSize * " "
         
-        ### FIND THE $SELECTION DISPLACEMENT
         fn = normpath(join(split(sublime.packagesPath())[0], args[0]))        
-        with open(fn) as fh:
-            soup = BeautifulSoup(fh)
-            snippet = soup.content.contents[0]
+        with open(fn) as fh: soup = BeautifulSoup(fh)
+        snippet = soup.content.contents[0]
 
         for l in snippet.split("\n"):
-            paramIndex = l.find("$SELECTION")
-            if paramIndex != -1:
-                paramMatch = re.search(r"\$.*?(\$SELECTION).?", l)
-                if paramMatch: paramIndex = paramMatch.span()[0]
+            SELECTION_index = l.find("$SELECTION")
+            if SELECTION_index != -1:
+                SELECTION_match = re.search(r"\$.*?(\$SELECTION).?", l)
+                if SELECTION_match: SELECTION_index = SELECTION_match.span()[0]
                 
                 spaces = 0
-                for ch in l[:paramIndex]:
+                for ch in l[:SELECTION_index]:
                     if ch == " ": spaces += 1
                     elif ch == "\t": spaces += tabSize
                 break
             else:
                 spaces = 0
             
-        # SELECTION DISPLACEMENT
         for sel in view.sel():
             if sel.empty(): continue
             newsel = view.line(sel)
             start, end = newsel.begin(), newsel.end()
                                     
-            selstr = view.substr(newsel).replace("\t", tab)
-            selstr = stripPreceding( selstr,
+            selection = view.substr(newsel).replace("\t", tabSize * " ")
+            selectionStripped = stripPreceding( selection,
                                      padding = spaces * " ",
                                      rstrip = False )            
             displacement = 0
@@ -83,6 +79,6 @@ class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
 
             view.sel().subtract(sel)
             view.sel().add(modifiedRegion)
-            view.replace(modifiedRegion, selstr)
+            view.replace(modifiedRegion, selectionStripped)
         
         view.runCommand('insertSnippet', args)
