@@ -1,7 +1,7 @@
 from __future__ import with_statement
 
-import sublime, sublimeplugin, os, sys, re
-import os.path
+import sublime, sublimeplugin, os, sys, re, difflib
+from os.path import split, join
 
 DONT_CREATE_FILES = 0
 
@@ -54,27 +54,30 @@ def openPreference(f, window):
                 
     window.openFile(f)
     
+def getPackageDir(view):
+    try: fn = view.fileName()
+    except: return None
+    
+    pkgsPath = sublime.packagesPath()
+    
+    if fn and pkgsPath in fn: 
+        pkgDir = split(fn[len(pkgsPath)+1:])[0]
+    else:
+        pkgDir = split(split(view.options().get('syntax'))[0])[1]
+    
+    return pkgDir
+
 class EditPreferenceCommand(sublimeplugin.WindowCommand):
     def run(self, window, args):
         
         openPreference(
             os.path.join(sublime.packagesPath(), args[0]), window
         )
-        
+
 class EditPreferenceContextualCommand(sublimeplugin.WindowCommand):
     def run(self, window, args):
-        view = window.activeView()
-        
-        if view: fn = view.fileName()
-        else: return
-        
-        pkgsPath = sublime.packagesPath()
-
-        split = os.path.split
-        if fn and pkgsPath in fn: 
-            pkgDir = split(fn[len(pkgsPath)+1:])[0]
-        else:
-            pkgDir = split(split(view.options().get('syntax'))[0])[1]
+        pkgDir = getPackageDir(window.activeView())
+        if not pkgDir: return
         
         if args[0] == 'shortcutKeys':
             f = 'Default.sublime-keymap'
@@ -83,9 +86,34 @@ class EditPreferenceContextualCommand(sublimeplugin.WindowCommand):
             f = '%s.sublime-options' % pkgDir
         
         openPreference(
-            os.path.normpath(os.path.join(sublime.packagesPath(), pkgDir, f)),
+            os.path.normpath(join(sublime.packagesPath(), pkgDir, f)),
             window
         )
+
+
+class EditSnippetCommand(sublimeplugin.TextCommand):
+    """ OpenSnippets will open up all snippets relevant to the syntax/package
+        of the currently open file """
+        
+    def run(self, view, args):
+        pkgDir = getPackageDir(view)
+        if not pkgDir: return
+        
+        print args
+        
+        pkgDirAbs = join(sublime.packagesPath(), pkgDir)
+        snippets = [s for s in os.listdir(pkgDirAbs) if s.endswith('snippet')]
+        
+        if len(snippets) > 1:
+            snippets = difflib.get_close_matches(args[0], 
+                                                 [l.lower() for l in snippets], 
+                                                 n=1,
+                                                 cutoff=0.1)
+        if snippets:
+            for f in snippets:
+                view.window().openFile(join(pkgDirAbs, f))
+
+
 
 commands_regex = re.compile('<binding key="(.*?)".*?command="(.*?)"')
 

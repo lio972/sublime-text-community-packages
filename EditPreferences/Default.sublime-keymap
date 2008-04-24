@@ -9,6 +9,8 @@
     
     <binding key="ctrl+alt+shift+l" command="listShortcutKeys" />
     
+    <binding key="ctrl+alt+shift+s,/[a-zA-Z]+/,tab" command="editSnippet $1" />
+    
     <binding key="/keymap|binding/,tab" command="insertSnippet 'Packages/EditPreferences/newKeyMap.sublime-snippet'">
         <context name="selector" value="text.xml"/>
     </binding>
