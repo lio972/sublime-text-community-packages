@@ -1,4 +1,5 @@
 <bindings>
-    <binding key="ctrl+shift+v" command="relativeIndentPaste"/>    
-    <binding key="ctrl+shift+c" command="relativeIndentCopy"/>    
+    <binding key="ctrl+shift+v" command="relativeIndent paste"/>    
+    <binding key="ctrl+shift+x" command="relativeIndent cut"/>    
+    <binding key="ctrl+shift+c" command="relativeIndent copy"/>
 </bindings>
