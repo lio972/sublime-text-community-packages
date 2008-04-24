@@ -1,6 +1,9 @@
 from __future__ import with_statement
 
 import sublime, sublimeplugin, os, sys, re
+import os.path
+
+DONT_CREATE_FILES = 0
 
 SUBLIME_KEYMAP = """
 <!--
@@ -37,13 +40,18 @@ Also note that if the same key is bound twice, the last binding takes precedence
 
 def openPreference(f, window):
     if not os.path.exists(f):
-        with open(f, 'w') as fh:
-            if f.endswith('sublime-keymap'):
-                toWrite = SUBLIME_KEYMAP
-            elif f.endswith('sublime-options'):
-                toWrite('# sublime-options')
-            else:                
-                fh.write("EditPreferenceCommand: created non existing file")
+        if f.endswith('sublime-keymap'):
+            toWrite = SUBLIME_KEYMAP
+
+        elif f.endswith('sublime-options'):
+            toWrite = None #'# sublime-options'
+        else:       
+            toWrite = None #"EditPreferenceCommand: created non existing file"
+        
+        if not DONT_CREATE_FILES and toWrite:
+            with open(f, 'w') as fh:    
+                fh.write(toWrite)
+                
     window.openFile(f)
     
 class EditPreferenceCommand(sublimeplugin.WindowCommand):
@@ -56,7 +64,17 @@ class EditPreferenceCommand(sublimeplugin.WindowCommand):
 class EditPreferenceContextualCommand(sublimeplugin.WindowCommand):
     def run(self, window, args):
         view = window.activeView()
-        pkgDir = os.path.split(os.path.split(view.options().get('syntax'))[0])[1]
+        
+        if view: fn = view.fileName()
+        else: return
+        
+        pkgsPath = sublime.packagesPath()
+
+        split = os.path.split
+        if fn and pkgsPath in fn: 
+            pkgDir = split(fn[len(pkgsPath)+1:])[0]
+        else:
+            pkgDir = split(split(view.options().get('syntax'))[0])[1]
         
         if args[0] == 'shortcutKeys':
             f = 'Default.sublime-keymap'
