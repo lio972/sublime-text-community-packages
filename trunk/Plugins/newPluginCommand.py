@@ -28,18 +28,18 @@ class NewPluginCommand(sublimeplugin.WindowCommand):
         keymapFile = join(pluginDir, 'Default.sublime-keymap')
         pluginFile = join(pluginDir, '%s.py' % pluginName)
         
-
         with open(pluginFile, 'w') as fh: fh.close()
         with open(keymapFile, 'w') as fh:
             fh.write("<bindings>\n<!-- 4 %s Package -->\n</bindings>" % pluginName)
-        
 
         self.callbacks[pluginFile] = 'pluginSnippet'
         self.callbacks[keymapFile] = (
+        
                 "move lines 1;" * 2 + r"insertAndDecodeCharacters \n;" +\
                 "move lines -1;" + r"insertAndDecodeCharacters \t;" +\
                 "insertSnippet 'Packages/Plugins/newKeyMap.sublime-snippet' %s"\
-                % camelName)
+                % camelName
+        )
                 
 
         for f in (keymapFile, pluginFile):             
@@ -53,7 +53,7 @@ class NewPluginCommand(sublimeplugin.WindowCommand):
             self.callbackComplete[fn] += 1            
             if self.callbackComplete[fn] == 2:
                 for cmd in self.callbacks[fn].split(';'):
-                    view.runCommand(cmd.strip())
+                    view.runCommand(cmd)
                 del self.callbacks[fn]
             
             
@@ -77,7 +77,7 @@ class ${1:$PARAM1}Command(sublimeplugin.${3:Text}Command):
         $6
 """ % tuple(['"""']*2)
 
-events = "onNew onClone onLoad onClose onPreSave onPostSave onModified onActivated" 
+EVENTS = "onNew onClone onLoad onClose onPreSave onPostSave onModified onActivated" 
 
 HANDLERS = """
     # For reference only, remove all event handlers not in use
@@ -150,21 +150,21 @@ class PluginSnippetCommand(sublimeplugin.TextCommand):
             rootName = os.path.splitext(split(fn)[1])[0]
             plugName = rootName[0].upper() + rootName[1:]
         else:
-            plugName = 'MyPlugin'
+            plugName = rootName = 'MyPlugin'
         
-        buf = view.substr(sublime.Region(0, view.size()))
+        buffer = view.substr(sublime.Region(0, view.size()))
         snip = []
         
-        if "import sublime" not in buf:
+        if "import sublime" not in buffer:
             snip.append(IMPORTS % rootName)
         
         snip.append(MAIN)
         
-        # if not ['any' for event in events.split() if event in buf]:
-        if 'class' not in buf:
+        # if not ['any' for event in EVENTS.split() if event in buffer]:
+        if 'class' not in buffer:
             snip.append(HANDLERS)
         
-        if "__completions__" not in buf:
+        if "__completions__" not in buffer:
             snip.append(COMPLETIONS)
             
         view.runCommand('insertInlineSnippet', ["\n".join(snip),  plugName])
