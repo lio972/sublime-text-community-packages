@@ -2,14 +2,15 @@
 
 import sublime, sublimeplugin, sys, webbrowser, threading, os
 from functools import partial
-from pidgin import activateApp
 
 from absoluteSublimePath import addSublimePackage2SysPath
 
-addSublimePackage2SysPath(packageName='Pastie')
-
 for egg in ("clientform-0.2.7-py2.5.egg", "mechanize-0.1.7b-py2.5.egg"):
     addSublimePackage2SysPath(packageName='Pastie', module=egg)
+
+addSublimePackage2SysPath(packageName='Pastie')
+
+from pidgin import activateApp
 
 from mechanize import Browser
 
