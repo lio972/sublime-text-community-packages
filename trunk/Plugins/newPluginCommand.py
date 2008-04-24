@@ -186,7 +186,8 @@ class PluginSnippetCommand(sublimeplugin.TextCommand):
         # Always wan't a new class MyPlugin.....
         snip.append(MAIN)
 
-        if 'class' not in buffer: snip.append(HANDLERS)
-        if "__completions__" not in buffer: snip.append(COMPLETIONS)
+        if 'class' not in buffer: 
+            snip.append(HANDLERS)
+            snip.append(COMPLETIONS)
             
         view.runCommand('insertInlineSnippet', ["\n".join(snip),  plugName])
