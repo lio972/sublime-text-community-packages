@@ -1,6 +1,6 @@
 <!-- See http://www.sublimetext.com/docs/snippets for more information -->
 <snippet>
-    <content><![CDATA[<binding key="$0" command="$1">
+    <content><![CDATA[<binding key="$0" command="$PARAM1${1}">
     <!-- <context name="" value=""/> -->
 </binding>]]></content>
 </snippet>
