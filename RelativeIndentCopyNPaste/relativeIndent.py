@@ -50,20 +50,29 @@ class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
         
         SELECTION = "$SELECTION"
         
+        tabSize = view.options().get('tabSize')
+        
         paramIndex = None
-        for l in [l for l in snippet.split("\n") if SELECTION  in l]:
+        for l in [l for l in snippet.split("\n") if SELECTION  in l]:            
             paramMatch = re.search(r"\$.*?(\%s).?" % SELECTION , l)
+            
             if paramMatch:
                 paramIndex = paramMatch.span()[0]
                 break
             else:
                 paramIndex = l.find(SELECTION)
                 if paramIndex == -1: paramIndex == None
-                else: break
+                else: break            
 
-        if paramIndex is None: return
+        if paramIndex is None: 
+            return
+        else:
+            spaces = 0
+            for ch in l[:paramIndex]:
+                if ch == " ": spaces += 1
+                elif ch == "\t": spaces += tabSize
 
-        tab = view.options().get('tabSize') * " "
+        tab = tabSize * " " 
 
         # Expand Selection to line
         for i, sel in enumerate(view.sel()):
@@ -84,7 +93,7 @@ class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
             selstr = view.substr(sel).replace("\t", tab)
             
             selstr = stripPreceding(selstr,
-                                    padding = paramIndex * " ", 
+                                    padding = spaces * " ", 
                                     rstrip = False )
             view.replace(sel, selstr)
 
