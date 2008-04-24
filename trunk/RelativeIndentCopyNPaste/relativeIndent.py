@@ -48,9 +48,13 @@ class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
             soup = BeautifulSoup(fh)
             snippet = soup.content.contents[0]
         
-        SELECTION = "$SELECTION"
         
         tabSize = view.options().get('tabSize')
+        tab = tabSize * " "
+        
+        
+        ### FIND THE $SELECTION DISPLACEMENT
+        SELECTION = "$SELECTION"
         
         paramIndex = None
         for l in [l for l in snippet.split("\n") if SELECTION  in l]:            
@@ -72,29 +76,29 @@ class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
                 if ch == " ": spaces += 1
                 elif ch == "\t": spaces += tabSize
 
-        tab = tabSize * " " 
 
-        # Expand Selection to line
+        # SELECTION DISPLACEMENT
         for sel in view.sel():
             if sel.empty(): continue
             newsel = view.line(sel)
-            start = newsel.begin()
-            end = newsel.end()
+            view.sel().subtract(sel)
+            
+            start, end = newsel.begin(), newsel.end()
                         
             displacement = 0
-            for i in range(start, end):
+            for i in xrange(start, end):
                 if view.substr(i).isspace(): displacement += 1
                 else: break
             
             selstr = view.substr(newsel).replace("\t", tab)
             selstr = stripPreceding( selstr,
-                                     padding = (spaces+displacement) * " ", 
+                                     padding = spaces * " ", #+displacement) * " ", 
                                      rstrip = False )            
-            
-            reg = sublime.Region(start+displacement, end)
-            view.sel().subtract(sel)
-            view.sel().add(reg)
-            view.replace(reg, selstr)
+
+                        
+            modifiedRegion = sublime.Region(start+displacement, end)
+            view.sel().add(modifiedRegion)
+            view.replace(modifiedRegion, selstr)
             
         # Insert the snippet
         view.runCommand('insertSnippet', args)
