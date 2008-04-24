@@ -25,18 +25,17 @@ def stripPreceding(selection, padding="", rstrip=True):
     stripped = "\n".join(stripped)
     
     return  stripped.rstrip("\n") if rstrip else stripped
-                
-class RelativeIndentPasteCommand(sublimeplugin.TextCommand):
+            
+class RelativeIndentCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
-        selection = sublime.getClipboard().replace("\r\n", "\n")
-        selection = stripPreceding(selection, padding = '')
-        view.runCommand('insertInlineSnippet', ['$PARAM1', selection])
-        
-class RelativeIndentCopyCommand(sublimeplugin.TextCommand):
-    def run(self, view, args):
-        view.runCommand('expandSelectionTo line')
-        view.runCommand('copy')
-
+        if args[0] == 'paste':
+            selection = sublime.getClipboard().replace("\r\n", "\n")
+            selection = stripPreceding(selection, padding = '')
+            view.runCommand('insertInlineSnippet', ['$PARAM1', selection])
+        else:
+            view.runCommand('expandSelectionTo line')
+            view.runCommand(args[0])
+            
 class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
     """ RelativeIndentSnippet: insert snippets maintaining indentation  """
     
