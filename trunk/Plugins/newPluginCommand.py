@@ -1,53 +1,49 @@
 from __future__ import with_statement
 
-import sublime, sublimeplugin, os, sys, time
+import sublime, sublimeplugin, os, sys, time, shutil
+
+from os.path import split, join
 
 from functools import partial
 from collections import defaultdict
     
 class NewPluginCommand(sublimeplugin.WindowCommand):
-    """
-    
-    NewPlugin command makes a new plugin dir and a keymap and .py file
-    
-    """
-    
+        
     callbacks = {}
     callbackComplete = defaultdict(int)
     
     def isEnabled(self, window, args):
         return args and len(args[0]) > 0
     
-    def run(self, window, args):        
+    def run(self, window, args):
         pluginName = args[1]
-        camelName = pluginName[0].lower() + pluginName[1:] 
+        camelName = pluginName[0].lower() + pluginName[1:]
         
-        pluginDir = os.path.join(sublime.packagesPath(), pluginName)
-
-        #Create the directories
-        try: os.mkdir(pluginDir)
+        
+        pluginDir = join(sublime.packagesPath(), pluginName)
+        
+        newDirs = join(pluginDir, "Lib")
+        try: os.makedirs(pluginDir)
         except: 
-            sublime.errorMessage('Failed to make plugin dir %s' % pluginDir) 
+            sublime.errorMessage('Failed to make plugin dir %s' % pluginDir)
             return
             
-        keymapFile = os.path.join(pluginDir, 'Default.sublime-keymap')
-        pluginFile = os.path.join(pluginDir, '%s.py' % pluginName)
+        shutil.copytree(join(sublime.packagesPath(), "Plugins\\Lib"), newDirs)
+            
+        keymapFile = join(pluginDir, 'Default.sublime-keymap')
+        pluginFile = join(pluginDir, '%s.py' % pluginName)
         
-        #Create the files
-        with open(pluginFile, 'w') as fh: pass         
-        with open(keymapFile, 'w') as fh: 
+        with open(pluginFile, 'w') as fh: fh.close()
+        with open(keymapFile, 'w') as fh:
             fh.write("<bindings>\n<!-- 4 %s Package -->\n</bindings>" % pluginName)
         
         self.callbacks[pluginFile] = 'pluginSnippet'
-        
-        # You can't have a blank sublime-keymap unfortunately
-        # Hacky workaround
-        
-        self.callbacks[keymapFile] = \
+        self.callbacks[keymapFile] = (
                 "move lines 1;" * 2 + r"insertAndDecodeCharacters \n;" +\
                 "move lines -1;" + r"insertAndDecodeCharacters \t;" +\
-                "insertSnippet 'Packages/Plugins/newKeyMap.sublime-snippet'"        
-
+                "insertSnippet 'Packages/Plugins/newKeyMap.sublime-snippet' %s"\
+                % camelName)
+                
         for f in (keymapFile, pluginFile):             
             window.openFile(f)
         
@@ -56,10 +52,6 @@ class NewPluginCommand(sublimeplugin.WindowCommand):
         
         fn = view.fileName()
         if fn in self.callbacks:
-            
-            # onActivated is called twice... and on the first time 
-            # runCommand does not work... this is a hacky workaround
-            
             self.callbackComplete[fn] += 1            
             if self.callbackComplete[fn] == 2:
                 for cmd in self.callbacks[fn].split(';'):
@@ -70,7 +62,9 @@ class NewPluginCommand(sublimeplugin.WindowCommand):
 ################################################################################
 
 
-IMPORTS = "import sublime, sublimeplugin${0:, os, sys}"
+IMPORTS = ( "import sublime, sublimeplugin${0:, os, sys}\n\n"
+            "from absoluteSublimePath import addSublimePackage2SysPath\n"
+            "addSublimePackage2SysPath(u'%s')" )
 
 MAIN = """
 class ${1:$PARAM1}Command(sublimeplugin.${3:Text}Command):
@@ -152,28 +146,25 @@ class PluginSnippetCommand(sublimeplugin.TextCommand):
     
     def run(self, view, args):
         fn = view.fileName()
+        if fn:
+            plugName = os.path.splitext(split(fn)[1])[0]
+            plugName = plugName[0].upper() + plugName[1:]
+        else:
+            plugName = 'MyPlugin'
+        
         buf = view.substr(sublime.Region(0, view.size()))
-
         snip = []
         
         if "import sublime" not in buf:
-            snip.append(IMPORTS)
+            snip.append(IMPORTS % plugName)
         
         snip.append(MAIN)
         
         # if not ['any' for event in events.split() if event in buf]:
-        if 'class' not in buf: 
+        if 'class' not in buf:
             snip.append(HANDLERS)
         
         if "__completions__" not in buf:
             snip.append(COMPLETIONS)
-        
-        snippet = "\n".join(snip)
-                
-        if fn:
-            plugName = os.path.splitext(os.path.split(fn)[1])[0]
-            plugName = plugName[0].upper() + plugName[1:]
-        else:
-            plugName = 'MyPlugin'
             
-        view.runCommand('insertInlineSnippet', [snippet,  plugName])
+        view.runCommand('insertInlineSnippet', ["\n".join(snip),  plugName])
