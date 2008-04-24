@@ -69,7 +69,7 @@ class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
                 else: break            
 
         if paramIndex is None: 
-            return
+            spaces = 0
         else:
             spaces = 0
             for ch in l[:paramIndex]:
@@ -99,6 +99,7 @@ class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
             modifiedRegion = sublime.Region(start+displacement, end)
             view.sel().add(modifiedRegion)
             view.replace(modifiedRegion, selstr)
-            
+        
         # Insert the snippet
+        print args
         view.runCommand('insertSnippet', args)
