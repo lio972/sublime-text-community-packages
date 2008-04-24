@@ -8,35 +8,32 @@ from functools import partial
 from collections import defaultdict
     
 class NewPluginCommand(sublimeplugin.WindowCommand):
-        
     callbacks = {}
     callbackComplete = defaultdict(int)
-    
-    def isEnabled(self, window, args):
-        return args and len(args[0]) > 0
     
     def run(self, window, args):
         pluginName = args[1]
         camelName = pluginName[0].lower() + pluginName[1:]
         
-        
         pluginDir = join(sublime.packagesPath(), pluginName)
-        
-        newDirs = join(pluginDir, "Lib")
+
         try: os.makedirs(pluginDir)
         except: 
             sublime.errorMessage('Failed to make plugin dir %s' % pluginDir)
             return
             
-        shutil.copytree(join(sublime.packagesPath(), "Plugins\\Lib"), newDirs)
+        libs = join(sublime.packagesPath(), "Plugins\\Lib")
+        os.popen('xcopy /e "%s" "%s"' % (libs, pluginDir))
             
         keymapFile = join(pluginDir, 'Default.sublime-keymap')
         pluginFile = join(pluginDir, '%s.py' % pluginName)
         
+
         with open(pluginFile, 'w') as fh: fh.close()
         with open(keymapFile, 'w') as fh:
             fh.write("<bindings>\n<!-- 4 %s Package -->\n</bindings>" % pluginName)
         
+
         self.callbacks[pluginFile] = 'pluginSnippet'
         self.callbacks[keymapFile] = (
                 "move lines 1;" * 2 + r"insertAndDecodeCharacters \n;" +\
@@ -44,6 +41,7 @@ class NewPluginCommand(sublimeplugin.WindowCommand):
                 "insertSnippet 'Packages/Plugins/newKeyMap.sublime-snippet' %s"\
                 % camelName)
                 
+
         for f in (keymapFile, pluginFile):             
             window.openFile(f)
         
@@ -64,7 +62,7 @@ class NewPluginCommand(sublimeplugin.WindowCommand):
 
 IMPORTS = ( "import sublime, sublimeplugin${0:, os, sys}\n\n"
             "from absoluteSublimePath import addSublimePackage2SysPath\n"
-            "addSublimePackage2SysPath(u'%s')" )
+            "#addSublimePackage2SysPath(u'%s')" )
 
 MAIN = """
 class ${1:$PARAM1}Command(sublimeplugin.${3:Text}Command):
@@ -140,15 +138,17 @@ getString set erase has
 class PluginSnippetCommand(sublimeplugin.TextCommand):
     """ 
     
-    Depending on the contents of the file inserts a snippet
+    Inserts a new plugin snippet thats contents depend on the current file.
+    If file is essentially empty it will insert common imports and also insert
+    all the event handlers for reference.
     
     """
     
     def run(self, view, args):
         fn = view.fileName()
         if fn:
-            plugName = os.path.splitext(split(fn)[1])[0]
-            plugName = plugName[0].upper() + plugName[1:]
+            rootName = os.path.splitext(split(fn)[1])[0]
+            plugName = rootName[0].upper() + rootName[1:]
         else:
             plugName = 'MyPlugin'
         
@@ -156,7 +156,7 @@ class PluginSnippetCommand(sublimeplugin.TextCommand):
         snip = []
         
         if "import sublime" not in buf:
-            snip.append(IMPORTS % plugName)
+            snip.append(IMPORTS % rootName)
         
         snip.append(MAIN)
         
