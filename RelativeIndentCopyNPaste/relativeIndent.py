@@ -43,63 +43,49 @@ class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
     """ RelativeIndentSnippet: insert snippets maintaining indentation  """
     
     def run(self, view, args):
+        tabSize = view.options().get('tabSize')
+        tab = tabSize * " "
+        
+        ### FIND THE $SELECTION DISPLACEMENT
         fn = normpath(join(split(sublime.packagesPath())[0], args[0]))        
         with open(fn) as fh:
             soup = BeautifulSoup(fh)
             snippet = soup.content.contents[0]
-        
-        
-        tabSize = view.options().get('tabSize')
-        tab = tabSize * " "
-        
-        
-        ### FIND THE $SELECTION DISPLACEMENT
+
         SELECTION = "$SELECTION"
-        
-        paramIndex = None
-        for l in [l for l in snippet.split("\n") if SELECTION  in l]:            
-            paramMatch = re.search(r"\$.*?(\%s).?" % SELECTION , l)
-            
-            if paramMatch:
-                paramIndex = paramMatch.span()[0]
+        for l in snippet.split("\n"):
+            paramIndex = l.find(SELECTION)
+            if paramIndex != -1:
+                paramMatch = re.search(r"\$.*?(\%s).?" % SELECTION , l)
+                if paramMatch: paramIndex = paramMatch.span()[0]
+                
+                spaces = 0
+                for ch in l[:paramIndex]:
+                    if ch == " ": spaces += 1
+                    elif ch == "\t": spaces += tabSize
                 break
             else:
-                paramIndex = l.find(SELECTION)
-                if paramIndex == -1: paramIndex == None
-                else: break            
-
-        if paramIndex is None: 
-            spaces = 0
-        else:
-            spaces = 0
-            for ch in l[:paramIndex]:
-                if ch == " ": spaces += 1
-                elif ch == "\t": spaces += tabSize
-
-
+                spaces = 0
+            
         # SELECTION DISPLACEMENT
         for sel in view.sel():
             if sel.empty(): continue
             newsel = view.line(sel)
-            view.sel().subtract(sel)
-            
             start, end = newsel.begin(), newsel.end()
-                        
+                                    
+            selstr = view.substr(newsel).replace("\t", tab)
+            selstr = stripPreceding( selstr,
+                                     padding = spaces * " ",
+                                     rstrip = False )            
             displacement = 0
             for i in xrange(start, end):
                 if view.substr(i).isspace(): displacement += 1
                 else: break
-            
-            selstr = view.substr(newsel).replace("\t", tab)
-            selstr = stripPreceding( selstr,
-                                     padding = spaces * " ", #+displacement) * " ", 
-                                     rstrip = False )            
-
-                        
+                
             modifiedRegion = sublime.Region(start+displacement, end)
+
+            view.sel().subtract(sel)
             view.sel().add(modifiedRegion)
             view.replace(modifiedRegion, selstr)
         
-        # Insert the snippet
-        print args
         view.runCommand('insertSnippet', args)
