@@ -18,14 +18,14 @@ from mechanize import Browser
 DEFAULT_SYNTAX = 'plain_text'
 ENCODE_AS = 'utf8'
 
+# Don't send a zillion pastes while setting up irc client activation
+TESTING_IRC_CLIENT = 0
+
 ############################ IRC CLIENT SETTINGS ###############################
 
 # Get window spy and get your irc clients toplevel window class and set a regex
 # to match window title text, if sendKeysOnlyIfTextMatch matches and there are 
 # sendKeys it will send them
-
-# Don't send a zillion pastes while setting up irc client activation
-TESTING_IRC_CLIENT = 0
 
 activateIrcClient = partial( activateApp,
 
