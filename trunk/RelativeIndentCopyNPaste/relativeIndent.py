@@ -22,7 +22,6 @@ def stripPreceding(selection, padding="", rstrip=True):
     
     stripped =  [split[0][anchorPoint:]] +\
                 [padding + l[anchorPoint:] for l in split[1:]]
-    
     stripped = "\n".join(stripped)
     
     return  stripped.rstrip("\n") if rstrip else stripped
@@ -31,7 +30,6 @@ class RelativeIndentPasteCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
         selection = sublime.getClipboard().replace("\r\n", "\n")
         selection = stripPreceding(selection, padding = '')
-                        
         view.runCommand('insertInlineSnippet', ['$PARAM1', selection])
         
 class RelativeIndentCopyCommand(sublimeplugin.TextCommand):
@@ -52,11 +50,10 @@ class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
             soup = BeautifulSoup(fh)
             snippet = soup.content.contents[0]
 
-        SELECTION = "$SELECTION"
         for l in snippet.split("\n"):
-            paramIndex = l.find(SELECTION)
+            paramIndex = l.find("$SELECTION")
             if paramIndex != -1:
-                paramMatch = re.search(r"\$.*?(\%s).?" % SELECTION , l)
+                paramMatch = re.search(r"\$.*?(\$SELECTION).?", l)
                 if paramMatch: paramIndex = paramMatch.span()[0]
                 
                 spaces = 0
