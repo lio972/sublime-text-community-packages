@@ -42,33 +42,28 @@ class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
     
     def run(self, view, args):
         tabSize = view.options().get('tabSize')
+        tab = tabSize * " "
         
         fn = normpath(join(split(sublime.packagesPath())[0], args[0]))        
         with open(fn) as fh: soup = BeautifulSoup(fh)
         snippet = soup.content.contents[0]
-
+        
+        indentation = ''
+        SELECTION_re = re.compile(r"(\s+)\$.*?\$SELECTION|(\s+)\$SELECTION")
         for l in snippet.split("\n"):
-            SELECTION_index = l.find("$SELECTION")
-            if SELECTION_index != -1:
-                SELECTION_match = re.search(r"\$.*?(\$SELECTION).?", l)
-                if SELECTION_match: SELECTION_index = SELECTION_match.span()[0]
-                
-                spaces = 0
-                for ch in l[:SELECTION_index]:
-                    if ch == " ": spaces += 1
-                    elif ch == "\t": spaces += tabSize
+            SELECTION_match = SELECTION_re.search(l)
+            if SELECTION_match:
+                indentation = max(SELECTION_match.groups()).replace("\t", tab)
                 break
-            else:
-                spaces = 0
-            
+                            
         for sel in view.sel():
             if sel.empty(): continue
             newsel = view.line(sel)
             start, end = newsel.begin(), newsel.end()
                                     
-            selection = view.substr(newsel).replace("\t", tabSize * " ")
+            selection = view.substr(newsel).replace("\t", tab)
             selectionStripped = stripPreceding( selection,
-                                     padding = spaces * " ",
+                                     padding = indentation,
                                      rstrip = False )            
             displacement = 0
             for i in xrange(start, end):
