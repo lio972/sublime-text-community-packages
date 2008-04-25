@@ -35,7 +35,7 @@ class RelativeIndentCommand(sublimeplugin.TextCommand):
             view.runCommand('expandSelectionTo line')
             view.runCommand(args[0])
 
-def regionLinesFirstNoPrecedingSpace(view, region):
+def regionFirstNoPrecedingSpace(view, region, lines=True):
     region = view.line(region)
     start, end = region.begin(), region.end()
     displace = 0
@@ -43,7 +43,11 @@ def regionLinesFirstNoPrecedingSpace(view, region):
         if view.substr(x).isspace():
             displace += 1
         else: break
-    return sublime.Region(start+displace, end)
+    
+    start = start+displace
+    if not lines: end = int(start)
+    
+    return sublime.Region(start, end)
 
 def getTab(view):
     return view.options().get('tabSize') * " "
@@ -54,7 +58,9 @@ def substrStripPrecedingCommonSpace(view, region, padSecondary="    "):
     return stripPreceding(sel, padding = padSecondary)    
 
 def eraseSelectionLines(view):
-    for sel in view.sel(): view.erase(view.line(sel))
+    numSel = len(view)
+    for sel in view.sel(): 
+        if not sel.empty(): view.erase(view.fullLine(sel))
 
 class ParamPerSelectionSnippetCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
@@ -65,13 +71,16 @@ class ParamPerSelectionSnippetCommand(sublimeplugin.TextCommand):
         for sel in selSet:
             selections.append(substrStripPrecedingCommonSpace(view, sel))
         
-        primarySelection = regionLinesFirstNoPrecedingSpace(view, sel1)
+        primarySelection = regionFirstNoPrecedingSpace(view, sel1)
+        primaryStart = sublime.Region( primarySelection.begin(),
+                                       primarySelection.begin() )
         
         selSet.subtract(sel1)
-        eraseSelectionLines()       
-        selSet.clear()
-        
         selSet.add(primarySelection)
+        eraseSelectionLines(view)
+        selSet.clear()
+
+        selSet.add(primaryStart)
         
         view.runCommand('insertSnippet', args + selections)
 
@@ -83,7 +92,7 @@ class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
             if sel.empty(): continue
             
             selectionStripped = substrStripPrecedingCommonSpace(view, sel)
-            modifiedRegion = regionLinesFirstNoPrecedingSpace(view, sel)
+            modifiedRegion = regionFirstNoPrecedingSpace(view, sel)
             
             view.sel().subtract(sel)
             view.sel().add(modifiedRegion)
