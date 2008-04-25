@@ -35,7 +35,7 @@ class RelativeIndentCommand(sublimeplugin.TextCommand):
             view.runCommand('expandSelectionTo line')
             view.runCommand(args[0])
 
-def regionFirstNoPrecedingSpace(view, region, returnDisplace=False):
+def regionLinesFirstNoPrecedingSpace(view, region, returnDisplace=False):
     region = view.line(region)
     start, end = region.begin(), region.end()
     displace = 0
@@ -62,7 +62,6 @@ def eraseSelectionLines(view):
     selSet = view.sel()
     for sel in selSet: selSet.add(view.fullLine(sel))
     for sel in selSet: view.erase(sel)
-    selSet.clear()
 
 class ParamPerSelectionSnippetCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
@@ -73,11 +72,14 @@ class ParamPerSelectionSnippetCommand(sublimeplugin.TextCommand):
         for sel in selSet:
             selections.append(substrStripPrecedingCommonSpace(view, sel))
         
-        start, displace = regionFirstNoPrecedingSpace(view, sel1, 1)        
+        start, displace = regionLinesFirstNoPrecedingSpace( view, 
+                                                            sel1, 
+                                                            returnDisplace = 1 )        
         
         eraseSelectionLines(view)
+        selSet.clear()
         
-        view.insert(start, (displace * ' ')+"\n")
+        view.insert(start, (displace * ' ') + '\n')
         selSet.add(sublime.Region(start+displace, start+displace))
         
         view.runCommand('insertSnippet', args + selections)
@@ -90,7 +92,7 @@ class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
             if sel.empty(): continue
             
             selectionStripped = substrStripPrecedingCommonSpace(view, sel)
-            modifiedRegion = regionFirstNoPrecedingSpace(view, sel)
+            modifiedRegion = regionLinesFirstNoPrecedingSpace(view, sel)
             
             view.sel().subtract(sel)
             view.sel().add(modifiedRegion)
