@@ -98,7 +98,7 @@ class RegexBuddyCommand(sublimeplugin.TextCommand):
         view.erase(sublime.Region(0, view.size()))
         view.insert(0, self.Action)
     
-    def updateView(self, view):
+    def updateView(self, view, selection):
         view.replace(selection, self.Action)
             
     def run(self, view, args):
@@ -108,12 +108,10 @@ class RegexBuddyCommand(sublimeplugin.TextCommand):
         viewBuffer = view.substr(sublime.Region(0, view.size()))
         selection = view.sel()[0]
         
-        
         fn = view.fileName()
         inPanel = not fn and len(viewBuffer) < 100
         
-        if inPanel:
-            regex = viewBuffer
+        if inPanel: regex = viewBuffer
         else:
             regex = view.substr(selection)
             self.bufferCache = viewBuffer
@@ -130,4 +128,4 @@ class RegexBuddyCommand(sublimeplugin.TextCommand):
         
         if self.Action:
             if inPanel: self.updatePanel(view)
-            else: self.updateView(view)
+            else: self.updateView(view, selection)
