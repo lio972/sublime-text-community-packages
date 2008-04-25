@@ -35,7 +35,7 @@ class RelativeIndentCommand(sublimeplugin.TextCommand):
             view.runCommand('expandSelectionTo line')
             view.runCommand(args[0])
 
-def regionFirstNoPrecedingSpace(view, region, lines=True):
+def regionFirstNoPrecedingSpace(view, region, returnDisplace=False):
     region = view.line(region)
     start, end = region.begin(), region.end()
     displace = 0
@@ -43,11 +43,11 @@ def regionFirstNoPrecedingSpace(view, region, lines=True):
         if view.substr(x).isspace():
             displace += 1
         else: break
-    
-    start = start+displace
-    if not lines: end = int(start)
-    
-    return sublime.Region(start, end)
+     
+    if not returnDisplace: 
+        return sublime.Region(start+displace, end)
+    else:
+        return start, displace
 
 def getTab(view):
     return view.options().get('tabSize') * " "
@@ -57,10 +57,12 @@ def substrStripPrecedingCommonSpace(view, region, padSecondary="    "):
     sel = view.substr(region).replace("\t", getTab(view))
     return stripPreceding(sel, padding = padSecondary)    
 
+
 def eraseSelectionLines(view):
-    numSel = len(view)
-    for sel in view.sel(): 
-        if not sel.empty(): view.erase(view.fullLine(sel))
+    selSet = view.sel()
+    for sel in selSet: selSet.add(view.fullLine(sel))
+    for sel in selSet: view.erase(sel)
+    selSet.clear()
 
 class ParamPerSelectionSnippetCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
@@ -71,16 +73,12 @@ class ParamPerSelectionSnippetCommand(sublimeplugin.TextCommand):
         for sel in selSet:
             selections.append(substrStripPrecedingCommonSpace(view, sel))
         
-        primarySelection = regionFirstNoPrecedingSpace(view, sel1)
-        primaryStart = sublime.Region( primarySelection.begin(),
-                                       primarySelection.begin() )
+        start, displace = regionFirstNoPrecedingSpace(view, sel1, 1)        
         
-        selSet.subtract(sel1)
-        selSet.add(primarySelection)
         eraseSelectionLines(view)
-        selSet.clear()
-
-        selSet.add(primaryStart)
+        
+        view.insert(start, (displace * ' ')+"\n")
+        selSet.add(sublime.Region(start+displace, start+displace))
         
         view.runCommand('insertSnippet', args + selections)
 
