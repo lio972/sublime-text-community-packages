@@ -50,6 +50,6 @@ def addSublimePackage2SysPath(packageName='', module=''):
     
     path = buf.value.encode('ascii')
     if path not in sys.path:
-        sys.path.append(path)
+        sys.path.insert(1, path)
         
 ################################################################################
