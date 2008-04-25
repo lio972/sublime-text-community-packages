@@ -97,26 +97,37 @@ class RegexBuddyCommand(sublimeplugin.TextCommand):
     def updatePanel(self, view):
         view.erase(sublime.Region(0, view.size()))
         view.insert(0, self.Action)
+    
+    def updateView(self, view):
+        view.replace(selection, self.Action)
             
     def run(self, view, args):
         self.Action = None
         if not self.regexBuddy: self.launchRB()   
         
-        fn = view.fileName()
-        if fn:
-            self.bufferCache = view.substr(sublime.Region(0, view.size()))
-            self.regexBuddy.SetTestFile(fn)
-            regex = view.substr(view.sel()[0])
+        viewBuffer = view.substr(sublime.Region(0, view.size()))
+        selection = view.sel()[0]
         
-        else: # Will assume we are in the find panel
-            regex = view.substr(sublime.Region(0, view.size()))
-            self.regexBuddy.SetTestString(self.bufferCache)
+        
+        fn = view.fileName()
+        inPanel = not fn and len(viewBuffer) < 100
+        
+        if inPanel:
+            regex = viewBuffer
+        else:
+            regex = view.substr(selection)
+            self.bufferCache = viewBuffer
             
-        # SET THE ACTION
+        self.regexBuddy.SetTestString (
+            self.bufferCache if inPanel else viewBuffer
+        )
+                            
         action = ACTION_TEMPLATE[:]
         action[2] = regex
         
         wh = self.initAction(action)
         self.wait4Response(wh)
         
-        if self.Action and not fn: self.updatePanel(view)
+        if self.Action:
+            if inPanel: self.updatePanel(view)
+            else: self.updateView(view)
