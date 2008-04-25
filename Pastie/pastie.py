@@ -14,7 +14,7 @@ from pidgin import activateApp
 
 from mechanize import Browser
 
-################################## SETTTINGS ###################################
+################################## SETTINGS ####################################
 
 DEFAULT_SYNTAX = 'plain_text'
 ENCODE_AS = 'utf8'
