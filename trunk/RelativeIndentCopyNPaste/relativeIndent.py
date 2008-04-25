@@ -20,10 +20,9 @@ def stripPreceding(selection, padding="", rstrip=True):
     try: anchorPoint = min(spacesList)
     except ValueError: anchorPoint = 0
     
-    stripped =  [split[0][anchorPoint:]] +\
-                [padding + l[anchorPoint:] for l in split[1:]]
-    stripped = "\n".join(stripped)
-    
+    stripped = "\n".join(   [split[0][anchorPoint:]]      +\
+                [padding + l[anchorPoint:] for l in split[1:]] )
+
     return  stripped.rstrip("\n") if rstrip else stripped
             
 class RelativeIndentCommand(sublimeplugin.TextCommand):
@@ -35,42 +34,57 @@ class RelativeIndentCommand(sublimeplugin.TextCommand):
         else:
             view.runCommand('expandSelectionTo line')
             view.runCommand(args[0])
-            
+
+def regionLinesFirstNoPrecedingSpace(view, region):
+    region = view.line(region)
+    start, end = region.begin(), region.end()
+    displace = 0
+    for x in xrange(start, end):
+        if view.substr(x).isspace():
+            displace += 1
+        else: break
+    return sublime.Region(start+displace, end)
+
+def getTab(view):
+    return view.options().get('tabSize') * " "
+
+def substrStripPrecedingCommonSpace(view, region, padSecondary="    "):
+    region = view.line(region)
+    sel = view.substr(region).replace("\t", getTab(view))
+    return stripPreceding(sel, padding = padSecondary)    
+
+def eraseSelectionLines(view):
+    for sel in view.sel(): view.erase(view.line(sel))
+
+class ParamPerSelectionSnippetCommand(sublimeplugin.TextCommand):
+    def run(self, view, args):
+        selections = []
+        selSet = view.sel()
+        sel1 = selSet[0]
+        
+        for sel in selSet:
+            selections.append(substrStripPrecedingCommonSpace(view, sel))
+        
+        primarySelection = regionLinesFirstNoPrecedingSpace(view, sel1)
+        
+        selSet.subtract(sel1)
+        eraseSelectionLines()       
+        selSet.clear()
+        
+        selSet.add(primarySelection)
+        
+        view.runCommand('insertSnippet', args + selections)
+
 class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
     """ RelativeIndentSnippet: insert snippets maintaining indentation  """
     
     def run(self, view, args):
-        tabSize = view.options().get('tabSize')
-        tab = tabSize * " "
-        
-        fn = normpath(join(split(sublime.packagesPath())[0], args[0]))        
-        with open(fn) as fh: soup = BeautifulSoup(fh)
-        snippet = soup.content.contents[0]
-        
-        indentation = ''
-        SELECTION_re = re.compile(r"(\s+)\$.*?\$SELECTION|(\s+)\$SELECTION")
-        for l in snippet.split("\n"):
-            SELECTION_match = SELECTION_re.search(l)
-            if SELECTION_match:
-                indentation = max(SELECTION_match.groups()).replace("\t", tab)
-                break
-                            
         for sel in view.sel():
             if sel.empty(): continue
-            newsel = view.line(sel)
-            start, end = newsel.begin(), newsel.end()
-                                    
-            selection = view.substr(newsel).replace("\t", tab)
-            selectionStripped = stripPreceding( selection,
-                                     padding = indentation,
-                                     rstrip = False )            
-            displacement = 0
-            for i in xrange(start, end):
-                if view.substr(i).isspace(): displacement += 1
-                else: break
-                
-            modifiedRegion = sublime.Region(start+displacement, end)
-
+            
+            selectionStripped = substrStripPrecedingCommonSpace(view, sel)
+            modifiedRegion = regionLinesFirstNoPrecedingSpace(view, sel)
+            
             view.sel().subtract(sel)
             view.sel().add(modifiedRegion)
             view.replace(modifiedRegion, selectionStripped)
