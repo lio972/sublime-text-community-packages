@@ -29,7 +29,7 @@ class RelativeIndentCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
         if args[0] == 'paste':
             selection = sublime.getClipboard().replace("\r\n", "\n")
-            selection = stripPreceding(selection, padding = '')
+            selection = stripPreceding(selection)
             view.runCommand('insertInlineSnippet', ['$PARAM1', selection])
         else:
             view.runCommand('expandSelectionTo line')
@@ -52,11 +52,11 @@ def regionLinesFirstNoPrecedingSpace(view, region, returnDisplace=False):
 def getTab(view):
     return view.options().get('tabSize') * " "
 
-def substrStripPrecedingCommonSpace(view, region, padSecondary="    "):
+def substrStripPrecedingCommonSpace(view, region, padSecondary=""):
     region = view.line(region)
-    sel = view.substr(region).replace("\t", getTab(view))
-    return stripPreceding(sel, padding = padSecondary)    
-
+    tab = getTab(view)
+    sel = view.substr(region).replace("\t", tab)
+    return stripPreceding(sel, padding = padSecondary or tab)    
 
 def eraseSelectionLines(view):
     selSet = view.sel()
@@ -80,9 +80,13 @@ class ParamPerSelectionSnippetCommand(sublimeplugin.TextCommand):
         selSet.clear()
         
         view.insert(start, (displace * ' ') + '\n')
-        selSet.add(sublime.Region(start+displace, start+displace))
+        putCursorAt = start+displace
+        
+        selSet.add(sublime.Region(putCursorAt, putCursorAt))
         
         view.runCommand('insertSnippet', args + selections)
+        
+        #TODO: erase empty lines between selections?
 
 class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
     """ RelativeIndentSnippet: insert snippets maintaining indentation  """
