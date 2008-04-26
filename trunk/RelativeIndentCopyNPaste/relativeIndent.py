@@ -1,8 +1,7 @@
 from __future__ import with_statement
+from os.path import join, split, normpath
 
 import sublime, sublimeplugin, re, os
-from BeautifulSoup import BeautifulSoup
-from os.path import join, split, normpath
 
 def stripPreceding(selection, padding="", rstrip=True):
     spacesList = []
@@ -30,12 +29,14 @@ class RelativeIndentCommand(sublimeplugin.TextCommand):
         if args[0] == 'paste':
             selection = sublime.getClipboard().replace("\r\n", "\n")
             selection = stripPreceding(selection)
+                        
             view.runCommand('insertInlineSnippet', ['$PARAM1', selection])
         else:
             view.runCommand('expandSelectionTo line')
             view.runCommand(args[0])
 
-def regionLinesFirstNoPrecedingSpace(view, region, returnDisplace=False):
+
+def linesGetFirstsDisplacement(view, region):
     region = view.line(region)
     start, end = region.begin(), region.end()
     displace = 0
@@ -43,12 +44,12 @@ def regionLinesFirstNoPrecedingSpace(view, region, returnDisplace=False):
         if view.substr(x).isspace():
             displace += 1
         else: break
-     
-    if not returnDisplace: 
-        return sublime.Region(start+displace, end)
-    else:
-        return start, displace
+    return start, end, displace
 
+def linesFirstNoPrecedingSpace(view, region, returnDisplace=False):
+    start, end, displace = linesGetFirstsDisplacement(view, region)
+    return sublime.Region(start+displace, end)
+    
 def getTab(view):
     return view.options().get('tabSize') * " "
 
@@ -56,12 +57,10 @@ def substrStripPrecedingCommonSpace(view, region, padSecondary=""):
     region = view.line(region)
     tab = getTab(view)
     sel = view.substr(region).replace("\t", tab)
-    return stripPreceding(sel, padding = padSecondary or tab)    
+    return stripPreceding(sel, padding = padSecondary or tab)   
 
 def eraseSelectionLines(view):
-    selSet = view.sel()
-    for sel in selSet: selSet.add(view.fullLine(sel))
-    for sel in selSet: view.erase(sel)
+    for sel in view.sel(): view.erase(view.fullLine(sel))
 
 class ParamPerSelectionSnippetCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
@@ -72,9 +71,7 @@ class ParamPerSelectionSnippetCommand(sublimeplugin.TextCommand):
         for sel in selSet:
             selections.append(substrStripPrecedingCommonSpace(view, sel))
         
-        start, displace = regionLinesFirstNoPrecedingSpace( view, 
-                                                            sel1, 
-                                                            returnDisplace = 1 )        
+        start, end, displace = linesGetFirstsDisplacement( view, sel1) 
         
         eraseSelectionLines(view)
         selSet.clear()
@@ -86,20 +83,17 @@ class ParamPerSelectionSnippetCommand(sublimeplugin.TextCommand):
         
         view.runCommand('insertSnippet', args + selections)
         
-        #TODO: erase empty lines between selections?
-
 class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
-    """ RelativeIndentSnippet: insert snippets maintaining indentation  """
-    
     def run(self, view, args):
-        for sel in view.sel():
+        selSet = view.sel()
+        for sel in selSet:
             if sel.empty(): continue
-            
+
             selectionStripped = substrStripPrecedingCommonSpace(view, sel)
-            modifiedRegion = regionLinesFirstNoPrecedingSpace(view, sel)
-            
-            view.sel().subtract(sel)
-            view.sel().add(modifiedRegion)
+            modifiedRegion = linesFirstNoPrecedingSpace(view, sel)
+
+            selSet.subtract(sel)
+            selSet.add(modifiedRegion)
             view.replace(modifiedRegion, selectionStripped)
-        
+
         view.runCommand('insertSnippet', args)
