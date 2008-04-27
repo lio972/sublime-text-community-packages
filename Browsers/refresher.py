@@ -1,37 +1,56 @@
 # coding: utf8
 
-import sublimeplugin, webbrowser, time, re, os, sys, sublime
+################################## IMPORTS #####################################
+
+import sublimeplugin, webbrowser, time, re, os, sys, sublime, threading
+
 from subprocess import Popen
-
-from absoluteSublimePath import addSublimePackage2SysPath
-
-addSublimePackage2SysPath(u'Browsers')
-
-from ctypes import windll
-from comtypes.client import CreateObject
 from telnetlib import Telnet
 from functools import partial
 
+from refreshhooks import *
+
+from absoluteSublimePath import addSublimePackage2SysPath
+
+addSublimePackage2SysPath('Browsers')
+
+from ctypes import windll
+from comtypes.client import CreateObject
+
 from windows import FocusRestorer, activateApp
 
+################################## SETTINGS ####################################
+
 debug = 0
+ 
+refreshHooks = []  # [(djangoProjects, apacheRestart)]
+
+# startUrl = 'http://localhost/admin'
+
+startUrl =  'http://www.google.com.au'
+
+################################## CONSTANTS ###################################
+
 MozLabURL = "http://repo.hyperstruct.net/mozlab/current/mozlab-current.xpi"
 
 FFLastUrl = re.compile('"(.*?://.*?)".*repl[0-9]?', re.DOTALL | re.MULTILINE)
+
+################################################################################
    
 class BrowsersCommand(sublimeplugin.TextCommand):
     ie = None
     firefox = None
     alternation = 0
     firefoxHWND = 0
-        
+    hooks = None
+
     def readyIE(self):
         self.ie = CreateObject("InternetExplorer.Application")
         self.ie.ToolBar = 0
     
-    def readyFireFox(self, url):    
+    def readyFireFox(self, url):
         cmd = r'"C:\Program Files\Mozilla Firefox\firefox.exe" -new-tab %s'
-        Popen(cmd % 'www.google.com.au')
+        Popen(cmd % startUrl)
         
         for x in range(50):   #Try for 10 seconds
             try:
@@ -66,12 +85,14 @@ class BrowsersCommand(sublimeplugin.TextCommand):
                         self.ie.Refresh()
                 else:
                     self.ie.Navigate(url)
-        
+            
+            sublime.setTimeout (
+                partial(self.syncBrowsers, only_sync = True), 2000
+            )
+                    
         except Exception, e:
             if debug: print 'syncBrowsers: ', e
                 
-        sublime.setTimeout(partial(self.syncBrowsers, only_sync = True), 2000)
-        
     def run(self, view, args):
         restoreFocus = FocusRestorer()
         
@@ -121,13 +142,35 @@ class BrowsersCommand(sublimeplugin.TextCommand):
         
         sublime.setTimeout(restoreFocus, 1)
         self.alternation += 1
-                                    
-    def onPostSave(self, view):
+    
+    def refreshBrowsers(self):
         try:
-            if self.ie and self.ie.Visible:
-                self.firefox.write('BrowserReloadWithFlags(16)\n')
-                self.syncBrowsers()
-                # sublime.setTimeout(self.alternateBrowsers, 3000)
+            self.firefox.write('BrowserReloadWithFlags(16)\n')
+            self.syncBrowsers()
                                              
         except Exception, e: 
-            if debug: print 'onPostSave: ', e
+            if debug: print 'refreshBrowsers: ', e
+    
+    def hookb4Refresh(self, view):
+        "Hooks are ran in another thread so acquire locks when using view"
+        
+        if debug: print 'hookb4Refresh'
+        
+        for notFiltered, runHook in refreshHooks:
+            if notFiltered(view): runHook(view)
+    
+        sublime.setTimeout(self.refreshBrowsers, 1)
+            
+    def onPostSave(self, view):
+        fn = view.fileName()
+        if self.ie and self.ie.Visible:
+            if not self.hooks or (self.hooks and not self.hooks.isAlive()):
+                
+                if debug: print 'start hook thread'
+                
+                self.hooks=threading.Thread(
+                    target = partial(self.hookb4Refresh, view)
+                )
+                self.hooks.start()
+            else:
+                print 'Previous PostSave hook still running'

@@ -12,34 +12,38 @@ def addSublimePackage2SysPath(packageName='', module=''):
     usage:
         
         # coding: utf8      
-       
+
         # You must declare encoding on first or second line if using unicode
         
+
         addSublimePackage2SysPath( unicode('山科 氷魚', 'utf8') )
         
             or
         
         addSublimePackage2SysPath(u'RegexBuddy')
-
+                
+            or
+            
+        addSublimePackage2SysPath(packageName='Package', module='zipimport.egg')
     
     """
-        
-    unicodeFileName = os.path.join ( 
     
-        sublime.packagesPath(), packageName, "Lib", module
-    
-    ).rstrip('\\')  #Just in case there is no module
+    unicodeFileName = os.path.join (
         
-            
+        sublime.packagesPath(), packageName, 'Lib', module
+        
+    ).rstrip('\\')
+        
     buf = create_unicode_buffer(512)
-    if not windll.kernel32.GetShortPathNameW(unicodeFileName, buf, len(buf)):
-        
+    if not windll.kernel32.GetShortPathNameW( unicodeFileName, buf, len(buf)):
+
         sublime.messageBox (
 
           'There was an error getting 8.3 shortfile names for %s package. ' 
           'These are relied upon as python does not support unicode for its '
           'module paths. Make sure shortpath names are ENABLED and take steps '
-          'to make sure they have been created before trying again.' % packageName
+          'to make sure they have been created before trying again.'        %\
+                packageName
         )
         
         import webbrowser
@@ -50,6 +54,6 @@ def addSublimePackage2SysPath(packageName='', module=''):
     
     path = buf.value.encode('ascii')
     if path not in sys.path:
-        sys.path.append(path)
+        sys.path.insert(1, path)
         
 ################################################################################

@@ -1,5 +1,7 @@
 # coding: utf8
 
+################################## IMPORTS #####################################
+
 from __future__ import with_statement
 
 from absoluteSublimePath import addSublimePackage2SysPath
@@ -19,7 +21,7 @@ from functools import partial
 sys.argv = [] 
 import markdown2
 
-### SETTINGS ###
+################################## SETTINGS ####################################
 
 DEBUG = 0
 TIMEOUT = 35
@@ -32,7 +34,8 @@ NUM_WORKERS = 4
 #will not work in "processed" mode
 TEMP_MODE = 0
 
-### REGEXES ###
+
+################################## CONSTANTS ###################################
 
 reFlags = re.DOTALL | re.IGNORECASE | re.MULTILINE
 headRe = re.compile("(<head.*?>.*?</head>)", reFlags)
@@ -48,7 +51,8 @@ def proc_textile(a):
 processed["Packages/Markdown/Markdown.tmLanguage"] = proc_markdown
 processed['Packages/Textile/Textile.tmLanguage'] = proc_textile
 
-### FUNCTIONS && CLASSES ###
+
+################################################################################
 
 class FocusRestorer(object):
     def __init__(self): 
@@ -56,6 +60,7 @@ class FocusRestorer(object):
     def __call__(self, t=25):  sublime.setTimeout(
             partial(windll.user32.SetForegroundWindow, self.h), t
         )
+
         
 class ThreadedIE(threading.Thread):
     dead = False
@@ -140,6 +145,10 @@ class ThreadedIE(threading.Thread):
     def __call__(self, *args):
         self.Q.put_nowait(args)
 
+
+################################################################################
+
+
 STOP = object()
 class WorkerThread(threading.Thread):
     def __init__(self, IQ, OQ):
@@ -163,8 +172,8 @@ class WorkerThread(threading.Thread):
         if DEBUG: print "Thread Stop: %s", self.getName()
         return
         
-        
-### PLUGIN ###
+################################################################################
+
 
 class LivePreviewCommand(sublimeplugin.TextCommand):
     def __init__(self):
