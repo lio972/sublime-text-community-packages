@@ -6,9 +6,9 @@ from functools import partial
 from absoluteSublimePath import addSublimePackage2SysPath
 
 for egg in ("clientform-0.2.7-py2.5.egg", "mechanize-0.1.7b-py2.5.egg"):
-    addSublimePackage2SysPath(packageName='Pastie', module=egg)
+    addSublimePackage2SysPath('Pastie', egg)
 
-addSublimePackage2SysPath(packageName='Pastie')
+addSublimePackage2SysPath('Pastie')
 
 from pidgin import activateApp
 
@@ -19,24 +19,26 @@ from mechanize import Browser
 DEFAULT_SYNTAX = 'plain_text'
 ENCODE_AS = 'utf8'
 
-# Don't send a zillion pastes while setting up irc client activation
-TESTING_IRC_CLIENT = 0
-
 ############################ IRC CLIENT SETTINGS ###############################
 
 # Get window spy and get your irc clients toplevel window class and set a regex
 # to match window title text, if sendKeysOnlyIfTextMatch matches and there are 
 # sendKeys it will send them
 
+# http://www.rutherfurd.net/python/sendkeys/ for SendKeys documentation
+
+# Don't send a zillion pastes while setting up irc client activation
+
+TESTING_IRC_CLIENT = 0
+
 activateIrcClient = partial( activateApp,
 
                        windowClassMatch = "gdkWindowToplevel",
-                  windowTitleTextMatch  = "(^#|.*?Serv|.*?freenode)",
+                  windowTitleTextMatch  = ".*",
+                  windowTitleTextNot    = ".*?Buddy List.*?",
                 
                 sendKeysOnlyIfTextMatch = "^#",
                              sendKeys   = "^v" )
-
-#http://www.rutherfurd.net/python/sendkeys/ for SendKeys documentation
         
 ################################################################################        
                   
@@ -101,7 +103,8 @@ class PastieServiceCommand(sublimeplugin.TextCommand):
         sel = view.sel()[0]
         region = sublime.Region(0, view.size()) if sel.empty() else sel
         
-        if view.fileName().endswith('.php'): 
+        fn = view.fileName() 
+        if fn and fn.endswith('.php'): 
             syntax = 'php'
         else: 
             syntax = SYNTAXES.get(view.options().get('syntax'), DEFAULT_SYNTAX)

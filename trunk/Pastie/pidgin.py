@@ -30,20 +30,24 @@ def text(handle):
             textval = buffer_.value
     return textval
             
-def findAppHandle(classMatch='', textMatch=''):
-    classRX, textRX = map(re.compile, [classMatch, textMatch])
+def findAppHandle(classMatch='', textMatch='', textNot=''):
+    classRX, textRX, textNot = map(re.compile, [classMatch, textMatch,textNot])
     
     windows = [(h, classname(h), text(h)) for h in enum_windows()]
-    app = [w for w in windows if classRX.match(w[1]) and textRX.match(w[2])]
+    app = [w for w in windows if classRX.search(w[1]) \
+                             and textRX.search(w[2])  \
+                         and not textNot.search(w[2]) ]
+                         
     return app[0][0] if app else 0# len(app) == 1 else 0
         
 
 def activateApp( windowClassMatch='', 
-                 windowTitleTextMatch='', 
+                 windowTitleTextMatch='',
+                 windowTitleTextNot='', 
                  sendKeysOnlyIfTextMatch='', 
                  sendKeys=''):
                     
-    h = findAppHandle(windowClassMatch, windowTitleTextMatch)
+    h = findAppHandle(windowClassMatch, windowTitleTextMatch, windowTitleTextNot)
     if h:
         windll.user32.SetForegroundWindow(h)
         if sendKeys:
