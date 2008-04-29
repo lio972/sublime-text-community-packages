@@ -4,8 +4,7 @@
 # This software comes with NO WARRANTIES. 
 #
 from __future__ import with_statement
-import sublime, sublimeplugin, os, shutil, sys
-from glob import fnmatch
+import sublime, sublimeplugin, os, shutil, sys, re
 from functools import partial
 from subprocess import Popen
 
@@ -60,8 +59,12 @@ class NavigateBackupsCommand(sublimeplugin.TextCommand):
     
     dirListing = os.listdir(self.backupPath)
     
+    date = "-[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}"
+    pattern = "%s%s%s" % (f, date, ext)
+    matcher = re.compile(pattern)
+    
     self.foundBackupFiles = \
-        filter(lambda x: fnmatch.fnmatch(x, '%s*%s' % (f,ext)), dirListing)
+        filter(lambda x: matcher.match(x), dirListing)
 
     self.index = len(self.foundBackupFiles)-1
   
