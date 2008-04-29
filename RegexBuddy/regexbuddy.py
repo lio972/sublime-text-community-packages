@@ -6,7 +6,7 @@ from absoluteSublimePath import addSublimePackage2SysPath
 
 addSublimePackage2SysPath(u'RegexBuddy')
 
-import os, sys, sublime, sublimeplugin, time, sys
+import os, sys, sublime, sublimeplugin, time, sys, re
 
 from ctypes import windll
 from comtypes.client import CreateObject, GetEvents, PumpEvents
@@ -55,12 +55,31 @@ ACTION_TEMPLATE = [
             
             # RegexBuddy will use the same value in FinishAction as you used in 
             # InitAction.
+            
+            #  0: Use the regex as is. 
+            #  1: passed as a C-style string. (C, C++, etc.) 
+            #  2: passed as a Pascal-style string. (Pascal, Delphi, etc.) 
+            #  3: passed as a Perl-style string. (Perl, Ruby, etc.) 
+            #  4: passed as a Perl m// or s/// operator. 
+            #  5: passed as a Basic-style string. (Visual Basic, etc.) 
+            #  6: passed as a JavaScript // operator. 
+            #  7: passed as a PHP ’//’ preg string. 
+            #  8: passed as a PHP ereg string. 
+            #  9: passed as a C# string. 
+            # 10: passed as a Python string. 
+            # 11: passed as a Ruby // operator. 
+            # 12: passed as an SQL string. 
+            # 13: passed as a Tcl string. 
              
 'sublime'   # 12: BSTR Description of the action. 
 
             # Used as the default description if the 
             # user adds the action to a library.                                                         
 ]
+
+################################################################################
+
+TEXT = "Packages/Text/Plain text.tmLanguage"
 
 ################################################################################
 
@@ -99,7 +118,8 @@ class RegexBuddyCommand(sublimeplugin.TextCommand):
         view.insert(0, self.Action)
     
     def updateView(self, view, selection):
-        view.replace(selection, self.Action)
+        if not selection.empty():
+            view.replace(selection, self.Action)
             
     def run(self, view, args):
         self.Action = None
@@ -108,9 +128,10 @@ class RegexBuddyCommand(sublimeplugin.TextCommand):
         viewBuffer = view.substr(sublime.Region(0, view.size()))
         selection = view.sel()[0]
         
-        fn = view.fileName()
-        inPanel = not fn and len(viewBuffer) < 100
+        fn, syntax = view.fileName(), view.options().get('syntax')
         
+        inPanel = not fn and len(viewBuffer) < 120 and syntax == TEXT
+                  
         if inPanel: regex = viewBuffer
         else:
             regex = view.substr(selection)
@@ -120,9 +141,13 @@ class RegexBuddyCommand(sublimeplugin.TextCommand):
             self.bufferCache if inPanel else viewBuffer
         )
                             
+        
         action = ACTION_TEMPLATE[:]
         action[2] = regex
+        if not inPanel and re.match(r"""^('|").*('|")$""", regex):
+             action[11] = 10
         
+
         wh = self.initAction(action)
         self.wait4Response(wh)
         
