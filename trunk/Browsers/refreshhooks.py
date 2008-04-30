@@ -13,8 +13,7 @@ def apacheRestart(view):
     for x in range(100):
         f = os.popen("psservice start apache2")
         f.seek(0)
-        ret = f.read()
-        if not "Error starting apache2" in ret: break
+        if not "Error starting apache2" in f.read(): break
         time.sleep(0.1)
         f.close()
     
@@ -27,6 +26,7 @@ def djangoProjects(view):
     "Acquire and release a blocking lock so can get view fileName" 
     with RLock(): fn = view.fileName()
     
-    return fn.startswith('D:\\django-projects')
+    if fn.startswith('D:\\django-projects') or fn.endswith('httpd.conf'):
+        return True
     
 ################################################################################
