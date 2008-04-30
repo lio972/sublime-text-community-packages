@@ -21,13 +21,17 @@ from windows import FocusRestorer, activateApp
 
 ################################## SETTINGS ####################################
 
-debug = 0
+SYNC_EVERY = 0    # seconds, 0 for don't sync
+
+debug = 1
  
-refreshHooks = []  # [(djangoProjects, apacheRestart)]
+refreshHooks = []    #[(djangoProjects, apacheRestart)]
 
-# startUrl = 'http://localhost/admin'
+# Global filtering
 
-startUrl =  'http://www.google.com.au'
+onlyRefreshIf = djangoProjects
+
+startUrl = 'http://localhost/admin' # startUrl =  'http://www.google.com.au'
 
 ################################## CONSTANTS ###################################
 
@@ -86,10 +90,11 @@ class BrowsersCommand(sublimeplugin.TextCommand):
                 else:
                     self.ie.Navigate(url)
             
-            sublime.setTimeout (
-                partial(self.syncBrowsers, only_sync = True), 2000
-            )
-                    
+            if SYNC_EVERY:
+                sublime.setTimeout (
+                    partial(self.syncBrowsers, only_sync = True), SYNC_EVERY * 1000
+                )
+                        
         except Exception, e:
             if debug: print 'syncBrowsers: ', e
                 
@@ -105,10 +110,6 @@ class BrowsersCommand(sublimeplugin.TextCommand):
             self.ie.Visible = True
             
             if self.readyFireFox(curFile):
-                if curFile.endswith(('html','htm')):
-                    cmd = str("openTopWin('%s')\n" % curFile)
-                    self.firefox.write(cmd)
-                
                 sublime.setTimeout(self.syncBrowsers, 200)
                     
         else: 
@@ -159,7 +160,8 @@ class BrowsersCommand(sublimeplugin.TextCommand):
         for notFiltered, runHook in refreshHooks:
             if notFiltered(view): runHook(view)
     
-        sublime.setTimeout(self.refreshBrowsers, 1)
+        if onlyRefreshIf(view):
+            sublime.setTimeout(self.refreshBrowsers, 1)
             
     def onPostSave(self, view):
         fn = view.fileName()
