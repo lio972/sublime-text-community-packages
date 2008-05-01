@@ -1,9 +1,15 @@
+#################################### IMPORTS ###################################
+
 from __future__ import with_statement
 from os.path import join, split, normpath
 
 import sublime, sublimeplugin, re, os
 
+############################### COMMON FUNCTIONS ###############################
+
 def stripPreceding(selection, padding="", rstrip=True):
+    "Strips preceding common space so only relative indentation remains"
+    
     spacesList = []
     spaces = 0
     
@@ -23,20 +29,14 @@ def stripPreceding(selection, padding="", rstrip=True):
                 [padding + l[anchorPoint:] for l in split[1:]] )
 
     return  stripped.rstrip("\n") if rstrip else stripped
-            
-class RelativeIndentCommand(sublimeplugin.TextCommand):
-    def run(self, view, args):
-        if args[0] == 'paste':
-            selection = sublime.getClipboard().replace("\r\n", "\n")
-            selection = stripPreceding(selection)
-                        
-            view.runCommand('insertInlineSnippet', ['$PARAM1', selection])
-        else:
-            view.runCommand('expandSelectionTo line')
-            view.runCommand(args[0])
-
 
 def linesGetFirstsDisplacement(view, region):
+    "Expands a selection to encompass the lines it is situated in. "
+    "It then contracts the start point to where the first non space "
+    "character is found. Returns the start pt of the expanded "
+    "selection, displacement( characters to contracted selection), " 
+    "and then the end pt."
+    
     region = view.line(region)
     start, end = region.begin(), region.end()
     displace = 0
@@ -47,20 +47,44 @@ def linesGetFirstsDisplacement(view, region):
     return start, end, displace
 
 def linesFirstNoPrecedingSpace(view, region, returnDisplace=False):
+    "Expands a selection to encompass the lines it is situated in. "
+    "It then contracts the start point to where the first non space "
+    "character is found. Returns a region"
+    
     start, end, displace = linesGetFirstsDisplacement(view, region)
     return sublime.Region(start+displace, end)
     
 def getTab(view):
+    "Gets a series of empty space characters of size 'tabSize', the "
+    "current views setting for size of tab"
+    
     return view.options().get('tabSize') * " "
 
 def substrStripPrecedingCommonSpace(view, region, padSecondary=""):
+    "takes a view, and a Region of it, strips preceding common space "
+    "so only relative indentation remains"
+    
     region = view.line(region)
     tab = getTab(view)
     sel = view.substr(region).replace("\t", tab)
     return stripPreceding(sel, padding = padSecondary or tab)   
 
 def eraseSelectionLines(view):
+    "Erases any line with any selection, even if empty"
     for sel in view.sel(): view.erase(view.fullLine(sel))
+
+################################ PLUGIN COMMANDS ###############################
+
+class RelativeIndentCommand(sublimeplugin.TextCommand):
+    def run(self, view, args):
+        if args[0] == 'paste':
+            selection = sublime.getClipboard().replace("\r\n", "\n")
+            selection = stripPreceding(selection)
+                        
+            view.runCommand('insertInlineSnippet', ['$PARAM1', selection])
+        else:
+            view.runCommand('expandSelectionTo line')
+            view.runCommand(args[0])
 
 class ParamPerSelectionSnippetCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
@@ -97,3 +121,5 @@ class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
             view.replace(modifiedRegion, selectionStripped)
 
         view.runCommand('insertSnippet', args)
+        
+################################################################################
