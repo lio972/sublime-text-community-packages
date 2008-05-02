@@ -29,9 +29,11 @@ refreshHooks = []    #[(djangoProjects, apacheRestart)]
 
 # Global filtering
 
-onlyRefreshIf = djangoProjects
+onlyRefreshIf =  lambda x: True #djangoProjects
 
-startUrl = 'http://localhost/admin' # startUrl =  'http://www.google.com.au'
+# startUrl = 'http://localhost/admin'
+
+startUrl =  'http://www.google.com.au'
 
 ################################## CONSTANTS ###################################
 
