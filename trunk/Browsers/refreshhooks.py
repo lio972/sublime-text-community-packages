@@ -23,8 +23,8 @@ def apacheRestart(view):
 ################################### FILTERS ####################################
 
 def djangoProjects(view):
-    "Acquire and release a blocking lock so can get view fileName" 
-    with RLock(): fn = view.fileName()
+    # TODO this lock doesn't actually work... a misconception I had.
+    # with RLock(): fn = view.fileName()
     
     if fn.startswith('D:\\django-projects') or fn.endswith('httpd.conf'):
         return True
