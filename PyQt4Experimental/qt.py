@@ -42,9 +42,10 @@ class Ruler(QDialog):
 
 ################################ SYNCRONISATION ################################
 
-def acquireLockInMain4(lock, duration):
+def blockQtAndDo(lock, func, *args, **kw):
   sublime.setTimeout(lock.acquire, 0)
-  sublime.setTimeout(lock.release, duration)
+  func(*args, **kw)
+  sublime.setTimeout(lock.release, 0)
 
 class blockMain(object):
   def __init__(self, lock):
@@ -85,12 +86,8 @@ class TestGuiCommand(sublimeplugin.TextCommand):
         # self.lock.acquire()
         # self.form.show()
         # self.lock.release()
-        
-        # This seems to work (blocks QtLoop)
-        
-        #TODO: ????     How long to block thread 4 ?
-      acquireLockInMain4(self.lock, 15)
-      self.form.show()
+                      
+      blockQtAndDo(self.lock, self.form.show)      
                           
   def setRuler(self, val):
     self.view.options().set('rulers', val)
@@ -112,7 +109,7 @@ class TestGuiCommand(sublimeplugin.TextCommand):
       i += 1
       
       with self.lock:
-       self.app.processEvents()
+        self.app.processEvents()
       
       time.sleep(0.02)
             
