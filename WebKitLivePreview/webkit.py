@@ -11,9 +11,7 @@ DEBUG = 0
 
 ################################### COMMANDS ###################################
 
-def QCommand(): return object()
-
-TOGGLE_VISIBILITY, DIE = QCommand(), QCommand()
+TOGGLE_VISIBILITY, DIE = object(), object()
 
 #################################### README ####################################
 
@@ -62,16 +60,12 @@ class WebkitCommand(sublimeplugin.TextCommand):
         packet = self.Q.get_nowait()
         if packet:
           if packet is TOGGLE_VISIBILITY:
-            if browser.isVisible():
-              browser.hide()
-            else:
-              browser.show()
-          elif packet is DIE:
-            break
+             (browser.hide if browser.isVisible() else browser.show)()
+          elif packet is DIE: break
           else:
             browser.setHtml(packet)
             if DEBUG: print packet[:100]
-            
+
       except Queue.Empty:
         time.sleep(0.001)
 
