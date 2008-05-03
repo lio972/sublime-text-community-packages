@@ -11,9 +11,7 @@ DEBUG = 0
 
 ################################### COMMANDS ###################################
 
-SHOW = object()
-
-HIDE = object()
+ToggleVisibility = object()
 
 #################################### README ####################################
 
@@ -41,8 +39,7 @@ class WebkitCommand(sublimeplugin.TextCommand):
       self.die, self.started, self.visible = False, True, True
       threading.Thread(target=self.QtLoop).start()
     else:
-      self.Q.put(HIDE if self.visible else SHOW)
-      self.visible = not self.visible
+      self.Q.put(ToggleVisibility)
                           
   def QtLoop(self):    
     app = QApplication([])
@@ -56,10 +53,11 @@ class WebkitCommand(sublimeplugin.TextCommand):
       try:
         packet = self.Q.get_nowait()
         if packet:
-          if packet is SHOW:
-            browser.show()
-          elif packet is HIDE:
-            browser.hide()
+          if packet is ToggleVisibility:
+            if browser.isVisible():
+              browser.hide()
+            else:
+              browser.show()
           else:
             browser.setHtml(packet)
             if DEBUG: print packet[:100]
