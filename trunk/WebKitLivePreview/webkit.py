@@ -1,9 +1,9 @@
 #################################### IMPORTS ###################################
 
-from PyQt4.QtGui import *
-from PyQt4.QtWebKit import *
-
 import sublime, sublimeplugin, threading, time, Queue
+
+from PyQt4.QtGui import QApplication
+from PyQt4.QtWebKit import QWebView
 
 ################################### SETTINGS ###################################
       
@@ -41,8 +41,8 @@ class WebkitCommand(sublimeplugin.TextCommand):
       self.die, self.started, self.visible = False, True, True
       threading.Thread(target=self.QtLoop).start()
     else:
-      self.visible = not self.visible
       self.Q.put(HIDE if self.visible else SHOW)
+      self.visible = not self.visible
                           
   def QtLoop(self):    
     app = QApplication([])
@@ -53,8 +53,6 @@ class WebkitCommand(sublimeplugin.TextCommand):
     i = 0
     while True:
       i += 1
-      
-      app.processEvents()
       try:
         packet = self.Q.get_nowait()
         if packet:
@@ -68,7 +66,9 @@ class WebkitCommand(sublimeplugin.TextCommand):
             
       except Queue.Empty:
         time.sleep(0.001)
-            
+
+      app.processEvents()
+    
       if i % 100 == 0:
         if DEBUG: print i
         if self.die:
