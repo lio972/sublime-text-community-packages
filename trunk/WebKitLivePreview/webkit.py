@@ -1,6 +1,6 @@
 #################################### IMPORTS ###################################
 
-import sublime, sublimeplugin, threading, time, Queue, random
+import sublime, sublimeplugin, threading, time, Queue, random, gc
 
 from PyQt4.QtGui import QApplication
 from PyQt4.QtWebKit import QWebView
@@ -13,7 +13,7 @@ DEBUG = 0
 
 def QCommand(): return object()
 
-ToggleVisibility = QCommand()
+TOGGLE_VISIBILITY, DIE = QCommand(), QCommand()
 
 #################################### README ####################################
 
@@ -26,30 +26,34 @@ ToggleVisibility = QCommand()
 class WebkitCommand(sublimeplugin.TextCommand):
   """ Webkit for LivePreview """
   started = False
-  visible = False
-  
+  visible = False  
   Q = Queue.Queue()
   
   def run(self, view, args):
-    if 'STOP' in args: 
+    if 'STOP' in args:
       self.stop()
       return
       
     if not self.started:
       self.start()
     else:
-      self.Q.put(ToggleVisibility)
+      if 'STOP' in args:
+        self.stop()
+        return
+      else:
+        self.Q.put(TOGGLE_VISIBILITY)
   
   def stop(self):
-    self.die, self.started = True, False
+    self.Q.put(DIE)
+    self.started = False
   
   def start(self):
-    self.die, self.started, self.visible = False, True, True
+    self.started, self.visible = True, True
     threading.Thread(target=self.QtLoop).start()
                           
   def QtLoop(self):
     app = QApplication([])
-        
+    
     browser = QWebView()
     browser.show()
     browser.resize(1024, 600)
@@ -61,11 +65,13 @@ class WebkitCommand(sublimeplugin.TextCommand):
       try:
         packet = self.Q.get_nowait()
         if packet:
-          if packet is ToggleVisibility:
+          if packet is TOGGLE_VISIBILITY:
             if browser.isVisible():
               browser.hide()
             else:
               browser.show()
+          elif packet is DIE:
+            break
           else:
             browser.setHtml(packet)
             if DEBUG: print packet[:100]
@@ -77,10 +83,9 @@ class WebkitCommand(sublimeplugin.TextCommand):
     
       if i % 100 == 0:
         if DEBUG: print i
-        if self.die:
-          break
-        
+                
     del(app, browser)
+    gc.collect()
   
   def sendBuffer(self, view):
     self.Q.put_nowait(view.substr(sublime.Region(0, view.size())))
