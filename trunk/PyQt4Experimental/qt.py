@@ -2,44 +2,18 @@
 
 from __future__ import with_statement
 
-import sublime, sublimeplugin, threading, time
+from absoluteSublimePath import addSublimePackage2SysPath
 
 from functools import partial
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+import sublime, sublimeplugin, threading, time
+
+addSublimePackage2SysPath('PyQt4Experimental')
         
 ################################### SETTINGS ###################################
-        
+      
 DEBUG = 1
         
-################################## PYQT4 FORM ##################################
-
-class Ruler(QDialog):
-  def __init__(self, plugin, parent=None):
-    super(Ruler, self).__init__(parent)
-    self.plugin = plugin
-    
-    self.rulers = QSpinBox()
-    self.rulers.setRange(-1, 80)
-    self.rulers.setValue(80)
-    self.rulers.setAccelerated(True)
-    self.rulers.setWrapping(True)
-
-    layout = QGridLayout()
-    layout.addWidget(self.rulers, 0,0)
-    
-    self.setLayout(layout)
-
-    self.connect(self.rulers, SIGNAL("valueChanged(int)"), self.updateRuler)
-    
-  def updateRuler(self):
-    " timeOut's are run in blocking call in main thread and are safe to use"
-
-    sublime.setTimeout(
-       partial(self.plugin.setRuler, self.rulers.value()), 20
-    )
-
 ################################ SYNCRONISATION ################################
 
 def blockQtAndDo(lock, func, *args, **kw):
@@ -87,19 +61,21 @@ class TestGuiCommand(sublimeplugin.TextCommand):
         # self.form.show()
         # self.lock.release()
                       
-      blockQtAndDo(self.lock, self.form.show)      
+      blockQtAndDo(self.lock, self.form.show)
                           
   def setRuler(self, val):
     self.view.options().set('rulers', val)
   
-  def QtLoop(self):    
+  def QtLoop(self):
+    # Import in thread so doesn't slow down sublime startup
+    from qtform import QApplication, Ruler
+    
     self.app = QApplication([])
     self.form = Ruler(self)
 
-    # How to block the main thread temporarily? 
+    # How to block the main thread temporarily?
     # to safely run view.function()
     with blockMain(self.lock):
-      # time.sleep(2)
       self.form.rulers.setValue(self.view.options().get('rulers') or -1)
       
     self.form.show()
@@ -112,7 +88,7 @@ class TestGuiCommand(sublimeplugin.TextCommand):
         self.app.processEvents()
       
       time.sleep(0.02)
-            
+      
       if i % 10 == 0:
         if DEBUG: print i         
         if self.die: break
@@ -124,6 +100,7 @@ class TestGuiCommand(sublimeplugin.TextCommand):
       self.view = view
       
       #TODO: ????     How long to block thread 4 ?
+      # Not really needed here? 
       with self.lock:
         self.form.rulers.setValue(self.view.options().get('rulers') or -1)
   
