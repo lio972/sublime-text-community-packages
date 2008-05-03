@@ -1,0 +1,4 @@
+<bindings>
+<!-- 4 webkit Package -->
+    <binding key="ctrl+f3" command="webkit"/>
+</bindings>
