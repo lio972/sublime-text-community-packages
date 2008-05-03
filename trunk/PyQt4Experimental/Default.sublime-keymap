@@ -1,0 +1,4 @@
+<bindings>
+    <binding key="ctrl+shift+o" command="testGui"/>
+    <binding key="ctrl+shift+alt+o" command="testGui STOP"/>
+</bindings>
