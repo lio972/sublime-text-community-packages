@@ -1,6 +1,6 @@
 #################################### IMPORTS ###################################
 
-import sublime, sublimeplugin, threading, time, Queue, random, gc
+import sublime, sublimeplugin, threading, time, Queue
 
 from PyQt4.QtGui import QApplication
 from PyQt4.QtWebKit import QWebView
@@ -29,11 +29,7 @@ class WebkitCommand(sublimeplugin.TextCommand):
   visible = False  
   Q = Queue.Queue()
   
-  def run(self, view, args):
-    if 'STOP' in args:
-      self.stop()
-      return
-      
+  def run(self, view, args):      
     if not self.started:
       self.start()
     else:
@@ -80,13 +76,8 @@ class WebkitCommand(sublimeplugin.TextCommand):
         time.sleep(0.001)
 
       app.processEvents()
-    
-      if i % 100 == 0:
-        if DEBUG: print i
-                
-    del(app, browser)
-    gc.collect()
-  
+      if i % 100 and DEBUG: print i
+                      
   def sendBuffer(self, view):
     self.Q.put_nowait(view.substr(sublime.Region(0, view.size())))
     
@@ -101,5 +92,5 @@ class WebkitCommand(sublimeplugin.TextCommand):
   def onPreSave(self, view):
     if DEBUG and self.started:
       self.stop()
-        
+
 ################################################################################
