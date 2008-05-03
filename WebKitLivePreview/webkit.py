@@ -46,6 +46,8 @@ class WebkitCommand(sublimeplugin.TextCommand):
     
     browser = QWebView()
     browser.show()
+    browser.resize(1024, 600)
+    browser.setWindowTitle('WebKit Live Preview')
     
     i = 0
     while True:
@@ -74,13 +76,16 @@ class WebkitCommand(sublimeplugin.TextCommand):
         
     del(app, browser)
   
+  def sendBuffer(self, view):
+    self.Q.put_nowait(view.substr(sublime.Region(0, view.size())))
+    
   def onActivated(self, view):
     if self.started and self.visible:
-      self.Q.put_nowait(view.substr(sublime.Region(0, view.size())))
+      self.sendBuffer(view)  
   
   def onModified(self, view):
     if self.started and self.visible:
-      self.Q.put_nowait(view.substr(sublime.Region(0, view.size())))
+      self.sendBuffer(view)
     
   def onPreSave(self, view):
     if DEBUG and self.started:
