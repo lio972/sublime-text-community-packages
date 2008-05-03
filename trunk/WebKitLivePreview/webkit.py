@@ -1,6 +1,6 @@
 #################################### IMPORTS ###################################
 
-import sublime, sublimeplugin, threading, time, Queue
+import sublime, sublimeplugin, threading, time, Queue, random
 
 from PyQt4.QtGui import QApplication
 from PyQt4.QtWebKit import QWebView
@@ -11,7 +11,9 @@ DEBUG = 0
 
 ################################### COMMANDS ###################################
 
-ToggleVisibility = object()
+def QCommand(): return object()
+
+ToggleVisibility = QCommand()
 
 #################################### README ####################################
 
@@ -29,21 +31,25 @@ class WebkitCommand(sublimeplugin.TextCommand):
   Q = Queue.Queue()
   
   def run(self, view, args):
-    self.view = view
-
     if 'STOP' in args: 
-      self.die, self.started = True, False
+      self.stop()
       return
-    
+      
     if not self.started:
-      self.die, self.started, self.visible = False, True, True
-      threading.Thread(target=self.QtLoop).start()
+      self.start()
     else:
       self.Q.put(ToggleVisibility)
+  
+  def stop(self):
+    self.die, self.started = True, False
+  
+  def start(self):
+    self.die, self.started, self.visible = False, True, True
+    threading.Thread(target=self.QtLoop).start()
                           
-  def QtLoop(self):    
+  def QtLoop(self):
     app = QApplication([])
-    
+        
     browser = QWebView()
     browser.show()
     browser.resize(1024, 600)
@@ -89,6 +95,6 @@ class WebkitCommand(sublimeplugin.TextCommand):
     
   def onPreSave(self, view):
     if DEBUG and self.started:
-      view.runCommand('webkit STOP')    
+      self.stop()
         
 ################################################################################
