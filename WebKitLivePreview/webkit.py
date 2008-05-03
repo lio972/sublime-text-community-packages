@@ -27,15 +27,14 @@ class WebkitCommand(sublimeplugin.TextCommand):
   visible = False  
   Q = Queue.Queue()
   
-  def run(self, view, args):      
+  def run(self, view, args):
+    if 'STOP' in args:
+      self.stop()
+      return
     if not self.started:
       self.start()
     else:
-      if 'STOP' in args:
-        self.stop()
-        return
-      else:
-        self.Q.put(TOGGLE_VISIBILITY)
+      self.Q.put(TOGGLE_VISIBILITY)
   
   def stop(self):
     self.Q.put(DIE)
