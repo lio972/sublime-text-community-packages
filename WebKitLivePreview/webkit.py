@@ -19,32 +19,15 @@ TOGGLE_VISIBILITY, DIE = object(), object()
 "longer works running multiple QApplications at once or even more than one "
 "per sublime session. There are paint issues "
 
-#################################### COMMAND ###################################
 
-class WebkitCommand(sublimeplugin.TextCommand):
-  """ Webkit for LivePreview """
-  started = False
-  visible = False  
-  Q = Queue.Queue()
+################################ PYQT4 MAIN LOOP ###############################
+
+class QtMain(threading.Thread):
+  def __init__(self, Q):
+    self.Q = Q
+    threading.Thread.__init__(self)
   
-  def run(self, view, args):
-    if 'STOP' in args:
-      self.stop()
-      return
-    if not self.started:
-      self.start()
-    else:
-      self.Q.put(TOGGLE_VISIBILITY)
-  
-  def stop(self):
-    self.Q.put(DIE)
-    self.started = False
-  
-  def start(self):
-    self.started, self.visible = True, True
-    threading.Thread(target=self.QtLoop).start()
-                          
-  def QtLoop(self):
+  def run(self):
     app = QApplication([])
     
     browser = QWebView()
@@ -64,13 +47,37 @@ class WebkitCommand(sublimeplugin.TextCommand):
           else:
             browser.setHtml(packet)
             if DEBUG: print packet[:100]
-
+  
       except Queue.Empty:
-        time.sleep(0.001)
-
+        time.sleep(0.01)
+  
       app.processEvents()
-      if i % 100 and DEBUG: print i
-                      
+      if DEBUG and i % 10: print i
+
+#################################### COMMAND ###################################
+
+class WebkitCommand(sublimeplugin.TextCommand):
+  started = False
+  visible = False 
+  Q = Queue.Queue() 
+    
+  def run(self, view, args):
+    if 'STOP' in args:
+      self.stop()
+      return
+    if not self.started:
+      self.start()
+    else:
+      self.Q.put(TOGGLE_VISIBILITY)
+      
+  def stop(self):
+    self.Q.put(DIE)
+    self.started = False
+  
+  def start(self):
+    self.started, self.visible = True, True
+    QtMain(self.Q).start()
+
   def sendBuffer(self, view):
     self.Q.put_nowait(view.substr(sublime.Region(0, view.size())))
     
