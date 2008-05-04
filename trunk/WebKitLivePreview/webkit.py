@@ -15,10 +15,13 @@ TOGGLE_VISIBILITY, DIE = object(), object()
 
 #################################### README ####################################
 
-"Note: (on Windows at least) PyQt4.4 rc1, as opposed to PyQt4.3 stable no "
+"Note: (on Windows at least) PyQt4.4 rc1, as opposed to PyQt4.3 stable, no "
 "longer works running multiple QApplications at once or even more than one "
-"per sublime session. There are paint issues "
-
+"per sublime session. (In different threads, single threaded apps with the "
+"QApplication in the main thread still seem to work, though not at the same "
+"time. Maybe it would be best to set up a live preview window in another "
+"process listening on a socket for packets. Better yet, a native sublime "
+"widget. WebKit embedded. Consult your local member."
 
 ################################ PYQT4 MAIN LOOP ###############################
 
