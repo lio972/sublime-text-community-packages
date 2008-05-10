@@ -1,9 +1,10 @@
 #################################### IMPORTS ###################################
 
 from __future__ import with_statement
-import sublime, sublimeplugin, cgi, re, webbrowser
 
 from os.path import split, join, normpath, splitext
+
+import sublime, sublimeplugin, cgi, re, webbrowser
 
 import plist, build_css
 
@@ -18,8 +19,8 @@ HTML_TEMPLATE = """<html>
     <title> %s </title>
     <link rel="stylesheet" href="%s.css" type="text/css" charset="utf-8" />
     <style type='text/css'>
-    body {margin:0; padding:0;}
-    pre {padding: 1em; font: 12px "DejaVu Sans Mono";}
+        body {margin:0; padding:0;}
+        pre {padding: 1em; font: 12px "DejaVu Sans Mono", monospace;}
     </style>
 </head>
 <body>
@@ -44,7 +45,7 @@ def writeCSS(colorScheme, theme):
 def getLineStartPts(view, start, end):
     pt, lines  = start, [start]
     while pt < end:
-        pt = view.line(pt).end()+1
+        pt = view.line(pt).end() + 1
         lines.append(pt)
     return lines
 
@@ -65,44 +66,41 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
         
         selRange = getSelectionRange(view)
         
-        currentScopes = []
+        previousScopes = []
+        previousSyntax = ''
+
         currentLineNumber = view.rowcol(selRange[0])[0]
         lineStartPts = getLineStartPts(view, *selRange)
 
         lnCols = `len(`view.rowcol(lineStartPts[-1]-1)[0]`)`
         lineNumbersTemplate = "<span id='line-number'>%"+ lnCols + "d  </span>"
         
-        html = ["<pre class='sublime %s'>" % theme]
-        previousSyntax = ''
+        html = ["<pre class='sublime %s'>" % theme]        
         for pt in xrange(*selRange):
-            
             if pt in lineStartPts:
                 currentLineNumber +=1
                 html.append(lineNumbersTemplate % currentLineNumber)
             
             syntaxAtPoint = view.syntaxName(pt)
             if syntaxAtPoint != previousSyntax:
+
                 newScopes = reversed(syntaxAtPoint.split(" "))
-                newScopes = [' '.join(s.split('.')) for s in newScopes if s]
+                newScopes = [s.replace('.', ' ') for s in newScopes if s]
+                
+                diverged = None
+                for i, s in enumerate(previousScopes):
+                    if i >= len(newScopes) or newScopes[i] != s:
+                        diverged = diverged or i
+                        html.append("</span>")
 
-                if currentScopes:
-                    diverged = None
-                    for i, s in enumerate(currentScopes):
-                        if i >= len(newScopes) or newScopes[i] != s:
-                            if not diverged: diverged = i
-                            html.append("</span>")
-
-                    currentScopes = currentScopes[:diverged]
-
-                for s in newScopes[len(currentScopes):]:
-                    currentScopes.append(s)
+                for s in newScopes[len(previousScopes[:diverged]):]:
                     html.append("<span class='%s'>" % s)
 
+                previousScopes = newScopes
                 previousSyntax = syntaxAtPoint
-
+    
             html.append(cgi.escape(view.substr(pt)))
-        
-        
+
         html.append("</span></pre>")
         
         writeHTML("".join(html), view.fileName(), theme)
@@ -112,3 +110,5 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
         webbrowser.open(htmlFile)
         
         if OPEN_HTML_IN_EDITOR: view.window().openFile(htmlFile)
+        
+################################################################################
