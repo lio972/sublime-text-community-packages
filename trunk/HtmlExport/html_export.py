@@ -1,9 +1,17 @@
+#################################### IMPORTS ###################################
+
 from __future__ import with_statement
 import sublime, sublimeplugin, cgi, re, webbrowser
 
 from os.path import split, join, normpath, splitext
 
 import plist, build_css
+
+################################### SETTINGS ###################################
+
+OPEN_HTML_IN_EDITOR = 0
+
+################################### TEMPLATES ##################################
 
 HTML_TEMPLATE = """<html>
 <head>
@@ -20,6 +28,8 @@ HTML_TEMPLATE = """<html>
 </html>
 """
 
+################################### FUNCTIONS ##################################
+
 def writeHTML(html, fn, theme):
     with open('%s.html' % fn, 'w') as fh:
         fh.write(HTML_TEMPLATE % (fn, theme, html))
@@ -31,63 +41,68 @@ def writeCSS(colorScheme, theme):
     with open("%s.css" % theme, 'w') as fh:
         fh.write(re.sub(r"\.py\b", '.python', css))    
 
-def getLineStarts(view, start, end):
+def getLineStartPts(view, start, end):
     pt, lines  = start, [start]
     while pt < end:
         pt = view.line(pt).end()+1
         lines.append(pt)
     return lines
 
+def getSelectionRange(view):
+    sel = view.sel()[0]
+    if not sel.empty():
+        expanded = view.line(sel)
+        return expanded.begin(), expanded.end()
+    else:
+        return 0, view.size()
+
+################################### COMMANDS ###################################
+
 class HtmlExportCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
         colorScheme = view.options().get('colorscheme')
         theme = splitext(split(colorScheme)[1])[0]
-
         
-        sel = view.sel()[0]
-        if not sel.empty():
-            selRange = view.line(sel)
-            selRange = selRange.begin(), selRange.end()
-        else:
-            selRange = 0, view.size()
+        selRange = getSelectionRange(view)
         
-        currentScope = []
-        line = view.rowcol(selRange[0])[0]
-        linesStart = getLineStarts(view, *selRange)
+        currentScopes = []
+        currentLineNumber = view.rowcol(selRange[0])[0]
+        lineStartPts = getLineStartPts(view, *selRange)
 
-        cols = `len(`view.rowcol(linesStart[-1]-1)[0]`)`
-        lineNumbersTemplate = "<span id='line-number'>%"+ cols + "d  </span>"
+        lnCols = `len(`view.rowcol(lineStartPts[-1]-1)[0]`)`
+        lineNumbersTemplate = "<span id='line-number'>%"+ lnCols + "d  </span>"
         
         html = ["<pre class='sublime %s'>" % theme]
-        currentSyntax = ''
+        previousSyntax = ''
         for pt in xrange(*selRange):
             
-            if pt in linesStart:
-                line+=1
-                html.append(lineNumbersTemplate % line)
+            if pt in lineStartPts:
+                currentLineNumber +=1
+                html.append(lineNumbersTemplate % currentLineNumber)
             
             syntaxAtPoint = view.syntaxName(pt)
-            if syntaxAtPoint != currentSyntax:
-                scopes = reversed(syntaxAtPoint.split(" "))
-                scopes = [' '.join(s.split('.')) for s in scopes if s]
+            if syntaxAtPoint != previousSyntax:
+                newScopes = reversed(syntaxAtPoint.split(" "))
+                newScopes = [' '.join(s.split('.')) for s in newScopes if s]
 
-                if currentScope:
-                    diverge = None
-                    for i, s in enumerate(currentScope):
-                        if i >= len(scopes) or scopes[i] != s:
-                            if not diverge: diverge = i
+                if currentScopes:
+                    diverged = None
+                    for i, s in enumerate(currentScopes):
+                        if i >= len(newScopes) or newScopes[i] != s:
+                            if not diverged: diverged = i
                             html.append("</span>")
 
-                    currentScope = currentScope[:diverge]
+                    currentScopes = currentScopes[:diverged]
 
-                for s in scopes[len(currentScope):]:
-                    currentScope.append(s)
+                for s in newScopes[len(currentScopes):]:
+                    currentScopes.append(s)
                     html.append("<span class='%s'>" % s)
 
-                currentSyntax = syntaxAtPoint
+                previousSyntax = syntaxAtPoint
 
             html.append(cgi.escape(view.substr(pt)))
-
+        
+        
         html.append("</span></pre>")
         
         writeHTML("".join(html), view.fileName(), theme)
@@ -95,4 +110,5 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
         
         htmlFile = "%s.html" % view.fileName()
         webbrowser.open(htmlFile)
-        view.window().openFile(htmlFile)
+        
+        if OPEN_HTML_IN_EDITOR: view.window().openFile(htmlFile)
