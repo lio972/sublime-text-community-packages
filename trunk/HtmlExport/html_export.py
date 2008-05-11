@@ -40,7 +40,7 @@ def getTheme(colorScheme):
 
 def getThemeAbsPath(colorScheme):
     appdataPath = split(sublime.packagesPath())[0]
-    return normpath(join(appdataPath, colorScheme))
+    return normpath ( join(appdataPath, colorScheme))
 
 def getCssScopes(colorScheme):
     return build_css.getScopes (
@@ -84,7 +84,7 @@ def selectorSpecificity(selector, scope):
             if not [x for x in selectors if x not in scopes]:
                 start.append((scopeLevel+1, len(selectors)))
             
-    return start[-1] if len(start) == len(allSelectors) else (0, 0)
+    return start[-1:]
 
 def getCssClassAtPt(pt, view, CssScopes):
     candidates = []  
@@ -96,11 +96,7 @@ def getCssClassAtPt(pt, view, CssScopes):
                 specificity = selectorSpecificity(scope, syntaxAtPoint)
                 candidates.append((specificity, cssClass))
     
-    if candidates:
-        # print 
-        # print view.substr(view.line(pt)), "[ %s ]" % view.substr(pt)
-        # print sorted(candidates)
-        # print
+    if candidates:        
         return sorted(candidates)[-1][1]
 
 ################################### COMMANDS ###################################
@@ -137,7 +133,9 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
                                     
                 if previousCssClass != cssClassAtPt:
                     if previousCssClass: html.append("</span>")
-                    html.append("<span class='%s'>" % cssClassAtPt)
+                    
+                    if cssClassAtPt: # in case class is None
+                        html.append("<span class='%s'>" % cssClassAtPt)
                 
                 scopeCache[scopeAtPt] = cssClassAtPt
                 previousSyntax = scopeAtPt
