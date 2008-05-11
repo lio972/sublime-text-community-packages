@@ -132,11 +132,8 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
                     cssClassAtPt = getCssClassAtPt(pt, view, cssScopes)
                                     
                 if previousCssClass != cssClassAtPt:
-                    if previousCssClass:
-                        html.append("</span>")
-                
-                    if cssClassAtPt:
-                        html.append("<span class='%s'>" % cssClassAtPt)
+                    if previousCssClass: html.append("</span>")
+                    html.append("<span class='%s'>" % cssClassAtPt)
                 
                 scopeCache[scopeAtPt] = cssClassAtPt
                 previousSyntax = scopeAtPt
