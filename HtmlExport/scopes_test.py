@@ -18,7 +18,7 @@ class ScopesTest(unittest.TestCase):
 
         self.assertEqual ( compareSelectors(scope1, scope2), [scope1] )
     
-    def test_should_return_first_when(self):
+    def test_should_return_both_when_selectors_are_equal(self):
         scope1 = "string.quoted"
         scope2 = "string.quoted"
         

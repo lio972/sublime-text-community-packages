@@ -4,13 +4,11 @@ from __future__ import with_statement
 
 from os.path import split, join, normpath, splitext
 
+from scopes import Selector
+
 import sublime, sublimeplugin, cgi, re, webbrowser
 
 import plist, build_css
-
-from blackboard_theme import blackboardScopes
-
-from scopes import Selector
 
 ################################### SETTINGS ###################################
 
