@@ -97,6 +97,10 @@ def getCssClassAtPt(pt, view, CssScopes):
                 candidates.append((specificity, cssClass))
     
     if candidates:
+        # print 
+        # print view.substr(view.line(pt)), "[ %s ]" % view.substr(pt)
+        # print sorted(candidates)
+        # print
         return sorted(candidates)[-1][1]
 
 ################################### COMMANDS ###################################
