@@ -62,7 +62,8 @@ def getCSSFromThemeDict(theme):
 def getScopes(theme):
     scopes = {}
     for scope in theme["settings"][1:]:
-        scopes[camelizeString(scope['name'])] = scope['scope'].split(',')
+        if 'scope' in scope:
+            scopes[camelizeString(scope['name'])] = scope['scope'].split(',')
     return scopes
     
 if __name__ == "__main__":
