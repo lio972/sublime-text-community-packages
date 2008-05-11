@@ -98,8 +98,6 @@ def getCssClassAtPt(pt, view, CssScopes):
     
     if candidates:
         return sorted(candidates)[-1][1]
-    else:
-        return None
 
 ################################### COMMANDS ###################################
 
@@ -113,8 +111,6 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
         theme = getTheme(colorScheme)
         cssScopes = getCssScopes(colorScheme)
         
-        started = False
-
         selRange = getSelectionRange(view)
         currentLineNumber = view.rowcol(selRange[0])[0]
         lineStartPts = getLineStartPts(view, *selRange)
@@ -140,7 +136,6 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
                         html.append("</span>")
                 
                     if cssClassAtPt:
-                        started = True
                         html.append("<span class='%s'>" % cssClassAtPt)
                 
                 scopeCache[scopeAtPt] = cssClassAtPt
