@@ -95,14 +95,16 @@ def getCssClassAtPt(pt, view, CssScopes):
             if view.matchSelector(pt, scope):
                 specificity = selectorSpecificity(scope, syntaxAtPoint)
                 candidates.append((specificity, cssClass))
-    
-    if candidates:        
+                
+    if candidates:
         return sorted(candidates)[-1][1]
 
 ################################### COMMANDS ###################################
 
 class HtmlExportCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
+        tab = ' ' * view.options().get('tabSize')
+        
         scopeCache = {}
         previousSyntax = ''
         previousCssClass = ''
@@ -141,7 +143,7 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
                 previousSyntax = scopeAtPt
                 previousCssClass = cssClassAtPt
                 
-            html.append(cgi.escape(view.substr(pt)))
+            html.append(cgi.escape(view.substr(pt).replace('\t', tab)))
         
         html.append("</pre>")
         
