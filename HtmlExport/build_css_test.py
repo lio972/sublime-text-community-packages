@@ -15,8 +15,8 @@ class TestCssBuilder(unittest.TestCase):
         main = blackBoard['settings'][0]
         
         
-        self.assertEqual( build_css.createMainRule(main, "blackBoard"),
-            ("pre.sublime.blackBoard, pre.sublime.blackBoard #line-number {\n"
+        self.assertEqual( build_css.createMainRule(main, "Blackboard"),
+            ("pre.Blackboard, pre.Blackboard .lineNumber {\n"
              "    background-color: #0C1021;\n"
              "    color: #F8F8F8;\n"
              "}"),
@@ -27,8 +27,8 @@ class TestCssBuilder(unittest.TestCase):
         self.assertEqual( comment['name'], "Comment" )
         
         
-        self.assertEqual( build_css.createScopeRule(comment, "blackBoard"),
-            ("pre.sublime.blackBoard .comment {\n"
+        self.assertEqual( build_css.createScopeRule(comment, "Blackboard"),
+            ("pre.Blackboard .Comment {\n"
              "    color: #AEAEAE;\n"
              "}"),
         )
@@ -43,7 +43,7 @@ class TestCssBuilder(unittest.TestCase):
     def test_getCSSFromThemeDict(self):
         self.assertTrue (
             build_css.getCSSFromThemeDict(blackBoard).startswith (
-                ("pre.sublime.Blackboard, pre.sublime.Blackboard #line-number {\n"
+                ("pre.Blackboard, pre.Blackboard .lineNumber {\n"
                  "    background-color: #0C1021;\n"
                  "    color: #F8F8F8;\n"
                  "}")

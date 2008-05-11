@@ -87,5 +87,33 @@ blackBoard =  {'author': 'Domenico Carbotta',
                'settings': {'foreground': '#FFFFFF'}}],
  'uuid': 'A2C6BAA7-90D0-4147-BBF5-96B0CD92D109'}
  
+blackboardScopes = {'Comment': ['comment'],
+ 'Constant': ['constant'],
+ 'Entity': ['entity'],
+ 'EntityNameSection': ['entity.name.section'],
+ u'InvalidDeprecated': ['invalid.deprecated'],
+ u'InvalidIllegal': ['invalid.illegal'],
+ 'Keyword': ['keyword'],
+ 'LatexEnvironment': ['text.tex.latex meta.function.environment'],
+ 'LatexEnvironmentNested': ['text.tex.latex meta.function.environment meta.function.environment'],
+ 'LatexSupport': ['text.tex.latex support.function'],
+ 'MetaFunctionCallPy': ['meta.function-call.py'],
+ 'MetaTag': ['meta.tag', ' meta.tag entity'],
+ 'OcamlFPConstant': ['source.ocaml constant.numeric.floating-point'],
+ 'OcamlFPInfixOperator': ['source.ocaml keyword.operator.symbol.infix.floating-point'],
+ 'OcamlFPPrefixOperator': ['source.ocaml keyword.operator.symbol.prefix.floating-point'],
+ 'OcamlInfixOperator': ['source.ocaml keyword.operator.symbol.infix'],
+ 'OcamlOperator': ['source.ocaml keyword.operator.symbol'],
+ 'OcamlPrefixOperator': ['source.ocaml keyword.operator.symbol.prefix'],
+ 'OcamlVariant': ['keyword.type.variant'],
+ 'PlistUnquotedString': ['source.plist string.unquoted',
+                         ' source.plist keyword.operator'],
+ 'Storage': ['storage'],
+ 'String': ['string', ' meta.verbatim'],
+ 'StringInterpolation': ['string constant.other.placeholder'],
+ 'Superclass': ['entity.other.inherited-class'],
+ 'Support': ['support'],
+ 'Variable': ['variable']}
+
 if __name__ == "__main__":
     print blackBoard['settings'][0]['settings']

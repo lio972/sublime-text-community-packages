@@ -1,7 +1,12 @@
 from __future__ import with_statement
 
-import plist
+import plist, string
 
+def camelizeString(toCamel):
+    toCamel = [(l if l in string.ascii_letters else ' ') for l in toCamel]
+    toCamel =  [w.capitalize() for w in "".join(toCamel).split(' ')]
+    return "".join(toCamel)
+    
 CSSMAP = {
     
     'background':     'background-color',
@@ -34,16 +39,12 @@ def createRule(rule_starter, listing):
     return "\n".join(rule)
 
 def createMainRule(listing, themeName):
-    selector = "pre.sublime.%s, pre.sublime.%s #line-number {"
-    return createRule([selector % tuple([themeName]*2)], listing)
+    theme = tuple([themeName] * 2)
+    return createRule(["pre.%s, pre.%s .lineNumber {" % theme], listing)
 
-def createScopeRule(listing, themeName):
-    scope = ['.' + c for c in listing['scope'].split(" ")]
-    scope = " ".join(scope).split(",")
-    
-    selectors = [("pre.sublime.%s " % themeName) + sel for sel in scope]
-    
-    return createRule([", ".join(selectors) + " {"], listing)
+def createScopeRule(listing, themeName): 
+    name = camelizeString(listing['name'])
+    return createRule(["pre.%s .%s {" % (themeName, name)], listing)
     
 def getCSSFromThemeDict(theme):
     name = theme['name']
@@ -56,9 +57,19 @@ def getCSSFromThemeDict(theme):
         css.append(createScopeRule(scopeRule, name))
     
     return "\n\n".join(css)
+
+def getScopes(theme):
+    scopes = {}
+    for scope in theme["settings"][1:]:
+        scopes[camelizeString(scope['name'])] = scope['scope'].split(',')
+    return scopes
     
 if __name__ == "__main__":
     if 1:
         from blackboard_theme import blackBoard
         with open('Blackboard.css', 'w') as fh:
             fh.write(getCSSFromThemeDict(blackBoard))
+            
+        if 1:
+            import pprint
+            pprint.pprint( getScopes(blackBoard))

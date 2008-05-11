@@ -1,4 +1,5 @@
 <bindings>
 <!-- 4 htmlexport Package -->
     <binding key="ctrl+alt+h" command="htmlExport"/>
+    
 </bindings>
