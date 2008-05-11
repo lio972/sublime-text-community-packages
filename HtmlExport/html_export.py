@@ -4,8 +4,6 @@ from __future__ import with_statement
 
 from os.path import split, join, normpath, splitext
 
-from scopes import Selector
-
 import sublime, sublimeplugin, cgi, re, webbrowser
 
 import plist, build_css
@@ -71,28 +69,40 @@ def getSelectionRange(view):
     else:
         return 0, view.size()
 
+################################################################################
+
+def scopeLeveled(scope):
+    return [l.replace('.', ' ').split() for l in scope.split(' ') if l]
+
+def selectorSpecificity(selector, scope):
+    allSelectors = scopeLeveled(selector)
+    allScopes = scopeLeveled(scope)
+
+    start = []
+    for selectors in allSelectors:
+        for scopeLevel, scopes in enumerate(allScopes):
+            if not [x for x in selectors if x not in scopes]:
+                start.append((scopeLevel+1, len(selectors)))
+            
+    return start[-1] if len(start) == len(allSelectors) else (0, 0)
+
 def getCssClassAtPt(pt, view, CssScopes):
-    candidates = []
+    candidates = []  
+    syntaxAtPoint = " ".join(reversed(view.syntaxName(pt).split()))
+    
     for cssClass, scopes in CssScopes.items():
         for scope in scopes:
             if view.matchSelector(pt, scope):
-                candidates.append((scope, cssClass))
+                specificity = selectorSpecificity(scope, syntaxAtPoint)
+                candidates.append((specificity, cssClass))
     
     if candidates:
-        leader = candidates.pop()
-        while candidates:
-            leaderScope, _ = leader
-            candidateScope, candidateClass = candidates.pop()
-            
-            if Selector(candidateScope) > Selector(leaderScope):
-                leader = candidateScope, candidateClass
-        
-        return leader[1]
+        return sorted(candidates)[-1][1]
     else:
         return None
-    
 
 ################################### COMMANDS ###################################
+
 class HtmlExportCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
         scopeCache = {}
@@ -101,7 +111,9 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
 
         colorScheme = view.options().get('colorscheme')
         theme = getTheme(colorScheme)
-        CssScopes = getCssScopes(colorScheme)
+        cssScopes = getCssScopes(colorScheme)
+        
+        started = False
 
         selRange = getSelectionRange(view)
         currentLineNumber = view.rowcol(selRange[0])[0]
@@ -115,19 +127,20 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
                 currentLineNumber +=1
                 html.append(lineNumbersTemplate % currentLineNumber)
                 
-            scopeAtPt = view.syntaxName(pt)
+            scopeAtPt = view.syntaxName(pt)            
             
             if scopeAtPt != previousSyntax:
                 if scopeAtPt in scopeCache:
                     cssClassAtPt = scopeCache[scopeAtPt]
-                else:
-                    cssClassAtPt = getCssClassAtPt(pt, view, CssScopes)
-                
+                else:                    
+                    cssClassAtPt = getCssClassAtPt(pt, view, cssScopes)
+                                    
                 if previousCssClass != cssClassAtPt:
-                    if scopeCache:
+                    if previousCssClass:
                         html.append("</span>")
                 
                     if cssClassAtPt:
+                        started = True
                         html.append("<span class='%s'>" % cssClassAtPt)
                 
                 scopeCache[scopeAtPt] = cssClassAtPt
@@ -136,14 +149,11 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
                 
             html.append(cgi.escape(view.substr(pt)))
         
-        html.append("</span></pre>")
+        html.append("</pre>")
         
-        
-        # Write out the css
         writeHTML("".join(html), view.fileName(), theme)
         writeCSS(colorScheme)
         
-        # Open the file in browser
         htmlFile = "%s.html" % view.fileName()
         webbrowser.open(htmlFile)
         

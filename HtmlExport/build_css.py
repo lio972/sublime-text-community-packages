@@ -5,7 +5,8 @@ import plist, string
 def camelizeString(toCamel):
     toCamel = [(l if l in string.ascii_letters else ' ') for l in toCamel]
     toCamel =  [w.capitalize() for w in "".join(toCamel).split(' ')]
-    return "".join(toCamel)
+    toCamel = "".join(toCamel)
+    return toCamel[0].lower() + toCamel[1:]
     
 CSSMAP = {
     
@@ -52,7 +53,7 @@ def getCSSFromThemeDict(theme):
     mainSettings = settings[0]
     
     css = [createMainRule(mainSettings, name)]
-    
+
     for scopeRule in settings[1:]:
         css.append(createScopeRule(scopeRule, name))
     
