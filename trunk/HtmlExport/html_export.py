@@ -8,6 +8,10 @@ import sublime, sublimeplugin, cgi, re, webbrowser
 
 import plist, build_css
 
+from blackboard_theme import blackboardScopes
+
+from scopes import Selector
+
 ################################### SETTINGS ###################################
 
 OPEN_HTML_IN_EDITOR = 0
@@ -35,13 +39,25 @@ def writeHTML(html, fn, theme):
     with open('%s.html' % fn, 'w') as fh:
         fh.write(HTML_TEMPLATE % (fn, theme, html))
 
-def writeCSS(colorScheme, theme):
+def getTheme(colorScheme):
+    return splitext(split(colorScheme)[1])[0]
+
+def getThemeAbsPath(colorScheme):
     appdataPath = split(sublime.packagesPath())[0]
-    themePList = normpath(join(appdataPath, colorScheme))
+    return normpath(join(appdataPath, colorScheme))
+
+def getCssScopes(colorScheme):
+    return build_css.getScopes (
+        plist.parse_plist( getThemeAbsPath(colorScheme) )
+    )
+
+def writeCSS(colorScheme):
+    theme = getTheme(colorScheme)
+    themePList = getThemeAbsPath(colorScheme)
     css = build_css.getCSSFromThemeDict(plist.parse_plist(themePList))
     with open("%s.css" % theme, 'w') as fh:
         fh.write(re.sub(r"\.py\b", '.python', css))    
-
+        
 def getLineStartPts(view, start, end):
     pt, lines  = start, [start]
     while pt < end:
@@ -57,58 +73,80 @@ def getSelectionRange(view):
     else:
         return 0, view.size()
 
-################################### COMMANDS ###################################
+def getCssClassAtPt(pt, view, CssScopes):
+    candidates = []
+    for cssClass, scopes in CssScopes.items():
+        for scope in scopes:
+            if view.matchSelector(pt, scope):
+                candidates.append((scope, cssClass))
+    
+    if candidates:
+        leader = candidates.pop()
+        while candidates:
+            leaderScope, _ = leader
+            candidateScope, candidateClass = candidates.pop()
+            
+            if Selector(candidateScope) > Selector(leaderScope):
+                leader = candidateScope, candidateClass
+        
+        return leader[1]
+    else:
+        return None
+    
 
+################################### COMMANDS ###################################
 class HtmlExportCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
-        colorScheme = view.options().get('colorscheme')
-        theme = splitext(split(colorScheme)[1])[0]
-        
-        selRange = getSelectionRange(view)
-        
-        previousScopes = []
+        scopeCache = {}
         previousSyntax = ''
+        previousCssClass = ''
 
+        colorScheme = view.options().get('colorscheme')
+        theme = getTheme(colorScheme)
+        CssScopes = getCssScopes(colorScheme)
+
+        selRange = getSelectionRange(view)
         currentLineNumber = view.rowcol(selRange[0])[0]
         lineStartPts = getLineStartPts(view, *selRange)
-
         lnCols = `len(`view.rowcol(lineStartPts[-1]-1)[0]`)`
-        lineNumbersTemplate = "<span id='line-number'>%"+ lnCols + "d  </span>"
+        lineNumbersTemplate = "<span class='lineNumber'>%"+ lnCols + "d  </span>"
         
-        html = ["<pre class='sublime %s'>" % theme]        
+        html = ["<pre class='%s'>" % theme]
         for pt in xrange(*selRange):
             if pt in lineStartPts:
                 currentLineNumber +=1
                 html.append(lineNumbersTemplate % currentLineNumber)
-            
-            syntaxAtPoint = view.syntaxName(pt)
-            if syntaxAtPoint != previousSyntax:
-
-                newScopes = reversed(syntaxAtPoint.split(" "))
-                newScopes = [s.replace('.', ' ') for s in newScopes if s]
                 
-                diverged = None
-                for i, s in enumerate(previousScopes):
-                    if i >= len(newScopes) or newScopes[i] != s:
-                        diverged = diverged or i
+            scopeAtPt = view.syntaxName(pt)
+            
+            if scopeAtPt != previousSyntax:
+                if scopeAtPt in scopeCache:
+                    cssClassAtPt = scopeCache[scopeAtPt]
+                else:
+                    cssClassAtPt = getCssClassAtPt(pt, view, CssScopes)
+                
+                if previousCssClass != cssClassAtPt:
+                    if scopeCache:
                         html.append("</span>")
-
-                for s in newScopes[len(previousScopes[:diverged]):]:
-                    html.append("<span class='%s'>" % s)
-
-                previousScopes = newScopes
-                previousSyntax = syntaxAtPoint
-    
+                
+                    if cssClassAtPt:
+                        html.append("<span class='%s'>" % cssClassAtPt)
+                
+                scopeCache[scopeAtPt] = cssClassAtPt
+                previousSyntax = scopeAtPt
+                previousCssClass = cssClassAtPt
+                
             html.append(cgi.escape(view.substr(pt)))
-
+        
         html.append("</span></pre>")
         
-        writeHTML("".join(html), view.fileName(), theme)
-        writeCSS(colorScheme, theme)
         
+        # Write out the css
+        writeHTML("".join(html), view.fileName(), theme)
+        writeCSS(colorScheme)
+        
+        # Open the file in browser
         htmlFile = "%s.html" % view.fileName()
         webbrowser.open(htmlFile)
         
         if OPEN_HTML_IN_EDITOR: view.window().openFile(htmlFile)
-        
-################################################################################
