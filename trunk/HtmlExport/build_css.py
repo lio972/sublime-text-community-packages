@@ -6,7 +6,8 @@ def camelizeString(toCamel):
     toCamel = [(l if l in string.ascii_letters else ' ') for l in toCamel]
     toCamel =  [w.capitalize() for w in "".join(toCamel).split(' ')]
     toCamel = "".join(toCamel)
-    return toCamel[0].lower() + toCamel[1:]
+    
+    return toCamel[:1].lower() + toCamel[1:]    #sometimes toCamel will be ''
     
 CSSMAP = {
     
