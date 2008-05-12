@@ -16,7 +16,7 @@ class TestCssBuilder(unittest.TestCase):
         
         
         self.assertEqual( build_css.createMainRule(main, "Blackboard"),
-            ("pre.Blackboard, pre.Blackboard .lineNumber {\n"
+            ("pre.blackboard, pre.blackboard .lineNumber {\n"
              "    background-color: #0C1021;\n"
              "    color: #F8F8F8;\n"
              "}"),
@@ -28,7 +28,7 @@ class TestCssBuilder(unittest.TestCase):
         
         
         self.assertEqual( build_css.createScopeRule(comment, "Blackboard"),
-            ("pre.Blackboard .Comment {\n"
+            ("pre.blackboard .comment {\n"
              "    color: #AEAEAE;\n"
              "}"),
         )
@@ -43,7 +43,7 @@ class TestCssBuilder(unittest.TestCase):
     def test_getCSSFromThemeDict(self):
         self.assertTrue (
             build_css.getCSSFromThemeDict(blackBoard).startswith (
-                ("pre.Blackboard, pre.Blackboard .lineNumber {\n"
+                ("pre.blackboard, pre.blackboard .lineNumber {\n"
                  "    background-color: #0C1021;\n"
                  "    color: #F8F8F8;\n"
                  "}")

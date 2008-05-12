@@ -41,12 +41,13 @@ def createRule(rule_starter, listing):
     return "\n".join(rule)
 
 def createMainRule(listing, themeName):
-    theme = tuple([themeName] * 2)
+    theme = tuple([camelizeString(themeName)] * 2)
     return createRule(["pre.%s, pre.%s .lineNumber {" % theme], listing)
 
 def createScopeRule(listing, themeName): 
     name = camelizeString(listing['name'])
-    return createRule(["pre.%s .%s {" % (themeName, name)], listing)
+    return createRule(["pre.%s .%s {" % (camelizeString(themeName), name)], 
+                        listing)
     
 def getCSSFromThemeDict(theme):
     name = theme['name']
