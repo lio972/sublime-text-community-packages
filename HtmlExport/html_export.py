@@ -71,12 +71,12 @@ def getSelectionRange(view):
 
 ################################################################################
 
-def scopeLeveled(scope):
+def leveledScopes(scope):
     return [l.replace('.', ' ').split() for l in scope.split(' ') if l]
 
 def selectorSpecificity(selector, scope):
-    allSelectors = scopeLeveled(selector)
-    allScopes = scopeLeveled(scope)
+    allSelectors = leveledScopes(selector)
+    allScopes = leveledScopes(scope)
 
     start = []
     for selectors in allSelectors:
@@ -86,11 +86,11 @@ def selectorSpecificity(selector, scope):
             
     return start[-1:]
 
-def getCssClassAtPt(pt, view, CssScopes):
+def getCssClassAtPt(pt, view, cssScopes):
     candidates = []  
     syntaxAtPoint = " ".join(reversed(view.syntaxName(pt).split()))
     
-    for cssClass, scopes in CssScopes.items():
+    for cssClass, scopes in cssScopes.items():
         for scope in scopes:
             if view.matchSelector(pt, scope):
                 specificity = selectorSpecificity(scope, syntaxAtPoint)
@@ -117,7 +117,7 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
         currentLineNumber = view.rowcol(selRange[0])[0]
         lineStartPts = getLineStartPts(view, *selRange)
         lnCols = `len(`view.rowcol(lineStartPts[-1]-1)[0]`)`
-        lineNumbersTemplate = "<span class='lineNumber'>%"+ lnCols + "d  </span>"
+        lineNumbersTemplate= "<span class='lineNumber'>%"+ lnCols + "d  </span>"
         
         html = ["<pre class='%s'>" % theme]
         for pt in xrange(*selRange):
