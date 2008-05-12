@@ -33,7 +33,7 @@ HTML_TEMPLATE = """<html>
 
 def writeHTML(html, fn, theme):
     with open('%s.html' % fn, 'w') as fh:
-        fh.write(HTML_TEMPLATE % (fn, theme, html))
+        fh.write(HTML_TEMPLATE % (fn, build_css.camelizeString(theme), html))
 
 def getTheme(colorScheme):
     return splitext(split(colorScheme)[1])[0]
@@ -51,7 +51,7 @@ def writeCSS(colorScheme):
     theme = getTheme(colorScheme)
     themePList = getThemeAbsPath(colorScheme)
     css = build_css.getCSSFromThemeDict(plist.parse_plist(themePList))
-    with open("%s.css" % theme, 'w') as fh:
+    with open("%s.css" % build_css.camelizeString(theme), 'w') as fh:
         fh.write(re.sub(r"\.py\b", '.python', css))    
         
 def getLineStartPts(view, start, end):
@@ -119,7 +119,7 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
         lnCols = `len(`view.rowcol(lineStartPts[-1]-1)[0]`)`
         lineNumbersTemplate= "<span class='lineNumber'>%"+ lnCols + "d  </span>"
         
-        html = ["<pre class='%s'>" % theme]
+        html = ["<pre class='%s'>" % build_css.camelizeString(theme)]
         for pt in xrange(*selRange):
             if pt in lineStartPts:
                 currentLineNumber +=1
