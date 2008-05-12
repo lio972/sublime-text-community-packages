@@ -4,9 +4,11 @@ from __future__ import with_statement
 
 from os.path import split, join, normpath, splitext
 
-import sublime, sublimeplugin, cgi, re, webbrowser
+from plist import parse_plist
 
-import plist, build_css
+from build_css import camelizeString, getCSSFromThemeDict, getScopes
+
+import sublime, sublimeplugin, cgi, re, webbrowser
 
 ################################### SETTINGS ###################################
 
@@ -33,26 +35,24 @@ HTML_TEMPLATE = """<html>
 
 def writeHTML(html, fn, theme):
     with open('%s.html' % fn, 'w') as fh:
-        fh.write(HTML_TEMPLATE % (fn, build_css.camelizeString(theme), html))
+        fh.write(HTML_TEMPLATE % (fn, camelizeString(theme), html))
 
-def getTheme(colorScheme):
+def getThemeName(colorScheme):
     return splitext(split(colorScheme)[1])[0]
 
 def getThemeAbsPath(colorScheme):
     appdataPath = split(sublime.packagesPath())[0]
-    return normpath ( join(appdataPath, colorScheme))
+    return normpath(join(appdataPath, colorScheme))
 
 def getCssScopes(colorScheme):
-    return build_css.getScopes (
-        plist.parse_plist( getThemeAbsPath(colorScheme) )
-    )
+    return getScopes(parse_plist(getThemeAbsPath(colorScheme)))
 
 def writeCSS(colorScheme):
-    theme = getTheme(colorScheme)
+    theme = camelizeString(getThemeName(colorScheme))
     themePList = getThemeAbsPath(colorScheme)
-    css = build_css.getCSSFromThemeDict(plist.parse_plist(themePList))
-    with open("%s.css" % build_css.camelizeString(theme), 'w') as fh:
-        fh.write(re.sub(r"\.py\b", '.python', css))    
+    css = getCSSFromThemeDict(parse_plist(themePList))
+    with open("%s.css" % theme, 'w') as fh:
+        fh.write(css)
         
 def getLineStartPts(view, start, end):
     pt, lines  = start, [start]
@@ -87,7 +87,7 @@ def selectorSpecificity(selector, scope):
     return start[-1:]
 
 def getCssClassAtPt(pt, view, cssScopes):
-    candidates = []  
+    candidates = []
     syntaxAtPoint = " ".join(reversed(view.syntaxName(pt).split()))
     
     for cssClass, scopes in cssScopes.items():
@@ -110,16 +110,17 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
         previousCssClass = ''
 
         colorScheme = view.options().get('colorscheme')
-        theme = getTheme(colorScheme)
+        theme = getThemeName(colorScheme)
         cssScopes = getCssScopes(colorScheme)
         
         selRange = getSelectionRange(view)
+        
         currentLineNumber = view.rowcol(selRange[0])[0]
         lineStartPts = getLineStartPts(view, *selRange)
         lnCols = `len(`view.rowcol(lineStartPts[-1]-1)[0]`)`
         lineNumbersTemplate= "<span class='lineNumber'>%"+ lnCols + "d  </span>"
         
-        html = ["<pre class='%s'>" % build_css.camelizeString(theme)]
+        html = ["<pre class='%s'>" % camelizeString(theme)]
         for pt in xrange(*selRange):
             if pt in lineStartPts:
                 currentLineNumber +=1
