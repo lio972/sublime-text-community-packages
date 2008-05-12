@@ -1,1 +1,5 @@
 please see [http://www.sublimetextwiki.com the sublime text wiki]
+
+Packages committed here are not available to users until somone visits
+
+http://www.sublimetextwiki.com/sublime-packages/makeSublimePackages.py
