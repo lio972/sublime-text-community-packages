@@ -14,6 +14,10 @@ import sublime, sublimeplugin, cgi, re, webbrowser
 
 OPEN_HTML_IN_EDITOR = 0
 
+ADD_LINE_NUMBERS = 0
+
+ENCODE_AS = 'utf-8'
+
 ################################### TEMPLATES ##################################
 
 HTML_TEMPLATE = """<html>
@@ -35,7 +39,8 @@ HTML_TEMPLATE = """<html>
 
 def writeHTML(html, fn, theme):
     with open('%s.html' % fn, 'w') as fh:
-        fh.write(HTML_TEMPLATE % (fn, camelizeString(theme), html))
+        html = HTML_TEMPLATE % (fn, camelizeString(theme), html)
+        fh.write(html.encode(ENCODE_AS))
 
 def getThemeName(colorScheme):
     return splitext(split(colorScheme)[1])[0]
@@ -52,7 +57,7 @@ def writeCSS(colorScheme):
     themePList = getThemeAbsPath(colorScheme)
     css = getCSSFromThemeDict(parse_plist(themePList))
     with open("%s.css" % theme, 'w') as fh:
-        fh.write(css)
+        fh.write(css.encode(ENCODE_AS))
         
 def getLineStartPts(view, start, end):
     pt, lines  = start, [start]
@@ -115,43 +120,46 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
         
         selRange = getSelectionRange(view)
         
-        currentLineNumber = view.rowcol(selRange[0])[0]
-        lineStartPts = getLineStartPts(view, *selRange)
-        lnCols = `len(`view.rowcol(lineStartPts[-1]-1)[0]`)`
-        lineNumbersTemplate= "<span class='lineNumber'>%"+ lnCols + "d  </span>"
+        if ADD_LINE_NUMBERS:
+            currentLineNumber = view.rowcol(selRange[0])[0]
+            lineStartPts = getLineStartPts(view, *selRange)
+            lnCols = `len(`view.rowcol(lineStartPts[-1]-1)[0]`)`
+            lineNumbersTemplate = "<span class='lineNumber'>%"
+            lineNumbersTemplate += lnCols + "d  </span>"
         
         html = ["<pre class='%s'>" % camelizeString(theme)]
         for pt in xrange(*selRange):
-            if pt in lineStartPts:
+            
+            if ADD_LINE_NUMBERS and pt in lineStartPts:
                 currentLineNumber +=1
                 html.append(lineNumbersTemplate % currentLineNumber)
-                
-            scopeAtPt = view.syntaxName(pt)            
-            
+
+            scopeAtPt = view.syntaxName(pt)
+
             if scopeAtPt != previousSyntax:
                 if scopeAtPt in scopeCache:
                     cssClassAtPt = scopeCache[scopeAtPt]
-                else:                    
+                else:
                     cssClassAtPt = getCssClassAtPt(pt, view, cssScopes)
-                                    
+
                 if previousCssClass != cssClassAtPt:
                     if previousCssClass: html.append("</span>")
-                    
+
                     if cssClassAtPt: # in case class is None
                         html.append("<span class='%s'>" % cssClassAtPt)
-                
+
                 scopeCache[scopeAtPt] = cssClassAtPt
                 previousSyntax = scopeAtPt
                 previousCssClass = cssClassAtPt
-                
+
             html.append(cgi.escape(view.substr(pt).replace('\t', tab)))
-        
+
         html.append("</pre>")
-        
+
         writeHTML("".join(html), view.fileName(), theme)
         writeCSS(colorScheme)
-        
+
         htmlFile = "%s.html" % view.fileName()
         webbrowser.open(htmlFile)
-        
+
         if OPEN_HTML_IN_EDITOR: view.window().openFile(htmlFile)
