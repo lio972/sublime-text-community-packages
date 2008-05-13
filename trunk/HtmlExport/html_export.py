@@ -122,7 +122,7 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
             lnCols = `len(`view.rowcol(view.size()-1)[0]`)`
             lineNumbersTemplate = "<span class='lineNumber'>%" + lnCols + "d  </span>"
             html += [lineNumbersTemplate % currentLineNumber]
-        
+
         for pt in xrange(*selRange):
             scopeAtPt = view.syntaxName(pt)
             if scopeAtPt != previousSyntax:

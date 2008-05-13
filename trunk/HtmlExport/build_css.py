@@ -41,8 +41,7 @@ def createRule(rule_starter, listing):
     return "\n".join(rule)
 
 def createMainRule(listing, themeName):
-    theme = tuple([camelizeString(themeName)] * 2)
-    return createRule(["pre.%s, pre.%s .lineNumber {" % theme], listing)
+    return createRule(["pre.%s {" % camelizeString(themeName)], listing)
 
 def createScopeRule(listing, themeName): 
     name = camelizeString(listing['name'])
@@ -59,7 +58,9 @@ def getCSSFromThemeDict(theme):
     for scopeRule in settings[1:]:
         css.append(createScopeRule(scopeRule, name))
     
-    return "\n\n".join(css)
+    css+=["pre.%s .lineNumber {\n    color: #7f909f;\n}" % camelizeString(name)]
+    
+    return "\n\n".join(css) + ln
 
 def getScopes(theme):
     scopes = {}
