@@ -8,7 +8,7 @@ from plist import parse_plist
 
 from build_css import camelizeString, getCSSFromThemeDict, getScopes
 
-import sublime, sublimeplugin, cgi, re, webbrowser
+import sublime, sublimeplugin, cgi, webbrowser, time
 
 ################################### SETTINGS ###################################
 
@@ -99,6 +99,8 @@ def getCssClassAtPt(pt, view, cssScopes):
 
 class HtmlExportCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
+        t = time.time()
+        
         addLineNumbers = 'withLineNumbers' in args
         
         tab = ' ' * view.options().get('tabSize')
@@ -145,11 +147,16 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
                 currentLineNumber += 1
                 html += [lineNumbersTemplate % currentLineNumber]
 
-        html += ["</pre>"]
-        writeHTML("".join(html), view.fileName(), theme)
+        html = "".join(html + ["</pre>"])
+        sublime.statusMessage (
+            "HTML and CSS conversion complete: %s " % (time.time() -t) +\
+            "seconds, %s unique compound scopes." % len(scopeCache)
+        )
+
+        writeHTML(html, view.fileName(), theme)
         writeCSS(colorScheme)
 
         htmlFile = "%s.html" % view.fileName()
         webbrowser.open(htmlFile)
-
+                
         if OPEN_HTML_IN_EDITOR: view.window().openFile(htmlFile)
