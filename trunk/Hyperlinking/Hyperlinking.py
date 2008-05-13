@@ -1,8 +1,8 @@
 #HYPERLINKING
 #
-#A Plugin for Sublime Text, By Steve Cooper
+# A Plugin for Sublime Text, By Steve Cooper
 #
-#
+# see README.txt for usage instructions.
 
 import sublime, sublimeplugin, re, os
 
