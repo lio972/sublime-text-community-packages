@@ -56,13 +56,6 @@ def writeCSS(colorScheme):
     css = getCSSFromThemeDict(parse_plist(themePList))
     with open("%s.css" % theme, 'w') as fh:
         fh.write(css.encode(ENCODE_AS))
-        
-def getLineStartPts(view, start, end):
-    pt, lines  = start, [start]
-    while pt < end:
-        pt = view.line(pt).end() + 1
-        lines.append(pt)
-    return lines
 
 def getSelectionRange(view):
     sel = view.sel()[0]
@@ -120,20 +113,16 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
         
         selRange = getSelectionRange(view)
         
-        if addLineNumbers:
-            currentLineNumber = view.rowcol(selRange[0])[0]
-            lineStartPts = getLineStartPts(view, *selRange)
-            lnCols = `len(`view.rowcol(lineStartPts[-1]-1)[0]`)`
-            lineNumbersTemplate = "<span class='lineNumber'>%"
-            lineNumbersTemplate += lnCols + "d  </span>"
-        
         html = ["<pre class='%s'>" % camelizeString(theme)]
+        
+        if addLineNumbers:
+            currentLineNumber = view.rowcol(selRange[0])[0] + 1
+            lnCols = `len(`view.rowcol(view.size()-1)[0]`)`
+            lineNumbersTemplate = "<span class='lineNumber'>%" + lnCols + "d  </span>"
+            html += [lineNumbersTemplate % currentLineNumber]
+        
         for pt in xrange(*selRange):
             
-            if addLineNumbers and pt in lineStartPts:
-                currentLineNumber +=1
-                html.append(lineNumbersTemplate % currentLineNumber)
-
             scopeAtPt = view.syntaxName(pt)
 
             if scopeAtPt != previousSyntax:
@@ -151,10 +140,15 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
                 scopeCache[scopeAtPt] = cssClassAtPt
                 previousSyntax = scopeAtPt
                 previousCssClass = cssClassAtPt
+            
+            
+            ptCh = view.substr(pt)
+            html += [cgi.escape(ptCh.replace('\t', tab))]
+            if addLineNumbers and ptCh == '\n':
+                currentLineNumber += 1
+                html += [lineNumbersTemplate % currentLineNumber]
 
-            html.append(cgi.escape(view.substr(pt).replace('\t', tab)))
-
-        html.append("</pre>")
+        html += ["</pre>"]
 
         writeHTML("".join(html), view.fileName(), theme)
         writeCSS(colorScheme)
