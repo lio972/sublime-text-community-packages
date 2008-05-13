@@ -29,7 +29,7 @@ refreshHooks = []    #[(djangoProjects, apacheRestart)]
 
 # Global filtering
 
-onlyRefreshIf =  lambda x: True #djangoProjects
+onlyRefreshIf =  lambda view, lock: True #djangoProjects
 
 # startUrl = 'http://localhost/admin'
 
@@ -45,6 +45,7 @@ FFLastUrl = re.compile('"(.*?://.*?)".*repl[0-9]?', re.DOTALL | re.MULTILINE)
    
 class BrowsersCommand(sublimeplugin.TextCommand):
     ie = None
+    lock = threading.RLock()
     firefox = None
     alternation = 0
     firefoxHWND = 0
@@ -160,9 +161,9 @@ class BrowsersCommand(sublimeplugin.TextCommand):
         if debug: print 'hookb4Refresh'
         
         for notFiltered, runHook in refreshHooks:
-            if notFiltered(view): runHook(view)
+            if notFiltered(view, self.lock): runHook(view, self.lock)
     
-        if onlyRefreshIf(view):
+        if onlyRefreshIf(view, self.lock):
             sublime.setTimeout(self.refreshBrowsers, 1)
             
     def onPostSave(self, view):
