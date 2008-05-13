@@ -60,7 +60,7 @@ def getCSSFromThemeDict(theme):
     
     css+=["pre.%s .lineNumber {\n    color: #7f909f;\n}" % camelizeString(name)]
     
-    return "\n\n".join(css) + ln
+    return "\n\n".join(css)
 
 def getScopes(theme):
     scopes = {}
