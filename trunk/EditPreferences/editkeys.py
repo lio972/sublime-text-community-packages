@@ -115,9 +115,7 @@ def findSnippets(path):
     return snippets
 
 class EditSnippetCommand(sublimeplugin.TextCommand):
-    """ OpenSnippets will open up all snippets relevant to the syntax/package
-        of the currently open file """
-        
+            
     def run(self, view, args):
         pkgDir = getPackageDir(view)
         if not pkgDir: return
