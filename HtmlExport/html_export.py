@@ -14,8 +14,6 @@ import sublime, sublimeplugin, cgi, re, webbrowser
 
 OPEN_HTML_IN_EDITOR = 0
 
-ADD_LINE_NUMBERS = 0
-
 ENCODE_AS = 'utf-8'
 
 ################################### TEMPLATES ##################################
@@ -108,6 +106,8 @@ def getCssClassAtPt(pt, view, cssScopes):
 
 class HtmlExportCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
+        addLineNumbers = 'withLineNumbers' in args
+        
         tab = ' ' * view.options().get('tabSize')
         
         scopeCache = {}
@@ -120,7 +120,7 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
         
         selRange = getSelectionRange(view)
         
-        if ADD_LINE_NUMBERS:
+        if addLineNumbers:
             currentLineNumber = view.rowcol(selRange[0])[0]
             lineStartPts = getLineStartPts(view, *selRange)
             lnCols = `len(`view.rowcol(lineStartPts[-1]-1)[0]`)`
@@ -130,7 +130,7 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
         html = ["<pre class='%s'>" % camelizeString(theme)]
         for pt in xrange(*selRange):
             
-            if ADD_LINE_NUMBERS and pt in lineStartPts:
+            if addLineNumbers and pt in lineStartPts:
                 currentLineNumber +=1
                 html.append(lineNumbersTemplate % currentLineNumber)
 
