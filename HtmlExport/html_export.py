@@ -16,22 +16,38 @@ OPEN_HTML_IN_EDITOR = 0
 
 ENCODE_AS = 'utf-8'
 
+#################################### README ####################################
+
+"""
+    TODO:   multiple selections, for posting snippets with foo() ... bar()
+
+            outputting in new file just the html 
+
+            in <head> css styles
+
+            embedded style="bla" attributes, no messing around with style
+            sheets for quick posts
+"""
+
 ################################### TEMPLATES ##################################
 
 HTML_TEMPLATE = """<html>
 <head>
-    <title> %s </title>
-    <link rel="stylesheet" href="%s.css" type="text/css" charset="utf-8" />
-    <style type='text/css'>
-        body {margin:0; padding:0;}
-        pre {padding: 1em; font: 12px "DejaVu Sans Mono", monospace;}
-    </style>
+              <title> %s </title>
+              <link rel="stylesheet" href="%s.css" type="text/css" charset="utf-8" />
+              <style type='text/css'>
+              body {margin:0; padding:0;}
+              pre {padding: 1em; font: 12px "DejaVu Sans Mono", monospace;}
+              </style>
 </head>
 <body>
 %s
 </body>
 </html>
 """
+
+LINE_NUMBER = '<span class="lineNumber">%s</span>'
+
 
 ################################### FUNCTIONS ##################################
 
@@ -57,13 +73,11 @@ def writeCSS(colorScheme):
     with open("%s.css" % theme, 'w') as fh:
         fh.write(css.encode(ENCODE_AS))
 
-def getSelectionRange(view):
-    sel = view.sel()[0]
-    if not sel.empty():
-        expanded = view.line(sel)
-        return expanded.begin(), expanded.end()
+def getSelections(view):
+    if view.hasNonEmptySelectionRegion():
+        return [view.line(s) for s in view.sel()]
     else:
-        return 0, view.size()
+        return [sublime.Region(0, view.size())]
 
 ################################################################################
 
@@ -79,19 +93,19 @@ def selectorSpecificity(selector, scope):
         for scopeLevel, scopes in enumerate(allScopes):
             if not [x for x in selectors if x not in scopes]:
                 start.append((scopeLevel+1, len(selectors)))
-            
+
     return start[-1:]
 
 def getCssClassAtPt(pt, view, cssScopes):
     candidates = []
     syntaxAtPoint = " ".join(reversed(view.syntaxName(pt).split()))
-    
+
     for cssClass, scopes in cssScopes.items():
         for scope in scopes:
             if view.matchSelector(pt, scope):
                 specificity = selectorSpecificity(scope, syntaxAtPoint)
                 candidates.append((specificity, cssClass))
-                
+
     if candidates:
         return sorted(candidates)[-1][1]
 
@@ -100,52 +114,55 @@ def getCssClassAtPt(pt, view, cssScopes):
 class HtmlExportCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
         t = time.time()
-        
+
         addLineNumbers = 'withLineNumbers' in args
-        
+
         tab = ' ' * view.options().get('tabSize')
-        
+
         scopeCache = {}
-        previousSyntax = ''
+        previousScope = ''
         previousCssClass = ''
 
         colorScheme = view.options().get('colorscheme')
         theme = getThemeName(colorScheme)
         cssScopes = getCssScopes(colorScheme)
-        
-        selRange = getSelectionRange(view)
-        
+
         html = ["<pre class='%s'>" % camelizeString(theme)]
+
+        selections = getSelections(view)
+        lnCols = len(`view.rowcol(selections[-1].end()-1)[0]`)
         
-        if addLineNumbers:
-            currentLineNumber = view.rowcol(selRange[0])[0] + 1
-            lnCols = `len(`view.rowcol(view.size()-1)[0]`)`
-            lineNumbersTemplate = "<span class='lineNumber'>%" + lnCols + "d  </span>"
-            html += [lineNumbersTemplate % currentLineNumber]
+        for i, sel in enumerate(selections):
+            if i > 0: html += [LINE_NUMBER % ("\n\n%s\n\n" % (lnCols * '.'))]
 
-        for pt in xrange(*selRange):
-            scopeAtPt = view.syntaxName(pt)
-            if scopeAtPt != previousSyntax:
-                if scopeAtPt in scopeCache:
-                    cssClassAtPt = scopeCache[scopeAtPt]
-                else:
-                    cssClassAtPt = getCssClassAtPt(pt, view, cssScopes)
-
-                if previousCssClass != cssClassAtPt:
-                    if previousCssClass: html.append("</span>")
-
-                    if cssClassAtPt: # in case class is None
-                        html.append("<span class='%s'>" % cssClassAtPt)
-
-                scopeCache[scopeAtPt] = cssClassAtPt
-                previousSyntax = scopeAtPt
-                previousCssClass = cssClassAtPt
-            
-            charAtPt = view.substr(pt)
-            html += [cgi.escape(charAtPt.replace('\t', tab))]
-            if addLineNumbers and charAtPt == '\n':
-                currentLineNumber += 1
+            if addLineNumbers:
+                currentLineNumber = view.rowcol(sel.begin())[0] + 1          
+                lineNumbersTemplate = LINE_NUMBER % ("%"+ `lnCols` + "d  ")
                 html += [lineNumbersTemplate % currentLineNumber]
+
+            for pt in xrange(sel.begin(), sel.end()):
+                scopeAtPt = view.syntaxName(pt)
+                if scopeAtPt != previousScope:
+                    if scopeAtPt in scopeCache:
+                        cssClassAtPt = scopeCache[scopeAtPt]
+                    else:
+                        cssClassAtPt = getCssClassAtPt(pt, view, cssScopes)
+
+                    if previousCssClass != cssClassAtPt:
+                        if previousCssClass: html.append("</span>")
+
+                        if cssClassAtPt: # in case class is None
+                            html.append("<span class='%s'>" % cssClassAtPt)
+
+                    scopeCache[scopeAtPt] = cssClassAtPt
+                    previousScope = scopeAtPt
+                    previousCssClass = cssClassAtPt
+
+                charAtPt = view.substr(pt)
+                html += [cgi.escape(charAtPt.replace('\t', tab))]
+                if addLineNumbers and charAtPt == '\n':
+                    currentLineNumber += 1
+                    html += [lineNumbersTemplate % currentLineNumber]
 
         html = "".join(html + ["</pre>"])
         sublime.statusMessage (
@@ -158,5 +175,5 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
 
         htmlFile = "%s.html" % view.fileName()
         webbrowser.open(htmlFile)
-                
+
         if OPEN_HTML_IN_EDITOR: view.window().openFile(htmlFile)
