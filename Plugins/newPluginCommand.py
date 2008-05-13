@@ -47,10 +47,10 @@ class NewPluginCommand(sublimeplugin.WindowCommand):
         self.callbacks[pluginFile] = 'pluginSnippet'
         self.callbacks[keymapFile] = (
         
-                "move lines 1;" * 2 + r"insertAndDecodeCharacters \n;" +\
-                "move lines -1;" + r"insertAndDecodeCharacters \t;" +\
-                "insertSnippet 'Packages/Plugins/newKeyMap.sublime-snippet' %s"\
-                % camelName
+            "move lines 1;" * 2 + r"insertAndDecodeCharacters \n;" +\
+            "move lines -1;" + r"insertAndDecodeCharacters \t;" +\
+            "insertSnippet 'Packages/Plugins/newKeyMap.sublime-snippet' %s"\
+            %    camelName
         )
         
         #Open both the files, triggering onActivated event
@@ -90,10 +90,6 @@ IMPORTS = ( "import sublime, sublimeplugin${0:, os, sys}\n\n"
 MAIN = """
 class ${1:$PARAM1}Command(sublimeplugin.${3:Text}Command):
     %s ${1:$PARAM1} for $2 %s
-    
-    def isEnabled(self, ${4:view}, args):
-        if 1:
-            return True    
     
     def run(self, ${4:view}, args):
         ${5:print args}
@@ -186,8 +182,8 @@ class PluginSnippetCommand(sublimeplugin.TextCommand):
         # Always wan't a new class MyPlugin.....
         snip.append(MAIN)
 
-        if 'class' not in buffer: 
-            snip.append(HANDLERS)
-            snip.append(COMPLETIONS)
+        # if 'class' not in buffer:
+        #     snip.append(HANDLERS)
+        #     snip.append(COMPLETIONS)
             
         view.runCommand('insertInlineSnippet', ["\n".join(snip),  plugName])
