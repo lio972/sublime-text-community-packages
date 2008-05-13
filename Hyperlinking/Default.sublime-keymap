@@ -1,5 +1,4 @@
 <bindings>
-   <!-- navigateBackups -->
    <binding key="ctrl+alt+n" command="navigateToWikiPage"/>
    <binding key="ctrl+alt+h" command="navigateToWikiIndexPage"/>
 </bindings>
