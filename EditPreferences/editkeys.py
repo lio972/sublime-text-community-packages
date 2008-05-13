@@ -1,9 +1,15 @@
+#################################### IMPORTS ###################################
+
 from __future__ import with_statement
 
 import sublime, sublimeplugin, os, sys, re, difflib
 from os.path import split, join
 
+################################### SETTINGS ###################################
+
 DONT_CREATE_FILES = 0
+
+################################### CONSTANTS ##################################
 
 SUBLIME_KEYMAP = """
 <!--
@@ -38,6 +44,21 @@ Also note that if the same key is bound twice, the last binding takes precedence
 </bindings>
 """
 
+################################### FUNCTIONS ##################################
+
+def getPackageDir(view):
+    try: fn = view.fileName()
+    except: return None
+    
+    pkgsPath = sublime.packagesPath()
+    
+    if fn and pkgsPath in fn: 
+        pkgDir = split(fn[len(pkgsPath)+1:])[0]
+    else:
+        pkgDir = split(split(view.options().get("syntax"))[0])[1]
+    
+    return pkgDir
+
 def openPreference(f, window):
     if not os.path.exists(f):
         if f.endswith('sublime-keymap'):
@@ -53,25 +74,14 @@ def openPreference(f, window):
                 fh.write(toWrite)
                 
     window.openFile(f)
-    
-def getPackageDir(view):
-    try: fn = view.fileName()
-    except: return None
-    
-    pkgsPath = sublime.packagesPath()
-    
-    if fn and pkgsPath in fn: 
-        pkgDir = split(fn[len(pkgsPath)+1:])[0]
-    else:
-        pkgDir = split(split(view.options().get('syntax'))[0])[1]
-    
-    return pkgDir
 
+#################################### PLUGINS ###################################
+    
 class EditPreferenceCommand(sublimeplugin.WindowCommand):
     def run(self, window, args):
         
         openPreference(
-            os.path.join(sublime.packagesPath(), args[0]), window
+            join(sublime.packagesPath(), args[0]), window
         )
 
 class EditPreferenceContextualCommand(sublimeplugin.WindowCommand):
@@ -90,27 +100,44 @@ class EditPreferenceContextualCommand(sublimeplugin.WindowCommand):
             window
         )
 
+################################### SNIPPETS ###################################
 
-class EditSnippetCommand(sublimeplugin.TextCommand):        
+snippetsRe = re.compile(r"Packages/.*?\.sublime-snippet", re.DOTALL | re.MULTILINE)
+
+def findSnippets(path):
+    snippets = []
+    keyMaps = [f for f in os.listdir(path) if f.endswith('sublime-keymap')]
+
+    for f in keyMaps:
+        with open(join(path, f)) as fh:
+            snippets += snippetsRe.findall(fh.read())
+    
+    return snippets
+
+class EditSnippetCommand(sublimeplugin.TextCommand):
+    """ OpenSnippets will open up all snippets relevant to the syntax/package
+        of the currently open file """
+        
     def run(self, view, args):
         pkgDir = getPackageDir(view)
         if not pkgDir: return
         
-        print args
+        pkgDirAbs = os.path.normpath(join(sublime.packagesPath(), pkgDir))
         
-        pkgDirAbs = join(sublime.packagesPath(), pkgDir)
-        snippets = [s for s in os.listdir(pkgDirAbs) if s.endswith('snippet')]
+        snippets = findSnippets(pkgDirAbs)
         
         if len(snippets) > 1:
             snippets = difflib.get_close_matches(args[0], 
                                                  [l.lower() for l in snippets], 
                                                  n=1,
                                                  cutoff=0.1)
+        
+        sublimeTextPath = split(sublime.packagesPath())[0]
         if snippets:
             for f in snippets:
-                view.window().openFile(join(pkgDirAbs, f))
+                view.window().openFile(join(sublimeTextPath, f))
 
-
+############################## LIST SHORTCUTS KEYS #############################
 
 commands_regex = re.compile('<binding key="(.*?)".*?command="(.*?)"')
 
@@ -137,3 +164,5 @@ class ListShortcutKeysCommand(sublimeplugin.WindowCommand):
         
         window.runCommand('new')
         window.activeView().insert(0, "\n".join(clip)[2:])
+        
+################################################################################
