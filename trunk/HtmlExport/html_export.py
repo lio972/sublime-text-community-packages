@@ -122,9 +122,7 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
             html += [lineNumbersTemplate % currentLineNumber]
         
         for pt in xrange(*selRange):
-            
             scopeAtPt = view.syntaxName(pt)
-
             if scopeAtPt != previousSyntax:
                 if scopeAtPt in scopeCache:
                     cssClassAtPt = scopeCache[scopeAtPt]
@@ -141,15 +139,13 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
                 previousSyntax = scopeAtPt
                 previousCssClass = cssClassAtPt
             
-            
-            ptCh = view.substr(pt)
-            html += [cgi.escape(ptCh.replace('\t', tab))]
-            if addLineNumbers and ptCh == '\n':
+            charAtPt = view.substr(pt)
+            html += [cgi.escape(charAtPt.replace('\t', tab))]
+            if addLineNumbers and charAtPt == '\n':
                 currentLineNumber += 1
                 html += [lineNumbersTemplate % currentLineNumber]
 
         html += ["</pre>"]
-
         writeHTML("".join(html), view.fileName(), theme)
         writeCSS(colorScheme)
 
