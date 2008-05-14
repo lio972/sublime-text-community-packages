@@ -2,10 +2,6 @@ Bringing hyperlinking to text file navigation...
 
 This plugin provides a simple hyperlinking facility, which allows you to create very lightweight, text-file-based wikis. 
 
-== Known Bug ==
-
-Right now, the first form of links mentioned below (just putting your cursor inside a word) is unreliable. Use the method in 'Longer Links', below. I hope to have this fixed very shortly.
-
 == Getting Started ==
 
 Here's how you use it; create a folder and add at least one file with a ".wiki" extension. say;
