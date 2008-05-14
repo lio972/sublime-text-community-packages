@@ -1,21 +1,25 @@
-Hyperlinking Sublime Package, by Steve Cooper
-=============================================
-
 Bringing hyperlinking to text file navigation...
 
 This plugin provides a simple hyperlinking facility, which allows you to create very lightweight, text-file-based wikis. 
 
-Getting Started
----------------
+== Known Bug ==
+
+Right now, the first form of links mentioned below (just putting your cursor inside a word) is unreliable. Use the method in 'Longer Links', below. I hope to have this fixed very shortly.
+
+== Getting Started ==
 
 Here's how you use it; create a folder and add at least one file with a ".wiki" extension. say;
 
+{{{
     \world_of_fruit
        \fruit.wiki
+}}}
               
 Now edit fruit.wiki:
 
-   The apple is a fine fruit. So is the orange.
+{{{
+     The apple is a fine fruit. So is the orange.
+}}}
    
 Put your cursor somewhere inside the word 'apple', like this;
 
@@ -23,8 +27,7 @@ Put your cursor somewhere inside the word 'apple', like this;
 
 Hit ctrl+alt+n (navigate). You'll be prompted to see if you want to create a new file, apple.wiki. If you say yes, apple.wiki is created and you can start editing it straight away. Easy!
 
-Longer Links
-------------
+== Longer Links ==
 
 If you want to create a file with a longer name, you can enclose it in square brackets;
 
