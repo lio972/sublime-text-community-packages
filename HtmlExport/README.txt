@@ -1,5 +1,6 @@
 Exports the document/selection[s] as a html+css representation of the current view / theme
-    
+
+http://www.sublimetextwiki.com/resources/html_export.py.html
 
 == Usage ==
         
