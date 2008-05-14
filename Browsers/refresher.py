@@ -23,7 +23,7 @@ from windows import FocusRestorer, activateApp
 
 SYNC_EVERY = 0    # seconds, 0 for don't sync
 
-debug = 1
+debug = 0
  
 refreshHooks = []    #[(djangoProjects, apacheRestart)]
 
@@ -95,7 +95,8 @@ class BrowsersCommand(sublimeplugin.TextCommand):
             
             if SYNC_EVERY:
                 sublime.setTimeout (
-                    partial(self.syncBrowsers, only_sync = True), SYNC_EVERY * 1000
+                    partial(self.syncBrowsers, only_sync = True), 
+                    SYNC_EVERY * 1000
                 )
                         
         except Exception, e:
