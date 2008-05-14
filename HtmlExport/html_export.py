@@ -16,29 +16,36 @@ OPEN_HTML_IN_EDITOR = 0
 
 ENCODE_AS = 'utf-8'
 
-#################################### README ####################################
+##################################### TODO #####################################
 
 """
-    TODO:   multiple selections, for posting snippets with foo() ... bar()
+    
+    multiple selections, for posting snippets with foo() ... bar()      * done *
+      
+        contract selections so there are no empty lines 4 mult-sel
+    
 
-            outputting in new file just the html 
+    outputting in new file just the html 
 
-            in <head> css styles
+    in <head> css styles
 
-            embedded style="bla" attributes, no messing around with style
-            sheets for quick posts
+    embedded style="bla" attributes, no messing around with style
+    sheets for quick posts
+    
+    line numbers in float:left pre tag so can easily copy paste
+    
 """
 
 ################################### TEMPLATES ##################################
 
 HTML_TEMPLATE = """<html>
 <head>
-              <title> %s </title>
-              <link rel="stylesheet" href="%s.css" type="text/css" charset="utf-8" />
-              <style type='text/css'>
-              body {margin:0; padding:0;}
-              pre {padding: 1em; font: 12px "DejaVu Sans Mono", monospace;}
-              </style>
+    <title> %s </title>
+    <link rel="stylesheet" href="%s.css" type="text/css" charset="utf-8" />
+    <style type='text/css'>
+        body {margin:0; padding:0;}
+        pre {padding: 1em; font: 12px "DejaVu Sans Mono", monospace;}
+    </style>
 </head>
 <body>
 %s
@@ -47,7 +54,6 @@ HTML_TEMPLATE = """<html>
 """
 
 LINE_NUMBER = '<span class="lineNumber">%s</span>'
-
 
 ################################### FUNCTIONS ##################################
 
