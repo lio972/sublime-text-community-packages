@@ -2,6 +2,7 @@ Downloads all packages at http://www.sublimetextwiki.com/sublime-packages. When 
 
   * AutomaticBackupsPlugin
   * PackageDownloaderPlugin
+  * WordCountPlugin
 
 TO INSTALL: 
 
