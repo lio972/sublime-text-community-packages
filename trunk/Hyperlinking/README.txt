@@ -23,7 +23,9 @@ Now edit fruit.wiki:
    
 Put your cursor somewhere inside the word 'apple', like this;
 
-   The ap|ple is a fine fruit. So is the orange.
+{{{
+     The ap|ple is a fine fruit. So is the orange.
+}}}
 
 Hit ctrl+alt+n (navigate). You'll be prompted to see if you want to create a new file, apple.wiki. If you say yes, apple.wiki is created and you can start editing it straight away. Easy!
 
