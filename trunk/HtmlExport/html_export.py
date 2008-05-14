@@ -85,7 +85,7 @@ def getSelections(view):
     else:
         return [sublime.Region(0, view.size())]
 
-################################################################################
+######################## SELECTOR SPECIFICITY FUNCTIONS ########################
 
 def leveledScopes(scope):
     return [l.replace('.', ' ').split() for l in scope.split(' ') if l]
@@ -183,3 +183,5 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
         webbrowser.open(htmlFile)
 
         if OPEN_HTML_IN_EDITOR: view.window().openFile(htmlFile)
+        
+################################################################################
