@@ -93,6 +93,8 @@ class NavigateToWikiPageCommand(sublimeplugin.TextCommand):
       charAfterPoint = view.substr(sublime.Region(pos, pos+1))
       if charAfterPoint == "]":
         return pos
+      if charAfterPoint == "[":
+        return 0
       pos = pos + 1
     
   def findStartSquareBracket(self, view, s):
@@ -104,6 +106,8 @@ class NavigateToWikiPageCommand(sublimeplugin.TextCommand):
       charBeforePoint = view.substr(sublime.Region(pos-1, pos))
       if charBeforePoint == "[":
         return pos
+      if charBeforePoint == "]":
+        return 0
       pos = pos - 1  
   	
   def findWordBoundary(self, view, s):
