@@ -6,20 +6,21 @@
 
 import sublime, sublimeplugin, re, os
 
-def ensureFile(fileName):
-  if os.path.exists(fileName) == False:
-    f = open(fileName, 'w')
-    f.write("")
-    f.close()
-
 class NavigateToWikiIndexPageCommand(sublimeplugin.TextCommand):
   """This command creates a new view containing all the files 
   which can be visited from the currently-visible wiki file 
   """
+
+  def ensureFile(self, fileName):
+    if os.path.exists(fileName) == False:
+      f = open(fileName, 'w')
+      f.write("")
+      f.close()
+
   def run(self, view, args):
     dirName = os.path.dirname(view.fileName())
     indexFileName = os.path.join(dirName, "IndexPage.wiki")
-    ensureFile(indexFileName)
+    self.ensureFile(indexFileName)
     
     allFiles = os.listdir(dirName)
     wikiFiles = [ "[%s]" % f[:-5] for f in allFiles if os.path.isfile(f) and f.lower().endswith(".wiki")]
@@ -69,7 +70,7 @@ class NavigateToWikiPageCommand(sublimeplugin.TextCommand):
         view.window().openFile(candidateFileName)
       else:
       	if sublime.questionBox("Do you want to create %s" % candidateFileName):
-          __ensureFile(candidateFileName)
+          ensureFile(candidateFileName)
           sublime.statusMessage("No page at %s: starting new file" % candidateFileName)
           view.window().openFile(candidateFileName)
         
