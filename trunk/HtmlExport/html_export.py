@@ -14,6 +14,14 @@ import sublime, sublimeplugin, cgi, webbrowser, time
 
 OPEN_HTML_IN_EDITOR = 0
 
+OPEN_HTML_IN_BROWSER = 1
+
+COPY_CSS_TO_CLIPBOARD = 1                    # TODO make it a keybinding
+
+COPY_HTML_TO_CLIPBOARD = 1
+
+WRITE_OUT_HTML = OPEN_HTML_IN_EDITOR or OPEN_HTML_IN_BROWSER
+
 ENCODE_AS = 'utf-8'
 
 ##################################### TODO #####################################
@@ -26,6 +34,8 @@ ENCODE_AS = 'utf-8'
     
 
     outputting in new file just the html 
+    
+    pre tag + css to clipboard
 
     in <head> css styles
 
@@ -61,6 +71,8 @@ def writeHTML(html, fn, theme):
     with open('%s.html' % fn, 'w') as fh:
         html = HTML_TEMPLATE % (fn, camelizeString(theme), html)
         fh.write(html.encode(ENCODE_AS))
+    
+    return '%s.html' % fn #TODO: refactor
 
 def getThemeName(colorScheme):
     return splitext(split(colorScheme)[1])[0]
@@ -78,6 +90,8 @@ def writeCSS(colorScheme):
     css = getCSSFromThemeDict(parse_plist(themePList))
     with open("%s.css" % theme, 'w') as fh:
         fh.write(css.encode(ENCODE_AS))
+    
+    return css   #TODO fix this
 
 def getSelections(view):
     if view.hasNonEmptySelectionRegion():
@@ -176,12 +190,23 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
             "seconds, %s unique compound scopes." % len(scopeCache)
         )
 
-        writeHTML(html, view.fileName(), theme)
-        writeCSS(colorScheme)
 
-        htmlFile = "%s.html" % view.fileName()
-        webbrowser.open(htmlFile)
 
-        if OPEN_HTML_IN_EDITOR: view.window().openFile(htmlFile)
+        if WRITE_OUT_HTML:
+            htmlFile = writeHTML(html, view.fileName(), theme)  # HACK TODO
+
+        if OPEN_HTML_IN_BROWSER: webbrowser.open(htmlFile)
+        if OPEN_HTML_IN_EDITOR: view.window().openFile()
         
+
+        cssString = writeCSS(colorScheme)    # HACK TODO.. 
+                                             # and the rest isnt??  hahahah
+
+        clipboard = ''
+        if COPY_CSS_TO_CLIPBOARD: clipboard += cssString
+        if COPY_HTML_TO_CLIPBOARD: clipboard += html
+        if clipboard:
+            sublime.setClipboard(clipboard)
+        
+        print clipboard
 ################################################################################
