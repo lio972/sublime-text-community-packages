@@ -1,8 +1,5 @@
 #################################### IMPORTS ###################################
 
-from __future__ import with_statement
-from os.path import join, split, normpath
-
 import sublime, sublimeplugin, re, os
 
 ############################### COMMON FUNCTIONS ###############################
@@ -93,7 +90,7 @@ class ParamPerSelectionSnippetCommand(sublimeplugin.TextCommand):
         
         for sel in selSet:
             selections.append(substrStripPrecedingCommonSpace(view, sel))
-        
+
         start, end, displace = linesGetFirstsDisplacement( view, sel1) 
         
         eraseSelectionLines(view)
