@@ -7,27 +7,20 @@ import sublime, sublimeplugin, re, os
 
 ############################### COMMON FUNCTIONS ###############################
 
-def stripPreceding(selection, padding="", rstrip=True):
+def strip_common_preceding(selection, padding="", rstrip=True):
     "Strips preceding common space so only relative indentation remains"
     
-    spacesList = []
-    spaces = 0
-    
-    split = selection.split("\n")
-    for l in split:
-        for ch in l:
-            if ch == '\t' or ch == ' ': spaces += 1
-            else:
-                spacesList.append(spaces)
-                spaces = 0
-                break
-                                       
-    try: anchorPoint = min(spacesList)
-    except ValueError: anchorPoint = 0
-    
-    stripped = "\n".join(   [split[0][anchorPoint:]]      +\
-                [padding + l[anchorPoint:] for l in split[1:]] )
+    preceding_whitespace = re.compile("^(?:(\s*?)\S)?")
+    common_start = len(selection)
 
+    split = selection.split("\n")
+    for line in (l for l in split if l.strip()):
+        for match in preceding_whitespace.finditer(line):
+            common_start = min(match.span(1)[1], common_start)
+
+    stripped = "\n".join( [split[0][common_start:]]                      +\
+                       [padding + l[common_start:] for l in split[1:]] )
+    
     return  stripped.rstrip("\n") if rstrip else stripped
 
 def linesGetFirstsDisplacement(view, region):
@@ -78,9 +71,15 @@ def eraseSelectionLines(view):
 class RelativeIndentCommand(sublimeplugin.TextCommand):
     def run(self, view, args):
         if args[0] == 'paste':
-            selection = sublime.getClipboard().replace("\r\n", "\n")
+            
+            for sel in view.sel():
+                line = view.line(sel)
+                if view.substr(line).isspace():
+                    view.erase(sublime.Region(sel.end(), line.end()))
+
+            selection = sublime.getClipboard()         #.replace("\r\n", "\n")
             selection = stripPreceding(selection)
-                        
+            
             view.runCommand('insertInlineSnippet', ['$PARAM1', selection])
         else:
             view.runCommand('expandSelectionTo line')
