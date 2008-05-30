@@ -4,7 +4,7 @@ import sublime, sublimeplugin, re, os
 
 ############################### COMMON FUNCTIONS ###############################
 
-def strip_common_preceding(selection, padding="", rstrip=True):
+def stripPreceding(selection, padding="", rstrip=True):
     "Strips preceding common space so only relative indentation remains"
     
     preceding_whitespace = re.compile("^(?:(\s*?)\S)?")
