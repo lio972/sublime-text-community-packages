@@ -21,11 +21,15 @@ def stripPreceding(selection, padding="", rstrip=True):
     return  stripped.rstrip("\n") if rstrip else stripped
 
 def linesGetFirstsDisplacement(view, region):
-    "Expands a selection to encompass the lines it is situated in. "
-    "It then contracts the start point to where the first non space "
-    "character is found. Returns the start pt of the expanded "
-    "selection, displacement( characters to contracted selection), " 
-    "and then the end pt."
+    """
+    
+    Expands a selection to encompass the lines it is situated in. 
+    It then contracts the start point to where the first non space 
+    character is found. Returns the start pt of the expanded 
+    selection, displacement( characters to contracted selection), 
+    and then the end pt.
+    
+    """
     
     region = view.line(region)
     start, end = region.begin(), region.end()
@@ -37,22 +41,34 @@ def linesGetFirstsDisplacement(view, region):
     return start, end, displace
 
 def linesFirstNoPrecedingSpace(view, region, returnDisplace=False):
-    "Expands a selection to encompass the lines it is situated in. "
-    "It then contracts the start point to where the first non space "
-    "character is found. Returns a region"
+    """
+    
+    Expands a selection to encompass the lines it is situated in.
+    It then contracts the start point to where the first non space
+    character is found. Returns a region
+    
+    """
     
     start, end, displace = linesGetFirstsDisplacement(view, region)
     return sublime.Region(start+displace, end)
     
 def getTab(view):
-    "Gets a series of empty space characters of size 'tabSize', the "
-    "current views setting for size of tab"
+    """
+    
+    Gets a series of empty space characters of size 'tabSize', the 
+    current views setting for size of tab
+    
+    """
     
     return view.options().get('tabSize') * " "
 
 def substrStripPrecedingCommonSpace(view, region, padSecondary=""):
-    "takes a view, and a Region of it, strips preceding common space "
-    "so only relative indentation remains"
+    """
+    
+    takes a view, and a Region of it, strips preceding common space 
+    so only relative indentation remains
+    
+    """
     
     region = view.line(region)
     tab = getTab(view)
@@ -87,7 +103,7 @@ class ParamPerSelectionSnippetCommand(sublimeplugin.TextCommand):
         selections = []
         selSet = view.sel()
         sel1 = selSet[0]
-        
+
         for sel in selSet:
             selections.append(substrStripPrecedingCommonSpace(view, sel))
 
