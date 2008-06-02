@@ -1,6 +1,6 @@
 #################################### IMPORTS ###################################
 
-from __future__ import with_statement
+from __future__ import with_statement, division
 
 from os.path import split, join, normpath, splitext
 
@@ -110,24 +110,25 @@ def getSelections(view):
 # TODO    -  operator           source - source.python
 #         || operator           source - (source.python || source.ruby)   
 
-# Will need a complete overhaul
-
 def leveledScopes(scope):
-    return [l.replace('.', ' ').split() for l in scope.split(' ') if l]
-
-     # source - (source.python || source.ruby) comment
-     # source - source.python || source.ruby comment
+    scope = ' '.join(scope.split(' -')[:1])
+    scope = [l.strip() for l in scope.split(' ')]
+    return [l.split('.') for l in scope]
 
 def selectorSpecificity(selector, scope):
     allSelectors, allScopes = map(leveledScopes, (selector, scope))
 
-    start = []
+    specificity = []
     for selectors in allSelectors:
+        rounds = []
+
         for scopeLevel, scopes in enumerate(allScopes):
             if not [s for s in selectors if s not in scopes]:
-                start.append((scopeLevel+1, len(selectors)))
-                
-    return start
+                rounds.append((scopeLevel+1, len(selectors)))
+
+        if rounds: specificity.append(rounds[-1])
+
+    return specificity if len(specificity) == len(allSelectors) else []
 
 def compareCandidates(c1, c2):
     cd1, cd2 = c1[0][:], c2[0][:]
@@ -147,10 +148,10 @@ def getCssClassAtPt(pt, view, cssRules):
 
     for cssClass, selectors in cssRules.items():
         for selector in selectors:
-            if view.matchSelector(pt, selector):
-                specificity = selectorSpecificity(selector, scopeAtPoint)
+            specificity = selectorSpecificity(selector, scopeAtPoint)
+            if specificity:
                 candidates.append((specificity, cssClass))
-
+    
     if candidates:
         candidates = sortCandidates(candidates)
         return candidates[-1][1]
@@ -177,7 +178,7 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
 
         selections = getSelections(view)
         lnCols = len(`view.rowcol(selections[-1].end()-1)[0]`)
-        
+
         for i, sel in enumerate(selections):
             if i > 0: html += [LINE_NUMBER % ("\n\n%s\n\n" % (lnCols * '.'))]
 
