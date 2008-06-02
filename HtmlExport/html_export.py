@@ -118,24 +118,22 @@ def leveledScopes(scope):
 def selectorSpecificity(selector, scope):
     allSelectors, allScopes = map(leveledScopes, (selector, scope))
 
-    specificity = []
-    for selectors in allSelectors:
-        rounds = []
-
+    specificity = [None] * len(allSelectors)
+    for i, selectors in enumerate(allSelectors):
         for scopeLevel, scopes in enumerate(allScopes):
             if not [s for s in selectors if s not in scopes]:
-                rounds.append((scopeLevel+1, len(selectors)))
+                specificity[i] = (scopeLevel+1, len(selectors))
+        
+        if not specificity[i]: return []
 
-        if rounds: specificity.append(rounds[-1])
-
-    return specificity if len(specificity) == len(allSelectors) else []
+    return specificity
 
 def compareCandidates(c1, c2):
     cd1, cd2 = c1[0][:], c2[0][:]
 
     while cd1 and cd2:
-        one_is_bigger = cmp(cd1.pop(), cd2.pop())
-        if one_is_bigger: return one_is_bigger
+        either_is_greater = cmp(cd1.pop(), cd2.pop())
+        if either_is_greater: return either_is_greater
 
     return cmp(cd1, cd2)
 
@@ -151,7 +149,7 @@ def getCssClassAtPt(pt, view, cssRules):
             specificity = selectorSpecificity(selector, scopeAtPoint)
             if specificity:
                 candidates.append((specificity, cssClass))
-    
+
     if candidates:
         candidates = sortCandidates(candidates)
         return candidates[-1][1]
