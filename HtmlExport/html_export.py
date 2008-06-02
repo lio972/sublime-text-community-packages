@@ -16,7 +16,7 @@ OPEN_HTML_IN_EDITOR = 0
 
 OPEN_HTML_IN_BROWSER = 1
 
-COPY_CSS_TO_CLIPBOARD = 1                    # TODO make it a keybinding
+COPY_CSS_TO_CLIPBOARD = 1                            # TODO make it a keybinding
 
 COPY_HTML_TO_CLIPBOARD = 1
 
@@ -27,23 +27,27 @@ ENCODE_AS = 'utf-8'
 ##################################### TODO #####################################
 
 """
+    clean up 4 000,000 line function
     
-    multiple selections, for posting snippets with foo() ... bar()      * done *
+    work on - and || operators for scopes
+    
+    
+    multiple selections, for posting snippets with foo() ... bar()      = DONE =
       
         contract selections so there are no empty lines 4 mult-sel
     
 
-    outputting in new file just the html 
+    pre tag + css to clipboard                                   = almost DONE =
+
+    compress clipboard css                                              = DONE =
     
-    pre tag + css to clipboard
-
-    in <head> css styles
-
     embedded style="bla" attributes, no messing around with style
     sheets for quick posts
     
+    in <head> css styles
+
     line numbers in float:left pre tag so can easily copy paste
-    
+
 """
 
 ################################### TEMPLATES ##################################
@@ -81,7 +85,7 @@ def getThemeAbsPath(colorScheme):
     appdataPath = split(sublime.packagesPath())[0]
     return normpath(join(appdataPath, colorScheme))
 
-def getCssScopes(colorScheme):
+def getCssRules(colorScheme):
     return getScopes(parse_plist(getThemeAbsPath(colorScheme)))
 
 def writeCSS(colorScheme):
@@ -101,33 +105,55 @@ def getSelections(view):
 
 ######################## SELECTOR SPECIFICITY FUNCTIONS ########################
 
+# http://manual.macromates.com/en/scope_selectors.html#ranking_matches
+
+# TODO    -  operator           source - source.python
+#         || operator           source - (source.python || source.ruby)   
+
+# Will need a complete overhaul
+
 def leveledScopes(scope):
     return [l.replace('.', ' ').split() for l in scope.split(' ') if l]
 
+     # source - (source.python || source.ruby) comment
+     # source - source.python || source.ruby comment
+
 def selectorSpecificity(selector, scope):
-    allSelectors = leveledScopes(selector)
-    allScopes = leveledScopes(scope)
+    allSelectors, allScopes = map(leveledScopes, (selector, scope))
 
     start = []
     for selectors in allSelectors:
         for scopeLevel, scopes in enumerate(allScopes):
-            if not [x for x in selectors if x not in scopes]:
+            if not [s for s in selectors if s not in scopes]:
                 start.append((scopeLevel+1, len(selectors)))
+                
+    return start
 
-    return start[-1:]
+def compareCandidates(c1, c2):
+    cd1, cd2 = c1[0][:], c2[0][:]
 
-def getCssClassAtPt(pt, view, cssScopes):
+    while cd1 and cd2:
+        one_is_bigger = cmp(cd1.pop(), cd2.pop())
+        if one_is_bigger: return one_is_bigger
+
+    return cmp(cd1, cd2)
+
+def sortCandidates(candidates):
+    return sorted(candidates, compareCandidates)
+
+def getCssClassAtPt(pt, view, cssRules):
     candidates = []
-    syntaxAtPoint = " ".join(reversed(view.syntaxName(pt).split()))
+    scopeAtPoint = " ".join(reversed(view.syntaxName(pt).split()))
 
-    for cssClass, scopes in cssScopes.items():
-        for scope in scopes:
-            if view.matchSelector(pt, scope):
-                specificity = selectorSpecificity(scope, syntaxAtPoint)
+    for cssClass, selectors in cssRules.items():
+        for selector in selectors:
+            if view.matchSelector(pt, selector):
+                specificity = selectorSpecificity(selector, scopeAtPoint)
                 candidates.append((specificity, cssClass))
 
     if candidates:
-        return sorted(candidates)[-1][1]
+        candidates = sortCandidates(candidates)
+        return candidates[-1][1]
 
 ################################### COMMANDS ###################################
 
@@ -145,7 +171,7 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
 
         colorScheme = view.options().get('colorscheme')
         theme = getThemeName(colorScheme)
-        cssScopes = getCssScopes(colorScheme)
+        cssRules = getCssRules(colorScheme)
 
         html = ["<pre class='%s'>" % camelizeString(theme)]
 
@@ -166,7 +192,7 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
                     if scopeAtPt in scopeCache:
                         cssClassAtPt = scopeCache[scopeAtPt]
                     else:
-                        cssClassAtPt = getCssClassAtPt(pt, view, cssScopes)
+                        cssClassAtPt = getCssClassAtPt(pt, view, cssRules)
 
                     if previousCssClass != cssClassAtPt:
                         if previousCssClass: html.append("</span>")
@@ -190,23 +216,22 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
             "seconds, %s unique compound scopes." % len(scopeCache)
         )
 
-
-
         if WRITE_OUT_HTML:
             htmlFile = writeHTML(html, view.fileName(), theme)  # HACK TODO
 
         if OPEN_HTML_IN_BROWSER: webbrowser.open(htmlFile)
         if OPEN_HTML_IN_EDITOR: view.window().openFile()
-        
 
-        cssString = writeCSS(colorScheme)    # HACK TODO.. 
-                                             # and the rest isnt??  hahahah
+        cssString = writeCSS(colorScheme)    # HACK TODO
 
         clipboard = ''
-        if COPY_CSS_TO_CLIPBOARD: clipboard += cssString
+        if COPY_CSS_TO_CLIPBOARD: 
+            # compress the css
+            css = ' '.join([l.strip('\n') for l in cssString.split('\n')])
+            clipboard += ' '.join([w.strip(' ') for w in css.split(' ')]) + '\n'
+            
         if COPY_HTML_TO_CLIPBOARD: clipboard += html
         if clipboard:
             sublime.setClipboard(clipboard)
         
-        print clipboard
 ################################################################################
