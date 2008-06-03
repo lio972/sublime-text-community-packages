@@ -119,9 +119,9 @@ def leveledScopes(scope):
 
 def selectorSpecificity(selector, scope):
     allSelectors, allScopes = map(leveledScopes, (selector, scope))
-    
-    level = 0
-    
+
+    level = -1
+
     specificity = [None] * len(allSelectors)
     for i, selectors in enumerate(allSelectors):
         for scopeLevel, scopes in enumerate(allScopes[level+1:]):
