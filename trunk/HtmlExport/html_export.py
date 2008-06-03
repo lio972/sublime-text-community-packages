@@ -75,7 +75,7 @@ def writeHTML(html, fn, theme):
     with open('%s.html' % fn, 'w') as fh:
         html = HTML_TEMPLATE % (fn, camelizeString(theme), html)
         fh.write(html.encode(ENCODE_AS))
-    
+
     return '%s.html' % fn #TODO: refactor
 
 def getThemeName(colorScheme):
@@ -111,19 +111,24 @@ def getSelections(view):
 #         || operator           source - (source.python || source.ruby)   
 
 def leveledScopes(scope):
-    scope = ' '.join(scope.split(' -')[:1])
+    scope = ' '.join(scope.split(' -')[:1])         #   ignore - operator
+    scope = ' '.join(scope.split( '|')[:1])          #   ignore || operators
+
     scope = [l.strip() for l in scope.split(' ')]
     return [l.split('.') for l in scope]
 
 def selectorSpecificity(selector, scope):
     allSelectors, allScopes = map(leveledScopes, (selector, scope))
-
+    
+    level = 0
+    
     specificity = [None] * len(allSelectors)
     for i, selectors in enumerate(allSelectors):
-        for scopeLevel, scopes in enumerate(allScopes):
+        for scopeLevel, scopes in enumerate(allScopes[level+1:]):
             if not [s for s in selectors if s not in scopes]:
                 specificity[i] = (scopeLevel+1, len(selectors))
-        
+                level = scopeLevel
+
         if not specificity[i]: return []
 
     return specificity
