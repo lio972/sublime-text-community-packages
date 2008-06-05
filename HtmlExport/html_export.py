@@ -119,12 +119,13 @@ def leveledScopes(scope):
 
 def selectorSpecificity(selector, scope):
     allSelectors, allScopes = map(leveledScopes, (selector, scope))
-
+    
     level = -1
-
     specificity = [None] * len(allSelectors)
+    
     for i, selectors in enumerate(allSelectors):
-        for scopeLevel, scopes in enumerate(allScopes[level+1:]):
+        for scopeLevel, scopes in enumerate(allScopes):
+            if level > scopeLevel: continue
             if not [s for s in selectors if s not in scopes]:
                 specificity[i] = (scopeLevel+1, len(selectors))
                 level = scopeLevel
@@ -233,9 +234,9 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
             # compress the css
             css = ' '.join([l.strip('\n') for l in cssString.split('\n')])
             clipboard += ' '.join([w.strip(' ') for w in css.split(' ')]) + '\n'
-            
+
         if COPY_HTML_TO_CLIPBOARD: clipboard += html
         if clipboard:
             sublime.setClipboard(clipboard)
-        
+
 ################################################################################
