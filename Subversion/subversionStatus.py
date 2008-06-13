@@ -17,7 +17,7 @@ class SubversionStatusProvider(sublimeplugin.Plugin):
     sublime.statusMessage(SubversionStatus(view))
   
   def onModified(self, view):  
-    sublime.statusMessage(SubversionStatus(view))
+    #sublime.statusMessage(SubversionStatus(view))
   
   def onActivated(self, view): 
     sublime.statusMessage(SubversionStatus(view))
