@@ -32,6 +32,8 @@ def SubversionStatus(view):
 
   filename = view.fileName()
   
+  if (filename == None): return "file not yet saved"
+  
   # a new file will not have a filename yet.
   if os.path.exists(filename) == False: return "%s not yet saved" % filename
 
