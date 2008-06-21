@@ -69,8 +69,10 @@ class BrowsersCommand(sublimeplugin.TextCommand):
         if self.firefox: return True
                             
         question =("This plugin requires firefox open and MozLab intalled\n"
-                   "Do you need to download MozLab ?")
-        
+                   "Make sure MozRepl Telnet server is set to 'Activate on "
+                   "startup'. Tools -> MozRepl\n\n"
+                    "Do you need to download MozLab ?")
+
         if sublime.questionBox(question):
             try: webbrowser.open(MozLabURL)
             except WindowsError:
