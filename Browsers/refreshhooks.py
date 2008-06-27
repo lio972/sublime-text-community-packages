@@ -1,29 +1,27 @@
 ################################# IMPORTS ####################################
 
 from __future__ import with_statement
-import time, os
+import time, os, sublime
 
 ################################ SYNCRONISATION ################################
 
 class blockMain(object):
   def __init__(self, lock):
     self.lock = lock
-    self.acquired = False
 
   def __enter__(self):
     self.lock.acquire()
     sublime.setTimeout(self.lock.acquire, 0)
-    self.acquired = True
 
   def __exit__(self, *exc):
-    if self.acquired:
-      sublime.setTimeout(self.lock.release, 0)
-      self.lock.release()
-      self.acquired = False
+    sublime.setTimeout(self.lock.release, 0)
+    self.lock.release()
 
 ##################################### HOOKS ####################################
 
 def apacheRestart(view, lock):
+    print 'wow'
+    
     t = time.time()
     os.popen("psservice stop apache2")
     
