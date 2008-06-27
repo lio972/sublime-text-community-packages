@@ -13,7 +13,7 @@ class blockMain(object):
     self.lock.acquire()
     sublime.setTimeout(self.lock.acquire, 0)
 
-  def __exit__(self, *exc):
+  def __exit__(self):
     sublime.setTimeout(self.lock.release, 0)
     self.lock.release()
 
