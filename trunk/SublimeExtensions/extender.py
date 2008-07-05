@@ -6,6 +6,8 @@ import functools
 
 import threading
 
+from ctypes import windll
+
 ################################################################################
 # Views maintainer
 # 
@@ -184,5 +186,18 @@ def threaded(finish=None, msg="Thread already running"):
     return decorator
 
 sublimeplugin.threaded = threaded
+
+################################################################################
+
+class FocusRestorer(object):
+    def __init__(self): 
+        self.h = windll.user32.GetForegroundWindow()
+    def __call__(self, start=1, stop=1502, step=500):  
+        for t in xrange(start, stop, step):
+            sublime.setTimeout (
+                functools.partial(windll.user32.SetForegroundWindow, self.h), t
+            )
+
+sublime.FocusRestorer = FocusRestorer
 
 ################################################################################
