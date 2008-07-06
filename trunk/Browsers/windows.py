@@ -2,6 +2,9 @@ import ctypes, re, os
 from ctypes import *
 from functools import partial
 
+GetForegroundWindow = windll.user32.GetForegroundWindow
+SetForegroundWindow = windll.user32.SetForegroundWindow
+
 OFN_ALLOWMULTISELECT =  512
 OFN_CREATEPROMPT =  8192
 OFN_DONTADDTORECENT =  33554432
@@ -89,15 +92,11 @@ def openFileDialog(title="Open File", flags= OFN_EXPLORER | OFN_ALLOWMULTISELECT
             return [os.path.join(paths[0], x) for x in paths[1:]]
         else:
             return paths
-            
+
         # opath.replace(u"\0", u"")
         # self.GrabFile(absPath)
         # self.FocusText()
-
-def FocusRestorer():
-    h = windll.user32.GetForegroundWindow()
-    return partial(windll.user32.SetForegroundWindow, h)
-
+        
 def enum_windows():
     windows = []
     def EnumWindowProc(hwnd, lparam):

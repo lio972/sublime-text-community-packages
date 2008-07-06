@@ -17,3 +17,8 @@ ctrl-shift-p to launch live preview or toggle visibility if already running.
 == Problems with annoying javascript/activex prompt ? ==
 
 http://www.menumachine.com/kb/images/activeX_toolsallow.gif
+
+
+== Dependencies ==
+
+This package depends on the SublimeExtensions package ( available from sublime community svn repo )
