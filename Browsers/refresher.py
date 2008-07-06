@@ -2,183 +2,100 @@
 
 ################################## IMPORTS #####################################
 
-import sublimeplugin, webbrowser, time, re, os, sys, sublime, threading
+from __future__ import with_statement
+from contextlib import contextmanager
 
-from subprocess import Popen
-from telnetlib import Telnet
-from functools import partial
-
-from refreshhooks import *
+import sublime, sublimeplugin
 
 from absoluteSublimePath import addSublimePackage2SysPath
-
 addSublimePackage2SysPath('Browsers')
 
-from ctypes import windll
-from comtypes.client import CreateObject
-
-from windows import FocusRestorer, activateApp
+from firefox import FireFox, check_mozlab_installed
+from iexplore import IE
 
 ################################## SETTINGS ####################################
 
 SYNC_EVERY = 0    # seconds, 0 for don't sync
 
-debug = 0
- 
-refreshHooks = []    #[(djangoProjects, apacheRestart)]
+DEBUG = 1
 
-# Global filtering
-
-onlyRefreshIf =  lambda view, lock: True #djangoProjects
-
-# startUrl = 'http://localhost/admin'
-
-startUrl =  'http://www.google.com.au'
-
-################################## CONSTANTS ###################################
-
-MozLabURL = "http://repo.hyperstruct.net/mozlab/current/mozlab-current.xpi"
-
-FFLastUrl = re.compile('"(.*?://.*?)".*repl[0-9]?', re.DOTALL | re.MULTILINE)
+START_URL =  'http://www.google.com.au'
 
 ################################################################################
-   
+
+@contextmanager
+def errorHandling(self, msg):
+    try:
+        yield
+    except Exception, e:
+        self.ie = self.ff = 0
+        if DEBUG:
+            print msg, e
+
+################################################################################
+
 class BrowsersCommand(sublimeplugin.TextCommand):
-    ie = None
-    lock = threading.RLock()
-    firefox = None
-    alternation = 0
-    firefoxHWND = 0
-    hooks = None
+    ie = ff = alternation = 0
+
+    def run(self, view, args):
+        self.restoreFocus = sublime.FocusRestorer()
+
+        if not self.ie or not self.ff:
+            self.readyIE()
+
+            if self.readyFireFox():
+                self.navigateTo(START_URL)
+                sublime.setTimeout(self.syncBrowsers, 200)
+            else:
+                if DEBUG: "Can't connect to firefox"
+        else:
+            with errorHandling(self, 'reInit: '):
+                if 'alternate' in args:      self.alternateBrowsers()
+                elif 'currentFile' in args:  self.navigateTo(view.fileName())
+                else:                        self.toggleVisibility()
+
+        self.restoreFocus()
 
     def readyIE(self):
-        self.ie = CreateObject("InternetExplorer.Application")
-        self.ie.ToolBar = 0
-    
-    def readyFireFox(self, url):
-        cmd = r'"C:\Program Files\Mozilla Firefox\firefox.exe" -new-tab %s'
-        Popen(cmd % startUrl)
-        
-        for x in range(50):   #Try for 10 seconds
-            try:
-                self.firefox = Telnet('localhost', 4242)
-                break
-            except:
-                time.sleep(0.2)
-            
-        if self.firefox: return True
-                            
-        question =("This plugin requires firefox open and MozLab intalled\n"
-                   "Make sure MozRepl Telnet server is set to 'Activate on "
-                   "startup'. Tools -> MozRepl\n\n"
-                    "Do you need to download MozLab ?")
+        self.ie = IE()
+        self.ie.ToolBar = not SYNC_EVERY
+        self.ie.Visible = True
 
-        if sublime.questionBox(question):
-            try: webbrowser.open(MozLabURL)
-            except WindowsError:
-                sublime.setClipboard(MozLabURL)
-                sublime.messageBox("Tried browsing to MozLab\n"
-                                   "Url also in clipboard")
-                
-    def syncBrowsers(self, only_sync=False):
-        #IE has no toolbars and follows firefoxs lead
-        try:
-            self.firefox.read_very_eager()
-                    
-            self.firefox.write('gLastValidURLStr\n')
-            output = self.firefox.read_until('repl', 5)
-                            
-            for url in FFLastUrl.findall(output):
-                if url == self.ie.LocationURL:
-                    if not only_sync: 
-                        self.ie.Refresh()
-                else:
-                    self.ie.Navigate(url)
-            
-            if SYNC_EVERY:
-                sublime.setTimeout (
-                    partial(self.syncBrowsers, only_sync = True), 
-                    SYNC_EVERY * 1000
-                )
-                        
-        except Exception, e:
-            if debug: print 'syncBrowsers: ', e
-                
-    def run(self, view, args):
-        restoreFocus = FocusRestorer()
-        
-        fn  = view.fileName()
-        if fn: curFile = 'file:///' + fn.replace('\\','/')
-        else: curFile = ''
-            
-        if not self.ie or not self.firefox:
-            self.readyIE()
-            self.ie.Visible = True
-            
-            if self.readyFireFox(curFile):
-                sublime.setTimeout(self.syncBrowsers, 200)
-                    
-        else: 
-            try:
-                if 'alternate' in args:
-                    self.alternateBrowsers()
-                else:
-                    self.ie.Visible = not self.ie.Visible
-    
-                    cmd = "restore" if self.ie.Visible else 'minimize'
-                    self.firefox.write('%s()\n' % cmd)
-                                                   
-            except Exception, e:
-                self.ie = None
-                self.firefox = None
-                if debug: print 'reInit: ', e
-        
-        sublime.setTimeout(restoreFocus, 50)
+    def navigateTo(self, url):
+        if url:
+            self.ie.Navigate(url)
+            self.ff.Navigate(url)
+
+    def readyFireFox(self):
+        self.ff = FireFox()
+        return self.ff.connection or check_mozlab_installed(sublime)
+
+    def toggleVisibility(self):
+        self.ie.Visible = not self.ie.Visible
+        self.ff.write (
+            "restore()" if self.ie.Visible else 'minimize()', 1
+        )
 
     def alternateBrowsers(self):
-        restoreFocus = FocusRestorer()
-        
-        self.firefoxHWND = self.firefoxHWND or activateApp(
-                        "MozillaUIWindowClass",
-                        '.*Mozilla Firefox.*'
-        )
- 
-        h = self.firefoxHWND if self.alternation % 2 == 0 else self.ie.HWND
-        
-        windll.user32.SetForegroundWindow(h)
-        
-        sublime.setTimeout(restoreFocus, 1)
+        (self.ff if self.alternation % 2 == 0 else self.ie).activate()
         self.alternation += 1
-    
+
     def refreshBrowsers(self):
-        try:
-            self.firefox.write('BrowserReloadWithFlags(16)\n')
-            self.syncBrowsers()
-                                             
-        except Exception, e: 
-            if debug: print 'refreshBrowsers: ', e
+        with errorHandling(self, 'refreshBrowsers: '):
+            self.ff.Refresh()
+            self.ie.Refresh()
     
-    def hookb4Refresh(self, view):
-        "Hooks are ran in another thread so acquire locks when using view"
-        
-        if debug: print 'hookb4Refresh'
-        
-        for notFiltered, runHook in refreshHooks:
-            if notFiltered(view, self.lock): runHook(view, self.lock)
+    def syncBrowsers(self):
+        with errorHandling(self, 'syncBrowsers: '):
+            firefox_url = self.ff.lastUrl
+
+            if firefox_url != self.ie.LocationURL:
+                self.ie.Navigate(firefox_url)
     
-        if onlyRefreshIf(view, self.lock):
-            sublime.setTimeout(self.refreshBrowsers, 1)
-            
+            if SYNC_EVERY:
+                sublime.setTimeout(self.syncBrowsers, SYNC_EVERY * 1000)
+
     def onPostSave(self, view):
-        fn = view.fileName()
-        if self.ie and self.ie.Visible:
-            if not self.hooks or (self.hooks and not self.hooks.isAlive()):
-                
-                if debug: print 'start hook thread'
-                
-                self.hooks=threading.Thread(
-                    target = partial(self.hookb4Refresh, view)
-                )
-                self.hooks.start()
-            else:
-                print 'Previous PostSave hook still running'
+        if self.ie: self.refreshBrowsers()
+        
+################################################################################
