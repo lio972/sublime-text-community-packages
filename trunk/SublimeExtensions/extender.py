@@ -1,10 +1,8 @@
 ################################################################################
 
-import sublime, sublimeplugin, time
+import sublime, sublimeplugin
 
-import functools
-
-import threading
+import time, functools, threading
 
 from ctypes import windll
 
@@ -62,6 +60,9 @@ sublime.View.buffer = property(lambda v: v.substr(sublime.Region(0, v.size())))
 
 ################################################################################
 # Get and set Options
+
+# TODO: look at monkey patching Options.(__setattr__ | __getattr__)
+
 """
 
 >>> view.option.syntax 
@@ -125,14 +126,14 @@ def onIdle(ms=1000):
     def decorator(func):
         func.pending = 0
         @functools.wraps(func)
-        def onIdler(*args, **kwargs):
+        def wrapped(*args, **kwargs):
             def idle():
                 func.pending -= 1
                 if func.pending is 0:
                     func(*args, **kwargs)
             func.pending +=1
             sublime.setTimeout(idle, ms)
-        return onIdler
+        return wrapped
     return decorator
 
 sublimeplugin.onIdle = onIdle
@@ -192,8 +193,8 @@ sublimeplugin.threaded = threaded
 class FocusRestorer(object):
     def __init__(self): 
         self.h = windll.user32.GetForegroundWindow()
-    def __call__(self, start=1, stop=1502, step=500):  
-        for t in xrange(start, stop, step):
+    def __call__(self, times=2, delay = 50):  
+        for t in xrange(1, (delay * times) + 2, delay):
             sublime.setTimeout (
                 functools.partial(windll.user32.SetForegroundWindow, self.h), t
             )
