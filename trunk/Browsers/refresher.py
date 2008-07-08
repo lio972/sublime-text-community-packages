@@ -5,7 +5,7 @@
 from __future__ import with_statement
 from contextlib import contextmanager
 
-import sublime, sublimeplugin
+import sublime, sublimeplugin, urllib, traceback
 
 from absoluteSublimePath import addSublimePackage2SysPath
 addSublimePackage2SysPath('Browsers')
@@ -15,7 +15,7 @@ from iexplore import IE
 
 ################################## SETTINGS ####################################
 
-SYNC_EVERY = 0    # seconds, 0 for don't sync
+SYNC_EVERY = 1    # seconds, 0 for don't sync
 
 DEBUG = 1
 
@@ -30,12 +30,12 @@ def errorHandling(self, msg):
     except Exception, e:
         self.ie = self.ff = 0
         if DEBUG:
-            print msg, e
+            print '*** %s ***\n%s' % (msg, traceback.format_exc(e))
 
 ################################################################################
 
 class BrowsersCommand(sublimeplugin.TextCommand):
-    ie = ff = alternation = 0
+    ie = ff = alternation = lastUrl = 0
 
     def run(self, view, args):
         self.restoreFocus = sublime.FocusRestorer()
@@ -47,12 +47,13 @@ class BrowsersCommand(sublimeplugin.TextCommand):
                 self.navigateTo(START_URL)
                 sublime.setTimeout(self.syncBrowsers, 200)
             else:
-                if DEBUG: "Can't connect to firefox"
+                if DEBUG: print "Can't connect to firefox"
         else:
             with errorHandling(self, 'reInit: '):
-                if 'alternate' in args:      self.alternateBrowsers()
-                elif 'currentFile' in args:  self.navigateTo(view.fileName())
-                else:                        self.toggleVisibility()
+                if 'toggleVisibility' in args:     self.toggleVisibility()
+                elif 'alternate' in args:          self.alternateBrowsers()
+                else:                   
+                                        self.navigateTo(view.fileName(), 1)
 
         self.restoreFocus()
 
@@ -61,10 +62,12 @@ class BrowsersCommand(sublimeplugin.TextCommand):
         self.ie.ToolBar = not SYNC_EVERY
         self.ie.Visible = True
 
-    def navigateTo(self, url):
-        if url:
-            self.ie.Navigate(url)
-            self.ff.Navigate(url)
+    def navigateTo(self, url=None, isPath=False):
+        if isPath:
+            url = "file:%s" % urllib.pathname2url(url).replace('|', ':')
+
+        self.ff.Navigate(url)
+        if not SYNC_EVERY: self.ie.Navigate(url)
 
     def readyFireFox(self):
         self.ff = FireFox()
@@ -84,18 +87,18 @@ class BrowsersCommand(sublimeplugin.TextCommand):
         with errorHandling(self, 'refreshBrowsers: '):
             self.ff.Refresh()
             self.ie.Refresh()
-    
+
     def syncBrowsers(self):
         with errorHandling(self, 'syncBrowsers: '):
             firefox_url = self.ff.lastUrl
 
             if firefox_url != self.ie.LocationURL:
                 self.ie.Navigate(firefox_url)
-    
+
             if SYNC_EVERY:
                 sublime.setTimeout(self.syncBrowsers, SYNC_EVERY * 1000)
 
     def onPostSave(self, view):
         if self.ie: self.refreshBrowsers()
-        
+
 ################################################################################

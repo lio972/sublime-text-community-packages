@@ -40,9 +40,6 @@ class WorkerQueue(object):
         self._setup_workers(num_workers)
 
     def _setup_workers(self, num_workers):
-        """ Sets up the worker threads
-              NOTE: undefined behaviour if you call this again.
-        """
         self.pool = []
 
         for _ in range(num_workers):
@@ -53,15 +50,10 @@ class WorkerQueue(object):
             a_thread.start()
 
     def put(self, f, *args, **kwargs):
-        " puts a function on a queue for running later"
         self.queue.put_nowait( partial(f, *args, **kwargs) )
 
     def stop(self):
-        " Stops the WorkerQueue, waits for all of the threads to finish up. "
-        
         self.queue.put(STOP)
-        # for thread in self.pool:
-            # thread.join()
 
     def threadloop(self):
         while True:

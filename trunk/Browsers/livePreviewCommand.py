@@ -92,10 +92,10 @@ class LivePreviewCommand(sublimeplugin.TextCommand):
             self.buffer(view)
 
     @whenActive
+    @sublimeplugin.onIdle(TIMEOUT)
     def onActivated(self, view):
         self.activateView(view)
     
-    @sublimeplugin.onIdle(TIMEOUT)
     def activateView(self, view):
         self.initHTML(view)
     
