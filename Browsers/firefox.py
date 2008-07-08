@@ -24,8 +24,8 @@ def check_mozlab_installed(sublime):
                                "Url also in clipboard")
 
 class FireFox(object):
-    connection = None
-    hwnd = None
+    connection = hwnd = None
+    _lastUrl = 'http://www.google.com.au'
 
     def __init__( self, server = 'localhost',  port = 4252, connect=1):
         if connect: 
@@ -57,21 +57,22 @@ class FireFox(object):
         self.connection.write('%s;\n' % val)
         if flush: self.read()
 
-    def read(self, as_a = None, time_out = 10):
-        expected = self.connection.expect([repl_re], time_out)
-        expected = expected[1].group(1).rstrip()
-        return as_a(expected) if as_a else expected
-    
+    def read(self, time_out = 10):
+        expected = self.connection.expect([repl_re], time_out)[1]
+        if expected:
+            return expected.group(1).rstrip()
+
     def activate(self):
         SetForegroundWindow(self.HWND)
 
-    def eval(self, val):
+    def eval(self, val, time_out = 10):
         self.write(val)
-        return self.read(eval)
+        try: return eval(self.read(time_out = time_out))
+        except: print 'eval %s failed' % val
 
     def Navigate(self, url):
-        if '://' not in url: url = "http://%s" % url
         self.write("content.location.href = %r" % url, 1)
+        self._lastUrl = url
 
     def Refresh(self):
         self.write("BrowserReloadWithFlags(16)", 1)
@@ -81,7 +82,11 @@ class FireFox(object):
     title = property(_get_title, _set_title)
 
     @property
-    def lastUrl(self): return self.eval('gLastValidURLStr')
+    def lastUrl(self):
+        self._lastUrl = (
+            self.eval('gLastValidURLStr', time_out = 0.1) or self._lastUrl
+        )
+        return self._lastUrl
 
     @property
     def HWND(self):
@@ -90,6 +95,7 @@ class FireFox(object):
 
 if __name__ == '__main__':
     firefox = FireFox ()
-    print firefox.lastUrl
     print firefox.title
     print firefox.HWND
+    print firefox.lastUrl
+    firefox.Refresh()
