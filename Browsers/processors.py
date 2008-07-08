@@ -33,8 +33,8 @@ DEBUG = 0
 STOP = object()
 
 class WorkerQueue(object):
-    def __init__(self, OQ, num_workers = 8, queue_size = 8):
-        self.OQ = OQ
+    def __init__(self, ie, num_workers = 8, queue_size = 8):
+        self.ie = ie
         self.queue = Queue.Queue(queue_size)
         self.pool = []
         self._setup_workers(num_workers)
@@ -50,7 +50,8 @@ class WorkerQueue(object):
             a_thread.start()
 
     def put(self, f, *args, **kwargs):
-        self.queue.put_nowait( partial(f, *args, **kwargs) )
+        try: self.queue.put_nowait( partial(f, *args, **kwargs) )
+        except Queue.Full: pass
 
     def stop(self):
         self.queue.put(STOP)
@@ -64,11 +65,11 @@ class WorkerQueue(object):
                 break
             else:
                 try:
-                    self.OQ.put(("BUFFER", arg()))
+                    self.ie.buffer(arg())
                 finally:
                     self.queue.task_done()
 
-    def wait(self):
-        self.queue.join()
+    # def wait(self):
+    #     self.queue.join()
 
 ################################################################################
