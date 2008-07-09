@@ -1,9 +1,15 @@
 ################################################################################
 
-import threading, Queue, sys
+import threading, Queue, sys, os, unittest
 
 # for markdown2
-sys.argv = []
+if __name__ != '__main__':
+    sys.argv = []
+else:
+    sys.path.append (
+        os.path.join(os.path.dirname(sys.argv[0]), 'lib')
+    )
+
 import markdown2, smartypants, textile
 
 from functools import partial
@@ -55,6 +61,8 @@ class WorkerQueue(object):
 
     def stop(self):
         self.queue.put(STOP)
+        for thread in self.pool:
+            thread.join()
 
     def threadloop(self):
         while True:
@@ -69,7 +77,27 @@ class WorkerQueue(object):
                 finally:
                     self.queue.task_done()
 
-    # def wait(self):
-    #     self.queue.join()
+    def wait(self):
+        self.queue.join()
 
 ################################################################################
+
+class WorkerQueueTest(unittest.TestCase):
+    def test_stop(self):
+        ie = lambda x: x
+        ie.buffer = lambda x:x
+        
+        wq = WorkerQueue(ie)
+        
+        self.assert_(len(wq.pool) > 0)
+        for t in wq.pool: self.assert_(t.isAlive())
+
+        for i in xrange(200): wq.put(lambda x: x+1, i)
+
+        wq.stop()
+        for t in wq.pool: self.assert_(not t.isAlive())
+
+        self.assert_(wq.queue.get() is STOP)
+
+if __name__ == '__main__':
+    unittest.main()
