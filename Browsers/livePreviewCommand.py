@@ -85,9 +85,8 @@ class LivePreviewCommand(sublimeplugin.TextCommand):
            self.headTag = head.group(1)
            self.headRegion = sublime.Region(*head.span(1))                                      
 
-    def isActive(self):
-        if self.ie:
-            return self.ie.isAlive() or self.reset()
+    def isActive(self): 
+        return self.ie and (self.ie.isAlive() or self.reset())
 
     @whenActive
     def onPostSave(self, view):
