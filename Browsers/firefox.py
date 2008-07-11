@@ -2,6 +2,13 @@ import telnetlib, re, time, subprocess, webbrowser
 
 from windows import findAppHandle, SetForegroundWindow
 
+################################################################################
+#         THIS MODULE SHOULD BE REWRITTEN TO USE JSBRIDGE, SEE BELOW           #
+################################################################################
+
+
+# http://code.google.com/p/jsbridge/source/browse/trunk/jsbridge/__init__.py?r=30
+
 # http://www.koders.com/lisp/fidF13DCDF15FD63D89F363654D9CB840DCF84C81DA.aspx?s=TV+Raman#L2
 
 repl_re = re.compile("(.*?)repl[0-9]{0,2}>", re.DOTALL | re.MULTILINE)
