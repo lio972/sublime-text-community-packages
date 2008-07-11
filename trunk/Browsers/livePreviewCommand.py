@@ -67,12 +67,11 @@ class LivePreviewCommand(sublimeplugin.TextCommand):
         if self.procQ: self.procQ.stop()
 
     def initHTML(self, view):
-        fn = view.fileName()
         self.syntax = view.option.syntax
-
         self.findHead(view)
         self.buffer(view)
 
+        fn = view.fileName()
         if fn:
             if fn == self.currentFile: return
             else: self.currentFile = fn
@@ -81,9 +80,7 @@ class LivePreviewCommand(sublimeplugin.TextCommand):
 
     def findHead(self, view):
        head = headRe.search(view.buffer)
-       if head:
-           self.headTag = head.group(1)
-           self.headRegion = sublime.Region(*head.span(1))                                      
+       if head: self.headRegion = sublime.Region(*head.span(1))                                      
 
     def isActive(self): 
         return self.ie and (self.ie.isAlive() or self.reset())
@@ -107,14 +104,13 @@ class LivePreviewCommand(sublimeplugin.TextCommand):
     def onModified(self, view):
         self.buffer(view)
 
-    @sublimeplugin.onIdle(TIMEOUT * 4)
     def onProcQ(self, buf):
         self.procQ.put(processors.markups[self.syntax], buf)
 
     def buffer(self, view):
         buf = view.buffer
 
-        if self.syntax in processors.markups: 
+        if self.syntax in processors.markups:
             return self.onProcQ(buf)
 
         sel = view.sel()[0]
