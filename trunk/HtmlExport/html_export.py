@@ -1,6 +1,6 @@
 #################################### IMPORTS ###################################
 
-from __future__ import with_statement, division
+from __future__ import with_statement
 
 from os.path import split, join, normpath, splitext
 
@@ -14,9 +14,9 @@ import sublime, sublimeplugin, cgi, webbrowser, time
 
 OPEN_HTML_IN_EDITOR = 0
 
-OPEN_HTML_IN_BROWSER = 1
+OPEN_HTML_IN_BROWSER = 0
 
-COPY_CSS_TO_CLIPBOARD = 1                            # TODO make it a keybinding
+COPY_CSS_TO_CLIPBOARD = 1                    # TODO make it a keybinding
 
 COPY_HTML_TO_CLIPBOARD = 1
 
@@ -27,27 +27,23 @@ ENCODE_AS = 'utf-8'
 ##################################### TODO #####################################
 
 """
-    clean up 4 000,000 line function
     
-    work on - and || operators for scopes
-    
-    
-    multiple selections, for posting snippets with foo() ... bar()      = DONE =
+    multiple selections, for posting snippets with foo() ... bar()      * done *
       
         contract selections so there are no empty lines 4 mult-sel
     
 
-    pre tag + css to clipboard                                   = almost DONE =
-
-    compress clipboard css                                              = DONE =
+    outputting in new file just the html 
     
+    pre tag + css to clipboard
+
+    in <head> css styles
+
     embedded style="bla" attributes, no messing around with style
     sheets for quick posts
     
-    in <head> css styles
-
     line numbers in float:left pre tag so can easily copy paste
-
+    
 """
 
 ################################### TEMPLATES ##################################
@@ -75,7 +71,7 @@ def writeHTML(html, fn, theme):
     with open('%s.html' % fn, 'w') as fh:
         html = HTML_TEMPLATE % (fn, camelizeString(theme), html)
         fh.write(html.encode(ENCODE_AS))
-
+    
     return '%s.html' % fn #TODO: refactor
 
 def getThemeName(colorScheme):
@@ -85,7 +81,7 @@ def getThemeAbsPath(colorScheme):
     appdataPath = split(sublime.packagesPath())[0]
     return normpath(join(appdataPath, colorScheme))
 
-def getCssRules(colorScheme):
+def getCssScopes(colorScheme):
     return getScopes(parse_plist(getThemeAbsPath(colorScheme)))
 
 def writeCSS(colorScheme):
@@ -105,60 +101,33 @@ def getSelections(view):
 
 ######################## SELECTOR SPECIFICITY FUNCTIONS ########################
 
-# http://manual.macromates.com/en/scope_selectors.html#ranking_matches
-
-# TODO    -  operator           source - source.python
-#         || operator           source - (source.python || source.ruby)   
-
 def leveledScopes(scope):
-    scope = ' '.join(scope.split(' -')[:1])         #   ignore - operator
-    scope = ' '.join(scope.split( '|')[:1])          #   ignore || operators
-
-    scope = [l.strip() for l in scope.split(' ')]
-    return [l.split('.') for l in scope]
+    return [l.replace('.', ' ').split() for l in scope.split(' ') if l]
 
 def selectorSpecificity(selector, scope):
-    allSelectors, allScopes = map(leveledScopes, (selector, scope))
-    
-    level = -1
-    specificity = [None] * len(allSelectors)
-    
-    for i, selectors in enumerate(allSelectors):
+    allSelectors = leveledScopes(selector)
+    allScopes = leveledScopes(scope)
+
+    start = []
+    for selectors in allSelectors:
         for scopeLevel, scopes in enumerate(allScopes):
-            if level > scopeLevel: continue
-            if not [s for s in selectors if s not in scopes]:
-                specificity[i] = (scopeLevel+1, len(selectors))
-                level = scopeLevel
+            if not [x for x in selectors if x not in scopes]:
+                start.append((scopeLevel+1, len(selectors)))
 
-        if not specificity[i]: return []
+    return start[-1:]
 
-    return specificity
-
-def compareCandidates(c1, c2):
-    cd1, cd2 = c1[0][:], c2[0][:]
-
-    while cd1 and cd2:
-        either_is_greater = cmp(cd1.pop(), cd2.pop())
-        if either_is_greater: return either_is_greater
-
-    return cmp(cd1, cd2)
-
-def sortCandidates(candidates):
-    return sorted(candidates, compareCandidates)
-
-def getCssClassAtPt(pt, view, cssRules):
+def getCssClassAtPt(pt, view, cssScopes):
     candidates = []
-    scopeAtPoint = " ".join(reversed(view.syntaxName(pt).split()))
+    syntaxAtPoint = " ".join(reversed(view.syntaxName(pt).split()))
 
-    for cssClass, selectors in cssRules.items():
-        for selector in selectors:
-            specificity = selectorSpecificity(selector, scopeAtPoint)
-            if specificity:
+    for cssClass, scopes in cssScopes.items():
+        for scope in scopes:
+            if view.matchSelector(pt, scope):
+                specificity = selectorSpecificity(scope, syntaxAtPoint)
                 candidates.append((specificity, cssClass))
 
     if candidates:
-        candidates = sortCandidates(candidates)
-        return candidates[-1][1]
+        return sorted(candidates)[-1][1]
 
 ################################### COMMANDS ###################################
 
@@ -176,13 +145,13 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
 
         colorScheme = view.options().get('colorscheme')
         theme = getThemeName(colorScheme)
-        cssRules = getCssRules(colorScheme)
+        cssScopes = getCssScopes(colorScheme)
 
         html = ["<pre class='%s'>" % camelizeString(theme)]
 
         selections = getSelections(view)
         lnCols = len(`view.rowcol(selections[-1].end()-1)[0]`)
-
+        
         for i, sel in enumerate(selections):
             if i > 0: html += [LINE_NUMBER % ("\n\n%s\n\n" % (lnCols * '.'))]
 
@@ -197,7 +166,7 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
                     if scopeAtPt in scopeCache:
                         cssClassAtPt = scopeCache[scopeAtPt]
                     else:
-                        cssClassAtPt = getCssClassAtPt(pt, view, cssRules)
+                        cssClassAtPt = getCssClassAtPt(pt, view, cssScopes)
 
                     if previousCssClass != cssClassAtPt:
                         if previousCssClass: html.append("</span>")
@@ -221,22 +190,23 @@ class HtmlExportCommand(sublimeplugin.TextCommand):
             "seconds, %s unique compound scopes." % len(scopeCache)
         )
 
+
+
         if WRITE_OUT_HTML:
             htmlFile = writeHTML(html, view.fileName(), theme)  # HACK TODO
 
         if OPEN_HTML_IN_BROWSER: webbrowser.open(htmlFile)
         if OPEN_HTML_IN_EDITOR: view.window().openFile()
+        
 
-        cssString = writeCSS(colorScheme)    # HACK TODO
+        cssString = writeCSS(colorScheme)    # HACK TODO.. 
+                                             # and the rest isnt??  hahahah
 
         clipboard = ''
-        if COPY_CSS_TO_CLIPBOARD: 
-            # compress the css
-            css = ' '.join([l.strip('\n') for l in cssString.split('\n')])
-            clipboard += ' '.join([w.strip(' ') for w in css.split(' ')]) + '\n'
-
+        if COPY_CSS_TO_CLIPBOARD: clipboard += cssString
         if COPY_HTML_TO_CLIPBOARD: clipboard += html
         if clipboard:
             sublime.setClipboard(clipboard)
-
+        
+        print clipboard
 ################################################################################
