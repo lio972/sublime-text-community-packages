@@ -1,10 +1,11 @@
+# coding: utf8
 ################################################################################
 
 import sublime, sublimeplugin
 
-import time, functools, threading
+import time, functools, threading, os, sys
 
-from ctypes import windll
+from ctypes import windll, create_unicode_buffer
 
 ################################################################################
 # Views maintainer
@@ -61,8 +62,6 @@ sublime.View.buffer = property(lambda v: v.substr(sublime.Region(0, v.size())))
 ################################################################################
 # Get and set Options
 
-# TODO: look at monkey patching Options.(__setattr__ | __getattr__)
-
 """
 
 >>> view.option.syntax 
@@ -70,16 +69,17 @@ u'Packages/Python/Python.tmLanguage'
 
 """
 
-OPTIONS = (
-    'syntax',   
-)
+class SublimeOptions(object):
+    def __setattr__(self, name, value):
+        self.options.set(name, value)
+    def __getattr__(self, name):
+        if hasattr(self.options, name):
+            return getattr(self.options, name)
+        return self.options.get(name)
+    def __init__(self, view):
+        self.__dict__['options'] = view.options()
 
-sublime.View.option = property(lambda v: v.options())
-
-for option in OPTIONS:
-    setattr(sublime.Options, option,
-        property ( lambda o: o.get(option), lambda o, v: o.set(option, v))
-    )
+sublime.View.option = property(lambda v: SublimeOptions(v))
 
 ################################################################################
 # Idle timeout decorators
@@ -172,12 +172,14 @@ def threaded(finish=None, msg="Thread already running"):
         @functools.wraps(func)
         def threaded(*args, **kwargs):
             def run():
-                result = func(*args, **kwargs)
-                if finish:
-                    sublime.setTimeout (
-                        functools.partial(finish, args[0], result), 0
-                    )
-                func.running = 0
+                try:
+                    result = func(*args, **kwargs)
+                    if finish:
+                        sublime.setTimeout (
+                            functools.partial(finish, args[0], result), 0
+                        )
+                finally:
+                    func.running = 0
             if not func.running:
                 func.running = 1
                 threading.Thread(target=run).start()
@@ -200,5 +202,127 @@ class FocusRestorer(object):
             )
 
 sublime.FocusRestorer = FocusRestorer
+
+############################   UNICODE SYS.PATH   ##############################
+
+def addSublimePackage2SysPath(packageName='', module=''):
+    """                    
+    
+    usage:
+        
+        # coding: utf8      
+
+        # You must declare encoding on first or second line if using unicode
+        
+
+        addSublimePackage2SysPath( unicode('山科 氷魚', 'utf8') )
+        
+            or
+        
+        addSublimePackage2SysPath(u'RegexBuddy')
+                
+            or
+            
+        addSublimePackage2SysPath(packageName='Package', module='zipimport.egg')
+    
+    """
+    
+    unicodeFileName = os.path.join (
+        
+        sublime.packagesPath(), packageName, 'Lib', module
+        
+    ).rstrip('\\')
+        
+    buf = create_unicode_buffer(512)
+    if not windll.kernel32.GetShortPathNameW( unicodeFileName, buf, len(buf)):
+
+        sublime.messageBox (
+
+          'There was an error getting 8.3 shortfile names for %s package. ' 
+          'These are relied upon as python does not support unicode for its '
+          'module paths. Make sure shortpath names are ENABLED and take steps '
+          'to make sure they have been created before trying again.'        %\
+                packageName
+        )
+        
+        import webbrowser
+        try: webbrowser.open('http://support.microsoft.com/kb/210638')
+        except: pass
+        
+        raise Exception('Error with GetShortPathNameW')
+    
+    path = buf.value.encode('ascii')
+    if path not in sys.path:
+        sys.path.insert(1, path)
+
+sublimeplugin.addSublimePackage2SysPath = addSublimePackage2SysPath
+
+################################################################################
+
+class SublimeCommands(object):
+    def runCommands(self, *args, **kwargs):
+        for t in xrange(kwargs.get('times', 1)):
+            self.obj.runCommand(self.command, self.args + list(args))
+        return self
+
+    def __getattr__(self, name):
+        args = name.split("_")
+        self.args = args[1:]
+        self.command = args[0]
+        return self.runCommands
+    
+    def __init__(self, obj): 
+        self.obj = obj
+
+sublime.View.cmd = property(lambda s: SublimeCommands(s))
+sublime.Window.cmd = property(lambda s: SublimeCommands(s))
+
+################################################################################
+
+def acceptPtsAndTuples(func):
+    def wrapper(self, arg):
+        if not isinstance(arg, sublime.Region):
+            try:
+                arg = sublime.Region(*arg)
+            except:
+                arg = (arg, arg)
+        return func(self, arg)
+    wrapper.__name__ = func.__name__
+    return wrapper
+
+sublime.RegionSet.contains = acceptPtsAndTuples(sublime.RegionSet.contains)
+sublime.RegionSet.add = acceptPtsAndTuples(sublime.RegionSet.add)
+sublime.RegionSet.subtract = acceptPtsAndTuples(sublime.RegionSet.subtract)
+sublime.Region.intersection = acceptPtsAndTuples(sublime.Region.intersection)
+sublime.Region.cover = acceptPtsAndTuples(sublime.Region.cover)
+
+def RegionSet__iadd__(self, other):
+    self.add(other)
+    return self
+
+def RegionSet__isub__(self, other):
+    self.subtract(other)
+    return self
+
+sublime.RegionSet.__contains__ = sublime.RegionSet.contains
+sublime.RegionSet.__iadd__ = RegionSet__iadd__
+sublime.RegionSet.__isub__ = RegionSet__isub__
+
+def Region__iand__(self, other):
+    return self & other
+
+def Region__ior__(self, other):
+    return self | other
+
+sublime.Region.__contains__ = sublime.Region.contains
+sublime.Region.__and__ = sublime.Region.intersection
+sublime.Region.__or__ = sublime.Region.cover
+sublime.Region.__iand__ = Region__iand__
+sublime.Region.__ior__ = Region__ior__
+
+################################################################################
+
+sublime.View.cb = property( lambda s: sublime.getClipboard(), 
+                            lambda s, o: sublime.setClipboard(o))
 
 ################################################################################
