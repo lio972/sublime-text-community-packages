@@ -282,10 +282,9 @@ sublime.Window.cmd = property(lambda s: SublimeCommands(s))
 def acceptPtsAndTuples(func):
     def wrapper(self, arg):
         if not isinstance(arg, sublime.Region):
-            try:
-                arg = sublime.Region(*arg)
-            except:
+            if isinstance(arg, (int, long)):
                 arg = (arg, arg)
+            arg = sublime.Region(*arg)
         return func(self, arg)
     wrapper.__name__ = func.__name__
     return wrapper
