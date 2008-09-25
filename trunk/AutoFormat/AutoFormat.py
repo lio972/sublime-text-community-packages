@@ -3,6 +3,8 @@ import os
 import sys
 import re
 
+import functools
+
 
 class AutoFormatCommand(sublimeplugin.TextCommand):
 	def run(self, view, args):
@@ -28,9 +30,7 @@ class AutoFormatCommand(sublimeplugin.TextCommand):
 		result = os.system(cmd)
 		
 		if not result:		
-			s = open(f, 'r').read()
-			region = sublime.Region(0L, view.size())
-			view.replace(region, s)
+			sublime.setTimeout(functools.partial(view.runCommand, 'revert'), 0)
 		
 	def isEnabled(self, view, args):
 		lang = re.search(".*/([^/]*)\.tmLanguage$", view.options().getString("syntax")).group(1)
