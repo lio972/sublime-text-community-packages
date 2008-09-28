@@ -27,8 +27,8 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
     callbacks = {}
     
     def onLoad(self, view):
-        # TODO .. fileName() always return python normed?
-        fn = os.path.normpath(view.fileName()) 
+        fn = view.fileName()
+        if fn: fn = os.path.normpath(fn) 
         if fn not in self.callbacks: return
 
         search_string = self.callbacks.pop(fn)    
@@ -43,7 +43,7 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
             # beginning of the line
             view.runCommand('moveTo bol')
             for t in range(5): view.runCommand('scroll -1')
-            
+
     onActivated = onLoad
 
     def run(self, view, args):
