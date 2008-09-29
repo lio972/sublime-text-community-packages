@@ -17,69 +17,65 @@ import parse_ctags
 
 ###############################################################################
 
-def monkeypatch_method(cls):
-    def decorator(func):
-        setattr(cls, func.__name__, func)
-        return func
-    return decorator
-
-@monkeypatch_method(sublime.View)
-def word(self, pt):
-    # Takes a pt or a Region as argument
-    if isinstance(pt, sublime.Region):
-        pt = pt.begin()
-
-    # Word boundary characters
-    wordSeparators = self.options().get('wordSeparators') + string.whitespace
-
-    # Backtrack looking for word boundary
-    for start in range(pt, -1, -1):
-        if self.substr(start) in wordSeparators:
-            break 
-
-    # Go forward looking for word boundary 
-    for end in range(pt, self.size() + 1):
-        if self.substr(end) in wordSeparators:
-            break 
-
-    return sublime.Region(start + 1, end)
-
-@monkeypatch_method(sublime.View)
-def fullBuffer(self):
-    return self.substr(sublime.Region(0, self.size()))
-
-@monkeypatch_method(sublime.View)
-def regexRegions(self, regex):
-    return [
-        sublime.Region(m.start(), m.end()) for m in 
-        regex.finditer(self.fullBuffer())
-    ]
-
-@monkeypatch_method(sublime.View)
-def selectRegex(self, regex):
-    sel_set = self.sel()
-
-    search = self.regexRegions(regex)
+class ExtendedView(object):
+    def word(self, pt):
+        # Takes a pt or a Region as argument
+        if isinstance(pt, sublime.Region):
+            pt = pt.begin()
     
-    if search:
-        sel_set.clear()
-        for selection in search:
-            sel_set.add(selection)
+        # Word boundary characters
+        wordSeparators = self.options().get('wordSeparators') + string.whitespace
+    
+        # Backtrack looking for word boundary
+        for start in range(pt, -1, -1):
+            if self.substr(start) in wordSeparators:
+                break 
+    
+        # Go forward looking for word boundary 
+        for end in range(pt, self.size() + 1):
+            if self.substr(end) in wordSeparators:
+                break 
+    
+        return sublime.Region(start + 1, end)
 
+    def fullBuffer(self):
+        return self.substr(sublime.Region(0, self.size()))
 
-@monkeypatch_method(sublime.Window)
-def isOpen(self, check):
-    for v in self.views():
-        fn = v.fileName()
-        if fn and normpath(fn) == normpath(check):
-            return True
+    def regexRegions(self, regex):
+        return [
+            sublime.Region(m.start(), m.end()) for m in 
+            regex.finditer(self.fullBuffer())
+        ]
+    
+    def selectRegex(self, regex):
+        sel_set = self.sel()
+    
+        search = self.regexRegions(regex)
+        
+        if search:
+            sel_set.clear()
+            for selection in search:
+                sel_set.add(selection)
+    
+class ExtendedWindow(object):
+    def isOpen(self, check):
+        for v in self.views():
+            fn = v.fileName()
+            if fn and normpath(fn) == normpath(check):
+                return True
+
+def monkeyPatchClass(cls, extended_class):
+    cls.__bases__ = tuple(list(cls.__bases__) + [extended_class])
+
+monkeyPatchClass(sublime.View, ExtendedView)
+monkeyPatchClass(sublime.Window, ExtendedWindow)
 
 ###############################################################################
     
 class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
-    onLoadEvents           = {}
-    onActivatedEvents      = {}
-    tags                   = {}
+    onLoadEvents           =     {}
+    onActivatedEvents      =     {}
+    tags                   =     {}
     
     def handleEvents(self, view, events):
         fn = view.fileName()
