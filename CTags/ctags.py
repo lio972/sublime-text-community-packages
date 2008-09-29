@@ -74,21 +74,14 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
     tags = {}
     
     def onLoad(self, view):
-        buf = view.fullBuffer()
         # Race between onLoad and onActivated???
-        if not buf:  return
-        
+        if not view.substr(sublime.Region(0,3)):  return
         
         fn = view.fileName()
         if fn: fn = os.path.normpath(fn) 
         if fn not in self.callbacks: return
 
         search_string = self.callbacks.pop(fn)
-        
-        
-        if search_string not in buf:
-            print search_string
-            print len(buf)
         
         view.selectRegex(re.compile(re.escape(search_string)))
 
