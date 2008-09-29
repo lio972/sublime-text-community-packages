@@ -25,6 +25,7 @@ def replace_selections(view, sel):
     
 class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
     callbacks = {}
+    tags = {}
     
     def onLoad(self, view):
         fn = view.fileName()
@@ -45,11 +46,34 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
             for t in range(5): view.runCommand('scroll -1')
 
     onActivated = onLoad
+    
+    def jump(self, view, tag_file):
+        # Get the dir of the current file        
+        ex_command = self.tags[tag_file]
 
-    def run(self, view, args):
+        if view:
+            tag_dir = os.path.dirname(view.fileName())
+            tag_file = normpath(join(tag_dir, tag_file))
+
         # Get a reference to the active window
         window = view.window()
-        
+
+        if ex_command.isdigit():
+            window.openFile(tag_file, int(ex_command), 1)
+        else:
+            self.callbacks[tag_file] = ex_command
+            window.openFile(tag_file)
+
+    def quickOpen(self, view, files):
+        # Get a reference to the active window
+        window = view.window()
+        window.showQuickPanel("", "navigateToDefinition", files)
+
+    def run(self, view, args):
+        if args:
+            # Handle QuickOpen
+            return self.jump(view, args[0])
+
         # Store current selection for later
         first_sel = view.sel()[0]
 
@@ -57,21 +81,20 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
         view.runCommand('expandSelectionTo word')
         current_symbol = view.substr(view.sel()[0])
 
-        # Get the dir of the current file
-        tag_dir = os.path.dirname(view.fileName())
-
         # Clear the selection and replace with original un-word-expanded sel
         replace_selections(view, first_sel)
 
         # need to memoize/cache these somehow and load in another thread
-        tags = parse_ctags.parse_tag_file(os.path.join(tag_dir, 'tags'))
+        tag_dir = os.path.dirname(view.fileName())
+        tags = parse_ctags.parse_tag_file(join(tag_dir, 'tags'))
 
-        for tag in (parse_ctags.Tag(t) for t in tags.get(current_symbol, [])):
-            if tag.ex_command.isdigit():
-                window.openFile(tag.filename, int(tag.ex_command), 1)
-            else:
-                tag_file = normpath(join(tag_dir, tag.filename))
-                self.callbacks[tag_file] = tag.ex_command
-                window.openFile(tag_file)
+        self.tags = dict (
+            (t['filename'], t['ex_command']) for t 
+                                             in tags.get(current_symbol, [])
+                                            
+        )
 
+        if len(self.tags) > 1:     self.quickOpen(view, self.tags.keys())
+        elif self.tags:            self.jump(view, self.tags.keys()[0])
+        
 ################################################################################
