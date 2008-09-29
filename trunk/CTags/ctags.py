@@ -134,6 +134,9 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
 
         # need to memoize/cache these somehow and load in another thread
         tags_file = walkUpDirAndFindFile(join(dirname(view.fileName()), 'tags'))
+        if not tags_file:
+            return
+        
         self.tag_dir = dirname(tags_file)
 
         # CACHED .. TODO : Threaded parsing        
