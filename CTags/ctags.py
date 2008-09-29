@@ -3,7 +3,6 @@
 # Std Libs
 import os
 import re
-import functools
 import string
 
 from os.path import join, normpath, dirname
@@ -71,7 +70,18 @@ monkeyPatchClass(sublime.View, ExtendedView)
 monkeyPatchClass(sublime.Window, ExtendedWindow)
 
 ###############################################################################
+
+def walkUpDirAndFindFile(file):
+    dirs = normpath(file).split(os.path.sep)
+    f = dirs.pop()
     
+    while dirs:
+        joined = normpath(os.path.sep.join(dirs + [f]))
+        if os.path.exists(joined): return joined
+        else: dirs.pop()
+
+###############################################################################
+
 class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
     onLoadEvents           =     {}
     onActivatedEvents      =     {}
@@ -87,9 +97,8 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
 
         view.selectRegex(re.compile(re.escape(search_string)))
         
-        # TODO:
-            # scroll to correct area of screen
-                
+        #TODO: scroll
+        
     def onActivated(self, view):
         self.handleEvents(view, self.onActivatedEvents)
 
