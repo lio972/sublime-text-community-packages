@@ -28,7 +28,7 @@ Also note that if the same key is bound twice, the last binding takes precedence
 
 <bindings>
 
-    <binding key="ctrl+shift+g" command="navigateToDefinition">
+    <binding key="ctrl+rightbracket" command="navigateToDefinition">
         <!-- <context name="" value=""/> -->
     </binding>
 
