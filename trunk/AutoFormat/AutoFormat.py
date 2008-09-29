@@ -1,5 +1,6 @@
 import sublime, sublimeplugin
 import re
+import os
 from ctypes import *
 
 malloc = cdll.msvcrt.malloc
@@ -34,8 +35,12 @@ MEMORY_ALLOCATION = MemoryAllocationCallback(MemoryAllocation)
 
 class AutoFormatCommand(sublimeplugin.TextCommand):
 	def run(self, view, args):
+		path = sublime.packagesPath()
+		path = os.path.join(path, "User")
+		dll = os.path.join(path, "AStyle.dll")
+
 		# if the function name has a @ followed by number it probably uses the stdcall calling convention. 
-		libc = windll.AStyle
+		libc = windll.LoadLibrary(dll)
 		astyle_main = libc[2]
 		astyle_main.restype = c_char_p
 		astyle_main.argtypes = [c_char_p, c_char_p, ErrorHandlerCallback, MemoryAllocationCallback]
