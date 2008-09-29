@@ -2,12 +2,11 @@
 
 # Std Libs
 import os
-import time
 import re
 import functools
 import string
 
-from os.path import join, normpath
+from os.path import join, normpath, dirname
 
 # Sublime Libs
 import sublime
@@ -67,29 +66,37 @@ def selectRegex(self, regex):
         for selection in search:
             sel_set.add(selection)
 
+
+@monkeypatch_method(sublime.Window)
+def isOpen(self, check):
+    for v in self.views():
+        fn = v.fileName()
+        if fn and normpath(fn) == normpath(check):
+            return True
+
 ###############################################################################
     
 class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
-    callbacks = {}
-    tags = {}
+    onLoadEvents           = {}
+    onActivatedEvents      = {}
+    tags                   = {}
     
-    def onLoad(self, view):
-        # Race between onLoad and onActivated???
-        if not view.substr(sublime.Region(0,3)):  return
-        
+    def handleEvents(self, view, events):
         fn = view.fileName()
-        if fn: fn = os.path.normpath(fn) 
-        if fn not in self.callbacks: return
+        if fn: fn = os.path.normpath(fn)
+        if fn not in events: return
 
-        search_string = self.callbacks.pop(fn)
-        
+        search_string = events.pop(fn)
+
         view.selectRegex(re.compile(re.escape(search_string)))
+        for t in range(5): view.runCommand('scroll 1')
 
-        # view.runCommand('moveTo bol')
-        for t in range(5): view.runCommand('scroll -1')
+    def onActivated(self, view):
+        self.handleEvents(view, self.onActivatedEvents)
 
-    onActivated = onLoad
-    
+    def onLoad(self, view):
+        self.handleEvents(view, self.onLoadEvents)
+
     def jump(self, view, tag_file):
         ex_command = self.tags[tag_file]
         tag_file = normpath(join(self.tag_dir, tag_file))
@@ -99,11 +106,14 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
         if ex_command.isdigit():
             window.openFile(tag_file, int(ex_command), 1)
         else:
-            self.callbacks[tag_file] = ex_command
+            if window.isOpen(tag_file):
+                self.onActivatedEvents[tag_file] = ex_command
+            else:
+                self.onLoadEvents[tag_file] = ex_command
+
             window.openFile(tag_file)
 
     def quickOpen(self, view, files):
-        # Get a reference to the active window
         window = view.window()
         window.showQuickPanel("", "navigateToDefinition", files)
 
@@ -115,10 +125,9 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
         current_symbol = view.substr(view.word(view.sel()[0]))
 
         # need to memoize/cache these somehow and load in another thread
-        self.tag_dir = os.path.dirname(view.fileName())
+        self.tag_dir = dirname(view.fileName())
         tags = parse_ctags.parse_tag_file(join(self.tag_dir, 'tags'))
 
-        # TODO: possibly only need these two fields
         self.tags = dict (
             (t['filename'], t['ex_command']) for t
                                              in tags.get(current_symbol, [])
