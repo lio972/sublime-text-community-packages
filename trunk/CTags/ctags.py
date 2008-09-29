@@ -137,11 +137,10 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
         self.tag_dir = dirname(tags_file)
 
         # CACHED .. TODO : Threaded parsing        
-        if tags_file not in self.cache:
-            tags = parse_ctags.parse_tag_file(tags_file)
-            self.cache[tags_file] = tags
-        else:
-            tags = self.cache[tags_file]
+        while tags_file not in self.cache:
+            self.cache[tags_file] = parse_ctags.parse_tag_file(tags_file)
+        
+        tags = self.cache[tags_file]
 
         self.tags = dict (
             (t['filename'], t['ex_command']) for t
