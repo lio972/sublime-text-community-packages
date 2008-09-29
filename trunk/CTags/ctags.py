@@ -5,6 +5,7 @@ import os
 import time
 import re
 import functools
+import string
 
 from os.path import join, normpath
 
@@ -17,9 +18,54 @@ import parse_ctags
 
 ###############################################################################
 
-def replace_selections(view, sel):
-    view.sel().clear()
-    view.sel().add(sel)
+def monkeypatch_method(cls):
+    def decorator(func):
+        setattr(cls, func.__name__, func)
+        return func
+    return decorator
+
+@monkeypatch_method(sublime.View)
+def word(self, pt):
+    # Takes a pt or a Region as argument
+    if isinstance(pt, sublime.Region):
+        pt = pt.begin()
+
+    # Word boundary characters
+    wordSeparators = self.options().get('wordSeparators') + string.whitespace
+
+    # Backtrack looking for word boundary
+    for start in range(pt, -1, -1):
+        if self.substr(start) in wordSeparators:
+            break 
+
+    # Go forward looking for word boundary 
+    for end in range(pt, self.size() + 1):
+        if self.substr(end) in wordSeparators:
+            break 
+
+    return sublime.Region(start + 1, end)
+
+@monkeypatch_method(sublime.View)
+def fullBuffer(self):
+    return self.substr(sublime.Region(0, self.size()))
+
+@monkeypatch_method(sublime.View)
+def regexRegions(self, regex):
+    return [
+        sublime.Region(m.start(), m.end()) for m in 
+        regex.finditer(self.fullBuffer())
+    ]
+
+@monkeypatch_method(sublime.View)
+def selectRegex(self, regex):
+    sel_set = self.sel()
+
+    search = self.regexRegions(regex)
+    
+    if search:
+        sel_set.clear()
+        for selection in search:
+            sel_set.add(selection)
 
 ###############################################################################
     
@@ -28,39 +74,33 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
     tags = {}
     
     def onLoad(self, view):
+        buf = view.fullBuffer()
+        # Race between onLoad and onActivated???
+        if not buf:  return
+        
+        
         fn = view.fileName()
         if fn: fn = os.path.normpath(fn) 
         if fn not in self.callbacks: return
 
-        search_string = self.callbacks.pop(fn)    
-        v_str = view.substr(sublime.Region(0, view.size()))
+        search_string = self.callbacks.pop(fn)
+        
+        
+        if search_string not in buf:
+            print search_string
+            print len(buf)
+        
+        view.selectRegex(re.compile(re.escape(search_string)))
 
-        if search_string in v_str:
-            pt = v_str.index(search_string)
-            sel = sublime.Region(pt, pt)
-            replace_selections(view, sel)
+        # view.runCommand('moveTo bol')
+        for t in range(5): view.runCommand('scroll -1')
 
-            # This scrolls the view to the selection as well as to the
-            # beginning of the line
-            view.runCommand('moveTo bol')
-            for t in range(5): view.runCommand('scroll -1')
-
-    # onActivated = onLoad
+    onActivated = onLoad
     
     def jump(self, view, tag_file):
-        # Get the dir of the current file        
         ex_command = self.tags[tag_file]
+        tag_file = normpath(join(self.tag_dir, tag_file))
 
-        # TODO:
-        # The quickopen widget doesnt seem to pass a view with a fileName
-        # Perhaps keep state in an instance variable
-        # This is needed for registering onLoad "callbacks"
-
-        if view:
-            tag_dir = os.path.dirname(view.fileName())
-            tag_file = normpath(join(tag_dir, tag_file))
-
-        # Get a reference to the active window
         window = view.window()
 
         if ex_command.isdigit():
@@ -79,25 +119,16 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
             # Handle QuickOpen
             return self.jump(view, args[0])
 
-        # Store current selection for later
-        first_sel = view.sel()[0]
-
-        # Expand selection to word to get "symbol under cursor"
-        view.runCommand('expandSelectionTo word')
-        current_symbol = view.substr(view.sel()[0])
-
-        # Clear the selection and replace with original un-word-expanded sel
-        replace_selections(view, first_sel)
+        current_symbol = view.substr(view.word(view.sel()[0]))
 
         # need to memoize/cache these somehow and load in another thread
-        tag_dir = os.path.dirname(view.fileName())
-        tags = parse_ctags.parse_tag_file(join(tag_dir, 'tags'))
-        
+        self.tag_dir = os.path.dirname(view.fileName())
+        tags = parse_ctags.parse_tag_file(join(self.tag_dir, 'tags'))
+
         # TODO: possibly only need these two fields
         self.tags = dict (
             (t['filename'], t['ex_command']) for t
                                              in tags.get(current_symbol, [])
-
         )
 
         if len(self.tags) > 1:     self.quickOpen(view, self.tags.keys())
