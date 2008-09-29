@@ -89,8 +89,10 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
         search_string = events.pop(fn)
 
         view.selectRegex(re.compile(re.escape(search_string)))
-        for t in range(5): view.runCommand('scroll 1')
-
+        
+        # TODO:
+            # scroll to correct area of screen
+                
     def onActivated(self, view):
         self.handleEvents(view, self.onActivatedEvents)
 
