@@ -133,9 +133,8 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
         current_symbol = view.substr(view.word(view.sel()[0]))
 
         # need to memoize/cache these somehow and load in another thread
-        self.tag_dir = dirname(view.fileName())
-        
-        tags_file = join(self.tag_dir, 'tags')
+        tags_file = walkUpDirAndFindFile(join(dirname(view.fileName()), 'tags'))
+        self.tag_dir = dirname(tags_file)
 
         # CACHED .. TODO : Threaded parsing        
         if tags_file not in self.cache:
