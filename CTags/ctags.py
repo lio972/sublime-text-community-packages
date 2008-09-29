@@ -24,12 +24,12 @@ class ExtendedView(object):
             pt = pt.begin()
     
         # Word boundary characters
-        wordSeparators = self.options().get('wordSeparators') + string.whitespace
+        wordSeparators = self.options().get('wordSeparators')+string.whitespace
     
         # Backtrack looking for word boundary
         for start in range(pt, -1, -1):
             if self.substr(start) in wordSeparators:
-                break 
+                break
     
         # Go forward looking for word boundary 
         for end in range(pt, self.size() + 1):
@@ -76,6 +76,7 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
     onLoadEvents           =     {}
     onActivatedEvents      =     {}
     tags                   =     {}
+    cache                  =     {}
     
     def handleEvents(self, view, events):
         fn = view.fileName()
@@ -107,7 +108,7 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
             if window.isOpen(tag_file):
                 self.onActivatedEvents[tag_file] = ex_command
             else:
-                self.onLoadEvents[tag_file] = ex_command
+                self.onLoadEvents[tag_file]      = ex_command
 
             window.openFile(tag_file)
 
@@ -124,7 +125,15 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
 
         # need to memoize/cache these somehow and load in another thread
         self.tag_dir = dirname(view.fileName())
-        tags = parse_ctags.parse_tag_file(join(self.tag_dir, 'tags'))
+        
+        tags_file = join(self.tag_dir, 'tags')
+
+        # CACHED .. TODO : Threaded parsing        
+        if tags_file not in self.cache:
+            tags = parse_ctags.parse_tag_file(tags_file)
+            self.cache[tags_file] = tags
+        else:
+            tags = self.cache[tags_file]
 
         self.tags = dict (
             (t['filename'], t['ex_command']) for t
