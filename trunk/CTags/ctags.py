@@ -45,11 +45,16 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
             view.runCommand('moveTo bol')
             for t in range(5): view.runCommand('scroll -1')
 
-    onActivated = onLoad
+    # onActivated = onLoad
     
     def jump(self, view, tag_file):
         # Get the dir of the current file        
         ex_command = self.tags[tag_file]
+
+        # TODO:
+        # The quickopen widget doesnt seem to pass a view with a fileName
+        # Perhaps keep state in an instance variable
+        # This is needed for registering onLoad "callbacks"
 
         if view:
             tag_dir = os.path.dirname(view.fileName())
@@ -87,11 +92,12 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
         # need to memoize/cache these somehow and load in another thread
         tag_dir = os.path.dirname(view.fileName())
         tags = parse_ctags.parse_tag_file(join(tag_dir, 'tags'))
-
+        
+        # TODO: possibly only need these two fields
         self.tags = dict (
-            (t['filename'], t['ex_command']) for t 
+            (t['filename'], t['ex_command']) for t
                                              in tags.get(current_symbol, [])
-                                            
+
         )
 
         if len(self.tags) > 1:     self.quickOpen(view, self.tags.keys())
