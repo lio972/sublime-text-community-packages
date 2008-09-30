@@ -7,6 +7,8 @@ from __future__ import with_statement
 
 import re
 import pprint
+import unittest
+import os
 
 ################################################################################
 
@@ -35,7 +37,7 @@ def parse_tag_file(tag_file):
     return tags_lookup
 
 def unescape_ex(ex):
-    return re.sub(r"\\(\$|/|\^)", r'\1', ex)
+    return re.sub(r"\\(\$|/|\^|\\)", r'\1', ex)
         
 def process_ex_cmd(ex):
     return unescape_ex(ex if ex.isdigit() else ex[2:-2])
@@ -91,7 +93,7 @@ class Tag(object):
 
 ################################################################################
 
-def main():
+def dev_scribble():
     total_in_lookup = 0
     num_lines = len(open('tags').readlines())
     
@@ -103,8 +105,30 @@ def main():
     
     print abs(num_lines - total_in_lookup) == 6 and 'OK' or 'FAILURE!'
     
+
+class CTagsTest(unittest.TestCase):
+    def test_all_search_strings_work(self):
+        os.chdir(os.path.dirname(__file__))
+        tags = parse_tag_file('tags')
+        
+        failures = []
+        
+        for symbol, tag_list in tags.iteritems():
+            for tag in (Tag(t) for t in tag_list):
+                if not tag.ex_command.isdigit():
+                    with open(tag.filename) as fh:
+                        file_str = fh.read()
+                        if tag.ex_command not in file_str:
+                            failures += [tag.ex_command]
+                            
+        
+        for f in failures:
+            print f
+               
+        self.assertEqual(len(failures), 0)
+
 if __name__ == '__main__':
-    main()
+    unittest.main()
 
 ################################################################################
 # TAG FILE FORMAT
