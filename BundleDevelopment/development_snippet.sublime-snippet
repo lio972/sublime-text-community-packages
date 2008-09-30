@@ -1,0 +1,7 @@
+<!-- See http://www.sublimetext.com/docs/snippets for more information 
+-->
+<snippet>
+    <content><![CDATA[class ExtractSnippet${0:Command}(sublimeplugin.${1:TextCommand}):
+    def run(self, view, args):
+        ${2:sels = view.sel()}]]></content>
+</snippet>
