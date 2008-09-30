@@ -3,10 +3,6 @@ import re
 import os
 from ctypes import *
 
-malloc = cdll.msvcrt.malloc
-malloc.restype = POINTER(c_double)
-free = cdll.msvcrt.free
-
 # // astyle ASTYLE_LIB declarations
 # typedef void (STDCALL *fpError)(int, char*);       // pointer to callback error handler
 # typedef char* (STDCALL *fpAlloc)(unsigned long);   // pointer to callback memory allocation
@@ -35,6 +31,8 @@ MEMORY_ALLOCATION = MemoryAllocationCallback(MemoryAllocation)
 
 class AutoFormatCommand(sublimeplugin.TextCommand):
 	def run(self, view, args):
+		options = ""
+		#options = "-ayfpdUc"
 		path = sublime.packagesPath()
 		path = os.path.join(path, "User")
 		dll = os.path.join(path, "AStyle.dll")
@@ -47,7 +45,7 @@ class AutoFormatCommand(sublimeplugin.TextCommand):
 		
 		region = sublime.Region(0L, view.size())
 		select_all = view.substr(region)
-		pretty_code = astyle_main(select_all, "", ERROR_HANDLER, MEMORY_ALLOCATION)
+		pretty_code = astyle_main(select_all, options, ERROR_HANDLER, MEMORY_ALLOCATION)
 		view.replace(region, pretty_code)
 		
 	def isEnabled(self, view, args):
