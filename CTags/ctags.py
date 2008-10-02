@@ -25,10 +25,10 @@ class ExtendedView(object):
         wordSeparators = self.options().get('wordSeparators')+string.whitespace
         notAtBoundary = lambda p: self.substr(p) not in wordSeparators
         
-        for s in takewhile(notAtBoundary, range(pt, -1, -1)):    start = s
-        for e in takewhile(notAtBoundary, range(pt, self.size())): end = e + 1
+        for s in takewhile(notAtBoundary, xrange(pt, -1, -1)):    start = s
+        for e in takewhile(notAtBoundary, xrange(pt, self.size())): end = e
 
-        return sublime.Region(start, end)
+        return sublime.Region(start, end + 1)
 
     def fullBuffer(self):
         return self.substr(sublime.Region(0, self.size()))
