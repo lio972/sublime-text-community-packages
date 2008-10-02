@@ -40,7 +40,9 @@ class ExtendedView(object):
     
     def selectRegex(self, regex):
         sel_set = self.sel()
-        [sel_set.add(s) for s in self.regexRegions(regex)] and sel_set.clear()
+        if sel_set:
+            sel_set.clear()
+            [sel_set.add(s) for s in self.regexRegions(regex)]
     
 class ExtendedWindow(object):
     def isOpen(self, check_open):
