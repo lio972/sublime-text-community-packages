@@ -6,6 +6,7 @@ import re
 import string
 
 from os.path import join, normpath, dirname
+from itertools import takewhile
 
 # Sublime Libs
 import sublime
@@ -18,53 +19,36 @@ import parse_ctags
 
 class ExtendedView(object):
     def word(self, pt):
-        # Takes a pt or a Region as argument
-        if isinstance(pt, sublime.Region):
-            pt = pt.begin()
+        start = end = pt
+        if isinstance(pt, sublime.Region): pt = pt.begin()
     
-        # Word boundary characters
         wordSeparators = self.options().get('wordSeparators')+string.whitespace
-    
-        # Backtrack looking for word boundary
-        for start in range(pt, -1, -1):
-            if self.substr(start) in wordSeparators:
-                break
-    
-        # Go forward looking for word boundary 
-        for end in range(pt, self.size() + 1):
-            if self.substr(end) in wordSeparators:
-                break 
-    
-        return sublime.Region(start + 1, end)
+        notAtBoundary = lambda p: self.substr(p) not in wordSeparators
+        
+        for s in takewhile(notAtBoundary, range(pt, -1, -1)):    start = s
+        for e in takewhile(notAtBoundary, range(pt, self.size())): end = e + 1
+
+        return sublime.Region(start, end)
 
     def fullBuffer(self):
         return self.substr(sublime.Region(0, self.size()))
 
     def regexRegions(self, regex):
-        return [
-            sublime.Region(m.start(), m.end()) for m in 
-            regex.finditer(self.fullBuffer())
+        return [ 
+            sublime.Region(*m.span()) for m in regex.finditer(self.fullBuffer())
         ]
     
     def selectRegex(self, regex):
         sel_set = self.sel()
-    
-        search = self.regexRegions(regex)
-        
-        if search:
-            sel_set.clear()
-            for selection in search:
-                sel_set.add(selection)
+        [sel_set.add(s) for s in self.regexRegions(regex)] and sel_set.clear()
     
 class ExtendedWindow(object):
-    def isOpen(self, check):
-        for v in self.views():
-            fn = v.fileName()
-            if fn and normpath(fn) == normpath(check):
-                return True
+    def isOpen(self, check_open):
+        open_files = filter(None, (v.fileName() for v in self.views()))
+        return any(normpath(f) == normpath(check_open) for f in open_files)
 
 def monkeyPatchClass(cls, extended_class):
-    cls.__bases__ = tuple(list(cls.__bases__) + [extended_class])
+    cls.__bases__ = (cls.__bases__[0], extended_class)
 
 monkeyPatchClass(sublime.View, ExtendedView)
 monkeyPatchClass(sublime.Window, ExtendedWindow)
@@ -130,19 +114,16 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
             # Handle QuickOpen
             return self.jump(view, args[0])
 
-        current_symbol = view.substr(view.word(view.sel()[0]))
-
-        # need to memoize/cache these somehow and load in another thread
         tags_file = walkUpDirAndFindFile(join(dirname(view.fileName()), 'tags'))
         if not tags_file:
             return
-        
+
+        current_symbol = view.substr(view.word(view.sel()[0]))
         self.tag_dir = dirname(tags_file)
 
-        # CACHED .. TODO : Threaded parsing
         while tags_file not in self.cache:
             self.cache[tags_file] = parse_ctags.parse_tag_file(tags_file)
-        
+
         tags = self.cache[tags_file]
 
         self.tags = dict (
@@ -152,5 +133,5 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
 
         if len(self.tags) > 1:     self.quickOpen(view, self.tags.keys())
         elif self.tags:            self.jump(view, self.tags.keys()[0])
-        
+
 ################################################################################
