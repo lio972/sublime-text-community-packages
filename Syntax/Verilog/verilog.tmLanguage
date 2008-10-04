@@ -12,7 +12,7 @@
 		<key>foldingStartMarker</key>
 		<string>(begin)\s*(//.*)?$</string>
 		<key>foldingStopMarker</key>
-		<string>^\s*(begin)$</string>		
+		<string>^\s*(end)$</string>		
 		<key>name</key>
 		<string>verilog</string>
 		<key>patterns</key>
