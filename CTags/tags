@@ -275,8 +275,6 @@ ExceptionNone	.\verilog.c	/^typedef enum eException { ExceptionNone, ExceptionEO
 Excluded	.\options.c	/^static stringList* Excluded;$/;"	v	file:
 ExecutableName	.\routines.c	/^static const char *ExecutableName;$/;"	v	file:
 ExecutableProgram	.\routines.c	/^static const char *ExecutableProgram;$/;"	v	file:
-ExtendedView	.\ctags.py	/^class ExtendedView(object):$/;"	c
-ExtendedWindow	.\ctags.py	/^class ExtendedWindow(object):$/;"	c
 FAIL_STACK_EMPTY	.\regex.c	2271;"	d	file:
 FAIL_STACK_FULL	.\regex.c	2273;"	d	file:
 FAIL_STACK_PTR_EMPTY	.\regex.c	2272;"	d	file:
@@ -1981,7 +1979,6 @@ freeString	.\options.c	/^static void freeString (char **const pString)$/;"	f	fil
 freeTagFileResources	.\entry.c	/^extern void freeTagFileResources (void)$/;"	f
 freebasic_keywords	.\basic.c	/^static KeyWord freebasic_keywords[] = {$/;"	v	file:
 fsetpos	.\routines.c	/^extern int fsetpos (FILE *stream, fpos_t const *pos)$/;"	f
-fullBuffer	.\ctags.py	/^    def fullBuffer(self):$/;"	m	class:ExtendedView
 function	.\lregex.c	/^			regexCallback function;$/;"	m	struct:__anon26::__anon27::__anon29	file:
 getBooleanOption	.\options.c	/^static boolean getBooleanOption ($/;"	f	file:
 getChar	.\fortran.c	/^static int getChar (void)$/;"	f	file:
@@ -2022,7 +2019,6 @@ growFields	.\readtags.c	/^static tagResult growFields (tagFile *const file)$/;"	
 growString	.\readtags.c	/^static int growString (vstring *s)$/;"	f	file:
 hackReject	.\sh.c	/^static boolean hackReject (const vString* const tagName)$/;"	f	file:
 handleDirective	.\get.c	/^static boolean handleDirective (const int c)$/;"	f	file:
-handleEvents	.\ctags.py	/^    def handleEvents(self, view, events):$/;"	m	class:NavigateToDefinitionCommand
 handler	.\options.c	/^	parametricOptionHandler handler;  \/* routine to handle option *\/$/;"	m	struct:__anon34	file:
 hasAtLiteralStrings	.\get.c	/^	boolean hasAtLiteralStrings; \/* supports @"c:\\" strings *\/$/;"	m	struct:sCppState	file:
 hashEntry	.\keyword.c	/^} hashEntry;$/;"	t	typeref:struct:sHashEntry	file:
@@ -2163,7 +2159,6 @@ isMember	.\c.c	/^static boolean isMember (const statementInfo *const st)$/;"	f	f
 isNameCandidate	.\c.c	/^	boolean isNameCandidate;$/;"	m	struct:sParenInfo	file:
 isNormalFile	.\routines.h	/^	boolean isNormalFile;$/;"	m	struct:__anon65
 isOneOf	.\c.c	43;"	d	file:
-isOpen	.\ctags.py	/^    def isOpen(self, check):$/;"	m	class:ExtendedWindow
 isOption	.\options.h	/^	boolean isOption;$/;"	m	struct:sCookedArgs
 isParamList	.\c.c	/^	boolean isParamList;$/;"	m	struct:sParenInfo	file:
 isPathSeparator	.\routines.c	/^static boolean isPathSeparator (const int c)$/;"	f	file:
@@ -2343,7 +2338,6 @@ member	.\c.c	/^	memberInfo	member;         \/* information regarding parent clas
 memberInfo	.\c.c	/^} memberInfo;$/;"	t	typeref:struct:sMemberInfo	file:
 mfopen	.\mac.c	/^FILE* mfopen(const char* file, const char* mode)$/;"	f
 mode_t	.\e_mac.h	/^typedef unsigned long  mode_t;$/;"	t
-monkeyPatchClass	.\ctags.py	/^def monkeyPatchClass(cls, extended_class):$/;"	f
 mstat	.\mac.c	/^int mstat(const char* file, struct stat* st)$/;"	f
 n	.\python.c	/^	int n;$/;"	m	struct:NestingLevels	file:
 name	.\c.c	/^	const char *name;$/;"	m	struct:sKeywordDesc	file:
@@ -2414,7 +2408,6 @@ notwordchar	.\regex.c	/^  notwordchar,	\/* Matches any char that is not a word-c
 numTags	.\entry.h	/^	struct sNumTags { unsigned long added, prev; } numTags;$/;"	m	struct:eTagFile	typeref:struct:eTagFile::sNumTags
 num_regs	.\regex.h	/^  unsigned num_regs;$/;"	m	struct:re_registers
 onActivated	.\ctags.py	/^    def onActivated(self, view):$/;"	m	class:NavigateToDefinitionCommand
-onLoad	.\ctags.py	/^    def onLoad(self, view):$/;"	m	class:NavigateToDefinitionCommand
 on_failure_jump	.\regex.c	/^  on_failure_jump,$/;"	e	enum:__anon57	file:
 on_failure_keep_string_jump	.\regex.c	/^  on_failure_keep_string_jump,$/;"	e	enum:__anon57	file:
 opKeyword	.\asm.c	/^} opKeyword;$/;"	t	typeref:enum:__anon4	file:
@@ -2738,7 +2731,6 @@ regexBroken	.\lregex.c	/^static boolean regexBroken = FALSE;$/;"	v	file:
 regexCallback	.\parse.h	/^typedef void (*regexCallback) (const char *line, const regexMatch *matches, unsigned int count);$/;"	t
 regexMatch	.\parse.h	/^} regexMatch;$/;"	t	typeref:struct:__anon38
 regexPattern	.\lregex.c	/^} regexPattern;$/;"	t	typeref:struct:__anon26	file:
-regexRegions	.\ctags.py	/^    def regexRegions(self, regex):$/;"	m	class:ExtendedView
 regex_compile	.\regex.c	/^regex_compile (pattern, size, syntax, bufp)$/;"	f	file:
 regex_t	.\regex.h	/^typedef struct re_pattern_buffer regex_t;$/;"	t	typeref:struct:re_pattern_buffer
 regexec	.\regex.c	/^regexec (preg, string, nmatch, pmatch, eflags)$/;"	f
@@ -2814,7 +2806,6 @@ scope	.\sql.c	/^	vString *	scope;$/;"	m	struct:sTokenInfo	file:
 scopeString	.\c.c	/^static const char *scopeString (const tagScope scope)$/;"	f	file:
 search	.\readtags.c	/^	} search;$/;"	m	struct:sTagFile	typeref:struct:sTagFile::__anon44	file:
 secondary	.\fortran.c	/^	struct sTokenInfo *secondary;$/;"	m	struct:sTokenInfo	typeref:struct:sTokenInfo::sTokenInfo	file:
-selectRegex	.\ctags.py	/^    def selectRegex(self, regex):$/;"	m	class:ExtendedView
 selected	.\routines.c	148;"	d	file:
 sep	.\entry.c	713;"	d	file:
 sep	.\entry.c	765;"	d	file:
@@ -3108,7 +3099,6 @@ version	.\readtags.h	/^		const char *version;$/;"	m	struct:__anon49::__anon52
 vimKind	.\vim.c	/^} vimKind;$/;"	t	typeref:enum:__anon75	file:
 vstring	.\readtags.c	/^} vstring;$/;"	t	typeref:struct:__anon43	file:
 walkUpDirAndFindFile	.\ctags.py	/^def walkUpDirAndFindFile(file):$/;"	f
-word	.\ctags.py	/^    def word(self, pt):$/;"	m	class:ExtendedView
 word	.\regex.c	/^  fail_stack_elt_t word;$/;"	m	union:__anon61	file:
 wordbeg	.\regex.c	/^  wordbeg,	\/* Succeeds if at word beginning.  *\/$/;"	e	enum:__anon57	file:
 wordbound	.\regex.c	/^  wordbound,	\/* Succeeds if at a word boundary.  *\/$/;"	e	enum:__anon57	file:

@@ -13,20 +13,19 @@ import os
 ################################################################################
 
 TAGS_RE = re.compile (
-    
-    '^'
+
     '(?P<symbol>[^\t]+)\t'
     '(?P<filename>[^\t]+)\t'
     '(?P<ex_command>.*?);"\t'
     '(?P<type>[^\t]+)'
-    '(?:\t(?P<fields>.*))?$'
+    '(?:\t(?P<fields>.*))?'
 )
 
 ################################################################################
 
 def parse_tag_file(tag_file):
     tags_lookup = {}
-    
+
     with open(tag_file) as tags:
         for search_obj in (t for t in (TAGS_RE.search(l) for l in tags) if t):
             tag = post_process_tag(search_obj, tag_file)
@@ -70,7 +69,7 @@ def process_fields(fields):
 class Tag(object):
     "dot.syntatic sugar for tag dicts"
     def __init__(self, tag_dict):
-        self.__dict__.update(tag_dict)
+        self.__dict__ = tag_dict
 
     def __repr__(self):
         return pprint.pformat(self.__dict__)
@@ -147,7 +146,7 @@ class CTagsTest(unittest.TestCase):
         self.assertEqual(len(failures), 0, 'update tag files and try again')
 
 if __name__ == '__main__':
-    if 1: dev_scribble()
+    if 0: dev_scribble()
     else: unittest.main()
 
 ################################################################################
