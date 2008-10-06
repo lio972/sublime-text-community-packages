@@ -4,9 +4,11 @@
 import os
 import re
 import string
+import time
 
-from os.path import join, normpath, dirname
-from itertools import takewhile
+from os.path import join, normpath, dirname, abspath
+from itertools import takewhile, groupby
+from operator import itemgetter as iget
 
 # Sublime Libs
 import sublime
@@ -14,50 +16,6 @@ import sublimeplugin
 
 # User Libs
 import parse_ctags
-
-###############################################################################
-
-class ExtendedView(object):
-    def word(self, pt):
-        start = end = pt
-        if isinstance(pt, sublime.Region): pt = pt.begin()
-    
-        wordSeparators = self.options().get('wordSeparators')+string.whitespace
-        notAtBoundary = lambda p: self.substr(p) not in wordSeparators
-        
-        for s in takewhile(notAtBoundary, xrange(pt, -1, -1)):    start = s
-        for e in takewhile(notAtBoundary, xrange(pt, self.size())): end = e
-
-        return sublime.Region(start, end + 1)
-
-    def fullBuffer(self):
-        return self.substr(sublime.Region(0, self.size()))
-
-    def regexRegions(self, regex):
-        return [ 
-            sublime.Region(*m.span()) for m in regex.finditer(self.fullBuffer())
-        ]
-    
-    def selectRegex(self, regex):
-        sel_set = self.sel()
-    
-        search = self.regexRegions(regex)
-        
-        if search:
-            sel_set.clear()
-            for selection in search:
-                sel_set.add(selection)
-    
-class ExtendedWindow(object):
-    def isOpen(self, check_open):
-        open_files = filter(None, (v.fileName() for v in self.views()))
-        return any(normpath(f) == normpath(check_open) for f in open_files)
-
-def monkeyPatchClass(cls, extended_class):
-    cls.__bases__ = (cls.__bases__[0], extended_class)
-
-monkeyPatchClass(sublime.View, ExtendedView)
-monkeyPatchClass(sublime.Window, ExtendedWindow)
 
 ###############################################################################
 
@@ -79,36 +37,37 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
     cache                  =     {}
     
     def handleEvents(self, view, events):
+        if view.isLoading(): return
+
         fn = view.fileName()
         if fn: fn = os.path.normpath(fn)
         if fn not in events: return
 
-        search_string = events.pop(fn)
-
-        view.selectRegex(re.compile(re.escape(search_string)))
-        
-        #TODO: scroll
+        found_tag = view.find(events.pop(fn), 0, sublime.LITERAL)
+        if found_tag:
+            sel_set = view.sel()
+            sel_set.clear()
+            sel_set.add(found_tag)
+            view.show(found_tag)
         
     def onActivated(self, view):
-        self.handleEvents(view, self.onActivatedEvents)
-
-    def onLoad(self, view):
-        self.handleEvents(view, self.onLoadEvents)
+        if self.onActivatedEvents:
+            self.handleEvents(view, self.onActivatedEvents)
 
     def jump(self, view, tag_file):
-        ex_command = self.tags[tag_file]
-        tag_file = normpath(join(self.tag_dir, tag_file))
+        # TODO: if there is more than one tag per symbol/file
+        #       open a quickPanel to choose which symbol to go to in the
+        #       current file
+        
+        ex_command = self.tags[tag_file][0]
 
+        tag_file = normpath(join(self.tag_dir, tag_file))
         window = view.window()
 
         if ex_command.isdigit():
             window.openFile(tag_file, int(ex_command), 1)
         else:
-            if window.isOpen(tag_file):
-                self.onActivatedEvents[tag_file] = ex_command
-            else:
-                self.onLoadEvents[tag_file]      = ex_command
-
+            self.onActivatedEvents[tag_file] = ex_command
             window.openFile(tag_file)
 
     def quickOpen(self, view, files):
@@ -117,7 +76,6 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
 
     def run(self, view, args):
         if args:
-            # Handle QuickOpen
             return self.jump(view, args[0])
 
         tags_file = walkUpDirAndFindFile(join(dirname(view.fileName()), 'tags'))
@@ -133,8 +91,8 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
         tags = self.cache[tags_file]
 
         self.tags = dict (
-            (t['filename'], t['ex_command']) for t
-                                             in tags.get(current_symbol, [])
+            (f, [t['ex_command'] for t in v]) for (f, v) in
+            groupby(tags.get(current_symbol, []), iget('filename')) 
         )
 
         if len(self.tags) > 1:     self.quickOpen(view, self.tags.keys())

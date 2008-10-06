@@ -98,12 +98,34 @@ def dev_scribble():
     num_lines = len(open('tags').readlines())
     
     tags = parse_tag_file('tags')
-    for symbol, tag_list in tags.iteritems():
-        for tag in tag_list:
-            total_in_lookup += 1
-            # print Tag(tag)
     
-    print abs(num_lines - total_in_lookup) == 6 and 'OK' or 'FAILURE!'
+    from itertools import groupby
+    from operator import itemgetter as iget
+
+    # for f, vals in groupby(tags.iteritems(), key=iget('filename')):
+   
+    for symbol, tag_list in tags.iteritems():
+        # print '\n\n'
+        
+        pprint.pprint (dict (
+            # (k, map(iget('ex_command'), v)) for (k,v) in
+            (k, list(v)) for (k,v) in
+            groupby(tag_list, iget('filename'))
+        ))
+        
+        
+        # for f, vals in :
+        #     print f,
+        #     grp = 
+        #     if len(grp) > 1:
+        #         print f, grp
+                
+    # for symbol, tag_list in tags.iteritems():
+    #     for tag in tag_list:
+    #         total_in_lookup += 1
+    #         print Tag(tag)
+    
+    # print abs(num_lines - total_in_lookup) == 6 and 'OK' or 'FAILURE!'
     
 
 class CTagsTest(unittest.TestCase):
@@ -120,15 +142,15 @@ class CTagsTest(unittest.TestCase):
                         file_str = fh.read()
                         if tag.ex_command not in file_str:
                             failures += [tag.ex_command]
-                            
         
         for f in failures:
             print f
                
-        self.assertEqual(len(failures), 0)
+        self.assertEqual(len(failures), 0, 'update tag files and try again')
 
 if __name__ == '__main__':
-    unittest.main()
+    if 1: dev_scribble()
+    else: unittest.main()
 
 ################################################################################
 # TAG FILE FORMAT
