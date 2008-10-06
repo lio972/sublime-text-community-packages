@@ -34,7 +34,7 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
     events   =   {}
     tags     =   {}
     cache    =   {}
-        
+
     def onActivated(self, view):
         if not self.events or view.isLoading(): return
 

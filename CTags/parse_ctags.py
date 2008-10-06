@@ -19,9 +19,7 @@ TAGS_RE = re.compile (
     '(?P<filename>[^\t]+)\t'
     '(?P<ex_command>.*?);"\t'
     '(?P<type>[^\t]+)'
-    '(?:\t(?P<fields>.*))?$' ,
-
-    re.MULTILINE
+    '(?:\t(?P<fields>.*))?$'
 )
 
 ################################################################################
@@ -40,7 +38,7 @@ def unescape_ex(ex):
     return re.sub(r"\\(\$|/|\^|\\)", r'\1', ex)
         
 def process_ex_cmd(ex):
-    return unescape_ex(ex if ex.isdigit() else ex[2:-2])
+    return ex if ex.isdigit() else unescape_ex(ex[2:-2])
 
 def post_process_tag(search_obj, tag_file):
     tag = search_obj.groupdict()
