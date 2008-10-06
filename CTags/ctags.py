@@ -40,9 +40,9 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
 
         fn = view.fileName()
         if fn: fn = os.path.normpath(fn)
-        if fn not in events: return
+        if fn not in self.events: return
 
-        found_tag = view.find(events.pop(fn), 0, sublime.LITERAL)
+        found_tag = view.find(self.events.pop(fn), 0, sublime.LITERAL)
         if found_tag:
             sel_set = view.sel()
             sel_set.clear()
