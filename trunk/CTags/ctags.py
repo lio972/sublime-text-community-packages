@@ -31,13 +31,12 @@ def walkUpDirAndFindFile(file):
 ###############################################################################
 
 class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
-    onLoadEvents           =     {}
-    onActivatedEvents      =     {}
-    tags                   =     {}
-    cache                  =     {}
-    
-    def handleEvents(self, view, events):
-        if view.isLoading(): return
+    events   =   {}
+    tags     =   {}
+    cache    =   {}
+        
+    def onActivated(self, view):
+        if not self.events or view.isLoading(): return
 
         fn = view.fileName()
         if fn: fn = os.path.normpath(fn)
@@ -49,10 +48,6 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
             sel_set.clear()
             sel_set.add(found_tag)
             view.show(found_tag)
-        
-    def onActivated(self, view):
-        if self.onActivatedEvents:
-            self.handleEvents(view, self.onActivatedEvents)
 
     def jump(self, view, tag_file):
         # TODO: if there is more than one tag per symbol/file
@@ -67,7 +62,7 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
         if ex_command.isdigit():
             window.openFile(tag_file, int(ex_command), 1)
         else:
-            self.onActivatedEvents[tag_file] = ex_command
+            self.events[tag_file] = ex_command
             window.openFile(tag_file)
 
     def quickOpen(self, view, files):
