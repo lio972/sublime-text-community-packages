@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[${1:function} (${2:param}) when ${3:guard} ->
+	${4:body}.]]></content>
+</snippet>
