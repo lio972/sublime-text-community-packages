@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[GetBaseTagData(${1:tagname} ${2:[, instancenumber ]})$15]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[find in array(${1:\$array}; ${2:value}${3:; start})]]></content>
+</snippet>

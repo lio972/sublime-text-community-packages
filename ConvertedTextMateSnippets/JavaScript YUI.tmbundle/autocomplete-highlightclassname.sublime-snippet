@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[highlightClassName = "${1:myCustomHighlightClass}";$15]]></content>
+</snippet>

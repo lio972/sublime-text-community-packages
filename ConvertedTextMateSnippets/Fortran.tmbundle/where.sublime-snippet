@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[where ( $1 ${2:==} $3 )
+	$15
+end where]]></content>
+</snippet>

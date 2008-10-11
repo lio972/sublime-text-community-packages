@@ -1,0 +1,13 @@
+
+<snippet>
+    <content><![CDATA[{ Unix.tm_sec  = ${1:secs}
+; Unix.tm_min  = ${2:mins}
+; Unix.tm_hour = ${3:hour}
+; Unix.tm_mday = ${4:day of month}
+; Unix.tm_mon  = ${5:month}
+; Unix.tm_year = ${6:year}
+; Unix.tm_wday = ${7:day of week}
+; Unix.tm_yday = ${8:day of year}
+; Unix.tm_isdt = ${9:true}
+}$15]]></content>
+</snippet>

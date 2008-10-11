@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ArraySet(${1:array}, ${2:start_pos}, ${3:end_pos}, ${4:value})$15]]></content>
+</snippet>

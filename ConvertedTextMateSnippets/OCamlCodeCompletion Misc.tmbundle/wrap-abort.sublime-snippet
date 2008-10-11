@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Event.wrap_abort ${1:even} ${2:(fun () -> ${3:})}$15]]></content>
+</snippet>

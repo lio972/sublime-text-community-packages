@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[<cfloop condition = "$1">
+	$2
+</cfloop>$15]]></content>
+</snippet>

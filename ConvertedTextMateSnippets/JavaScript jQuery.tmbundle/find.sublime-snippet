@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[.find('${1:selector expression}')$15]]></content>
+</snippet>

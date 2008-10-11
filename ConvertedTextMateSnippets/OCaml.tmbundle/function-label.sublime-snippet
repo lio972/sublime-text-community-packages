@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[~f:(fun ${1:()} -> ${2:body})]]></content>
+</snippet>

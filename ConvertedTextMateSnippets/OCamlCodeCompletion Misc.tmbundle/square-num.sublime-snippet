@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[square_num ${1:num}$15]]></content>
+</snippet>

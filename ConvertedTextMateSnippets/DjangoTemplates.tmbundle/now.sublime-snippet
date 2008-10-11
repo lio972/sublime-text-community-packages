@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[{% now "$1" %}]]></content>
+</snippet>

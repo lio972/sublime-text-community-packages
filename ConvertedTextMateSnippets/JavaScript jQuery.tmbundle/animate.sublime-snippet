@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[.animate({${1:param1: value1, param2: value2}}, ${2:speed})$15]]></content>
+</snippet>

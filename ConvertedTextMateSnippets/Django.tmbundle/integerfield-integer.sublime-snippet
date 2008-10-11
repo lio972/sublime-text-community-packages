@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${1:FIELDNAME} = models.IntegerField(${2:blank=True, null=True})]]></content>
+</snippet>

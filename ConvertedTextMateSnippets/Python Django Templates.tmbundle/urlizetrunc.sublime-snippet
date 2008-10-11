@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[|urlizetrunc:"${1:arg}"]]></content>
+</snippet>

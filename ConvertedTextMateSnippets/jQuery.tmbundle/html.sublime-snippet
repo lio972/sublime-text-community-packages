@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[.html(${1/(.+)/(?1:':)/}${1:Some text <b>and bold!</b>}${1/(.+)/(?1:':)/})$15]]></content>
+</snippet>

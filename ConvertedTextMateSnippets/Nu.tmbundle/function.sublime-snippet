@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[(function ${1:name} (${2:params})
+	$15)]]></content>
+</snippet>

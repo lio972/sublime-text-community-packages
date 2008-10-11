@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[.left(${1/(.+)/(?1:':)/}${1:20px}${1/(.+)/(?1:':)/})$15]]></content>
+</snippet>

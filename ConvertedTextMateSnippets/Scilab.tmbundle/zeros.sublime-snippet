@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[zeros(${1:rows}, ${2:cols})]]></content>
+</snippet>

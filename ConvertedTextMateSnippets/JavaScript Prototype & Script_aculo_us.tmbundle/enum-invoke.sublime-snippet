@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[invoke('${1:callback}');]]></content>
+</snippet>

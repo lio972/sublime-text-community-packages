@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[insertAfter(${1:node});$15]]></content>
+</snippet>

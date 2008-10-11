@@ -1,0 +1,8 @@
+
+<snippet>
+    <content><![CDATA[structure ${1:Set} = RedBlackSetFn (struct
+                                           type ord_key = $2
+									 val compare = $3
+                                    end)
+]]></content>
+</snippet>

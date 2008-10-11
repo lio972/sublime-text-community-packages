@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[type ${1:type name}
+	$15
+end type $1]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ListContainsNoCase(${1:list}, ${2:substring} ${3:[, delimiters ]})$15]]></content>
+</snippet>

@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[case ${1:default}
+	$15]]></content>
+</snippet>

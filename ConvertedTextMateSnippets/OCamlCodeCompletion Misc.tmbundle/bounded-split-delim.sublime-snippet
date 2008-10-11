@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Str.bounded_split_delim ${1:regexp} ${2:str} ${3:lim}$15]]></content>
+</snippet>

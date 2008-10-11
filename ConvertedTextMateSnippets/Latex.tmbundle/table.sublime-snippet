@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${1:Table}~\ref{${2:tab:}}$15]]></content>
+</snippet>

@@ -1,0 +1,7 @@
+
+<snippet>
+    <content><![CDATA[.ajaxSend(function(${1:request, settings}) {
+  ${2://stuff to do before an AJAX request is sent};
+});
+$15]]></content>
+</snippet>

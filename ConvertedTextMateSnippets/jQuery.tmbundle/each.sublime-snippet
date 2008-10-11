@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[.each(function(index) {
+	${15:this.innerHTML = this + " is the element, " + index + " is the position";}
+});]]></content>
+</snippet>

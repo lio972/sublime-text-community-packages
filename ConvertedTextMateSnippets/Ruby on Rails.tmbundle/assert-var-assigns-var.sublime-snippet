@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[assert(${1:var} = assigns(:${1}), "Cannot find @${1}")
+$15]]></content>
+</snippet>

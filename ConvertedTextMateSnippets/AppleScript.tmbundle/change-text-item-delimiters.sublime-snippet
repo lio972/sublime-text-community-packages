@@ -1,0 +1,7 @@
+
+<snippet>
+    <content><![CDATA[set oldDelims to AppleScript's text item delimiters
+set AppleScript's text item delimiters to {"${1:,}"}
+${15:-- insert actions here}
+set AppleScript's text item delimiters to oldDelims]]></content>
+</snippet>

@@ -1,0 +1,5 @@
+<bindings>
+    <binding key="c,u,t,tab" command="insertSnippet 'Packages/Blogging.tmbundle/cut-cut.sublime-snippet'">
+        <context name="selector" value="text.blog"/>
+    </binding>
+</bindings>

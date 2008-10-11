@@ -1,0 +1,10 @@
+
+<snippet>
+    <content><![CDATA[program ${1:name}
+
+	implicit none
+	$15
+
+end program $1
+]]></content>
+</snippet>

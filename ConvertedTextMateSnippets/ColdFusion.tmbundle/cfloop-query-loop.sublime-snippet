@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[<cfloop query = "$1"${2: startRow = "${3:[ ]}" endRow = "${4:[ ]}"}>
+	$5
+</cfloop>$15]]></content>
+</snippet>

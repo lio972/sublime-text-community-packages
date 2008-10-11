@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Array3.sub_left ${1:bigarray} ${2:offset} ${3:len}$15]]></content>
+</snippet>

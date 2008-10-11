@@ -1,0 +1,13 @@
+<bindings>
+    <binding key="f,i,x,e,d,tab" command="insertSnippet 'Packages/CSS.tmbundle/fixed-position-bottom-100-wide-ie6.sublime-snippet'">
+        <context name="selector" value="source.css meta.property-list"/>
+    </binding>
+
+    <binding key="s,c,r,o,l,l,b,a,r,tab" command="insertSnippet 'Packages/CSS.tmbundle/scrollbar.sublime-snippet'">
+        <context name="selector" value="source.css meta.property-list"/>
+    </binding>
+
+    <binding key="s,e,l,e,c,t,i,o,n,tab" command="insertSnippet 'Packages/CSS.tmbundle/selection.sublime-snippet'">
+        <context name="selector" value="source.css -meta.property-list"/>
+    </binding>
+</bindings>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[-module (${1:${TM_FILEPATH/^.*\/(.*)\.erl$/$1/g}}).]]></content>
+</snippet>

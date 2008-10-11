@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Dynlink.Linking_error ${1:(${2:str}, ${3:Dynlink.lerr})}$15]]></content>
+</snippet>

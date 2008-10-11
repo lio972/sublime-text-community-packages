@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[msgstr "${1:translated text}"]]></content>
+</snippet>

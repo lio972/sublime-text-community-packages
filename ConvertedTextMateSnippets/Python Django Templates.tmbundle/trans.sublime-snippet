@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[{% trans "${1:string to translate}" %}]]></content>
+</snippet>

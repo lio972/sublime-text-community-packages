@@ -1,0 +1,45 @@
+<bindings>
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Lisp.tmbundle/a.sublime-snippet'">
+        <context name="selector" value="source.lisp"/>
+    </binding>
+
+    <binding key="c,o,n,s,t,tab" command="insertSnippet 'Packages/Lisp.tmbundle/defconstant.sublime-snippet'">
+        <context name="selector" value="source.lisp"/>
+    </binding>
+
+    <binding key="m,a,c,tab" command="insertSnippet 'Packages/Lisp.tmbundle/defmacro.sublime-snippet'">
+        <context name="selector" value="source.lisp"/>
+    </binding>
+
+    <binding key="p,a,r,tab" command="insertSnippet 'Packages/Lisp.tmbundle/defparameter.sublime-snippet'">
+        <context name="selector" value="source.lisp"/>
+    </binding>
+
+    <binding key="f,u,n,tab" command="insertSnippet 'Packages/Lisp.tmbundle/defun.sublime-snippet'">
+        <context name="selector" value="source.lisp"/>
+    </binding>
+
+    <binding key="v,a,r,tab" command="insertSnippet 'Packages/Lisp.tmbundle/defvar.sublime-snippet'">
+        <context name="selector" value="source.lisp"/>
+    </binding>
+
+    <binding key="i,f,tab" command="insertSnippet 'Packages/Lisp.tmbundle/if.sublime-snippet'">
+        <context name="selector" value="source.lisp"/>
+    </binding>
+
+    <binding key="l,e,t,tab" command="insertSnippet 'Packages/Lisp.tmbundle/let.sublime-snippet'">
+        <context name="selector" value="source.lisp"/>
+    </binding>
+
+    <binding key="l,e,t,a,tab" command="insertSnippet 'Packages/Lisp.tmbundle/let1.sublime-snippet'">
+        <context name="selector" value="source.lisp"/>
+    </binding>
+
+    <binding key="s,e,t,f,tab" command="insertSnippet 'Packages/Lisp.tmbundle/setf.sublime-snippet'">
+        <context name="selector" value="source.lisp"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Lisp.tmbundle/aa.sublime-snippet'">
+        <context name="selector" value="source.lisp"/>
+    </binding>
+</bindings>

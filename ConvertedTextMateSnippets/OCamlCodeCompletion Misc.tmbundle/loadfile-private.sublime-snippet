@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Dynlink.loadfile_private ${1:file_name}${2:;}$15]]></content>
+</snippet>

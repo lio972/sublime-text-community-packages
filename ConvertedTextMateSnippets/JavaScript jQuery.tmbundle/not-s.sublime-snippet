@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[:not(${1:s})$15]]></content>
+</snippet>

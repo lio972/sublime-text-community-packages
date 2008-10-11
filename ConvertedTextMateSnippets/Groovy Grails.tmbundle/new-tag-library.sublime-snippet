@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[class ${1:Name}TagLib {
+	$15
+}]]></content>
+</snippet>

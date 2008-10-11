@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[(macro ${1:name}
+	$2)$15]]></content>
+</snippet>

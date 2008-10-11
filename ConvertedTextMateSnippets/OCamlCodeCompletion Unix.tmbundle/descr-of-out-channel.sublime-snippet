@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.descr_of_out_channel ${1:out_channel}$15]]></content>
+</snippet>

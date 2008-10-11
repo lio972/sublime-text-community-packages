@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.flush ${1:file_descr} Unix.FLUSH$15]]></content>
+</snippet>

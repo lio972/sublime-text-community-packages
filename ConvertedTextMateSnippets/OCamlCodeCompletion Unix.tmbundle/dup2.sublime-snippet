@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.dup2 ${1:file_descr1} ${2:file_descr2}$15]]></content>
+</snippet>

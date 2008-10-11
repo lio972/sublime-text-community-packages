@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[CharsetDecode(${1:string}, ${2:encoding})$15]]></content>
+</snippet>

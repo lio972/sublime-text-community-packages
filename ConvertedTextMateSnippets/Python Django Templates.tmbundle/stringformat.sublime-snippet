@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[|stringformat:"${1:arg}"]]></content>
+</snippet>

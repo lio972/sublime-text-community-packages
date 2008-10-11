@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${YUI_CONNECT:YAHOO.util.Connect}.abort(${1:connectionObject});]]></content>
+</snippet>

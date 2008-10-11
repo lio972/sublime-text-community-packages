@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[PreserveSingleQuotes(${1:variable})$15]]></content>
+</snippet>

@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[GM_openInTab(${1:"${2:http://www.example.com}"});
+$15]]></content>
+</snippet>

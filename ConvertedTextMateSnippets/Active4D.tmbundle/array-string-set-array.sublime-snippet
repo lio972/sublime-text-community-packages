@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[array string(${1:31}; ${2:\$array}; 0)
+set array($2; "${3:string}")$15]]></content>
+</snippet>

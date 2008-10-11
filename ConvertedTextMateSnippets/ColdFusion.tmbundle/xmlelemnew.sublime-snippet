@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[XmlElemNew(${1:xmlObj}${2: [, namespace]}${3: [, childName]})$15]]></content>
+</snippet>

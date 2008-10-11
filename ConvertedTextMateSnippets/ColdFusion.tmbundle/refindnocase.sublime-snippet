@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[REFindNoCase(${1:reg_expression}, ${2:string}${3: [, start]}${4: [, returnsubexpressions]})$15]]></content>
+</snippet>

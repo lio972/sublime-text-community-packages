@@ -1,0 +1,125 @@
+<bindings>
+    <binding key="c,a,s,e,tab" command="insertSnippet 'Packages/Matlab.tmbundle/case.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="c,l,e,a,r,tab" command="insertSnippet 'Packages/Matlab.tmbundle/clear.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="d,s,p,tab" command="insertSnippet 'Packages/Matlab.tmbundle/disp-sprintf.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="d,i,s,p,tab" command="insertSnippet 'Packages/Matlab.tmbundle/disp.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="d,l,m,w,r,i,t,e,tab" command="insertSnippet 'Packages/Matlab.tmbundle/dlmwrite.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="e,l,s,e,i,f,tab" command="insertSnippet 'Packages/Matlab.tmbundle/elseif.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="e,r,r,o,r,tab" command="insertSnippet 'Packages/Matlab.tmbundle/error.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="f,p,r,tab" command="insertSnippet 'Packages/Matlab.tmbundle/fprintf.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="g,e,t,tab" command="insertSnippet 'Packages/Matlab.tmbundle/get.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="g,r,i,d,d,a,t,a,tab" command="insertSnippet 'Packages/Matlab.tmbundle/griddata.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="i,f,e,tab" command="insertSnippet 'Packages/Matlab.tmbundle/if-else.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="i,f,e,i,f,tab" command="insertSnippet 'Packages/Matlab.tmbundle/if-elseif.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="l,i,n,e,tab" command="insertSnippet 'Packages/Matlab.tmbundle/line.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="n,a,r,g,c,h,k,tab" command="insertSnippet 'Packages/Matlab.tmbundle/nargchk.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="o,c,t,f,u,n,tab" command="insertSnippet 'Packages/Matlab.tmbundle/octave-function.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="r,e,v,tab" command="insertSnippet 'Packages/Matlab.tmbundle/revisions.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="s,e,t,tab" command="insertSnippet 'Packages/Matlab.tmbundle/set.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="s,p,r,tab" command="insertSnippet 'Packages/Matlab.tmbundle/sprintf.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="s,w,i,t,c,h,tab" command="insertSnippet 'Packages/Matlab.tmbundle/switch-case-end.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="s,w,i,t,c,h,o,tab" command="insertSnippet 'Packages/Matlab.tmbundle/switch-case-otherwise-end.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="t,i,t,l,e,tab" command="insertSnippet 'Packages/Matlab.tmbundle/title.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="t,r,y,tab" command="insertSnippet 'Packages/Matlab.tmbundle/try-catch-end.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="u,n,i,x,tab" command="insertSnippet 'Packages/Matlab.tmbundle/unix.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="u,n,w,i,n,d,tab" command="insertSnippet 'Packages/Matlab.tmbundle/unwind-protect-cleanup-end.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="w,a,r,tab" command="insertSnippet 'Packages/Matlab.tmbundle/warning.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="w,h,i,l,e,tab" command="insertSnippet 'Packages/Matlab.tmbundle/while.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="x,l,a,b,e,l,tab" command="insertSnippet 'Packages/Matlab.tmbundle/xlabel.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="x,t,i,c,k,tab" command="insertSnippet 'Packages/Matlab.tmbundle/xtick.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="y,l,a,b,e,l,tab" command="insertSnippet 'Packages/Matlab.tmbundle/ylabel.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="y,t,i,c,k,tab" command="insertSnippet 'Packages/Matlab.tmbundle/ytick.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+
+    <binding key="z,l,a,b,e,l,tab" command="insertSnippet 'Packages/Matlab.tmbundle/zlabel.sublime-snippet'">
+        <context name="selector" value="source.matlab"/>
+    </binding>
+</bindings>

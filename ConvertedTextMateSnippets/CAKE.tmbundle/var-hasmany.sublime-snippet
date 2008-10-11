@@ -1,0 +1,13 @@
+
+<snippet>
+    <content><![CDATA[var \$hasMany = array(
+		'${1:ModelNameCamelCase}' =>
+			 array('className' => '${2:$1}}',
+					'conditions' => '${3:$1.active=1}',
+					'order' => '${4:$1.ordering  DESC}',
+					'foreignKey' => ''${5:,
+					'dependent'  => true}${6:,
+                        'exclusive'  => false},
+					'counterCache' => '')
+          );]]></content>
+</snippet>

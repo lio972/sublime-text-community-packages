@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[LSEuroCurrencyFormat(${1:currency-number}${2: [, type]})$15]]></content>
+</snippet>

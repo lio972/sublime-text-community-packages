@@ -1,0 +1,9 @@
+
+<snippet>
+    <content><![CDATA[	:- public(${1:Functor}/0).
+	:- mode(${1:Functor}, ${2:Solutions}).
+	:- info(${1:Functor}/0, [
+		comment is '${3:Description}']).
+
+$15]]></content>
+</snippet>

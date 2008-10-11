@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[queryMatchContains = ${1:true};$15]]></content>
+</snippet>

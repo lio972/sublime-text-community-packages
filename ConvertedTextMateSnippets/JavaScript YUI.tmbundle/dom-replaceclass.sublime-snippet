@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[${YUI_DOM:YAHOO.util.Dom}.replaceClass(${1:element}, '${2:old-class-name}', '${3:new-class-name}');
+$15]]></content>
+</snippet>

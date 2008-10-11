@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[assertTrue(${1/(.+)/(?1:")/}${1:message}${1/(.+)/(?1:", )/}${2:test})$15]]></content>
+</snippet>

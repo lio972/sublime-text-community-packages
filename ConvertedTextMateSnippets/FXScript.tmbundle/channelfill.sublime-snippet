@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[ChannelFill(${1:destImage}, ${2:a0-255}, ${3:r0-255}, ${4:g0-255}, ${5:b0-255});
+]]></content>
+</snippet>

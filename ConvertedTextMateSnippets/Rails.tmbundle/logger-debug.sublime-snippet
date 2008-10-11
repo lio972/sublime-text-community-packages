@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[logger.debug "${1:message}"$15]]></content>
+</snippet>

@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[{% comment %}
+	$1
+{% endcomment %}]]></content>
+</snippet>

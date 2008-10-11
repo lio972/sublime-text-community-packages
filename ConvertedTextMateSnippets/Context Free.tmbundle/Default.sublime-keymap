@@ -1,0 +1,29 @@
+<bindings>
+    <binding key="b,tab" command="insertSnippet 'Packages/Context Free.tmbundle/background-directive.sublime-snippet'">
+        <context name="selector" value="source.context-free"/>
+    </binding>
+
+    <binding key="C,tab" command="insertSnippet 'Packages/Context Free.tmbundle/circle-primitive.sublime-snippet'">
+        <context name="selector" value="source.context-free"/>
+    </binding>
+
+    <binding key="i,tab" command="insertSnippet 'Packages/Context Free.tmbundle/include-directive.sublime-snippet'">
+        <context name="selector" value="source.context-free"/>
+    </binding>
+
+    <binding key="r,tab" command="insertSnippet 'Packages/Context Free.tmbundle/rule.sublime-snippet'">
+        <context name="selector" value="source.context-free"/>
+    </binding>
+
+    <binding key="S,tab" command="insertSnippet 'Packages/Context Free.tmbundle/square-primitive.sublime-snippet'">
+        <context name="selector" value="source.context-free"/>
+    </binding>
+
+    <binding key="s,tab" command="insertSnippet 'Packages/Context Free.tmbundle/startshape-directive.sublime-snippet'">
+        <context name="selector" value="source.context-free"/>
+    </binding>
+
+    <binding key="T,tab" command="insertSnippet 'Packages/Context Free.tmbundle/triangle-primitive.sublime-snippet'">
+        <context name="selector" value="source.context-free"/>
+    </binding>
+</bindings>

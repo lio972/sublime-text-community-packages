@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[detect(function(${1:value}) {
+	$15
+});]]></content>
+</snippet>

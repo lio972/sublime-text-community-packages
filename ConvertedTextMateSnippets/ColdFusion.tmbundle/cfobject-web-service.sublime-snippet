@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfobject webservice= "$1" name = "$2">$15]]></content>
+</snippet>

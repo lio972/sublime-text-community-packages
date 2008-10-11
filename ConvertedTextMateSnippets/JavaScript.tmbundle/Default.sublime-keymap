@@ -1,0 +1,45 @@
+<bindings>
+    <binding key="f,o,r,tab" command="insertSnippet 'Packages/JavaScript.tmbundle/for-faster.sublime-snippet'">
+        <context name="selector" value="source.js"/>
+    </binding>
+
+    <binding key="f,o,r,a,tab" command="insertSnippet 'Packages/JavaScript.tmbundle/for.sublime-snippet'">
+        <context name="selector" value="source.js"/>
+    </binding>
+
+    <binding key="f,tab" command="insertSnippet 'Packages/JavaScript.tmbundle/function.sublime-snippet'">
+        <context name="selector" value="source.js"/>
+    </binding>
+
+    <binding key="g,e,t,tab" command="insertSnippet 'Packages/JavaScript.tmbundle/get-elements.sublime-snippet'">
+        <context name="selector" value="source.js"/>
+    </binding>
+
+    <binding key="i,f,e,tab" command="insertSnippet 'Packages/JavaScript.tmbundle/if-else.sublime-snippet'">
+        <context name="selector" value="source.js"/>
+    </binding>
+
+    <binding key="i,f,tab" command="insertSnippet 'Packages/JavaScript.tmbundle/if.sublime-snippet'">
+        <context name="selector" value="source.js"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/JavaScript.tmbundle/object-key-key-value.sublime-snippet'">
+        <context name="selector" value="source.js"/>
+    </binding>
+
+    <binding key="f,a,tab" command="insertSnippet 'Packages/JavaScript.tmbundle/object-method-string.sublime-snippet'">
+        <context name="selector" value="source.js"/>
+    </binding>
+
+    <binding key="f,b,tab" command="insertSnippet 'Packages/JavaScript.tmbundle/object-method.sublime-snippet'">
+        <context name="selector" value="source.js"/>
+    </binding>
+
+    <binding key="comma,tab" command="insertSnippet 'Packages/JavaScript.tmbundle/object-value-js.sublime-snippet'">
+        <context name="selector" value="source.js"/>
+    </binding>
+
+    <binding key="t,i,m,e,o,u,t,tab" command="insertSnippet 'Packages/JavaScript.tmbundle/settimeout-function.sublime-snippet'">
+        <context name="selector" value="source.js"/>
+    </binding>
+</bindings>

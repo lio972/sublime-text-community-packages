@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${1:FIELDNAME} = models.CharField(${2:blank=True}, maxlength=${3:100})]]></content>
+</snippet>

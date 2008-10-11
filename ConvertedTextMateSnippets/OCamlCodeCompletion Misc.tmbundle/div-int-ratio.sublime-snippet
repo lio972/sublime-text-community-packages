@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[div_int_ratio ${1:i} ${2:ratio}$15]]></content>
+</snippet>

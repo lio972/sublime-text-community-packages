@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.fstat ${1:file_descr}$15]]></content>
+</snippet>

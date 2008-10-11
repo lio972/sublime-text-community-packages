@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[assert_redirected_to ${10:${2:parent}_${3:child}_path(${4:@}${5:${2}})}]]></content>
+</snippet>

@@ -1,0 +1,8 @@
+
+<snippet>
+    <content><![CDATA[<cfdocumentsection${1: margintop = "${2:[ ]}" marginbottom = "${3:[ ]}" marginleft = "${4:[ ]}" marginright = "${5:[ ]}" mimetype = "${6:[ ]}" src = "${7:[ ]}" srcfile = "${8:[ ]}"}>
+	$9
+</cfdocumentsection>$15
+
+]]></content>
+</snippet>

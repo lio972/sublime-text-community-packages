@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[set_normalize_ratio ${1:true}${2:;}$15]]></content>
+</snippet>

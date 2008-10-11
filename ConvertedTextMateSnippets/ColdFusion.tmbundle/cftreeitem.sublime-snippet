@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cftreeitem  value = "$1"${2: display = "${3:[ ]}" parent = "${4:[ ]}" img = "${5:[ ]}" imgopen = "${6:[ ]}" href = "${7:[ ]}" target = "${8:[ ]}" query = "${9:[ ]}" queryAsRoot = "${10:[ ]}" expand = "${11:[ ]}"}>$15]]></content>
+</snippet>

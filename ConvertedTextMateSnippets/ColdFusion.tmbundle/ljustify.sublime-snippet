@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[LJustify(${1:string}, ${2:length})$15]]></content>
+</snippet>

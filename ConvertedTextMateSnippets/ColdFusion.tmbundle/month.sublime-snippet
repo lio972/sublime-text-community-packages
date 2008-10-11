@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Month(${1:date})$15]]></content>
+</snippet>

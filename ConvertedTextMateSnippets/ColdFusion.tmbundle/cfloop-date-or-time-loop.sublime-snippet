@@ -1,0 +1,8 @@
+
+<snippet>
+    <content><![CDATA[<cfloop from = "${1:#createdate($2)#}" to = "${3:#createdate($4)#}" index = "${5:i}"${6: step = "${7:[ ]}"}>
+	$8
+</cfloop>$15
+
+]]></content>
+</snippet>

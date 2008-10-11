@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.shutdown ${1:sock} Unix.SHUTDOWN_$15;]]></content>
+</snippet>

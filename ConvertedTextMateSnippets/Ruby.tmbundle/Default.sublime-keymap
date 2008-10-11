@@ -1,0 +1,105 @@
+<bindings>
+    <binding key="y,tab" command="insertSnippet 'Packages/Ruby.tmbundle/yields-rdoc-comment.sublime-snippet'">
+        <context name="selector" value="source.ruby comment"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Ruby.tmbundle/add-marker.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="a,s,e,tab" command="insertSnippet 'Packages/Ruby.tmbundle/assert-equal.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="b,m,minus,tab" command="insertSnippet 'Packages/Ruby.tmbundle/benchmark-bmbm-do-end.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="c,l,a,tab" command="insertSnippet 'Packages/Ruby.tmbundle/class-self-end.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="d,i,r,tab" command="insertSnippet 'Packages/Ruby.tmbundle/directory.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="D,i,r,tab" command="insertSnippet 'Packages/Ruby.tmbundle/dir.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="e,l,s,i,f,tab" command="insertSnippet 'Packages/Ruby.tmbundle/elsif.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="F,i,l,e,tab" command="insertSnippet 'Packages/Ruby.tmbundle/file-open-file.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="F,i,l,e,a,tab" command="insertSnippet 'Packages/Ruby.tmbundle/file-read.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Ruby.tmbundle/insert-erb-s-or.sublime-snippet'">
+        <context name="selector" value="text.html, source.yaml, meta.erb"/>
+    </binding>
+
+    <binding key="l,o,o,tab" command="insertSnippet 'Packages/Ruby.tmbundle/loop.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="n,a,m,tab" command="insertSnippet 'Packages/Ruby.tmbundle/namespace-do-end.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="p,a,t,f,h,tab" command="insertSnippet 'Packages/Ruby.tmbundle/path-from-here.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="P,n,minus,tab" command="insertSnippet 'Packages/Ruby.tmbundle/pstore-new.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="equals,b,tab" command="insertSnippet 'Packages/Ruby.tmbundle/rdoc-documentation-block.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="r,e,q,g,minus,tab" command="insertSnippet 'Packages/Ruby.tmbundle/require-gem.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="r,e,p,tab" command="insertSnippet 'Packages/Ruby.tmbundle/results-report.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="s,i,n,c,tab" command="insertSnippet 'Packages/Ruby.tmbundle/singleton-class.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="t,a,s,tab" command="insertSnippet 'Packages/Ruby.tmbundle/task-task-name-dependent-tasks-do-end.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="t,r,a,tab" command="insertSnippet 'Packages/Ruby.tmbundle/transaction-do-end.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="u,n,t,i,l,tab" command="insertSnippet 'Packages/Ruby.tmbundle/until-end.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="w,h,i,l,e,tab" command="insertSnippet 'Packages/Ruby.tmbundle/while-end.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="x,m,l,minus,tab" command="insertSnippet 'Packages/Ruby.tmbundle/xmlread.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="x,p,a,tab" command="insertSnippet 'Packages/Ruby.tmbundle/xpath.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+
+    <binding key="e,n,d,tab" command="insertSnippet 'Packages/Ruby.tmbundle/end.sublime-snippet'">
+        <context name="selector" value="source.ruby"/>
+    </binding>
+</bindings>

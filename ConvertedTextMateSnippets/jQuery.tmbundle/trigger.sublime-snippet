@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[.trigger('${1:event name}')$15]]></content>
+</snippet>

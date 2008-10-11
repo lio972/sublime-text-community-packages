@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[.color(${1/(.+)/(?1:':)/}${1:color}${1/(.+)/(?1:':)/})$15]]></content>
+</snippet>

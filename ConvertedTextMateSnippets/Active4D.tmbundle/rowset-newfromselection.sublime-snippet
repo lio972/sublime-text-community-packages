@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[\$${1:query} := RowSet.newFromSelection(->[${2:table}]; ${3:\$map})]]></content>
+</snippet>

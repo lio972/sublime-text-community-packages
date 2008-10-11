@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[AspectOf(${1:dest});]]></content>
+</snippet>

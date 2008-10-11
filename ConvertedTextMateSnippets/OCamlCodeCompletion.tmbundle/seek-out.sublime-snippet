@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[seek_out ${1:out_channel} ${2:pos}$15]]></content>
+</snippet>

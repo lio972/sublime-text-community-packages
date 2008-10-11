@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[getStyle(${1:element}, '${2:property}');$15]]></content>
+</snippet>

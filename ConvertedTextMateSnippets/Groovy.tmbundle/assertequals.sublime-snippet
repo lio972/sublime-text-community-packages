@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[assertEquals(${1/(.+)/(?1:")/}${1:message}${1/(.+)/(?1:", )/}${2:expected}, ${3:actual})$15]]></content>
+</snippet>

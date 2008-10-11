@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${YUI_YAHOO:YAHOO}.log(${1:message});]]></content>
+</snippet>

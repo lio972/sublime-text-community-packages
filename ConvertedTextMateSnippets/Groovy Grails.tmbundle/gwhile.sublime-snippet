@@ -1,0 +1,7 @@
+
+<snippet>
+    <content><![CDATA[<g:while test="\${$1}">
+	${15:$TM_SELECTED_TEXT}
+</g:while>
+]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Form.disable(${1:form});]]></content>
+</snippet>

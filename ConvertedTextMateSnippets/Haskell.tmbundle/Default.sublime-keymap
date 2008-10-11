@@ -1,0 +1,13 @@
+<bindings>
+    <binding key="c,a,s,e,tab" command="insertSnippet 'Packages/Haskell.tmbundle/case.sublime-snippet'">
+        <context name="selector" value="source.haskell"/>
+    </binding>
+
+    <binding key="i,n,s,t,a,n,c,e,tab" command="insertSnippet 'Packages/Haskell.tmbundle/instance.sublime-snippet'">
+        <context name="selector" value="source.haskell"/>
+    </binding>
+
+    <binding key="m,a,i,n,tab" command="insertSnippet 'Packages/Haskell.tmbundle/main.sublime-snippet'">
+        <context name="selector" value="source.haskell"/>
+    </binding>
+</bindings>

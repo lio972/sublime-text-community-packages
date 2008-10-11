@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[factor(${1:x})]]></content>
+</snippet>

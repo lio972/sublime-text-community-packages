@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[.src(${1/(.+)/(?1:':)/}${1:optional/file/name.jpg}${1/(.+)/(?1:':)/})$15]]></content>
+</snippet>

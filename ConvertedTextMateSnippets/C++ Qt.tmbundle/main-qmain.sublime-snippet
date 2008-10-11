@@ -1,0 +1,11 @@
+
+<snippet>
+    <content><![CDATA[#include <QApplication>
+
+int main (int argc, char *argv[])
+{
+	QApplication app(argc, argv);
+	$15
+	return app.exec();
+}]]></content>
+</snippet>

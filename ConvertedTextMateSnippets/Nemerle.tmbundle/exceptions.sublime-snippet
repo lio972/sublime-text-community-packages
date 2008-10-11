@@ -1,0 +1,11 @@
+
+<snippet>
+    <content><![CDATA[try{
+	$1
+} catch {
+| ${2:name} is ${3:type} => $4
+} finally {
+	$5
+}
+]]></content>
+</snippet>

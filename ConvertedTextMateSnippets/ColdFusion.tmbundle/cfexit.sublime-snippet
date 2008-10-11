@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfexit${1: method = "${2:[ ]}"}>$15]]></content>
+</snippet>

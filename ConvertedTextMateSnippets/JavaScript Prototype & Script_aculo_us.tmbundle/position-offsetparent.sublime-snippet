@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Position.offsetParent(${1:'${2:element}'});]]></content>
+</snippet>

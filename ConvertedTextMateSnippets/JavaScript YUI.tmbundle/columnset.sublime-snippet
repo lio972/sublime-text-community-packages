@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[new ${YUI_COLUMNSET:YAHOO.widget.ColumnSet}(${1:columnHeaders});$15]]></content>
+</snippet>

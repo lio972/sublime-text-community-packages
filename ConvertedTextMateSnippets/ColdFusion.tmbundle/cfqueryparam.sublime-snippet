@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfqueryparam value = "$1"${2: CFSQLType = "${3:[ ]}" maxLength = "${4:[ ]}" scale = "${5:[ ]}" null = "${6:[ ]}" list = "${7:[ ]}" separator = "${8:[ ]}"}>$15]]></content>
+</snippet>

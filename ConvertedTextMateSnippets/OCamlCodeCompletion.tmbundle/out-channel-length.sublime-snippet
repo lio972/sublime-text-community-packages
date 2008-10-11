@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[out_channel_length ${1:out_channel}$15]]></content>
+</snippet>

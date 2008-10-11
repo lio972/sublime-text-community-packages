@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cffile action = "move" source = "$1" destination = "$2"${3:  mode = "${4:[ ]}" attributes = "${5:[ ]}" charset = "${6:[ ]}"}>$15]]></content>
+</snippet>

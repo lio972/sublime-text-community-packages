@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<g:set ${1:var="$2" }${3:value="$4" }${5:scope="${6:request/page/flash/session}" }/>]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Thread.create ${1:funct} ${2:arg}$15]]></content>
+</snippet>

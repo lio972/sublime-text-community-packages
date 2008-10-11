@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[selection to array([${1:table}]${2:field}; ${3:\$array})]]></content>
+</snippet>

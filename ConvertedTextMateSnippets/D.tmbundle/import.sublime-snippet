@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[import ${1:${TM_FILEPATH/.+\/([^\/]+)\/[^\/]+\.d$/\l$1/}.};]]></content>
+</snippet>

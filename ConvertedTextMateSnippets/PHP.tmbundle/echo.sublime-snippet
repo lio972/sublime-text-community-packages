@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[echo "${1:string}"${15};]]></content>
+</snippet>

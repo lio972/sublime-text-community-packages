@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[BinaryDecode(${1:string}, ${2:binaryencoding})$15]]></content>
+</snippet>

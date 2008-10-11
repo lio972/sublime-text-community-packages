@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[${YUI_DOM:YAHOO.util.Dom}.getElementsByClassName('${1:class-name}', '${2:tag}', ${3:rootElement})
+]]></content>
+</snippet>

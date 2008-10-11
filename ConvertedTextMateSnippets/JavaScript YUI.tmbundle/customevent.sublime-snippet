@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[new YAHOO.util.CustomEvent('${1:eventType}', ${2:this});]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ListSort(${1:list}, ${2:sort_type}${3: [, sort_order]}${4:[, delimiters]})$15]]></content>
+</snippet>

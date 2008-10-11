@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[redirect(fusebox.makeUrl(\$XFA_$1))]]></content>
+</snippet>

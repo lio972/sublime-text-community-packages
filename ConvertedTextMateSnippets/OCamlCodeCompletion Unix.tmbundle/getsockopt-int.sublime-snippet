@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.getsockopt_int ${1:sock} Unix.SOI_$15]]></content>
+</snippet>

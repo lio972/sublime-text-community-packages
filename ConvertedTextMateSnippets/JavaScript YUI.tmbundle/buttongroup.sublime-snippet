@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[new ${YUI_BUTTONGROUP:YAHOO.widget.ButtonGroup}(${1:configs});$15 ]]></content>
+</snippet>

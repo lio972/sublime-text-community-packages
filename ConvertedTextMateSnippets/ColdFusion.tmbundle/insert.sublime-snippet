@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Insert(${1:substring}, ${2:string}, ${3:position})$15]]></content>
+</snippet>

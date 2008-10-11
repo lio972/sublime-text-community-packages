@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.truncate ${1:file_name} ${2:len}$15]]></content>
+</snippet>

@@ -1,0 +1,7 @@
+
+<snippet>
+    <content><![CDATA[class ${2:${TM_FILENAME/(.*?)(\..+)/$1/}} extends GroovyTestCase {
+
+	$15
+}]]></content>
+</snippet>

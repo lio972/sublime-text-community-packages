@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[invalid_arg ${1:"${2:str}"}$15]]></content>
+</snippet>

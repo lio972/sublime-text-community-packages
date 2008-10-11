@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[responseType = ${YUI_DATASOURCE:YAHOO.util.DataSource}.${1:TYPE_JSON};$15]]></content>
+</snippet>

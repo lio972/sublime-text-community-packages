@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[def test${1:caseName}() {
+	$15
+}]]></content>
+</snippet>

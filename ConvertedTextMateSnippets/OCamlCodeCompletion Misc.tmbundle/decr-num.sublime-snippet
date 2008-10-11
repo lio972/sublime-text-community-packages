@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[decr_num ${1:num_ref}$15]]></content>
+</snippet>

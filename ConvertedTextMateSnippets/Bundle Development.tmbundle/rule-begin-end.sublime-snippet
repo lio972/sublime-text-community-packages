@@ -1,0 +1,7 @@
+
+<snippet>
+    <content><![CDATA[{	name = '${1:name}';
+	begin = '$2';
+	end = '$3';
+},]]></content>
+</snippet>

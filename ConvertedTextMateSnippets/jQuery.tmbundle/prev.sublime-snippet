@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[.prev(${1/(.+)/(?1:':)/}${1:selector expression}${1/(.+)/(?1:':)/})$15]]></content>
+</snippet>

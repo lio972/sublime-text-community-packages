@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[t.boolean :${1:title}
+t.$15]]></content>
+</snippet>

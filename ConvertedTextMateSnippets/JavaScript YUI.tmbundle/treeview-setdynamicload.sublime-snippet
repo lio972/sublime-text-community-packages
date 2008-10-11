@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[setDynamicLoad(${1:loadingFunction});$15]]></content>
+</snippet>

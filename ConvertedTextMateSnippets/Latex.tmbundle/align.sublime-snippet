@@ -1,0 +1,8 @@
+
+<snippet>
+    <content><![CDATA[\begin{align`echo $TM_SCOPE|grep math|
+sed -e 's/.*math.*/ed/'`}
+	$15
+\end{align`echo $TM_SCOPE|grep math|
+sed -e 's/.*math.*/ed/'`}]]></content>
+</snippet>

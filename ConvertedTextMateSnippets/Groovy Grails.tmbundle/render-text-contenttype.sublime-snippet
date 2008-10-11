@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[render(text:"${1:value}", contentType:"${2:text/xml}")]]></content>
+</snippet>

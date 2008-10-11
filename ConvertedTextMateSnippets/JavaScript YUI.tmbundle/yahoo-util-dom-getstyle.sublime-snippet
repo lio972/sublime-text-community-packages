@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${YUI_DOM:YAHOO.util.Dom}.getStyle(${1:element}, '${2:property}');$15]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[GetFileFromPath(${1:path})$15]]></content>
+</snippet>

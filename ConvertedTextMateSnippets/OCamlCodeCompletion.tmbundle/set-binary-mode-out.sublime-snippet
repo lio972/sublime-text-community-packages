@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[set_binary_mode_out ${1:out_channel} ${2:true}$15]]></content>
+</snippet>

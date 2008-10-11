@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[if ${1} then begin
+	$15
+end;]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<g:select name="${1:name}" value="\${${2:value}}" from="\${${3:[1,2,3]}}" />]]></content>
+</snippet>

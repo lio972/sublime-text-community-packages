@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Arg.Bad ${1:"${2:str}"}$15]]></content>
+</snippet>

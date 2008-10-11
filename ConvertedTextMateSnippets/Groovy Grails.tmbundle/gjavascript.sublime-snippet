@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[<g:javascript>
+	${15:$TM_SELECTED_TEXT}
+</g:javascript>]]></content>
+</snippet>

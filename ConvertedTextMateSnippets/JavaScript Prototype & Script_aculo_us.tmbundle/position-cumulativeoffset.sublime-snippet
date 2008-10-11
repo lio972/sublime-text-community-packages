@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Position.cumulativeOffset(${1:'${2:element}'});]]></content>
+</snippet>

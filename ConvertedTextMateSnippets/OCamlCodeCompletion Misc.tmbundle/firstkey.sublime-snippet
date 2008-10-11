@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Dbm.firstkey ${1:db}$15]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<string name="${1:name}" scope="attributes" $2/>]]></content>
+</snippet>

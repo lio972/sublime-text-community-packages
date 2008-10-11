@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[<RowSet name="\$${1:query}">
+	$15
+</RowSet>]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[|cut:"${1:arg}"]]></content>
+</snippet>

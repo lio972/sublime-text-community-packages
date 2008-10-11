@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[new ${YUI_DATASOURCE:YAHOO.util.DataSource}(${1:source});$15]]></content>
+</snippet>

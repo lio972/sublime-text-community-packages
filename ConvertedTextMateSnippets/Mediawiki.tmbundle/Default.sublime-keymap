@@ -1,0 +1,21 @@
+<bindings>
+    <binding key="r,e,d,tab" command="insertSnippet 'Packages/Mediawiki.tmbundle/redirect.sublime-snippet'">
+        <context name="selector" value="text.html.mediawiki"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Mediawiki.tmbundle/bold.sublime-snippet'">
+        <context name="selector" value="text.html.mediawiki"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Mediawiki.tmbundle/code.sublime-snippet'">
+        <context name="selector" value="text.html.mediawiki"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Mediawiki.tmbundle/inside-heading-insert.sublime-snippet'">
+        <context name="selector" value="text.html.mediawiki markup.heading"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Mediawiki.tmbundle/italics.sublime-snippet'">
+        <context name="selector" value="text.html.mediawiki"/>
+    </binding>
+</bindings>

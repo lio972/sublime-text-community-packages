@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${15:${TM_SELECTED_TEXT/\A<em>(.*)<\/em>\z|.*/(?1:$1:<em>$15<\/em>)/m}}]]></content>
+</snippet>

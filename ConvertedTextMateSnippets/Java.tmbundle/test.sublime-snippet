@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[public void test${1:Name}() throws Exception $15]]></content>
+</snippet>

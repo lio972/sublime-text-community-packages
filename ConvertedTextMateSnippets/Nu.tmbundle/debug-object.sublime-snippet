@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[(puts "\n************** #{$1} *****************\n")$15]]></content>
+</snippet>

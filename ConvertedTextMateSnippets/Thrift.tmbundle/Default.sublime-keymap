@@ -1,0 +1,17 @@
+<bindings>
+    <binding key="e,n,u,tab" command="insertSnippet 'Packages/Thrift.tmbundle/enum.sublime-snippet'">
+        <context name="selector" value="source.thrift -meta"/>
+    </binding>
+
+    <binding key="e,x,c,tab" command="insertSnippet 'Packages/Thrift.tmbundle/exception.sublime-snippet'">
+        <context name="selector" value="source.thrift -meta"/>
+    </binding>
+
+    <binding key="s,e,r,tab" command="insertSnippet 'Packages/Thrift.tmbundle/service.sublime-snippet'">
+        <context name="selector" value="source.thrift -meta"/>
+    </binding>
+
+    <binding key="s,t,r,tab" command="insertSnippet 'Packages/Thrift.tmbundle/struct.sublime-snippet'">
+        <context name="selector" value="source.thrift -meta"/>
+    </binding>
+</bindings>

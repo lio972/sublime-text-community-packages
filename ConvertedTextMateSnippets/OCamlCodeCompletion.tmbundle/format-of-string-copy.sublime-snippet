@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[format_of_string ${1:"${2:s}"}$15]]></content>
+</snippet>

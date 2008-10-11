@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[withWriter {${1/(.+)/(?1: )/}${1:writer}${1/(.+)/(?1: ->)/}
+	$15
+}]]></content>
+</snippet>

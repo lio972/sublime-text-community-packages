@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[inquire(file=${1:filename}, opened=${2:ioopen}, exists=${3:ioexist}, number=${4:iounit})]]></content>
+</snippet>

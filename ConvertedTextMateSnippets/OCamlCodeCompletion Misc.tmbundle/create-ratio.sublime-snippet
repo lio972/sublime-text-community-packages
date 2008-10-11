@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[create_ratio ${1:bi} ${2:bi2}$15]]></content>
+</snippet>

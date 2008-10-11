@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[StructDelete(${1:structure}, ${2:key}${3: [, indicatenotexisting]})$15]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[output_value ${1:out_channel} ${2:v}$15]]></content>
+</snippet>

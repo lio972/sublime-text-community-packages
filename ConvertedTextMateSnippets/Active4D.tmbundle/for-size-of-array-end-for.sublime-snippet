@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[for (${1:\$i}; ${2:1}; size of array(${3:\$array}))
+	$15
+end for]]></content>
+</snippet>

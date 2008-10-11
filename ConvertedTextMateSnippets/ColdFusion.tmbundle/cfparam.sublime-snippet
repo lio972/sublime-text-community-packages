@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfparam name="$1"${2: type="${3:[string]}" default="${4:[ ]}"}>$15]]></content>
+</snippet>

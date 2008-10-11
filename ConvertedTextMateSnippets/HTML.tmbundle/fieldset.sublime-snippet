@@ -1,0 +1,8 @@
+
+<snippet>
+    <content><![CDATA[<fieldset id="${1/[[:alpha:]]+|( )/(?1:_:\L$15)/g}" ${2:class="${3:}"}>
+	<legend>${1:$TM_SELECTED_TEXT}</legend>
+	
+	$15
+</fieldset>]]></content>
+</snippet>

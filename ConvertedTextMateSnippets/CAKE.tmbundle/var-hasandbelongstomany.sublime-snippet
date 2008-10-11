@@ -1,0 +1,17 @@
+
+<snippet>
+    <content><![CDATA[var \$hasAndBelongsToMany = array(
+		'${1:ModelNameCamelCase}' =>
+			 array('className' => '${2:$1}}',
+					'joinTable'    => '',
+					'conditions' => '${3:$1.active=1}',
+					'order' => '${4:$1.ordering  DESC}',
+					'foreignKey' => '$5',
+					'associationForeignKey'=> '$6',${7:,
+					'uniq'         => true,},
+					'conditions'   => '$8',
+					'finderQuery'  => '$9',
+					'deleteQuery'  => '$10')
+          );
+$15]]></content>
+</snippet>

@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[method "${1:name}"(${2:\$parameter})
+	$15
+end method]]></content>
+</snippet>

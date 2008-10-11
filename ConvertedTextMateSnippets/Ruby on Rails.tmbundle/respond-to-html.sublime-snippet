@@ -1,0 +1,9 @@
+
+<snippet>
+    <content><![CDATA[respond_to do |wants|
+	wants.html do
+		$TM_SELECTED_TEXT
+	end
+	wants.${1:js} { $15 }
+end]]></content>
+</snippet>

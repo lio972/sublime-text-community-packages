@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Genarray.get ${1:genarray} ${2:[|${3:idx_array;}|]}$15]]></content>
+</snippet>

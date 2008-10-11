@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[all(function(${1:value}) {
+	$15
+});]]></content>
+</snippet>

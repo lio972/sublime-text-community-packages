@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[find(${1:id})]]></content>
+</snippet>

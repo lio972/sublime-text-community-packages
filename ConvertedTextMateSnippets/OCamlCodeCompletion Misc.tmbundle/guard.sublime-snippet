@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Event.guard ${1:(fun () -> ${2:})}$15]]></content>
+</snippet>

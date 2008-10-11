@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[sleep(${1:secs}) {
+	${2:// on interrupt do}
+}]]></content>
+</snippet>

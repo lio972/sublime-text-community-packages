@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[{% extends "$1" %}]]></content>
+</snippet>

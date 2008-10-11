@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[<cfcatch type = "$1">
+	$2
+</cfcatch>$15]]></content>
+</snippet>

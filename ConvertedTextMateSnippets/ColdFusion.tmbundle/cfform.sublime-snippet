@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[<cfform${1: name = "${2:[ ]}" action = "${3:[ ]}" method = "${4:post}" format = "${5:html}" skin = "${6:[ ]}" style = "${7:[ ]}" preserveData = "${8:[ ]}" onSubmit = "${9:[ ]}" scriptSrc = "${10:[ ]}" codeBase = "${11:[ ]}" archive = "${12:[ ]}" onLoad = "${13:[ ]}" width = "${14:[ ]}" height = "${15:[ ]}" onError = "${16:[ ]}" wMode = "${17:[ ]}" accessible = "${18:[ ]}" preloader = "${19:[ ]}" timeout = "${20:[ ]}" class = "${21:[ ]}" enctype = "${22:[ ]}" id = "${23:[ ]}" onReset = "${24:[ ]}" target = "${25:[ ]}"}>
+	$26
+</cfform>$15]]></content>
+</snippet>

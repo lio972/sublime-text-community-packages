@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ReplaceNoCase(${1:string}, ${2:substring1}, ${3:substring2}${4: [, scope]})$15]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[.after('${1:Some text <b>and bold!</b>}')$15]]></content>
+</snippet>

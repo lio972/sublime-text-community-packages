@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[describe ${1:controller}, "${2:GET|POST|PUT|DELETE} ${3:/some/path}${4: with some parameters}" do
+  $15
+end]]></content>
+</snippet>

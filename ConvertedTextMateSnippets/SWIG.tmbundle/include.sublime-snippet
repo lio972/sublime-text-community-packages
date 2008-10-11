@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[%include "$1"]]></content>
+</snippet>

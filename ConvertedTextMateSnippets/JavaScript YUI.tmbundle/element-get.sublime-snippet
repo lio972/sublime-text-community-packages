@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[get(${1:'prop'})$15
+]]></content>
+</snippet>

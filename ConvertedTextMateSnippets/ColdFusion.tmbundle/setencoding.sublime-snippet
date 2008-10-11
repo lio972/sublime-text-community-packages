@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[SetEncoding(${1:scope_name,charset})$15]]></content>
+</snippet>

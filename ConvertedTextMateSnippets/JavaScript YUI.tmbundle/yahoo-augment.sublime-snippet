@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${YUI_LANG:YAHOO.lang}.augment(${1:targetObject}, ${2:supplyObject}${3:, ${4:arguments}});]]></content>
+</snippet>

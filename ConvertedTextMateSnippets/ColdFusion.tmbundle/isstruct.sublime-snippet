@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[IsStruct(${1:variable})$15]]></content>
+</snippet>

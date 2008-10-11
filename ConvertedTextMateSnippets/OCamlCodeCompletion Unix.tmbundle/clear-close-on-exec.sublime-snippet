@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.clear_close_on_exec ${1:file_descr}$15]]></content>
+</snippet>

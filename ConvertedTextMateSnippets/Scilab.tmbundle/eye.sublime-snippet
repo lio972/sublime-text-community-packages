@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[eye(${1:size}, ${2:$1})]]></content>
+</snippet>

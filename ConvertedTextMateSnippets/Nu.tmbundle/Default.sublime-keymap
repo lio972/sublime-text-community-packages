@@ -1,0 +1,241 @@
+<bindings>
+    <binding key="a,p,p,e,n,d,tab" command="insertSnippet 'Packages/Nu.tmbundle/append.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="a,t,k,tab" command="insertSnippet 'Packages/Nu.tmbundle/application-tasks.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="a,e,tab" command="insertSnippet 'Packages/Nu.tmbundle/assert-equal.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="a,f,tab" command="insertSnippet 'Packages/Nu.tmbundle/assert-false.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="a,g,t,tab" command="insertSnippet 'Packages/Nu.tmbundle/assert-greater-than.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="a,i,d,tab" command="insertSnippet 'Packages/Nu.tmbundle/assert-in-delta.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="a,l,t,tab" command="insertSnippet 'Packages/Nu.tmbundle/assert-less-than.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="a,n,e,tab" command="insertSnippet 'Packages/Nu.tmbundle/assert-not-equal.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="a,t,h,tab" command="insertSnippet 'Packages/Nu.tmbundle/assert-throws.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="a,t,tab" command="insertSnippet 'Packages/Nu.tmbundle/assert-true.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="b,t,k,tab" command="insertSnippet 'Packages/Nu.tmbundle/bundle-tasks.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="c,a,s,e,tab" command="insertSnippet 'Packages/Nu.tmbundle/case.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="c,l,a,s,s,tab" command="insertSnippet 'Packages/Nu.tmbundle/class.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Nu.tmbundle/cmethod.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="c,m,e,t,h,tab" command="insertSnippet 'Packages/Nu.tmbundle/cmethoda.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="c,t,k,tab" command="insertSnippet 'Packages/Nu.tmbundle/compilation-tasks.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="c,o,n,d,tab" command="insertSnippet 'Packages/Nu.tmbundle/cond.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="d,o,b,j,tab" command="insertSnippet 'Packages/Nu.tmbundle/debug-object.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="d,s,t,r,tab" command="insertSnippet 'Packages/Nu.tmbundle/debug-string.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="d,o,tab" command="insertSnippet 'Packages/Nu.tmbundle/do.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="d,t,k,tab" command="insertSnippet 'Packages/Nu.tmbundle/dylib-tasks.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Nu.tmbundle/embedded-code.sublime-snippet'">
+        <context name="selector" value="(source.nu string.quoted.double | source.nu string.unquoted.heredoc) - string source"/>
+    </binding>
+
+    <binding key="e,v,a,l,tab" command="insertSnippet 'Packages/Nu.tmbundle/eval.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="f,o,r,tab" command="insertSnippet 'Packages/Nu.tmbundle/for.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="f,t,k,tab" command="insertSnippet 'Packages/Nu.tmbundle/framework-tasks.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="f,u,n,c,tab" command="insertSnippet 'Packages/Nu.tmbundle/function.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="g,l,o,b,a,l,tab" command="insertSnippet 'Packages/Nu.tmbundle/global.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Nu.tmbundle/here-string-escaped.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="minus,tab" command="insertSnippet 'Packages/Nu.tmbundle/here-string-unescaped.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="i,f,e,l,s,e,tab" command="insertSnippet 'Packages/Nu.tmbundle/ifelse.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="i,f,t,h,e,n,tab" command="insertSnippet 'Packages/Nu.tmbundle/ifthen.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="i,f,tab" command="insertSnippet 'Packages/Nu.tmbundle/if.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="minus,a,tab" command="insertSnippet 'Packages/Nu.tmbundle/imethod.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="i,m,e,t,h,tab" command="insertSnippet 'Packages/Nu.tmbundle/imethoda.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="i,n,i,t,tab" command="insertSnippet 'Packages/Nu.tmbundle/init.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="i,v,a,c,tab" command="insertSnippet 'Packages/Nu.tmbundle/ivar-accessors.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="i,v,a,r,tab" command="insertSnippet 'Packages/Nu.tmbundle/ivar.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="i,v,s,tab" command="insertSnippet 'Packages/Nu.tmbundle/ivars.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="l,e,t,tab" command="insertSnippet 'Packages/Nu.tmbundle/let.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="l,t,k,tab" command="insertSnippet 'Packages/Nu.tmbundle/library-tasks.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="l,i,s,t,tab" command="insertSnippet 'Packages/Nu.tmbundle/list.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="l,o,a,d,tab" command="insertSnippet 'Packages/Nu.tmbundle/load.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="m,a,c,r,o,tab" command="insertSnippet 'Packages/Nu.tmbundle/macro.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="p,a,r,s,e,tab" command="insertSnippet 'Packages/Nu.tmbundle/parse.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="p,u,t,s,tab" command="insertSnippet 'Packages/Nu.tmbundle/puts.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="q,u,o,t,e,tab" command="insertSnippet 'Packages/Nu.tmbundle/quote.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="r,e,t,tab" command="insertSnippet 'Packages/Nu.tmbundle/return.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="s,e,t,tab" command="insertSnippet 'Packages/Nu.tmbundle/set.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="u,p,tab" command="insertSnippet 'Packages/Nu.tmbundle/setup.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Nu.tmbundle/shebang.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="s,y,n,c,tab" command="insertSnippet 'Packages/Nu.tmbundle/synchronized.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="s,y,s,tab" command="insertSnippet 'Packages/Nu.tmbundle/system.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="t,a,s,k,tab" command="insertSnippet 'Packages/Nu.tmbundle/task.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="d,o,w,n,tab" command="insertSnippet 'Packages/Nu.tmbundle/teardown.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="t,c,tab" command="insertSnippet 'Packages/Nu.tmbundle/test-class.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="t,e,s,t,tab" command="insertSnippet 'Packages/Nu.tmbundle/test-method.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="t,r,y,tab" command="insertSnippet 'Packages/Nu.tmbundle/try.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="u,n,l,e,s,s,tab" command="insertSnippet 'Packages/Nu.tmbundle/unless.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="u,n,t,i,l,tab" command="insertSnippet 'Packages/Nu.tmbundle/until.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+
+    <binding key="w,h,i,l,e,tab" command="insertSnippet 'Packages/Nu.tmbundle/while.sublime-snippet'">
+        <context name="selector" value="source.nu"/>
+    </binding>
+</bindings>

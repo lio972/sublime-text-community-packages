@@ -1,0 +1,9 @@
+
+<snippet>
+    <content><![CDATA[/**
+ * ${1:undocumented function}
+ *
+ * @return ${2:void}
+ * @author ${PHPDOC_AUTHOR:$TM_FULLNAME}$3
+ **/$15]]></content>
+</snippet>

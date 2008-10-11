@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[repeat while ${1:condition}
+	$15
+end repeat]]></content>
+</snippet>

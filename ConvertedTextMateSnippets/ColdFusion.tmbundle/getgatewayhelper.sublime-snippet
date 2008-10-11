@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[GetGatewayHelper(${1:gatewayID})$15]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[set(${1:attribute}, ${2:value});$15]]></content>
+</snippet>

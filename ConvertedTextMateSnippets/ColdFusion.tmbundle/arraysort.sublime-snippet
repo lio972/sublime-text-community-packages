@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ArraySort(${1:array}, ${2:sort_type} ${3:[, sort_order ]})$15]]></content>
+</snippet>

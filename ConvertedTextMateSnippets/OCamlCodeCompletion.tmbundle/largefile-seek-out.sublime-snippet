@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[LargeFile.seek_out ${1:out_channel} ${2:i64}$15]]></content>
+</snippet>

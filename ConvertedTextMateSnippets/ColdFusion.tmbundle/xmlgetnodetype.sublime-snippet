@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[XmlGetNodeType(${1:xmlNode})$15]]></content>
+</snippet>

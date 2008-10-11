@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[console.log("${1:Debug: %o}", ${2:object});]]></content>
+</snippet>

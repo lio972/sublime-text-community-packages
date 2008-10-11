@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${YUI_HISTORY:YAHOO.util.History}.initialize();$15]]></content>
+</snippet>

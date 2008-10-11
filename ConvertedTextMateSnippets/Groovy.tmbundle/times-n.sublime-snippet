@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[times {${1/(.+)/(?1: )/}${1:i}${1/(.+)/(?1: ->)/}
+	$15
+}]]></content>
+</snippet>

@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[input label_`date +%s`, "${1:Visible Text}", Label, "";
+]]></content>
+</snippet>

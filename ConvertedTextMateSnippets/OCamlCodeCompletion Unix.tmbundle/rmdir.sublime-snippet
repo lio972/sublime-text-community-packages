@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.rmdir ${1:dir_name}$15]]></content>
+</snippet>

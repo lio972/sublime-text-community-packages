@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[interface ${1:${TM_FILENAME/(.*?)(\..+)/$1/}} ${2:extends ${3:Parent} }$15]]></content>
+</snippet>

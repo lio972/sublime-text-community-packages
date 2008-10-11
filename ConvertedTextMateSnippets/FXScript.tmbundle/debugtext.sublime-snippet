@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[DebugText("${1:label}", ${2:float value});]]></content>
+</snippet>

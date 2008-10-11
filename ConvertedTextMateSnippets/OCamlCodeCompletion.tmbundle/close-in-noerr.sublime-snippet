@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[close_in_noerr ${1:in_channel}$15]]></content>
+</snippet>

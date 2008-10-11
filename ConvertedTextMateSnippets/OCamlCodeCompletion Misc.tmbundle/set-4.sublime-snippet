@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Array2.set ${1:bigarray} ${2:idx1} ${3:idx2} ${4:value}${5:;}$15]]></content>
+</snippet>

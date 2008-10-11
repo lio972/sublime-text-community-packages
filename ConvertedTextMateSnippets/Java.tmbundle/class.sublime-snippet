@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[class ${1:${TM_FILENAME/(.*?)(\..+)?/(?2:$1:untitled)/}} ${2:extends ${3:Parent} }${4:implements ${5:Interface} }$15]]></content>
+</snippet>

@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[case $1 is
+	$15
+end case;]]></content>
+</snippet>

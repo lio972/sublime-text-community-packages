@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Condition.signal ${1:cond}${2:;}$15]]></content>
+</snippet>

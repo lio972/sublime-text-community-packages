@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${YUI_LANG:YAHOO.lang}.isUndefined(${1:variable})]]></content>
+</snippet>

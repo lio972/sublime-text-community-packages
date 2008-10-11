@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<TMPL_INCLUDE NAME="$1">]]></content>
+</snippet>

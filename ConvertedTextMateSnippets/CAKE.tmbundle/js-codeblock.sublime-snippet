@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[<?php echo \$javascript->codeBlock("${1://code block here}"); ?>
+$15]]></content>
+</snippet>

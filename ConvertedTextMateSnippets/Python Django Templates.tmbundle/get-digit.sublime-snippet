@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[|get_digit:"${1:arg}"]]></content>
+</snippet>

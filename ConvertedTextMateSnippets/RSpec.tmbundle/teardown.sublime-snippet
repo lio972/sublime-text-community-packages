@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[after(${1::each}) do
+  $15
+end]]></content>
+</snippet>

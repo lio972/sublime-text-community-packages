@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.open_process_full ${1:prog} ${2:[${3:env_list;}]}$15]]></content>
+</snippet>

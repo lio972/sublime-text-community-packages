@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfregistry action = "$1" branch = "$2" entry = "$3"${4: type = "${5:[ ]}" value = "${6:[ ]}"}>$15]]></content>
+</snippet>

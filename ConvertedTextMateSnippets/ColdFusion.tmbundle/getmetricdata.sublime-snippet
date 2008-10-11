@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[GetMetricData(${1:mode})$15]]></content>
+</snippet>

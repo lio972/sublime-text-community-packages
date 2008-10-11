@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[static hasMany = [${1:items}:${2:ClassName}]]]></content>
+</snippet>

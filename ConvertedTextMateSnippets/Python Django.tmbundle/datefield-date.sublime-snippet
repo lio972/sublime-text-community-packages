@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${1:FIELDNAME} = models.DateField(${2:default=datetime.datetime.today})]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Event.poll ${1:event}$15]]></content>
+</snippet>

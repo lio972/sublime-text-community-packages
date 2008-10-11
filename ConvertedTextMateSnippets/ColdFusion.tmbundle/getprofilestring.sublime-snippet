@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[GetProfileString(${1:iniPath}, ${2:section}, ${3:entry})$15]]></content>
+</snippet>

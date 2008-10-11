@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[QueryAddRow(${1:query}${2: [,number]})$15]]></content>
+</snippet>

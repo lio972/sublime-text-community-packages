@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[open_out ${1:"${2:file_name}"}$15]]></content>
+</snippet>

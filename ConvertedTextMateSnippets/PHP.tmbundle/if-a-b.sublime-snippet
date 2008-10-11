@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[\$${1:retVal} = (${2:condition}) ? ${3:a} : ${4:b} ;]]></content>
+</snippet>

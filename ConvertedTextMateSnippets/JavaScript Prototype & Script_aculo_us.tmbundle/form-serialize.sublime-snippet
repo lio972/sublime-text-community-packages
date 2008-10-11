@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Form.serialize(${1:form});]]></content>
+</snippet>

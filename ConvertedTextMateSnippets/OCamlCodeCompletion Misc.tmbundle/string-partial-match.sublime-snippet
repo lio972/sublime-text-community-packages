@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Str.string_partial_match ${1:regexp} ${2:str} ${3:start_pos}$15]]></content>
+</snippet>

@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[${YUI_DOM:YAHOO.util.Dom}.addClass(${1:element}, '${2:class-name}');
+$15]]></content>
+</snippet>

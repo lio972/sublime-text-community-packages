@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Fx.Styles(${1:\$(${2:'${3:element}'})}${4:, {$15\}});	]]></content>
+</snippet>

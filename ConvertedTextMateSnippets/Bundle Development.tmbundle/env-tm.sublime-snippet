@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ENV['TM_${1:S}${1/^(S)|(B)$|.*/(?1:UPPORT_PATH:(?2:UNDLE_SUPPORT))/}']]]></content>
+</snippet>

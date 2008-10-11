@@ -1,0 +1,41 @@
+<bindings>
+    <binding key="d,e,l,i,m,tab" command="insertSnippet 'Packages/AppleScript.tmbundle/change-text-item-delimiters.sublime-snippet'">
+        <context name="selector" value="source.applescript"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/AppleScript.tmbundle/check-that-ui-scripting-is-enabled.sublime-snippet'">
+        <context name="selector" value="source.applescript"/>
+    </binding>
+
+    <binding key="c,o,n,tab" command="insertSnippet 'Packages/AppleScript.tmbundle/considering-end-considering-con.sublime-snippet'">
+        <context name="selector" value="source.applescript"/>
+    </binding>
+
+    <binding key="i,g,n,tab" command="insertSnippet 'Packages/AppleScript.tmbundle/ignoring-end-ignoring-ign.sublime-snippet'">
+        <context name="selector" value="source.applescript"/>
+    </binding>
+
+    <binding key="p,a,r,e,n,t,tab" command="insertSnippet 'Packages/AppleScript.tmbundle/prop-parent.sublime-snippet'">
+        <context name="selector" value="source.applescript"/>
+    </binding>
+
+    <binding key="r,e,p,tab" command="insertSnippet 'Packages/AppleScript.tmbundle/repeat-while.sublime-snippet'">
+        <context name="selector" value="source.applescript"/>
+    </binding>
+
+    <binding key="r,e,p,a,tab" command="insertSnippet 'Packages/AppleScript.tmbundle/repeat-with-in.sublime-snippet'">
+        <context name="selector" value="source.applescript"/>
+    </binding>
+
+    <binding key="s,c,r,i,p,t,tab" command="insertSnippet 'Packages/AppleScript.tmbundle/script-end-script.sublime-snippet'">
+        <context name="selector" value="source.applescript"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/AppleScript.tmbundle/select-menu-item-with-ui-scripting.sublime-snippet'">
+        <context name="selector" value="source.applescript"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/AppleScript.tmbundle/splitjoin-helper-functions.sublime-snippet'">
+        <context name="selector" value="source.applescript"/>
+    </binding>
+</bindings>

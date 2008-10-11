@@ -1,0 +1,61 @@
+<bindings>
+    <binding key="i,f,m,a,i,n,tab" command="insertSnippet 'Packages/Python.tmbundle/if-name-main.sublime-snippet'">
+        <context name="selector" value="source.python"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python.tmbundle/inside-class-def-insert.sublime-snippet'">
+        <context name="selector" value="source.python meta.class.python invalid.illegal.missing-inheritance.python"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python.tmbundle/inside-function-insert.sublime-snippet'">
+        <context name="selector" value="source.python meta.function.python invalid.illegal.missing-parameters.python"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python.tmbundle/inside-string-insert.sublime-snippet'">
+        <context name="selector" value="source.python string.quoted.double.single-line meta.empty-string.double"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python.tmbundle/inside-string-inserta.sublime-snippet'">
+        <context name="selector" value="source.python string.quoted.single.single-line meta.empty-string.single"/>
+    </binding>
+
+    <binding key="c,l,a,s,s,tab" command="insertSnippet 'Packages/Python.tmbundle/new-class.sublime-snippet'">
+        <context name="selector" value="source.python"/>
+    </binding>
+
+    <binding key="d,e,f,tab" command="insertSnippet 'Packages/Python.tmbundle/new-function.sublime-snippet'">
+        <context name="selector" value="source.python"/>
+    </binding>
+
+    <binding key="d,e,f,s,tab" command="insertSnippet 'Packages/Python.tmbundle/new-method.sublime-snippet'">
+        <context name="selector" value="source.python"/>
+    </binding>
+
+    <binding key="p,r,o,p,e,r,t,y,tab" command="insertSnippet 'Packages/Python.tmbundle/new-property.sublime-snippet'">
+        <context name="selector" value="source.python"/>
+    </binding>
+
+    <binding key="period,tab" command="insertSnippet 'Packages/Python.tmbundle/self.sublime-snippet'">
+        <context name="selector" value="source.python"/>
+    </binding>
+
+    <binding key="t,r,y,tab" command="insertSnippet 'Packages/Python.tmbundle/tryexceptelsefinally.sublime-snippet'">
+        <context name="selector" value="source.python"/>
+    </binding>
+
+    <binding key="t,r,y,a,tab" command="insertSnippet 'Packages/Python.tmbundle/tryexceptelse.sublime-snippet'">
+        <context name="selector" value="source.python"/>
+    </binding>
+
+    <binding key="t,r,y,b,tab" command="insertSnippet 'Packages/Python.tmbundle/tryexceptfinally.sublime-snippet'">
+        <context name="selector" value="source.python"/>
+    </binding>
+
+    <binding key="t,r,y,c,tab" command="insertSnippet 'Packages/Python.tmbundle/tryexcept.sublime-snippet'">
+        <context name="selector" value="source.python"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python.tmbundle/magic.sublime-snippet'">
+        <context name="selector" value="source.python"/>
+    </binding>
+</bindings>

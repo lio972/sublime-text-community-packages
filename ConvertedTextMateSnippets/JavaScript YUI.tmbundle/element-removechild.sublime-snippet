@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[removeChild(${1:child});$15]]></content>
+</snippet>

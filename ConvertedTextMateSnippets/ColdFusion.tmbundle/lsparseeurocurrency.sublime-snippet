@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[LSParseEuroCurrency(${1:currency-string})$15]]></content>
+</snippet>

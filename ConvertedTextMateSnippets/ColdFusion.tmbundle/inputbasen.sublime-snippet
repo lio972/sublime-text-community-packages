@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[InputBaseN(${1:string}, ${2:radix})$15]]></content>
+</snippet>

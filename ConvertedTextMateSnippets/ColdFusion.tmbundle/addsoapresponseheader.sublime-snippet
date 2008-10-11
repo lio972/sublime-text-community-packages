@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[AddSOAPResponseHeader(${1:namespace}, ${2:name}, ${3:value} ${4:[, mustunderstand]})$15]]></content>
+</snippet>

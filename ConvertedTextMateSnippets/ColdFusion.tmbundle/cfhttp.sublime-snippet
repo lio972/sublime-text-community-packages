@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[<cfhttp url = "$1"${2: port = "${3:[ ]}" method = "${4:[ ]}" proxyServer = "${5:[ ]}" proxyPort = "${6:[ ]}" proxyUser = "${7:[ ]}" proxyPassword = "${8:[ ]}" username = "${9:[ ]}" password = "${10:[ ]}" userAgent = "${11:[ ]}" charset = "${12:[ ]}" resolveURL = "${13:[ ]}" throwOnError = "${14:[ ]}" redirect = "${15:[ ]}" timeout = "${16:[ ]}" getAsBinary = "${17:[ ]}" multipart = "${18:[ ]}" path = "${19:[ ]}" file = "${20:[ ]}" name = "${21:[ ]}" columns = "${22:[ ]}" firstrowasheaders = "${23:[ ]}" delimiter = "${24:[ ]}" textQualifier = "${25:[ ]}" result = "${26:[ ]}"}>
+	$27
+</cfhttp>$15]]></content>
+</snippet>

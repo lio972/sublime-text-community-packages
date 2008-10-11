@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[redirect(action:"${1:name}",id:${2:1})]]></content>
+</snippet>

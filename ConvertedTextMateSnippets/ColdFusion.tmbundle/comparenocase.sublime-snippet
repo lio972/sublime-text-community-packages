@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[CompareNoCase(${1:string1}, ${2:string2})$15]]></content>
+</snippet>

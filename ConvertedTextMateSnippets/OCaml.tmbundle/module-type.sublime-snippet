@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[module type ${1:Name} = sig
+	$15
+end]]></content>
+</snippet>

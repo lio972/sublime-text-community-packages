@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ArrayToList(${1:array} ${2:[, delimiter ]})$15]]></content>
+</snippet>

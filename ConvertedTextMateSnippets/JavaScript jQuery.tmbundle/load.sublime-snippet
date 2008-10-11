@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[.load(${1:function() {
+	${15:// Act on the event}
+\}});]]></content>
+</snippet>

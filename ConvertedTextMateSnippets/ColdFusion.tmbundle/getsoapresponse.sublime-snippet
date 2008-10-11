@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[GetSOAPResponse(${1:webservice})$15]]></content>
+</snippet>

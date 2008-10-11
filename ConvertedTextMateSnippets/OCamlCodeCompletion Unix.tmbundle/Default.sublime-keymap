@@ -1,0 +1,1693 @@
+<bindings>
+    <binding key="U,n,i,x,period,s,o,c,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/accept.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,p,e,r,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/access.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/address-already-in-use.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/address-family-not-supported-by-protocol-family.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,a,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/address.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,i,m,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/alarm.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,B,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/allow-reuse-of-local-addresses-for-bind.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,N,I,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/always-return-host-as-ip-addresss.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,N,I,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/always-return-service-as-port-number.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,a,d,d,r,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/any-inet-address-for-bind-ipv6.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,a,d,d,r,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/any-inet-address-for-bind.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/argument-list-too-long.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/bad-address.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/bad-file-descriptor.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/bind.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/block-device.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,I,G,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/blocked-listed-signals.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/broken-pipe.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,B,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/bypass-standard-routing-algorithms.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/can-t-assign-requested-address.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/can-t-send-after-socket-shutdown.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,a,i,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/canonical-host-name.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/character-device.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,d,i,r,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/chdir.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,p,e,r,m,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/chmod.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,p,e,r,m,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/chown.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,d,i,r,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/chroot.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/clear-close-on-exec.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,d,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/clear-nonblock.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,H,U,T,D,O,W,N,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/close-socket-for-receiving.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,H,U,T,D,O,W,N,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/close-socket-for-sending-and-receiving.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,H,U,T,D,O,W,N,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/close-socket-for-sending.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,i,l,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/close.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,d,i,r,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/closedir.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,r,u,n,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/close-process.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,r,u,n,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/close-process-full.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,r,u,n,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/close-process-in.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,r,u,n,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/close-process-out.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/connect.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/connection-refused.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/connection-reset-by-peer.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/connection-timed-out.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,N,I,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/consider-service-as-udp-not-tcp.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,o,p,e,n,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/create-if-nonexistant.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,r,u,n,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/create-process.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,r,u,n,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/create-process-env.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,C,K,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/datagram-socket.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/day-of-month-1-31.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,m,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/day-of-week-sunday-is-0.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,m,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/day-of-year-0-365.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,m,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/daylight-savings-time-is-in-effect.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,I,T,I,M,E,R,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/decrement-interval-timer-for-profiling.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,I,T,I,M,E,R,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/decrement-interval-timer-in-real-time.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,I,T,I,M,E,R,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/decrement-interval-timer-in-virtual-time.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,c,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/descr-of-in-channel.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,c,h,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/descr-of-out-channel.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/destination-address-required.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,l,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/directory-not-empty.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/directory.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/disable-flush-after-intr-quit-susp.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,N,I,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/do-not-qualify-local-host-names.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/domain-error-for-math-functions.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/domain-of-sockaddr.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,A,I,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/don-t-call-name-resolver-ekpect-numeric-ip-address.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,o,p,e,n,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/don-t-make-this-dev-a-controlling-tty.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,d,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/dup.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,d,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/dup2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/echo-erase-to-erase-previous-char.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/echo-input-characters.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/echo-kill-to-erase-current-line.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/echo-nl-even-if-c-echo-is-not-set.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/emit-xonxoff-chars-to-control-input-flow.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/enable-canonical-processing-line-buffering-and-edititng.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/enable-output-processing.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/enable-parity-check-on-input.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/enable-parity-generation-and-detection.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/end-of-file-character-usually-ctrl-d.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/end-of-line-character-usually-none.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,n,v,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/environment.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,l,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/erase-character-usually-del-or-ctrl-h.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,o,r,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/error-message.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,c,o,n,n,e,c,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/establish-server.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,o,r,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/exception-unix-error.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,p,e,r,m,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/execute-permission.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,r,o,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/execv.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,r,o,c,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/execve.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,r,o,c,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/execvp.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,r,o,c,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/execvpe.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,o,p,e,n,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/fail-if-existing.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,N,I,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/fail-if-host-name-cannot-be-determined.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,p,e,r,m,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/fchmod.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,p,e,r,m,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/fchown.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,n,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/file-exists-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,p,e,r,m,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/file-exists.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,o,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/file-size-or-position-not-representable.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,p,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/file-too-large.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,q,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/filename-too-long.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,A,I,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/fill-the-ai-cannonname-field-of-the-result.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,F,L,U,S,H,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/flush-both.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,F,L,U,S,H,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/flush-received-but-not-read.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,F,L,U,S,H,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/flush-written-but-not-transmitted.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,r,o,c,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/fork.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/fstat.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,e,e,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/ftruncate.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,r,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/function-interrupted-by-signal.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,s,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/function-not-supported.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/generate-signal-on-intr-quit-susp.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,i,n,f,o,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getaddrinfo.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,d,i,r,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getcwd.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,i,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getegid.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,n,v,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getenv.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,i,d,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/geteuid.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,i,d,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getgid.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,i,d,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getgrnam.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,i,d,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getgroups.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,i,d,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getgruid.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,h,o,s,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/gethostbyaddr.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,h,o,s,t,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/gethostbyname.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,h,o,s,t,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/gethostname.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,i,m,e,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getitimer.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,i,d,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getlogin.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getpeername.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,r,o,c,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getpid.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,r,o,c,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getppid.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,h,o,s,t,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getprotobyname.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,h,o,s,t,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getprotobynumber.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,i,d,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getpwnam.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,i,d,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getpwuid.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,h,o,s,t,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getservbyname.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,h,o,s,t,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getservbyport.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getsockname.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,o,p,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getsockopt.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,o,p,t,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getsockopt-float.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,o,p,t,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getsockopt-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,o,p,t,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getsockopt-optint.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,i,m,e,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/gettimeofday.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,i,d,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/getuid.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,i,m,e,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/gmtime.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,g,r,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/groups-gid.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,g,r,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/groups-mem.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,g,r,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/groups-name.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,g,r,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/groups-passwd.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,o,r,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/handle-unix-error.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,n,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/hang-up-on-last-close.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/hardware-io-error.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,u,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/host-is-down.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/hosts-address-array.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,h,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/hosts-address-domain.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,h,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/hosts-aliases.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,h,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/hosts-name.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,m,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/hours-0-23.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,o,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/ignore-break-condition.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,p,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/ignore-characters-with-parity-errors.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,q,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/ignore-cr-on-input.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,r,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/ignore-modem-status-lines.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,A,I,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/impose-the-given-protocol.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,A,I,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/impose-the-given-socket-domain.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,A,I,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/impose-the-given-socket-type.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,v,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/inappropriate-io-control-operation.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,a,d,d,r,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/inet-addr-of-string.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,s,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/input-baud-rate.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,A,D,D,R,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/internet-domain-socket-address.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,P,F,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/internet-socket-domain-ipv6.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,P,F,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/internet-socket-domain.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/interrupt-character-usually-ctrl-c.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,i,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/interval-period.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,i,t,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/interval-timer-current-value.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,w,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/invalid-argument.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,x,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/invalid-link.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,y,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/invalid-seek.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,c,h,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/in-channel-of-descr.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,z,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/is-a-directory.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,B,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/keep-connection-alive.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,u,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/kill-character-usually-ctrl-u.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,i,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/kill.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-access-rights.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-device-minor-number.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-device-number.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-group-id-of-file.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-inode-number.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-kind-of-file.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-last-access-time.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-last-modification-time.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-last-status-change-time.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-number-of-links.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-size-in-bytes.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-user-id-of-owner.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,l,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-fstat.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-ftruncate.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,n,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-lseek.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,o,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-lstat.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,p,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-stat.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,L,a,r,g,e,F,i,l,e,q,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/largefile-truncate.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,B,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/leave-out-of-band-data-in-line.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,n,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/link.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/listen.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,i,m,e,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/localtime.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,l,o,c,k,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/lock-a-region-for-reading-blocking.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,l,o,c,k,t,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/lock-a-region-for-reading-non-blocking.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,l,o,c,k,t,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/lock-a-region-for-writing-blocking.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,l,o,c,k,t,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/lock-a-region-for-writing-non-blocking.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,l,o,c,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/lockf.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,a,d,d,r,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/loopback-address-ipv6.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,a,d,d,r,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/loopback-address.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,e,e,k,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/lseek.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/lstat.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,v,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/map-cr-to-nl-on-input.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,w,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/map-nl-to-cr-on-input.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,x,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/mark-parity-errors.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,y,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/maximum-read-wait-in-0-1s-units.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,A,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/message-too-long.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,z,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/min-chars-to-read-before-read-request-is-satisfied.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,I,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/min-number-of-bytes-to-process-for-input-ops.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,I,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/min-number-of-bytes-to-process-for-output-ops.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,m,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/minutes-0-59.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,d,i,r,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/mkdir.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,i,p,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/mkfifo.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,i,m,e,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/mktime.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,m,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/month-of-year-0-11.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,M,S,G,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/msg-dontroute.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,M,S,G,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/msg-oob.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,M,S,G,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/msg-peek.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,n,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/name-of-ip-address-of-host.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,n,i,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/name-of-service-or-port-number.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/named-pipe.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,B,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/network-dropped-connection-on-reset.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,C,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/network-is-down.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,D,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/network-is-unreachable.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,r,o,c,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/nice.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,E,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/no-buffer-space-available.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,F,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/no-child-process.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,G,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/no-locks-available.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,H,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/no-route-to-host.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,I,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/no-space-left-on-device.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,J,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/no-such-device-or-address.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,K,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/no-such-device.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,L,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/no-such-file-or-directory.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,M,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/no-such-process.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,N,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/not-a-directory.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,O,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/not-an-executable-file.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,P,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/not-enough-memory.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,A,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/number-of-bits-per-character-5-8.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,B,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/number-of-stop-bits.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,o,p,e,n,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/open-for-appending.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,o,p,e,n,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/open-for-reading-and-writing.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,o,p,e,n,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/open-in-non-blocking-mode.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,o,p,e,n,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/open-read-only.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,o,p,e,n,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/open-write-only.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,d,i,r,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/opendir.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,i,l,e,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/openfile.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,c,o,n,n,e,c,t,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/open-connection.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,r,u,n,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/open-process.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,r,u,n,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/open-process-full.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,r,u,n,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/open-process-in.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,r,u,n,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/open-process-out.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,Q,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/operation-already-in-progress.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,R,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/operation-not-permitted.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,S,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/operation-now-in-progress.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,T,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/operation-would-block.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,C,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/output-baud-rate-0-means-close-connection.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,c,h,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/out-channel-of-descr.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,w,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/passwd-dir.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,w,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/passwd-gecos.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,w,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/passwd-gid.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,w,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/passwd-name.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,w,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/passwd-passwd.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,w,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/passwd-shell.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,w,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/passwd-uid.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,i,g,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/pause.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,U,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/permission-denied.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,B,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/permit-sending-of-broadcast-messages.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,i,p,e,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/pipe.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,V,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/protocol-family-not-supported.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,W,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/protocol-not-supported.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,X,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/protocol-wrong-type-for-socket.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/protocols-aliases.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/protocols-name.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/protocols-protocol.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,n,v,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/putenv.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,D,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/quit-character-usually-ctrl.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,C,K,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/raw-socket.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,p,e,r,m,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/read-permission.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,Y,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/read-only-file-system.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,i,l,e,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/read.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,d,i,r,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/readdir.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,l,i,n,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/readlink.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,o,p,e,n,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/reads-complete-as-writes.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,E,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/reception-is-enabled.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,F,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/recognize-xonxoff-characters-on-input.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,B,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/record-debugging-information.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/recv.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/recvfrom.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/regular-file.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,n,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/rename.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,I,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/report-error-status-and-clear-it.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,B,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/report-whether-socket-listening-is-enabled.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,e,r,r,Z,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/resource-deadlock-would-occur.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/resource-temporarily-unavailable.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/resource-unavailable.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,F,L,O,W,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/restart-input-send-start-character.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,F,L,O,W,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/restart-output.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/result-too-large.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,d,i,r,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/rewinddir.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,d,i,r,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/rmdir.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,m,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/seconds-0-60.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,e,e,k,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/seek-relative-to-beginning-of-file.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,e,e,k,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/seek-relative-to-current-position.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,e,e,k,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/seek-relative-to-end-of-file.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,e,l,e,c,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/select.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/send.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/sendto.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,C,K,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/sequenced-packets-socket.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/services-aliases.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/services-name.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/services-port.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/services-protocol.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,A,I,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/set-address-to-any-for-bind.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,I,G,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/set-blocked-signals-to-those-listed.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,T,C,S,A,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/set-term-attribute-after-flushing-rcvd-input.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,T,C,S,A,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/set-term-attribute-after-pending-output-xmitted.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,T,C,S,A,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/set-term-attribute-now.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,i,d,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/setgid.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,i,m,e,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/setitimer.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,G,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/setsid.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,o,p,t,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/setsockopt.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,o,p,t,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/setsockopt-float.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,o,p,t,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/setsockopt-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,o,p,t,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/setsockopt-optint.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,i,d,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/setuid.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,d,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/set-close-on-exec.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,d,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/set-nonblock.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/shutdown.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,c,o,n,n,e,c,t,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/shutdown-connection.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,H,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/signal-interrupt-on-break.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,i,g,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/sigpending.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,i,g,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/sigprocmask.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,i,g,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/sigsuspend.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,i,l,e,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/single-write.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,I,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/size-of-receive-buffer.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,I,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/size-of-send-buffer.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,i,m,e,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/sleep.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,l,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/socket-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,a,i,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/socket-domain.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/socket-is-already-connected.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/socket-is-not-connected.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/socket-operation-on-non-socket.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,a,i,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/socket-protocol-number.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,a,i,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/socket-type.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/socket.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,s,o,c,k,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/socketpair.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/software-caused-connection-abort.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,I,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/specify-odd-parity-instead-of-even.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,J,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/start-character-usually-ctrl-q.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stat-access-rights.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stat-device-minor-number.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stat-device-number.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stat-group-id-of-file.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,l,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stat-inode-number.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stat-kind-of-file.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,n,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stat-last-access-time.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,o,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stat-last-modification-time.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,p,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stat-last-status-change-time.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,q,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stat-number-of-links.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,r,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stat-size-in-bytes.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,s,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stat-user-id-of-owner.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stat.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,r,o,c,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/status-process-killed-by-signal.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,r,o,c,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/status-process-stopped-by-signal.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,r,o,c,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/status-process-terminated-normally.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stderr.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,i,n,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stdin.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,o,u,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stdout.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,K,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stop-character-usually-ctrl-s.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,C,K,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stream-socket.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,a,d,d,r,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/string-of-inet-addr.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,L,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/strip-8th-bit-on-input-characters.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,F,L,O,W,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/suspend-input-send-stop-character.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,F,L,O,W,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/suspend-output.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,t,a,t,u,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/symbolic-link.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,l,i,n,k,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/symlink.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,m,s,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/system-time-for-child-processes.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,m,s,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/system-time-for-process.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,r,o,c,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/system.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,M,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/tcdrain.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,N,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/tcflow.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,F,L,U,S,H,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/tcflush.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,O,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/tcgetattr.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,P,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/tcsendbreak.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,Q,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/tcsetaddr.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,e,r,m,R,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/terminal-io-record.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,l,o,c,k,t,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/test-a-region-for-locks.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,i,m,e,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/time.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,F,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/timeout-for-input-operations.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,F,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/timeout-for-output-operations.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,i,m,e,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/times.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/too-many-levels-of-symbolic-links.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/too-many-links.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/too-many-open-files-by-the-process.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/too-many-open-files-in-the-system.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/too-many-references-can-t-splice.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,o,p,e,n,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/truncate-to-0-length-if-existing.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,s,e,e,k,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/truncate.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,p,e,r,m,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/umask.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,I,G,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/unblocked-listed-signals.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,A,D,D,R,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/unix-domain-socket-address.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,P,F,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/unix-socket-domain.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,m,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/unix-tm-record.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/unknown-error.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,n,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/unlink.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,l,o,c,k,t,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/unlock-a-region.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,m,s,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/user-time-for-child-processes.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,m,s,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/user-time-for-process.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,i,m,e,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/utimes.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,r,o,c,l,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/wait-flag-don-t-block-if-children-alive.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,r,o,c,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/wait-flag-report-stopped-children.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,r,o,c,n,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/wait.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,p,r,o,c,o,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/waitpid.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,S,O,I,O,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/whether-to-linger-on-closed-connections-and-for-how-long.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,p,e,r,m,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/write-permission.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,f,i,l,e,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/write.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,o,p,e,n,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/writes-complete-as-synchronised-io-data-integrity-completion.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,o,p,e,n,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/writes-complete-as-synchronised-io-file-integrity-completion.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="U,n,i,x,period,t,m,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/year-1900.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+</bindings>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ArrayNew(${1:dimension})$15]]></content>
+</snippet>

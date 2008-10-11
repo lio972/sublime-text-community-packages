@@ -1,0 +1,5 @@
+<bindings>
+    <binding key="d,e,p,tab" command="insertSnippet 'Packages/Maven.tmbundle/dependency.sublime-snippet'">
+        <context name="selector" value="text.xml.pom"/>
+    </binding>
+</bindings>

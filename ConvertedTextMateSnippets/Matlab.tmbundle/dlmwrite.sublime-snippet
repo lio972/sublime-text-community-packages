@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[dlmwrite('${1:filename}.dat', [${2:variables}], ${3:'${4:delimiter}', '${5:\t}'});
+$15]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[AddSOAPRequestHeader(${1:webservice}, ${2:namespace}, ${3:name}, ${4:value} ${5:[, mustunderstand]})$15]]></content>
+</snippet>

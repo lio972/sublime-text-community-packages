@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[new YAHOO.widget.DS_JSArray(${1:arrayOfData});$15]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Undefined_recursive_module ${1:(${2:file_name},${3:line_no},${4:col_no})}$15]]></content>
+</snippet>

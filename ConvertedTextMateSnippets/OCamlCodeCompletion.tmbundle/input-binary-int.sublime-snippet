@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[input_binary_int ${1:in_channel}$15]]></content>
+</snippet>

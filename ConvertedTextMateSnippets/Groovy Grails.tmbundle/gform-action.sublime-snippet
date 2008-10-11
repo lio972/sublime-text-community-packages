@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[<g:form name="${1:name}" action="${2:action}">
+	${15:$TM_SELECTED_TEXT}
+</g:form>]]></content>
+</snippet>

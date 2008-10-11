@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[IdentityFile ${1:~/.ssh/filename}]]></content>
+</snippet>

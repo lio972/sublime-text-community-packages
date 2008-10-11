@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[class << ${1:self}
+	$15
+end]]></content>
+</snippet>

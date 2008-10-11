@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[lbound(${1:source}${2:, dim=${3:1}})]]></content>
+</snippet>

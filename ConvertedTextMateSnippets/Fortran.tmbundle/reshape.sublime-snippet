@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[reshape(${1:source}${2:, shape=(/$3/)}${4:, pad=(/$5/)}${6:, order=(/${7:2,1}/)})]]></content>
+</snippet>

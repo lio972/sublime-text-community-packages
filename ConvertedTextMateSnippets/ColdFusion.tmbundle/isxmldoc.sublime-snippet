@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[IsXmlDoc(${1:value})$15]]></content>
+</snippet>

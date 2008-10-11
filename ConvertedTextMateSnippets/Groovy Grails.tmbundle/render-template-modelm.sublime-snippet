@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[render(template:"${1:name}",model:[${2:name}:${3:obj}])]]></content>
+</snippet>

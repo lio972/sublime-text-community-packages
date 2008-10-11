@@ -1,0 +1,77 @@
+<bindings>
+    <binding key="c,a,s,e,tab" command="insertSnippet 'Packages/Scilab.tmbundle/case.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="e,l,s,e,i,f,tab" command="insertSnippet 'Packages/Scilab.tmbundle/elseif.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="e,x,e,c,tab" command="insertSnippet 'Packages/Scilab.tmbundle/exec.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="e,y,e,tab" command="insertSnippet 'Packages/Scilab.tmbundle/eye.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="f,o,r,tab" command="insertSnippet 'Packages/Scilab.tmbundle/for-end.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="f,u,n,c,t,i,o,n,tab" command="insertSnippet 'Packages/Scilab.tmbundle/function.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="g,e,t,d,tab" command="insertSnippet 'Packages/Scilab.tmbundle/getd.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="g,e,t,f,tab" command="insertSnippet 'Packages/Scilab.tmbundle/getf.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="p,a,t,h,tab" command="insertSnippet 'Packages/Scilab.tmbundle/get-absolute-file-path.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="i,f,e,l,s,e,tab" command="insertSnippet 'Packages/Scilab.tmbundle/if-else-end.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="i,f,tab" command="insertSnippet 'Packages/Scilab.tmbundle/if-end.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="l,e,g,e,n,d,tab" command="insertSnippet 'Packages/Scilab.tmbundle/legend.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="o,n,e,s,tab" command="insertSnippet 'Packages/Scilab.tmbundle/ones.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="p,l,o,t,tab" command="insertSnippet 'Packages/Scilab.tmbundle/plot.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="p,l,o,t,d,tab" command="insertSnippet 'Packages/Scilab.tmbundle/plot3d.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="s,e,l,e,c,t,tab" command="insertSnippet 'Packages/Scilab.tmbundle/select-case-end.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="w,h,i,l,e,tab" command="insertSnippet 'Packages/Scilab.tmbundle/while-end.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="t,i,t,l,e,tab" command="insertSnippet 'Packages/Scilab.tmbundle/xtitle.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+
+    <binding key="z,e,r,o,s,tab" command="insertSnippet 'Packages/Scilab.tmbundle/zeros.sublime-snippet'">
+        <context name="selector" value="source.scilab"/>
+    </binding>
+</bindings>

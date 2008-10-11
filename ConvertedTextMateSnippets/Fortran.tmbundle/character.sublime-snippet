@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[character(len=$1${2:, kind=$3})${4:, ${5:attributes}} :: ${6:name}]]></content>
+</snippet>

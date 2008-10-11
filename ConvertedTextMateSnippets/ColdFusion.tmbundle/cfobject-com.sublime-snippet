@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfobject type = "com" action = "$1" class = "$2" name = "$3"${4: context = "${5:[ ]}" server = "${6:[ ]}"}>$15]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[match = '${1:pattern}';]]></content>
+</snippet>

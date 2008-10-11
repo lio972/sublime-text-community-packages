@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[${1:target}.should satisfy { |obj| $2 }
+$15]]></content>
+</snippet>

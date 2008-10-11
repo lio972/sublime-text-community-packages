@@ -1,0 +1,10 @@
+
+<snippet>
+    <content><![CDATA[while ${1:condition}
+	$15
+`if [[ $TM_USE_OCTAVE -ne '0' ]]
+	then echo "endwhile"
+else
+	echo "end"
+fi`]]></content>
+</snippet>

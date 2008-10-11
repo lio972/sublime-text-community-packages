@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[RTrim(${1:string})$15]]></content>
+</snippet>

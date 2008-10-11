@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[bind(${1:this}${2:, ${3:arguments}})]]></content>
+</snippet>

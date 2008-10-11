@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Position.absolutize(${1:'${2:element}'});]]></content>
+</snippet>

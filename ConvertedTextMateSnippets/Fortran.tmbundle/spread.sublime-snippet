@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[spread(${1:source}, dim=${2:1}, ncopies=$3)]]></content>
+</snippet>

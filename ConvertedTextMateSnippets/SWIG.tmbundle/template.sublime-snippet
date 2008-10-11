@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[%template(${1:name}) ${2:type};]]></content>
+</snippet>

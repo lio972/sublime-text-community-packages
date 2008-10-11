@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfset $1 = $15${TM_XHTML}>]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Event.choose ${1:[${2:event_list}]}$15]]></content>
+</snippet>

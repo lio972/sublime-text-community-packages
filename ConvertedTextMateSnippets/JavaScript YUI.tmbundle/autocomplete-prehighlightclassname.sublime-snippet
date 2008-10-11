@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[prehighlightClassName = "${1:myCustomPrehighlightClass}";$15]]></content>
+</snippet>

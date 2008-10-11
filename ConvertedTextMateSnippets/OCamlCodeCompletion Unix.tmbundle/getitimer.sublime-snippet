@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.getitimer Unix.ITIMER_$15]]></content>
+</snippet>

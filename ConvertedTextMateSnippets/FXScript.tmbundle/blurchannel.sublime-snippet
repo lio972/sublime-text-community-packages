@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[BlurChannel(${1:srcImage}, ${2:destImage}, ${3:radius}, ${4:doAlpha}, ${5:doRed}, ${6:doGreen}, ${7:doBlue}, ${8:AspectOf(${9:dest})});
+]]></content>
+</snippet>

@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[${1:target}.should_not match(/${2:regexp}/)
+$15]]></content>
+</snippet>

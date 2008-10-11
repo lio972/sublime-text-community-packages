@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Genarray.slice_left ${1:genarray} ${2:index_array}$15]]></content>
+</snippet>

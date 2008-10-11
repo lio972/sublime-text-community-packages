@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.access ${1:file_name} ${2:[Unix.fperm$15]}]]></content>
+</snippet>

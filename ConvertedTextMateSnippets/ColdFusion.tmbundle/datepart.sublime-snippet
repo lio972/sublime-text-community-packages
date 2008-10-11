@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[DatePart(${1:"datepart"}, ${2:"date"})$15]]></content>
+</snippet>

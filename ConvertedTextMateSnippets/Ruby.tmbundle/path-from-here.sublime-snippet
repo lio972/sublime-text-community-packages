@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[File.join(File.dirname(__FILE__), *%w[${1:rel path here}])]]></content>
+</snippet>

@@ -1,0 +1,269 @@
+<bindings>
+    <binding key="a,n,r,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/and-raise.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="a,n,r,b,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/and-return-block.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="a,n,r,a,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/and-return-value.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="a,n,t,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/and-throw.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="a,n,y,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/and-yield.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="a,n,n,o,t,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/any-number-of-times.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="a,t,l,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/at-least.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="a,t,m,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/at-most.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="d,e,s,c,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/controller-context.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="d,e,s,r,c,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/controller-context-restful.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="m,a,t,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/custom-matcher.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="d,e,s,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/describe.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="d,e,s,t,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/describe-type.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="d,e,s,t,s,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/describe-type-string.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="e,x,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/exactly.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="i,t,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/it.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="i,t,s,b,l,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/it-should-behave-like.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="m,o,c,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/mock.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="o,n,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/once.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="o,r,d,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/ordered.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="r,e,s,h,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/require-spec-helper.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,b,s,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/response-should-be-success.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,n,b,s,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/response-should-not-be-success.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="c,o,n,n,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/set-controller-for-spec.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="b,e,f,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/setup.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,equals,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,m,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/shoulda.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,e,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-eql.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,b,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-be.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,b,i,o,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-be-an-instance-of.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,b,k,o,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-be-a-kind-of.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,b,c,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-be-close.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,b,r,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-be-redirect.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,e,a,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-equal.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,h,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-have.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,h,a,l,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-have-at-least.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,h,a,m,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-have-at-most.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,h,r,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-have-records.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,m,a,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-match.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,n,equals,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-not.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,n,m,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-nota.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,n,e,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-not-eql.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,n,b,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-not-be.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,b,i,o,a,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-not-be-an-instance-of.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,k,o,f,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-not-be-a-kind-of.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,n,b,c,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-not-be-close.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,n,b,r,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-not-be-redirect.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,n,e,a,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-not-equal.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,n,m,a,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-not-match.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,n,p,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-not-predicate.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,n,r,e,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-not-raise.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,n,r,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-not-receive.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,n,r,t,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-not-respond-to.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,n,s,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-not-satisfy.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,n,t,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-not-throw.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,p,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-predicate.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,r,e,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-raise.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,r,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-receive.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="w,i,a,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-receive-with-args.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,r,t,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-redirect-to.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,r,t,a,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-render.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,r,t,b,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-respond-to.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,s,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-satisfy.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,h,t,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/should-throw.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="s,t,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/story.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="a,f,t,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/teardown.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+
+    <binding key="t,w,tab" command="insertSnippet 'Packages/Ruby RSpec.tmbundle/twice.sublime-snippet'">
+        <context name="selector" value="source.ruby.rspec"/>
+    </binding>
+</bindings>

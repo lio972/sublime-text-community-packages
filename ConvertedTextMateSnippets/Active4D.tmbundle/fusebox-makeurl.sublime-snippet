@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[fusebox.makeUrl(\$XFA_$1${2:; query})]]></content>
+</snippet>

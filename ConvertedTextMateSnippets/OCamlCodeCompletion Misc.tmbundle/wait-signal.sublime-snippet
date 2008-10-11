@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Thread.wait_pid ${1:[${2:signal_list;}]}$15]]></content>
+</snippet>

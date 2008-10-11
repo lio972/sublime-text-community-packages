@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[<g:each in="\${${1:item}}" var="${2:e}" status="${3:i}">
+	${15:$TM_SELECTED_TEXT}
+</g:each>]]></content>
+</snippet>

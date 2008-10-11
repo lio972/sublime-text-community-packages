@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[collect {${1/(.+)/(?1: )/}${1:obj}${1/(.+)/(?1: ->)/}
+	$15
+}]]></content>
+</snippet>

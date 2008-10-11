@@ -1,0 +1,33 @@
+<bindings>
+    <binding key="b,e,g,i,n,tab" command="insertSnippet 'Packages/OCaml.tmbundle/begin.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="c,r,tab" command="insertSnippet 'Packages/OCaml.tmbundle/cr.sublime-snippet'">
+        <context name="selector" value="source"/>
+    </binding>
+
+    <binding key="d,o,c,tab" command="insertSnippet 'Packages/OCaml.tmbundle/document.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="f,tab" command="insertSnippet 'Packages/OCaml.tmbundle/function-label.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="s,i,g,tab" command="insertSnippet 'Packages/OCaml.tmbundle/module-signature.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="m,t,y,p,e,tab" command="insertSnippet 'Packages/OCaml.tmbundle/module-type.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="t,r,y,tab" command="insertSnippet 'Packages/OCaml.tmbundle/try.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="t,h,r,e,a,d,tab" command="insertSnippet 'Packages/OCaml.tmbundle/untitled.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+</bindings>

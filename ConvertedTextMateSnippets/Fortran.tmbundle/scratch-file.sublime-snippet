@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[open(unit=${1:iounit}, iostat=${3:ios}, status="${4:scratch}", action="${5:readwrite}")
+if ( $3 /= 0 ) stop "Error opening scratch file on unit $1"
+]]></content>
+</snippet>

@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[{% ifequal $1 $2 %}
+	$3
+{% endifequal %}]]></content>
+</snippet>

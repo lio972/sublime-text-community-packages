@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[:eq(${1:n})$15]]></content>
+</snippet>

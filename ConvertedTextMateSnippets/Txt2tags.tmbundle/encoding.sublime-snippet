@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[%!encoding(${1:html | xhtml | sgml | tex | lout | man | mgp | wiki | gwiki | doku | moin | pm6 | txt}): ${2:utf-8}
+]]></content>
+</snippet>

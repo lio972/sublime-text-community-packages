@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[(class ${1:name} is NuTestCase
+	$15)]]></content>
+</snippet>

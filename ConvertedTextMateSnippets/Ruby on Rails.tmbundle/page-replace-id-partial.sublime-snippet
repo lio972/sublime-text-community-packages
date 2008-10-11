@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[page.replace ${1:"${2:id}"}, :${3:partial => "${4:template}"}]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[legend("${1:Graph 1}", "${2:Graph 2}")]]></content>
+</snippet>

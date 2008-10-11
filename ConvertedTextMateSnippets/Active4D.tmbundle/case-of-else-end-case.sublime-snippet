@@ -1,0 +1,10 @@
+
+<snippet>
+    <content><![CDATA[case of
+	:(${1:condition})
+		$15
+
+else
+	
+end case]]></content>
+</snippet>

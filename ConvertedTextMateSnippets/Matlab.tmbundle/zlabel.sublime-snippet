@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[xlabel(${1:'${2}'});]]></content>
+</snippet>

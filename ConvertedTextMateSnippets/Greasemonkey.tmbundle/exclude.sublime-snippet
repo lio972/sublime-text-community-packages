@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[// @exclude       ${1:http://}$15]]></content>
+</snippet>

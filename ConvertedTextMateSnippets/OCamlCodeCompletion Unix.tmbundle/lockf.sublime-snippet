@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.lockf ${1:file_descr} Unix.lock_t$15 ${2:size}]]></content>
+</snippet>

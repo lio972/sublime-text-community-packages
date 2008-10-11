@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfheader name = "$1"${2: value = "${3:[ ]}" charset="${4:[ ]}"}>$15]]></content>
+</snippet>

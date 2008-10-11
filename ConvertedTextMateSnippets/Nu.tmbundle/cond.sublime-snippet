@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[(cond ((${1:first}) ($2))
+	((${3:second}) ($4))
+	(else ($5)))$15]]></content>
+</snippet>

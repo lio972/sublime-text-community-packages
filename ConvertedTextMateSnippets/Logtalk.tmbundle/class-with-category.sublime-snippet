@@ -1,0 +1,18 @@
+
+<snippet>
+    <content><![CDATA[
+:- object(${1:Class},
+	imports(${2:Category}),
+	specializes(${3:Superclass})).
+
+	:- info([
+		version is 1.0,
+		author is '$TM_FULLNAME',
+		date is `date +%Y/%m/%d`,
+		comment is '${4:Description}']).
+
+$15
+
+:- end_object.
+]]></content>
+</snippet>

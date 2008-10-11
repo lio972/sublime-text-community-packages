@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfhttpparam type = "$1"${2: name = "${3:[ ]}" value = "${4:[ ]}" file = "${5:[ ]}" encoded = "${6:[ ]}" mimeType = "${7:[ ]}"}>$15]]></content>
+</snippet>

@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[<cfquery name = "$1"${2: dataSource = "${3:[ ]}" dbtype = "${4:[ ]}" username = "${5:[ ]}" password = "${6:[ ]}" maxRows = "${7:[ ]}" blockFactor = "${8:[ ]}" timeout = "${9:[ ]}" cachedAfter = "${10:[ ]}" cachedWithin = "${11:[ ]}" result = "${12:[ ]}"}>
+	$13
+</cfquery>$15]]></content>
+</snippet>

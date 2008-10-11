@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.openfile ${1:file_name} ${2:[${3:open_flags}]} 0o${4:644}$15]]></content>
+</snippet>

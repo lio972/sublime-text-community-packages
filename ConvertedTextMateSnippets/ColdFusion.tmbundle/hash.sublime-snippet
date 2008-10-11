@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Hash(${1:string$}${2: [, algorithm]}${3: [, encoding]})$15]]></content>
+</snippet>

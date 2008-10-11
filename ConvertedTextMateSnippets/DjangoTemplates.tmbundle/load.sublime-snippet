@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[{% load $1 %}]]></content>
+</snippet>

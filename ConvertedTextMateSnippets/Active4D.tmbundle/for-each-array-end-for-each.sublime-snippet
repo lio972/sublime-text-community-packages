@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[for each (${1:\$array}; ${2:\$value}${3:; \$index})
+	$15
+end for each]]></content>
+</snippet>
