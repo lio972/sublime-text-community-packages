@@ -1,5 +1,5 @@
 <bindings>
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Txt2tags.tmbundle/bold.sublime-snippet'">
+    <binding key="ctrl+b" command="insertSnippet 'Packages/Txt2tags.tmbundle/bold.sublime-snippet'">
         <context name="selector" value="text.txt2tags"/>
     </binding>
 
@@ -39,7 +39,7 @@
         <context name="selector" value="text.txt2tags"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Txt2tags.tmbundle/italic.sublime-snippet'">
+    <binding key="ctrl+i" command="insertSnippet 'Packages/Txt2tags.tmbundle/italic.sublime-snippet'">
         <context name="selector" value="text.txt2tags"/>
     </binding>
 
@@ -51,11 +51,11 @@
         <context name="selector" value="text.txt2tags"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Txt2tags.tmbundle/monospaced.sublime-snippet'">
+    <binding key="ctrl+k" command="insertSnippet 'Packages/Txt2tags.tmbundle/monospaced.sublime-snippet'">
         <context name="selector" value="text.txt2tags"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Txt2tags.tmbundle/numbered-title.sublime-snippet'">
+    <binding key="TODO[+]" command="insertSnippet 'Packages/Txt2tags.tmbundle/numbered-title.sublime-snippet'">
         <context name="selector" value="text.txt2tags"/>
     </binding>
 
@@ -75,19 +75,19 @@
         <context name="selector" value="text.txt2tags"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Txt2tags.tmbundle/protected-raw.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Txt2tags.tmbundle/protected-raw.sublime-snippet'">
         <context name="selector" value="text.txt2tags"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Txt2tags.tmbundle/protected-block-raw.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Txt2tags.tmbundle/protected-block-raw.sublime-snippet'">
         <context name="selector" value="text.txt2tags"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Txt2tags.tmbundle/quote.sublime-snippet'">
+    <binding key="TODO[>]" command="insertSnippet 'Packages/Txt2tags.tmbundle/quote.sublime-snippet'">
         <context name="selector" value="text.txt2tags"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Txt2tags.tmbundle/strike.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Txt2tags.tmbundle/strike.sublime-snippet'">
         <context name="selector" value="text.txt2tags"/>
     </binding>
 
@@ -107,11 +107,11 @@
         <context name="selector" value="text.txt2tags"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Txt2tags.tmbundle/underline.sublime-snippet'">
+    <binding key="ctrl+u" command="insertSnippet 'Packages/Txt2tags.tmbundle/underline.sublime-snippet'">
         <context name="selector" value="text.txt2tags"/>
     </binding>
 
-    <binding key="backquote,tab" command="insertSnippet 'Packages/Txt2tags.tmbundle/verbatim-block-code.sublime-snippet'">
+    <binding key="alt+ctrl+k" command="insertSnippet 'Packages/Txt2tags.tmbundle/verbatim-block-code.sublime-snippet'">
         <context name="selector" value="text.txt2tags"/>
     </binding>
 </bindings>

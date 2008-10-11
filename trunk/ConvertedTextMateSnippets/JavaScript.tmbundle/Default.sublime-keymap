@@ -23,7 +23,7 @@
         <context name="selector" value="source.js"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/JavaScript.tmbundle/object-key-key-value.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/JavaScript.tmbundle/object-key-key-value.sublime-snippet'">
         <context name="selector" value="source.js"/>
     </binding>
 

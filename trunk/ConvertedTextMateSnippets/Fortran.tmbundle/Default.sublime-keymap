@@ -143,7 +143,7 @@
         <context name="selector" value="source.fortran"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Fortran.tmbundle/line-continuation.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Fortran.tmbundle/line-continuation.sublime-snippet'">
         <context name="selector" value="source.fortran"/>
     </binding>
 
@@ -335,7 +335,7 @@
         <context name="selector" value="source.fortran"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Fortran.tmbundle/wrap-selection-in-array-brackets.sublime-snippet'">
+    <binding key="ctrl+A" command="insertSnippet 'Packages/Fortran.tmbundle/wrap-selection-in-array-brackets.sublime-snippet'">
         <context name="selector" value="source.fortran"/>
     </binding>
 

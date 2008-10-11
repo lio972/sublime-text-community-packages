@@ -1,17 +1,17 @@
 <bindings>
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/usrlocalbingroovy-w.sublime-snippet'">
+    <binding key="TODO[#!]" command="insertSnippet 'Packages/Groovy.tmbundle/usrlocalbingroovy-w.sublime-snippet'">
         <context name="selector" value="source.groovy"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/author.sublime-snippet'">
+    <binding key="TODO[@]" command="insertSnippet 'Packages/Groovy.tmbundle/author.sublime-snippet'">
         <context name="selector" value="source.groovy comment.block.documentation.javadoc"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/param-copy.sublime-snippet'">
+    <binding key="TODO[@]" command="insertSnippet 'Packages/Groovy.tmbundle/param-copy.sublime-snippet'">
         <context name="selector" value="source.groovy comment.block.documentation.javadoc"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/param.sublime-snippet'">
+    <binding key="TODO[@]" command="insertSnippet 'Packages/Groovy.tmbundle/param.sublime-snippet'">
         <context name="selector" value="source.groovy comment.block.documentation.javadoc"/>
     </binding>
 
@@ -63,7 +63,7 @@
         <context name="selector" value="source.groovy"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/assert.sublime-snippet'">
+    <binding key="TODO[!]" command="insertSnippet 'Packages/Groovy.tmbundle/assert.sublime-snippet'">
         <context name="selector" value="source.groovy"/>
     </binding>
 
@@ -307,11 +307,11 @@
         <context name="selector" value="source.groovy"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/hash-pair-key-value.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/Groovy.tmbundle/hash-pair-key-value.sublime-snippet'">
         <context name="selector" value="source.groovy"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/hash-pair.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/Groovy.tmbundle/hash-pair.sublime-snippet'">
         <context name="selector" value="source.groovy"/>
     </binding>
 
@@ -339,7 +339,7 @@
         <context name="selector" value="source.groovy"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/new-closure.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Groovy.tmbundle/new-closure.sublime-snippet'">
         <context name="selector" value="source.groovy"/>
     </binding>
 
@@ -347,11 +347,11 @@
         <context name="selector" value="source.groovy"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/new-method.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Groovy.tmbundle/new-method.sublime-snippet'">
         <context name="selector" value="source.groovy"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/next-line.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Groovy.tmbundle/next-line.sublime-snippet'">
         <context name="selector" value="source.groovy"/>
     </binding>
 
@@ -435,7 +435,7 @@
         <context name="selector" value="source.groovy"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/same-line.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Groovy.tmbundle/same-line.sublime-snippet'">
         <context name="selector" value="source.groovy"/>
     </binding>
 
@@ -647,7 +647,7 @@
         <context name="selector" value="source.groovy"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/wrap-selection-in-trycatch.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Groovy.tmbundle/wrap-selection-in-trycatch.sublime-snippet'">
         <context name="selector" value="source.groovy"/>
     </binding>
 </bindings>

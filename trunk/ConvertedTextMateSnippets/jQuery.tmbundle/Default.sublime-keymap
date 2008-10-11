@@ -1,5 +1,5 @@
 <bindings>
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/select-dom-element.sublime-snippet'">
+    <binding key="TODO[$]" command="insertSnippet 'Packages/jQuery.tmbundle/select-dom-element.sublime-snippet'">
         <context name="selector" value="source.js.jquery"/>
     </binding>
 
@@ -51,107 +51,107 @@
         <context name="selector" value="source.js.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/checked.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/checked.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/contains-test.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/contains-test.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/disabled.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/disabled.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/empty.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/empty.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/enabled.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/enabled.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/eq-n.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/eq-n.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/even.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/even.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/first-child.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/first-child.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/first-of-type.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/first-of-type.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/first.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/first.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/gt-n.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/gt-n.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/hidden.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/hidden.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/last-child.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/last-child.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/last-of-type.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/last-of-type.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/last.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/last.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/lt-n.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/lt-n.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/not-s.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/not-s.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/nth-child-n.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/nth-child-n.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/nth-last-child-n.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/nth-last-child-n.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/nth-of-type-n.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/nth-of-type-n.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/odd.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/odd.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/only-child.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/only-child.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/only-of-type.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/only-of-type.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/parent.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/parent.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/root.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/root.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/jQuery.tmbundle/visible.sublime-snippet'">
+    <binding key="TODO[:]" command="insertSnippet 'Packages/jQuery.tmbundle/visible.sublime-snippet'">
         <context name="selector" value="source.js.jquery meta.selector.jquery"/>
     </binding>
 

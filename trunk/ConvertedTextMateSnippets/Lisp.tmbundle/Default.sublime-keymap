@@ -1,5 +1,5 @@
 <bindings>
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Lisp.tmbundle/a.sublime-snippet'">
+    <binding key="TODO[(]" command="insertSnippet 'Packages/Lisp.tmbundle/a.sublime-snippet'">
         <context name="selector" value="source.lisp"/>
     </binding>
 
@@ -39,7 +39,7 @@
         <context name="selector" value="source.lisp"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Lisp.tmbundle/aa.sublime-snippet'">
+    <binding key="TODO[(]" command="insertSnippet 'Packages/Lisp.tmbundle/aa.sublime-snippet'">
         <context name="selector" value="source.lisp"/>
     </binding>
 </bindings>

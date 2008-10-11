@@ -51,7 +51,7 @@
         <context name="selector" value="source.nu"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Nu.tmbundle/cmethod.sublime-snippet'">
+    <binding key="TODO[+]" command="insertSnippet 'Packages/Nu.tmbundle/cmethod.sublime-snippet'">
         <context name="selector" value="source.nu"/>
     </binding>
 
@@ -83,7 +83,7 @@
         <context name="selector" value="source.nu"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Nu.tmbundle/embedded-code.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Nu.tmbundle/embedded-code.sublime-snippet'">
         <context name="selector" value="(source.nu string.quoted.double | source.nu string.unquoted.heredoc) - string source"/>
     </binding>
 
@@ -107,7 +107,7 @@
         <context name="selector" value="source.nu"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Nu.tmbundle/here-string-escaped.sublime-snippet'">
+    <binding key="TODO[<<+]" command="insertSnippet 'Packages/Nu.tmbundle/here-string-escaped.sublime-snippet'">
         <context name="selector" value="source.nu"/>
     </binding>
 
@@ -195,7 +195,7 @@
         <context name="selector" value="source.nu"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Nu.tmbundle/shebang.sublime-snippet'">
+    <binding key="TODO[#!]" command="insertSnippet 'Packages/Nu.tmbundle/shebang.sublime-snippet'">
         <context name="selector" value="source.nu"/>
     </binding>
 

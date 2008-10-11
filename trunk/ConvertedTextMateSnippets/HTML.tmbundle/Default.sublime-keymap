@@ -1,5 +1,5 @@
 <bindings>
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/emphasize.sublime-snippet'">
+    <binding key="ctrl+i" command="insertSnippet 'Packages/HTML.tmbundle/emphasize.sublime-snippet'">
         <context name="selector" value="text.html"/>
     </binding>
 
@@ -7,35 +7,35 @@
         <context name="selector" value="text.html"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-5-0-only.sublime-snippet'">
+    <binding key="TODO[!]" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-5-0-only.sublime-snippet'">
         <context name="selector" value="text.html"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-5-5-only.sublime-snippet'">
+    <binding key="TODO[!]" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-5-5-only.sublime-snippet'">
         <context name="selector" value="text.html"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-5-x.sublime-snippet'">
+    <binding key="TODO[!]" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-5-x.sublime-snippet'">
         <context name="selector" value="text.html"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-6-and-below.sublime-snippet'">
+    <binding key="TODO[!]" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-6-and-below.sublime-snippet'">
         <context name="selector" value="text.html"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-6-only.sublime-snippet'">
+    <binding key="TODO[!]" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-6-only.sublime-snippet'">
         <context name="selector" value="text.html"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-7.sublime-snippet'">
+    <binding key="TODO[!]" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-7.sublime-snippet'">
         <context name="selector" value="text.html"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer.sublime-snippet'">
+    <binding key="TODO[!]" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer.sublime-snippet'">
         <context name="selector" value="text.html"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-not-internet-explorer.sublime-snippet'">
+    <binding key="TODO[!]" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-not-internet-explorer.sublime-snippet'">
         <context name="selector" value="text.html"/>
     </binding>
 
@@ -51,7 +51,7 @@
         <context name="selector" value="text.html"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/strong.sublime-snippet'">
+    <binding key="ctrl+b" command="insertSnippet 'Packages/HTML.tmbundle/strong.sublime-snippet'">
         <context name="selector" value="text.html"/>
     </binding>
 </bindings>

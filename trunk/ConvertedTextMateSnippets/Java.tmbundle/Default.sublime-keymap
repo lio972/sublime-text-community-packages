@@ -7,7 +7,7 @@
         <context name="selector" value="source.java"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/author.sublime-snippet'">
+    <binding key="TODO[@]" command="insertSnippet 'Packages/Java.tmbundle/author.sublime-snippet'">
         <context name="selector" value="comment.block.documentation.javadoc"/>
     </binding>
 
@@ -27,7 +27,7 @@
         <context name="selector" value="source.java"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/code.sublime-snippet'">
+    <binding key="TODO[{]" command="insertSnippet 'Packages/Java.tmbundle/code.sublime-snippet'">
         <context name="selector" value="comment.block.documentation.javadoc"/>
     </binding>
 
@@ -43,7 +43,7 @@
         <context name="selector" value="source.java"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/deprecated.sublime-snippet'">
+    <binding key="TODO[@]" command="insertSnippet 'Packages/Java.tmbundle/deprecated.sublime-snippet'">
         <context name="selector" value="comment.block.documentation.javadoc"/>
     </binding>
 
@@ -51,7 +51,7 @@
         <context name="selector" value="source.java"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/docroot.sublime-snippet'">
+    <binding key="TODO[{]" command="insertSnippet 'Packages/Java.tmbundle/docroot.sublime-snippet'">
         <context name="selector" value="comment.block.documentation.javadoc"/>
     </binding>
 
@@ -87,7 +87,7 @@
         <context name="selector" value="source.java"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/inheritdoc.sublime-snippet'">
+    <binding key="TODO[{]" command="insertSnippet 'Packages/Java.tmbundle/inheritdoc.sublime-snippet'">
         <context name="selector" value="comment.block.documentation.javadoc"/>
     </binding>
 
@@ -115,15 +115,15 @@
         <context name="selector" value="source.java"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/link.sublime-snippet'">
+    <binding key="TODO[{]" command="insertSnippet 'Packages/Java.tmbundle/link.sublime-snippet'">
         <context name="selector" value="comment.block.documentation.javadoc"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/linkplain.sublime-snippet'">
+    <binding key="TODO[{]" command="insertSnippet 'Packages/Java.tmbundle/linkplain.sublime-snippet'">
         <context name="selector" value="comment.block.documentation.javadoc"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/literal.sublime-snippet'">
+    <binding key="TODO[{]" command="insertSnippet 'Packages/Java.tmbundle/literal.sublime-snippet'">
         <context name="selector" value="comment.block.documentation.javadoc"/>
     </binding>
 
@@ -131,11 +131,11 @@
         <context name="selector" value="source.java"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/next-line.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Java.tmbundle/next-line.sublime-snippet'">
         <context name="selector" value="source.java"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/param.sublime-snippet'">
+    <binding key="TODO[@]" command="insertSnippet 'Packages/Java.tmbundle/param.sublime-snippet'">
         <context name="selector" value="comment.block.documentation.javadoc"/>
     </binding>
 
@@ -155,27 +155,27 @@
         <context name="selector" value="source.java"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/same-line.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Java.tmbundle/same-line.sublime-snippet'">
         <context name="selector" value="source.java"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/see.sublime-snippet'">
+    <binding key="TODO[@]" command="insertSnippet 'Packages/Java.tmbundle/see.sublime-snippet'">
         <context name="selector" value="comment.block.documentation.javadoc"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/serial.sublime-snippet'">
+    <binding key="TODO[@]" command="insertSnippet 'Packages/Java.tmbundle/serial.sublime-snippet'">
         <context name="selector" value="comment.block.documentation.javadoc"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/serialdata.sublime-snippet'">
+    <binding key="TODO[@]" command="insertSnippet 'Packages/Java.tmbundle/serialdata.sublime-snippet'">
         <context name="selector" value="comment.block.documentation.javadoc"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/serialfield.sublime-snippet'">
+    <binding key="TODO[@]" command="insertSnippet 'Packages/Java.tmbundle/serialfield.sublime-snippet'">
         <context name="selector" value="comment.block.documentation.javadoc"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/since.sublime-snippet'">
+    <binding key="TODO[@]" command="insertSnippet 'Packages/Java.tmbundle/since.sublime-snippet'">
         <context name="selector" value="comment.block.documentation.javadoc"/>
     </binding>
 
@@ -203,11 +203,11 @@
         <context name="selector" value="source.java"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/throws.sublime-snippet'">
+    <binding key="TODO[@]" command="insertSnippet 'Packages/Java.tmbundle/throws.sublime-snippet'">
         <context name="selector" value="comment.block.documentation.javadoc"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/value.sublime-snippet'">
+    <binding key="TODO[{]" command="insertSnippet 'Packages/Java.tmbundle/value.sublime-snippet'">
         <context name="selector" value="comment.block.documentation.javadoc"/>
     </binding>
 
@@ -215,7 +215,7 @@
         <context name="selector" value="source.java"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Java.tmbundle/version.sublime-snippet'">
+    <binding key="TODO[@]" command="insertSnippet 'Packages/Java.tmbundle/version.sublime-snippet'">
         <context name="selector" value="comment.block.documentation.javadoc"/>
     </binding>
 

@@ -19,7 +19,7 @@
         <context name="selector" value="source.pascal"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Pascal.tmbundle/newline.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Pascal.tmbundle/newline.sublime-snippet'">
         <context name="selector" value="source.pascal"/>
     </binding>
 

@@ -3,7 +3,7 @@
         <context name="selector" value="source.ruby comment"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Ruby.tmbundle/add-marker.sublime-snippet'">
+    <binding key="TODO[#]" command="insertSnippet 'Packages/Ruby.tmbundle/add-marker.sublime-snippet'">
         <context name="selector" value="source.ruby"/>
     </binding>
 
@@ -39,7 +39,7 @@
         <context name="selector" value="source.ruby"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Ruby.tmbundle/insert-erb-s-or.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Ruby.tmbundle/insert-erb-s-or.sublime-snippet'">
         <context name="selector" value="text.html, source.yaml, meta.erb"/>
     </binding>
 

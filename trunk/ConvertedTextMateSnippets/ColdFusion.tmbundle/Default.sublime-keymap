@@ -843,7 +843,7 @@
         <context name="selector" value="text.html.cfm"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/form-variable.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/ColdFusion.tmbundle/form-variable.sublime-snippet'">
         <context name="selector" value="text.html.cfm"/>
     </binding>
 
@@ -1055,7 +1055,7 @@
         <context name="selector" value="text.html.cfm"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isdefined.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/ColdFusion.tmbundle/isdefined.sublime-snippet'">
         <context name="selector" value="text.html.cfm"/>
     </binding>
 
@@ -1599,7 +1599,7 @@
         <context name="selector" value="text.html.cfm"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/url-variable.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/ColdFusion.tmbundle/url-variable.sublime-snippet'">
         <context name="selector" value="text.html.cfm"/>
     </binding>
 

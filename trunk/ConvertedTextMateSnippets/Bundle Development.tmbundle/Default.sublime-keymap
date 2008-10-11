@@ -27,7 +27,7 @@
         <context name="selector" value="source.ruby"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Bundle Development.tmbundle/grammar-single-quotes.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Bundle Development.tmbundle/grammar-single-quotes.sublime-snippet'">
         <context name="selector" value="source.plist.tm-grammar string.quoted.single, source.plist.tm-grammar string.regexp.oniguruma.single"/>
     </binding>
 
