@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[throw new $1Exception(${2:"${3:Error Processing Request}"}${4:, ${5:1}});
+$15]]></content>
+</snippet>

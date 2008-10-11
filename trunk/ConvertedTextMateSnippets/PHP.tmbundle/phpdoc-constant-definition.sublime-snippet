@@ -1,0 +1,7 @@
+
+<snippet>
+    <content><![CDATA[/**
+ * ${3:undocumented constant}
+ **/
+define($1, $2);$15]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[new ${YUI_OVERLAY:YAHOO.widget.Overlay}(${1:element}${2:, ${3:configs}});$15]]></content>
+</snippet>

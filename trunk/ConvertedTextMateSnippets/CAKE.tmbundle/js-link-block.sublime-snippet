@@ -1,0 +1,9 @@
+
+<snippet>
+    <content><![CDATA[<?php
+if(isset(\$javascript)){
+	echo \$javascript->link('${1:prototype}');
+	echo \$javascript->link('${2:scriptaculous}');$15
+}
+?>]]></content>
+</snippet>

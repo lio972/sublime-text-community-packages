@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Thread.exit ()${1:;}$15]]></content>
+</snippet>

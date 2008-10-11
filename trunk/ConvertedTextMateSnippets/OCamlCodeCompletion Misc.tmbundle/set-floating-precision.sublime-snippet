@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[set_floating_precision ${1:precision}${2:;}$15]]></content>
+</snippet>

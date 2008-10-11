@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${YUI_CONNECT:YAHOO.util.Connect}.isCallInProgress(${1:connectionObject})]]></content>
+</snippet>

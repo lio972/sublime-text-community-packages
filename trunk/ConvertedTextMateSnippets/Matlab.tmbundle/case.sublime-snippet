@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[case ${2:'${3:string}'}
+	$15]]></content>
+</snippet>

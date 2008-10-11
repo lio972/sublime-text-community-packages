@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Dbm.find ${1:db} ${2:key}$15]]></content>
+</snippet>

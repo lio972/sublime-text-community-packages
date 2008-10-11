@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[\begin{${1:p/b/v/V/B/small}matrix}
+	$15
+\end{${1:p/b/v/V/B/small}matrix}]]></content>
+</snippet>

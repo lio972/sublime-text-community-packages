@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[array date(${1:\$array}; 0)
+set array($1; ${2:date})]]></content>
+</snippet>

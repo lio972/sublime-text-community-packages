@@ -1,0 +1,81 @@
+<bindings>
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/bold.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+
+    <binding key="c,o,d,e,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/code.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+
+    <binding key="f,n,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/footnote.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+
+    <binding key="h,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/heading-1.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+
+    <binding key="h,a,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/heading-2.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+
+    <binding key="h,b,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/heading-3.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+
+    <binding key="h,c,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/heading-4.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+
+    <binding key="h,d,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/heading-5.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+
+    <binding key="i,m,g,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/image.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/italic.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+
+    <binding key="l,h,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/left-header.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+
+    <binding key="l,i,n,k,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/link.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+
+    <binding key="n,u,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/numbered-item-2.sublime-snippet'">
+        <context name="selector" value="markup.list.numbered.dokuwiki"/>
+    </binding>
+
+    <binding key="n,u,a,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/numbered-item.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/table-cell.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+
+    <binding key="t,a,b,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/table.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/top-header.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/underlined.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+
+    <binding key="u,n,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/unnumbered-item-2.sublime-snippet'">
+        <context name="selector" value="markup.list.unnumbered.dokuwiki"/>
+    </binding>
+
+    <binding key="u,n,a,tab" command="insertSnippet 'Packages/DokuWiki.tmbundle/unnumbered-item.sublime-snippet'">
+        <context name="selector" value="text.html.dokuwiki"/>
+    </binding>
+</bindings>

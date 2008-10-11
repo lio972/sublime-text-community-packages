@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[type(${1:type name})${2:, ${3:attributes}} :: ${4:name}]]></content>
+</snippet>

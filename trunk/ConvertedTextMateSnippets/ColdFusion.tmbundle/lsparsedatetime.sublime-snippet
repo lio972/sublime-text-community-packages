@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[LSParseDateTime(${1:date/time-string})$15]]></content>
+</snippet>

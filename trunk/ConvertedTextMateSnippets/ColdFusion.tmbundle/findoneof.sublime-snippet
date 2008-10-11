@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[FindOneOf(${1:set}, ${2:string} ${3:[, start ]})$15]]></content>
+</snippet>

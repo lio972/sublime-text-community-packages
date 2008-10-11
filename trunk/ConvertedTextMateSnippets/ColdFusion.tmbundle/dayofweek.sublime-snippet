@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[DayOfWeek(${1:"date"})$15]]></content>
+</snippet>

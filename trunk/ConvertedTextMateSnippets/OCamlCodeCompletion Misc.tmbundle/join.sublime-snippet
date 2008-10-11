@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Thread.join ${1:thd}${2:;}$15]]></content>
+</snippet>

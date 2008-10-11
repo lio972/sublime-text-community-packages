@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[array real(${1:\$array}; 0)
+set array($1; ${2:real})]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.gethostbyaddr ${1:inet_addr}$15]]></content>
+</snippet>

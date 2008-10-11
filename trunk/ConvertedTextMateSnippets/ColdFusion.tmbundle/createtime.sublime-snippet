@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[CreateTime(${1:hour}, ${2:minute}, ${3:second})$15]]></content>
+</snippet>

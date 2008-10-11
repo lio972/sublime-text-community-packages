@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[StructFind(${1:structure}, ${2:key})$15]]></content>
+</snippet>

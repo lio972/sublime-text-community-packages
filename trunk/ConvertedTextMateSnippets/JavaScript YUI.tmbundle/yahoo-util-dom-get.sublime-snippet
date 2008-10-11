@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${YUI_DOM:YAHOO.util.Dom}.get(${1:'elementId'})$15]]></content>
+</snippet>

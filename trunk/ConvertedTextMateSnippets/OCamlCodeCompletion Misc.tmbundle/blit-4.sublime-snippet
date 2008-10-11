@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Array3.blit ${1:src_bigarray} ${2:dest_bigarray}$15]]></content>
+</snippet>

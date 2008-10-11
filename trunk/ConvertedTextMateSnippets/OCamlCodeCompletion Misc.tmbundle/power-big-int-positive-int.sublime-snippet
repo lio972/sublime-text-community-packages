@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[power_big_int_positive_int ${1:base} ${2:exp}$15]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Array1.get ${1:bigarraay} ${2:idx}$15]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[|dictsort:"${1:arg}"]]></content>
+</snippet>

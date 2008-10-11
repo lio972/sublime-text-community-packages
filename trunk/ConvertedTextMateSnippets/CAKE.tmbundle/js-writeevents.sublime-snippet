@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[<?php $javascript->writeEvents(); ?>
+$15]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.chmod ${1:file_name} 0o${2:644}$15]]></content>
+</snippet>

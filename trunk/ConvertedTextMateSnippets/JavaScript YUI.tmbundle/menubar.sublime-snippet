@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[new ${YUI_MENUBAR:YAHOO.widget.Menubar}(${1:element}${2:, ${3:configs}});$15]]></content>
+</snippet>

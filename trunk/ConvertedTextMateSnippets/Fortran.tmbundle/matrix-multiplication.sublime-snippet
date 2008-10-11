@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[matmul($1,$2)]]></content>
+</snippet>

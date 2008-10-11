@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Position.page(${1:'${2:forElement}'});]]></content>
+</snippet>

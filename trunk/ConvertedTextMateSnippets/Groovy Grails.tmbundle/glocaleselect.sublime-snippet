@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<g:localeSelect name="${1:localeName}" value="\${${2:request.locale}}" />]]></content>
+</snippet>

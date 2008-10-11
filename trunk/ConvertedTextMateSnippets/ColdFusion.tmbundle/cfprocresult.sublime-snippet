@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfprocresult name = "$1"${2: resultSet = "${3:[ ]}" maxRows = "${4:[ ]}"}>$15]]></content>
+</snippet>

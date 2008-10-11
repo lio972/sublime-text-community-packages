@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[plot3d(${1:x}, ${2:y}, ${3:z})]]></content>
+</snippet>

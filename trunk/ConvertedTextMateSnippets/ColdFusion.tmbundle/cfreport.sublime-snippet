@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[<cfreport template = "$1" format = "$2"${3: name = "${4:[ ]}" filename = "${5:[ ]}" query = "${6:[ ]}" overwrite = "${7:[ ]}" encryption = "${8:[ ]}" ownerpassword = "${9:[ ]}" userpassword = "${10:[ ]}" permissions = "${11:[ ]}"}>
+	$12
+</cfreport>$15]]></content>
+</snippet>

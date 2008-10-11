@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[|join:"${1:arg}"]]></content>
+</snippet>

@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[${1:guard} ->
+	${2:body}]]></content>
+</snippet>

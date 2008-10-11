@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Stderr.format("${1:foo = {\}}", $2).newline;]]></content>
+</snippet>

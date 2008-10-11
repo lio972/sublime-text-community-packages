@@ -1,0 +1,10 @@
+
+<snippet>
+    <content><![CDATA[<dependency>
+	<groupId>$1</groupId>
+	<artifactId>$2</artifactId>
+	<version>$3</version>${4/(.+)/(?1:
+	)/}${4:<scope>$5</scope>}${6/(.+)/(?1:
+	)/}${6:<classifier>$7</classifier>}
+</dependency>$15]]></content>
+</snippet>

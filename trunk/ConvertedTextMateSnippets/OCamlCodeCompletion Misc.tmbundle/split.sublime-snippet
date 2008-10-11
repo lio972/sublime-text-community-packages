@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Str.split ${1:regexp} ${2:str}$15]]></content>
+</snippet>

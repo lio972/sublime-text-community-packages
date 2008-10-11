@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[maxCacheEntries = ${1:60};$15]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[copy(file:"${1:sourceFile}", tofile:"${2:targetFile}")]]></content>
+</snippet>

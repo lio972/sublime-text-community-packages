@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[int_of_char ${1:'${2:ch}'}$15]]></content>
+</snippet>

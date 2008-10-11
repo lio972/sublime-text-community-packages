@@ -1,0 +1,217 @@
+<bindings>
+    <binding key="i,n,p,u,t,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gcheckbox.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="c,r,e,a,t,e,l,i,n,k,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gcreatelink.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="c,r,e,a,t,e,l,i,n,k,t,o,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gcreatelinkto.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="s,e,l,e,c,t,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gcurrencyselect.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="e,a,v,s,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/geach-in-var-e-status-i.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="e,a,v,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/geach-in-var-i.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="e,a,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/geach-in.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="e,a,c,h,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/geach.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="e,l,s,e,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gelse.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="e,l,s,e,i,f,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gelseif.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="i,n,p,u,t,a,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gfield-type.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="f,o,r,m,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gform-action.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="f,o,r,m,a,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gform-controller-action.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="h,a,s,e,r,r,o,r,s,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/ghaserrors.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="i,n,p,u,t,b,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/ghiddenfield.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="i,f,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gif.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="j,s,l,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gjavascript-library.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="j,s,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gjavascript.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="l,i,n,k,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/glink.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="s,e,l,e,c,t,a,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/glocaleselect.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="i,n,p,u,t,c,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gradio.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="r,e,n,d,e,r,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/grender.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="s,e,l,e,c,t,b,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gselect-from.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="s,e,t,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gset.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="i,n,p,u,t,d,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gsubmitbutton.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="i,n,p,u,t,e,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gtextfield.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="s,e,l,e,c,t,c,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gtimezoneselect.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="w,h,i,l,e,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/gwhile.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="b,t,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/belongsto.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="c,o,n,s,t,r,a,i,n,t,s,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/constraints.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="h,m,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/hasmany.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="c,o,n,t,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/new-controller.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="g,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/new-short-tag-g.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="t,a,g,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/new-tag-2.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,a,g,l,i,b,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/new-tag-library.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="g,a,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/new-tag-g.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="o,u,t,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/out.sublime-snippet'">
+        <context name="selector" value="text.html.grails"/>
+    </binding>
+
+    <binding key="r,e,a,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/redirect-action.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,e,a,i,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/redirect-action-id.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,e,c,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/redirect-controller.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,e,c,a,i,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/redirect-controller-action-id.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,e,c,a,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/redirect-controller-action.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,j,s,o,n,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/render-contenttypetextjson.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,x,m,l,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/render-contenttypetextxml.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,t,e,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/render-template.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,t,e,b,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/render-template-beanb.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,t,e,b,v,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/render-template-beanb-varx.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,t,e,c,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/render-template-collectionc.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,t,e,c,b,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/render-template-collectionc-varx.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,t,e,m,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/render-template-modelm.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,t,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/render-text.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,t,c,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/render-text-contenttype.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,v,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/render-view.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,v,m,tab" command="insertSnippet 'Packages/Groovy Grails.tmbundle/render-view-modelm.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+</bindings>

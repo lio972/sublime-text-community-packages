@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[a4d.debug.dump array(${1:\$array})]]></content>
+</snippet>

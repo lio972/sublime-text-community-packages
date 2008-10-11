@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[%	Rev. by $TM_FULLNAME on `date +%Y-%m-%d`: ${1:Short description}]]></content>
+</snippet>

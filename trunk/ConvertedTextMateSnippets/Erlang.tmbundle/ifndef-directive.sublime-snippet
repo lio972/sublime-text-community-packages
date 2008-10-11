@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[-ifndef (${1:macro}).]]></content>
+</snippet>

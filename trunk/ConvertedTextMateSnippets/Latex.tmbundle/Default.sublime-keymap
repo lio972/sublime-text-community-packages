@@ -1,0 +1,93 @@
+<bindings>
+    <binding key="b,e,g,i,n,tab" command="insertSnippet 'Packages/Latex.tmbundle/begin-end.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="a,l,i,tab" command="insertSnippet 'Packages/Latex.tmbundle/align.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Latex.tmbundle/beamer-overlay-specification.sublime-snippet'">
+        <context name="selector" value="text.tex.latex.beamer"/>
+    </binding>
+
+    <binding key="c,a,s,tab" command="insertSnippet 'Packages/Latex.tmbundle/cases.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="c,h,a,tab" command="insertSnippet 'Packages/Latex.tmbundle/chapter.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="d,e,s,c,tab" command="insertSnippet 'Packages/Latex.tmbundle/description.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="e,n,u,m,tab" command="insertSnippet 'Packages/Latex.tmbundle/enumerate.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="e,q,tab" command="insertSnippet 'Packages/Latex.tmbundle/equation.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="f,i,g,u,r,e,tab" command="insertSnippet 'Packages/Latex.tmbundle/figure.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="g,a,t,tab" command="insertSnippet 'Packages/Latex.tmbundle/gather-ed.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="i,t,e,m,tab" command="insertSnippet 'Packages/Latex.tmbundle/itemize.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="l,i,s,t,i,n,g,tab" command="insertSnippet 'Packages/Latex.tmbundle/listing.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="m,a,t,tab" command="insertSnippet 'Packages/Latex.tmbundle/matrix.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="p,a,g,e,tab" command="insertSnippet 'Packages/Latex.tmbundle/page.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="p,a,r,tab" command="insertSnippet 'Packages/Latex.tmbundle/paragraph.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="p,a,r,t,tab" command="insertSnippet 'Packages/Latex.tmbundle/part.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="s,e,c,t,i,o,n,tab" command="insertSnippet 'Packages/Latex.tmbundle/section.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="s,p,l,tab" command="insertSnippet 'Packages/Latex.tmbundle/split.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="s,u,b,p,tab" command="insertSnippet 'Packages/Latex.tmbundle/sub-paragraph.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="t,a,b,l,e,tab" command="insertSnippet 'Packages/Latex.tmbundle/table.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="t,a,b,tab" command="insertSnippet 'Packages/Latex.tmbundle/tabular.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Latex.tmbundle/unnumbered-equation.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Latex.tmbundle/wrap-selection-in-double-quotes.sublime-snippet'">
+        <context name="selector" value="text.tex.latex"/>
+    </binding>
+</bindings>

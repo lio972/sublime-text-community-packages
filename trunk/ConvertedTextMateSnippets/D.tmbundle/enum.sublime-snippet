@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[enum ${1:name}() { $3 }]]></content>
+</snippet>

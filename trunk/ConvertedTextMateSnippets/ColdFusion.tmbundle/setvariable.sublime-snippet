@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[SetVariable(${1:name}, ${2:value})$15]]></content>
+</snippet>

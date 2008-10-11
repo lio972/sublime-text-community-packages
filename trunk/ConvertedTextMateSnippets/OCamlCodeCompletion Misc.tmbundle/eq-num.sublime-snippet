@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[eq_num ${1:num} ${2:num2}$15]]></content>
+</snippet>

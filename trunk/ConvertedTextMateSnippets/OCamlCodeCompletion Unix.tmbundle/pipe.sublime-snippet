@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.pipe ()${1:;}$15]]></content>
+</snippet>

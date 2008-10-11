@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[gt_ratio ${1:ratio} ${2:ratio2}$15]]></content>
+</snippet>

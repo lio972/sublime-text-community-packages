@@ -1,0 +1,17 @@
+
+<snippet>
+    <content><![CDATA[
+:- category(${1:Category},
+	implements(${2:Protocol})).
+
+	:- info([
+		version is 1.0,
+		author is '$TM_FULLNAME',
+		date is `date +%Y/%m/%d`,
+		comment is '${3:Description}']).
+
+$15
+
+:- end_category.
+]]></content>
+</snippet>

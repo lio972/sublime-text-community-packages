@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ToScript(${1:cfvar}, ${2:javascriptvar}, ${3:outputformat}, ${4:ASFormat})$15]]></content>
+</snippet>

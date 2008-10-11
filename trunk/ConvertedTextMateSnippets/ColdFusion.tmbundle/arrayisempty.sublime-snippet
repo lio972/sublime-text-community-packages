@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ArrayIsEmpty(${1:array})$15]]></content>
+</snippet>

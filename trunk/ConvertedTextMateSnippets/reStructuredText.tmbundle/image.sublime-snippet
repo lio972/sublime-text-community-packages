@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[.. image:: ${1:path}
+$15]]></content>
+</snippet>

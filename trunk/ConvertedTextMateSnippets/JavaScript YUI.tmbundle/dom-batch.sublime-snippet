@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${YUI_DOM:YAHOO.util.Dom}.batch(${1:elementArray}, ${2:func}${3:, ${4:scopeObject}, ${5:true}});]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[query selection([${1:table}]; [$1]${2:field})]]></content>
+</snippet>

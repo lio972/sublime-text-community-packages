@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${YUI_DOM:YAHOO.util.Dom}.setXY(${1:element}, ${2:positionArray});]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ArrayClear(${1:array})$15]]></content>
+</snippet>

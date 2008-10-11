@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[onComplete.subscribe(${1:func}); ]]></content>
+</snippet>

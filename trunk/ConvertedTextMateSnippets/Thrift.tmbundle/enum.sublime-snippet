@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[enum ${1:Name} {
+	${2:FIELD} = ${3:1},$15
+}]]></content>
+</snippet>

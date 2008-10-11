@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[GetTickCount(${1:})$15]]></content>
+</snippet>

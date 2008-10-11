@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[t.references :${1:taggable}${2:, :polymorphic => ${3:{ :default => '${4:Photo}' \}}}
+$15]]></content>
+</snippet>

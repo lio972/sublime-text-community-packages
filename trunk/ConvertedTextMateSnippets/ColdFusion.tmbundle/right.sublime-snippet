@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Right(${1:string}, ${2:count})$15]]></content>
+</snippet>

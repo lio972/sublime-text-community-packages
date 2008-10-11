@@ -1,0 +1,57 @@
+<bindings>
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/emphasize.sublime-snippet'">
+        <context name="selector" value="text.html"/>
+    </binding>
+
+    <binding key="f,i,e,l,d,s,e,t,tab" command="insertSnippet 'Packages/HTML.tmbundle/fieldset.sublime-snippet'">
+        <context name="selector" value="text.html"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-5-0-only.sublime-snippet'">
+        <context name="selector" value="text.html"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-5-5-only.sublime-snippet'">
+        <context name="selector" value="text.html"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-5-x.sublime-snippet'">
+        <context name="selector" value="text.html"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-6-and-below.sublime-snippet'">
+        <context name="selector" value="text.html"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-6-only.sublime-snippet'">
+        <context name="selector" value="text.html"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer-7.sublime-snippet'">
+        <context name="selector" value="text.html"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-internet-explorer.sublime-snippet'">
+        <context name="selector" value="text.html"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/ie-conditional-comment-not-internet-explorer.sublime-snippet'">
+        <context name="selector" value="text.html"/>
+    </binding>
+
+    <binding key="i,n,p,u,t,tab" command="insertSnippet 'Packages/HTML.tmbundle/input-with-label.sublime-snippet'">
+        <context name="selector" value="text.html"/>
+    </binding>
+
+    <binding key="o,p,t,tab" command="insertSnippet 'Packages/HTML.tmbundle/option.sublime-snippet'">
+        <context name="selector" value="text.html"/>
+    </binding>
+
+    <binding key="s,e,l,e,c,t,tab" command="insertSnippet 'Packages/HTML.tmbundle/select-box.sublime-snippet'">
+        <context name="selector" value="text.html"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/HTML.tmbundle/strong.sublime-snippet'">
+        <context name="selector" value="text.html"/>
+    </binding>
+</bindings>

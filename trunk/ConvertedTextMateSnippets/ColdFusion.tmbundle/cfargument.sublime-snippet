@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfargument name="$1"${2: type="${3:[ ]}" required="${4:[ ]}" default="${5:[ ]}" displayname="${6:[ ]}" hint="${7:[ ]}"}>$15]]></content>
+</snippet>

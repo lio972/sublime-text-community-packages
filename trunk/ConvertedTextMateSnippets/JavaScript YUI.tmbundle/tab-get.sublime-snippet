@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[get("${1:attrName}");$15]]></content>
+</snippet>

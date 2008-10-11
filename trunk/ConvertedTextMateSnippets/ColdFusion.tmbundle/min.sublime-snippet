@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Min(${1:number1}, ${2:number2})$15]]></content>
+</snippet>

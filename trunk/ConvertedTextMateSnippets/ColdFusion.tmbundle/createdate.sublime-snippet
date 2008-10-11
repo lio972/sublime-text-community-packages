@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[CreateDate(${1:year}, ${2:month}, ${3:day})$15]]></content>
+</snippet>

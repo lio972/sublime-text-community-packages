@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[-define (${1:macro}${2: (${3:param})}, ${4:body}).]]></content>
+</snippet>

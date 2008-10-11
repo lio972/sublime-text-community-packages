@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[write(unit=${1:iounit}, fmt="(${2:format string})", iostat=${3:ios}${4:, advance='NO'}) ${5:variables}
+if ( $3 /= 0 ) stop "Write error in file unit $1"
+]]></content>
+</snippet>

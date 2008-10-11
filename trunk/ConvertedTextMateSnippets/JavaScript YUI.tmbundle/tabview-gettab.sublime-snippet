@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[getTab(${1:tabIndex});$15]]></content>
+</snippet>

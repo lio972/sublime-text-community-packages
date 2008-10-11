@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[clear('${1:all}'$2);]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ArraySwap(${1:array}, ${2:position1}, ${3:position2})$15]]></content>
+</snippet>

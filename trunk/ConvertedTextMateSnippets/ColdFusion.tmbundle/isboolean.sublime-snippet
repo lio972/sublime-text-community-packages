@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[IsBoolean(${1:value})$15]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<g:currencySelect name="${1:currencyName}" value="\${${2:currency}}" />]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[render(view:"${1:name}")]]></content>
+</snippet>

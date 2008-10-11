@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfinput name = "$1"${2: type = "${3:[ ]}" label = "${4:[ ]}" style = "${5:[ ]}" required = "${6:[ ]}" mask = "${7:[ ]}" validate = "${8:[ ]}" validateAt= "${9:[ ]}" message = "${10:[ ]}" range = "${11:[ ]}" maxlength = "${12:[ ]}" pattern = "${13:[ ]}" onValidate = "${14:[ ]}" onError = "${15:[ ]}" size = "${16:[ ]}" value = "${17:[ ]}" bind = "${18:[ ]}" checked = "${19:[ ]}" disabled = "${20:[ ]}" src = "${21:[ ]}" onKeyUp = "${22:[ ]}" onKeyDown = "${23:[ ]}" onMouseUp = "${24:[ ]}" onMouseDown = "${25:[ ]}" onChange = "${26:[ ]}" onClick = "${27:[ ]}" firstDayOfWeek = "${28:[ ]}" dayNames = "${29:[ ]}" monthNames = "${30:[ ]}" enabled = "${31:[ ]}" visible = "${32:[ ]}" toolTip = "${33:[ ]}" height = "${34:[ ]}" width = "${35:[ ]}"}>$15]]></content>
+</snippet>

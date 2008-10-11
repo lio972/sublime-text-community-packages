@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[read.table(${1:filename}${2:, header=${3:TRUE}})]]></content>
+</snippet>

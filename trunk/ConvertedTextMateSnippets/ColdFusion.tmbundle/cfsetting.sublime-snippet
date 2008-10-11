@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfsetting${1: enableCFoutputOnly = "${2:[ ]}" showDebugOutput = "${3:no}" requestTimeOut = "${4:30}"}>$15]]></content>
+</snippet>

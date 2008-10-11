@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[<?php \$this->pageTitle = "${1:Page Title}"; ?>
+]]></content>
+</snippet>

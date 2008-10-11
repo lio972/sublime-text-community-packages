@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[.text(${1:'some text'})$15]]></content>
+</snippet>

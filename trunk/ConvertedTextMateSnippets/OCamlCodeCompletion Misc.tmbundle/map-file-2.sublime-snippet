@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Array2.map_file ${1:Unix.file_descr} BA.kind$15 ${2:fortran}_layout${3:shared} ${4:dim1} ${5:dim2}]]></content>
+</snippet>

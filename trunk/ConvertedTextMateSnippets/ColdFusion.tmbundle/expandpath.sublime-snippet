@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Expandpath(${1:relative_path})$15]]></content>
+</snippet>

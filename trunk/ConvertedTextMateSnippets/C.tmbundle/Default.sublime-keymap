@@ -1,0 +1,13 @@
+<bindings>
+    <binding key="d,e,f,tab" command="insertSnippet 'Packages/C.tmbundle/ifndef-define-endif.sublime-snippet'">
+        <context name="selector" value="source.c, source.c++, source.objc, source.objc++"/>
+    </binding>
+
+    <binding key="f,p,r,i,n,t,f,tab" command="insertSnippet 'Packages/C.tmbundle/fprintf.sublime-snippet'">
+        <context name="selector" value="source.c, source.objc, source.c++, source.objc++"/>
+    </binding>
+
+    <binding key="t,d,tab" command="insertSnippet 'Packages/C.tmbundle/typedef.sublime-snippet'">
+        <context name="selector" value="source.c, source.objc, source.c++, source.objc++"/>
+    </binding>
+</bindings>

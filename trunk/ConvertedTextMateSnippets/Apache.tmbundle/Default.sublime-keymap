@@ -1,0 +1,13 @@
+<bindings>
+    <binding key="a,l,l,o,w,tab" command="insertSnippet 'Packages/Apache.tmbundle/allowoverride-allow.sublime-snippet'">
+        <context name="selector" value="source.apache-config"/>
+    </binding>
+
+    <binding key="o,p,t,tab" command="insertSnippet 'Packages/Apache.tmbundle/options-opt.sublime-snippet'">
+        <context name="selector" value="source.apache-config"/>
+    </binding>
+
+    <binding key="v,h,o,s,t,tab" command="insertSnippet 'Packages/Apache.tmbundle/virtualhost.sublime-snippet'">
+        <context name="selector" value="source.apache-config"/>
+    </binding>
+</bindings>

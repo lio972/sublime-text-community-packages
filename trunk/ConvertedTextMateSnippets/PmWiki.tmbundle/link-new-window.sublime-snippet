@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[%newwin%[[${1:url or pmwiki link}|${2:description}]]
+]]></content>
+</snippet>

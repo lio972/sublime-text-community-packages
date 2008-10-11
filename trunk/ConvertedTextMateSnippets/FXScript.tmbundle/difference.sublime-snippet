@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Difference(${1:srcImage1}, ${2:srcImage2}, ${3:destImage}, ${4:kAlpha});]]></content>
+</snippet>

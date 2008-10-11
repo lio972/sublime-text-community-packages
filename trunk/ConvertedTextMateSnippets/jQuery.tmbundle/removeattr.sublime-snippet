@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[.removeAttr('${1:attribute name}')$15]]></content>
+</snippet>

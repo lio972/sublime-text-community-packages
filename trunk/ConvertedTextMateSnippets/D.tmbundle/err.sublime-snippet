@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Stderr("$1").newline;]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${1:FIELDNAME} = models.XMLField(schema_path=${2:/path/to/RelaxNG}${3:, blank=True})]]></content>
+</snippet>

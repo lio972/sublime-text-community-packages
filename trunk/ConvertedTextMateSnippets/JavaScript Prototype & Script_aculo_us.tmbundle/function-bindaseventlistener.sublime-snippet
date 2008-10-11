@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[bindAsEventListener(${1:this})]]></content>
+</snippet>

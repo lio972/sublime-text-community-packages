@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[function($1) {${15:$TM_SELECTED_TEXT}};]]></content>
+</snippet>

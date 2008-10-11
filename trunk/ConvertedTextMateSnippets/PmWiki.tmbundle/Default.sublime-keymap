@@ -1,0 +1,105 @@
+<bindings>
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/bold.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="d,e,f,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/definition.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="h,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/header-1.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="h,a,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/header-2.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="h,b,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/header-3.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="h,c,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/header-4.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="h,d,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/header-5.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/italic.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="l,i,n,k,n,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/link-new-window.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="l,i,n,k,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/link.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="l,i,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/list-element-1.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="l,i,a,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/list-element-2.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="l,i,b,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/list-element-3.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="l,i,c,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/list-element-4.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="l,i,d,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/list-element-5.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="n,l,i,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/numbered-list-element-1.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="n,l,i,a,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/numbered-list-element-2.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="n,l,i,b,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/numbered-list-element-3.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="n,l,i,c,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/numbered-list-element-4.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="n,l,i,d,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/numbered-list-element-5.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="p,r,e,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/preformatted.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="l,i,s,t,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/quick-list.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="n,l,i,s,t,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/quick-numbered-list.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="t,a,b,l,e,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/table-quick-4x4-incl-heads.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="c,e,l,l,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/table-cell.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+
+    <binding key="r,o,w,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/table-row-4-columns.sublime-snippet'">
+        <context name="selector" value="text.pmwiki"/>
+    </binding>
+</bindings>

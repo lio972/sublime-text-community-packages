@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[reshape_3 ${1:genarray} ${2:new_dim1} ${3:new_dim2} ${4:new_dim3}$15]]></content>
+</snippet>

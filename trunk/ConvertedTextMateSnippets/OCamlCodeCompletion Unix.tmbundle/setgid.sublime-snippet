@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.setgid ${1:gid}${2:;}$15]]></content>
+</snippet>

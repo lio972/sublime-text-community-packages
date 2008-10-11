@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[disp('${1:Text}');]]></content>
+</snippet>

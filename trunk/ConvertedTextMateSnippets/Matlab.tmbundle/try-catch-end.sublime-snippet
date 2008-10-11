@@ -1,0 +1,12 @@
+
+<snippet>
+    <content><![CDATA[try 
+	$1
+catch 
+	$15
+`if [[ $TM_USE_OCTAVE -ne '0' ]]
+	then echo "end_try_catch"
+else
+	echo "end"
+fi`]]></content>
+</snippet>

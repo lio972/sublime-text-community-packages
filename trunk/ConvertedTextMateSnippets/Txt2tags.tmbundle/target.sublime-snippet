@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[%!target: ${1:html | xhtml | sgml | tex | lout | man | mgp | wiki | gwiki | doku | moin | pm6 | txt}
+]]></content>
+</snippet>

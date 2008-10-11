@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[mkdir(dir:"${1:dirName}")]]></content>
+</snippet>

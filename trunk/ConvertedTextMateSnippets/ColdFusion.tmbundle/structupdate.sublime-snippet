@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[StructUpdate(${1:structure}, ${2:key}, ${3:value})$15]]></content>
+</snippet>

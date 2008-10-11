@@ -1,0 +1,8 @@
+
+<snippet>
+    <content><![CDATA[while (not(end selection([${1:table}])))
+	$15
+
+	next record([$1])
+end while]]></content>
+</snippet>

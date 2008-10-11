@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Add(${1:srcImage1}, ${2:srcImage2}, ${3:destImage}, ${4:amount}, ${5:kAlpha});]]></content>
+</snippet>

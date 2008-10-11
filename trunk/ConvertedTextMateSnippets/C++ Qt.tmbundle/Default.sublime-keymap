@@ -1,0 +1,53 @@
+<bindings>
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/C++ Qt.tmbundle/block-comment-newline.sublime-snippet'">
+        <context name="selector" value="source.c++.qt comment.block.c"/>
+    </binding>
+
+    <binding key="slash,tab" command="insertSnippet 'Packages/C++ Qt.tmbundle/block-comment.sublime-snippet'">
+        <context name="selector" value="source.c++.qt"/>
+    </binding>
+
+    <binding key="c,o,n,tab" command="insertSnippet 'Packages/C++ Qt.tmbundle/connect.sublime-snippet'">
+        <context name="selector" value="source.c++.qt"/>
+    </binding>
+
+    <binding key="d,i,s,tab" command="insertSnippet 'Packages/C++ Qt.tmbundle/disconnect.sublime-snippet'">
+        <context name="selector" value="source.c++.qt"/>
+    </binding>
+
+    <binding key="f,e,tab" command="insertSnippet 'Packages/C++ Qt.tmbundle/foreach.sublime-snippet'">
+        <context name="selector" value="source.c++.qt"/>
+    </binding>
+
+    <binding key="q,m,a,i,n,tab" command="insertSnippet 'Packages/C++ Qt.tmbundle/main-qmain.sublime-snippet'">
+        <context name="selector" value="source.c++.qt"/>
+    </binding>
+
+    <binding key="s,t,u,b,tab" command="insertSnippet 'Packages/C++ Qt.tmbundle/qmake-project-template-stub.sublime-snippet'">
+        <context name="selector" value="source.qmake"/>
+    </binding>
+
+    <binding key="q,S,o,r,t,tab" command="insertSnippet 'Packages/C++ Qt.tmbundle/qsort.sublime-snippet'">
+        <context name="selector" value="source.c++.qt"/>
+    </binding>
+
+    <binding key="s,i,n,g,l,e,S,h,o,t,tab" command="insertSnippet 'Packages/C++ Qt.tmbundle/qtimersingleshot.sublime-snippet'">
+        <context name="selector" value="source.c++.qt"/>
+    </binding>
+
+    <binding key="w,a,r,n,tab" command="insertSnippet 'Packages/C++ Qt.tmbundle/qwarning-warn.sublime-snippet'">
+        <context name="selector" value="source.c++.qt"/>
+    </binding>
+
+    <binding key="q,p,tab" command="insertSnippet 'Packages/C++ Qt.tmbundle/q-property.sublime-snippet'">
+        <context name="selector" value="source.c++.qt"/>
+    </binding>
+
+    <binding key="l,a,t,i,n,tab" command="insertSnippet 'Packages/C++ Qt.tmbundle/tolatin1-data-latin.sublime-snippet'">
+        <context name="selector" value="source.c++.qt"/>
+    </binding>
+
+    <binding key="u,t,f,tab" command="insertSnippet 'Packages/C++ Qt.tmbundle/toutf8-data.sublime-snippet'">
+        <context name="selector" value="source.c++.qt"/>
+    </binding>
+</bindings>

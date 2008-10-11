@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[eq_ratio ${1:ratio} ${2:ratio2}$15]]></content>
+</snippet>

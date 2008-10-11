@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cferror type = "$1" template = "$2"${3: mailTo = "${4:[ ]}" exception = "${5:[ ]}"}>$15]]></content>
+</snippet>

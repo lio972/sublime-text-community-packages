@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[case ${1:expression} then
+	$15]]></content>
+</snippet>

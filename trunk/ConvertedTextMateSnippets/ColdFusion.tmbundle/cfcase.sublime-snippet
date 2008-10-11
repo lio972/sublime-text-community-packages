@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfcase value = "$1"${2: delimiters = "${3:[ ]}"}>$4</cfcase>$15]]></content>
+</snippet>

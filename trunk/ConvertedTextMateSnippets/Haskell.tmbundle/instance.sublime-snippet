@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[instance ${1:Class} ${2:Data} where
+	${3:func} = $15]]></content>
+</snippet>

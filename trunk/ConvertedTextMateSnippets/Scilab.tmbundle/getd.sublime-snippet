@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[getd("${15:`echo "$TM_DIRECTORY" | sed -e "s/'/''/g" -e "s/\"/\"\"/g"`}")]]></content>
+</snippet>

@@ -1,0 +1,7 @@
+
+<snippet>
+    <content><![CDATA[
+case ${1:CASE_NAME}:
+	$15
+break]]></content>
+</snippet>

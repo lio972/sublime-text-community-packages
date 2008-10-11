@@ -1,0 +1,7 @@
+
+<snippet>
+    <content><![CDATA[desc "${1:Task description}"
+task :${2:${3:task_name} => ${4:[:${5:dependent, :tasks}]}} do
+	$15
+end]]></content>
+</snippet>

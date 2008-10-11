@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<g:javascript library="${1:prototype}" />]]></content>
+</snippet>

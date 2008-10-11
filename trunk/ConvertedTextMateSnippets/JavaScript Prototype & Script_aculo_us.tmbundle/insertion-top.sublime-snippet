@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[new Insertion.Top(${1:element}, ${3:'${2:content}'});]]></content>
+</snippet>

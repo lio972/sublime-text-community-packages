@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.getpwnam ${1:name}$15]]></content>
+</snippet>

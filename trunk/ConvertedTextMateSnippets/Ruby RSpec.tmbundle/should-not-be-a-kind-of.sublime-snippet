@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[${1:target}.should_not be_a_kind_of(${2:klass})
+$15]]></content>
+</snippet>

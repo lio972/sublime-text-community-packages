@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[static public final String ${1:var} = "$2";$15]]></content>
+</snippet>

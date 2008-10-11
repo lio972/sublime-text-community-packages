@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[new ${YUI_LOGREADER:YAHOO.widget.LogReader}(${1:element});$15]]></content>
+</snippet>

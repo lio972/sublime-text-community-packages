@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfcontent type = "${1:[ ]}" deleteFile = "${2:[ ]}" file = "${3:[ ]}" variable = "${4:[ ]}" reset = "${5:[ ]}">$15]]></content>
+</snippet>

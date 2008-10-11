@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[REM ${1:`date +'%b'`} ${2:`date +'%e'`} MSG ${4:${3:Someone}’s birthday}${6: (19${5:??})}]]></content>
+</snippet>

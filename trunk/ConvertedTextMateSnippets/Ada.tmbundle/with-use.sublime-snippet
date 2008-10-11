@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[with ${1}; use $1;
+$15]]></content>
+</snippet>

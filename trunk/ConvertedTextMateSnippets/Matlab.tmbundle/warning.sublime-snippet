@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[warning('${1:Description}');]]></content>
+</snippet>

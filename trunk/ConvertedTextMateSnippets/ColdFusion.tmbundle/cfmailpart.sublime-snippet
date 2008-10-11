@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[<cfmailpart type="$1"${2: charset="${3:[ ]}" wraptext="${4:[ ]}"}>
+	$5
+</cfmailpart>$15]]></content>
+</snippet>

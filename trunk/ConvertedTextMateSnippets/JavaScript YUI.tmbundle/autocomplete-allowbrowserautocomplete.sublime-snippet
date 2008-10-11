@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[allowBrowserAutocomplete = ${1:false};$15]]></content>
+</snippet>

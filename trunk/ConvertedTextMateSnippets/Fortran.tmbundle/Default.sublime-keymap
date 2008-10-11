@@ -1,0 +1,353 @@
+<bindings>
+    <binding key="a,l,l,tab" command="insertSnippet 'Packages/Fortran.tmbundle/all.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="a,l,l,o,c,tab" command="insertSnippet 'Packages/Fortran.tmbundle/allocate-and-deallocate-array.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="a,l,tab" command="insertSnippet 'Packages/Fortran.tmbundle/allocate-array.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="a,n,d,tab" command="insertSnippet 'Packages/Fortran.tmbundle/and.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="a,n,y,tab" command="insertSnippet 'Packages/Fortran.tmbundle/any.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="c,a,s,e,tab" command="insertSnippet 'Packages/Fortran.tmbundle/case.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="c,h,a,r,tab" command="insertSnippet 'Packages/Fortran.tmbundle/character.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="c,l,o,s,e,tab" command="insertSnippet 'Packages/Fortran.tmbundle/close-file.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="c,o,u,n,t,tab" command="insertSnippet 'Packages/Fortran.tmbundle/count.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="t,y,p,tab" command="insertSnippet 'Packages/Fortran.tmbundle/custom-type.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="c,y,tab" command="insertSnippet 'Packages/Fortran.tmbundle/cycle.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="d,a,t,a,tab" command="insertSnippet 'Packages/Fortran.tmbundle/data.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="d,e,a,l,tab" command="insertSnippet 'Packages/Fortran.tmbundle/deallocate-array.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="d,o,w,tab" command="insertSnippet 'Packages/Fortran.tmbundle/do-while.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="d,o,tab" command="insertSnippet 'Packages/Fortran.tmbundle/do.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="d,o,t,tab" command="insertSnippet 'Packages/Fortran.tmbundle/dot-product-of-vectors.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="e,l,i,f,tab" command="insertSnippet 'Packages/Fortran.tmbundle/elseif.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="e,q,tab" command="insertSnippet 'Packages/Fortran.tmbundle/equal.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="e,q,v,tab" command="insertSnippet 'Packages/Fortran.tmbundle/equality.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="f,o,r,tab" command="insertSnippet 'Packages/Fortran.tmbundle/forall.sublime-snippet'">
+        <context name="selector" value="source.fortran.modern"/>
+    </binding>
+
+    <binding key="f,u,n,tab" command="insertSnippet 'Packages/Fortran.tmbundle/function.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="g,e,tab" command="insertSnippet 'Packages/Fortran.tmbundle/greater-or-equal.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="g,t,tab" command="insertSnippet 'Packages/Fortran.tmbundle/greater-than.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="i,f,tab" command="insertSnippet 'Packages/Fortran.tmbundle/if-single-line.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="i,f,a,tab" command="insertSnippet 'Packages/Fortran.tmbundle/if.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="i,m,p,tab" command="insertSnippet 'Packages/Fortran.tmbundle/implicit-none.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="i,d,o,tab" command="insertSnippet 'Packages/Fortran.tmbundle/implied-do.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="m,a,x,l,o,c,tab" command="insertSnippet 'Packages/Fortran.tmbundle/index-of-maximum.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="m,i,n,l,o,c,tab" command="insertSnippet 'Packages/Fortran.tmbundle/index-of-minimum.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="o,p,e,n,tab" command="insertSnippet 'Packages/Fortran.tmbundle/input-file.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="i,n,q,tab" command="insertSnippet 'Packages/Fortran.tmbundle/inquire-by-filename.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="i,n,q,a,tab" command="insertSnippet 'Packages/Fortran.tmbundle/inquire-by-unit.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="i,n,t,tab" command="insertSnippet 'Packages/Fortran.tmbundle/integer.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="i,n,t,e,r,f,tab" command="insertSnippet 'Packages/Fortran.tmbundle/interface.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="l,e,tab" command="insertSnippet 'Packages/Fortran.tmbundle/less-or-equal.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="l,t,tab" command="insertSnippet 'Packages/Fortran.tmbundle/less-than.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Fortran.tmbundle/line-continuation.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="l,o,g,tab" command="insertSnippet 'Packages/Fortran.tmbundle/logical.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="l,b,o,u,n,d,tab" command="insertSnippet 'Packages/Fortran.tmbundle/lower-bound.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="m,a,t,tab" command="insertSnippet 'Packages/Fortran.tmbundle/matrix-multiplication.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="m,a,x,tab" command="insertSnippet 'Packages/Fortran.tmbundle/max.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="m,a,x,v,a,l,tab" command="insertSnippet 'Packages/Fortran.tmbundle/maximum-value.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="m,e,r,g,e,tab" command="insertSnippet 'Packages/Fortran.tmbundle/merge.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="m,i,n,tab" command="insertSnippet 'Packages/Fortran.tmbundle/min.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="m,i,n,v,a,l,tab" command="insertSnippet 'Packages/Fortran.tmbundle/minimum-value.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="m,p,tab" command="insertSnippet 'Packages/Fortran.tmbundle/module-procedure.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="m,o,d,tab" command="insertSnippet 'Packages/Fortran.tmbundle/module.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="n,d,o,tab" command="insertSnippet 'Packages/Fortran.tmbundle/named-do.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="n,s,e,l,tab" command="insertSnippet 'Packages/Fortran.tmbundle/named-select-case.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="n,e,q,v,tab" command="insertSnippet 'Packages/Fortran.tmbundle/non-equality.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="n,o,t,tab" command="insertSnippet 'Packages/Fortran.tmbundle/not.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="o,p,e,n,a,tab" command="insertSnippet 'Packages/Fortran.tmbundle/open-file.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="o,r,tab" command="insertSnippet 'Packages/Fortran.tmbundle/or.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="o,p,e,n,b,tab" command="insertSnippet 'Packages/Fortran.tmbundle/output-file.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="p,a,c,k,tab" command="insertSnippet 'Packages/Fortran.tmbundle/pack.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="p,r,tab" command="insertSnippet 'Packages/Fortran.tmbundle/print.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="p,r,o,d,tab" command="insertSnippet 'Packages/Fortran.tmbundle/product-of-elements.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="p,r,o,g,tab" command="insertSnippet 'Packages/Fortran.tmbundle/program.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="c,tab" command="insertSnippet 'Packages/Fortran.tmbundle/quick-character.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="t,tab" command="insertSnippet 'Packages/Fortran.tmbundle/quick-custom-type.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="i,tab" command="insertSnippet 'Packages/Fortran.tmbundle/quick-integer.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="l,tab" command="insertSnippet 'Packages/Fortran.tmbundle/quick-logical.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="o,p,tab" command="insertSnippet 'Packages/Fortran.tmbundle/quick-open.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="r,e,tab" command="insertSnippet 'Packages/Fortran.tmbundle/quick-read.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="r,tab" command="insertSnippet 'Packages/Fortran.tmbundle/quick-real.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="w,r,tab" command="insertSnippet 'Packages/Fortran.tmbundle/quick-write.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="r,n,tab" command="insertSnippet 'Packages/Fortran.tmbundle/random-number.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="r,s,tab" command="insertSnippet 'Packages/Fortran.tmbundle/random-seed.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="r,e,a,d,tab" command="insertSnippet 'Packages/Fortran.tmbundle/read-sequential-access.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="r,e,a,d,a,tab" command="insertSnippet 'Packages/Fortran.tmbundle/read.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="r,e,a,tab" command="insertSnippet 'Packages/Fortran.tmbundle/real.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="r,e,s,h,tab" command="insertSnippet 'Packages/Fortran.tmbundle/reshape.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="o,p,e,n,c,tab" command="insertSnippet 'Packages/Fortran.tmbundle/scratch-file.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="s,e,l,tab" command="insertSnippet 'Packages/Fortran.tmbundle/select-case.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="s,i,z,e,tab" command="insertSnippet 'Packages/Fortran.tmbundle/size.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="s,p,r,e,a,d,tab" command="insertSnippet 'Packages/Fortran.tmbundle/spread.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="s,t,o,p,tab" command="insertSnippet 'Packages/Fortran.tmbundle/stop.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="s,u,b,tab" command="insertSnippet 'Packages/Fortran.tmbundle/subroutine.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="s,u,m,tab" command="insertSnippet 'Packages/Fortran.tmbundle/sum-of-elements.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="t,y,p,e,tab" command="insertSnippet 'Packages/Fortran.tmbundle/type-definition.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="u,n,p,a,c,k,tab" command="insertSnippet 'Packages/Fortran.tmbundle/unpack.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="u,b,o,u,n,d,tab" command="insertSnippet 'Packages/Fortran.tmbundle/upper-bound.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="w,h,tab" command="insertSnippet 'Packages/Fortran.tmbundle/where-single-line.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="w,h,e,tab" command="insertSnippet 'Packages/Fortran.tmbundle/where.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Fortran.tmbundle/wrap-selection-in-array-brackets.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="w,r,i,t,e,tab" command="insertSnippet 'Packages/Fortran.tmbundle/write-sequental-access.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="F,tab" command="insertSnippet 'Packages/Fortran.tmbundle/false.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+
+    <binding key="T,tab" command="insertSnippet 'Packages/Fortran.tmbundle/true.sublime-snippet'">
+        <context name="selector" value="source.fortran"/>
+    </binding>
+</bindings>

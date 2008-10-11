@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[sleep(${1:secs})]]></content>
+</snippet>

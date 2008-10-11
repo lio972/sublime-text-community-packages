@@ -1,0 +1,25 @@
+<bindings>
+    <binding key="i,f,e,tab" command="insertSnippet 'Packages/Perl HTML-Template.tmbundle/if-else.sublime-snippet'">
+        <context name="selector" value="text.html.html-template"/>
+    </binding>
+
+    <binding key="i,f,tab" command="insertSnippet 'Packages/Perl HTML-Template.tmbundle/if.sublime-snippet'">
+        <context name="selector" value="text.html.html-template"/>
+    </binding>
+
+    <binding key="i,n,c,tab" command="insertSnippet 'Packages/Perl HTML-Template.tmbundle/include.sublime-snippet'">
+        <context name="selector" value="text.html.html-template"/>
+    </binding>
+
+    <binding key="l,o,o,p,tab" command="insertSnippet 'Packages/Perl HTML-Template.tmbundle/loop.sublime-snippet'">
+        <context name="selector" value="text.html.html-template"/>
+    </binding>
+
+    <binding key="u,n,l,e,s,s,tab" command="insertSnippet 'Packages/Perl HTML-Template.tmbundle/unless.sublime-snippet'">
+        <context name="selector" value="text.html.html-template"/>
+    </binding>
+
+    <binding key="v,a,r,tab" command="insertSnippet 'Packages/Perl HTML-Template.tmbundle/var.sublime-snippet'">
+        <context name="selector" value="text.html.html-template"/>
+    </binding>
+</bindings>

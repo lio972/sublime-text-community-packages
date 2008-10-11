@@ -1,0 +1,25 @@
+<bindings>
+    <binding key="f,e,a,t,tab" command="insertSnippet 'Packages/SWIG.tmbundle/ature.sublime-snippet'">
+        <context name="selector" value="source.swig"/>
+    </binding>
+
+    <binding key="i,g,n,tab" command="insertSnippet 'Packages/SWIG.tmbundle/ignore.sublime-snippet'">
+        <context name="selector" value="source.swig"/>
+    </binding>
+
+    <binding key="i,n,c,tab" command="insertSnippet 'Packages/SWIG.tmbundle/include.sublime-snippet'">
+        <context name="selector" value="source.swig"/>
+    </binding>
+
+    <binding key="m,o,d,tab" command="insertSnippet 'Packages/SWIG.tmbundle/module.sublime-snippet'">
+        <context name="selector" value="source.swig"/>
+    </binding>
+
+    <binding key="r,e,tab" command="insertSnippet 'Packages/SWIG.tmbundle/rename.sublime-snippet'">
+        <context name="selector" value="source.swig"/>
+    </binding>
+
+    <binding key="t,e,m,p,tab" command="insertSnippet 'Packages/SWIG.tmbundle/template.sublime-snippet'">
+        <context name="selector" value="source.swig"/>
+    </binding>
+</bindings>

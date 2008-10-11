@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[ignoring ${1:application responses}
+	${15:-- insert actions here}
+end ignoring]]></content>
+</snippet>

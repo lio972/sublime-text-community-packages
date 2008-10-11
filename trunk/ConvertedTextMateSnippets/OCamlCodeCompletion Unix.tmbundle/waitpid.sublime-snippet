@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.waitpid [${1:wait_flags}] ${2:pid}$15]]></content>
+</snippet>

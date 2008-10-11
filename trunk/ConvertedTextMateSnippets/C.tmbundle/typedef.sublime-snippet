@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[typedef ${1:int} ${2:MyCustomType};]]></content>
+</snippet>

@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[msgid "${1:original text}"
+]]></content>
+</snippet>

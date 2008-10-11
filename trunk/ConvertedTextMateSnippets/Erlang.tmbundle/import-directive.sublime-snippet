@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[-import (${1:module}, [${2:function}/${3:arity}]).]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Array3.slice_left_2 ${1:bigarray} ${2:idx1}$15]]></content>
+</snippet>

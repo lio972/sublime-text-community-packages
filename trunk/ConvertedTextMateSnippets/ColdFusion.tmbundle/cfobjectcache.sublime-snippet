@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfobjectcache action = "clear">$15]]></content>
+</snippet>

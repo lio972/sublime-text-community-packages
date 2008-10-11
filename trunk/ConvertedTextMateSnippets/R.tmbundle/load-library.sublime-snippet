@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[library("${1:name}")]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[report_sign_ratio ${1:ratio} ${2:bi}$15]]></content>
+</snippet>

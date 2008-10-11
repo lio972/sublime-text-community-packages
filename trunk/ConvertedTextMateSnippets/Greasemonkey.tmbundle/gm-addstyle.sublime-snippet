@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[GM_addStyle("${1:CSS}");]]></content>
+</snippet>

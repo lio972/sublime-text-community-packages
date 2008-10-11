@@ -1,0 +1,14 @@
+
+<snippet>
+    <content><![CDATA[class ${1:Modelname}(models.Model):
+	"""${2:($1 description)}"""
+	$15
+
+	class Admin:
+		list_display = ('',)
+		search_fields = ('',)
+
+	def __unicode__(self):
+		return u"$1"
+]]></content>
+</snippet>

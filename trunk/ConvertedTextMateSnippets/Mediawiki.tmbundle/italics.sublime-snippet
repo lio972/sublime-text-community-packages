@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[''${15:${TM_SELECTED_TEXT:italic text}}'']]></content>
+</snippet>

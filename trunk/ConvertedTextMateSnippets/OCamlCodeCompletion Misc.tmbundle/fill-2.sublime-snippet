@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Array3.fill ${1:bigarray} ${2:value}]]></content>
+</snippet>

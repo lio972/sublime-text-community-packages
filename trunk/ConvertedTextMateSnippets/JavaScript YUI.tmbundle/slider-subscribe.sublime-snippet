@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[subscribe("${1:eventName}", ${2:func});$15]]></content>
+</snippet>

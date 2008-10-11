@@ -1,0 +1,8 @@
+
+<snippet>
+    <content><![CDATA[<TMPL_IF NAME="$1">
+	$2
+<TMPL_ELSE>
+	$3
+</TMPL_IF>]]></content>
+</snippet>

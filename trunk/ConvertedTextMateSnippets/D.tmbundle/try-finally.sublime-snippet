@@ -1,0 +1,8 @@
+
+<snippet>
+    <content><![CDATA[try {
+	$1
+} finally {
+	$15
+}]]></content>
+</snippet>

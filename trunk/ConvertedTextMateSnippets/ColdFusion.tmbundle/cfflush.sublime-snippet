@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfflush${1: interval = "${2:[ ]}"}>$15]]></content>
+</snippet>

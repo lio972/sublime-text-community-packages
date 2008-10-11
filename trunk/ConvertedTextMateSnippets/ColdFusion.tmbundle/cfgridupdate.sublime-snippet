@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfgridupdate grid = "$1" dataSource = "$2" tableName = "$3"${4: username = "${5:[ ]}" password = "${6:[ ]}" tableOwner = "${7:[ ]}" tableQualifier = "${8:[ ]}" keyOnly = "${9:[ ]}"}>$15]]></content>
+</snippet>

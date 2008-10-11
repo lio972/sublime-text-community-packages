@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.string_of_inet_addr ${1:inet_addr}$15]]></content>
+</snippet>

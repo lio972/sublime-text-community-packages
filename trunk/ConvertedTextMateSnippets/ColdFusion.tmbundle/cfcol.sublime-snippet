@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[<cfcol header = "$1" text = "$2"${3: width = "${4:[ ]}" align = "${5:[ ]}"}>$15
+
+]]></content>
+</snippet>

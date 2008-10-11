@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[static final ${1:String}${1/(.+)/(?1: )/}${2:var}${3: = ${4:null}}$15]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[include_once '${1:file}';$15]]></content>
+</snippet>

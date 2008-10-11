@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[${YUI_DOM:YAHOO.util.Dom}.hasClass(${1:element}, '${2:class-name}')
+]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.getgruid ${1:uid}$15]]></content>
+</snippet>

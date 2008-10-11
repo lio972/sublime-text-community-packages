@@ -1,0 +1,9 @@
+
+<snippet>
+    <content><![CDATA[|| border=${1:border} width=${2:width} align=${3:align}
+|| ! ${4:table_caption} ! ||
+|| !${5:head0} || !${6:head1} || !${7:head2} || !${8:head3} ||
+|| ${9:data} || ${10:data} || ${11:data} || ${12:data} ||
+|| ${13:data} || ${14:data} || ${15:data} || ${16:data} ||
+|| ${17:data} || ${18:data} || ${19:data} || ${20:data} ||]]></content>
+</snippet>

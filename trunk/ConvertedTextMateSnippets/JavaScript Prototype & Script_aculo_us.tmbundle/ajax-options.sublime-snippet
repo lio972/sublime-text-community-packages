@@ -1,0 +1,11 @@
+
+<snippet>
+    <content><![CDATA[{
+	${1:onSuccess: function(${2:response}) {
+		$3
+	\}}${5:,
+	onFailure: function($2) {
+		$6
+	}}$15
+}]]></content>
+</snippet>

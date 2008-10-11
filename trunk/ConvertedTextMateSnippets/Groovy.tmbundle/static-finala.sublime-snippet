@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[static final ${1:CONSTANT_NAME} = ${2:null}]]></content>
+</snippet>

@@ -1,0 +1,12 @@
+
+<snippet>
+    <content><![CDATA[/**
+ * ${2:undocumented class}
+ *
+ * @package ${3:default}
+ * @author ${PHPDOC_AUTHOR:$TM_FULLNAME}
+ **/
+interface $1
+{$15
+} // END interface $1]]></content>
+</snippet>

@@ -1,0 +1,8 @@
+
+<snippet>
+    <content><![CDATA[TEMPLATE = app
+CONFIG += qt
+QT += gui
+SOURCES += ${1:main.cpp}
+$15]]></content>
+</snippet>

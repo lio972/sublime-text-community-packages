@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[isDefined("$1")$2]]></content>
+</snippet>

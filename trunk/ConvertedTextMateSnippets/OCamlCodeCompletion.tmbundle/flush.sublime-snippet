@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[flush ${1:out_channel}${2:;}$15]]></content>
+</snippet>

@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[<cfformgroup type = "$1" label = "${2:[ ]}" style = "${3:[ ]}" selectedIndex = "${4:[ ]}" width = "${5:[ ]}" height = "${6:[ ]}" enabled = "${7:[ ]}" visible = "${8:[ ]}" OnChange = "${9:[ ]}" toolTip = "${10:[ ]}" id = "${11:[ ]}">
+	$12
+</cfformgroup>$15]]></content>
+</snippet>

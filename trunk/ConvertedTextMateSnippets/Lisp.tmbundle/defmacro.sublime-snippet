@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[(defmacro ${1:name} (${2:parameters})
+	"${3:Documentation for $1.}"
+	($15))]]></content>
+</snippet>

@@ -1,0 +1,8 @@
+
+<snippet>
+    <content><![CDATA[class ${1:name}{
+	public this(${2:args}){
+		$3
+	}
+}]]></content>
+</snippet>

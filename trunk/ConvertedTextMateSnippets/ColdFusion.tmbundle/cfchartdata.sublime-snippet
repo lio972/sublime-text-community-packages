@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfchartdata item = "$1" value = "$2">$15]]></content>
+</snippet>

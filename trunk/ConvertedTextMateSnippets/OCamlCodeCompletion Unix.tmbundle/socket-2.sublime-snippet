@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.socket Unix.PF_$15 Unix.SOCK_ ${1:proto}]]></content>
+</snippet>

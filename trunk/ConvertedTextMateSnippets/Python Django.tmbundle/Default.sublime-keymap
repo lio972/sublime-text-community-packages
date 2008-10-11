@@ -1,0 +1,117 @@
+<bindings>
+    <binding key="a,u,t,o,tab" command="insertSnippet 'Packages/Python Django.tmbundle/autofield-auto.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="b,o,o,l,e,a,n,tab" command="insertSnippet 'Packages/Python Django.tmbundle/booleanfield-boolean.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="c,h,a,r,tab" command="insertSnippet 'Packages/Python Django.tmbundle/charfield-char.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="c,o,m,m,a,s,e,p,a,r,a,t,e,d,i,n,t,e,g,e,r,tab" command="insertSnippet 'Packages/Python Django.tmbundle/commaseparatedintegerfield-commaseparatedinteger.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="d,a,t,e,tab" command="insertSnippet 'Packages/Python Django.tmbundle/datefield-date.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="d,a,t,e,t,i,m,e,tab" command="insertSnippet 'Packages/Python Django.tmbundle/datetimefield.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="d,e,c,i,m,a,l,tab" command="insertSnippet 'Packages/Python Django.tmbundle/decimalfield.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="e,m,a,i,l,tab" command="insertSnippet 'Packages/Python Django.tmbundle/emailfield-email.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="f,i,l,e,tab" command="insertSnippet 'Packages/Python Django.tmbundle/filefield-file.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="f,i,l,e,p,a,t,h,tab" command="insertSnippet 'Packages/Python Django.tmbundle/filepathfield-filepath.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="f,l,o,a,t,tab" command="insertSnippet 'Packages/Python Django.tmbundle/floatfield-float.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="f,k,tab" command="insertSnippet 'Packages/Python Django.tmbundle/foreignkey-fk.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="i,m,a,g,e,tab" command="insertSnippet 'Packages/Python Django.tmbundle/imagefield-image.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="i,n,t,e,g,e,r,tab" command="insertSnippet 'Packages/Python Django.tmbundle/integerfield-integer.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="i,p,a,d,d,r,e,s,s,tab" command="insertSnippet 'Packages/Python Django.tmbundle/ipaddressfield-ipaddress.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="m,a,n,y,t,o,m,a,n,y,tab" command="insertSnippet 'Packages/Python Django.tmbundle/manytomanyfield-manytomany.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="m,o,d,e,l,tab" command="insertSnippet 'Packages/Python Django.tmbundle/model-skeleton-model.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="n,u,l,l,b,o,o,l,e,a,n,tab" command="insertSnippet 'Packages/Python Django.tmbundle/nullbooleanfield-nullbool.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="p,h,o,n,e,n,u,m,b,e,r,tab" command="insertSnippet 'Packages/Python Django.tmbundle/phonenumberfield-phonenumber.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="p,o,s,i,t,i,v,e,i,n,t,e,g,e,r,tab" command="insertSnippet 'Packages/Python Django.tmbundle/positiveintegerfield-posint.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="p,o,s,i,t,i,v,e,s,m,a,l,l,i,n,t,e,g,e,r,tab" command="insertSnippet 'Packages/Python Django.tmbundle/positivesmallintegerfield-possmall.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="s,e,n,d,m,a,i,l,tab" command="insertSnippet 'Packages/Python Django.tmbundle/send-mail.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="s,l,u,g,tab" command="insertSnippet 'Packages/Python Django.tmbundle/slugfield-slug.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="s,m,a,l,l,i,n,t,e,g,e,r,tab" command="insertSnippet 'Packages/Python Django.tmbundle/smallintegerfield-smallinteger.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="t,e,x,t,tab" command="insertSnippet 'Packages/Python Django.tmbundle/textfield-text.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="t,i,m,e,tab" command="insertSnippet 'Packages/Python Django.tmbundle/timefield-time.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="u,r,l,tab" command="insertSnippet 'Packages/Python Django.tmbundle/urlfield-url.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="u,s,s,t,a,t,e,tab" command="insertSnippet 'Packages/Python Django.tmbundle/usstatefield-ussstate.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+
+    <binding key="x,m,l,tab" command="insertSnippet 'Packages/Python Django.tmbundle/xmlfield.sublime-snippet'">
+        <context name="selector" value="source.python.django"/>
+    </binding>
+</bindings>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<g:field type="${1:type}" name="${2:name}" value="${3:someValue}" />]]></content>
+</snippet>

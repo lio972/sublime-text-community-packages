@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[project ${1:project_name}
+	$15
+end]]></content>
+</snippet>

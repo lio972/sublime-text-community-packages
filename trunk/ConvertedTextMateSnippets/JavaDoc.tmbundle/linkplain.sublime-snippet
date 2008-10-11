@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[{@linkplain ${1:target} ${15:label}]]></content>
+</snippet>

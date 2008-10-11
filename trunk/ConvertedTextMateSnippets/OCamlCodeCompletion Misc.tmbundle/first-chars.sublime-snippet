@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Str.first_chars ${1:str} ${2:pos}$15]]></content>
+</snippet>

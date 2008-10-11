@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[unpack(${1:vector}, mask=(${2:$1>0}), field=${3:destination array})]]></content>
+</snippet>

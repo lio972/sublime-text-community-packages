@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.tcsetaddr ${1:file_descr} Unix.TCSA$15 ${2:terminal_io record}]]></content>
+</snippet>

@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[elements.each(${1:"${2://XPath}"}) do |${3:node}|
+	$15
+end]]></content>
+</snippet>

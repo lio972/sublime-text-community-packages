@@ -1,0 +1,5 @@
+<bindings>
+    <binding key="c,l,a,s,s,tab" command="insertSnippet 'Packages/ActionScript.tmbundle/class.sublime-snippet'">
+        <context name="selector" value="source.actionscript"/>
+    </binding>
+</bindings>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[@param ${1:var} ${15:description}]]></content>
+</snippet>

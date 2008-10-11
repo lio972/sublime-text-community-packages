@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[LSTimeFormat(${1:time}${2: [, mask ]})$15]]></content>
+</snippet>

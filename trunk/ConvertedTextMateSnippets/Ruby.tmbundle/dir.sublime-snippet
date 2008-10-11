@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Dir[${1:"${2:glob/**/*.rb}"}]]]></content>
+</snippet>

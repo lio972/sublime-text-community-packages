@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[size of array(${1:\$array})]]></content>
+</snippet>

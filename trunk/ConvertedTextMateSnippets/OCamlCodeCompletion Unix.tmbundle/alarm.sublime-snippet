@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.alarm ${1:delay}$15]]></content>
+</snippet>

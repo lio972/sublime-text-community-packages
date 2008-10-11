@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA['${1:${2:#thing}:${3:click}}': function(element){
+	$15
+}${10:,}]]></content>
+</snippet>

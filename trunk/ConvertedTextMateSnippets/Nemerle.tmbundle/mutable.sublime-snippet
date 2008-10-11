@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[mutable ${1:name}]]></content>
+</snippet>

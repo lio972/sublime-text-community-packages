@@ -1,0 +1,7 @@
+
+<snippet>
+    <content><![CDATA[select case ($1:variable)
+	case ($2:values)
+		$15
+end select]]></content>
+</snippet>

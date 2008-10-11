@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cflog text = "$1"${2: log = "${3:[ ]}" file = "${4:[ ]}" type = "${5:[ ]}" application = "${6:[ ]}"}>$15]]></content>
+</snippet>

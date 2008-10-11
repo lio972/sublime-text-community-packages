@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Encrypt(${1:string}, ${2:key}${3: [, algorithm]}${4: [, encoding]}${5: [, IVorSalt]}${6: [, iterations]})$15]]></content>
+</snippet>

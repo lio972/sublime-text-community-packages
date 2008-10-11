@@ -1,0 +1,9 @@
+
+<snippet>
+    <content><![CDATA[{
+	${1:${2:duration}: ${3:1}}${5:,
+	afterFinish: function() {
+		$6
+	\}}$15
+}]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[new ${YUI_DDTARGET:YAHOO.util.DDTarget}(${1:element});]]></content>
+</snippet>

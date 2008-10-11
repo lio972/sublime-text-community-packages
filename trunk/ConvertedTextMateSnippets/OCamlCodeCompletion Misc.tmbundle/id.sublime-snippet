@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Thread.id ${1:thd}$15]]></content>
+</snippet>

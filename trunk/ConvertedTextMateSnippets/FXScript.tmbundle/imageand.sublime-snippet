@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ImageAnd(${1:srcImage1}, ${2:srcImage2}, ${3:destImage});]]></content>
+</snippet>

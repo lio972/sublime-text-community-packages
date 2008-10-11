@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Event.send ${1:channel} ${2:value}$15]]></content>
+</snippet>

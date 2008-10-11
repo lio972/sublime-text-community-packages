@@ -1,0 +1,653 @@
+<bindings>
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/usrlocalbingroovy-w.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/author.sublime-snippet'">
+        <context name="selector" value="source.groovy comment.block.documentation.javadoc"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/param-copy.sublime-snippet'">
+        <context name="selector" value="source.groovy comment.block.documentation.javadoc"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/param.sublime-snippet'">
+        <context name="selector" value="source.groovy comment.block.documentation.javadoc"/>
+    </binding>
+
+    <binding key="a,l,l,tab" command="insertSnippet 'Packages/Groovy.tmbundle/all-e.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,e,p,l,a,c,e,tab" command="insertSnippet 'Packages/Groovy.tmbundle/ant-replace.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="a,n,y,tab" command="insertSnippet 'Packages/Groovy.tmbundle/any-e.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="a,s,tab" command="insertSnippet 'Packages/Groovy.tmbundle/as-bigdecimal.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="a,s,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/as-biginteger.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="a,s,b,tab" command="insertSnippet 'Packages/Groovy.tmbundle/as-double.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="a,s,c,tab" command="insertSnippet 'Packages/Groovy.tmbundle/as-float.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="period,a,s,tab" command="insertSnippet 'Packages/Groovy.tmbundle/as-immutable.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="a,s,d,tab" command="insertSnippet 'Packages/Groovy.tmbundle/as-set.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="a,s,e,tab" command="insertSnippet 'Packages/Groovy.tmbundle/as-string.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="period,a,s,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/as-synchronized.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="a,s,f,tab" command="insertSnippet 'Packages/Groovy.tmbundle/as-writable.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/assert.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="a,s,e,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/assertequals.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="a,s,f,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/assertfalse.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="a,s,n,e,tab" command="insertSnippet 'Packages/Groovy.tmbundle/assertnotequals.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="a,s,n,n,tab" command="insertSnippet 'Packages/Groovy.tmbundle/assertnotnull.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="a,s,n,tab" command="insertSnippet 'Packages/Groovy.tmbundle/assertnull.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="a,s,s,tab" command="insertSnippet 'Packages/Groovy.tmbundle/assertsame.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="a,s,t,tab" command="insertSnippet 'Packages/Groovy.tmbundle/asserttrue.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="d,o,c,tab" command="insertSnippet 'Packages/Groovy.tmbundle/block-comment.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="c,a,s,e,tab" command="insertSnippet 'Packages/Groovy.tmbundle/case-break.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="c,a,s,e,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/case.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="c,l,a,s,s,tab" command="insertSnippet 'Packages/Groovy.tmbundle/class.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="c,l,a,s,s,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/classa.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="i,n,s,t,a,n,c,e,tab" command="insertSnippet 'Packages/Groovy.tmbundle/class-singleton.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="c,l,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/class-with-constructor.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="c,l,a,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/class-with-cunstructor-parent.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,c,tab" command="insertSnippet 'Packages/Groovy.tmbundle/class-testcase.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="c,o,l,l,e,c,t,tab" command="insertSnippet 'Packages/Groovy.tmbundle/collect-element.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="c,o,l,tab" command="insertSnippet 'Packages/Groovy.tmbundle/collect-e.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="c,o,n,tab" command="insertSnippet 'Packages/Groovy.tmbundle/constructor.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="c,o,p,y,tab" command="insertSnippet 'Packages/Groovy.tmbundle/copy-file.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="c,o,p,y,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/copy-fileset-includeexclude.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="c,o,p,y,b,tab" command="insertSnippet 'Packages/Groovy.tmbundle/copy-fileset.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="v,tab" command="insertSnippet 'Packages/Groovy.tmbundle/def-variable.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="d,e,f,t,tab" command="insertSnippet 'Packages/Groovy.tmbundle/def-test.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="c,v,tab" command="insertSnippet 'Packages/Groovy.tmbundle/def-closure.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="m,tab" command="insertSnippet 'Packages/Groovy.tmbundle/def-method.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="d,e,f,tab" command="insertSnippet 'Packages/Groovy.tmbundle/def-object.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="d,t,tab" command="insertSnippet 'Packages/Groovy.tmbundle/downto-num-n.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,c,h,tab" command="insertSnippet 'Packages/Groovy.tmbundle/each-element.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,p,tab" command="insertSnippet 'Packages/Groovy.tmbundle/each-pair-map.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/each-e.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,b,tab" command="insertSnippet 'Packages/Groovy.tmbundle/eachbyte-byte.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,d,tab" command="insertSnippet 'Packages/Groovy.tmbundle/eachdir-dir.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,d,m,tab" command="insertSnippet 'Packages/Groovy.tmbundle/eachdirmatch-dir.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,d,m,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/eachdirmatch.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,d,r,tab" command="insertSnippet 'Packages/Groovy.tmbundle/eachdirrecurse-dir.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,d,r,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/eachdirrecurse.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,f,tab" command="insertSnippet 'Packages/Groovy.tmbundle/eachfile-file.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,f,m,tab" command="insertSnippet 'Packages/Groovy.tmbundle/eachfilematch-file.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,f,r,tab" command="insertSnippet 'Packages/Groovy.tmbundle/eachfilerecurse-file.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,k,tab" command="insertSnippet 'Packages/Groovy.tmbundle/eachkey-key.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,l,tab" command="insertSnippet 'Packages/Groovy.tmbundle/eachline-line.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,m,tab" command="insertSnippet 'Packages/Groovy.tmbundle/eachmatch-regex-match.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,o,tab" command="insertSnippet 'Packages/Groovy.tmbundle/eachobject-obj.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,v,tab" command="insertSnippet 'Packages/Groovy.tmbundle/eachvalue-val.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,a,w,i,tab" command="insertSnippet 'Packages/Groovy.tmbundle/eachwithindex-e-i.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,w,i,tab" command="insertSnippet 'Packages/Groovy.tmbundle/eachwithindex.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,l,s,e,tab" command="insertSnippet 'Packages/Groovy.tmbundle/else.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,l,tab" command="insertSnippet 'Packages/Groovy.tmbundle/elsea.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,l,i,f,tab" command="insertSnippet 'Packages/Groovy.tmbundle/elseif.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="e,v,e,r,y,tab" command="insertSnippet 'Packages/Groovy.tmbundle/every-e.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="f,m,tab" command="insertSnippet 'Packages/Groovy.tmbundle/final-method.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="f,v,tab" command="insertSnippet 'Packages/Groovy.tmbundle/final-var.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="f,i,n,d,tab" command="insertSnippet 'Packages/Groovy.tmbundle/find-e.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="f,i,n,d,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/findall-e.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="f,o,r,tab" command="insertSnippet 'Packages/Groovy.tmbundle/for-in-2.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="f,o,r,i,n,tab" command="insertSnippet 'Packages/Groovy.tmbundle/for-in.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="f,o,r,i,n,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/for-ina.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="g,c,l,tab" command="insertSnippet 'Packages/Groovy.tmbundle/gcl-parseclass.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="g,r,e,p,tab" command="insertSnippet 'Packages/Groovy.tmbundle/grep-pattern-match.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/hash-pair-key-value.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/hash-pair.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="i,f,e,tab" command="insertSnippet 'Packages/Groovy.tmbundle/if-else.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="i,f,tab" command="insertSnippet 'Packages/Groovy.tmbundle/if.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="i,f,e,l,tab" command="insertSnippet 'Packages/Groovy.tmbundle/if-elsea.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="i,f,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/ifa.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="i,m,tab" command="insertSnippet 'Packages/Groovy.tmbundle/import.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="m,k,d,i,r,tab" command="insertSnippet 'Packages/Groovy.tmbundle/mkdir.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/new-closure.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="F,i,l,e,tab" command="insertSnippet 'Packages/Groovy.tmbundle/new-file-eachline.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/new-method.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/next-line.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="p,tab" command="insertSnippet 'Packages/Groovy.tmbundle/print.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="p,l,tab" command="insertSnippet 'Packages/Groovy.tmbundle/println.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="p,v,tab" command="insertSnippet 'Packages/Groovy.tmbundle/private.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="p,f,m,tab" command="insertSnippet 'Packages/Groovy.tmbundle/private-final-method.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="p,f,v,tab" command="insertSnippet 'Packages/Groovy.tmbundle/private-final-var.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="p,m,tab" command="insertSnippet 'Packages/Groovy.tmbundle/private-method.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="p,m,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/private-methoda.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="p,s,v,tab" command="insertSnippet 'Packages/Groovy.tmbundle/private-static.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="p,s,f,m,tab" command="insertSnippet 'Packages/Groovy.tmbundle/private-static-final-method.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="p,s,f,v,tab" command="insertSnippet 'Packages/Groovy.tmbundle/private-static-final-string.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,t,a,t,i,c,tab" command="insertSnippet 'Packages/Groovy.tmbundle/private-static-final.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="p,s,m,tab" command="insertSnippet 'Packages/Groovy.tmbundle/private-static-method.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="p,s,m,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/private-static-methoda.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="p,s,v,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/private-static-var.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="p,v,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/private-var.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="p,v,b,tab" command="insertSnippet 'Packages/Groovy.tmbundle/private-variable.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="p,v,m,tab" command="insertSnippet 'Packages/Groovy.tmbundle/private-void-method.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,e,p,l,a,c,e,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/replaceall-regex-match.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,e,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/reverseeach-e.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="r,u,n,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/run-after.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/same-line.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,e,t,u,p,tab" command="insertSnippet 'Packages/Groovy.tmbundle/setup.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,f,tab" command="insertSnippet 'Packages/Groovy.tmbundle/shouldfail.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,l,e,e,p,tab" command="insertSnippet 'Packages/Groovy.tmbundle/sleep-secs-on-interrupt.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,l,e,e,p,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/sleep-secs.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,o,r,t,tab" command="insertSnippet 'Packages/Groovy.tmbundle/sort.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,e,l,tab" command="insertSnippet 'Packages/Groovy.tmbundle/spliteachline-separator-line-copy.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,v,tab" command="insertSnippet 'Packages/Groovy.tmbundle/static.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,t,a,t,i,c,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/statica.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,f,v,tab" command="insertSnippet 'Packages/Groovy.tmbundle/static-final.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,f,m,tab" command="insertSnippet 'Packages/Groovy.tmbundle/static-final-method.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,t,a,t,i,c,b,tab" command="insertSnippet 'Packages/Groovy.tmbundle/static-final-string.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,f,v,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/static-final-var.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,t,a,t,i,c,c,tab" command="insertSnippet 'Packages/Groovy.tmbundle/static-finala.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="m,a,i,n,tab" command="insertSnippet 'Packages/Groovy.tmbundle/static-main-method.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,m,tab" command="insertSnippet 'Packages/Groovy.tmbundle/static-method.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,m,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/static-methoda.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,v,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/static-var.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,t,e,p,tab" command="insertSnippet 'Packages/Groovy.tmbundle/step-to-amount-n.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,w,i,t,c,h,tab" command="insertSnippet 'Packages/Groovy.tmbundle/switch-case.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="s,w,i,t,c,h,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/switch-case-default.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,e,a,r,tab" command="insertSnippet 'Packages/Groovy.tmbundle/teardown.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,tab" command="insertSnippet 'Packages/Groovy.tmbundle/test-case.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,h,r,e,a,d,tab" command="insertSnippet 'Packages/Groovy.tmbundle/thread-start.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,h,r,e,a,d,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/thread-startdaemon.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,i,m,e,s,tab" command="insertSnippet 'Packages/Groovy.tmbundle/times-n.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,o,tab" command="insertSnippet 'Packages/Groovy.tmbundle/to-array.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,o,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/to-bigdecimal.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,o,b,tab" command="insertSnippet 'Packages/Groovy.tmbundle/to-biginteger.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,o,c,tab" command="insertSnippet 'Packages/Groovy.tmbundle/to-boolean.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,o,d,tab" command="insertSnippet 'Packages/Groovy.tmbundle/to-character.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,o,e,tab" command="insertSnippet 'Packages/Groovy.tmbundle/to-double.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,o,f,tab" command="insertSnippet 'Packages/Groovy.tmbundle/to-float.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,o,g,tab" command="insertSnippet 'Packages/Groovy.tmbundle/to-integer.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,o,h,tab" command="insertSnippet 'Packages/Groovy.tmbundle/to-list.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,o,i,tab" command="insertSnippet 'Packages/Groovy.tmbundle/to-string.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,o,j,tab" command="insertSnippet 'Packages/Groovy.tmbundle/to-uri.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,o,k,tab" command="insertSnippet 'Packages/Groovy.tmbundle/to-url.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,r,y,tab" command="insertSnippet 'Packages/Groovy.tmbundle/try-catch-finally.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="t,r,y,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/try-catch.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="u,t,tab" command="insertSnippet 'Packages/Groovy.tmbundle/upto-num-n.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="v,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/var.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="v,m,tab" command="insertSnippet 'Packages/Groovy.tmbundle/void-method.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="w,h,i,l,e,tab" command="insertSnippet 'Packages/Groovy.tmbundle/while.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="w,i,t,h,tab" command="insertSnippet 'Packages/Groovy.tmbundle/withinputstream-in.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="w,i,t,h,a,tab" command="insertSnippet 'Packages/Groovy.tmbundle/withoutputstream-out.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="w,i,t,h,b,tab" command="insertSnippet 'Packages/Groovy.tmbundle/withprintwriter-pw.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="w,i,t,h,c,tab" command="insertSnippet 'Packages/Groovy.tmbundle/withreader-r.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="w,i,t,h,d,tab" command="insertSnippet 'Packages/Groovy.tmbundle/withstream-in.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="w,i,t,h,e,tab" command="insertSnippet 'Packages/Groovy.tmbundle/withstreams-socket-s.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="w,i,t,h,f,tab" command="insertSnippet 'Packages/Groovy.tmbundle/withwriter-w.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="w,i,t,h,g,tab" command="insertSnippet 'Packages/Groovy.tmbundle/withwriter-charset-w.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="w,i,t,h,h,tab" command="insertSnippet 'Packages/Groovy.tmbundle/withwriterappend-charset.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Groovy.tmbundle/wrap-selection-in-trycatch.sublime-snippet'">
+        <context name="selector" value="source.groovy"/>
+    </binding>
+</bindings>

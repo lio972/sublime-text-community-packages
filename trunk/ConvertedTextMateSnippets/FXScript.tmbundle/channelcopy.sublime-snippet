@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[ChannelCopy(${1:srcIMG}, ${2:destIMG}, ${3:channel2Alpha}, ${4:channel2Red}, ${5:channel2Green}, ${6:channel2Blue});
+]]></content>
+</snippet>

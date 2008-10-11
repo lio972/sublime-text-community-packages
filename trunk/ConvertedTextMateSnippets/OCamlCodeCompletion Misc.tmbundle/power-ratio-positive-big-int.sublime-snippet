@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[power_ratio_positive_big_int ${1:ratio} ${2:bi}$15]]></content>
+</snippet>

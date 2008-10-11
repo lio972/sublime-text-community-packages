@@ -1,0 +1,29 @@
+<bindings>
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Treetop.tmbundle/a.sublime-snippet'">
+        <context name="selector" value="source.treetop"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Treetop.tmbundle/aa.sublime-snippet'">
+        <context name="selector" value="source.treetop"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Treetop.tmbundle/ab.sublime-snippet'">
+        <context name="selector" value="source.treetop"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Treetop.tmbundle/ac.sublime-snippet'">
+        <context name="selector" value="source.treetop"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Treetop.tmbundle/ad.sublime-snippet'">
+        <context name="selector" value="source.treetop"/>
+    </binding>
+
+    <binding key="g,r,a,m,m,a,r,tab" command="insertSnippet 'Packages/Treetop.tmbundle/grammar.sublime-snippet'">
+        <context name="selector" value="source.treetop"/>
+    </binding>
+
+    <binding key="r,u,l,e,tab" command="insertSnippet 'Packages/Treetop.tmbundle/rule.sublime-snippet'">
+        <context name="selector" value="source.treetop"/>
+    </binding>
+</bindings>

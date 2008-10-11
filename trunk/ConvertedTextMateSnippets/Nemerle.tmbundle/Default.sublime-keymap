@@ -1,0 +1,101 @@
+<bindings>
+    <binding key="a,b,s,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/abstract.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="c,l,a,s,s,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/class.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="i,f,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/condition-if-else.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="w,h,e,n,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/condition-when.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="d,o,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/do-while.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="e,n,u,m,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/enum.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="t,r,y,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/exceptions.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="i,n,t,e,r,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/interface.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="f,o,r,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/loop-for.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="f,o,r,e,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/loop-foreach.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="m,a,c,r,o,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/macro.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="m,a,t,c,h,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/match.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="M,o,d,u,l,e,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/module-main.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="m,o,d,u,l,e,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/module.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="m,u,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/mutable.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="o,v,e,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/override.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="p,r,i,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/private.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="p,u,b,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/public.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="r,e,p,e,a,t,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/repeat.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="s,e,a,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/sealed.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="s,t,a,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/static.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="u,n,l,e,s,s,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/untitled.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="v,a,r,i,a,n,t,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/variant.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="v,i,r,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/virtual.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+
+    <binding key="w,h,i,l,e,tab" command="insertSnippet 'Packages/Nemerle.tmbundle/while.sublime-snippet'">
+        <context name="selector" value="source.nemerle"/>
+    </binding>
+</bindings>

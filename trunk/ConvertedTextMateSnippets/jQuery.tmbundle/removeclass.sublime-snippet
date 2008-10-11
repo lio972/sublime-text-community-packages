@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[.removeClass('${1:class name}')$15]]></content>
+</snippet>

@@ -1,0 +1,7 @@
+
+<snippet>
+    <content><![CDATA[\part{${1:part name}} % (fold)
+\label{prt:${2:${1/(\w+)|\W+/(?1:\L$15:_)/g}}}
+${15:$TM_SELECTED_TEXT}
+% part $2 (end)]]></content>
+</snippet>

@@ -1,0 +1,9 @@
+
+<snippet>
+    <content><![CDATA[/**
+ * ${3:undocumented class variable}
+ *
+ * @var ${4:string}
+ **/
+${1:var} \$$2;$15]]></content>
+</snippet>

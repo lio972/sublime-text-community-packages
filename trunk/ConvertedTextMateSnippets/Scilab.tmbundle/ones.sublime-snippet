@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ones(${1:rows}, ${2:cols})]]></content>
+</snippet>

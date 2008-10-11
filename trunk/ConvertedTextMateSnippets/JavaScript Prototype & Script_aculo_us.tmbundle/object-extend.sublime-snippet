@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Object.extend(${1:destination}, ${2:source});]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<!--[if lt IE 6]>${1:${TM_SELECTED_TEXT:  IE Conditional Comment: Internet Explorer 5.x      }}<![endif]-->$15]]></content>
+</snippet>

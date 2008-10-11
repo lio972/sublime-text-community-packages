@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfmodule${1: template = "${2:required unless name attribute is used}" name = "${3:required unless template attribute is used}" attributeCollection = "${4:[ ]}" attribute_name1 = "${5:[ ]}" attribute_name2 = "${6:[ ]}"}>$15]]></content>
+</snippet>

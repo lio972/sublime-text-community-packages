@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[InvertChannel(${1:srcImage}, ${2:destImage}, ${3:doAlpha}, ${4:doRed}, ${5:doGreen}, ${6:doBlue});
+]]></content>
+</snippet>

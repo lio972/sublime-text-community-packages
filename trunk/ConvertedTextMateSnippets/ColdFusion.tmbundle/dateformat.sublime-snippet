@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[DateFormat(${1:"date"} ${2:[, "mask"]})$15]]></content>
+</snippet>

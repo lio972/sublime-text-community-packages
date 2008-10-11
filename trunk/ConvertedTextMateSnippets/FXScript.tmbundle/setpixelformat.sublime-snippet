@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[SetPixelFormat(${1:dest}, ${2:colorspace});]]></content>
+</snippet>

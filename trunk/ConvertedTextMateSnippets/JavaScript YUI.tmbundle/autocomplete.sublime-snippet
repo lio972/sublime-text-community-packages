@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[new ${YUI_AC:YAHOO.widget.AutoComplete}(${1:inputElement}, ${2:containerElement}, ${3:dataSource}${4:, ${5:configs}});$15]]></content>
+</snippet>

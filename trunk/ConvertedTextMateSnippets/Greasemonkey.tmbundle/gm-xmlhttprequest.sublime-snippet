@@ -1,0 +1,10 @@
+
+<snippet>
+    <content><![CDATA[GM_xmlhttpRequest({
+	method: "GET",
+	url: ${1:"${2:http://www.example.com}"},
+	onload: ${3:function(result) {
+		${15:var response = result.responseText;}
+	\} }
+});]]></content>
+</snippet>

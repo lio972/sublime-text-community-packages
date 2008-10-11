@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[namespace :${1:${TM_FILENAME/\.\w+//}} do
+	$15
+end]]></content>
+</snippet>

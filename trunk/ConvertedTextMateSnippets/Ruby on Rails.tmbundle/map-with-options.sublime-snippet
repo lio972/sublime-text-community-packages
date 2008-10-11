@@ -1,0 +1,7 @@
+
+<snippet>
+    <content><![CDATA[${1:map}.with_options :${2:controller} => '${3:thing}' do |${4:$3}|
+	$15
+end
+]]></content>
+</snippet>

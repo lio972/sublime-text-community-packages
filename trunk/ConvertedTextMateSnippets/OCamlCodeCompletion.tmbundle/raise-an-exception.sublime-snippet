@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[raise (${1:exn}$15)]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cffile action = "readbinary" file = "$1" variable = "$2">$15]]></content>
+</snippet>

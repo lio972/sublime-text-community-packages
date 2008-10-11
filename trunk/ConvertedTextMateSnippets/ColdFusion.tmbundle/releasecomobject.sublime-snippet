@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ReleaseComObject(${1:objectName})$15]]></content>
+</snippet>

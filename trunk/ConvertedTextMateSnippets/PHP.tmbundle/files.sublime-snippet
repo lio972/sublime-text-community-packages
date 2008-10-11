@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[\$_FILES['${1:variable}']]]></content>
+</snippet>

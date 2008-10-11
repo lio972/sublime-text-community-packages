@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[addTab(new YAHOO.widget.Tab({ label: "${1:tagLabel}",  content: "${2:contentText}"${3:, active: true} }));$15]]></content>
+</snippet>

@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[rule ${1:shape} ${2:weight }{
+	$3
+}]]></content>
+</snippet>

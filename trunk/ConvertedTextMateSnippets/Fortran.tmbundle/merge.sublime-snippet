@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[merge(${1:source}, ${2:alternative}, mask=(${2:$1>0}))]]></content>
+</snippet>

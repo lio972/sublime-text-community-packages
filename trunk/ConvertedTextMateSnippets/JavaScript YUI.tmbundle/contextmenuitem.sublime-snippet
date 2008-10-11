@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[new ${YUI_CONTEXTMENUITEM:YAHOO.widget.ContextMenuItem}(${1:element}${2:, ${3:configs}});$15]]></content>
+</snippet>

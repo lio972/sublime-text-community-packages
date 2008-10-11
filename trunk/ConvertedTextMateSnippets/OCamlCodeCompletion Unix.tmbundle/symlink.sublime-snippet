@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.symlink ${1:src_name} ${2:dest_name}$15]]></content>
+</snippet>

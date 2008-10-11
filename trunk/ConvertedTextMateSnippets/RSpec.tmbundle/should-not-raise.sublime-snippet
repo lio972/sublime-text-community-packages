@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[lambda { $1 }.should_not raise_error(${2:error})
+$15]]></content>
+</snippet>

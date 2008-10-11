@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<g:submitButton name="${1:name}" value="${2:someValue}" />]]></content>
+</snippet>

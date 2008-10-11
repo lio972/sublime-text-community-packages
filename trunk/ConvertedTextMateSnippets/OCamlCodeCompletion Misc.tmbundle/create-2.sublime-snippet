@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Genarray.create BA.kind$15 ${1:fortran}-layout ${2:[|${3:dim_array;}|]}$15]]></content>
+</snippet>

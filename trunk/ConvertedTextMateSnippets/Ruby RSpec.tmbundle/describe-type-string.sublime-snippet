@@ -1,0 +1,8 @@
+
+<snippet>
+    <content><![CDATA[describe ${1:Type}, "${2:description}" do
+  it "should ${3:description}" do
+    $15
+  end
+end]]></content>
+</snippet>

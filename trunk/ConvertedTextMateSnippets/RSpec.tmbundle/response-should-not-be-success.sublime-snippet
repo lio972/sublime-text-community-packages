@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[response.should_not be_success
+$15]]></content>
+</snippet>

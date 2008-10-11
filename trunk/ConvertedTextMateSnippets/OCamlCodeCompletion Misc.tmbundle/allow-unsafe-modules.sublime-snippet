@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Dynlink.allow_unsafe_modules ${1:true}${2:;}$15]]></content>
+</snippet>

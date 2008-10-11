@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[${1:target}.should equal(${2:value})
+$15]]></content>
+</snippet>

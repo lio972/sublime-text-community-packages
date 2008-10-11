@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ChannelMultiply(${1:srcImage}, ${2:destImage}, ${3:alphaValue}, ${4:redValue}, ${5:greenValue}, ${6:blueValue});]]></content>
+</snippet>

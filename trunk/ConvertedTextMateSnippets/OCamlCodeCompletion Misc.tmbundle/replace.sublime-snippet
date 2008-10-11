@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Dbm.replace ${1:db} ${2:key} ${3:data}$15]]></content>
+</snippet>

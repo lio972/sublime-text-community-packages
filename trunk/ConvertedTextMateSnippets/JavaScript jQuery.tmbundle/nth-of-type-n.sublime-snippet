@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[:nth-of-type(${1:n})$15]]></content>
+</snippet>

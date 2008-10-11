@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[IsDate(${1:string})$15]]></content>
+</snippet>

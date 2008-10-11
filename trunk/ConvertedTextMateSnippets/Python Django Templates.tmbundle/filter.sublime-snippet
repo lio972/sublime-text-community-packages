@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[{% filter $1 %}
+	$2
+{% endfilter %}]]></content>
+</snippet>

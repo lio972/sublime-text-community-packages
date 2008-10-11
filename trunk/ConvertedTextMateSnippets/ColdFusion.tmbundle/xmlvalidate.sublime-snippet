@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[XmlValidate(${1:xmlDoc}${2: [, validator]})$15]]></content>
+</snippet>

@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[${1:map}.resource :${2:resource}${10: do |${11:$2}|
+  $15
+end}]]></content>
+</snippet>

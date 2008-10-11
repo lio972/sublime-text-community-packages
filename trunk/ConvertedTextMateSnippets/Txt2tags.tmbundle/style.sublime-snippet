@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[%!style(${1:html | xhtml | tex}): ${2:style.css}
+]]></content>
+</snippet>

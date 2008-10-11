@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[StructFindValue(${1: top}, ${2:value}${3: [, scope]})$15]]></content>
+</snippet>

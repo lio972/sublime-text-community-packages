@@ -1,0 +1,8 @@
+
+<snippet>
+    <content><![CDATA[function ${1:name}
+	${2:argument type}, intent(${3:inout}) :: ${1/\w+\((.*)\)|.*/$1/}
+	${4:function type} :: ${1/(\w+).*/$1/}
+	$15
+end function ${1/(\w+).*/$1/}]]></content>
+</snippet>

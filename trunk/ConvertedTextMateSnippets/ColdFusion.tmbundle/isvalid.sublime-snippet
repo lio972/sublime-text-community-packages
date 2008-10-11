@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[IsValid(${1:type}, ${2:value})$15]]></content>
+</snippet>

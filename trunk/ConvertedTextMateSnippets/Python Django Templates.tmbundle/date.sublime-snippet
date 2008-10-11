@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[|date:"${1:arg}"]]></content>
+</snippet>

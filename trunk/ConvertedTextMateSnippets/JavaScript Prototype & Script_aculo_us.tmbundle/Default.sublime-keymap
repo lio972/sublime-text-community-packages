@@ -1,0 +1,277 @@
+<bindings>
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/a.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/function.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="a,j,a,x,o,p,t,i,o,n,s,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/ajax-options.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="a,j,a,x,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/ajax-periodicalupdater.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="a,j,a,x,a,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/ajax-request.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="a,j,a,x,b,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/ajax-updater.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="c,l,a,s,s,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/class-create.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="c,l,a,s,s,a,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/create-class-alt.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,f,f,e,c,t,o,p,t,i,o,n,s,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/effect-options.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,f,f,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/effect-appear.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,f,f,a,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/effect-blinddown.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,f,f,b,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/effect-blindup.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,f,f,c,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/effect-dropout.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,f,f,d,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/effect-fade.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,f,f,e,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/effect-fold.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,f,f,f,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/effect-grow.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,f,f,g,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/effect-highlight.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,f,f,h,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/effect-puff.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,f,f,i,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/effect-pulsate.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,f,f,j,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/effect-shake.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,f,f,k,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/effect-shrink.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,f,f,l,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/effect-slidedown.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,f,f,m,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/effect-slideup.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,f,f,n,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/effect-squish.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,f,f,o,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/effect-switchoff.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="a,l,l,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/enum-all.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="a,n,y,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/enum-any.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="c,o,l,l,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/enum-collect.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="d,e,t,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/enum-detect.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,a,c,h,e,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/enum-each-element.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,a,c,h,i,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/enum-each-index.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,a,c,h,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/enum-each.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="i,n,j,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/enum-inject.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="i,n,v,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/enum-invoke.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="m,a,p,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/enum-map.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="r,e,j,e,c,t,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/enum-reject.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,v,o,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/event-observe.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="f,i,e,l,d,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/field-activate.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="f,i,e,l,d,a,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/field-clear.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="f,i,e,l,d,b,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/field-focus.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="f,i,e,l,d,c,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/field-present.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="f,i,e,l,d,d,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/field-select.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="f,o,r,m,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/form-disable.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="f,o,r,m,a,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/form-enable.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="f,o,r,m,b,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/form-findfirstelement.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="f,o,r,m,c,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/form-focusfirstelement.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="f,o,r,m,d,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/form-getelements.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="f,o,r,m,e,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/form-getinputs.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="f,o,r,m,f,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/form-serialize.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="b,i,n,d,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/function-bind.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="b,i,n,d,a,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/function-bindaseventlistener.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="i,n,s,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/insertion-after.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="i,n,s,a,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/insertion-before.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="i,n,s,b,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/insertion-bottom.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="i,n,s,c,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/insertion-top.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="e,x,t,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/object-extend.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="o,p,t,i,o,n,s,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/options.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="p,o,s,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/position-absolutize.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="p,o,s,a,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/position-clone.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="p,o,s,b,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/position-cumulativeoffset.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="p,o,s,c,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/position-offsetparent.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="p,o,s,d,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/position-overlap.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="p,o,s,e,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/position-page.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="p,o,s,f,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/position-positionedoffset.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="p,o,s,g,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/position-prepare.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="p,o,s,h,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/position-realoffset.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="p,o,s,i,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/position-relativize.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="p,o,s,j,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/position-within.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+
+    <binding key="p,o,s,k,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/position-withinincludingscrolloffsets.sublime-snippet'">
+        <context name="selector" value="source.js.prototype"/>
+    </binding>
+</bindings>

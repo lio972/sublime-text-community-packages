@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[captures = {
+	1 = { name = '$1'; };
+};]]></content>
+</snippet>

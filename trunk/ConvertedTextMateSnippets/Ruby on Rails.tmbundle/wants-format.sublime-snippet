@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[wants.${1:js|xml|html}${2: { $15 \}}]]></content>
+</snippet>

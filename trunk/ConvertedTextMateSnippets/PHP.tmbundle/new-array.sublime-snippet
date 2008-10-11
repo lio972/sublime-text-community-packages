@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[\$${1:arrayName} = array('$2' => $3${4:,} $15);]]></content>
+</snippet>

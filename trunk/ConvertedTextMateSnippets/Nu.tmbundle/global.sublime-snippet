@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[(global ${1:symbol} ${2:value})$15]]></content>
+</snippet>

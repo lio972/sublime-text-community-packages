@@ -1,0 +1,8 @@
+
+<snippet>
+    <content><![CDATA[switch(${1:value}) {
+	case ${2:CASE}:
+		$3
+	break$15
+}]]></content>
+</snippet>

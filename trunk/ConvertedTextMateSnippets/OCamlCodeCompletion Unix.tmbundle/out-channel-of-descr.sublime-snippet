@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Unix.out_channel_of_descr ${1:file_descr}$15]]></content>
+</snippet>

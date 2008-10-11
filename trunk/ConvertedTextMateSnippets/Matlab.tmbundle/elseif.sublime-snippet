@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[elseif ${1:condition}
+	$15]]></content>
+</snippet>

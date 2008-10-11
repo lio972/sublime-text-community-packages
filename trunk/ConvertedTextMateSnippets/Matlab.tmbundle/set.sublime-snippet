@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[set(${1:get(${2:gca},'${3:PropertyName}')},'${4:PropertyName}',${5:PropertyValue});]]></content>
+</snippet>

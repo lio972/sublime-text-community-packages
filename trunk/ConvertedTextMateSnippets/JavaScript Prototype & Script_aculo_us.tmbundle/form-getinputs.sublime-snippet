@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Form.getInputs(${1:form}, ${2:typeName}, ${3:name});]]></content>
+</snippet>

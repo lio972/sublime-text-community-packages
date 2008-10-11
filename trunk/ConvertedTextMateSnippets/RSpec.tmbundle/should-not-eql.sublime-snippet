@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[${1:target}.should_not eql(${2:value})
+$15]]></content>
+</snippet>

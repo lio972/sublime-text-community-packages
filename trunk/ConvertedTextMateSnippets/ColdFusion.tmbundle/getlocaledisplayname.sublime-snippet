@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[GetLocaleDisplayName(${1:[locale]}${2: [, inLocale]})$15]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ListQualify(${1:list}, ${2:qualifier}${3: [, delimiters ]}${4: [, elements ]})$15]]></content>
+</snippet>

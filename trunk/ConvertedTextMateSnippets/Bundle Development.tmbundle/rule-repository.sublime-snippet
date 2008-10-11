@@ -1,0 +1,8 @@
+
+<snippet>
+    <content><![CDATA[${1:rule_name} = {
+	name = '${2:name}';
+	begin = '$3';
+	end = '$4';
+};]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Str.replace_matched ${1:repl} ${2:str}$15]]></content>
+</snippet>

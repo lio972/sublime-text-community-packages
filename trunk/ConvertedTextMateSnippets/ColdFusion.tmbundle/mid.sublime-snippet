@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Mid(${1:string}, ${2:start}, ${3:count})$15]]></content>
+</snippet>

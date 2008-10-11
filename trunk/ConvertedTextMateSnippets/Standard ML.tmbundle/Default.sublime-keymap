@@ -1,0 +1,29 @@
+<bindings>
+    <binding key="f,u,n,c,t,o,r,tab" command="insertSnippet 'Packages/Standard ML.tmbundle/base-functor.sublime-snippet'">
+        <context name="selector" value="source.ml"/>
+    </binding>
+
+    <binding key="f,s,tab" command="insertSnippet 'Packages/Standard ML.tmbundle/base-funsig.sublime-snippet'">
+        <context name="selector" value="source.ml"/>
+    </binding>
+
+    <binding key="s,i,g,tab" command="insertSnippet 'Packages/Standard ML.tmbundle/base-signature.sublime-snippet'">
+        <context name="selector" value="source.ml, source.sig"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,tab" command="insertSnippet 'Packages/Standard ML.tmbundle/base-structure.sublime-snippet'">
+        <context name="selector" value="source.ml"/>
+    </binding>
+
+    <binding key="i,t,o,s,tab" command="insertSnippet 'Packages/Standard ML.tmbundle/itos.sublime-snippet'">
+        <context name="selector" value="source.ml"/>
+    </binding>
+
+    <binding key="r,b,m,tab" command="insertSnippet 'Packages/Standard ML.tmbundle/redblackmap.sublime-snippet'">
+        <context name="selector" value="source.ml"/>
+    </binding>
+
+    <binding key="r,b,s,tab" command="insertSnippet 'Packages/Standard ML.tmbundle/redblackset.sublime-snippet'">
+        <context name="selector" value="source.ml"/>
+    </binding>
+</bindings>

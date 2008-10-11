@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[<cfimport taglib = "$1" prefix = "$2">$15]]></content>
+</snippet>

@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[T${1:ClassName} = class
+	$15
+end;]]></content>
+</snippet>

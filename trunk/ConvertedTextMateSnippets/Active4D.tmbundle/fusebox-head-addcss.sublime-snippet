@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[fusebox.head.addCSS(\$fusebox; "${1:stylesheet}.css$15")]]></content>
+</snippet>

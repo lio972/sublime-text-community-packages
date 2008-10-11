@@ -1,0 +1,1681 @@
+<bindings>
+    <binding key="a,b,s,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/abs.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,c,o,s,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/acos.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,d,d,s,o,a,p,r,e,q,u,e,s,t,h,e,a,d,e,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/addsoaprequestheader.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,d,d,s,o,a,p,r,e,s,p,o,n,s,e,h,e,a,d,e,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/addsoapresponseheader.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,r,r,a,y,a,p,p,e,n,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/arrayappend.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,r,r,a,y,a,v,g,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/arrayavg.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,r,r,a,y,c,l,e,a,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/arraycear.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,r,r,a,y,d,e,l,e,t,e,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/arraydeleteat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,r,r,a,y,i,n,s,e,r,t,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/arrayinsertat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,r,r,a,y,i,s,e,m,p,t,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/arrayisempty.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,r,r,a,y,l,e,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/arraylen.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,r,r,a,y,m,a,x,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/arraymax.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,r,r,a,y,m,i,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/arraymin.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,r,r,a,y,n,e,w,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/arraynew.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,r,r,a,y,p,r,e,p,e,n,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/arrayprepend.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,r,r,a,y,r,e,s,i,z,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/arrayresize.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,r,r,a,y,s,e,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/arrayset.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,r,r,a,y,s,o,r,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/arraysort.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,r,r,a,y,s,u,m,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/arraysum.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,r,r,a,y,s,w,a,p,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/arrayswap.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,r,r,a,y,t,o,l,i,s,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/arraytolist.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,s,c,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/asc.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,s,i,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/asin.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="a,t,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/atn.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="b,i,n,a,r,y,d,e,c,o,d,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/binarydecode.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="b,i,n,a,r,y,e,n,c,o,d,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/binaryencode.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="b,i,t,a,n,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/bitand.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="b,i,t,m,a,s,k,c,l,e,a,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/bitmaskclear.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="b,i,t,m,a,s,k,r,e,a,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/bitmaskread.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="b,i,t,m,a,s,k,s,e,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/bitmaskset.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="b,i,t,n,o,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/bitnot.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="b,i,t,o,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/bitor.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="b,i,t,s,h,l,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/bitshln.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="b,i,t,s,h,r,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/bitshrn.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="b,i,t,x,o,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/bitxor.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,e,i,l,i,n,g,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/ceiling.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,a,b,o,r,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfabort.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,a,p,p,l,e,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfapplet.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,a,p,p,l,i,c,a,t,i,o,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfapplication.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,a,r,g,u,m,e,n,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfargument.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,a,s,s,o,c,i,a,t,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfassociate.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,b,r,e,a,k,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfbreak.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,c,a,c,h,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfcache.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,c,a,l,e,n,d,a,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfcalendar.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,c,a,s,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfcase.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,c,a,t,c,h,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfcatch.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,c,h,a,r,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfchart.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,c,h,a,r,t,d,a,t,a,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfchartdata.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,c,h,a,r,t,s,e,r,i,e,s,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfchartseries.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,c,o,l,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfcol.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,c,o,l,l,e,c,t,i,o,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfcollection.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,c,o,m,p,o,n,e,n,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfcomponent.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,c,o,n,t,e,n,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfcontent.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,c,o,o,k,i,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfcookie.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,d,i,r,e,c,t,o,r,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfdirectory.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,d,o,c,u,m,e,n,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfdocument.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,d,o,c,u,m,e,n,t,i,t,e,m,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfdocumentitem.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,d,o,c,u,m,e,n,t,s,e,c,t,i,o,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfdocumentsection.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,d,u,m,p,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfdump.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,e,r,r,o,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cferror.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,e,x,e,c,u,t,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfexecute.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,e,x,i,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfexit.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,f,i,l,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cffile-append.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,f,i,l,e,a,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cffile-copy.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,f,i,l,e,b,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cffile-delete.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,f,i,l,e,c,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cffile-move.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,f,i,l,e,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cffile-read.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,f,i,l,e,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cffile-readbinary.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,f,i,l,e,f,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cffile-rename.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,f,i,l,e,g,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cffile-upload.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,f,i,l,e,h,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cffile-write.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,f,l,u,s,h,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfflush.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,f,o,r,m,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfform.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,f,o,r,m,g,r,o,u,p,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfformgroup.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,f,o,r,m,i,t,e,m,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfformitem.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,f,t,p,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfftp.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,f,u,n,c,t,i,o,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cffunction.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,g,r,i,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfgrid.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,g,r,i,d,c,o,l,u,m,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfgridcolumn.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,g,r,i,d,r,o,w,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfgridrow.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,g,r,i,d,u,p,d,a,t,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfgridupdate.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,h,e,a,d,e,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfheader.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,h,t,m,l,h,e,a,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfhtmlhead.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,h,t,t,p,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfhttp.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,h,t,t,p,p,a,r,a,m,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfhttpparam.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,i,f,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfif-else.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,i,f,a,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfif-elseif-else.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,i,f,b,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfif.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,i,m,p,o,r,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfimport.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,i,n,c,l,u,d,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfinclude.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,i,n,d,e,x,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfindex.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,i,n,p,u,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfinput.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,i,n,s,e,r,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfinsert.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,i,n,v,o,k,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfinvoke.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,i,n,v,o,k,e,a,r,g,u,m,e,n,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfinvokeargument.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,l,d,a,p,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfldap.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,l,o,c,a,t,i,o,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cflocation.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,l,o,c,k,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cflock.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,l,o,g,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cflog.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,l,o,g,i,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cflogin.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,l,o,o,p,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfloop-com-collection-or-structure.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,l,o,o,p,a,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfloop-conditional-loop.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,l,o,o,p,b,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfloop-date-or-time-loop.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,l,o,o,p,c,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfloop-index-loop.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,l,o,o,p,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfloop-list-or-file-loop.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,l,o,o,p,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfloop-query-loop.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,m,a,i,l,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfmail-all-attributes.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,m,a,i,l,a,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfmail.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,m,a,i,l,p,a,r,a,m,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfmailparam.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,m,a,i,l,p,a,r,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfmailpart.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,m,o,d,u,l,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfmodule.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,n,t,a,u,t,h,e,n,t,i,c,a,t,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfntauthenticate.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,o,b,j,e,c,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfobject-com.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,o,b,j,e,c,t,a,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfobject-component.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,o,b,j,e,c,t,b,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfobject-corba.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,o,b,j,e,c,t,c,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfobject-java.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,o,b,j,e,c,t,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfobject-web-service.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,o,b,j,e,c,t,c,a,c,h,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfobjectcache.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,o,u,t,p,u,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfoutput-long.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,o,u,t,p,u,t,a,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfoutput-short.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,p,a,r,a,m,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfparam.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,p,o,p,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfpop.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,p,r,o,c,e,s,s,i,n,g,d,i,r,e,c,t,i,v,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfprocessingdirective.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,p,r,o,c,p,a,r,a,m,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfprocparam.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,p,r,o,c,r,e,s,u,l,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfprocresult.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,p,r,o,p,e,r,t,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfproperty.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,q,u,e,r,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfquery-delete-sql.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,q,u,e,r,y,a,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfquery-insert-sql.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,q,u,e,r,y,b,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfquery-long-all-attributes.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,q,u,e,r,y,c,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfquery-select-sql.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,q,u,e,r,y,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfquery-short.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,q,u,e,r,y,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfquery-update-sql.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,q,u,e,r,y,p,a,r,a,m,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfqueryparam.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,r,e,g,i,s,t,r,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfregistry-delete.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,r,e,g,i,s,t,r,y,a,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfregistry-get-all.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,r,e,g,i,s,t,r,y,b,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfregistry-get.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,r,e,g,i,s,t,r,y,c,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfregistry-set.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,r,e,p,o,r,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfreport.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,r,e,p,o,r,t,p,a,r,a,m,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfreportparam.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,r,e,t,h,r,o,w,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfrethrow.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,r,e,t,u,r,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfreturn.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,s,a,v,e,c,o,n,t,e,n,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfsavecontent.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,s,c,h,e,d,u,l,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfschedule.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,s,c,r,i,p,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfscript.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,s,e,a,r,c,h,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfsearch.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,s,e,l,e,c,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfselect.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,s,e,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfset.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,s,e,t,t,i,n,g,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfsetting.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,s,i,l,e,n,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfsilent.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,s,l,i,d,e,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfslider.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,s,t,o,r,e,d,p,r,o,c,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfstoredproc.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,s,w,i,t,c,h,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfswitch.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,t,a,b,l,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cftable.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,t,e,x,t,a,r,e,a,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cftextarea.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,t,h,r,o,w,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfthrow.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,t,i,m,e,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cftimer.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,t,r,a,c,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cftrace.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,t,r,a,n,s,a,c,t,i,o,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cftransaction.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,t,r,e,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cftree.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,t,r,e,e,i,t,e,m,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cftreeitem.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,t,r,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cftry.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,u,p,d,a,t,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfupdate.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,w,d,d,x,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfwddx.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,f,x,m,l,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cfxml.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,h,a,r,s,e,t,d,e,c,o,d,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/charsetdecode.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,h,a,r,s,e,t,e,n,c,o,d,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/charsetencode.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,h,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/chr.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,j,u,s,t,i,f,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cjustify.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,o,m,p,a,r,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/compare.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,o,m,p,a,r,e,n,o,c,a,s,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/comparenocase.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,o,s,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/cos.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,r,e,a,t,e,d,a,t,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/createdate.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,r,e,a,t,e,d,a,t,e,t,i,m,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/createdatetime.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,r,e,a,t,e,o,d,b,c,d,a,t,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/createodbcdate.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,r,e,a,t,e,o,d,b,c,d,a,t,e,t,i,m,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/createodbcdatetime.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,r,e,a,t,e,o,d,b,c,t,i,m,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/createodbctime.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,r,e,a,t,e,t,i,m,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/createtime.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,r,e,a,t,e,t,i,m,e,s,p,a,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/createtimespan.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="c,r,e,a,t,e,u,u,i,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/createuuid.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,a,t,e,a,d,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/dateadd.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,a,t,e,c,o,m,p,a,r,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/datecompare.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,a,t,e,c,o,n,v,e,r,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/dateconvert.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,a,t,e,d,i,f,f,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/datediff.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,a,t,e,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/dateformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,a,t,e,p,a,r,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/datepart.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,a,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/day.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,a,y,o,f,w,e,e,k,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/dayofweek.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,a,y,o,f,w,e,e,k,a,s,s,t,r,i,n,g,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/dayofweekasstring.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,a,y,o,f,y,e,a,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/dayofyear.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,a,y,s,i,n,m,o,n,t,h,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/daysinmonth.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,a,y,s,i,n,y,e,a,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/daysinyear.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/de.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,e,c,i,m,a,l,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/decimalformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,e,c,r,e,m,e,n,t,v,a,l,u,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/decrementvalue.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,e,c,r,y,p,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/decrypt.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,e,c,r,y,p,t,b,i,n,a,r,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/decryptbinary.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,e,l,e,t,e,c,l,i,e,n,t,v,a,r,i,a,b,l,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/deleteclientvariable.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,i,r,e,c,t,o,r,y,e,x,i,s,t,s,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/directoryexists.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,o,l,l,a,r,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/dollarformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="d,u,p,l,i,c,a,t,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/duplicate.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="e,n,c,r,y,p,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/encrypt.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="e,n,c,r,y,p,t,b,i,n,a,r,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/encryptbinary.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="e,v,a,l,u,a,t,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/evaluate.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="e,x,p,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/exp.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="e,x,p,a,n,d,p,a,t,h,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/expandpath.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="f,i,l,e,e,x,i,s,t,s,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/fileexists.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="f,i,n,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/find.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="f,i,n,d,n,o,c,a,s,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/findnocase.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="f,i,n,d,o,n,e,o,f,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/findoneof.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="f,i,r,s,t,d,a,y,o,f,m,o,n,t,h,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/firstdayofmonth.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="f,i,x,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/fix.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/form-variable.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="f,o,r,m,a,t,b,a,s,e,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/formatbasen.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,n,e,r,a,t,e,s,e,c,r,e,t,k,e,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/generatesecretkey.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,a,u,t,h,u,s,e,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getauthuser.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,b,a,s,e,t,a,g,d,a,t,a,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getbasetagdata.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,b,a,s,e,t,a,g,l,i,s,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getbasetaglist.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,b,a,s,e,t,e,m,p,l,a,t,e,p,a,t,h,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getbasetemplatepath.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,c,l,i,e,n,t,v,a,r,i,a,b,l,e,s,l,i,s,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getclientvariableslist.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,c,o,n,t,e,x,t,r,o,o,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getcontextroot.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,c,u,r,r,e,n,t,t,e,m,p,l,a,t,e,p,a,t,h,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getcurrenttemplatepath.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,d,i,r,e,c,t,o,r,y,f,r,o,m,p,a,t,h,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getdirectoryfrompath.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,e,n,c,o,d,i,n,g,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getencoding.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,e,x,c,e,p,t,i,o,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getexception.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,f,i,l,e,f,r,o,m,p,a,t,h,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getfilefrompath.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,f,u,n,c,t,i,o,n,l,i,s,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getfunctionlist.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,g,a,t,e,w,a,y,h,e,l,p,e,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getgatewayhelper.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,h,t,t,p,r,e,q,u,e,s,t,d,a,t,a,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/gethttprequestdata.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,h,t,t,p,t,i,m,e,s,t,r,i,n,g,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/gethttptimestring.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,k,s,e,r,v,e,r,d,o,c,c,o,u,n,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getk2serverdoccount.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,k,s,e,r,v,e,r,d,o,c,c,o,u,n,t,l,i,m,i,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getk2serverdoccountlimit.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,l,o,c,a,l,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getlocale.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,l,o,c,a,l,e,d,i,s,p,l,a,y,n,a,m,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getlocaledisplayname.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,l,o,c,a,l,h,o,s,t,i,p,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getlocalhostip.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,m,e,t,a,d,a,t,a,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getmetadata.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,m,e,t,r,i,c,d,a,t,a,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getmetricdata.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,p,a,g,e,c,o,n,t,e,x,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getpagecontext.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,p,r,o,f,i,l,e,s,e,c,t,i,o,n,s,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getprofilesections.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,p,r,o,f,i,l,e,s,t,r,i,n,g,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getprofilestring.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,s,o,a,p,r,e,q,u,e,s,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getsoaprequest.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,s,o,a,p,r,e,q,u,e,s,t,h,e,a,d,e,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getsoaprequestheader.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,s,o,a,p,r,e,s,p,o,n,s,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getsoapresponse.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,s,o,a,p,r,e,s,p,o,n,s,e,h,e,a,d,e,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/getsoapresponseheader.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,t,e,m,p,d,i,r,e,c,t,o,r,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/gettempdirectory.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,t,e,m,p,f,i,l,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/gettempfile.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,t,i,c,k,c,o,u,n,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/gettickcount.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,t,i,m,e,z,o,n,e,i,n,f,o,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/gettimezoneinfo.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="g,e,t,t,o,k,e,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/gettoken.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="h,a,s,h,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/hash.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="h,o,u,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/hour.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="h,t,m,l,c,o,d,e,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/htmlcodeformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="h,t,m,l,e,d,i,t,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/htmleditformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,i,f,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/iif.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,n,c,r,e,m,e,n,t,v,a,l,u,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/incrementvalue.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,n,p,u,t,b,a,s,e,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/inputbasen.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,n,s,e,r,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/insert.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,n,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/int.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,a,r,r,a,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isarray.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,b,i,n,a,r,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isbinary.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,b,o,o,l,e,a,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isboolean.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,c,u,s,t,o,m,f,u,n,c,t,i,o,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/iscustomfunction.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,d,a,t,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isdate.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,d,e,b,u,g,m,o,d,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isdebugmode.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,d,e,f,i,n,e,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isdefined-2.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isdefined.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,k,s,e,r,v,e,r,a,b,r,o,k,e,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isk2serverabroker.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,k,s,e,r,v,e,r,d,o,c,c,o,u,n,t,e,x,c,e,e,d,e,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isk2serverdoccountexceeded.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,k,s,e,r,v,e,r,o,n,l,i,n,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isk2serveronline.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,l,e,a,p,y,e,a,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isleapyear.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,l,o,c,a,l,h,o,s,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/islocalhost.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,n,u,m,e,r,i,c,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isnumeric.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,n,u,m,e,r,i,c,d,a,t,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isnumericdate.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,o,b,j,e,c,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isobject.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,q,u,e,r,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isquery.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,s,i,m,p,l,e,v,a,l,u,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/issimplevalue.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,s,o,a,p,r,e,q,u,e,s,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/issoaprequest.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,s,t,r,u,c,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isstruct.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,u,s,e,r,i,n,r,o,l,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isuserinrole.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,v,a,l,i,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isvalid.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,w,d,d,x,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/iswddx.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,x,m,l,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isxml.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,x,m,l,a,t,t,r,i,b,u,t,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isxmlattribute.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,x,m,l,d,o,c,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isxmldoc.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,x,m,l,e,l,e,m,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isxmlelem.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,x,m,l,n,o,d,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isxmlnode.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="i,s,x,m,l,r,o,o,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/isxmlroot.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="j,a,v,a,c,a,s,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/javacast.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="j,s,s,t,r,i,n,g,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/jsstringformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,c,a,s,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/lcase.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,e,f,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/left.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,e,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/len.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,a,p,p,e,n,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listappend.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,c,h,a,n,g,e,d,e,l,i,m,s,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listchangedelims.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,c,o,n,t,a,i,n,s,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listcontains.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,c,o,n,t,a,i,n,s,n,o,c,a,s,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listcontainsnocase.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,d,e,l,e,t,e,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listdeleteat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,f,i,n,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listfind.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,f,i,n,d,n,o,c,a,s,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listfindnocase.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,f,i,r,s,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listfirst.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,g,e,t,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listgetat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,i,n,s,e,r,t,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listinsertat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,l,a,s,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listlast.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,l,e,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listlen.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,p,r,e,p,e,n,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listprepend.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,q,u,a,l,i,f,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listqualify.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,r,e,s,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listrest.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,s,e,t,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listsetat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,s,o,r,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listsort.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,t,o,a,r,r,a,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listtoarray.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,v,a,l,u,e,c,o,u,n,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listvaluecount.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,i,s,t,v,a,l,u,e,c,o,u,n,t,n,o,c,a,s,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/listvaluecountnocase.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,j,u,s,t,i,f,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/ljustify.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,o,g,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/log.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,o,g,a,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/log10.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,s,c,u,r,r,e,n,c,y,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/lscurrencyformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,s,d,a,t,e,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/lsdateformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,s,e,u,r,o,c,u,r,r,e,n,c,y,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/lseurocurrencyformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,s,i,s,c,u,r,r,e,n,c,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/lsiscurrency.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,s,i,s,d,a,t,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/lsisdate.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,s,i,s,n,u,m,e,r,i,c,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/lsisnumeric.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,s,n,u,m,b,e,r,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/lsnumberformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,s,p,a,r,s,e,c,u,r,r,e,n,c,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/lsparsecurrency.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,s,p,a,r,s,e,d,a,t,e,t,i,m,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/lsparsedatetime.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,s,p,a,r,s,e,e,u,r,o,c,u,r,r,e,n,c,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/lsparseeurocurrency.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,s,p,a,r,s,e,n,u,m,b,e,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/lsparsenumber.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,s,t,i,m,e,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/lstimeformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="l,t,r,i,m,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/ltrim.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="m,a,x,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/max.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="m,i,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/mid.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="m,i,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/min.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="m,i,n,u,t,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/minute.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="m,o,n,t,h,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/month.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="m,o,n,t,h,a,s,s,t,r,i,n,g,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/monthasstring.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="n,o,w,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/now.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="n,u,m,b,e,r,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/numberformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="p,a,r,a,g,r,a,p,h,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/paragraphformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="p,a,r,s,e,d,a,t,e,t,i,m,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/parsedatetime.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="p,i,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/pi.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="p,r,e,s,e,r,v,e,s,i,n,g,l,e,q,u,o,t,e,s,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/preservesinglequotes.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="q,u,a,r,t,e,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/quarter.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="q,u,e,r,y,a,d,d,c,o,l,u,m,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/queryaddcolumn.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="q,u,e,r,y,a,d,d,r,o,w,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/queryaddrow.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="q,u,e,r,y,n,e,w,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/querynew.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="q,u,e,r,y,s,e,t,c,e,l,l,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/querysetcell.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="q,u,o,t,e,d,v,a,l,u,e,l,i,s,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/quotedvaluelist.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,a,n,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/rand.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,a,n,d,o,m,i,z,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/randomize.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,a,n,d,r,a,n,g,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/randrange.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,e,f,i,n,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/refind.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,e,f,i,n,d,n,o,c,a,s,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/refindnocase.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,e,l,e,a,s,e,c,o,m,o,b,j,e,c,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/releasecomobject.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,e,m,o,v,e,c,h,a,r,s,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/removechars.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,e,p,e,a,t,s,t,r,i,n,g,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/repeatstring.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,e,p,l,a,c,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/replace.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,e,p,l,a,c,e,l,i,s,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/replacelist.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,e,p,l,a,c,e,n,o,c,a,s,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/replacenocase.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,e,r,e,p,l,a,c,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/rereplace.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,e,r,e,p,l,a,c,e,n,o,c,a,s,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/rereplacenocase.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,e,v,e,r,s,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/reverse.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,i,g,h,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/right.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,j,u,s,t,i,f,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/rjustify.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,o,u,n,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/round.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="r,t,r,i,m,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/rtrim.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,e,c,o,n,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/second.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,e,n,d,g,a,t,e,w,a,y,m,e,s,s,a,g,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/sendgatewaymessage.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,e,t,e,n,c,o,d,i,n,g,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/setencoding.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,e,t,l,o,c,a,l,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/setlocale.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,e,t,p,r,o,f,i,l,e,s,t,r,i,n,g,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/setprofilestring.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,e,t,v,a,r,i,a,b,l,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/setvariable.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,g,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/sgn.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,i,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/sin.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,p,a,n,e,x,c,l,u,d,i,n,g,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/spanexcluding.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,p,a,n,i,n,c,l,u,d,i,n,g,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/spanincluding.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,q,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/sqr.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,i,p,c,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/stripcr.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,a,p,p,e,n,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/structappend.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,c,l,e,a,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/structclear.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,c,o,p,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/structcopy.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,c,o,u,n,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/structcount.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,d,e,l,e,t,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/structdelete.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,f,i,n,d,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/structfind.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,f,i,n,d,k,e,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/structfindkey.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,f,i,n,d,v,a,l,u,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/structfindvalue.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,g,e,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/structget.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,i,n,s,e,r,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/structinsert.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,i,s,e,m,p,t,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/structisempty.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,k,e,y,a,r,r,a,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/structkeyarray.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,k,e,y,e,x,i,s,t,s,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/structkeyexists.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,k,e,y,l,i,s,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/structkeylist.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,n,e,w,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/structnew.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,s,o,r,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/structsort.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="s,t,r,u,c,t,u,p,d,a,t,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/structupdate.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="t,a,n,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/tan.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="t,i,m,e,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/timeformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="t,o,b,a,s,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/tobase64.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="t,o,b,i,n,a,r,y,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/tobinary.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="t,o,s,c,r,i,p,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/toscript.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="t,o,s,t,r,i,n,g,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/tostring.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="t,r,i,m,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/trim.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="u,c,a,s,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/ucase.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/url-variable.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="u,r,l,d,e,c,o,d,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/urldecode.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="u,r,l,e,n,c,o,d,e,d,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/urlencodedformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="u,r,l,s,e,s,s,i,o,n,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/urlsessionformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="v,a,l,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/val.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="v,a,l,u,e,l,i,s,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/valuelist.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="w,e,e,k,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/week.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="w,r,a,p,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/wrap.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="w,r,i,t,e,o,u,t,p,u,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/writeoutput.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="x,m,l,c,h,i,l,d,p,o,s,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/xmlchildpos.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="x,m,l,e,l,e,m,n,e,w,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/xmlelemnew.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="x,m,l,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/xmlformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="x,m,l,g,e,t,n,o,d,e,t,y,p,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/xmlgetnodetype.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="x,m,l,n,e,w,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/xmlnew.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="x,m,l,p,a,r,s,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/xmlparse.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="x,m,l,s,e,a,r,c,h,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/xmlsearch.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="x,m,l,t,r,a,n,s,f,o,r,m,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/xmltransform.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="x,m,l,v,a,l,i,d,a,t,e,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/xmlvalidate.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="y,e,a,r,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/year.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+
+    <binding key="y,e,s,n,o,f,o,r,m,a,t,tab" command="insertSnippet 'Packages/ColdFusion.tmbundle/yesnoformat.sublime-snippet'">
+        <context name="selector" value="text.html.cfm"/>
+    </binding>
+</bindings>

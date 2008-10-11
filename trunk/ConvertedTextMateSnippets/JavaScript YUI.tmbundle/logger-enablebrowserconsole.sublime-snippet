@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${YUI_LOGGER:YAHOO.widget.Logger}.enableBrowserConsole();]]></content>
+</snippet>

@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Line(${1:p1}, ${2:p2}, ${3:image}, ${4:color}, ${5:width});]]></content>
+</snippet>

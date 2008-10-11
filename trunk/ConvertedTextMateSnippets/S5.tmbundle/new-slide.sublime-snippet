@@ -1,0 +1,15 @@
+
+<snippet>
+    <content><![CDATA[✂------✂------✂------✂------✂------✂------✂------✂------✂------✂------
+
+${1:Heading}
+${1/(.)|(?m:\n.*)/(?1:=)/g}
+${2:Subheading}
+${2/(.)|(?m:\n.*)/(?1:-)/g}
+
+${3:* Point One
+* Point Two
+  * Subpoint
+* Point Three}
+]]></content>
+</snippet>

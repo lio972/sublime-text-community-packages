@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[output ${1:out_channel} ${2:buf} ${3:pos} ${4:len}$15]]></content>
+</snippet>

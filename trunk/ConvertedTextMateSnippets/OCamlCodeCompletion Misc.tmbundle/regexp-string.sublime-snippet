@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Str.regexp_string ${1:reg_str}$15]]></content>
+</snippet>

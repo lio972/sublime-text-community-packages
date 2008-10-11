@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[render(template:"${1:name}",bean:${2:b}, var:"${3:x}")]]></content>
+</snippet>

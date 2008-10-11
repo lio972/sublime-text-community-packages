@@ -1,0 +1,1365 @@
+<bindings>
+    <binding key="B,A,period,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/16-bit-signed-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,t,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/16-bit-unsigned-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,t,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/31-bit-signed-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,t,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/32-bit-complex-float.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,t,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/32-bit-float.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,t,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/32-bit-signed-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,t,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/64-bit-complex-float.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,t,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/64-bit-float.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,t,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/64-bit-signed-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,t,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/8-bit-signed-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,t,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/8-bit-unsigned-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/abs-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/abs-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/abs-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/add-available-units.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/add-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/add-big-int-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/add-interfaces.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/add-int-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/add-int-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/add-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/add-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/allow-only.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/allow-unsafe-modules.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="E,v,e,n,t,period,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/always.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/approx-num-exp.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/approx-num-fix.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/approx-ratio-exp.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/approx-ratio-fix.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="a,r,i,t,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/arith-status.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/array1-of-genarray.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/array2-of-genarray.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/array3-of-genarray.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/big-int-of-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/big-int-of-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/big-int-of-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/big-int-of-string.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/blit-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="G,e,n,a,r,r,a,y,period,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/blit-3.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/blit-4.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/blit.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/bounded-full-split.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/bounded-split.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/bounded-split-delim.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="C,o,n,d,i,t,i,o,n,period,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/broadcast.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,e,r,r,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/cannot-open-dll.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/cautious-normalize-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/cautious-normalize-ratio-when-printing.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/ceiling-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/ceiling-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,k,i,n,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/char.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="E,v,e,n,t,period,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/choose.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/clear-available-units.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,b,m,period,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/close.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/compare-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/compare-big-int-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/compare-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/compare-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,k,i,n,d,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/complex32.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,k,i,n,d,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/complex64.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,e,r,r,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/corrupted-interface.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="G,e,n,a,r,r,a,y,period,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/create-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/create-3.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/create-4.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="M,u,t,e,x,period,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/create-5.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/create-6.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="T,h,r,e,a,d,period,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/create-7.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,b,m,period,D,b,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/create-if-non-existent.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="C,o,n,d,i,t,i,o,n,period,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/create.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,l,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/create-normalized-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/create-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/c-layout.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/decr-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/default-available-units.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="T,h,r,e,a,d,period,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/delay.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,n,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/denominator-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/dim.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/dim1-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/dim1.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/dim2-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/dim2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/dim3.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="G,e,n,a,r,r,a,y,period,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/dims.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/div-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,o,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/div-big-int-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,p,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/div-int-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/div-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,q,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/div-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,r,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/div-ratio-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,s,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/div-ratio-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/eq-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/eq-big-int-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/eq-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,u,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/eq-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/error-message.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="T,h,r,e,a,d,period,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/exit.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,e,r,r,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/file-not-found.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,l,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/fill-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/fill-3.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="G,e,n,a,r,r,a,y,period,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/fill.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,b,m,period,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/find.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,b,m,period,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/firstkey.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/first-chars.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,k,i,n,d,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/float32.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,k,i,n,d,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/float64.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/float-of-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/float-of-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,v,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/float-of-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,w,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/float-of-rational-string.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/floor-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,x,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/floor-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/fortran-layout.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/full-split.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/gcd-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/genarray-of-array1.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/genarray-of-array2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/genarray-of-array3.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,t,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/generalized-type.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,n,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/get-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,o,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/get-3.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,p,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/get-4.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="G,e,n,a,r,r,a,y,period,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/get.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="a,r,i,t,h,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/get-approx-printing.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="a,r,i,t,h,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/get-error-when-null-denominator.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="a,r,i,t,h,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/get-floating-precision.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="a,r,i,t,h,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/get-normalize-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="a,r,i,t,h,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/get-normalize-ratio-when-printing.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/ge-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,y,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/ge-big-int-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,l,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/ge-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,z,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/ge-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/global-replace.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/global-substitute.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/group-beginning.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/group-end.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/gt-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,A,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/gt-big-int-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/gt-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,B,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/gt-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="E,v,e,n,t,period,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/guard.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="T,h,r,e,a,d,period,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/id.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,e,r,r,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/inconsistent-import.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,n,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/incr-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/init.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,k,i,n,d,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,k,i,n,d,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/int16-signed.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,k,i,n,d,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/int16-unsigned.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,k,i,n,d,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/int32.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,k,i,n,d,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/int64.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,k,i,n,d,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/int8-signed.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,k,i,n,d,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/int8-unsigned.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,o,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/integer-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,C,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/integer-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,l,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/int-of-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,p,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/int-of-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,D,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/int-of-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,E,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/inverse-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,q,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/is-integer-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,F,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/is-integer-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/is-int-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,G,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/is-normalized-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,b,m,period,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/iter.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="T,h,r,e,a,d,period,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/join.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,q,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/kind-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,r,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/kind-3.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,s,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/kind-4.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="G,e,n,a,r,r,a,y,period,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/kind.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/last-chars.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="G,e,n,a,r,r,a,y,period,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/layout-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/layout-3.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,u,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/layout-4.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,v,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/layout.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,n,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/le-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,H,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/le-big-int-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,r,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/le-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,I,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/le-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,e,r,r,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/linking-error.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/loadfile.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/loadfile-private.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="M,u,t,e,x,period,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/lock.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,o,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/lt-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,J,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/lt-big-int-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,s,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/lt-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,K,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/lt-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,w,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/map-file-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="G,e,n,a,r,r,a,y,period,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/map-file-3.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,x,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/map-file-4.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,y,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/map-file.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/matched-group.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/matched-string.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,l,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/match-beginning.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/match-end.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,p,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/max-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/max-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,L,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/max-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,q,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/minus-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,u,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/minus-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,r,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/min-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,v,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/min-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,M,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/min-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,s,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/mod-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,w,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/mod-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/mult-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,N,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/mult-big-int-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,u,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/mult-int-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,O,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/mult-int-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,x,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/mult-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,P,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/mult-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,t,l,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/native-sized-signed-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,k,i,n,d,l,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/nativeint.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,y,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/nat-of-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,Q,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/nat-of-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="E,v,e,n,t,period,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/new-channel.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,b,m,period,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/nextkey.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,R,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/normalize-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,e,r,r,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/not-a-bytecode-file.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="G,e,n,a,r,r,a,y,period,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/nth-dim.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,S,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/null-denominator.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,T,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/numerator-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,v,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/num-digits-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="G,e,n,a,r,r,a,y,period,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/num-dims.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,z,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/num-of-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,A,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/num-of-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,B,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/num-of-nat.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,C,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/num-of-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,D,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/num-of-string.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,z,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/of-array-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,A,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/of-array-3.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,B,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/of-array.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,b,m,period,D,b,m,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/open-for-reading-and-writing.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,b,m,period,D,b,m,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/open-read-only.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,b,m,period,D,b,m,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/open-write-only.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,b,m,period,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/opendbm.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="E,v,e,n,t,period,d,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/poll.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,w,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/power-big-int-positive-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,x,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/power-big-int-positive-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,y,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/power-int-positive-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,z,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/power-int-positive-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,E,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/power-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,U,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/power-ratio-positive-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,V,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/power-ratio-positive-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,A,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/pred-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,F,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/pred-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/prohibit.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,B,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/quomod-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,n,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/quote.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,G,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/quo-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,W,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/ratio-of-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,X,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/ratio-of-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,Y,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/ratio-of-nat.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,H,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/ratio-of-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="r,a,t,Z,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/ratio-of-string.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="E,v,e,n,t,period,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/receive.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,o,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/regexp.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,p,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/regexp-case-fold.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,q,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/regexp-string.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,r,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/regexp-string-case-fold.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,b,m,period,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/remove.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,b,m,period,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/replace.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,s,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/replace-first.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,t,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/replace-matched.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/report-sign-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/reshape.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/reshape-1.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/reshape-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="B,A,period,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/reshape-3.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,I,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/round-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/round-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,u,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/search-backward.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,v,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/search-forward.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="E,v,e,n,t,period,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/select-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="T,h,r,e,a,d,period,e,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/select.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="T,h,r,e,a,d,period,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/self.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="E,v,e,n,t,period,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/send.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="G,e,n,a,r,r,a,y,period,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/set-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,C,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/set-3.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,D,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/set-4.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,E,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/set.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="a,r,i,t,h,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/set-approx-printing.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="a,r,i,t,h,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/set-error-when-null-denominator.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="a,r,i,t,h,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/set-floating-precision.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="a,r,i,t,h,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/set-normalize-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="a,r,i,t,h,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/set-normalize-ratio-when-printing.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="C,o,n,d,i,t,i,o,n,period,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/signal.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,C,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sign-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,J,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sign-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sign-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,F,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/slice-left-c-layout-only-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="G,e,n,a,r,r,a,y,period,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/slice-left-c-layout-only.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,G,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/slice-left-1-c-layout-only.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,H,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/slice-left-2-c-layout-only.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,I,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/slice-right-fortran-layout-only-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="G,e,n,a,r,r,a,y,period,l,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/slice-right-fortran-layout-only.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,J,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/slice-right-1-fortran-layout-only.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,K,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/slice-right-2-fortran-layout-only.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,w,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/split.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,x,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/split-delim.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,D,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sqrt-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,E,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/square-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,K,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/square-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/square-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,y,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/string-after.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,z,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/string-before.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,A,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/string-match.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,F,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/string-of-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,L,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/string-of-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/string-of-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,B,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/string-partial-match.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,L,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sub.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="S,t,r,period,C,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/substitute-first.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,G,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sub-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,M,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sub-left-c-layout-only-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="G,e,n,a,r,r,a,y,period,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sub-left-c-layout-only-3.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,N,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sub-left-c-layout-only.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,M,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sub-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sub-ratio.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,O,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sub-right-fortran-layout-only-2.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="A,r,r,a,y,period,P,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sub-right-fortran-layout-only-3.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="G,e,n,a,r,r,a,y,period,n,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sub-right-fortran-layout-only.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,H,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/succ-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="n,u,m,N,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/succ-num.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="E,v,e,n,t,period,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sync.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="M,u,t,e,x,period,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/try-lock.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,l,e,r,r,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/unavailable-primitive.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,e,r,r,f,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/unavailable-unit.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,l,e,r,r,a,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/undefined-global.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,l,e,r,r,b,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/uninitialized-global.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,I,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/unit-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="M,u,t,e,x,period,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/unlock.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="D,y,n,l,i,n,k,period,e,r,r,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/unsafe-file.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="C,o,n,d,i,t,i,o,n,period,c,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/wait.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="T,h,r,e,a,d,period,g,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/wait-pid.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="T,h,r,e,a,d,period,h,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/wait-read.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="T,h,r,e,a,d,period,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/wait-signal.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="T,h,r,e,a,d,period,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/wait-timed-read.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="T,h,r,e,a,d,period,k,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/wait-timed-write.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="T,h,r,e,a,d,period,l,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/wait-write.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="E,v,e,n,t,period,i,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/wrap.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="E,v,e,n,t,period,j,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/wrap-abort.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="T,h,r,e,a,d,period,m,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/yield.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+
+    <binding key="b,i,J,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/zero-big-int.sublime-snippet'">
+        <context name="selector" value="source.ocaml"/>
+    </binding>
+</bindings>

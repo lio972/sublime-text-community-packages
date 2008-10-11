@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[ylabel(${1:'${2}'});]]></content>
+</snippet>

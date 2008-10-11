@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[pos_out ${1:out_channel}$15]]></content>
+</snippet>

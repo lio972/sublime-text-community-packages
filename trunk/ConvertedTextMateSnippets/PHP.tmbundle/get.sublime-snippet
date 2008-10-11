@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[\$_GET['${1:variable}']]]></content>
+</snippet>

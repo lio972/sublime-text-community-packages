@@ -1,0 +1,7 @@
+
+<snippet>
+    <content><![CDATA[\chapter{${1:chapter name}} % (fold)
+\label{cha:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3)/g}}}
+${15:$TM_SELECTED_TEXT}
+% chapter $2 (end)]]></content>
+</snippet>

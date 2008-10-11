@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[Genarray.set ${1:genarray}${2:[|${3:idx_array;}|]} ${4:value}${5:;}$15]]></content>
+</snippet>

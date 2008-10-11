@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[eachDirMatch(${1:filter}) { ${2:${3:dir} -> }$15 }]]></content>
+</snippet>

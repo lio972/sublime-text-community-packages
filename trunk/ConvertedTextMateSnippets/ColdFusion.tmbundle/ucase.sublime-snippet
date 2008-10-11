@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[UCase(${1:string})$15]]></content>
+</snippet>

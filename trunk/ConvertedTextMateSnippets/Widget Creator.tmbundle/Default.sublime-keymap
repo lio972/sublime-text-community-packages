@@ -1,0 +1,5 @@
+<bindings>
+    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Widget Creator.tmbundle/insert-loop-to-handle-multiple-arguments.sublime-snippet'">
+        <context name="selector" value="source.shell"/>
+    </binding>
+</bindings>

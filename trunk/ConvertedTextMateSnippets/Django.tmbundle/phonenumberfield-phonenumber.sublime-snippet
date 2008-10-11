@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[${1:FIELDNAME} = models.PhoneNumberField(${2:blank=True})]]></content>
+</snippet>

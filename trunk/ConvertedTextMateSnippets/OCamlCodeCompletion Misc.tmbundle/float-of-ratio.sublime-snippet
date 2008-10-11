@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[float_of_ratio ${1:ratio}$15]]></content>
+</snippet>

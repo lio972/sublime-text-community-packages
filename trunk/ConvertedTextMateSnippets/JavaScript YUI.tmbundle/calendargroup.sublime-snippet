@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[new ${YUI_CALGROUP:YAHOO.widget.CalendarGroup}("${1:calId}", "${2:calContainerId}"${3:, ${4:configs}});$15]]></content>
+</snippet>

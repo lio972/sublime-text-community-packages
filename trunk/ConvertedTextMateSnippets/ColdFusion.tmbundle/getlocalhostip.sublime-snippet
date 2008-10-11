@@ -1,0 +1,4 @@
+
+<snippet>
+    <content><![CDATA[GetLocalHostIP(${1:})$15]]></content>
+</snippet>

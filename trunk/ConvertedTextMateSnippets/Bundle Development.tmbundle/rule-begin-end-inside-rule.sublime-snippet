@@ -1,0 +1,5 @@
+
+<snippet>
+    <content><![CDATA[begin = '$1';
+end = '$2';]]></content>
+</snippet>

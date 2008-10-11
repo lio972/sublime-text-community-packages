@@ -1,0 +1,6 @@
+
+<snippet>
+    <content><![CDATA[assert_difference "${1:Model}.${2:count}", ${3:1} do
+  $15
+end]]></content>
+</snippet>
