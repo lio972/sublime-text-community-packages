@@ -7,7 +7,7 @@
         <context name="selector" value="text.tex.latex"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Latex.tmbundle/beamer-overlay-specification.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Latex.tmbundle/beamer-overlay-specification.sublime-snippet'">
         <context name="selector" value="text.tex.latex.beamer"/>
     </binding>
 
@@ -83,11 +83,11 @@
         <context name="selector" value="text.tex.latex"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Latex.tmbundle/unnumbered-equation.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Latex.tmbundle/unnumbered-equation.sublime-snippet'">
         <context name="selector" value="text.tex.latex"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Latex.tmbundle/wrap-selection-in-double-quotes.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Latex.tmbundle/wrap-selection-in-double-quotes.sublime-snippet'">
         <context name="selector" value="text.tex.latex"/>
     </binding>
 </bindings>

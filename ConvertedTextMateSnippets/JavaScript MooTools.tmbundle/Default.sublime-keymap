@@ -71,7 +71,7 @@
         <context name="selector" value="source.js.mootools"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/JavaScript MooTools.tmbundle/fx-base-options.sublime-snippet'">
+    <binding key="TODO[{]" command="insertSnippet 'Packages/JavaScript MooTools.tmbundle/fx-base-options.sublime-snippet'">
         <context name="selector" value="source.js.mootools variable.parameter.fx"/>
     </binding>
 
@@ -91,7 +91,7 @@
         <context name="selector" value="source.js.mootools"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/JavaScript MooTools.tmbundle/fx-slide-options.sublime-snippet'">
+    <binding key="TODO[{]" command="insertSnippet 'Packages/JavaScript MooTools.tmbundle/fx-slide-options.sublime-snippet'">
         <context name="selector" value="source.js.mootools variable.parameter.fx.slide"/>
     </binding>
 

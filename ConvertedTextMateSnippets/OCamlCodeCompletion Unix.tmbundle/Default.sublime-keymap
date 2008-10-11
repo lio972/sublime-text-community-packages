@@ -1187,11 +1187,11 @@
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/resource-temporarily-unavailable.sublime-snippet'">
+    <binding key="TODO[Unix.err]" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/resource-temporarily-unavailable.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/resource-unavailable.sublime-snippet'">
+    <binding key="TODO[Unix.err]" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/resource-unavailable.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
@@ -1203,7 +1203,7 @@
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/result-too-large.sublime-snippet'">
+    <binding key="TODO[Unix.err]" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/result-too-large.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
@@ -1371,15 +1371,15 @@
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/socket-is-already-connected.sublime-snippet'">
+    <binding key="TODO[Unix.err]" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/socket-is-already-connected.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/socket-is-not-connected.sublime-snippet'">
+    <binding key="TODO[Unix.err]" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/socket-is-not-connected.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/socket-operation-on-non-socket.sublime-snippet'">
+    <binding key="TODO[Unix.err]" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/socket-operation-on-non-socket.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
@@ -1399,7 +1399,7 @@
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/software-caused-connection-abort.sublime-snippet'">
+    <binding key="TODO[Unix.err]" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/software-caused-connection-abort.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
@@ -1475,7 +1475,7 @@
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stderr.sublime-snippet'">
+    <binding key="TODO[Unix.err]" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/stderr.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
@@ -1579,23 +1579,23 @@
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/too-many-levels-of-symbolic-links.sublime-snippet'">
+    <binding key="TODO[Unix.err]" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/too-many-levels-of-symbolic-links.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/too-many-links.sublime-snippet'">
+    <binding key="TODO[Unix.err]" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/too-many-links.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/too-many-open-files-by-the-process.sublime-snippet'">
+    <binding key="TODO[Unix.err]" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/too-many-open-files-by-the-process.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/too-many-open-files-in-the-system.sublime-snippet'">
+    <binding key="TODO[Unix.err]" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/too-many-open-files-in-the-system.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/too-many-references-can-t-splice.sublime-snippet'">
+    <binding key="TODO[Unix.err]" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/too-many-references-can-t-splice.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
@@ -1627,7 +1627,7 @@
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/unknown-error.sublime-snippet'">
+    <binding key="TODO[Unix.err]" command="insertSnippet 'Packages/OCamlCodeCompletion Unix.tmbundle/unknown-error.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 

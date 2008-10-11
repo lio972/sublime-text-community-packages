@@ -431,7 +431,7 @@
         <context name="selector" value="source.ruby.rails"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Ruby on Rails.tmbundle/respond-to-html.sublime-snippet'">
+    <binding key="ctrl+H" command="insertSnippet 'Packages/Ruby on Rails.tmbundle/respond-to-html.sublime-snippet'">
         <context name="selector" value="meta.rails.controller"/>
     </binding>
 

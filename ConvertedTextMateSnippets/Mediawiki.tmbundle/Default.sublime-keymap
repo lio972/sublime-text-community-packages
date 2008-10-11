@@ -3,19 +3,19 @@
         <context name="selector" value="text.html.mediawiki"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Mediawiki.tmbundle/bold.sublime-snippet'">
+    <binding key="ctrl+b" command="insertSnippet 'Packages/Mediawiki.tmbundle/bold.sublime-snippet'">
         <context name="selector" value="text.html.mediawiki"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Mediawiki.tmbundle/code.sublime-snippet'">
+    <binding key="ctrl+k" command="insertSnippet 'Packages/Mediawiki.tmbundle/code.sublime-snippet'">
         <context name="selector" value="text.html.mediawiki"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Mediawiki.tmbundle/inside-heading-insert.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Mediawiki.tmbundle/inside-heading-insert.sublime-snippet'">
         <context name="selector" value="text.html.mediawiki markup.heading"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Mediawiki.tmbundle/italics.sublime-snippet'">
+    <binding key="ctrl+i" command="insertSnippet 'Packages/Mediawiki.tmbundle/italics.sublime-snippet'">
         <context name="selector" value="text.html.mediawiki"/>
     </binding>
 </bindings>

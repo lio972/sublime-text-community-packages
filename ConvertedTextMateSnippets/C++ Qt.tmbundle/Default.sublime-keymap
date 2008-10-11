@@ -1,5 +1,5 @@
 <bindings>
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/C++ Qt.tmbundle/block-comment-newline.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/C++ Qt.tmbundle/block-comment-newline.sublime-snippet'">
         <context name="selector" value="source.c++.qt comment.block.c"/>
     </binding>
 

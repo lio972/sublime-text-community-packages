@@ -1,5 +1,5 @@
 <bindings>
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Logtalk.tmbundle/category-with-protocol.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Logtalk.tmbundle/category-with-protocol.sublime-snippet'">
         <context name="selector" value="source.logtalk"/>
     </binding>
 
@@ -7,19 +7,19 @@
         <context name="selector" value="source.logtalk"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Logtalk.tmbundle/class-with-all.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Logtalk.tmbundle/class-with-all.sublime-snippet'">
         <context name="selector" value="source.logtalk"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Logtalk.tmbundle/class-with-category.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Logtalk.tmbundle/class-with-category.sublime-snippet'">
         <context name="selector" value="source.logtalk"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Logtalk.tmbundle/class-with-metaclass.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Logtalk.tmbundle/class-with-metaclass.sublime-snippet'">
         <context name="selector" value="source.logtalk"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Logtalk.tmbundle/class-with-protocol.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Logtalk.tmbundle/class-with-protocol.sublime-snippet'">
         <context name="selector" value="source.logtalk"/>
     </binding>
 
@@ -27,19 +27,19 @@
         <context name="selector" value="source.logtalk"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Logtalk.tmbundle/extended-protocol.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Logtalk.tmbundle/extended-protocol.sublime-snippet'">
         <context name="selector" value="source.logtalk"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Logtalk.tmbundle/instance-with-all.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Logtalk.tmbundle/instance-with-all.sublime-snippet'">
         <context name="selector" value="source.logtalk"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Logtalk.tmbundle/instance-with-category.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Logtalk.tmbundle/instance-with-category.sublime-snippet'">
         <context name="selector" value="source.logtalk"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Logtalk.tmbundle/instance-with-protocol.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Logtalk.tmbundle/instance-with-protocol.sublime-snippet'">
         <context name="selector" value="source.logtalk"/>
     </binding>
 
@@ -67,19 +67,19 @@
         <context name="selector" value="source.logtalk"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Logtalk.tmbundle/prototype-with-all.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Logtalk.tmbundle/prototype-with-all.sublime-snippet'">
         <context name="selector" value="source.logtalk"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Logtalk.tmbundle/prototype-with-category.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Logtalk.tmbundle/prototype-with-category.sublime-snippet'">
         <context name="selector" value="source.logtalk"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Logtalk.tmbundle/prototype-with-parent.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Logtalk.tmbundle/prototype-with-parent.sublime-snippet'">
         <context name="selector" value="source.logtalk"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Logtalk.tmbundle/prototype-with-protocol.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Logtalk.tmbundle/prototype-with-protocol.sublime-snippet'">
         <context name="selector" value="source.logtalk"/>
     </binding>
 

@@ -1,17 +1,17 @@
 <bindings>
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Erlang.tmbundle/casereceivetry-clause.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Erlang.tmbundle/casereceivetry-clause.sublime-snippet'">
         <context name="selector" value="source.erlang"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Erlang.tmbundle/fun-clause.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Erlang.tmbundle/fun-clause.sublime-snippet'">
         <context name="selector" value="source.erlang"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Erlang.tmbundle/function-clause.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Erlang.tmbundle/function-clause.sublime-snippet'">
         <context name="selector" value="source.erlang"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Erlang.tmbundle/if-clause.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Erlang.tmbundle/if-clause.sublime-snippet'">
         <context name="selector" value="source.erlang"/>
     </binding>
 
@@ -31,7 +31,7 @@
         <context name="selector" value="source.erlang"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Erlang.tmbundle/field-value.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Erlang.tmbundle/field-value.sublime-snippet'">
         <context name="selector" value="source.erlang meta.structure.record"/>
     </binding>
 
@@ -39,11 +39,11 @@
         <context name="selector" value="source.erlang"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Erlang.tmbundle/function-arity.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Erlang.tmbundle/function-arity.sublime-snippet'">
         <context name="selector" value="source.erlang meta.structure.list.function"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Erlang.tmbundle/function.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Erlang.tmbundle/function.sublime-snippet'">
         <context name="selector" value="source.erlang"/>
     </binding>
 

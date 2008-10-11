@@ -1,21 +1,21 @@
 <bindings>
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Treetop.tmbundle/a.sublime-snippet'">
+    <binding key="TODO[!]" command="insertSnippet 'Packages/Treetop.tmbundle/a.sublime-snippet'">
         <context name="selector" value="source.treetop"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Treetop.tmbundle/aa.sublime-snippet'">
+    <binding key="TODO[&]" command="insertSnippet 'Packages/Treetop.tmbundle/aa.sublime-snippet'">
         <context name="selector" value="source.treetop"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Treetop.tmbundle/ab.sublime-snippet'">
+    <binding key="TODO[*]" command="insertSnippet 'Packages/Treetop.tmbundle/ab.sublime-snippet'">
         <context name="selector" value="source.treetop"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Treetop.tmbundle/ac.sublime-snippet'">
+    <binding key="TODO[?]" command="insertSnippet 'Packages/Treetop.tmbundle/ac.sublime-snippet'">
         <context name="selector" value="source.treetop"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Treetop.tmbundle/ad.sublime-snippet'">
+    <binding key="TODO[+]" command="insertSnippet 'Packages/Treetop.tmbundle/ad.sublime-snippet'">
         <context name="selector" value="source.treetop"/>
     </binding>
 

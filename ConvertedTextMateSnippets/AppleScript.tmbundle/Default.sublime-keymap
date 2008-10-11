@@ -3,7 +3,7 @@
         <context name="selector" value="source.applescript"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/AppleScript.tmbundle/check-that-ui-scripting-is-enabled.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/AppleScript.tmbundle/check-that-ui-scripting-is-enabled.sublime-snippet'">
         <context name="selector" value="source.applescript"/>
     </binding>
 
@@ -31,11 +31,11 @@
         <context name="selector" value="source.applescript"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/AppleScript.tmbundle/select-menu-item-with-ui-scripting.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/AppleScript.tmbundle/select-menu-item-with-ui-scripting.sublime-snippet'">
         <context name="selector" value="source.applescript"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/AppleScript.tmbundle/splitjoin-helper-functions.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/AppleScript.tmbundle/splitjoin-helper-functions.sublime-snippet'">
         <context name="selector" value="source.applescript"/>
     </binding>
 </bindings>

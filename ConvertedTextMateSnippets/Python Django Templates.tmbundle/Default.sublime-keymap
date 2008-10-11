@@ -1,9 +1,9 @@
 <bindings>
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/add.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/add.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/addslashes.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/addslashes.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
@@ -11,7 +11,7 @@
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/block-tag.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/block-tag.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
@@ -23,11 +23,11 @@
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/center.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/center.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/comment-tag.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/comment-tag.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
@@ -35,7 +35,7 @@
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/cut.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/cut.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
@@ -43,7 +43,7 @@
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/date.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/date.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
@@ -51,27 +51,27 @@
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/default.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/default.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/default-if-none.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/default-if-none.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/dictsort.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/dictsort.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/dictsortreversed.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/dictsortreversed.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/divisibleby.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/divisibleby.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/escape.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/escape.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
@@ -79,7 +79,7 @@
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/filesizeformat.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/filesizeformat.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
@@ -87,7 +87,7 @@
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/first.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/first.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
@@ -95,11 +95,11 @@
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/fix-ampersands.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/fix-ampersands.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/floatformat.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/floatformat.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
@@ -107,7 +107,7 @@
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/get-digit.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/get-digit.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
@@ -131,31 +131,31 @@
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/join.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/join.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/length.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/length.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/length-is.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/length-is.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/linebreaks.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/linebreaks.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/linebreaksbr.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/linebreaksbr.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/linenumbers.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/linenumbers.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/ljust.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/ljust.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
@@ -163,11 +163,11 @@
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/lower.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/lower.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/make-list.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/make-list.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
@@ -175,19 +175,19 @@
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/phone2numeric.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/phone2numeric.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/pluralize.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/pluralize.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/pprint.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/pprint.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/random.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/random.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
@@ -195,19 +195,19 @@
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/removetags.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/removetags.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/rjust.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/rjust.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/slice.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/slice.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/slugify.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/slugify.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
@@ -215,39 +215,39 @@
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/stringformat.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/stringformat.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/striptags.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/striptags.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/templatetag-closeblock.sublime-snippet'">
+    <binding key="TODO[%}]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/templatetag-closeblock.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/templatetag-closevariable.sublime-snippet'">
+    <binding key="TODO[}}]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/templatetag-closevariable.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/templatetag-openblock.sublime-snippet'">
+    <binding key="TODO[{%]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/templatetag-openblock.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/templatetag-openvariable.sublime-snippet'">
+    <binding key="TODO[{{]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/templatetag-openvariable.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/time.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/time.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/timesince.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/timesince.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/title.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/title.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
@@ -255,15 +255,15 @@
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/truncatewords.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/truncatewords.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/unordered-list.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/unordered-list.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/upper.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/upper.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
@@ -271,19 +271,19 @@
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/urlencode.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/urlencode.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/urlize.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/urlize.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/urlizetrunc.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/urlizetrunc.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/variable-tag.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/variable-tag.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
@@ -291,15 +291,15 @@
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/wordcount.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/wordcount.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/wordwrap.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/wordwrap.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python Django Templates.tmbundle/yesno.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python Django Templates.tmbundle/yesno.sublime-snippet'">
         <context name="selector" value="text.html.django"/>
     </binding>
 </bindings>

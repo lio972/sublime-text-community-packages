@@ -1,5 +1,5 @@
 <bindings>
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/MoinMoin.tmbundle/bold.sublime-snippet'">
+    <binding key="ctrl+b" command="insertSnippet 'Packages/MoinMoin.tmbundle/bold.sublime-snippet'">
         <context name="selector" value="text.moinmoin"/>
     </binding>
 
@@ -7,7 +7,7 @@
         <context name="selector" value="text.moinmoin"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/MoinMoin.tmbundle/hard-linebreak.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/MoinMoin.tmbundle/hard-linebreak.sublime-snippet'">
         <context name="selector" value="text.moinmoin"/>
     </binding>
 
@@ -31,11 +31,11 @@
         <context name="selector" value="text.moinmoin"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/MoinMoin.tmbundle/italic.sublime-snippet'">
+    <binding key="ctrl+i" command="insertSnippet 'Packages/MoinMoin.tmbundle/italic.sublime-snippet'">
         <context name="selector" value="text.moinmoin"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/MoinMoin.tmbundle/pre.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/MoinMoin.tmbundle/pre.sublime-snippet'">
         <context name="selector" value="text.moinmoin"/>
     </binding>
 </bindings>

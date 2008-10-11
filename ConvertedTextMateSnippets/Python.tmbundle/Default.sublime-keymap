@@ -3,19 +3,19 @@
         <context name="selector" value="source.python"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python.tmbundle/inside-class-def-insert.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python.tmbundle/inside-class-def-insert.sublime-snippet'">
         <context name="selector" value="source.python meta.class.python invalid.illegal.missing-inheritance.python"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python.tmbundle/inside-function-insert.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python.tmbundle/inside-function-insert.sublime-snippet'">
         <context name="selector" value="source.python meta.function.python invalid.illegal.missing-parameters.python"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python.tmbundle/inside-string-insert.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python.tmbundle/inside-string-insert.sublime-snippet'">
         <context name="selector" value="source.python string.quoted.double.single-line meta.empty-string.double"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python.tmbundle/inside-string-inserta.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/Python.tmbundle/inside-string-inserta.sublime-snippet'">
         <context name="selector" value="source.python string.quoted.single.single-line meta.empty-string.single"/>
     </binding>
 
@@ -55,7 +55,7 @@
         <context name="selector" value="source.python"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/Python.tmbundle/magic.sublime-snippet'">
+    <binding key="TODO[__]" command="insertSnippet 'Packages/Python.tmbundle/magic.sublime-snippet'">
         <context name="selector" value="source.python"/>
     </binding>
 </bindings>

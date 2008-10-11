@@ -3,35 +3,35 @@
         <context name="selector" value="source.php"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/PHP.tmbundle/cookie.sublime-snippet'">
+    <binding key="TODO[$_]" command="insertSnippet 'Packages/PHP.tmbundle/cookie.sublime-snippet'">
         <context name="selector" value="source.php"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/PHP.tmbundle/env.sublime-snippet'">
+    <binding key="TODO[$_]" command="insertSnippet 'Packages/PHP.tmbundle/env.sublime-snippet'">
         <context name="selector" value="source.php"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/PHP.tmbundle/files.sublime-snippet'">
+    <binding key="TODO[$_]" command="insertSnippet 'Packages/PHP.tmbundle/files.sublime-snippet'">
         <context name="selector" value="source.php"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/PHP.tmbundle/get.sublime-snippet'">
+    <binding key="TODO[$_]" command="insertSnippet 'Packages/PHP.tmbundle/get.sublime-snippet'">
         <context name="selector" value="source.php"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/PHP.tmbundle/post.sublime-snippet'">
+    <binding key="TODO[$_]" command="insertSnippet 'Packages/PHP.tmbundle/post.sublime-snippet'">
         <context name="selector" value="source.php"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/PHP.tmbundle/request.sublime-snippet'">
+    <binding key="TODO[$_]" command="insertSnippet 'Packages/PHP.tmbundle/request.sublime-snippet'">
         <context name="selector" value="source.php"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/PHP.tmbundle/server.sublime-snippet'">
+    <binding key="TODO[$_]" command="insertSnippet 'Packages/PHP.tmbundle/server.sublime-snippet'">
         <context name="selector" value="source.php"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/PHP.tmbundle/session.sublime-snippet'">
+    <binding key="TODO[$_]" command="insertSnippet 'Packages/PHP.tmbundle/session.sublime-snippet'">
         <context name="selector" value="source.php"/>
     </binding>
 
@@ -203,7 +203,7 @@
         <context name="selector" value="source.php"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/PHP.tmbundle/special-return-between-php-tags.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/PHP.tmbundle/special-return-between-php-tags.sublime-snippet'">
         <context name="selector" value="meta.consecutive-tags.php"/>
     </binding>
 

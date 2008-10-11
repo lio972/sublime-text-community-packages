@@ -1,5 +1,5 @@
 <bindings>
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/bold.sublime-snippet'">
+    <binding key="ctrl+b" command="insertSnippet 'Packages/PmWiki.tmbundle/bold.sublime-snippet'">
         <context name="selector" value="text.pmwiki"/>
     </binding>
 
@@ -27,7 +27,7 @@
         <context name="selector" value="text.pmwiki"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/PmWiki.tmbundle/italic.sublime-snippet'">
+    <binding key="ctrl+i" command="insertSnippet 'Packages/PmWiki.tmbundle/italic.sublime-snippet'">
         <context name="selector" value="text.pmwiki"/>
     </binding>
 

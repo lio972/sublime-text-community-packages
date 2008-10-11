@@ -1,9 +1,9 @@
 <bindings>
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/a.sublime-snippet'">
+    <binding key="TODO[$]" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/a.sublime-snippet'">
         <context name="selector" value="source.js.prototype"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/function.sublime-snippet'">
+    <binding key="TODO[None]" command="insertSnippet 'Packages/JavaScript Prototype & Script_aculo_us.tmbundle/function.sublime-snippet'">
         <context name="selector" value="source.js.prototype"/>
     </binding>
 

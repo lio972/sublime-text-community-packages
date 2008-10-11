@@ -1043,7 +1043,7 @@
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/report-sign-ratio.sublime-snippet'">
+    <binding key="TODO[rat]" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/report-sign-ratio.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
@@ -1067,7 +1067,7 @@
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/round-ratio.sublime-snippet'">
+    <binding key="TODO[rat]" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/round-ratio.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
@@ -1143,7 +1143,7 @@
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sign-ratio.sublime-snippet'">
+    <binding key="TODO[rat]" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sign-ratio.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
@@ -1199,7 +1199,7 @@
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/square-ratio.sublime-snippet'">
+    <binding key="TODO[rat]" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/square-ratio.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
@@ -1223,7 +1223,7 @@
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/string-of-ratio.sublime-snippet'">
+    <binding key="TODO[rat]" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/string-of-ratio.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
@@ -1259,7 +1259,7 @@
         <context name="selector" value="source.ocaml"/>
     </binding>
 
-    <binding key="XXX_TODO,tab" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sub-ratio.sublime-snippet'">
+    <binding key="TODO[rat]" command="insertSnippet 'Packages/OCamlCodeCompletion Misc.tmbundle/sub-ratio.sublime-snippet'">
         <context name="selector" value="source.ocaml"/>
     </binding>
 
