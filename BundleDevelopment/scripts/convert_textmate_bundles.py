@@ -157,10 +157,11 @@ def parse_snippets(path):
     "Generator, yields filename and plist dict for each snippet on `path`"
 
     snippet_files = glob.glob(join(path, '*.tmSnippet'))
-    
+    snippet_files = glob.glob(join(path, '*.plist'))
+
     for snippet_file in snippet_files:
         try:
-            yield basename(snippet_file), plistlib.readPlist(snippet_file) 
+            yield basename(snippet_file), plistlib.readPlist(snippet_file)
         except Exception, e:
             if DEBUG:
                 print 'Failed to parse snippet:', snippet_file
@@ -285,7 +286,7 @@ def main():
 
 def test():
     import doctest
-    doctest.testmod()
+    doctest.testmod(verbose=1)
     
     print 'Tests complete'
     
