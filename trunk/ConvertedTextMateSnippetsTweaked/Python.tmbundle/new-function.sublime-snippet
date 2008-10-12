@@ -1,0 +1,5 @@
+<snippet>
+    <content><![CDATA[def ${1:fname}(${2:${TM_CURRENT_LINE/./self/g}}):
+    """ ${3:docstring for $1} """
+    ${15:pass}]]></content>
+</snippet>
