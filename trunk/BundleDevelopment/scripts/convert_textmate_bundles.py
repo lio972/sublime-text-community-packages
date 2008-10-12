@@ -156,8 +156,8 @@ def valid_nt_path(path):
 def parse_snippets(path):
     "Generator, yields filename and plist dict for each snippet on `path`"
 
-    snippet_files = glob.glob(join(path, '*.tmSnippet'))
-    snippet_files = glob.glob(join(path, '*.plist'))
+    snippet_files  = glob.glob(join(path, '*.tmSnippet'))
+    snippet_files += glob.glob(join(path, '*.plist'))
 
     for snippet_file in snippet_files:
         try:
