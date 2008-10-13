@@ -293,9 +293,12 @@ def convert_textmate_snippets(bundle):
         ################################################################
         
         if options.contextual:
-            tab_trigger =  convert_contextual_tab_trigger (
-                    unique_contextual_trigger(tabTrigger)
-            )
+            if tabTrigger:
+                tab_trigger =  convert_contextual_tab_trigger (
+                        unique_contextual_trigger(tabTrigger)
+                )
+            else:
+                tab_trigger = ''
         else:
             tab_trigger = (
                 unique_tab_trigger(tabTrigger) + ',tab'
