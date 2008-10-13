@@ -1,5 +1,3 @@
-# ABOUT TO PERFORM OPERATION
-
 # coding: utf-8
 
 ################################################################################
@@ -77,8 +75,9 @@ BINDING_TEMPLATE = """
 """
 
 CONTEXTUAL_BINDING_TEMPLATE = """
-    <binding key="tab" command="deleteContigAndInsertSnippet 'Packages/%s/%s'">
+    <binding key="tab" command="deleteTabTriggerAndInsertSnippet %s 'Packages/%s/%s'">
         <context name="selector"          value="%s"/>
+        <context name="canUnpopSelection" value="false"/>
         <context name="allPreceedingText" value="%s"/>
     </binding>
 """
@@ -254,7 +253,7 @@ def convert_tab_trigger(tab_trigger):
     return ','.join(rebuilt)
 
 def convert_contextual_tab_trigger(tab_trigger):
-    return '\s%(t)s$|^%(t)s$' % dict(t=re.escape(tab_trigger))
+    return '%s$' % re.escape(tab_trigger)
 
 def convert_key_equivalent(key):
     if key:
@@ -294,9 +293,8 @@ def convert_textmate_snippets(bundle):
         
         if options.contextual:
             if tabTrigger:
-                tab_trigger =  convert_contextual_tab_trigger (
-                        unique_contextual_trigger(tabTrigger)
-                )
+                tabTrigger = unique_contextual_trigger(tabTrigger)
+                tab_trigger =  convert_contextual_tab_trigger ( tabTrigger )
             else:
                 tab_trigger = ''
         else:
@@ -307,7 +305,7 @@ def convert_textmate_snippets(bundle):
         key_combo     =    convert_key_equivalent(keyEquivalent)
 
         binding = key_combo or (tab_trigger or
-                 ("TODO[%s]" % tabTrigger or keyEquivalent)
+                 ("TODO_%s" % tabTrigger or keyEquivalent)
         )
 
         file_name = unique_fname(slug(splitext(file_name)[0]))+'.sublime-snippet'
@@ -320,7 +318,7 @@ def convert_textmate_snippets(bundle):
             if not key_combo and options.contextual:
                 bindings.append ( 
                     CONTEXTUAL_BINDING_TEMPLATE % (
-                        (package_name, file_name, scope, binding)
+                        (`tabTrigger or 'TODO'`, package_name, file_name, scope, binding)
                     )
                 )
             else:
