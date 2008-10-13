@@ -12,8 +12,8 @@ import pprint
 import re
 import string
 import itertools
+import inspect
 import shutil
-import optparse
 
 from os.path import join, normpath, dirname, basename, splitext, split
 
@@ -22,109 +22,15 @@ from os.path import join, normpath, dirname, basename, splitext, split
 # If you are running python 2.5 steal plistlib.py from $X/python26/Lib
 import plistlib
 
+# User Libs
+
+from config import opt_parser
+from constants import *
+import snippet_filters
+
 ################################################################################
-# Options
-
-OUTPUT_PACKAGES_PATH = ur'E:\Sublime\sublime-text-community-packages\ConvertedTextMateSnippets'
-
-TM_BUNDLES_PATH = "E:\\Sublime\\tmbundles4win\\Bundles\\"
-
-# OUTPUT_PACKAGES_PATH = ur'/home/user/converted-textmate-snippets'
-
-# TM_BUNDLES_PATH = "/home/user/Desktop/TextMate/trunk/Bundles"
 
 DEBUG = 1
-
-################################################################################
-# Cmd Line Option Parser
-
-opt_parser = optparse.OptionParser()
-
-opt_parser.add_option (
-     "-i",  "--input", metavar = "DIR",
-     help   = "TextMate bundles path (containing *.tmbundle)",
-     default =  TM_BUNDLES_PATH )
-
-opt_parser.add_option (
-     "-o",  "--output", metavar = "DIR",
-     help    = "TextMate bundles path (containing *.tmbundle)",
-     default = OUTPUT_PACKAGES_PATH )
-
-opt_parser.add_option (
-     "-c",  "--contextual", action = 'store_true',
-     help    = "Use contextual keybindings for tab\n"
-               "triggers. Requires use of plugin" )
-
-opt_parser.add_option (
-     "-t",  "--test", action = 'store_true',
-     help   = "run tests" )
-
-################################################################################
-# Constants
-
-SNIPPET_TEMPLATE = """
-<snippet>
-    <content><![CDATA[%s]]></content>
-</snippet>
-"""
-
-BINDING_TEMPLATE = """
-    <binding key="%s" command="insertSnippet 'Packages/%s/%s'">
-        <context name="selector" value="%s"/>
-    </binding>
-"""
-
-CONTEXTUAL_BINDING_TEMPLATE = """
-    <binding key="tab" command="deleteTabTriggerAndInsertSnippet %s 'Packages/%s/%s'">
-        <context name="selector"          value="%s"/>
-        <context name="canUnpopSelection" value="false"/>
-        <context name="allPreceedingText" value="%s"/>
-    </binding>
-"""
-
-BINDING_MAPPING =   {
-'`'     :     "backquote",
-'\\'    :     "backslash",
-','     :     "comma",
-'='     :     "equals",
-'['     :     "leftbracket",
-'-'     :     "minus",
-'.'     :     "period",
-'"'     :     "quote",
-']'     :     "rightbracket",
-';'     :     "semicolon",
-'/'     :     "slash",
-' '     :     "space",
-}
-
-KNOWN_SUPPORTED_TM_VARIABLES = (
-    "TM_CURRENT_LINE",
-    "TM_CURRENT_WORD",
-    "TM_FULLNAME",
-    "TM_LINE_INDEX",
-    "TM_LINE_NUMBER",
-    "TM_SELECTED_TEXT",
-    "TM_TAB_SIZE",
-    "TM_FILENAME",
-    "TM_FILEPATH",
-)
-
-HOTKEY_MAPPING = {
-    "$" : "shift",
-    "~" : "alt",                   
-    "@" : "ctrl"
-}
-
-INVALID_PATH_CHARS = map(chr, [0,9,10,11,12,13,32,38,34,42,44,58,60,62,63,16])
-INVALID_PATH_RE    = re.compile('|'.join(map(re.escape, INVALID_PATH_CHARS)))
-
-SYNTAX_FILES = (
-    ('Preferences', '*.tmPreferences'),
-    ('Syntaxes',    '*.tmLanguage'),
-    ('Syntaxes',    '*.plist'),
-)
-
-ASCII_PLIST_RE = re.compile(r'([A-Za-z0-9]+)\s*=\s*"(.*)";\s*$', re.M)
 
 ################################################################################
 # Helpers
@@ -166,11 +72,14 @@ def valid_nt_path(path):
 
     return re.sub('-+', '-', INVALID_PATH_RE.sub('-', path)).strip('- ')
 
+def multi_glob(path, *globs):
+    paths = []
+    for g in globs: paths.extend( glob.glob(join(path, g)))
+    return paths
+
 ################################################################################
 
-JUNK_RE = re.compile(r"<key>keyEquivalent</key>\s+<string>(\W+)</string>")
-
-def clean_malformed_snippet(snippet_text):
+def parse_malformed_snippet(snippet_text):
     match = JUNK_RE.search(snippet_text)
     
     if match:
@@ -179,13 +88,8 @@ def clean_malformed_snippet(snippet_text):
         
         return plistlib.readPlistFromString(''.join(snippet_text))
 
-def parse_ascii_list(plist):
+def parse_ascii_plist(plist):
     return dict(t.groups() for t in ASCII_PLIST_RE.finditer(plist))
-
-def multi_glob(path, *globs):
-    paths = []
-    [paths.extend( glob.glob(join(path, g))) for g in globs]
-    return paths
 
 def parse_snippets(path):
     "Generator, yields filename and plist dict for each snippet on `path`"
@@ -193,7 +97,7 @@ def parse_snippets(path):
     snippet_files  = multi_glob(path, '*.tmSnippet', '*.plist')
     
     parsers = (
-        plistlib.readPlistFromString, parse_ascii_list, clean_malformed_snippet
+        plistlib.readPlistFromString, parse_ascii_plist, parse_malformed_snippet
     )
 
     for snippet_file in snippet_files:
@@ -217,16 +121,21 @@ def convert_last_tabstops(snippet):
     tabstop is the highest one.
 
     """
+
     s = re.sub(r"(?:\$\{|\$)0", lambda l: l.group(0).replace('0', '15'), snippet)
     return s
 
-def convert_snippet(snippet):
+snippet_filters = [
+    m[1] for m in inspect.getmembers(snippet_filters) 
+    if m[0].startswith('filter_') and callable(m[1])
+]
+
+def convert_snippet(snippet, snippet_dict, bundle_name):
     s = convert_last_tabstops(snippet)
+    
+    for s_filter in snippet_filters:
+        s = s_filter(s, snippet_dict, bundle_name) or s
 
-    # Transformations
-    # s = re.sub(r"\$\{([0-9]{1,2})/.*?/\}", '$\\1', s)
-
-    # Interpolated Shell Code
     return s
 
 ################################################################################
@@ -247,8 +156,6 @@ def convert_tab_trigger(tab_trigger):
     for l in tab_trigger:
         if l.isalpha():                                rebuilt.append(l)
         elif l in BINDING_MAPPING:     rebuilt.append(BINDING_MAPPING[l])
-    
-    
 
     return ','.join(rebuilt)
 
@@ -313,7 +220,12 @@ def convert_textmate_snippets(bundle):
         ################################################################
 
         if binding and content:
-            snippets[file_name] = SNIPPET_TEMPLATE % content.encode('utf-8')
+            snippets[file_name] = (
+                convert_snippet (
+                    SNIPPET_TEMPLATE % content.encode('utf-8'), 
+                    snippet_dict, package_name
+                )
+            )
             
             if not key_combo and options.contextual:
                 bindings.append ( 
@@ -340,7 +252,7 @@ def convert_textmate_snippets(bundle):
 
         for file_name, snippet in snippets.items():
             with open(join(package_path, file_name), 'w') as fh:
-                fh.write(convert_snippet(snippet))
+                fh.write(snippet)
 
 def copy_syntax_files(bundle):
     src_path    = join(options.input, bundle)
@@ -368,8 +280,6 @@ def main():
 def test():
     import doctest
     doctest.testmod(verbose=1)
-    
-    print 'Tests complete'
     
 if __name__ == '__main__':
     options, args = opt_parser.parse_args()
