@@ -24,4 +24,16 @@ def filter_ruby_snippet_paren_rb(content, _, bundle):
         s = content.replace('`snippet_paren.rb end`', ')')
         return s.replace('`snippet_paren.rb`', '(')
 
+
+def filter_last_tabstops(content, plist_dict, bundle):
+    """
+
+    $0 placeholder used to denote `last` tabstop in TM. In Sublime the last
+    tabstop is the highest one.
+
+    """
+
+    s = re.sub(r"(?:\$\{|\$)0", lambda l: l.group(0).replace('0', '15'), content)
+    return s
+
 ###############################################################################
