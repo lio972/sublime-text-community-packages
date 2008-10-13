@@ -136,10 +136,10 @@ class UniqueString(object):
         self.cache = []
 
     def __call__(self, result):
-        if not result: return
+        if not result: return result
 
         if result in self.cache:
-            for l in string.ascii_letters:
+            for l in (`s` for s in xrange(1, 2 ** 16)):
                 unique_result = result + self.joiner + l
                 if unique_result not in self.cache:
                     self.cache.append(unique_result)
@@ -243,15 +243,15 @@ def convert_tab_trigger(tab_trigger):
 
     """
     
-    # rebuilt = []
+    rebuilt = []
 
-    # for l in tab_trigger:
-    #     if l.isalpha():                                rebuilt.append(l)
-    #     elif l in BINDING_MAPPING:     rebuilt.append(BINDING_MAPPING[l])
+    for l in tab_trigger:
+        if l.isalpha():                                rebuilt.append(l)
+        elif l in BINDING_MAPPING:     rebuilt.append(BINDING_MAPPING[l])
     
     
 
-    # return ','.join(rebuilt)
+    return ','.join(rebuilt)
 
 def convert_contextual_tab_trigger(tab_trigger):
     return '\s%(t)s$|^%(t)s$' % dict(t=re.escape(tab_trigger))
@@ -293,12 +293,12 @@ def convert_textmate_snippets(bundle):
         ################################################################
         
         if options.contextual:
-            tab_trigger = unique_contextual_trigger (
-                convert_contextual_tab_trigger(tabTrigger)
+            tab_trigger =  convert_contextual_tab_trigger (
+                    unique_contextual_trigger(tabTrigger)
             )
         else:
             tab_trigger = (
-                unique_tab_trigger(convert_tab_trigger(tabTrigger)) + ',tab'
+                unique_tab_trigger(tabTrigger) + ',tab'
             )
 
         key_combo     =    convert_key_equivalent(keyEquivalent)
