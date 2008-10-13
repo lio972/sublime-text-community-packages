@@ -113,26 +113,13 @@ def parse_snippets(path):
 
         if DEBUG and not plist_dict:
             print 'could not parse', snippet_file
-            
-def convert_last_tabstops(snippet):
-    """
-    
-    $0 placeholder used to denote `last` tabstop in TM. In Sublime the last
-    tabstop is the highest one.
-
-    """
-
-    s = re.sub(r"(?:\$\{|\$)0", lambda l: l.group(0).replace('0', '15'), snippet)
-    return s
 
 snippet_filters = [
     m[1] for m in inspect.getmembers(snippet_filters) 
     if m[0].startswith('filter_') and callable(m[1])
 ]
 
-def convert_snippet(snippet, snippet_dict, bundle_name):
-    s = convert_last_tabstops(snippet)
-    
+def convert_snippet(s, snippet_dict, bundle_name):
     for s_filter in snippet_filters:
         s = s_filter(s, snippet_dict, bundle_name) or s
 
