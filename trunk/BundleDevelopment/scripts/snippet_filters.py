@@ -17,6 +17,6 @@ If no filtering is done just return None (implicit with no return)
 def filter_ruby_snippet_paren_rb(snippet_string, snippet_dict, bundle_name):
     if 'Ruby' in bundle_name:
         s = snippet_string.replace('`snippet_paren.rb end`', ')')
-        return s.replace('`snippet_paren.rb`', '('))
+        return s.replace('`snippet_paren.rb`', '(')
 
 ###############################################################################
