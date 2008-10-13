@@ -19,11 +19,17 @@ If no filtering is done just return None (implicit with no return)
 
 """
 
+INTERPOLATIONS_RE = re.compile(r"`([^`\\]|\\`|\\)+`")
+
 def filter_ruby_snippet_paren_rb(content, _, bundle):
     if bundle is 'Ruby.tmBundle':
         s = content.replace('`snippet_paren.rb end`', ')')
         return s.replace('`snippet_paren.rb`', '(')
 
+
+def dont_filter_log_interpolations(content, plist_dict, bundle):
+    m = INTERPOLATIONS_RE.search(content)
+    if m: print bundle, content[slice(*m.span())]
 
 def filter_last_tabstops(content, plist_dict, bundle):
     """
@@ -37,3 +43,16 @@ def filter_last_tabstops(content, plist_dict, bundle):
     return s
 
 ###############################################################################
+
+if __name__ == '__main__':
+    test = r"""
+      `   
+      if [[ arstarst ]] if:
+        \`   \` \e
+      
+      end
+      `  
+  
+    """
+    
+    print test[slice(*INTERPOLATIONS_RE.search(test).span())]
