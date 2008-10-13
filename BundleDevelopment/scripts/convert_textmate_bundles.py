@@ -64,8 +64,8 @@ SNIPPET_TEMPLATE = """
 """
 
 BINDING_TEMPLATE = """
-    <binding key="%(binding)s" command="insertSnippet 'Packages/%(package_name)s/%(file_name)s'">
-        <context name="selector" value="%(scope)s"/>
+    <binding key="%s" command="insertSnippet 'Packages/%s/%s'">
+        <context name="selector" value="%s"/>
     </binding>
 """
 
@@ -111,6 +111,8 @@ SYNTAX_FILES = (
     ('Syntaxes',    '*.plist'),
 )
 
+ASCII_PLIST_RE = re.compile(r'([A-Za-z0-9]+)\s*=\s*"(.*)";\s*$', re.M)
+
 ################################################################################
 # Helpers
 
@@ -153,20 +155,48 @@ def valid_nt_path(path):
 
 ################################################################################
 
+JUNK_RE = re.compile(r"<key>keyEquivalent</key>\s+<string>(\W+)</string>")
+
+def clean_malformed_snippet(snippet_text):
+    match = JUNK_RE.search(snippet_text)
+    
+    if match:
+        snippet_text = list(snippet_text)
+        snippet_text[slice(*match.span())] = ['']
+        
+        return plistlib.readPlistFromString(''.join(snippet_text))
+
+def parse_ascii_list(plist):
+    return dict(t.groups() for t in ASCII_PLIST_RE.finditer(plist))
+
+def multi_glob(path, *globs):
+    paths = []
+    [paths.extend( glob.glob(join(path, g))) for g in globs]
+    return paths
+
 def parse_snippets(path):
     "Generator, yields filename and plist dict for each snippet on `path`"
 
-    snippet_files  = glob.glob(join(path, '*.tmSnippet'))
-    snippet_files += glob.glob(join(path, '*.plist'))
+    snippet_files  = multi_glob(path, '*.tmSnippet', '*.plist')
+    
+    parsers = (
+        plistlib.readPlistFromString, parse_ascii_list, clean_malformed_snippet
+    )
 
     for snippet_file in snippet_files:
-        try:
-            yield basename(snippet_file), plistlib.readPlist(snippet_file)
-        except Exception, e:
-            if DEBUG:
-                print 'Failed to parse snippet:', snippet_file
-                print e
+        with open(snippet_file, 'r') as fh: snippet_text = fh.read()
 
+        for parser in parsers:
+            try:                    plist_dict = parser(snippet_text)
+            except:                 continue
+
+            if plist_dict:
+                yield basename(snippet_file), plist_dict
+                break
+
+        if DEBUG and not plist_dict:
+            print 'could not parse', snippet_file
+            
 def convert_last_tabstops(snippet):
     """
     
@@ -190,7 +220,7 @@ def convert_snippet(snippet):
 
 def convert_tab_trigger(tab_trigger):
     """
-    
+
     Convert TextMate tab trigger to sublime `x,y,z...,tab` form. Strips all non
     valid keybindings.
 
@@ -230,24 +260,25 @@ def convert_textmate_snippets(bundle):
     bindings = []
 
     for file_name, snippet_dict in parse_snippets(snippets_dir):
-        
         tabTrigger    =    snippet_dict.get('tabTrigger',    '')
         keyEquivalent =    snippet_dict.get('keyEquivalent', '')
         content       =    snippet_dict.get('content')
         scope         =    snippet_dict.get('scope')
-        
+
         tab_trigger   =    unique_tab_trigger(convert_tab_trigger(tabTrigger))
         key_combo     =    convert_key_equivalent(keyEquivalent)
-        
+
         binding = key_combo or ((tab_trigger and tab_trigger + ",tab") or
                  "TODO[%s]" % tabTrigger or keyEquivalent
         )
-        
+
         file_name = unique_fname(slug(splitext(file_name)[0]))+'.sublime-snippet'
 
         if binding and content:
             snippets[file_name] = SNIPPET_TEMPLATE % content.encode('utf-8')
-            bindings.append(BINDING_TEMPLATE % locals())
+            bindings.append(
+                BINDING_TEMPLATE % (binding, package_name, file_name, scope)
+            )
 
     if snippets:
         ensure_directory_exists(package_path)
