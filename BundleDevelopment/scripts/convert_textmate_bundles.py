@@ -1,3 +1,5 @@
+# ABOUT TO PERFORM OPERATION
+
 # coding: utf-8
 
 ################################################################################
@@ -51,6 +53,11 @@ opt_parser.add_option (
      default = OUTPUT_PACKAGES_PATH )
 
 opt_parser.add_option (
+     "-c",  "--contextual", action = 'store_true',
+     help    = "Use contextual keybindings for tab\n"
+               "triggers. Requires use of plugin" )
+
+opt_parser.add_option (
      "-t",  "--test", action = 'store_true',
      help   = "run tests" )
 
@@ -66,6 +73,13 @@ SNIPPET_TEMPLATE = """
 BINDING_TEMPLATE = """
     <binding key="%s" command="insertSnippet 'Packages/%s/%s'">
         <context name="selector" value="%s"/>
+    </binding>
+"""
+
+CONTEXTUAL_BINDING_TEMPLATE = """
+    <binding key="tab" command="deleteContigAndInsertSnippet 'Packages/%s/%s'">
+        <context name="selector"          value="%s"/>
+        <context name="allPreceedingText" value="%s"/>
     </binding>
 """
 
@@ -229,13 +243,18 @@ def convert_tab_trigger(tab_trigger):
 
     """
     
-    rebuilt = []
+    # rebuilt = []
 
-    for l in tab_trigger:
-        if l.isalpha():                                rebuilt.append(l)
-        elif l in BINDING_MAPPING:     rebuilt.append(BINDING_MAPPING[l])
+    # for l in tab_trigger:
+    #     if l.isalpha():                                rebuilt.append(l)
+    #     elif l in BINDING_MAPPING:     rebuilt.append(BINDING_MAPPING[l])
+    
+    
 
-    return ','.join(rebuilt)
+    # return ','.join(rebuilt)
+
+def convert_contextual_tab_trigger(tab_trigger):
+    return '\s%(t)s$|^%(t)s$' % dict(t=re.escape(tab_trigger))
 
 def convert_key_equivalent(key):
     if key:
@@ -247,7 +266,11 @@ def convert_key_equivalent(key):
 
 def convert_textmate_snippets(bundle):
     unique_fname = UniqueString()
-    unique_tab_trigger = UniqueString(',')
+
+    if options.contextual: unique_contextual_trigger = UniqueString()
+    else: unique_tab_trigger = UniqueString(',')
+
+    ########################################################################
 
     snippets_dir = join(options.input, bundle, 'Snippets')
     
@@ -259,26 +282,52 @@ def convert_textmate_snippets(bundle):
     snippets = {}
     bindings = []
 
+    ########################################################################
+
     for file_name, snippet_dict in parse_snippets(snippets_dir):
         tabTrigger    =    snippet_dict.get('tabTrigger',    '')
         keyEquivalent =    snippet_dict.get('keyEquivalent', '')
         content       =    snippet_dict.get('content')
         scope         =    snippet_dict.get('scope')
 
-        tab_trigger   =    unique_tab_trigger(convert_tab_trigger(tabTrigger))
+        ################################################################
+        
+        if options.contextual:
+            tab_trigger = unique_contextual_trigger (
+                convert_contextual_tab_trigger(tabTrigger)
+            )
+        else:
+            tab_trigger = (
+                unique_tab_trigger(convert_tab_trigger(tabTrigger)) + ',tab'
+            )
+
         key_combo     =    convert_key_equivalent(keyEquivalent)
 
-        binding = key_combo or ((tab_trigger and tab_trigger + ",tab") or
-                 "TODO[%s]" % tabTrigger or keyEquivalent
+        binding = key_combo or (tab_trigger or
+                 ("TODO[%s]" % tabTrigger or keyEquivalent)
         )
 
         file_name = unique_fname(slug(splitext(file_name)[0]))+'.sublime-snippet'
 
+        ################################################################
+
         if binding and content:
             snippets[file_name] = SNIPPET_TEMPLATE % content.encode('utf-8')
-            bindings.append(
-                BINDING_TEMPLATE % (binding, package_name, file_name, scope)
-            )
+            
+            if not key_combo and options.contextual:
+                bindings.append ( 
+                    CONTEXTUAL_BINDING_TEMPLATE % (
+                        (package_name, file_name, scope, binding)
+                    )
+                )
+            else:
+                bindings.append (
+                    BINDING_TEMPLATE % (
+                        binding, package_name, file_name, scope
+                    )
+                )
+
+    ########################################################################
 
     if snippets:
         ensure_directory_exists(package_path)
