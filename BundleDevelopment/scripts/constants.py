@@ -53,7 +53,7 @@ KNOWN_SUPPORTED_TM_VARIABLES = (
 
 HOTKEY_MAPPING = {
     "$" : "shift",
-    "~" : "alt",                   
+    "~" : "alt",
     "@" : "ctrl"
 }
 

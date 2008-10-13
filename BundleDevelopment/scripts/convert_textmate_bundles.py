@@ -115,14 +115,14 @@ def parse_snippets(path):
             print 'could not parse', snippet_file
 
 snippet_filters = [
-    m[1] for m in inspect.getmembers(snippet_filters) 
+    m[1] for m in inspect.getmembers(snippet_filters)
     if m[0].startswith('filter_') and callable(m[1])
 ]
 
 def convert_snippet(s, snippet_dict, bundle_name):
     for s_filter in snippet_filters:
         s = s_filter(s, snippet_dict, bundle_name) or s
-
+    
     return s
 
 ################################################################################
@@ -258,9 +258,9 @@ def copy_syntax_files(bundle):
 def main():
     os.chdir(options.input)
 
-    for bundle in glob.glob('*.tmbundle'):
+    for bundle in glob.glob('*.tmbundle'):        
+        if options.syntax: copy_syntax_files(bundle)
         convert_textmate_snippets(bundle)
-        copy_syntax_files(bundle)
 
     print 'Conversions complete'
 

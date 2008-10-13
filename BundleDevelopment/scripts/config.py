@@ -33,6 +33,13 @@ opt_parser.add_option (
                "triggers. Requires use of plugin" )
 
 opt_parser.add_option (
+     "-s",  "--syntax", action = 'store_true',
+     help    = "Copy in syntax files "
+               "as well as convert snippets",
+     default = False
+     )
+
+opt_parser.add_option (
      "-t",  "--test", action = 'store_true',
      help   = "run tests" )
 
