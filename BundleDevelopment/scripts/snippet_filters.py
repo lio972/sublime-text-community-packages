@@ -1,6 +1,8 @@
 ###############################################################################
 
 import re
+import functools
+import difflib
 
 ###############################################################################
 """
@@ -21,11 +23,28 @@ If no filtering is done just return None (implicit with no return)
 
 INTERPOLATIONS_RE = re.compile(r"`([^`\\]|\\`|\\)+`")
 
+
+def log_filter_diffs(f):
+    @functools.wraps(f)
+    def wrapper(content, plist, bundle):
+        result = f(content, plist, bundle)
+
+        if result and result != content:
+            differ = difflib.Differ()
+            diff = differ.compare( content.splitlines(1), result.splitlines(1)) 
+
+            print 'Operation: %s' % f.__name__
+            print ''.join(diff)
+            print 
+        
+        return result
+    return wrapper
+
+# @log_filter_diffs
 def filter_ruby_snippet_paren_rb(content, _, bundle):
-    if bundle is 'Ruby.tmBundle':
+    if bundle == 'Ruby.tmbundle':
         s = content.replace('`snippet_paren.rb end`', ')')
         return s.replace('`snippet_paren.rb`', '(')
-
 
 def dont_filter_log_interpolations(content, plist_dict, bundle):
     m = INTERPOLATIONS_RE.search(content)

@@ -1,6 +1,7 @@
 ################################################################################
 
 import re
+import unittest
 
 ################################################################################
 
@@ -57,7 +58,7 @@ HOTKEY_MAPPING = {
     "@" : "ctrl"
 }
 
-INVALID_PATH_CHARS = map(chr, [0,9,10,11,12,13,32,38,34,42,44,58,60,62,63,16])
+INVALID_PATH_CHARS = map(chr,range(33) + [16,34,38,42,44,47,58,60,62,63,92,124])
 INVALID_PATH_RE    = re.compile('|'.join(map(re.escape, INVALID_PATH_CHARS)))
 
 SYNTAX_FILES = (
@@ -71,3 +72,10 @@ ASCII_PLIST_RE = re.compile(r'([A-Za-z0-9]+)\s*=\s*"(.*)";\s*$', re.M)
 JUNK_RE = re.compile(r"<key>keyEquivalent</key>\s+<string>(\W+)</string>")
 
 ################################################################################
+
+class TestBla(unittest.TestCase):
+    def test_invalid_paths(self):
+        pass
+
+if __name__ == '__main__':
+    unittest.main()
