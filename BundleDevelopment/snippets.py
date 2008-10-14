@@ -139,7 +139,7 @@ def parse_keymap(f):
         
         for context in binding.getElementsByTagName('context'):
             if context.getAttribute('name') == 'allPreceedingText':
-                tab_trigger = context.getAttribute('value').rstrip('$')
+                tab_trigger = context.getAttribute('value').rstrip('$')[2:]
 
         yield key, command, tab_trigger
                 
