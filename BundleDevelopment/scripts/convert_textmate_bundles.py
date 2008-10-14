@@ -193,6 +193,10 @@ def convert_textmate_snippets(bundle):
 
         ################################################################
         
+        #TODO: CLEAN UP THIS CONVOLUTED MESS
+        #      Make it create both bindings at the same time
+        #      Extract a few functions
+        
         if options.contextual:
             if tabTrigger:
                 tabTrigger = unique_contextual_trigger(tabTrigger)
