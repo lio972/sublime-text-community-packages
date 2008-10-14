@@ -8,9 +8,9 @@ OUTPUT_PACKAGES_PATH = ur'E:\Sublime\sublime-text-community-packages\ConvertedTe
 
 TM_BUNDLES_PATH = "E:\\Sublime\\tmbundles4win\\Bundles\\"
 
-# OUTPUT_PACKAGES_PATH = ur'/home/user/converted-textmate-snippets'
+OUTPUT_PACKAGES_PATH = ur'/home/wazoocom/converted-textmate-snippets'
 
-# TM_BUNDLES_PATH = "/home/user/Desktop/TextMate/trunk/Bundles"
+TM_BUNDLES_PATH = "/home/wazoocom/TextMate/Bundles"
 
 ################################################################################
 # Cmd Line Option Parser
@@ -24,7 +24,7 @@ opt_parser.add_option (
 
 opt_parser.add_option (
      "-o",  "--output", metavar = "DIR",
-     help    = "TextMate bundles path (containing *.tmbundle)",
+     help    = "Output path",
      default = OUTPUT_PACKAGES_PATH )
 
 opt_parser.add_option (
@@ -36,8 +36,7 @@ opt_parser.add_option (
      "-s",  "--syntax", action = 'store_true',
      help    = "Copy in syntax files "
                "as well as convert snippets",
-     default = False
-     )
+     default = False )
 
 opt_parser.add_option (
      "-t",  "--test", action = 'store_true',

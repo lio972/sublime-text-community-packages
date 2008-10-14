@@ -11,13 +11,13 @@ SNIPPET_TEMPLATE = """
 """
 
 BINDING_TEMPLATE = """
-    <binding key="%s" command="insertSnippet 'Packages/%s/%s'">
+    <binding key="%s" command="insertSnippet %s">
         <context name="selector" value="%s"/>
     </binding>
 """
 
 CONTEXTUAL_BINDING_TEMPLATE = """
-    <binding key="tab" command="deleteTabTriggerAndInsertSnippet %s 'Packages/%s/%s'">
+    <binding key="tab" command="deleteTabTriggerAndInsertSnippet %s %s">
         <context name="selector"          value="%s"/>
         <context name="canUnpopSelection" value="false"/>
         <context name="allPreceedingText" value="%s"/>

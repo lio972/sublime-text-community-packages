@@ -67,6 +67,11 @@ def slug(s):
     
     return s or 'a'
 
+def slug2(s):
+    s = s.decode('utf-8')
+    s = re.sub(' +', ' ', s.encode('ascii', 'ignore'))
+    return valid_nt_path(s)
+
 def valid_nt_path(path):
     "Removes all illegal characters from pathname and replaces with `-`"
 
@@ -100,7 +105,7 @@ def parse_snippets(path):
         plistlib.readPlistFromString, parse_ascii_plist, parse_malformed_snippet
     )
 
-    for snippet_file in snippet_files:
+    for snippet_file in sorted(snippet_files):
         with open(snippet_file, 'r') as fh: snippet_text = fh.read()
 
         for parser in parsers:
@@ -202,7 +207,7 @@ def convert_textmate_snippets(bundle):
                  ("TODO_%s" % tabTrigger or keyEquivalent)
         )
 
-        file_name = unique_fname(slug(splitext(file_name)[0]))+'.sublime-snippet'
+        file_name = unique_fname(slug2(splitext(file_name)[0]))+'.sublime-snippet'
 
         ################################################################
 
@@ -214,16 +219,20 @@ def convert_textmate_snippets(bundle):
                 )
             )
             
+            snippet_path = '/'.join(['Packages', package_name, file_name])
+            snippet_path = "'%s'" % snippet_path.replace("'", "\\'")
+            
             if not key_combo and options.contextual:
                 bindings.append ( 
                     CONTEXTUAL_BINDING_TEMPLATE % (
-                        (`tabTrigger or 'TODO'`, package_name, file_name, scope, binding)
+                        (`tabTrigger or 'TODO'`, snippet_path, scope, binding)
                     )
-                )
+                )                
+                
             else:
                 bindings.append (
                     BINDING_TEMPLATE % (
-                        binding, package_name, file_name, scope
+                        binding, snippet_path, scope
                     )
                 )
 
