@@ -135,13 +135,13 @@ def parse_keymap(f):
         key = binding.getAttribute('key')
         command = binding.getAttribute('command')
         
-        context = None 
+        tab_trigger = None 
         
         for context in binding.getElementsByTagName('context'):
             if context.getAttribute('name') == 'allPreceedingText':
-                context = context.getAttribute('value').rstrip('$')
+                tab_trigger = context.getAttribute('value').rstrip('$')
 
-        yield key, command, context
+        yield key, command, tab_trigger
                 
 def findSnippets(path):
     snippets = []
