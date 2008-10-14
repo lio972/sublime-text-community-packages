@@ -62,6 +62,17 @@ class DeleteTabTriggerAndInsertSnippetCommand(sublimeplugin.TextCommand):
 #             print contig(view, sel), sel
 #         view.runCommand('insertSnippet', args)
 
+def parse_snippet(path):
+    "('TEXT_NODE', 3) ('CDATA_SECTION_NODE', 4)"
+    for c in minidom.parse(path).getElementsByTagName('content'):
+        return ''.join(n.data for n in c.childNodes if n.nodeType in (3, 4))
+
+class ParseAndInsertSnippetCommand(sublimeplugin.TextCommand):
+    def run(self, view, args):
+        snippet_path = normpath(join(split(sublime.packagesPath())[0], args[0]))
+        args = [parse_snippet(snippet_path)] + args[1:]
+        view.runCommand('insertInlineSnippet', args )
+
 class ExtractSnippetCommand(sublimeplugin.TextCommand):
     snippet = ''
     
@@ -105,7 +116,7 @@ class ExtractSnippetCommand(sublimeplugin.TextCommand):
         development_snippet = os.path.join (
             sublime.packagesPath(),
             'BundleDevelopment',
-            'development_snippet.sublime-snippet',
+            'development_snippet.xml',
         )
         
         with open(development_snippet, 'w') as fh:

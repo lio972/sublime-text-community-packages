@@ -33,9 +33,12 @@ Also note that if the same key is bound twice, the last binding takes precedence
     <binding key="ctrl+alt+e" command="extractSnippet">
         <!-- <context name="" value=""/> -->
     </binding>
-    <binding key="ctrl+alt+s" command="insertSnippet 'Packages/BundleDevelopment/development_snippet.sublime-snippet'">
+    <binding key="ctrl+alt+s" command="parseAndInsertSnippet 'Packages/BundleDevelopment/development_snippet.xml'">
         <!-- <context name="" value=""/> -->
     </binding>    
     
     <binding key="ctrl+alt+shift+s" command="snippetQuickMenu" />
 </bindings>
+
+
+
