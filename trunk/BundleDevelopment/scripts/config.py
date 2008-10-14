@@ -8,9 +8,9 @@ OUTPUT_PACKAGES_PATH = ur'E:\Sublime\sublime-text-community-packages\ConvertedTe
 
 TM_BUNDLES_PATH = "E:\\Sublime\\tmbundles4win\\Bundles\\"
 
-OUTPUT_PACKAGES_PATH = ur'/home/wazoocom/converted-textmate-snippets'
+# OUTPUT_PACKAGES_PATH = ur'/home/wazoocom/converted-textmate-snippets'
 
-TM_BUNDLES_PATH = "/home/wazoocom/TextMate/Bundles"
+# TM_BUNDLES_PATH = "/home/wazoocom/TextMate/Bundles"
 
 ################################################################################
 # Cmd Line Option Parser
