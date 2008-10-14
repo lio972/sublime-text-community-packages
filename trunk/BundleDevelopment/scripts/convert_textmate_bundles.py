@@ -152,7 +152,7 @@ def convert_tab_trigger(tab_trigger):
     return ','.join(rebuilt)
 
 def convert_contextual_tab_trigger(tab_trigger):
-    return '\b%s$' % re.escape(tab_trigger)
+    return '\\b%s$' % re.escape(tab_trigger)
 
 def convert_key_equivalent(key):
     if key:
