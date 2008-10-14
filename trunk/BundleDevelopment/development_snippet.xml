@@ -1,5 +1,7 @@
 <!-- See http://www.sublimetext.com/docs/snippets for more information 
 -->
 <snippet>
-	<content><![CDATA[array('u', '${%s:%s}' % (i, ''.join(replaced)))]]></content>
+	<content><![CDATA[lineSnippet', [self.cache[f]] + args[1:])
+		
+	def (self, view):]]></content>
 </snippet>

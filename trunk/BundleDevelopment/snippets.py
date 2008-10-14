@@ -63,26 +63,23 @@ class DeleteTabTriggerAndInsertSnippetCommand(sublimeplugin.TextCommand):
 #             print contig(view, sel), sel
 #         view.runCommand('insertSnippet', args)
 
-def memoize(f, cache={}):
-    @functools.wraps(f)
-    def g(*args, **kwargs):
-        key = ( f, tuple(args), frozenset(kwargs.items()) )
-        if key not in cache:
-            cache[key] = f(*args, **kwargs)
-        return cache[key]
-    return g
-
-@memoize
 def parse_snippet(path):
     "('TEXT_NODE', 3) ('CDATA_SECTION_NODE', 4)"
     for c in minidom.parse(path).getElementsByTagName('content'):
         return ''.join(n.data for n in c.childNodes if n.nodeType in (3, 4))
 
 class ParseAndInsertSnippetCommand(sublimeplugin.TextCommand):
+    cache = {}
+    
     def run(self, view, args):
-        snippet_path = normpath(join(split(sublime.packagesPath())[0], args[0]))
-        args = [parse_snippet(snippet_path)] + args[1:]
-        view.runCommand('insertInlineSnippet', args )
+        f = normpath(join(split(sublime.packagesPath())[0], args[0]))
+        if f not in self.cache: self.cache[f] = parse_snippet(f)
+        view.runCommand('insertInlineSnippet', [self.cache[f]] + args[1:])
+        
+    def onPostSave(self, view):
+        fn = view.fileName()
+        if fn:
+            if fn in self.cache: self.cache.pop(fn)
 
 class ExtractSnippetCommand(sublimeplugin.TextCommand):
     snippet = ''
