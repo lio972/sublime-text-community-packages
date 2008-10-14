@@ -1,0 +1,9 @@
+<!-- See http://www.sublimetext.com/docs/snippets for more information 
+-->
+<snippet>
+	<content><![CDATA[<!--
+Bindable keys are:
+(a-z, 0-9, f1-f15)
+backquote, backslash, backspace, browser_back, browser_favorites, browser_forward,
+]]></content>
+</snippet>
