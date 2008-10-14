@@ -42,7 +42,7 @@ def log_filter_diffs(f):
 
 # @log_filter_diffs
 def filter_ruby_snippet_paren_rb(content, _, bundle):
-    if bundle == 'Ruby.tmbundle':
+    if bundle == 'Ruby':
         s = content.replace('`snippet_paren.rb end`', ')')
         return s.replace('`snippet_paren.rb`', '(')
 
