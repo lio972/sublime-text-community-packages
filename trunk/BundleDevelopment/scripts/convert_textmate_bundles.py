@@ -201,7 +201,7 @@ def convert_textmate_snippets(bundle):
                 tab_trigger = ''
         else:
             tab_trigger = (
-                unique_tab_trigger(tabTrigger) + ',tab'
+                unique_tab_trigger(convert_tab_trigger(tabTrigger)) + ',tab'
             )
 
         key_combo     =    convert_key_equivalent(keyEquivalent)
