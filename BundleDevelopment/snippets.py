@@ -11,6 +11,7 @@ import functools
 
 from itertools import takewhile
 from os.path import join, normpath, dirname, basename, splitext, split
+from array import array
 
 from xml.dom import minidom
 
@@ -62,6 +63,16 @@ class DeleteTabTriggerAndInsertSnippetCommand(sublimeplugin.TextCommand):
 #             print contig(view, sel), sel
 #         view.runCommand('insertSnippet', args)
 
+def memoize(f, cache={}):
+    @functools.wraps(f)
+    def g(*args, **kwargs):
+        key = ( f, tuple(args), frozenset(kwargs.items()) )
+        if key not in cache:
+            cache[key] = f(*args, **kwargs)
+        return cache[key]
+    return g
+
+@memoize
 def parse_snippet(path):
     "('TEXT_NODE', 3) ('CDATA_SECTION_NODE', 4)"
     for c in minidom.parse(path).getElementsByTagName('content'):
@@ -88,7 +99,7 @@ class ExtractSnippetCommand(sublimeplugin.TextCommand):
         ends_at = sels[-1].end()
 
         # Get the snippet text as an array of chars
-        snippet = list ( view.substr(sublime.Region(starts_at, ends_at)))
+        snippet = array('u', view.substr(sublime.Region(starts_at, ends_at)))
 
         # Find all the tab stops: any selection that is not empty
         tab_stops = [ (s.begin(), s.end()) for s in sels if not s.empty()]
@@ -100,7 +111,7 @@ class ExtractSnippetCommand(sublimeplugin.TextCommand):
             adjusted_region = slice(region[0]+adjustment, region[1]+adjustment)
 
             replaced = snippet[adjusted_region]
-            replacement = list('${%s:%s}' % (i, ''.join(replaced)))
+            replacement = array('u', '${%s:%s}' % (i, ''.join(replaced)))
 
             snippet[adjusted_region] = replacement
 
@@ -119,11 +130,9 @@ class ExtractSnippetCommand(sublimeplugin.TextCommand):
             'development_snippet.xml',
         )
         
-        with open(development_snippet, 'w') as fh:
-            fh.write(snippet)
-        
+        with open(development_snippet, 'w') as fh:  fh.write(snippet)
         window = view.window()
-        window.openFile(development_snippet)        
+        window.openFile(development_snippet)
         
 ################################################################################
 
