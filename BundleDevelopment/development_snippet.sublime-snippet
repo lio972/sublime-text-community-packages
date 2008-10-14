@@ -1,7 +1,0 @@
-<!-- See http://www.sublimetext.com/docs/snippets for more information 
--->
-<snippet>
-	<content><![CDATA[<binding key="ctrl+alt+s" command="parseAndInsertSnippet 'Packages/BundleDevelopment/development_snippet.lazy-snippet'">
-		<!-- <context name="" value=""/> -->
-]]></content>
-</snippet>
