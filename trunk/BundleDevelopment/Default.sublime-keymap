@@ -35,5 +35,9 @@ Also note that if the same key is bound twice, the last binding takes precedence
     </binding>
     <binding key="ctrl+alt+s" command="insertSnippet 'Packages/BundleDevelopment/development_snippet.sublime-snippet'">
         <!-- <context name="" value=""/> -->
-    </binding>
+    </binding>    
+    
+    <binding key="ctrl+alt+shift+s" command="snippetQuickMenu" />
 </bindings>
+
+

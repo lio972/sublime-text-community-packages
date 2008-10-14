@@ -6,8 +6,13 @@ from __future__ import with_statement
 import os
 import textwrap
 import string
+import re
+import functools
 
 from itertools import takewhile
+from os.path import join, normpath, dirname, basename, splitext, split
+
+from xml.dom import minidom
 
 # Sublime Libs
 import sublime
@@ -47,16 +52,15 @@ class DeleteTabTriggerAndInsertSnippetCommand(sublimeplugin.TextCommand):
             region   =  view.find(tab_trigger, start, 0)
 
             if region:  view.erase(region)
-            else:       return
 
         view.runCommand('insertSnippet', args[1:])
 
-class DeleteContigAndInsertSnippetCommand(sublimeplugin.TextCommand):
-    def run(self, view, args):
-        for sel in view.sel(): 
-            view.erase(contig(view, sel))
-            # print contig(view, sel), sel
-        view.runCommand('insertSnippet', args)
+# class DeleteContigAndInsertSnippetCommand(sublimeplugin.TextCommand):
+#     def run(self, view, args):
+#         for sel in view.sel(): 
+#             view.erase(contig(view, sel))
+#             print contig(view, sel), sel
+#         view.runCommand('insertSnippet', args)
 
 class ExtractSnippetCommand(sublimeplugin.TextCommand):
     snippet = ''
@@ -112,5 +116,75 @@ class ExtractSnippetCommand(sublimeplugin.TextCommand):
         
 ################################################################################
 
+def getPackageDir(view):
+    try: fn = view.fileName()
+    except: return None
+    
+    return join (
+       sublime.packagesPath(), split(split(view.options().get("syntax"))[0])[1]
+    )
+    
+commands_regex = re.compile('<binding key="(.*?)".*?command="(.*?)"')
+snippets_regex = re.compile("Packages/(.*?)\.sublime-snippet")
+
+def parse_keymap(f):
+    dom = minidom.parse(f)
+    bindings = dom.getElementsByTagName('binding')
+    
+    for binding in bindings:
+        key = binding.getAttribute('key')
+        command = binding.getAttribute('command')
+        
+        context = None 
+        
+        for context in binding.getElementsByTagName('context'):
+            if context.getAttribute('name') == 'allPreceedingText':
+                context = context.getAttribute('value').rstrip('$')
+
+        yield key, command, context
+                
+def findSnippets(path):
+    snippets = []
+    keyMaps = [f for f in os.listdir(path) if f.endswith('sublime-keymap')]
+
+    for f in (join(path, f) for f in keyMaps):
+        for key, command, context in parse_keymap(f):
+            if snippets_regex.search(command):
+                snippets.append((context or key, command))
+
+    return snippets
+
+################################################################################
+
+def snippetName(s):
+    return basename(snippets_regex.search(s).group(1))
+
+class SnippetQuickMenuCommand(sublimeplugin.TextCommand):
+    def run(self, view, args):
+        if args: 
+            return self.quickOpen(args)
+
+        window = view.window()
+
+        snippetPath = getPackageDir(view)
+        if snippetPath:
+            snippets = findSnippets(snippetPath)
+            if snippets:
+                args = [`s` for s in snippets]
+                display = [snippetName(s[1]) for s in snippets]
+                self.view = view
+
+                window.showQuickPanel('', 'snippetQuickMenu', args, display)
+    
+    def quickOpen(self, args):
+        binding, command = eval(args[0])
+        sublime.statusMessage(binding)
+        self.view.runCommand(command)
+        del self.view
+
+################################################################################
+
 if __name__ == '__main__':
     unittest.main()
+    
+################################################################################
