@@ -74,14 +74,6 @@ def slug2(s):
 
 def valid_nt_path(path):
     "Removes all illegal characters from pathname and replaces with `-`"
-    
-    # You may use any character in the current code page (Unicode/ANSI above 127), except:
-
-    # * < > : " / \ | ? *
-    # * Characters whose integer representations are 0-31 (less than ASCII space)
-    # * Any other character that the target file system does not allow (say, trailing periods or spaces)
-    # * Any of the DOS names: CON, PRN, AUX, NUL, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9 (and avoid AUX.txt, etc)
-    # * The file name is all periods
 
     return re.sub('-+', '-', INVALID_PATH_RE.sub('-', path)).strip('- ')
 
@@ -90,6 +82,8 @@ def multi_glob(path, *globs):
     for g in globs: paths.extend( glob.glob(join(path, g)))
     return paths
 
+def output_bundle_path(path):
+    return path.endswith('.tmbundle') and path[:-9] or path 
 
 ################################################################################
 
@@ -183,7 +177,7 @@ def convert_textmate_snippets(bundle):
     
     if not os.path.exists(snippets_dir): return
     
-    package_name = basename(split(snippets_dir)[0])
+    package_name = output_bundle_path(basename(split(snippets_dir)[0]))
     package_path = join(options.output, package_name)
 
     snippets = {}
@@ -261,7 +255,7 @@ def convert_textmate_snippets(bundle):
 
 def copy_syntax_files(bundle):
     src_path    = join(options.input, bundle)
-    output_path = join(options.output, bundle)
+    output_path = output_bundle_path(join(options.output, bundle))
 
     files = (glob.glob(join(src_path, *ftypes)) for ftypes in SYNTAX_FILES)
     files = list(itertools.chain(*files))
