@@ -52,7 +52,8 @@ def post_process_tag(search_obj, tag_file):
     if fields:
         tag.update(process_fields(fields))
 
-    tag['ex_command'] = process_ex_cmd(tag['ex_command'])
+    tag['ex_command'] =   process_ex_cmd(tag['ex_command'])
+    tag['filename']   =   normpath(tag['filename'])
 
     return tag
 
