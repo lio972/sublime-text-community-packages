@@ -33,14 +33,15 @@ def find_tags_relative_to(view):
         if os.path.exists(joined): return joined
         else: dirs.pop()
 
-
 def view_fn(view, if_None = '.'):
     return normpath(view.fileName() or if_None)
     
 def wait_until_loaded(file, window):
-    for v in window.views():
-        if view_fn(v) ==  normpath(file):
-            break
+    window.openFile(file)
+    v = [v for v in window.views() if view_fn(v) ==  normpath(file)][0]
+
+    if not v.isLoading(): return lambda f: f(v)
+
     def wrapper(f):
         def wait():
             while v.isLoading():
@@ -57,10 +58,8 @@ def scroll_to(view, region):
     view.show(region)    
 
 def scroll_to_tag(view, file, symbol, pattern_or_line):
-    window = view.window()
-    window.openFile(file)
 
-    @wait_until_loaded(file, window)
+    @wait_until_loaded(file, view.window())
     def and_then(view):
         look_from = None
         if pattern_or_line.isdigit():
