@@ -1,96 +1,263 @@
-###############################################################################
+################################################################################
+# coding: utf8
+################################################################################
 
 # Std Libs
-import os
+from __future__ import with_statement
+
 import re
-import string
-import time
+import pprint
+import unittest
+import threading
+import Queue
+import os
+import functools
+import subprocess
 
-from os.path import join, normpath, dirname, abspath
-from itertools import takewhile, groupby
-from operator import itemgetter as iget
-
-# Sublime Libs
-import sublime
-import sublimeplugin
-
-# User Libs
-import parse_ctags
-
-###############################################################################
-
-def walkUpDirAndFindFile(file):
-    dirs = normpath(file).split(os.path.sep)
-    f = dirs.pop()
-    
-    while dirs:
-        joined = normpath(os.path.sep.join(dirs + [f]))
-        if os.path.exists(joined): return joined
-        else: dirs.pop()
-
-###############################################################################
-
-class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
-    events   =   {}
-    tags     =   {}
-    cache    =   {}
-
-    def onActivated(self, view):
-        if not self.events or view.isLoading(): return
-
-        fn = view.fileName()
-        if fn: fn = os.path.normpath(fn)
-        if fn not in self.events: return
-
-        found_tag = view.find(self.events.pop(fn), 0, sublime.LITERAL)
-        if found_tag:
-            sel_set = view.sel()
-            sel_set.clear()
-            sel_set.add(found_tag)
-            view.show(found_tag)
-
-    def jump(self, view, tag_file):
-        # TODO: if there is more than one tag per symbol/file
-        #       open a quickPanel to choose which symbol to go to in the
-        #       current file
-        
-        ex_command = self.tags[tag_file][0]
-
-        tag_file = normpath(join(self.tag_dir, tag_file))
-        window = view.window()
-
-        if ex_command.isdigit():
-            window.openFile(tag_file, int(ex_command), 1)
-        else:
-            self.events[tag_file] = ex_command
-            window.openFile(tag_file)
-
-    def quickOpen(self, view, files):
-        window = view.window()
-        window.showQuickPanel("", "navigateToDefinition", files)
-
-    def run(self, view, args):
-        if args:
-            return self.jump(view, args[0])
-
-        tags_file = walkUpDirAndFindFile(join(dirname(view.fileName()), 'tags'))
-        if not tags_file:
-            return
-
-        current_symbol = view.substr(view.word(view.sel()[0]))
-        self.tag_dir = dirname(tags_file)
-
-        while tags_file not in self.cache:
-            self.cache[tags_file] = parse_ctags.parse_tag_file(tags_file)
-
-        tags = self.cache[tags_file]
-
-        self.tags = dict (
-            (f, [t['ex_command'] for t in v]) for (f, v) in
-            groupby(tags.get(current_symbol, []), iget('filename')) 
-        )
-
-        if len(self.tags) > 1:     self.quickOpen(view, self.tags.keys())
-        elif self.tags:            self.jump(view, self.tags.keys()[0])
+from os.path import join, normpath, dirname
 
 ################################################################################
+
+TAGS_RE = re.compile (
+
+    '(?P<symbol>[^\t]+)\t'
+    '(?P<filename>[^\t]+)\t'
+    '(?P<ex_command>.*?);"\t'
+    '(?P<type>[^\t]+)'
+    '(?:\t(?P<fields>.*))?'
+)
+
+################################################################################
+
+def parse_tag_file(tag_file):
+    tags_lookup = {}
+
+    with open(tag_file) as tags:
+        for search_obj in (t for t in (TAGS_RE.search(l) for l in tags) if t):
+            tag = post_process_tag(search_obj, tag_file)
+            tags_lookup.setdefault(tag['symbol'], []).append(tag)
+
+    return tags_lookup
+
+def unescape_ex(ex):
+    return re.sub(r"\\(\$|/|\^|\\)", r'\1', ex)
+
+def process_ex_cmd(ex):
+    return ex if ex.isdigit() else unescape_ex(ex[2:-2])
+
+def post_process_tag(search_obj, tag_file):
+    tag = search_obj.groupdict()
+
+    fields = tag.get('fields')
+    if fields:
+        tag.update(process_fields(fields))
+
+    tag['ex_command'] = process_ex_cmd(tag['ex_command'])
+
+    return tag
+
+def process_fields(fields):
+    fields_dict = {}
+
+    for f in fields.split('\t'):
+        f = f.split(':')
+
+        # These, if existing, are keys with no values... retarded
+        for key in f[:-2]:
+            fields_dict[key] = True # Essentially boolean?
+
+        # The last two are actual key value pairs because separated by \t
+        key, value =  f[-2:]
+        fields_dict[key] = value
+
+    return fields_dict
+
+################################################################################
+
+class Tag(object):
+    "dot.syntatic sugar for tag dicts"
+    def __init__(self, tag_dict):
+        self.__dict__ = tag_dict
+
+    def __repr__(self):
+        return pprint.pformat(self.__dict__)
+
+################################################################################
+
+class CTagsCache(object):
+    cache   = {}
+    pending = {}
+
+    def __init__(self, status=None):
+        self.Q  = Queue.Queue()
+        self.OQ = Queue.Queue()
+        
+        self.t = threading.Thread(target=self.thread)
+        self.t.setDaemon(1)
+        self.t.start()
+
+    def thread(self):
+        while True:
+            path = self.Q.get()
+            print path
+            self.OQ.put((path, parse_tag_file(path)))
+            self.Q.task_done()
+
+    def get(self, path):
+        # TODO: monitor CTAGS.py file for changes
+        
+        if path not in self.cache:
+            if path not in self.pending:
+                self.Q.put(path)
+                self.pending[path] = True
+
+        while True:
+            try:
+                tag_path, tag_dict = self.OQ.get_nowait()
+                self.cache[tag_path] = tag_dict
+                self.pending.pop(tag_path)
+                self.OQ.task_done()
+            
+            except Queue.Empty:
+                break
+        
+        return self.cache.get(path, {})
+
+################################################################################
+
+# - Parse an existing CTAGS file, and implement go-to-tag-under-cursor. CTAGS
+# files can get quite large, so representing them efficiently should be a goal.
+# Ideally, parsing should also be done in another thread, so the editor isn't
+# blocked while reading in a multi-megabyte file. Getting this implemented
+# nicely is a fair bit of work.
+
+# Next step would be to automatically run exuberant ctags in the current
+# directory, if there isn't a CTAGS file already, or then one that does exist is
+# out of date.
+
+# Once we're at a start where symbol definitions are in memory, there's a number
+# of other things that can be done, such as listing them in the quick panel, and
+# hooking them into auto-complete.
+
+################################################################################
+
+class CTagsTest(unittest.TestCase):
+    def test_all_search_strings_work(self):
+        os.chdir(os.path.dirname(__file__))
+        tags = parse_tag_file('tags')
+        
+        failures = []
+        
+        for symbol, tag_list in tags.iteritems():
+            for tag in (Tag(t) for t in tag_list):
+                if not tag.ex_command.isdigit():
+                    with open(tag.filename) as fh:
+                        file_str = fh.read()
+                        if tag.ex_command not in file_str:
+                            failures += [tag.ex_command]
+        
+        for f in failures:
+            print f
+               
+        self.assertEqual(len(failures), 0, 'update tag files and try again')
+
+if __name__ == '__main__':
+    if 1: dev_scribble()
+    else: unittest.main()
+
+################################################################################
+# TAG FILE FORMAT
+
+# When not running in etags mode, each entry in the tag file consists of a
+# separate line, each looking like this in the most general case:
+
+# tag_name<TAB>file_name<TAB>ex_cmd;"<TAB>extension_fields
+
+# The fields and separators of these lines are specified as follows:
+
+# 1.
+    
+#     tag name
+
+# 2.
+    
+#     single tab character
+
+# 3.
+    
+#     name of the file in which the object associated with the tag is located
+
+# 4.
+    
+#     single tab character
+
+# 5.
+    
+#     EX command used to locate the tag within the file; generally a search
+#     pattern (either /pattern/ or ?pattern?) or line number (see −−excmd). Tag
+#     file format 2 (see −−format) extends this EX command under certain
+#     circumstances to include a set of extension fields (described below)
+#     embedded in an EX comment immediately appended to the EX command, which
+#     leaves it backward-compatible with original vi(1) implementations.
+
+# A few special tags are written into the tag file for internal purposes. These
+# tags are composed in such a way that they always sort to the top of the file.
+# Therefore, the first two characters of these tags are used a magic number to
+# detect a tag file for purposes of determining whether a valid tag file is
+# being overwritten rather than a source file. Note that the name of each source
+# file will be recorded in the tag file exactly as it appears on the command
+# line.
+
+# Therefore, if the path you specified on the command line was relative to the
+# current directory, then it will be recorded in that same manner in the tag
+# file. See, however, the −−tag−relative option for how this behavior can be
+# modified.
+
+# Extension fields are tab-separated key-value pairs appended to the end of the
+# EX command as a comment, as described above. These key value pairs appear in
+# the general form "key:value". Their presence in the lines of the tag file are
+# controlled by the −−fields option. The possible keys and the meaning of their
+# values are as follows:
+
+# access
+    
+#     Indicates the visibility of this class member, where value is specific to
+#     the language.
+
+# file
+    
+#     Indicates that the tag has file-limited visibility. This key has no
+#     corresponding value.
+
+# kind
+    
+#     Indicates the type, or kind, of tag. Its value is either one of the
+#     corresponding one-letter flags described under the various −−<LANG>−kinds
+#     options above, or a full name. It is permitted (and is, in fact, the
+#     default) for the key portion of this field to be omitted. The optional
+#     behaviors are controlled with the −−fields option.
+
+# implementation
+
+# When present, this indicates a limited implementation (abstract vs. concrete)
+# of a routine or class, where value is specific to the language ("virtual" or
+# "pure virtual" for C++; "abstract" for Java).
+
+# inherits
+    
+#     When present, value. is a comma-separated list of classes from which this
+#     class is derived (i.e. inherits from).
+
+# signature
+    
+#     When present, value is a language-dependent representation of the
+#     signature of a routine. A routine signature in its complete form specifies
+#     the return type of a routine and its formal argument list. This extension
+#     field is presently supported only for C-based languages and does not
+#     include the return type.
+
+# In addition, information on the scope of the tag definition may be available,
+# with the key portion equal to some language-dependent construct name and its
+# value the name declared for that construct in the program. This scope entry
+# indicates the scope in which the tag was found. For example, a tag generated
+# for a C structure member would have a scope looking like "struct:myStruct".
