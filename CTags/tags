@@ -35,9 +35,13 @@ Ancestors	.\fortran.c	/^} Ancestors = { 0, 0, NULL };$/;"	v	typeref:struct:__ano
 AnonymousID	.\c.c	/^static int AnonymousID = 0;$/;"	v	file:
 Arguments	.\args.h	/^} Arguments;$/;"	t	typeref:struct:sArgs
 AsmKeywords	.\asm.c	/^static const asmKeyword AsmKeywords [] = {$/;"	v	file:
+AsmKeywords	.\whatever\asm.c	/^static const asmKeyword AsmKeywords [] = {$/;"	v	file:
 AsmKind	.\asm.c	/^} AsmKind;$/;"	t	typeref:enum:__anon3	file:
+AsmKind	.\whatever\asm.c	/^} AsmKind;$/;"	t	typeref:enum:__anon76	file:
 AsmKinds	.\asm.c	/^static kindOption AsmKinds [] = {$/;"	v	file:
+AsmKinds	.\whatever\asm.c	/^static kindOption AsmKinds [] = {$/;"	v	file:
 AsmParser	.\asm.c	/^extern parserDefinition* AsmParser (void)$/;"	f
+AsmParser	.\whatever\asm.c	/^extern parserDefinition* AsmParser (void)$/;"	f
 AspKinds	.\asp.c	/^static kindOption AspKinds [] = {$/;"	v	file:
 AspParser	.\asp.c	/^extern parserDefinition* AspParser (void)$/;"	f
 Assert	.\debug.h	32;"	d
@@ -852,6 +856,7 @@ K_CONSTANT	.\perl.c	/^	K_CONSTANT,$/;"	e	enum:__anon40	file:
 K_CONSTANT	.\verilog.c	/^	K_CONSTANT,$/;"	e	enum:__anon73	file:
 K_DEFINE	.\asm.c	/^	K_NONE = -1, K_DEFINE, K_LABEL, K_MACRO, K_TYPE$/;"	e	enum:__anon3	file:
 K_DEFINE	.\php.c	/^	K_CLASS, K_DEFINE, K_FUNCTION, K_VARIABLE$/;"	e	enum:__anon41	file:
+K_DEFINE	.\whatever\asm.c	/^	K_NONE = -1, K_DEFINE, K_LABEL, K_MACRO, K_TYPE$/;"	e	enum:__anon76	file:
 K_DIM	.\asp.c	/^	K_CONST, K_FUNCTION, K_SUB, K_DIM$/;"	e	enum:__anon7	file:
 K_ENUM	.\basic.c	/^	K_ENUM$/;"	e	enum:__anon8	file:
 K_EVENT	.\verilog.c	/^	K_EVENT,$/;"	e	enum:__anon73	file:
@@ -876,9 +881,11 @@ K_FUNCTOR	.\sml.c	/^	K_FUNCTOR,$/;"	e	enum:__anon69	file:
 K_LABEL	.\asm.c	/^	K_NONE = -1, K_DEFINE, K_LABEL, K_MACRO, K_TYPE$/;"	e	enum:__anon3	file:
 K_LABEL	.\basic.c	/^	K_LABEL,$/;"	e	enum:__anon8	file:
 K_LABEL	.\perl.c	/^	K_LABEL,$/;"	e	enum:__anon40	file:
+K_LABEL	.\whatever\asm.c	/^	K_NONE = -1, K_DEFINE, K_LABEL, K_MACRO, K_TYPE$/;"	e	enum:__anon76	file:
 K_MACRO	.\asm.c	/^	K_NONE = -1, K_DEFINE, K_LABEL, K_MACRO, K_TYPE$/;"	e	enum:__anon3	file:
 K_MACRO	.\erlang.c	/^	K_MACRO, K_FUNCTION, K_MODULE, K_RECORD$/;"	e	enum:__anon18	file:
 K_MACRO	.\make.c	/^	K_MACRO$/;"	e	enum:__anon33	file:
+K_MACRO	.\whatever\asm.c	/^	K_NONE = -1, K_DEFINE, K_LABEL, K_MACRO, K_TYPE$/;"	e	enum:__anon76	file:
 K_MAP	.\vim.c	/^	K_MAP,$/;"	e	enum:__anon75	file:
 K_MEMBER	.\python.c	/^	K_CLASS, K_FUNCTION, K_MEMBER$/;"	e	enum:__anon42	file:
 K_METHOD	.\ruby.c	/^	K_UNDEFINED = -1, K_CLASS, K_METHOD, K_MODULE, K_SINGLETON$/;"	e	enum:__anon66	file:
@@ -890,6 +897,7 @@ K_NET	.\verilog.c	/^	K_NET,$/;"	e	enum:__anon73	file:
 K_NONE	.\asm.c	/^	K_NONE = -1, K_DEFINE, K_LABEL, K_MACRO, K_TYPE$/;"	e	enum:__anon3	file:
 K_NONE	.\perl.c	/^	K_NONE = -1,$/;"	e	enum:__anon40	file:
 K_NONE	.\sml.c	/^	K_NONE = -1,$/;"	e	enum:__anon69	file:
+K_NONE	.\whatever\asm.c	/^	K_NONE = -1, K_DEFINE, K_LABEL, K_MACRO, K_TYPE$/;"	e	enum:__anon76	file:
 K_PACKAGE	.\perl.c	/^	K_PACKAGE,$/;"	e	enum:__anon40	file:
 K_PATTERN	.\beta.c	/^	K_FRAGMENT, K_PATTERN, K_SLOT, K_VIRTUAL$/;"	e	enum:__anon10	file:
 K_PORT	.\verilog.c	/^	K_PORT,$/;"	e	enum:__anon73	file:
@@ -909,6 +917,7 @@ K_TASK	.\verilog.c	/^	K_TASK$/;"	e	enum:__anon73	file:
 K_TYPE	.\asm.c	/^	K_NONE = -1, K_DEFINE, K_LABEL, K_MACRO, K_TYPE$/;"	e	enum:__anon3	file:
 K_TYPE	.\basic.c	/^	K_TYPE,$/;"	e	enum:__anon8	file:
 K_TYPE	.\sml.c	/^	K_TYPE,$/;"	e	enum:__anon69	file:
+K_TYPE	.\whatever\asm.c	/^	K_NONE = -1, K_DEFINE, K_LABEL, K_MACRO, K_TYPE$/;"	e	enum:__anon76	file:
 K_UNDEFINED	.\ruby.c	/^	K_UNDEFINED = -1, K_CLASS, K_METHOD, K_MODULE, K_SINGLETON$/;"	e	enum:__anon66	file:
 K_UNDEFINED	.\verilog.c	/^	K_UNDEFINED = -1,$/;"	e	enum:__anon73	file:
 K_VAL	.\sml.c	/^	K_VAL$/;"	e	enum:__anon69	file:
@@ -942,6 +951,7 @@ L_getit	.\lisp.c	/^static void L_getit (vString *const name, const unsigned char
 L_isdef	.\lisp.c	/^static int L_isdef (const unsigned char *strp)$/;"	f	file:
 L_isquote	.\lisp.c	/^static int L_isquote (const unsigned char *strp)$/;"	f	file:
 Lang_asm	.\asm.c	/^static langType Lang_asm;$/;"	v	file:
+Lang_asm	.\whatever\asm.c	/^static langType Lang_asm;$/;"	v	file:
 Lang_c	.\c.c	/^static langType Lang_c;$/;"	v	file:
 Lang_cpp	.\c.c	/^static langType Lang_cpp;$/;"	v	file:
 Lang_csharp	.\c.c	/^static langType Lang_csharp;$/;"	v	file:
@@ -1025,27 +1035,46 @@ OPTION_SHORT	.\options.h	/^typedef enum { OPTION_NONE, OPTION_SHORT, OPTION_LONG
 OPTION_WRITE	.\options.c	25;"	d	file:
 OPTION_WRITE	.\parse.c	23;"	d	file:
 OP_ALIGN	.\asm.c	/^	OP_ALIGN,$/;"	e	enum:__anon4	file:
+OP_ALIGN	.\whatever\asm.c	/^	OP_ALIGN,$/;"	e	enum:__anon77	file:
 OP_COLON_EQUAL	.\asm.c	/^	OP_COLON_EQUAL,$/;"	e	enum:__anon4	file:
+OP_COLON_EQUAL	.\whatever\asm.c	/^	OP_COLON_EQUAL,$/;"	e	enum:__anon77	file:
 OP_END	.\asm.c	/^	OP_END,$/;"	e	enum:__anon4	file:
+OP_END	.\whatever\asm.c	/^	OP_END,$/;"	e	enum:__anon77	file:
 OP_ENDM	.\asm.c	/^	OP_ENDM,$/;"	e	enum:__anon4	file:
+OP_ENDM	.\whatever\asm.c	/^	OP_ENDM,$/;"	e	enum:__anon77	file:
 OP_ENDMACRO	.\asm.c	/^	OP_ENDMACRO,$/;"	e	enum:__anon4	file:
+OP_ENDMACRO	.\whatever\asm.c	/^	OP_ENDMACRO,$/;"	e	enum:__anon77	file:
 OP_ENDP	.\asm.c	/^	OP_ENDP,$/;"	e	enum:__anon4	file:
+OP_ENDP	.\whatever\asm.c	/^	OP_ENDP,$/;"	e	enum:__anon77	file:
 OP_ENDS	.\asm.c	/^	OP_ENDS,$/;"	e	enum:__anon4	file:
+OP_ENDS	.\whatever\asm.c	/^	OP_ENDS,$/;"	e	enum:__anon77	file:
 OP_EQU	.\asm.c	/^	OP_EQU,$/;"	e	enum:__anon4	file:
+OP_EQU	.\whatever\asm.c	/^	OP_EQU,$/;"	e	enum:__anon77	file:
 OP_EQUAL	.\asm.c	/^	OP_EQUAL,$/;"	e	enum:__anon4	file:
+OP_EQUAL	.\whatever\asm.c	/^	OP_EQUAL,$/;"	e	enum:__anon77	file:
 OP_LABEL	.\asm.c	/^	OP_LABEL,$/;"	e	enum:__anon4	file:
+OP_LABEL	.\whatever\asm.c	/^	OP_LABEL,$/;"	e	enum:__anon77	file:
 OP_LAST	.\asm.c	/^	OP_LAST$/;"	e	enum:__anon4	file:
+OP_LAST	.\whatever\asm.c	/^	OP_LAST$/;"	e	enum:__anon77	file:
 OP_MACRO	.\asm.c	/^	OP_MACRO,$/;"	e	enum:__anon4	file:
+OP_MACRO	.\whatever\asm.c	/^	OP_MACRO,$/;"	e	enum:__anon77	file:
 OP_PROC	.\asm.c	/^	OP_PROC,$/;"	e	enum:__anon4	file:
+OP_PROC	.\whatever\asm.c	/^	OP_PROC,$/;"	e	enum:__anon77	file:
 OP_RECORD	.\asm.c	/^	OP_RECORD,$/;"	e	enum:__anon4	file:
+OP_RECORD	.\whatever\asm.c	/^	OP_RECORD,$/;"	e	enum:__anon77	file:
 OP_SECTIONS	.\asm.c	/^	OP_SECTIONS,$/;"	e	enum:__anon4	file:
+OP_SECTIONS	.\whatever\asm.c	/^	OP_SECTIONS,$/;"	e	enum:__anon77	file:
 OP_SET	.\asm.c	/^	OP_SET,$/;"	e	enum:__anon4	file:
+OP_SET	.\whatever\asm.c	/^	OP_SET,$/;"	e	enum:__anon77	file:
 OP_STRUCT	.\asm.c	/^	OP_STRUCT,$/;"	e	enum:__anon4	file:
+OP_STRUCT	.\whatever\asm.c	/^	OP_STRUCT,$/;"	e	enum:__anon77	file:
 OP_UNDEFINED	.\asm.c	/^	OP_UNDEFINED = -1,$/;"	e	enum:__anon4	file:
+OP_UNDEFINED	.\whatever\asm.c	/^	OP_UNDEFINED = -1,$/;"	e	enum:__anon77	file:
 OUTPUT_PATH_SEPARATOR	.\routines.h	40;"	d
 OUTPUT_PATH_SEPARATOR	.\routines.h	42;"	d
 O_RDWR	.\entry.c	71;"	d	file:
 OpKinds	.\asm.c	/^static const opKind OpKinds [] = {$/;"	v	file:
+OpKinds	.\whatever\asm.c	/^static const opKind OpKinds [] = {$/;"	v	file:
 Option	.\options.c	/^optionValues Option = {$/;"	v
 OptionFiles	.\options.c	/^static stringList *OptionFiles;$/;"	v	file:
 P	.\mk_qdos.mak	/^P = drv1_C68_$/;"	m
@@ -1264,6 +1293,7 @@ SetUpper	.\lregex.c	/^static int SetUpper = -1;  \/* upper language index in lis
 Sets	.\lregex.c	/^static patternSet* Sets = NULL;$/;"	v	file:
 ShKinds	.\sh.c	/^static kindOption ShKinds [] = {$/;"	v	file:
 ShParser	.\sh.c	/^extern parserDefinition* ShParser (void)$/;"	f
+ShowSymbolsForCurrentFile	.\ctags_plugin.py	/^class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):$/;"	c
 Signature	.\c.c	/^static vString *Signature;$/;"	v	file:
 SkipConfiguration	.\options.c	/^static boolean SkipConfiguration;$/;"	v	file:
 SlangParser	.\slang.c	/^extern parserDefinition* SlangParser (void)$/;"	f
@@ -1555,6 +1585,7 @@ alt_match_null_string_p	.\regex.c	/^alt_match_null_string_p (p, end, reg_info)$/
 analyzeIdentifier	.\c.c	/^static void analyzeIdentifier (tokenInfo *const token)$/;"	f	file:
 analyzeKeyword	.\c.c	/^static keywordId analyzeKeyword (const char *const name)$/;"	f	file:
 analyzeOperator	.\asm.c	/^static opKeyword analyzeOperator (const vString *const op)$/;"	f	file:
+analyzeOperator	.\whatever\asm.c	/^static opKeyword analyzeOperator (const vString *const op)$/;"	f	file:
 analyzeParens	.\c.c	/^static void analyzeParens (statementInfo *const st)$/;"	f	file:
 analyzePostParens	.\c.c	/^static void analyzePostParens (statementInfo *const st, parenInfo *const info)$/;"	f	file:
 analyzeToken	.\eiffel.c	/^static keywordId analyzeToken (vString *const name)$/;"	f	file:
@@ -1567,6 +1598,7 @@ ancestorPop	.\fortran.c	/^static void ancestorPop (void)$/;"	f	file:
 ancestorPush	.\fortran.c	/^static void ancestorPush (tokenInfo *const token)$/;"	f	file:
 ancestorScope	.\fortran.c	/^static const tokenInfo* ancestorScope (void)$/;"	f	file:
 ancestorTop	.\fortran.c	/^static const tokenInfo* ancestorTop (void)$/;"	f	file:
+and_then	.\ctags_plugin.py	/^    def and_then(view):$/;"	f	function:scroll_to_tag
 anychar	.\regex.c	/^  anychar,$/;"	e	enum:__anon57	file:
 append	.\options.h	/^	boolean append;         \/* -a  append to "tags" file *\/$/;"	m	struct:sOptionValues
 argDelete	.\args.c	/^extern void argDelete (Arguments* const current)$/;"	f
@@ -1586,6 +1618,7 @@ args	.\options.h	/^	Arguments* args;$/;"	m	struct:sCookedArgs
 argv	.\args.h	/^			char* const* argv;$/;"	m	struct:sArgs::__anon2::sArgvArgs
 argvArgs	.\args.h	/^		} argvArgs;$/;"	m	union:sArgs::__anon2	typeref:struct:sArgs::__anon2::sArgvArgs
 asmKeyword	.\asm.c	/^} asmKeyword;$/;"	t	typeref:struct:__anon5	file:
+asmKeyword	.\whatever\asm.c	/^} asmKeyword;$/;"	t	typeref:struct:__anon78	file:
 aspKind	.\asp.c	/^} aspKind;$/;"	t	typeref:enum:__anon7	file:
 assert	.\regex.c	781;"	d	file:
 assert	.\regex.c	782;"	d	file:
@@ -1628,6 +1661,7 @@ buffer	.\readtags.c	/^	char *buffer;$/;"	m	struct:__anon43	file:
 buffer	.\regex.h	/^  unsigned char *buffer;$/;"	m	struct:re_pattern_buffer
 buffer	.\vstring.h	/^	char   *buffer;  \/* location of buffer *\/$/;"	m	struct:sVString
 buildAsmKeywordHash	.\asm.c	/^static void buildAsmKeywordHash (void)$/;"	f	file:
+buildAsmKeywordHash	.\whatever\asm.c	/^static void buildAsmKeywordHash (void)$/;"	f	file:
 buildEiffelKeywordHash	.\eiffel.c	/^static void buildEiffelKeywordHash (void)$/;"	f	file:
 buildFortranKeywordHash	.\fortran.c	/^static void buildFortranKeywordHash (void)$/;"	f	file:
 buildJsKeywordHash	.\jscript.c	/^static void buildJsKeywordHash (void)$/;"	f	file:
@@ -1757,7 +1791,6 @@ description	.\lregex.c	/^	char* description;$/;"	m	struct:sKind	file:
 description	.\options.c	/^	const char *description;$/;"	m	struct:sOptionDescription	file:
 description	.\parse.h	/^	const char* description;  \/* displayed in --help output *\/$/;"	m	struct:sKindOption
 determineInterpreter	.\parse.c	/^static vString* determineInterpreter (const char* const cmd)$/;"	f	file:
-dev_scribble	.\ctags.py	/^def dev_scribble():$/;"	f
 dev_t	.\e_mac.h	/^typedef unsigned long  dev_t;$/;"	t
 directive	.\get.c	/^	} directive;$/;"	m	struct:sCppState	typeref:struct:sCppState::sDirective	file:
 directiveDefine	.\get.c	/^static void directiveDefine (const int c)$/;"	f	file:
@@ -1912,6 +1945,7 @@ filter	.\options.h	/^	boolean filter;         \/* --filter  behave as filter: fi
 filterTerminator	.\options.h	/^	char* filterTerminator; \/* --filter-terminator  string to output *\/$/;"	m	struct:sOptionValues
 find	.\readtags.c	/^static tagResult find (tagFile *const file, tagEntry *const entry,$/;"	f	file:
 findAsmTags	.\asm.c	/^static void findAsmTags (void)$/;"	f	file:
+findAsmTags	.\whatever\asm.c	/^static void findAsmTags (void)$/;"	f	file:
 findAspTags	.\asp.c	/^static void findAspTags (void)$/;"	f	file:
 findAwkTags	.\awk.c	/^static void findAwkTags (void)$/;"	f	file:
 findBasicTags	.\basic.c	/^static void findBasicTags (void)$/;"	f	file:
@@ -1953,6 +1987,7 @@ findToken	.\eiffel.c	/^static void findToken (tokenInfo *const token, const toke
 findToken	.\sql.c	/^static void findToken (tokenInfo *const token, const tokenType type)$/;"	f	file:
 findVerilogTags	.\verilog.c	/^static void findVerilogTags (void)$/;"	f	file:
 findVimTags	.\vim.c	/^static void findVimTags (void)$/;"	f	file:
+find_tags_relative_to	.\ctags_plugin.py	/^def find_tags_relative_to(view):$/;"	f
 findfirst_t	.\e_msoft.h	53;"	d
 findfirst_t	.\e_msoft.h	55;"	d
 findfirst_t	.\e_msoft.h	69;"	d
@@ -1963,6 +1998,7 @@ fopen	.\e_mac.h	137;"	d
 fopen	.\mac.c	192;"	d	file:
 format	.\readtags.c	/^	short format;$/;"	m	struct:sTagFile	file:
 format	.\readtags.h	/^			short format;$/;"	m	struct:__anon49::__anon51
+format_tag_for_quickopen	.\ctags_plugin.py	/^def format_tag_for_quickopen(tag):$/;"	f
 fp	.\args.h	/^			FILE* fp;$/;"	m	struct:sArgs::__anon2::sFileArgs
 fp	.\entry.h	/^		FILE *fp;$/;"	m	struct:eTagFile::sEtags
 fp	.\entry.h	/^	FILE *fp;$/;"	m	struct:eTagFile
@@ -2077,6 +2113,7 @@ initialize	.\parse.h	/^	parserInitialize initialize;   \/* initialization routin
 initialize	.\readtags.c	/^static tagFile *initialize (const char *const filePath, tagFileInfo *const info)$/;"	f	file:
 initialize	.\sql.c	/^static void initialize (const langType language)$/;"	f	file:
 initialize	.\verilog.c	/^static void initialize (const langType language)$/;"	f	file:
+initialize	.\whatever\asm.c	/^static void initialize (const langType language)$/;"	f	file:
 initializeCParser	.\c.c	/^static void initializeCParser (const langType language)$/;"	f	file:
 initializeCppParser	.\c.c	/^static void initializeCppParser (const langType language)$/;"	f	file:
 initializeCsharpParser	.\c.c	/^static void initializeCsharpParser (const langType language)$/;"	f	file:
@@ -2115,6 +2152,7 @@ isContextualKeyword	.\c.c	/^static boolean isContextualKeyword (const tokenInfo 
 isContextualStatement	.\c.c	/^static boolean isContextualStatement (const statementInfo *const st)$/;"	f	file:
 isCtagsLine	.\entry.c	/^static boolean isCtagsLine (const char *const line)$/;"	f	file:
 isDefineOperator	.\asm.c	/^static boolean isDefineOperator (const vString *const operator)$/;"	f	file:
+isDefineOperator	.\whatever\asm.c	/^static boolean isDefineOperator (const vString *const operator)$/;"	f	file:
 isDestinationStdout	.\main.c	/^extern boolean isDestinationStdout (void)$/;"	f
 isDirectory	.\routines.h	/^	boolean isDirectory;$/;"	m	struct:__anon65
 isEtagsLine	.\entry.c	/^static boolean isEtagsLine (const char *const line)$/;"	f	file:
@@ -2151,6 +2189,7 @@ isIgnoreToken	.\options.c	/^extern boolean isIgnoreToken ($/;"	f
 isIgnoredDeclaration	.\fortran.c	/^static boolean isIgnoredDeclaration (tokenInfo *const token)$/;"	f	file:
 isIncludeFile	.\options.c	/^extern boolean isIncludeFile (const char *const fileName)$/;"	f
 isInitialSymbolCharacter	.\asm.c	/^static boolean isInitialSymbolCharacter (int c)$/;"	f	file:
+isInitialSymbolCharacter	.\whatever\asm.c	/^static boolean isInitialSymbolCharacter (int c)$/;"	f	file:
 isKeyword	.\eiffel.c	44;"	d	file:
 isKeyword	.\fortran.c	38;"	d	file:
 isKeyword	.\jscript.c	38;"	d	file:
@@ -2176,6 +2215,7 @@ isStatementEnd	.\c.c	/^static boolean isStatementEnd (const statementInfo *const
 isSubprogramPrefix	.\fortran.c	/^static boolean isSubprogramPrefix (tokenInfo *const token)$/;"	f	file:
 isSubroutineDeclaration	.\perl.c	/^static boolean isSubroutineDeclaration (const unsigned char *cp)$/;"	f	file:
 isSymbolCharacter	.\asm.c	/^static boolean isSymbolCharacter (int c)$/;"	f	file:
+isSymbolCharacter	.\whatever\asm.c	/^static boolean isSymbolCharacter (int c)$/;"	f	file:
 isSymbolicLink	.\routines.h	/^	boolean isSymbolicLink;$/;"	m	struct:__anon65
 isTagFile	.\entry.c	/^static boolean isTagFile (const char *const filename)$/;"	f	file:
 isTrue	.\options.c	/^static boolean isTrue (const char *parameter)$/;"	f	file:
@@ -2205,7 +2245,6 @@ item	.\options.h	/^	char* item;$/;"	m	struct:sCookedArgs
 javaKind	.\c.c	/^} javaKind;$/;"	t	typeref:enum:__anon14	file:
 javaTagKind	.\c.c	/^static javaKind javaTagKind (const tagType type)$/;"	f	file:
 jsKind	.\jscript.c	/^} jsKind;$/;"	t	typeref:enum:__anon24	file:
-jump	.\ctags_plugin.py	/^    def jump(self, view, tag_file, ex_command):$/;"	m	class:NavigateToDefinitionCommand
 jump	.\regex.c	/^  jump, $/;"	e	enum:__anon57	file:
 jump_n	.\regex.c	/^  jump_n,$/;"	e	enum:__anon57	file:
 jump_past_alt	.\regex.c	/^  jump_past_alt,$/;"	e	enum:__anon57	file:
@@ -2219,6 +2258,8 @@ keyword	.\jscript.c	/^	keywordId		keyword;$/;"	m	struct:sTokenInfo	file:
 keyword	.\sml.c	/^	const char *keyword;$/;"	m	struct:__anon70	file:
 keyword	.\sql.c	/^	keywordId	keyword;$/;"	m	struct:sTokenInfo	file:
 keyword	.\verilog.c	/^	const char *keyword;$/;"	m	struct:__anon74	file:
+keyword	.\whatever\asm.c	/^	opKeyword keyword;$/;"	m	struct:__anon78	file:
+keyword	.\whatever\asm.c	/^	opKeyword keyword;$/;"	m	struct:__anon79	file:
 keywordAssoc	.\verilog.c	/^} keywordAssoc;$/;"	t	typeref:struct:__anon74	file:
 keywordDesc	.\c.c	/^} keywordDesc;$/;"	t	typeref:struct:sKeywordDesc	file:
 keywordDesc	.\eiffel.c	/^} keywordDesc;$/;"	t	typeref:struct:sKeywordDesc	file:
@@ -2239,6 +2280,7 @@ kind	.\options.h	/^	boolean kind;$/;"	m	struct:sExtFields
 kind	.\readtags.h	/^	const char *kind;$/;"	m	struct:__anon54
 kind	.\sml.c	/^	smlKind kind;$/;"	m	struct:__anon70	file:
 kind	.\verilog.c	/^	verilogKind kind;$/;"	m	struct:__anon74	file:
+kind	.\whatever\asm.c	/^	AsmKind kind;$/;"	m	struct:__anon79	file:
 kindCount	.\parse.h	/^	unsigned int kindCount;        \/* size of `kinds' list *\/$/;"	m	struct:__anon37
 kindKey	.\options.h	/^	boolean kindKey;$/;"	m	struct:sExtFields
 kindLong	.\options.h	/^	boolean kindLong;       \/* --kind-long *\/$/;"	m	struct:sOptionValues
@@ -2296,6 +2338,7 @@ main	.\eiffel.c	/^extern int main (int argc, char** argv)$/;"	f
 main	.\main.c	/^extern int main (int __unused__ argc, char **argv)$/;"	f
 main	.\readtags.c	/^extern int main (int argc, char **argv)$/;"	f
 makeAsmTag	.\asm.c	/^static void makeAsmTag ($/;"	f	file:
+makeAsmTag	.\whatever\asm.c	/^static void makeAsmTag ($/;"	f	file:
 makeBetaTag	.\beta.c	/^static void makeBetaTag (const char* const name, const betaKind kind)$/;"	f	file:
 makeClassTag	.\jscript.c	/^static void makeClassTag (tokenInfo *const token)$/;"	f	file:
 makeClassTag	.\python.c	/^static void makeClassTag (vString *const class, vString *const inheritance,$/;"	f	file:
@@ -2410,17 +2453,20 @@ notwordbound	.\regex.c	/^  notwordbound	\/* Succeeds if not at a word boundary. 
 notwordchar	.\regex.c	/^  notwordchar,	\/* Matches any char that is not a word-constituent.  *\/$/;"	e	enum:__anon57	file:
 numTags	.\entry.h	/^	struct sNumTags { unsigned long added, prev; } numTags;$/;"	m	struct:eTagFile	typeref:struct:eTagFile::sNumTags
 num_regs	.\regex.h	/^  unsigned num_regs;$/;"	m	struct:re_registers
-onActivated	.\ctags_plugin.py	/^    def onActivated(self, view):$/;"	m	class:NavigateToDefinitionCommand
 on_failure_jump	.\regex.c	/^  on_failure_jump,$/;"	e	enum:__anon57	file:
 on_failure_keep_string_jump	.\regex.c	/^  on_failure_keep_string_jump,$/;"	e	enum:__anon57	file:
 opKeyword	.\asm.c	/^} opKeyword;$/;"	t	typeref:enum:__anon4	file:
+opKeyword	.\whatever\asm.c	/^} opKeyword;$/;"	t	typeref:enum:__anon77	file:
 opKind	.\asm.c	/^} opKind;$/;"	t	typeref:struct:__anon6	file:
+opKind	.\whatever\asm.c	/^} opKind;$/;"	t	typeref:struct:__anon79	file:
 open	.\entry.c	69;"	d	file:
 openTagFile	.\entry.c	/^extern void openTagFile (void)$/;"	f
 opendir	.\mac.c	/^DIR *opendir(const char *dirname)$/;"	f
 opened	.\readtags.h	/^		int opened;$/;"	m	struct:__anon49::__anon50
 operator	.\asm.c	/^	const char *operator;$/;"	m	struct:__anon5	file:
+operator	.\whatever\asm.c	/^	const char *operator;$/;"	m	struct:__anon78	file:
 operatorKind	.\asm.c	/^static AsmKind operatorKind ($/;"	f	file:
+operatorKind	.\whatever\asm.c	/^static AsmKind operatorKind ($/;"	f	file:
 optionDescription	.\options.c	/^} optionDescription;$/;"	t	typeref:struct:sOptionDescription	file:
 optionType	.\options.h	/^typedef enum { OPTION_NONE, OPTION_SHORT, OPTION_LONG } optionType;$/;"	t	typeref:enum:__anon36
 optionValues	.\options.h	/^} optionValues;$/;"	t	typeref:struct:sOptionValues
@@ -2704,15 +2750,18 @@ readLineNumber	.\read.c	/^static unsigned long readLineNumber (void)$/;"	f	file:
 readNext	.\readtags.c	/^static tagResult readNext (tagFile *const file, tagEntry *const entry)$/;"	f	file:
 readOperator	.\asm.c	/^static const unsigned char *readOperator ($/;"	f	file:
 readOperator	.\c.c	/^static void readOperator (statementInfo *const st)$/;"	f	file:
+readOperator	.\whatever\asm.c	/^static const unsigned char *readOperator ($/;"	f	file:
 readOptionConfiguration	.\options.c	/^extern void readOptionConfiguration (void)$/;"	f
 readPackageName	.\c.c	/^static void readPackageName (tokenInfo *const token, const int firstChar)$/;"	f	file:
 readPackageOrNamespace	.\c.c	/^static void readPackageOrNamespace (statementInfo *const st, const declType declaration)$/;"	f	file:
 readParents	.\c.c	/^static void readParents (statementInfo *const st, const int qualifier)$/;"	f	file:
 readPreProc	.\asm.c	/^static boolean readPreProc (const unsigned char *const line)$/;"	f	file:
+readPreProc	.\whatever\asm.c	/^static boolean readPreProc (const unsigned char *const line)$/;"	f	file:
 readPseudoTags	.\readtags.c	/^static void readPseudoTags (tagFile *const file, tagFileInfo *const info)$/;"	f	file:
 readSourceLine	.\read.c	/^extern char *readSourceLine ($/;"	f
 readSubToken	.\fortran.c	/^static void readSubToken (tokenInfo *const token)$/;"	f	file:
 readSymbol	.\asm.c	/^static const unsigned char *readSymbol ($/;"	f	file:
+readSymbol	.\whatever\asm.c	/^static const unsigned char *readSymbol ($/;"	f	file:
 readTagLine	.\readtags.c	/^static int readTagLine (tagFile *const file)$/;"	f	file:
 readTagLineRaw	.\readtags.c	/^static int readTagLineRaw (tagFile *const file)$/;"	f	file:
 readTagLineSeek	.\readtags.c	/^static int readTagLineSeek (tagFile *const file, const off_t pos)$/;"	f	file:
@@ -2760,6 +2809,7 @@ rm_eo	.\regex.h	/^  regoff_t rm_eo;  \/* Byte offset from string's start to subs
 rm_so	.\regex.h	/^  regoff_t rm_so;  \/* Byte offset from string's start to substring's start.  *\/$/;"	m	struct:__anon64
 rubyKind	.\ruby.c	/^} rubyKind;$/;"	t	typeref:enum:__anon66	file:
 run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:NavigateToDefinitionCommand
+run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:ShowSymbolsForCurrentFile
 sArgs	.\args.h	/^typedef struct sArgs {$/;"	s
 sArgvArgs	.\args.h	/^		struct sArgvArgs {$/;"	s	union:sArgs::__anon2
 sConditionalInfo	.\get.c	/^typedef struct sConditionalInfo {$/;"	s	file:
@@ -2807,6 +2857,8 @@ scope	.\jscript.c	/^	vString *		scope;$/;"	m	struct:sTokenInfo	file:
 scope	.\options.h	/^	boolean scope;$/;"	m	struct:sExtFields
 scope	.\sql.c	/^	vString *	scope;$/;"	m	struct:sTokenInfo	file:
 scopeString	.\c.c	/^static const char *scopeString (const tagScope scope)$/;"	f	file:
+scroll_to	.\ctags_plugin.py	/^def scroll_to(view, region):$/;"	f
+scroll_to_tag	.\ctags_plugin.py	/^def scroll_to_tag(view, file, symbol, pattern_or_line):$/;"	f
 search	.\readtags.c	/^	} search;$/;"	m	struct:sTagFile	typeref:struct:sTagFile::__anon44	file:
 secondary	.\fortran.c	/^	struct sTokenInfo *secondary;$/;"	m	struct:sTokenInfo	typeref:struct:sTokenInfo::sTokenInfo	file:
 selected	.\routines.c	148;"	d	file:
@@ -3100,14 +3152,17 @@ verbose	.\options.h	/^	boolean verbose;        \/* -V  verbose *\/$/;"	m	struct:
 verilogKind	.\verilog.c	/^} verilogKind;$/;"	t	typeref:enum:__anon73	file:
 version	.\readtags.c	/^		char *version;$/;"	m	struct:sTagFile::__anon46	file:
 version	.\readtags.h	/^		const char *version;$/;"	m	struct:__anon49::__anon52
+view_fn	.\ctags_plugin.py	/^def view_fn(view, if_None = '.'):$/;"	f
 vimKind	.\vim.c	/^} vimKind;$/;"	t	typeref:enum:__anon75	file:
 vstring	.\readtags.c	/^} vstring;$/;"	t	typeref:struct:__anon43	file:
-walkUpDirAndFindFile	.\ctags_plugin.py	/^def walkUpDirAndFindFile(file):$/;"	f
+wait	.\ctags_plugin.py	/^        def wait():$/;"	f	function:wait_until_loaded/wrapper
+wait_until_loaded	.\ctags_plugin.py	/^def wait_until_loaded(file, window):$/;"	f
 word	.\regex.c	/^  fail_stack_elt_t word;$/;"	m	union:__anon61	file:
 wordbeg	.\regex.c	/^  wordbeg,	\/* Succeeds if at word beginning.  *\/$/;"	e	enum:__anon57	file:
 wordbound	.\regex.c	/^  wordbound,	\/* Succeeds if at a word boundary.  *\/$/;"	e	enum:__anon57	file:
 wordchar	.\regex.c	/^  wordchar,	\/* Matches any word-constituent character.  *\/$/;"	e	enum:__anon57	file:
 wordend	.\regex.c	/^  wordend,	\/* Succeeds if at word end.  *\/$/;"	e	enum:__anon57	file:
+wrapper	.\ctags_plugin.py	/^    def wrapper(f):$/;"	f	function:wait_until_loaded
 writeCompactSourceLine	.\entry.c	/^static size_t writeCompactSourceLine (FILE *const fp, const char *const line)$/;"	f	file:
 writeCtagsEntry	.\entry.c	/^static int writeCtagsEntry (const tagEntryInfo *const tag)$/;"	f	file:
 writeEtagsEntry	.\entry.c	/^static int writeEtagsEntry (const tagEntryInfo *const tag)$/;"	f	file:

@@ -1,10 +1,12 @@
-###############################################################################
+################################################################################
 
 # Std Libs
 import os
 import re
 import string
 import time
+import threading
+import functools
 
 from os.path import join, normpath, dirname, abspath
 from itertools import takewhile, groupby
@@ -17,10 +19,13 @@ import sublimeplugin
 # User Libs
 import ctags
 
-###############################################################################
+################################################################################
 
-def walkUpDirAndFindFile(file):
-    dirs = normpath(file).split(os.path.sep)
+def find_tags_relative_to(view):
+    fn = view.fileName()
+    if not fn: return
+    
+    dirs = normpath(join(dirname(fn), 'tags')).split(os.path.sep)
     f = dirs.pop()
     
     while dirs:
@@ -28,67 +33,128 @@ def walkUpDirAndFindFile(file):
         if os.path.exists(joined): return joined
         else: dirs.pop()
 
-###############################################################################
+
+def view_fn(view, if_None = '.'):
+    return normpath(view.fileName() or if_None)
+    
+def wait_until_loaded(file, window):
+    for v in window.views():
+        if view_fn(v) ==  normpath(file):
+            break
+    def wrapper(f):
+        def wait():
+            while v.isLoading():
+                time.sleep(0.01)
+            sublime.setTimeout(functools.partial(f, v), 0)
+        t = threading.Thread(target=wait)
+        return t.start()
+    return wrapper
+
+def scroll_to(view, region):
+    sel_set = view.sel()
+    sel_set.clear()
+    sel_set.add(region)
+    view.show(region)    
+
+def scroll_to_tag(view, file, symbol, pattern_or_line):
+    window = view.window()
+    window.openFile(file)
+
+    @wait_until_loaded(file, window)
+    def and_then(view):
+        look_from = None
+        if pattern_or_line.isdigit():
+            look_from = view.textPoint(int(pattern_or_line)-1, 0)
+        else:
+            found_tag = view.find(pattern_or_line, 0, sublime.LITERAL)
+            if found_tag: look_from = found_tag.begin()
+
+        if look_from is not None:
+            symbol_region = view.find(symbol, look_from, sublime.LITERAL)
+            scroll_to(view, symbol_region)
+
+def format_tag_for_quickopen(tag):
+    if 'class' in tag: format = "%(filename)s : %(class)s %(ex_command)s" 
+    else:              format = "%(filename)s : %(ex_command)s" 
+    
+    return format % tag
+
+################################################################################
 
 ctags_cache    =   ctags.CTagsCache()
 
-class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
-    events   =   {}
-    tags     =   {}
+################################################################################
 
-    def onActivated(self, view):
-        if not self.events or view.isLoading(): return
+class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
+    def run(self, view, args):
+        if args:
+            view = self.view
+            scroll_to_tag(view, view.fileName(), *eval(args[0]))
+            del self.view
+            return
+        
+        tags_file = find_tags_relative_to(view)
+        if not tags_file: return
+                
+        fn = view_fn(view, None) 
+        if not fn: return
+        
+        tag_dir = normpath(dirname(tags_file))
+        common_prefix = os.path.commonprefix([tag_dir, fn])
+        current_file = fn[len(common_prefix)+1:]
 
-        fn = view.fileName()
-        if fn: fn = os.path.normpath(fn)
-        if fn not in self.events: return
+        tags = ctags_cache.get(tags_file)
+        if not tags:
+            return sublime.statusMessage('Parsing Ctags File')
+        
+        tags_for_current_file = []
+        
+        for symbol, tag_list in tags.iteritems():
+            for t in tag_list:
+                if t['filename'] == current_file:
+                    tags_for_current_file += [t]
+ 
+        args, display = [], []
+        
+        for t in sorted(tags_for_current_file, key=iget('symbol')):
+            args    += [`(t['symbol'], t['ex_command'])`]
+            display += [format_tag_for_quickopen(t)]
 
-        found_tag = view.find(self.events.pop(fn), 0, sublime.LITERAL)
-        if found_tag:
-            sel_set = view.sel()
-            sel_set.clear()
-            sel_set.add(found_tag)
-            view.show(found_tag)
+        self.view = view
 
-    def jump(self, view, tag_file, ex_command):
-        tag_file = normpath(join(self.tag_dir, tag_file))
         window = view.window()
+        window.showQuickPanel('', 'showSymbolsForCurrentFile', args, display)
 
-        if ex_command.isdigit():
-            window.openFile(tag_file, int(ex_command), 1)
-        else:
-            self.events[tag_file] = ex_command
-            window.openFile(tag_file)
+################################################################################
 
+class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
     def quickOpen(self, view, files, disp):
         window = view.window()
         window.showQuickPanel("", "navigateToDefinition", files, disp)
 
     def run(self, view, args):
-        if args:
-            self.jump(view, *eval(args[0]))            
-            return
-
-        tags_file = walkUpDirAndFindFile (
-            join(dirname(view.fileName() or '.'), 'tags') )
-        if not tags_file:
-            return
+        if args: return scroll_to_tag(view, *eval(args[0]))
+        
+        tags_file = find_tags_relative_to(view)
+        if not tags_file: return
 
         current_symbol = view.substr(view.word(view.sel()[0]))
-        self.tag_dir = dirname(tags_file)
+        tag_dir = dirname(tags_file)
 
         tags = ctags_cache.get(tags_file)
-        if not tags: 
-            return sublime.statusMessage('Parsing Ctags File')
+        if not tags: return sublime.statusMessage('Parsing Ctags File')
+                
+        args, display = [], []
+        for t in sorted(tags.get(current_symbol, []), key=iget('filename')):
+            args    += [
+                (join(tag_dir,t['filename']), t['symbol'], t['ex_command']) ] 
+            
+            display += [format_tag_for_quickopen(t)]
 
-        tags = [(t['filename'], t['ex_command']) for t in tags[current_symbol]]
-        tags = sorted(tags)
+        if len(args) > 1:
+            self.quickOpen(view, [`t` for t in  args],  display)
 
-        if len(tags) > 1:
-            display =  ['%s : %s' % (i[0], `i[1]`) for i in tags]
-            self.quickOpen(view, [`t` for t in  tags], display)
-
-        elif tags: 
-            self.jump(view, *tags[0])
+        elif args:
+            scroll_to_tag(view, *args[0])
 
 ################################################################################
