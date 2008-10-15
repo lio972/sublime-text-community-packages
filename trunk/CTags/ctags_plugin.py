@@ -51,7 +51,7 @@ def wait_until_loaded(file, window):
         return t.start()
     return wrapper
 
-def scroll_to(view, region):
+def select(view, region):
     sel_set = view.sel()
     sel_set.clear()
     sel_set.add(region)
@@ -70,7 +70,7 @@ def scroll_to_tag(view, file, symbol, pattern_or_line):
 
         if look_from is not None:
             symbol_region = view.find(symbol, look_from, sublime.LITERAL)
-            scroll_to(view, symbol_region)
+            select(view, symbol_region)
 
 def format_tag_for_quickopen(tag):
     if 'class' in tag: format = "%(filename)s : %(class)s %(ex_command)s" 
