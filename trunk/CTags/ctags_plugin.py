@@ -7,6 +7,7 @@ import string
 import time
 import threading
 import functools
+import subprocess
 
 from os.path import join, normpath, dirname, abspath
 from itertools import takewhile, groupby
@@ -20,6 +21,28 @@ import sublimeplugin
 import ctags
 
 ################################################################################
+
+def threaded(finish=None, msg="Thread already running"):
+    def decorator(func):
+        func.running = 0
+        @functools.wraps(func)
+        def threaded(*args, **kwargs):
+            def run():
+                try:
+                    result = func(*args, **kwargs)
+                    if finish:
+                        sublime.setTimeout (
+                            functools.partial(finish, args[0], result), 0
+                        )
+                finally:
+                    func.running = 0
+            if not func.running:
+                func.running = 1
+                threading.Thread(target=run).start()
+            else:
+                sublime.statusMessage(msg)
+        return threaded
+    return decorator
 
 def find_tags_relative_to(view):
     fn = view.fileName()
@@ -140,7 +163,37 @@ class JumpBack(sublimeplugin.TextCommand):
                         
     def onModified(self, view):
         JumpBack.last[-1] = (view, view.sel()[0])
-                                     
+
+class RebuildCTags(sublimeplugin.TextCommand):
+    def clear_cache(self, tag_file):
+        if tag_file in ctags_cache.cache:
+            ctags_cache.cache.pop(tag_file)
+        else:
+            print ctags_cache.cache.keys()
+        
+        sublime.statusMessage('Finished building %s' % tag_file)
+
+    @threaded(finish=clear_cache, msg="Already running CTags")
+    def build_ctags(self, tag_file, cmd, wd):
+        t = subprocess.Popen(
+            cmd, cwd=wd, stdout=subprocess.PIPE, stderr= subprocess.PIPE
+        )
+        t.wait()
+        
+        return tag_file
+    
+    def run(self, view, args):
+        tag_file = find_tags_relative_to(view)
+        if not tag_file:
+            tag_file = join(dirname(view_fn(view)), 'tags')
+            if not sublime.questionBox('`ctags -R` in %s ?' % dirname(tag_file)):
+                return
+        
+        wd = dirname(tag_file)
+        cmd = [join(sublime.packagesPath(), 'CTags', 'ctags.exe'), '-R']
+        
+        self.build_ctags(tag_file, cmd, wd)
+
 class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
     last_open = None
     
