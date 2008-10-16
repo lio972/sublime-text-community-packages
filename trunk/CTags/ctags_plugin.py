@@ -161,7 +161,7 @@ class RebuildCTags(sublimeplugin.TextCommand):
         t.wait()
 
         return tag_file
-    
+
     def run(self, view, args):
         self.restore_focus = FocusRestorer()
         
