@@ -98,7 +98,7 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
         fn = view_fn(view, None) 
         if not fn: return
 
-        JumpBack.last = (view, view.sel()[0])
+        JumpBack.last.append((view, view.sel()[0]))
         tag_dir = normpath(dirname(tags_file))
         common_prefix = os.path.commonprefix([tag_dir, fn])
         current_file = intern(fn[len(common_prefix)+1:].encode('utf-8'))
@@ -128,13 +128,18 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
 ################################################################################
 
 class JumpBack(sublimeplugin.TextCommand):
+    last = [(None, None)]
+ 
     def run(self, view, args):
-        the_view, sel = JumpBack.last
-        view.window().focusView(the_view)
-        select(the_view, sel)
-
+        the_view, sel = JumpBack.last[-1]
+        if len(JumpBack.last) > 1:  del JumpBack.last[-1]
+ 
+        if the_view:
+            view.window().focusView(the_view)
+            select(the_view, sel)
+                        
     def onModified(self, view):
-        JumpBack.last = (view, view.sel()[0])
+        JumpBack.last[-1] = (view, view.sel()[0])
                                      
 class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
     last_open = None
@@ -173,7 +178,7 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
             
             display += [format_tag_for_quickopen(t)]
 
-        JumpBack.last = (view, view.sel()[0])
+        JumpBack.last.append((view, view.sel()[0]))
 
         if len(args) > 1:
             self.quickOpen(view, [`t` for t in  args],  display)

@@ -533,6 +533,7 @@ JavaParser	.\c.c	/^extern parserDefinition* JavaParser (void)$/;"	f
 JavaScriptParser	.\jscript.c	/^extern parserDefinition* JavaScriptParser (void)$/;"	f
 JsKeywordTable	.\jscript.c	/^static const keywordDesc JsKeywordTable [] = {$/;"	v	file:
 JsKinds	.\jscript.c	/^static kindOption JsKinds [] = {$/;"	v	file:
+JumpBack	.\ctags_plugin.py	/^class JumpBack(sublimeplugin.TextCommand):$/;"	c
 KEYWORD_ABSTRACT	.\c.c	/^	KEYWORD_ATTRIBUTE, KEYWORD_ABSTRACT,$/;"	e	enum:eKeywordId	file:
 KEYWORD_ATTRIBUTE	.\c.c	/^	KEYWORD_ATTRIBUTE, KEYWORD_ABSTRACT,$/;"	e	enum:eKeywordId	file:
 KEYWORD_BAD_STATE	.\c.c	/^	KEYWORD_BOOLEAN, KEYWORD_BYTE, KEYWORD_BAD_STATE, KEYWORD_BAD_TRANS,$/;"	e	enum:eKeywordId	file:
@@ -2245,7 +2246,9 @@ item	.\options.h	/^	char* item;$/;"	m	struct:sCookedArgs
 javaKind	.\c.c	/^} javaKind;$/;"	t	typeref:enum:__anon14	file:
 javaTagKind	.\c.c	/^static javaKind javaTagKind (const tagType type)$/;"	f	file:
 jsKind	.\jscript.c	/^} jsKind;$/;"	t	typeref:enum:__anon24	file:
+jump	.\ctags_plugin.py	/^    def jump(self, view, args):$/;"	m	class:NavigateToDefinitionCommand
 jump	.\regex.c	/^  jump, $/;"	e	enum:__anon57	file:
+jumpBack	.\ctags_plugin.py	/^    def jumpBack(self):$/;"	m	class:NavigateToDefinitionCommand
 jump_n	.\regex.c	/^  jump_n,$/;"	e	enum:__anon57	file:
 jump_past_alt	.\regex.c	/^  jump_past_alt,$/;"	e	enum:__anon57	file:
 key	.\readtags.h	/^	const char *key;$/;"	m	struct:__anon53
@@ -2453,6 +2456,7 @@ notwordbound	.\regex.c	/^  notwordbound	\/* Succeeds if not at a word boundary. 
 notwordchar	.\regex.c	/^  notwordchar,	\/* Matches any char that is not a word-constituent.  *\/$/;"	e	enum:__anon57	file:
 numTags	.\entry.h	/^	struct sNumTags { unsigned long added, prev; } numTags;$/;"	m	struct:eTagFile	typeref:struct:eTagFile::sNumTags
 num_regs	.\regex.h	/^  unsigned num_regs;$/;"	m	struct:re_registers
+onModified	.\ctags_plugin.py	/^    def onModified(self, view):$/;"	m	class:JumpBack
 on_failure_jump	.\regex.c	/^  on_failure_jump,$/;"	e	enum:__anon57	file:
 on_failure_keep_string_jump	.\regex.c	/^  on_failure_keep_string_jump,$/;"	e	enum:__anon57	file:
 opKeyword	.\asm.c	/^} opKeyword;$/;"	t	typeref:enum:__anon4	file:
@@ -2808,6 +2812,7 @@ rewinddir	.\mac.c	/^void rewinddir(DIR *dirp)$/;"	f
 rm_eo	.\regex.h	/^  regoff_t rm_eo;  \/* Byte offset from string's start to substring's end.  *\/$/;"	m	struct:__anon64
 rm_so	.\regex.h	/^  regoff_t rm_so;  \/* Byte offset from string's start to substring's start.  *\/$/;"	m	struct:__anon64
 rubyKind	.\ruby.c	/^} rubyKind;$/;"	t	typeref:enum:__anon66	file:
+run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:JumpBack
 run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:NavigateToDefinitionCommand
 run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:ShowSymbolsForCurrentFile
 sArgs	.\args.h	/^typedef struct sArgs {$/;"	s
@@ -2857,6 +2862,7 @@ scope	.\jscript.c	/^	vString *		scope;$/;"	m	struct:sTokenInfo	file:
 scope	.\options.h	/^	boolean scope;$/;"	m	struct:sExtFields
 scope	.\sql.c	/^	vString *	scope;$/;"	m	struct:sTokenInfo	file:
 scopeString	.\c.c	/^static const char *scopeString (const tagScope scope)$/;"	f	file:
+scribble	.\ctags.py	/^def scribble():$/;"	f
 scroll_to_tag	.\ctags_plugin.py	/^def scroll_to_tag(view, file, symbol, pattern_or_line):$/;"	f
 search	.\readtags.c	/^	} search;$/;"	m	struct:sTagFile	typeref:struct:sTagFile::__anon44	file:
 secondary	.\fortran.c	/^	struct sTokenInfo *secondary;$/;"	m	struct:sTokenInfo	typeref:struct:sTokenInfo::sTokenInfo	file:
