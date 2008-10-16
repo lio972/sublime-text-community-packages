@@ -28,7 +28,7 @@ def threaded(finish=None, msg="Thread already running"):
     return decorator
 
 class FocusRestorer(object):
-    def __init__(self): 
+    def __init__(self):
         self.h = windll.user32.GetForegroundWindow()
     def __call__(self, times=2, delay = 50):  
         for t in xrange(1, (delay * times) + 2, delay):
