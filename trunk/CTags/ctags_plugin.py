@@ -46,8 +46,9 @@ def wait_until_loaded(file, window):
 
     def wrapper(f):
         def wait():
-            while v.isLoading():
+            while v.isLoading(): 
                 time.sleep(0.01)
+
             sublime.setTimeout(functools.partial(f, v), 0)
         t = threading.Thread(target=wait)
         return t.start()
@@ -101,10 +102,10 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
         tags_file = find_tags_relative_to(view)
         if not tags_file: return
                 
-        fn = view_fn(view, None) 
+        fn = view_fn(view, None)
         if not fn: return
 
-        JumpBack.last.append((view, view.sel()[0]))
+        JumpBack.append(view)
         tag_dir = normpath(dirname(tags_file))
         common_prefix = os.path.commonprefix([tag_dir, fn])
         current_file = intern(fn[len(common_prefix)+1:].encode('utf-8'))
@@ -134,16 +135,28 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
 ################################################################################
 
 class JumpBack(sublimeplugin.TextCommand):
-    last = [(None, None)]
+    last = [(0, 0)]
  
-    def run(self, view, args):
+    def run(self, view, args):                    
         the_view, sel = JumpBack.last[-1]
         if len(JumpBack.last) > 1:  del JumpBack.last[-1]
  
         if the_view:
             view.window().focusView(the_view)
-            select(the_view, sel)
-                        
+            select(the_view, sel)        
+        
+        JumpBack.clear_references(view.window())
+
+    @classmethod
+    def append(cls, view):
+        cls.last.append((view, view.sel()[0]))
+        cls.clear_references(view.window())
+
+    @classmethod
+    def clear_references(cls, window):
+        o = filter(None, set(v.fileName() for v in window.views()))
+        cls.last = [(v,s) for (v,s) in cls.last if v is 0 or v.fileName() in o]
+
     def onModified(self, view):
         JumpBack.last[-1] = (view, view.sel()[0])
 
@@ -158,32 +171,32 @@ class RebuildCTags(sublimeplugin.TextCommand):
 
     @threaded(finish=clear_cache, msg="Already running CTags")
     def build_ctags(self, tag_file, cmd, wd):
-        t = subprocess.Popen(
-            cmd, cwd=wd, stdout=subprocess.PIPE, stderr= subprocess.PIPE
+        p = subprocess.Popen (
+            cmd, cwd=wd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
         )        
-        
-        t.wait()
+
+        p.wait()
 
         return tag_file
 
     def run(self, view, args):
-        self.restore_focus = FocusRestorer()
+        restore_focus = FocusRestorer()
         
         tag_file = find_tags_relative_to(view)
         if not tag_file:
             tag_file = join(dirname(view_fn(view)), 'tags')
             if not sublime.questionBox('`ctags -R` in %s ?' % dirname(tag_file)):
                 return
-        
+
         wd = dirname(tag_file)
         cmd = [join(sublime.packagesPath(), 'CTags', 'ctags.exe'), '-R']
-        
+
         self.build_ctags(tag_file, cmd, wd)
-        self.restore_focus()
+        restore_focus()
 
 ################################################################################
 
-class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
+class NavigateToDefinition(sublimeplugin.TextCommand):
     last_open = None
     
     def jump(self, view, args):
@@ -215,17 +228,14 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
                 
         args, display = [], []
         for t in sorted(tags.get(current_symbol, []), key=iget('filename')):
-            args    += [
-                (join(tag_dir,t['filename']), t['symbol'], t['ex_command']) ] 
-            
-            display += [format_tag_for_quickopen(t)]
+            args.append (
+                (join(tag_dir,t['filename']), t['symbol'], t['ex_command']) )
 
-        JumpBack.last.append((view, view.sel()[0]))
+            display.append(format_tag_for_quickopen(t))
 
-        if len(args) > 1:
-            self.quickOpen(view, [`t` for t in  args],  display)
-
-        elif args:
-            self.jump(view, args[0])
+        if args:
+            JumpBack.append(view)    
+            if len(args) > 1: self.quickOpen(view, [`a`for a in args], display)
+            else:             self.jump(view, args[0])
 
 ################################################################################

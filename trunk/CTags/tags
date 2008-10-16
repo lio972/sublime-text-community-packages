@@ -1008,7 +1008,7 @@ NUM_FAILURE_ITEMS	.\regex.c	2441;"	d	file:
 NUM_NONREG_ITEMS	.\regex.c	2432;"	d	file:
 NUM_NONREG_ITEMS	.\regex.c	2434;"	d	file:
 NUM_REG_ITEMS	.\regex.c	2428;"	d	file:
-NavigateToDefinitionCommand	.\ctags_plugin.py	/^class NavigateToDefinitionCommand(sublimeplugin.TextCommand):$/;"	c
+NavigateToDefinition	.\ctags_plugin.py	/^class NavigateToDefinition(sublimeplugin.TextCommand):$/;"	c
 NestingLevel	.\python.c	/^struct NestingLevel$/;"	s	file:
 NestingLevel	.\python.c	/^typedef struct NestingLevel NestingLevel;$/;"	t	typeref:struct:NestingLevel	file:
 NestingLevels	.\python.c	/^struct NestingLevels$/;"	s	file:
@@ -1528,7 +1528,7 @@ __REGEXP_LIBRARY_H__	.\regex.h	21;"	d
 __call__	.\plugin_helpers.py	/^    def __call__(self, times=2, delay = 50):  $/;"	m	class:FocusRestorer	file:
 __init__	.\ctags.py	/^    def __init__(self, status=None):$/;"	m	class:CTagsCache
 __init__	.\ctags.py	/^    def __init__(self, tag_dict):$/;"	m	class:Tag
-__init__	.\plugin_helpers.py	/^    def __init__(self): $/;"	m	class:FocusRestorer
+__init__	.\plugin_helpers.py	/^    def __init__(self):$/;"	m	class:FocusRestorer
 __pad1	.\e_mac.h	/^	unsigned short int __pad1;$/;"	m	struct:stat
 __printf__	.\general.h	61;"	d
 __printf__	.\general.h	64;"	d
@@ -1605,6 +1605,7 @@ ancestorScope	.\fortran.c	/^static const tokenInfo* ancestorScope (void)$/;"	f	f
 ancestorTop	.\fortran.c	/^static const tokenInfo* ancestorTop (void)$/;"	f	file:
 and_then	.\ctags_plugin.py	/^    def and_then(view):$/;"	f	function:scroll_to_tag
 anychar	.\regex.c	/^  anychar,$/;"	e	enum:__anon57	file:
+append	.\ctags_plugin.py	/^    def append(cls, view):$/;"	m	class:JumpBack
 append	.\options.h	/^	boolean append;         \/* -a  append to "tags" file *\/$/;"	m	struct:sOptionValues
 argDelete	.\args.c	/^extern void argDelete (Arguments* const current)$/;"	f
 argForth	.\args.c	/^extern void argForth (Arguments* const current)$/;"	f
@@ -2255,9 +2256,9 @@ item	.\options.h	/^	char* item;$/;"	m	struct:sCookedArgs
 javaKind	.\c.c	/^} javaKind;$/;"	t	typeref:enum:__anon14	file:
 javaTagKind	.\c.c	/^static javaKind javaTagKind (const tagType type)$/;"	f	file:
 jsKind	.\jscript.c	/^} jsKind;$/;"	t	typeref:enum:__anon24	file:
-jump	.\ctags_plugin.py	/^    def jump(self, view, args):$/;"	m	class:NavigateToDefinitionCommand
+jump	.\ctags_plugin.py	/^    def jump(self, view, args):$/;"	m	class:NavigateToDefinition
 jump	.\regex.c	/^  jump, $/;"	e	enum:__anon57	file:
-jumpBack	.\ctags_plugin.py	/^    def jumpBack(self):$/;"	m	class:NavigateToDefinitionCommand
+jumpBack	.\ctags_plugin.py	/^    def jumpBack(self):$/;"	m	class:NavigateToDefinition
 jump_n	.\regex.c	/^  jump_n,$/;"	e	enum:__anon57	file:
 jump_past_alt	.\regex.c	/^  jump_past_alt,$/;"	e	enum:__anon57	file:
 key	.\readtags.h	/^	const char *key;$/;"	m	struct:__anon53
@@ -2394,6 +2395,7 @@ max	.\strlist.h	/^	unsigned int max;$/;"	m	struct:sStringList
 maybe_pop_jump	.\regex.c	/^  maybe_pop_jump,$/;"	e	enum:__anon57	file:
 member	.\c.c	/^	memberInfo	member;         \/* information regarding parent class\/struct *\/$/;"	m	struct:sStatementInfo	file:
 memberInfo	.\c.c	/^} memberInfo;$/;"	t	typeref:struct:sMemberInfo	file:
+method	.\ctags_plugin.py	/^    @classmethod$/;"	c	class:JumpBack
 mfopen	.\mac.c	/^FILE* mfopen(const char* file, const char* mode)$/;"	f
 mode_t	.\e_mac.h	/^typedef unsigned long  mode_t;$/;"	t
 mstat	.\mac.c	/^int mstat(const char* file, struct stat* st)$/;"	f
@@ -2726,7 +2728,7 @@ qualifyEnumeratorTag	.\c.c	/^static void qualifyEnumeratorTag (const statementIn
 qualifyFunctionDeclTag	.\c.c	/^static void qualifyFunctionDeclTag (const statementInfo *const st,$/;"	f	file:
 qualifyFunctionTag	.\c.c	/^static void qualifyFunctionTag (const statementInfo *const st,$/;"	f	file:
 qualifyVariableTag	.\c.c	/^static void qualifyVariableTag (const statementInfo *const st,$/;"	f	file:
-quickOpen	.\ctags_plugin.py	/^    def quickOpen(self, view, files, disp):$/;"	m	class:NavigateToDefinitionCommand
+quickOpen	.\ctags_plugin.py	/^    def quickOpen(self, view, files, disp):$/;"	m	class:NavigateToDefinition
 re_comp	.\regex.c	/^re_comp (s)$/;"	f
 re_comp_buf	.\regex.c	/^static struct re_pattern_buffer re_comp_buf;$/;"	v	typeref:struct:re_pattern_buffer	file:
 re_compile_fastmap	.\regex.c	/^re_compile_fastmap (bufp)$/;"	f
@@ -2823,7 +2825,7 @@ rm_eo	.\regex.h	/^  regoff_t rm_eo;  \/* Byte offset from string's start to subs
 rm_so	.\regex.h	/^  regoff_t rm_so;  \/* Byte offset from string's start to substring's start.  *\/$/;"	m	struct:__anon64
 rubyKind	.\ruby.c	/^} rubyKind;$/;"	t	typeref:enum:__anon66	file:
 run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:JumpBack
-run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:NavigateToDefinitionCommand
+run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:NavigateToDefinition
 run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:RebuildCTags
 run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:ShowSymbolsForCurrentFile
 run	.\plugin_helpers.py	/^            def run():$/;"	f	function:threaded/decorator/threaded

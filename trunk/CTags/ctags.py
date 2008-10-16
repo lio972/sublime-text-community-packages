@@ -102,14 +102,11 @@ class CTagsCache(object):
     def thread(self):
         while True:
             path = self.Q.get()
-            print path
             self.OQ.put((path, parse_tag_file(path)))
             self.Q.task_done()
             if self.status: self.status(path)
 
     def get(self, path):
-        # TODO: monitor CTAGS.py file for changes
-        
         if path not in self.cache:
             if path not in self.pending:
                 self.Q.put(path)
