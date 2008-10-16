@@ -35,3 +35,10 @@ class FocusRestorer(object):
             sublime.setTimeout (
                 functools.partial(windll.user32.SetForegroundWindow, self.h), t
             )
+
+def in_main(f):
+    @functools.wraps(f)
+    def done_in_main(*args, **kw):
+        sublime.setTimeout(functools.partial(f, *args, **kw), 0)
+        
+    return done_in_main

@@ -19,7 +19,7 @@ import sublimeplugin
 
 # User Libs
 import ctags
-from plugin_helpers import threaded, FocusRestorer
+from plugin_helpers import threaded, FocusRestorer, in_main
 
 ################################################################################
 
@@ -80,9 +80,15 @@ def format_tag_for_quickopen(tag):
     
     return format % tag
 
+
+
 ################################################################################
 
-ctags_cache    =   ctags.CTagsCache()
+@in_main
+def notify_finished_parsing(p):
+    sublime.statusMessage('Finished parsing %s' % p)
+
+ctags_cache    =   ctags.CTagsCache(status=notify_finished_parsing)
 
 ################################################################################
 
@@ -107,7 +113,7 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
 
         tags = ctags_cache.get(tags_file)
         if not tags:
-            return sublime.statusMessage('Parsing Ctags File')
+            return sublime.statusMessage('Parsing CTags File')
         
         tags_for_current_file = []
         
@@ -147,8 +153,6 @@ class RebuildCTags(sublimeplugin.TextCommand):
     def clear_cache(self, tag_file):
         if tag_file in ctags_cache.cache:
             ctags_cache.cache.pop(tag_file)
-        else:
-            print ctags_cache.cache.keys()
         
         sublime.statusMessage('Finished building %s' % tag_file)
 
@@ -205,7 +209,7 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
         tag_dir = dirname(tags_file)
 
         tags = ctags_cache.get(tags_file)
-        if not tags: return sublime.statusMessage('Parsing Ctags File')
+        if not tags: return sublime.statusMessage('Parsing CTags File')
                 
         args, display = [], []
         for t in sorted(tags.get(current_symbol, []), key=iget('filename')):

@@ -97,12 +97,15 @@ class CTagsCache(object):
         self.t.setDaemon(1)
         self.t.start()
 
+        self.status=status
+
     def thread(self):
         while True:
             path = self.Q.get()
             print path
             self.OQ.put((path, parse_tag_file(path)))
             self.Q.task_done()
+            if self.status: self.status(path)
 
     def get(self, path):
         # TODO: monitor CTAGS.py file for changes
