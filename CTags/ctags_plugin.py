@@ -80,8 +80,6 @@ def format_tag_for_quickopen(tag):
     
     return format % tag
 
-
-
 ################################################################################
 
 @in_main
@@ -149,6 +147,8 @@ class JumpBack(sublimeplugin.TextCommand):
     def onModified(self, view):
         JumpBack.last[-1] = (view, view.sel()[0])
 
+################################################################################
+
 class RebuildCTags(sublimeplugin.TextCommand):
     def clear_cache(self, tag_file):
         if tag_file in ctags_cache.cache:
@@ -180,6 +180,8 @@ class RebuildCTags(sublimeplugin.TextCommand):
         
         self.build_ctags(tag_file, cmd, wd)
         self.restore_focus()
+
+################################################################################
 
 class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
     last_open = None
