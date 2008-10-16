@@ -2857,10 +2857,10 @@ scope	.\jscript.c	/^	vString *		scope;$/;"	m	struct:sTokenInfo	file:
 scope	.\options.h	/^	boolean scope;$/;"	m	struct:sExtFields
 scope	.\sql.c	/^	vString *	scope;$/;"	m	struct:sTokenInfo	file:
 scopeString	.\c.c	/^static const char *scopeString (const tagScope scope)$/;"	f	file:
-scroll_to	.\ctags_plugin.py	/^def scroll_to(view, region):$/;"	f
 scroll_to_tag	.\ctags_plugin.py	/^def scroll_to_tag(view, file, symbol, pattern_or_line):$/;"	f
 search	.\readtags.c	/^	} search;$/;"	m	struct:sTagFile	typeref:struct:sTagFile::__anon44	file:
 secondary	.\fortran.c	/^	struct sTokenInfo *secondary;$/;"	m	struct:sTokenInfo	typeref:struct:sTokenInfo::sTokenInfo	file:
+select	.\ctags_plugin.py	/^def select(view, region):$/;"	f
 selected	.\routines.c	148;"	d	file:
 sep	.\entry.c	713;"	d	file:
 sep	.\entry.c	765;"	d	file:

@@ -31,6 +31,11 @@ Also note that if the same key is bound twice, the last binding takes precedence
     <binding key="ctrl+rightbracket" command="navigateToDefinition">
         <!-- <context name="" value=""/> -->
     </binding>
+    <binding key="ctrl+leftbracket" command="navigateToDefinition jumpBack">
+        <!-- <context name="" value=""/> -->
+    </binding>
+
+    
     <binding key="alt+s" command="showSymbolsForCurrentFile">
         <!-- <context name="" value=""/> -->
     </binding>

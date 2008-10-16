@@ -100,7 +100,7 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
         
         tag_dir = normpath(dirname(tags_file))
         common_prefix = os.path.commonprefix([tag_dir, fn])
-        current_file = fn[len(common_prefix)+1:]
+        current_file = intern(fn[len(common_prefix)+1:].encode('utf-8'))
 
         tags = ctags_cache.get(tags_file)
         if not tags:
@@ -127,12 +127,24 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
 ################################################################################
 
 class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
+    last_open = None
+    
+    def jump(self, view, args):
+        scroll_to_tag(view, *args)
+
+    def jumpBack(self):
+        if self.last_open:
+            self.window.focusView(self.last_open)
+            select(self.last_open, self.selection)
+
     def quickOpen(self, view, files, disp):
         window = view.window()
         window.showQuickPanel("", "navigateToDefinition", files, disp)
 
     def run(self, view, args):
-        if args: return scroll_to_tag(view, *eval(args[0]))
+        if args:
+            if args[0] == 'jumpBack': return self.jumpBack()
+            else: return self.jump(view, eval(args[0]))
         
         tags_file = find_tags_relative_to(view)
         if not tags_file: return
@@ -150,10 +162,14 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
             
             display += [format_tag_for_quickopen(t)]
 
+        self.last_open = view
+        self.window = view.window()
+        self.selection = view.sel()[0]
+
         if len(args) > 1:
             self.quickOpen(view, [`t` for t in  args],  display)
 
         elif args:
-            scroll_to_tag(view, *args[0])
+            self.jump(view, args[0])
 
 ################################################################################
