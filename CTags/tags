@@ -304,6 +304,7 @@ File	.\eiffel.c	/^static FILE *File;$/;"	v	file:
 File	.\read.c	/^inputFile File;  \/* globally read through macros *\/$/;"	v
 FileName	.\eiffel.c	/^static const char *FileName;$/;"	v	file:
 FilesRequired	.\options.c	/^static boolean FilesRequired = TRUE;$/;"	v	file:
+FocusRestorer	.\plugin_helpers.py	/^class FocusRestorer(object):$/;"	c
 FortranKeywordTable	.\fortran.c	/^static const keywordDesc FortranKeywordTable [] = {$/;"	v	file:
 FortranKinds	.\fortran.c	/^static kindOption FortranKinds [] = {$/;"	v	file:
 FortranParser	.\fortran.c	/^extern parserDefinition* FortranParser (void)$/;"	f
@@ -1524,8 +1525,10 @@ _SORT_H	.\sort.h	12;"	d
 _STRLIST_H	.\strlist.h	12;"	d
 _VSTRING_H	.\vstring.h	12;"	d
 __REGEXP_LIBRARY_H__	.\regex.h	21;"	d
+__call__	.\plugin_helpers.py	/^    def __call__(self, times=2, delay = 50):  $/;"	m	class:FocusRestorer	file:
 __init__	.\ctags.py	/^    def __init__(self, status=None):$/;"	m	class:CTagsCache
 __init__	.\ctags.py	/^    def __init__(self, tag_dict):$/;"	m	class:Tag
+__init__	.\plugin_helpers.py	/^    def __init__(self): $/;"	m	class:FocusRestorer
 __pad1	.\e_mac.h	/^	unsigned short int __pad1;$/;"	m	struct:stat
 __printf__	.\general.h	61;"	d
 __printf__	.\general.h	64;"	d
@@ -1784,7 +1787,7 @@ declString	.\c.c	/^static const char *declString (const declType declaration)$/;
 declToTagType	.\c.c	/^static tagType declToTagType (const declType declaration)$/;"	f	file:
 declType	.\c.c	/^} declType;$/;"	t	typeref:enum:eDeclaration	file:
 declaration	.\c.c	/^	declType	declaration;    \/* specifier associated with TOKEN_SPEC *\/$/;"	m	struct:sStatementInfo	file:
-decorator	.\ctags_plugin.py	/^    def decorator(func):$/;"	f	function:threaded
+decorator	.\plugin_helpers.py	/^    def decorator(func):$/;"	f	function:threaded
 deleteAllStatements	.\c.c	/^static void deleteAllStatements (void)$/;"	f	file:
 deleteStatement	.\c.c	/^static void deleteStatement (void)$/;"	f	file:
 deleteToken	.\c.c	/^static void deleteToken (tokenInfo *const token)$/;"	f	file:
@@ -2816,11 +2819,11 @@ rewinddir	.\mac.c	/^void rewinddir(DIR *dirp)$/;"	f
 rm_eo	.\regex.h	/^  regoff_t rm_eo;  \/* Byte offset from string's start to substring's end.  *\/$/;"	m	struct:__anon64
 rm_so	.\regex.h	/^  regoff_t rm_so;  \/* Byte offset from string's start to substring's start.  *\/$/;"	m	struct:__anon64
 rubyKind	.\ruby.c	/^} rubyKind;$/;"	t	typeref:enum:__anon66	file:
-run	.\ctags_plugin.py	/^            def run():$/;"	f	function:threaded/decorator/threaded
 run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:JumpBack
 run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:NavigateToDefinitionCommand
 run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:RebuildCTags
 run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:ShowSymbolsForCurrentFile
+run	.\plugin_helpers.py	/^            def run():$/;"	f	function:threaded/decorator/threaded
 sArgs	.\args.h	/^typedef struct sArgs {$/;"	s
 sArgvArgs	.\args.h	/^		struct sArgvArgs {$/;"	s	union:sArgs::__anon2
 sConditionalInfo	.\get.c	/^typedef struct sConditionalInfo {$/;"	s	file:
@@ -3070,8 +3073,8 @@ terminate	.\readtags.c	/^static void terminate (tagFile *const file)$/;"	f	file:
 testEtagsInvocation	.\options.c	/^extern void testEtagsInvocation (void)$/;"	f
 test_all_search_strings_work	.\ctags.py	/^    def test_all_search_strings_work(self):$/;"	m	class:CTagsTest
 thread	.\ctags.py	/^    def thread(self):$/;"	m	class:CTagsCache
-threaded	.\ctags_plugin.py	/^        def threaded(*args, **kwargs):$/;"	f	function:threaded/decorator
-threaded	.\ctags_plugin.py	/^def threaded(finish=None, msg="Thread already running"):$/;"	f
+threaded	.\plugin_helpers.py	/^        def threaded(*args, **kwargs):$/;"	f	function:threaded/decorator
+threaded	.\plugin_helpers.py	/^def threaded(finish=None, msg="Thread already running"):$/;"	f
 timeStamp	.\main.c	485;"	d	file:
 timeStamp	.\main.c	518;"	d	file:
 toLowerString	.\routines.c	/^extern void toLowerString (char* str)$/;"	f
