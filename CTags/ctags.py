@@ -35,7 +35,7 @@ def parse_tag_file(tag_file):
     with open(tag_file) as tags:
         for search_obj in (t for t in (TAGS_RE.search(l) for l in tags) if t):
             tag = post_process_tag(search_obj, tag_file)
-            tags_lookup.setdefault(tag['symbol'], []).append(tag)
+            tags_lookup.setdefault(intern(tag['symbol']), []).append(tag)
 
     return tags_lookup
 
@@ -53,7 +53,7 @@ def post_process_tag(search_obj, tag_file):
         tag.update(process_fields(fields))
 
     tag['ex_command'] =   process_ex_cmd(tag['ex_command'])
-    tag['filename']   =   normpath(tag['filename'])
+    tag['filename']   =   intern(normpath(tag['filename']))
 
     return tag
 
@@ -146,9 +146,9 @@ class CTagsTest(unittest.TestCase):
     def test_all_search_strings_work(self):
         os.chdir(os.path.dirname(__file__))
         tags = parse_tag_file('tags')
-        
+
         failures = []
-        
+
         for symbol, tag_list in tags.iteritems():
             for tag in (Tag(t) for t in tag_list):
                 if not tag.ex_command.isdigit():
@@ -156,14 +156,20 @@ class CTagsTest(unittest.TestCase):
                         file_str = fh.read()
                         if tag.ex_command not in file_str:
                             failures += [tag.ex_command]
-        
+
         for f in failures:
             print f
-               
+
         self.assertEqual(len(failures), 0, 'update tag files and try again')
 
+def scribble():
+    import sys
+
+    tags = parse_tag_file('C:/python25/Lib/tags')
+    print sys.getsizeof(tags)
+
 if __name__ == '__main__':
-    if 1: dev_scribble()
+    if 1: scribble()
     else: unittest.main()
 
 ################################################################################
