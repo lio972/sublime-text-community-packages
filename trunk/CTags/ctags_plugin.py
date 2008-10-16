@@ -19,30 +19,9 @@ import sublimeplugin
 
 # User Libs
 import ctags
+from plugin_helpers import threaded, FocusRestorer
 
 ################################################################################
-
-def threaded(finish=None, msg="Thread already running"):
-    def decorator(func):
-        func.running = 0
-        @functools.wraps(func)
-        def threaded(*args, **kwargs):
-            def run():
-                try:
-                    result = func(*args, **kwargs)
-                    if finish:
-                        sublime.setTimeout (
-                            functools.partial(finish, args[0], result), 0
-                        )
-                finally:
-                    func.running = 0
-            if not func.running:
-                func.running = 1
-                threading.Thread(target=run).start()
-            else:
-                sublime.statusMessage(msg)
-        return threaded
-    return decorator
 
 def find_tags_relative_to(view):
     fn = view.fileName()
@@ -177,12 +156,15 @@ class RebuildCTags(sublimeplugin.TextCommand):
     def build_ctags(self, tag_file, cmd, wd):
         t = subprocess.Popen(
             cmd, cwd=wd, stdout=subprocess.PIPE, stderr= subprocess.PIPE
-        )
-        t.wait()
+        )        
         
+        t.wait()
+
         return tag_file
     
     def run(self, view, args):
+        self.restore_focus = FocusRestorer()
+        
         tag_file = find_tags_relative_to(view)
         if not tag_file:
             tag_file = join(dirname(view_fn(view)), 'tags')
@@ -193,6 +175,7 @@ class RebuildCTags(sublimeplugin.TextCommand):
         cmd = [join(sublime.packagesPath(), 'CTags', 'ctags.exe'), '-R']
         
         self.build_ctags(tag_file, cmd, wd)
+        self.restore_focus()
 
 class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
     last_open = None
