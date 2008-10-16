@@ -136,6 +136,8 @@ class NavigateToDefinitionCommand(sublimeplugin.TextCommand):
         if self.last_open:
             self.window.focusView(self.last_open)
             select(self.last_open, self.selection)
+            del self.window
+            del self.last_open
 
     def quickOpen(self, view, files, disp):
         window = view.window()
