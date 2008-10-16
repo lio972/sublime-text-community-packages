@@ -34,7 +34,10 @@ Also note that if the same key is bound twice, the last binding takes precedence
     <binding key="ctrl+leftbracket" command="jumpBack">
         <!-- <context name="" value=""/> -->
     </binding>
-
+    
+    <binding key="ctrl+alt+shift+t" command="rebuildCTags">
+        <!-- <context name="" value=""/> -->
+    </binding>
     
     <binding key="alt+s" command="showSymbolsForCurrentFile">
         <!-- <context name="" value=""/> -->
