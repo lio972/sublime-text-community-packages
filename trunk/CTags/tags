@@ -1811,6 +1811,7 @@ disableLanguageKinds	.\parse.c	/^static void disableLanguageKinds (const langTyp
 disableRegexKinds	.\lregex.c	/^extern void disableRegexKinds (const langType language __unused__)$/;"	f
 discardTypeList	.\c.c	/^static void discardTypeList (tokenInfo *const token)$/;"	f	file:
 doesFileExist	.\routines.c	/^extern boolean doesFileExist (const char *const fileName)$/;"	f
+done_in_main	.\plugin_helpers.py	/^    def done_in_main(*args, **kw):$/;"	f	function:in_main
 dummy_failure_jump	.\regex.c	/^  dummy_failure_jump,$/;"	e	enum:__anon57	file:
 duplicate	.\readtags.c	/^static char *duplicate (const char *str)$/;"	f	file:
 duplicate	.\regex.c	/^  duplicate,$/;"	e	enum:__anon57	file:
@@ -2094,6 +2095,7 @@ implementation	.\entry.h	/^		const char* implementation;$/;"	m	struct:sTagEntryI
 implementation	.\options.h	/^	boolean implementation;$/;"	m	struct:sExtFields
 implementationString	.\c.c	/^static const char *implementationString (const impType imp)$/;"	f	file:
 inFunction	.\c.c	/^	boolean     inFunction;     \/* are we inside of a function? *\/$/;"	m	struct:sStatementInfo	file:
+in_main	.\plugin_helpers.py	/^def in_main(f):$/;"	f
 include	.\options.h	/^	struct sInclude include;\/* --extra  extra tag inclusion *\/$/;"	m	struct:sOptionValues	typeref:struct:sOptionValues::sInclude
 includeExtensionFlags	.\entry.c	56;"	d	file:
 includeTag	.\c.c	/^static boolean includeTag (const tagType type, const boolean isFileScope)$/;"	f	file:
@@ -2458,6 +2460,7 @@ no_sub	.\regex.h	/^  unsigned no_sub : 1;$/;"	m	struct:re_pattern_buffer
 notVariable	.\c.c	/^	boolean		notVariable;    \/* has a variable declaration been disqualified ? *\/$/;"	m	struct:sStatementInfo	file:
 not_bol	.\regex.h	/^  unsigned not_bol : 1;$/;"	m	struct:re_pattern_buffer
 not_eol	.\regex.h	/^  unsigned not_eol : 1;$/;"	m	struct:re_pattern_buffer
+notify_finished_parsing	.\ctags_plugin.py	/^def notify_finished_parsing(p):$/;"	f
 notsyntaxspec	.\regex.c	/^  notsyntaxspec$/;"	e	enum:__anon57	file:
 notwordbound	.\regex.c	/^  notwordbound	\/* Succeeds if not at a word boundary.  *\/$/;"	e	enum:__anon57	file:
 notwordchar	.\regex.c	/^  notwordchar,	\/* Matches any char that is not a word-constituent.  *\/$/;"	e	enum:__anon57	file:
