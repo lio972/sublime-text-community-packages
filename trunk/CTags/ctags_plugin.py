@@ -21,6 +21,8 @@ import sublimeplugin
 import ctags
 from plugin_helpers import threaded, FocusRestorer, in_main
 
+from ctags_binary_search import TagFile, SYMBOL, FILENAME
+
 ################################################################################
 
 ctags_exe = join(sublime.packagesPath(), 'CTags', 'ctags.exe')
@@ -98,7 +100,7 @@ def format_tag_for_quickopen(tag):
 def notify_finished_parsing(p):
     sublime.statusMessage('Finished parsing %s' % p)
 
-ctags_cache    =   ctags.CTagsCache(status=notify_finished_parsing)
+# ctags_cache    =   ctags.CTagsCache(status=notify_finished_parsing)
 
 def checkIfBuilding(self, view, args):
     if RebuildCTags.building:
@@ -135,17 +137,19 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
         
         tags_file = tags_file + '_unsorted'
         
-        index = ctags_cache.get(tags_file)
+        # index = ctags_cache.get(tags_file)
                         
-        if not index:
-            return sublime.statusMessage('Parsing CTags File')
+        # if not index:
+            # return sublime.statusMessage('Parsing CTags File')
         
         ################################################################
         
-        tags = ctags.get_tags_for_field(current_file, tags_file, index, 1)
+        # tags = ctags.get_tags_for_field(current_file, tags_file, index, 1)
         
         # tags = ctags.get_tags_for_file(ctags_exe, view.fileName())
         
+        tags = TagFile(tags_file, FILENAME).get_tags_dict(current_file)
+
         if tags:  JumpBack.append(view)
  
         args, display = [], []
@@ -268,10 +272,12 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
         current_symbol = view.substr(view.word(view.sel()[0]))
         tag_dir = dirname(tags_file)
 
-        index = ctags_cache.get(tags_file)
-        if not index: return sublime.statusMessage('Parsing CTags File')
+        # index = ctags_cache.get(tags_file)
+        # if not index: return sublime.statusMessage('Parsing CTags File')
         
-        tags = ctags.get_tags_for_field(current_symbol, tags_file, index)
+        # tags = ctags.get_tags_for_field(current_symbol, tags_file, index)
+        
+        tags = TagFile(tags_file, SYMBOL).get_tags_dict(current_symbol)
         
         args, display = [], []
         for t in sorted(tags.get(current_symbol, []), key=iget('filename')):
