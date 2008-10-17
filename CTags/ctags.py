@@ -31,8 +31,10 @@ TAGS_RE = re.compile (
 ################################################################################
 
 def parse_tag_file(tag_file):
-    with open(tag_file) as tags:
-        return parse_tag_lines(tags)
+    with open(tag_file) as tf:
+        tags = parse_tag_lines(tf)
+    
+    return tags
 
 def parse_tag_lines(lines):
     tags_lookup = {}
