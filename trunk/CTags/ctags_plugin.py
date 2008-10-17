@@ -27,7 +27,7 @@ ctags_exe = join(sublime.packagesPath(), 'CTags', 'ctags.exe')
 
 ################################################################################
 
-def find_tags_relative_to(view):
+def find_tags_relative_to(view, ask_to_build=True):
     fn = view.fileName()
     if not fn: return
     
@@ -38,6 +38,10 @@ def find_tags_relative_to(view):
         joined = normpath(os.path.sep.join(dirs + [f]))
         if os.path.exists(joined): return joined
         else: dirs.pop()
+    
+    if ask_to_build:
+        sublime.statusMessage("Can't find any relevant tags file")
+        view.runCommand('rebuildCTags')
 
 def view_fn(view, if_None = '.'):
     return normpath(view.fileName() or if_None)
@@ -208,7 +212,7 @@ class RebuildCTags(sublimeplugin.TextCommand):
     def run(self, view, args):
         restore_focus = FocusRestorer()
 
-        tag_file = find_tags_relative_to(view)
+        tag_file = find_tags_relative_to(view, ask_to_build=0)
         if not tag_file:
             tag_file = join(dirname(view_fn(view)), 'tags')
             if not sublime.questionBox('`ctags -R` in %s ?' % dirname(tag_file)):
