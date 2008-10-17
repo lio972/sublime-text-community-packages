@@ -1,5 +1,6 @@
 ################################################################################
 
+# Std Libs
 from __future__ import with_statement
 
 import re
@@ -15,22 +16,25 @@ first = re.compile(r'([^\t]+)\t')
 
 ################################################################################
     
+def log_divides(f):
+    f.accessed = 0
+    def wrapped(self, i):
+        item = f(self, i)
+        f.accessed += 1
+        print f.accessed, i
+        return item
+    return wrapped
+    
 class TagFile(object):
-    lines_at = array.array('I', [0])
+    lines_at = array.array('I')
     
     def __init__(self, p):
         self.p = p
-        
-        self.fh = open(p, 'rb')
     
-        position = 0
-        for l in self.fh:
-            self.lines_at.append(position)
-            position += len(l)
-    
+    @log_divides
     def __getitem__(self, index):
-        pos = self.lines_at[bisect.bisect_left(self.lines_at, index)-1]
-        self.fh.seek(pos)
+        self.fh.seek(index)
+        self.fh.readline()
         return first.match(self.fh.readline()).group(1)
 
     def __len__(self):
@@ -40,16 +44,29 @@ class TagFile(object):
         self.fh.close()
 
     def get(self, tag):
-        pos = bisect.bisect_left(self, tag)
-        self.fh.seek(pos-1)
+        with open(self.p, 'rb') as self.fh:
+            pos = bisect.bisect(self, tag)
+            b4 = bisect.bisect_left(self, tag, 0, pos)
 
-        for l in self.fh:
-            if re.match('%s\t' % tag, l): yield l
-            else: break
+            self.fh.seek(b4)
+    
+            found = 0
+            tag_first_letter = tag[0]
+            
+            for i, l in enumerate(self.fh):
+                m = re.match('%s\t' % tag, l)
+                if not found and not m and l.startswith(tag_first_letter): 
+                    continue
+                elif m:
+                    found = 1 
+                    yield l
+                else: break
 
 ################################################################################
         
 if __name__ == '__main__':
+    raw_input = lambda s: s
+
     raw_input('About to use memory')
 
     t = time.time()
