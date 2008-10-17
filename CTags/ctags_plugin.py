@@ -100,9 +100,17 @@ def notify_finished_parsing(p):
 
 ctags_cache    =   ctags.CTagsCache(status=notify_finished_parsing)
 
+def checkIfBuilding(self, view, args):
+    if RebuildCTags.building:
+        sublime.statusMessage('Please wait while tags are built')
+        return False
+    else:  return 1
+
 ################################################################################
 
 class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
+    isEnabled = checkIfBuilding
+    
     def run(self, view, args):
         
         if args:
@@ -153,7 +161,7 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
 
         window = view.window()
         window.showQuickPanel('', 'showSymbolsForCurrentFile', args, display)
-
+        
 ################################################################################
 
 class JumpBack(sublimeplugin.TextCommand):
@@ -162,7 +170,7 @@ class JumpBack(sublimeplugin.TextCommand):
     def run(self, view, args):                    
         the_view, sel = JumpBack.last[-1]
         if len(JumpBack.last) > 1:  del JumpBack.last[-1]
- 
+  
         if the_view:
             w = view.window()
             
@@ -187,11 +195,17 @@ class JumpBack(sublimeplugin.TextCommand):
 ################################################################################
 
 class RebuildCTags(sublimeplugin.TextCommand):
+    building = False
+
     def clear_cache(self, tag_file):
-        if tag_file in ctags_cache.cache:
-            ctags_cache.cache.pop(tag_file)
+        for f in (tag_file, tag_file + "_unsorted"):
+            if f in ctags_cache.cache:
+                ctags_cache.cache.pop(f)
+            
+        print ctags_cache.cache.keys()
         
         sublime.statusMessage('Finished building %s' % tag_file)
+        RebuildCTags.building = False
 
     @threaded(finish=clear_cache, msg="Already running CTags")
     def build_ctags(self, tag_file, cmd, wd):
@@ -210,6 +224,8 @@ class RebuildCTags(sublimeplugin.TextCommand):
         return tag_file
 
     def run(self, view, args):
+        RebuildCTags.building = True
+        
         restore_focus = FocusRestorer()
 
         tag_file = find_tags_relative_to(view, ask_to_build=0)
@@ -232,6 +248,8 @@ class RebuildCTags(sublimeplugin.TextCommand):
 
 class NavigateToDefinition(sublimeplugin.TextCommand):
     last_open = None
+    isEnabled = checkIfBuilding
+    
     
     def jump(self, view, args):
         scroll_to_tag(view, *args)
