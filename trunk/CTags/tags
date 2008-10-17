@@ -1700,6 +1700,7 @@ charIsIn	.\ruby.c	/^static boolean charIsIn (char ch, const char* list)$/;"	f	fi
 charset	.\regex.c	/^  charset,$/;"	e	enum:__anon57	file:
 charset_not	.\regex.c	/^  charset_not,$/;"	e	enum:__anon57	file:
 checkForLabel	.\fortran.c	/^static void checkForLabel (void)$/;"	f	file:
+checkIfBuilding	.\ctags_plugin.py	/^def checkIfBuilding(self, view, args):$/;"	f
 checkOptionOrder	.\options.c	/^static void checkOptionOrder (const char* const option)$/;"	f	file:
 checkOptions	.\options.c	/^extern void checkOptions (void)$/;"	f
 checkRegex	.\lregex.c	/^extern void checkRegex (void)$/;"	f
@@ -1998,7 +1999,7 @@ findToken	.\eiffel.c	/^static void findToken (tokenInfo *const token, const toke
 findToken	.\sql.c	/^static void findToken (tokenInfo *const token, const tokenType type)$/;"	f	file:
 findVerilogTags	.\verilog.c	/^static void findVerilogTags (void)$/;"	f	file:
 findVimTags	.\vim.c	/^static void findVimTags (void)$/;"	f	file:
-find_tags_relative_to	.\ctags_plugin.py	/^def find_tags_relative_to(view):$/;"	f
+find_tags_relative_to	.\ctags_plugin.py	/^def find_tags_relative_to(view, ask_to_build=True):$/;"	f
 findfirst_t	.\e_msoft.h	53;"	d
 findfirst_t	.\e_msoft.h	55;"	d
 findfirst_t	.\e_msoft.h	69;"	d
