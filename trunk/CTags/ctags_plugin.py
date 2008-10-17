@@ -192,15 +192,15 @@ class RebuildCTags(sublimeplugin.TextCommand):
         return tag_file
         
     def run(self, view, args):
-        RebuildCTags.building = True
 
         tag_file = find_tags_relative_to(view, ask_to_build=0)
         if not tag_file:
             tag_file = join(dirname(view_fn(view)), 'tags')
             if not sublime.questionBox('`ctags -R` in %s ?' % dirname(tag_file)):
-                RebuildCTags.building = False
                 return
-
+        
+        RebuildCTags.building = True
+        
         self.build_ctags(tag_file)
         sublime.statusMessage('Re/Building CTags: Please be patient')
 
