@@ -22,6 +22,8 @@ from plugin_helpers import threaded, FocusRestorer, in_main
 
 from ctags_binary_search import TagFile, SYMBOL, FILENAME
 
+from helpers import time_function
+
 ################################################################################
 
 ctags_exe = join(sublime.packagesPath(), 'CTags', 'ctags.exe')
@@ -216,7 +218,8 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
     def quickOpen(self, view, files, disp):
         window = view.window()
         window.showQuickPanel("", "navigateToDefinition", files, disp)
-
+    
+    # @time_function(times=1)
     def run(self, view, args):
         if args:
             return self.jump(view, eval(args[0]))

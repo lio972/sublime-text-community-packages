@@ -1,6 +1,7 @@
 import functools
 import sublime
 import threading
+import time
 
 from ctypes import windll, create_unicode_buffer
 

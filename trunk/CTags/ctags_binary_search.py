@@ -11,6 +11,8 @@ import time
 import pprint
 import ctags
 
+from helpers import time_function
+
 ################################################################################
     
 def log_divides(f):
@@ -22,19 +24,19 @@ def log_divides(f):
         return item
     return wrapped
     
-SYMBOL = re.compile(r'([^\t]+)\t')
-FILENAME = re.compile("[^\t]+\t([^\t]+)\t")
+SYMBOL = 0
+FILENAME = 1
 
 class TagFile(object):
-    def __init__(self, p, field_re):
+    def __init__(self, p, column):
         self.p = p
-        self.field_re = field_re
+        self.column = column
     
     # @log_divides
     def __getitem__(self, index):
         self.fh.seek(index)
         self.fh.readline()
-        return self.field_re.match(self.fh.readline()).group(1)
+        return self.fh.readline().split('\t')[self.column]
 
     def __len__(self):
         return os.stat(self.p)[6]
@@ -45,7 +47,7 @@ class TagFile(object):
             self.fh.seek(b4)
 
             for l in self.fh:
-                comp = cmp(self.field_re.match(l).group(1), tag)
+                comp = cmp(l.split('\t')[self.column], tag)
 
                 if   comp == -1: continue
                 elif comp ==  1: break
@@ -55,26 +57,21 @@ class TagFile(object):
     def get_tags_dict(self, tag):
         return ctags.parse_tag_lines(self.get(tag))
 
-
 ################################################################################
 
-# class Tag(str):
-#     def __eq__(self, other):
-#         return FILENAME.match(self).group(1) == FILENAME.match(other).group(1)
+# @time_function(times=1)
+def resort_ctags(tag_file):
+    keys = {}
+    
+    with open(tag_file) as fh:
+        for l in fh:
+            keys.setdefault(l.split('\t')[FILENAME], []).append(l)
         
-#     def __lt__(self, other):
-#         return  (
-#             FILENAME.match(self).group(1) < FILENAME.match(other).group(1)
-#         )
+    with open(tag_file + '_unsorted', 'w') as fw:
+        for k in sorted(keys):
+            fw.write(''.join(keys[k]))
 
-#     def __gt__(self, other):
-#         return  (
-#             FILENAME.match(self).group(1) > FILENAME.match(other).group(1)
-#         )
-
-################################################################################
-        
 if __name__ == '__main__':
-    pass
+    resort_ctags('C://python25//lib/tags')
     
 ################################################################################
