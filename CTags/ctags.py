@@ -98,7 +98,6 @@ def post_process_tag(search_obj):
         tag.update(process_fields(fields))
 
     tag['ex_command'] =   process_ex_cmd(tag['ex_command'])
-    tag['filename']   =   tag['filename']
 
     return tag
 
