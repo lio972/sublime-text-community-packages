@@ -44,7 +44,21 @@ def parse_tag_lines(lines):
         tags_lookup.setdefault(tag['symbol'], []).append(tag)
         
     return tags_lookup
+
+
+def get_tags_for_file(ctags_exe, a_file):
+    cmd = [ctags_exe, '-f', '-', a_file]
     
+    p = subprocess.Popen (
+        cmd, stdout = subprocess.PIPE, stderr = subprocess.STDOUT, shell=1 )
+    
+    p.wait()
+    
+    tags = parse_tag_lines(p.stdout)
+    p.stdout.close()
+
+    return tags
+
 def index_tag_file(tag_file, column=0):
     index = {}
 
@@ -212,11 +226,11 @@ def scribble():
     print time.time() - t1
     
     raw_input('Press enter')
+    
+    print get_tags_for_file('ctags.exe', 'ctags.py')
         
 if __name__ == '__main__':
-    if 1: 
-        scribble()
-
+    if 1:  scribble()
     else: unittest.main()
 
 ################################################################################

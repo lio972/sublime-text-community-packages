@@ -2056,6 +2056,7 @@ getSourceLanguageName	.\read.h	40;"	d
 getSourceLineNumber	.\read.h	41;"	d
 get_path	.\mac.c	/^static int get_path(const char* in_unix_path, unsigned char* out_mac_path)$/;"	f	file:
 get_tags_for_field	.\ctags.py	/^def get_tags_for_field(field, tag_file, index, column=0):$/;"	f
+get_tags_for_file	.\ctags.py	/^def get_tags_for_file(ctags_exe, a_file):$/;"	f
 getcwd	.\mac.c	/^char* getcwd(char* out_path, int out_path_len)$/;"	f
 getcwd	.\routines.c	128;"	d	file:
 getredirection	.\argproc.c	/^getredirection (ac, av)$/;"	f
