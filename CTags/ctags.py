@@ -15,6 +15,7 @@ import functools
 import subprocess
 
 from os.path import join, normpath, dirname
+from itertools import takewhile, repeat
 
 ################################################################################
 
@@ -30,14 +31,43 @@ TAGS_RE = re.compile (
 ################################################################################
 
 def parse_tag_file(tag_file):
-    tags_lookup = {}
-
     with open(tag_file) as tags:
-        for search_obj in (t for t in (TAGS_RE.search(l) for l in tags) if t):
-            tag = post_process_tag(search_obj, tag_file)
-            tags_lookup.setdefault(intern(tag['symbol']), []).append(tag)
+        return parse_tag_lines(tags)
 
+def parse_tag_lines(lines):
+    tags_lookup = {}
+    
+    for search_obj in (t for t in (TAGS_RE.search(l) for l in lines) if t):
+        tag = post_process_tag(search_obj)
+        tags_lookup.setdefault(tag['symbol'], []).append(tag)
+        
     return tags_lookup
+    
+def index_tag_file(tag_file, column=0):
+    index = {}
+
+    with open(tag_file, 'rb') as tags:
+        position = 0
+
+        for l in tags:
+            field = l.split('\t')[column]
+            if field not in index:
+                index[field] = position
+            
+            position += len(l)
+
+    return index
+
+def get_tags_for_field(field, tag_file, index, column=0):
+    position = index.get(field)
+    if not position: return {}
+
+    with open(tag_file) as fh:
+        fh.seek(position)
+        tag_lines = list(takewhile (
+            lambda l:l.split('\t')[column] == field, fh.xreadlines() ))
+
+    return parse_tag_lines(list(tag_lines))
 
 def unescape_ex(ex):
     return re.sub(r"\\(\$|/|\^|\\)", r'\1', ex)
@@ -45,7 +75,7 @@ def unescape_ex(ex):
 def process_ex_cmd(ex):
     return ex if ex.isdigit() else unescape_ex(ex[2:-2])
 
-def post_process_tag(search_obj, tag_file):
+def post_process_tag(search_obj):
     tag = search_obj.groupdict()
 
     fields = tag.get('fields')
@@ -53,7 +83,7 @@ def post_process_tag(search_obj, tag_file):
         tag.update(process_fields(fields))
 
     tag['ex_command'] =   process_ex_cmd(tag['ex_command'])
-    tag['filename']   =   intern(normpath(tag['filename']))
+    tag['filename']   =   tag['filename']
 
     return tag
 
@@ -102,7 +132,10 @@ class CTagsCache(object):
     def thread(self):
         while True:
             path = self.Q.get()
-            self.OQ.put((path, parse_tag_file(path)))
+            column = 1 if path.endswith('unsorted') else 0
+
+            self.OQ.put((path, index_tag_file(path, column)))
+
             self.Q.task_done()
             if self.status: self.status(path)
 
@@ -163,13 +196,25 @@ class CTagsTest(unittest.TestCase):
         self.assertEqual(len(failures), 0, 'update tag files and try again')
 
 def scribble():
-    import sys
-
-    tags = parse_tag_file('C:/python25/Lib/tags')
-    print sys.getsizeof(tags)
-
+    raw_input('About to use memory')
+    
+    import time
+    tags = 'C://python25//lib//tags'
+    
+    t1 = time.time()
+    index = index_tag_file(tags)
+    print time.time() - t1
+    
+    t1 = time.time()
+    print get_tags_for_field("struct_GLUnurbs", tags, index)
+    print time.time() - t1
+    
+    raw_input('Press enter')
+        
 if __name__ == '__main__':
-    if 1: scribble()
+    if 1: 
+        scribble()
+
     else: unittest.main()
 
 ################################################################################

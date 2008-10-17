@@ -1603,6 +1603,7 @@ ancestorPop	.\fortran.c	/^static void ancestorPop (void)$/;"	f	file:
 ancestorPush	.\fortran.c	/^static void ancestorPush (tokenInfo *const token)$/;"	f	file:
 ancestorScope	.\fortran.c	/^static const tokenInfo* ancestorScope (void)$/;"	f	file:
 ancestorTop	.\fortran.c	/^static const tokenInfo* ancestorTop (void)$/;"	f	file:
+and_then	.\ctags_plugin.py	/^                def and_then(view):$/;"	f	function:JumpBack.run
 and_then	.\ctags_plugin.py	/^    def and_then(view):$/;"	f	function:scroll_to_tag
 anychar	.\regex.c	/^  anychar,$/;"	e	enum:__anon57	file:
 append	.\ctags_plugin.py	/^    def append(cls, view):$/;"	m	class:JumpBack
@@ -2054,6 +2055,7 @@ getSourceLanguage	.\read.h	39;"	d
 getSourceLanguageName	.\read.h	40;"	d
 getSourceLineNumber	.\read.h	41;"	d
 get_path	.\mac.c	/^static int get_path(const char* in_unix_path, unsigned char* out_mac_path)$/;"	f	file:
+get_tags_for_field	.\ctags.py	/^def get_tags_for_field(field, tag_file, index, column=0):$/;"	f
 getcwd	.\mac.c	/^char* getcwd(char* out_path, int out_path_len)$/;"	f
 getcwd	.\routines.c	128;"	d	file:
 getredirection	.\argproc.c	/^getredirection (ac, av)$/;"	f
@@ -2104,6 +2106,7 @@ includeTag	.\fortran.c	/^static boolean includeTag (const tagType type)$/;"	f	fi
 includingDefineTags	.\c.c	/^extern boolean includingDefineTags (void)$/;"	f
 indentation	.\python.c	/^	int indentation;$/;"	m	struct:NestingLevel	file:
 index	.\e_mac.h	/^	int index;$/;"	m	struct:__anon19
+index_tag_file	.\ctags.py	/^def index_tag_file(tag_file, column=0):$/;"	f
 inheritance	.\entry.h	/^		const char* inheritance;$/;"	m	struct:sTagEntryInfo::__anon17
 inheritance	.\options.h	/^	boolean inheritance;$/;"	m	struct:sExtFields
 inheritingDeclaration	.\c.c	/^static boolean inheritingDeclaration (declType decl)$/;"	f	file:
@@ -2258,7 +2261,6 @@ javaTagKind	.\c.c	/^static javaKind javaTagKind (const tagType type)$/;"	f	file:
 jsKind	.\jscript.c	/^} jsKind;$/;"	t	typeref:enum:__anon24	file:
 jump	.\ctags_plugin.py	/^    def jump(self, view, args):$/;"	m	class:NavigateToDefinition
 jump	.\regex.c	/^  jump, $/;"	e	enum:__anon57	file:
-jumpBack	.\ctags_plugin.py	/^    def jumpBack(self):$/;"	m	class:NavigateToDefinition
 jump_n	.\regex.c	/^  jump_n,$/;"	e	enum:__anon57	file:
 jump_past_alt	.\regex.c	/^  jump_past_alt,$/;"	e	enum:__anon57	file:
 key	.\readtags.h	/^	const char *key;$/;"	m	struct:__anon53
@@ -2623,6 +2625,7 @@ parseView	.\sql.c	/^static void parseView (tokenInfo *const token)$/;"	f	file:
 parseVimFile	.\vim.c	/^static void parseVimFile (const unsigned char *line)$/;"	f	file:
 parseVimLine	.\vim.c	/^static boolean parseVimLine (const unsigned char *line)$/;"	f	file:
 parse_tag_file	.\ctags.py	/^def parse_tag_file(tag_file):$/;"	f
+parse_tag_lines	.\ctags.py	/^def parse_tag_lines(lines):$/;"	f
 parser	.\parse.h	/^	simpleParser parser;           \/* simple parser (common case) *\/$/;"	m	struct:__anon37
 parser2	.\parse.h	/^	rescanParser parser2;          \/* rescanning parser (unusual case) *\/$/;"	m	struct:__anon37
 parserDefinition	.\parse.h	/^} parserDefinition;$/;"	t	typeref:struct:__anon37
@@ -2646,7 +2649,7 @@ popConditional	.\get.c	/^static boolean popConditional (void)$/;"	f	file:
 pop_failure_jump	.\regex.c	/^  pop_failure_jump,$/;"	e	enum:__anon57	file:
 pos	.\readtags.c	/^			off_t pos; $/;"	m	struct:sTagFile::__anon44	file:
 pos	.\readtags.c	/^	off_t pos;$/;"	m	struct:sTagFile	file:
-post_process_tag	.\ctags.py	/^def post_process_tag(search_obj, tag_file):$/;"	f
+post_process_tag	.\ctags.py	/^def post_process_tag(search_obj):$/;"	f
 prev	.\entry.h	/^	struct sNumTags { unsigned long added, prev; } numTags;$/;"	m	struct:eTagFile::sNumTags
 prevToken	.\c.c	/^static tokenInfo *prevToken (const statementInfo *const st, unsigned int n)$/;"	f	file:
 previewFirstOption	.\options.c	/^extern void previewFirstOption (cookedArgs* const args)$/;"	f
@@ -2824,7 +2827,7 @@ rewinddir	.\mac.c	/^void rewinddir(DIR *dirp)$/;"	f
 rm_eo	.\regex.h	/^  regoff_t rm_eo;  \/* Byte offset from string's start to substring's end.  *\/$/;"	m	struct:__anon64
 rm_so	.\regex.h	/^  regoff_t rm_so;  \/* Byte offset from string's start to substring's start.  *\/$/;"	m	struct:__anon64
 rubyKind	.\ruby.c	/^} rubyKind;$/;"	t	typeref:enum:__anon66	file:
-run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:JumpBack
+run	.\ctags_plugin.py	/^    def run(self, view, args):                    $/;"	m	class:JumpBack
 run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:NavigateToDefinition
 run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:RebuildCTags
 run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:ShowSymbolsForCurrentFile
