@@ -93,11 +93,14 @@ ctags_cache    =   ctags.CTagsCache(status=notify_finished_parsing)
 
 class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
     def run(self, view, args):
+        
         if args:
             view = self.view
             scroll_to_tag(view, view.fileName(), *eval(args[0]))
             del self.view
             return
+        
+        ################################################################
         
         tags_file = find_tags_relative_to(view)
         if not tags_file: return
@@ -108,24 +111,31 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
         JumpBack.append(view)
         tag_dir = normpath(dirname(tags_file))
         common_prefix = os.path.commonprefix([tag_dir, fn])
-        current_file = fn[len(common_prefix)+1:]
+        current_file = str('.\\' + fn[len(common_prefix)+1:])
 
-        tags = ctags_cache.get(tags_file)
-        if not tags:
+        ################################################################
+        
+        tags_file = tags_file + '_unsorted'
+        
+        index = ctags_cache.get(tags_file)
+                        
+        if not index:
             return sublime.statusMessage('Parsing CTags File')
         
-        tags_for_current_file = []
+        ################################################################
         
-        for symbol, tag_list in tags.iteritems():
-            for t in tag_list:
-                if t['filename'] == current_file:
-                    tags_for_current_file += [t]
+        tags = ctags.get_tags_for_field(current_file, tags_file, index, 1)
+        
+        print tags
  
         args, display = [], []
         
-        for t in sorted(tags_for_current_file, key=iget('symbol')):
-            args    += [`(t['symbol'], t['ex_command'])`]
-            display += [format_tag_for_quickopen(t)]
+        for k in sorted(tags):
+            for t in tags[k]:
+                args    += [`(t['symbol'], t['ex_command'])`]
+                display += [format_tag_for_quickopen(t)]
+
+        ################################################################
 
         self.view = view
 
@@ -204,13 +214,6 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
     def jump(self, view, args):
         scroll_to_tag(view, *args)
 
-    def jumpBack(self):
-        if self.last_open:
-            self.window.focusView(self.last_open)
-            select(self.last_open, self.selection)
-            del self.window
-            del self.last_open
-
     def quickOpen(self, view, files, disp):
         window = view.window()
         window.showQuickPanel("", "navigateToDefinition", files, disp)
@@ -225,9 +228,11 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
         current_symbol = view.substr(view.word(view.sel()[0]))
         tag_dir = dirname(tags_file)
 
-        tags = ctags_cache.get(tags_file)
-        if not tags: return sublime.statusMessage('Parsing CTags File')
-                
+        index = ctags_cache.get(tags_file)
+        if not index: return sublime.statusMessage('Parsing CTags File')
+        
+        tags = ctags.get_tags_for_field(current_symbol, tags_file, index)
+        
         args, display = [], []
         for t in sorted(tags.get(current_symbol, []), key=iget('filename')):
             args.append (
