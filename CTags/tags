@@ -1531,7 +1531,7 @@ __getitem__	.\binary_ctags.py	/^    def __getitem__(self, index):$/;"	m	class:Ta
 __getitem__	.\ctags_binary_search.py	/^    def __getitem__(self, index):$/;"	m	class:TagFile	file:
 __init__	.\binary_ctags.py	/^    def __init__(self, p):$/;"	m	class:TagFile
 __init__	.\ctags.py	/^    def __init__(self, tag_dict):$/;"	m	class:Tag
-__init__	.\ctags_binary_search.py	/^    def __init__(self, p, field_re):$/;"	m	class:TagFile
+__init__	.\ctags_binary_search.py	/^    def __init__(self, p, column):$/;"	m	class:TagFile
 __init__	.\plugin_helpers.py	/^    def __init__(self):$/;"	m	class:FocusRestorer
 __len__	.\binary_ctags.py	/^    def __len__(self):$/;"	m	class:TagFile	file:
 __len__	.\ctags_binary_search.py	/^    def __len__(self):$/;"	m	class:TagFile	file:
@@ -1797,6 +1797,7 @@ declString	.\c.c	/^static const char *declString (const declType declaration)$/;
 declToTagType	.\c.c	/^static tagType declToTagType (const declType declaration)$/;"	f	file:
 declType	.\c.c	/^} declType;$/;"	t	typeref:enum:eDeclaration	file:
 declaration	.\c.c	/^	declType	declaration;    \/* specifier associated with TOKEN_SPEC *\/$/;"	m	struct:sStatementInfo	file:
+decorator	.\helpers.py	/^    def decorator(f):$/;"	f	function:time_function
 decorator	.\plugin_helpers.py	/^    def decorator(func):$/;"	f	function:threaded
 deleteAllStatements	.\c.c	/^static void deleteAllStatements (void)$/;"	f	file:
 deleteStatement	.\c.c	/^static void deleteStatement (void)$/;"	f	file:
@@ -2830,6 +2831,7 @@ reportType	.\eiffel.c	/^static void reportType (tokenInfo *const token)$/;"	f	fi
 rescanParser	.\parse.h	/^typedef boolean (*rescanParser) (const unsigned int passCount);$/;"	t
 resizeTagFile	.\entry.c	/^static void resizeTagFile (const long newSize)$/;"	f	file:
 resolveRequired	.\get.c	/^	boolean resolveRequired;     \/* must resolve if\/else\/elif\/endif branch *\/$/;"	m	struct:sCppState	file:
+resort_ctags	.\ctags_binary_search.py	/^def resort_ctags(tag_file):$/;"	f
 restartStatement	.\c.c	/^static void restartStatement (statementInfo *const st)$/;"	f	file:
 retardToken	.\c.c	/^static void retardToken (statementInfo *const st)$/;"	f	file:
 rewinddir	.\mac.c	/^void rewinddir(DIR *dirp)$/;"	f
@@ -3092,6 +3094,7 @@ threaded	.\plugin_helpers.py	/^        def threaded(*args, **kwargs):$/;"	f	func
 threaded	.\plugin_helpers.py	/^def threaded(finish=None, msg="Thread already running"):$/;"	f
 timeStamp	.\main.c	485;"	d	file:
 timeStamp	.\main.c	518;"	d	file:
+time_function	.\helpers.py	/^def time_function(times=1):$/;"	f
 toLowerString	.\routines.c	/^extern void toLowerString (char* str)$/;"	f
 toUpperString	.\routines.c	/^extern void toUpperString (char* str)$/;"	f
 token	.\basic.c	/^	char const *token;$/;"	m	struct:__anon9	file:
@@ -3197,6 +3200,7 @@ wordend	.\regex.c	/^  wordend,	\/* Succeeds if at word end.  *\/$/;"	e	enum:__an
 wrapped	.\binary_ctags.py	/^    def wrapped(self, i):$/;"	f	function:log_divides
 wrapped	.\ctags_binary_search.py	/^    def wrapped(self, i):$/;"	f	function:log_divides
 wrapper	.\ctags_plugin.py	/^    def wrapper(f):$/;"	f	function:wait_until_loaded
+wrapper	.\helpers.py	/^        def wrapper(*args, **kw):$/;"	f	function:time_function/decorator
 writeCompactSourceLine	.\entry.c	/^static size_t writeCompactSourceLine (FILE *const fp, const char *const line)$/;"	f	file:
 writeCtagsEntry	.\entry.c	/^static int writeCtagsEntry (const tagEntryInfo *const tag)$/;"	f	file:
 writeEtagsEntry	.\entry.c	/^static int writeEtagsEntry (const tagEntryInfo *const tag)$/;"	f	file:

@@ -16,7 +16,9 @@ import subprocess
 
 from os.path import join, normpath, dirname
 from itertools import takewhile, repeat
-from ctags_binary_search import FILENAME
+
+# User Libs
+import ctags_binary_search
 
 ################################################################################
 
@@ -90,13 +92,7 @@ def build_ctags(ctags_exe, tag_file):
     p.wait()
 
     # Faster than ctags.exe again:
-    
-    with open(tag_file) as fh:
-        tags = fh.readlines()
-        tags.sort(key=lambda l: FILENAME.match(l).group(1))
-
-        with open(tag_file + '_unsorted', 'w') as fw:
-            for l in tags: fw.write(l)
+    ctags_binary_search.resort_ctags(tag_file)    
 
     return tag_file
 
