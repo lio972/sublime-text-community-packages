@@ -66,9 +66,7 @@ if __name__ == '__main__':
     raw_input('About to use memory')
 
     t = time.time()
-    b = TagFile(
-        r'C://python25//lib//tags_unsorted', field_re = FILENAME
-    )
+    b = TagFile( r'C://python25//lib//tags_unsorted', FILENAME )
     
     print time.time() - t
     
