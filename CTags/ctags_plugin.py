@@ -103,7 +103,7 @@ ctags_cache    =   ctags.CTagsCache(status=notify_finished_parsing)
 def checkIfBuilding(self, view, args):
     if RebuildCTags.building:
         sublime.statusMessage('Please wait while tags are built')
-        return False
+
     else:  return 1
 
 ################################################################################
@@ -202,7 +202,7 @@ class RebuildCTags(sublimeplugin.TextCommand):
             if f in ctags_cache.cache:
                 ctags_cache.cache.pop(f)
             
-        print ctags_cache.cache.keys()
+        # print ctags_cache.cache.keys()
         
         sublime.statusMessage('Finished building %s' % tag_file)
         RebuildCTags.building = False
