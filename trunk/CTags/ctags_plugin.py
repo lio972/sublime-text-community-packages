@@ -108,7 +108,7 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
         JumpBack.append(view)
         tag_dir = normpath(dirname(tags_file))
         common_prefix = os.path.commonprefix([tag_dir, fn])
-        current_file = intern(fn[len(common_prefix)+1:].encode('utf-8'))
+        current_file = fn[len(common_prefix)+1:]
 
         tags = ctags_cache.get(tags_file)
         if not tags:
@@ -142,20 +142,22 @@ class JumpBack(sublimeplugin.TextCommand):
         if len(JumpBack.last) > 1:  del JumpBack.last[-1]
  
         if the_view:
-            view.window().focusView(the_view)
-            select(the_view, sel)        
-        
-        JumpBack.clear_references(view.window())
+            w = view.window()
+            
+            if isinstance(the_view, unicode):
+                @wait_until_loaded(the_view, w)
+                def and_then(view):
+                    select(view, sel)
+            
+            else:
+                w.focusView(the_view)
+                select(the_view, sel)        
 
     @classmethod
     def append(cls, view):
-        cls.last.append((view, view.sel()[0]))
-        cls.clear_references(view.window())
-
-    @classmethod
-    def clear_references(cls, window):
-        o = filter(None, set(v.fileName() for v in window.views()))
-        cls.last = [(v,s) for (v,s) in cls.last if v is 0 or v.fileName() in o]
+        fn = view.fileName()
+        if fn:
+            cls.last.append((fn, view.sel()[0]))
 
     def onModified(self, view):
         JumpBack.last[-1] = (view, view.sel()[0])
