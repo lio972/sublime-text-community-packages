@@ -10,6 +10,9 @@ import array
 import time
 import itertools
 
+import pprint
+import ctags
+
 ################################################################################
 
 first = re.compile(r'([^\t]+)\t')
@@ -31,7 +34,7 @@ class TagFile(object):
     def __init__(self, p):
         self.p = p
     
-    @log_divides
+    # @log_divides
     def __getitem__(self, index):
         self.fh.seek(index)
         self.fh.readline()
@@ -62,10 +65,14 @@ class TagFile(object):
                     yield l
                 else: break
 
+
+    def get_tags_dict(self, tag):
+        return ctags.parse_tag_lines(self.get(tag))
+        
 ################################################################################
         
 if __name__ == '__main__':
-    raw_input = lambda s: s
+    # raw_input = lambda s: s
 
     raw_input('About to use memory')
 
@@ -76,10 +83,9 @@ if __name__ == '__main__':
     print time.time() - t
     
     t = time.time()
-    for i, tag in enumerate(b.get('Tests')):
-        print '%s:\n%s ' % (i, tag.strip())
-    
+    pprint.pprint(b.get_tags_dict('Tests'))
     print time.time() - t
+    
     
     raw_input('Press enter to continue')
     
