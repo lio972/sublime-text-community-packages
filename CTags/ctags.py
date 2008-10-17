@@ -16,6 +16,7 @@ import subprocess
 
 from os.path import join, normpath, dirname
 from itertools import takewhile, repeat
+from ctags_binary_search import FILENAME
 
 ################################################################################
 
@@ -78,13 +79,24 @@ def process_fields(fields):
 
 def build_ctags(ctags_exe, tag_file):
     cmd = [ctags_exe, '-R']
-
-    cmds = [cmd] + [cmd[:]]
-    cmds[-1].extend(['--sort=no', '-f', 'tags_unsorted'])
-    cmd = ' && '.join(subprocess.list2cmdline(c) for c in cmds)
-
+        
+    # cmd = [ctags_exe, '-R']
+        
+    # cmds = [cmd] + [cmd[:]]
+    # cmds[-1].extend(['--sort=no', '-f', 'tags_unsorted'])
+    # cmd = ' && '.join(subprocess.list2cmdline(c) for c in cmds)    
+    
     p = subprocess.Popen(cmd, cwd = dirname(tag_file), shell=1)
     p.wait()
+
+    # Faster than ctags.exe again:
+    
+    with open(tag_file) as fh:
+        tags = fh.readlines()
+        tags.sort(key=lambda l: FILENAME.match(l).group(1))
+
+        with open(tag_file + '_unsorted', 'w') as fw:
+            for l in tags: fw.write(l)
 
     return tag_file
 

@@ -54,33 +54,27 @@ class TagFile(object):
 
     def get_tags_dict(self, tag):
         return ctags.parse_tag_lines(self.get(tag))
+
+
+################################################################################
+
+# class Tag(str):
+#     def __eq__(self, other):
+#         return FILENAME.match(self).group(1) == FILENAME.match(other).group(1)
         
+#     def __lt__(self, other):
+#         return  (
+#             FILENAME.match(self).group(1) < FILENAME.match(other).group(1)
+#         )
+
+#     def __gt__(self, other):
+#         return  (
+#             FILENAME.match(self).group(1) > FILENAME.match(other).group(1)
+#         )
+
 ################################################################################
         
 if __name__ == '__main__':
-    if 1: raw_input = lambda s: s
-
-    raw_input('About to use memory')
-
-    t = time.time()
-    b = TagFile( r'C://python25//lib//tags_unsorted', FILENAME )
-    
-    print time.time() - t
-    
-    t = time.time()
-    c = b.get_tags_dict(r'.\aifc.py')
-    # print len(c[r'.\basic.c']), 'tags'
-
-    for val in c.values():
-        for d in val:
-            print d['filename']
-
-    # print c
-    
-    print time.time() - t
-    
-    
-     
-    raw_input('Press enter to continue')
+    pass
     
 ################################################################################
