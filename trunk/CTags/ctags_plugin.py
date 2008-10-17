@@ -106,30 +106,30 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
         
         ################################################################
         
-        # tags_file = find_tags_relative_to(view)
-        # if not tags_file: return
+        tags_file = find_tags_relative_to(view)
+        if not tags_file: return
                 
-        # fn = view_fn(view, None)
-        # if not fn: return
+        fn = view_fn(view, None)
+        if not fn: return
 
-        # tag_dir = normpath(dirname(tags_file))
-        # common_prefix = os.path.commonprefix([tag_dir, fn])
-        # current_file = '.\\' + fn[len(common_prefix)+1:]
+        tag_dir = normpath(dirname(tags_file))
+        common_prefix = os.path.commonprefix([tag_dir, fn])
+        current_file = '.\\' + fn[len(common_prefix)+1:]
 
         ################################################################
         
-        # tags_file = tags_file + '_unsorted'
+        tags_file = tags_file + '_unsorted'
         
-        # index = ctags_cache.get(tags_file)
+        index = ctags_cache.get(tags_file)
                         
-        # if not index:
-        #     return sublime.statusMessage('Parsing CTags File')
+        if not index:
+            return sublime.statusMessage('Parsing CTags File')
         
         ################################################################
         
-        # tags = ctags.get_tags_for_field(current_file, tags_file, index, 1)
+        tags = ctags.get_tags_for_field(current_file, tags_file, index, 1)
         
-        tags = ctags.get_tags_for_file(ctags_exe, view.fileName())
+        # tags = ctags.get_tags_for_file(ctags_exe, view.fileName())
         
         if tags:  JumpBack.append(view)
  
@@ -188,16 +188,17 @@ class RebuildCTags(sublimeplugin.TextCommand):
 
     @threaded(finish=clear_cache, msg="Already running CTags")
     def build_ctags(self, tag_file, cmd, wd):
-        # cmds = [cmd] + [cmd[:]]
-        # cmds[-1].extend(['--sort=no', '-f', 'tags_unsorted'])
-        # cmd = ' && '.join(subprocess.list2cmdline(c) for c in cmds)
+        cmds = [cmd] + [cmd[:]]
+        cmds[-1].extend(['--sort=no', '-f', 'tags_unsorted'])
+        cmd = ' && '.join(subprocess.list2cmdline(c) for c in cmds)
 
         p = subprocess.Popen (
-            cmd, cwd = wd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+            cmd, cwd = wd, #stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
             shell=1,
         )
 
-        if p.wait(): print p.stdout.read()
+        p.wait()
+        # print p.stdout.read()
 
         return tag_file
 
