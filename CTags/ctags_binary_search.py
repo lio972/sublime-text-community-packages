@@ -39,9 +39,6 @@ class TagFile(object):
     def __len__(self):
         return os.stat(self.p)[6]
 
-    def close(self):
-        self.fh.close()
-
     def get(self, tag):
         with open(self.p) as self.fh:
             b4 = bisect.bisect_left(self, tag)

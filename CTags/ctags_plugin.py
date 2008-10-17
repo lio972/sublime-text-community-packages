@@ -3,7 +3,6 @@
 # Std Libs
 import os
 import re
-import string
 import time
 import threading
 import functools
@@ -96,12 +95,6 @@ def format_tag_for_quickopen(tag):
 
 ################################################################################
 
-@in_main
-def notify_finished_parsing(p):
-    sublime.statusMessage('Finished parsing %s' % p)
-
-# ctags_cache    =   ctags.CTagsCache(status=notify_finished_parsing)
-
 def checkIfBuilding(self, view, args):
     if RebuildCTags.building:
         sublime.statusMessage('Please wait while tags are built')
@@ -135,19 +128,7 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
 
         ################################################################
         
-        tags_file = tags_file + '_unsorted'
-        
-        # index = ctags_cache.get(tags_file)
-                        
-        # if not index:
-            # return sublime.statusMessage('Parsing CTags File')
-        
-        ################################################################
-        
-        # tags = ctags.get_tags_for_field(current_file, tags_file, index, 1)
-        
-        # tags = ctags.get_tags_for_file(ctags_exe, view.fileName())
-        
+        tags_file = tags_file + '_unsorted'        
         tags = TagFile(tags_file, FILENAME).get_tags_dict(current_file)
 
         if tags:  JumpBack.append(view)
@@ -201,59 +182,33 @@ class JumpBack(sublimeplugin.TextCommand):
 class RebuildCTags(sublimeplugin.TextCommand):
     building = False
 
-    def clear_cache(self, tag_file):
-        for f in (tag_file, tag_file + "_unsorted"):
-            if f in ctags_cache.cache:
-                ctags_cache.cache.pop(f)
-            
-        # print ctags_cache.cache.keys()
-        
+    def done_building(self, tag_file):
         sublime.statusMessage('Finished building %s' % tag_file)
         RebuildCTags.building = False
 
-    @threaded(finish=clear_cache, msg="Already running CTags")
-    def build_ctags(self, tag_file, cmd, wd):
-        cmds = [cmd] + [cmd[:]]
-        cmds[-1].extend(['--sort=no', '-f', 'tags_unsorted'])
-        cmd = ' && '.join(subprocess.list2cmdline(c) for c in cmds)
-
-        p = subprocess.Popen (
-            cmd, cwd = wd, #stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-            shell=1,
-        )
-
-        p.wait()
-        # print p.stdout.read()
-
+    @threaded(finish=done_building, msg="Already running CTags")
+    def build_ctags(self, tag_file):
+        ctags.build_ctags(ctags_exe, tag_file)
         return tag_file
-
+        
     def run(self, view, args):
         RebuildCTags.building = True
-        
-        restore_focus = FocusRestorer()
 
         tag_file = find_tags_relative_to(view, ask_to_build=0)
         if not tag_file:
             tag_file = join(dirname(view_fn(view)), 'tags')
             if not sublime.questionBox('`ctags -R` in %s ?' % dirname(tag_file)):
+                RebuildCTags.building = False
                 return
 
-        wd = dirname(tag_file)
- 
-        cmd = [ctags_exe, '-R']
-        
-        self.build_ctags(tag_file, cmd, wd)
-        
+        self.build_ctags(tag_file)
         sublime.statusMessage('Re/Building CTags: Please be patient')
-        
-        restore_focus()
 
 ################################################################################
 
 class NavigateToDefinition(sublimeplugin.TextCommand):
     last_open = None
     isEnabled = checkIfBuilding
-    
     
     def jump(self, view, args):
         scroll_to_tag(view, *args)
@@ -271,18 +226,13 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
 
         current_symbol = view.substr(view.word(view.sel()[0]))
         tag_dir = dirname(tags_file)
-
-        # index = ctags_cache.get(tags_file)
-        # if not index: return sublime.statusMessage('Parsing CTags File')
-        
-        # tags = ctags.get_tags_for_field(current_symbol, tags_file, index)
         
         tags = TagFile(tags_file, SYMBOL).get_tags_dict(current_symbol)
         
         args, display = [], []
         for t in sorted(tags.get(current_symbol, []), key=iget('filename')):
             args.append (
-                (join(tag_dir,t['filename']), t['symbol'], t['ex_command']) )
+                (join(tag_dir, t['filename']), t['symbol'], t['ex_command']) )
 
             display.append(format_tag_for_quickopen(t))
 

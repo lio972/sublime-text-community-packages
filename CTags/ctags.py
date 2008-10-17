@@ -30,12 +30,6 @@ TAGS_RE = re.compile (
 
 ################################################################################
 
-def parse_tag_file(tag_file):
-    with open(tag_file) as tf:
-        tags = parse_tag_lines(tf)
-    
-    return tags
-
 def parse_tag_lines(lines):
     tags_lookup = {}
     
@@ -45,44 +39,6 @@ def parse_tag_lines(lines):
         
     return tags_lookup
 
-
-def get_tags_for_file(ctags_exe, a_file):
-    cmd = [ctags_exe, '-f', '-', a_file]
-    
-    p = subprocess.Popen (
-        cmd, stdout = subprocess.PIPE, stderr = subprocess.STDOUT, shell=1 )
-    
-    p.wait()
-    
-    tags = parse_tag_lines(p.stdout)
-    p.stdout.close()
-
-    return tags
-
-def index_tag_file(tag_file, column=0):
-    index = {}
-
-    with open(tag_file, 'rb') as tags:
-        position = 0
-
-        for l in tags:
-            field = l.split('\t')[column]
-            if field not in index:
-                index[field] = position
-            
-            position += len(l)
-
-    return index
-
-def get_tags_for_field(field, tag_file, index, column=0):
-    position = index.get(field)
-    if not position: return {}
-
-    with open(tag_file) as fh:
-        fh.seek(position)
-        tag_lines = list(takewhile(lambda l:l.split('\t')[column] == field, fh))
-        
-    return parse_tag_lines(tag_lines)
 
 def unescape_ex(ex):
     return re.sub(r"\\(\$|/|\^|\\)", r'\1', ex)
@@ -117,6 +73,67 @@ def process_fields(fields):
 
     return fields_dict
 
+
+################################################################################
+
+def build_ctags(ctags_exe, tag_file):
+    cmd = [ctags_exe, '-R']
+
+    cmds = [cmd] + [cmd[:]]
+    cmds[-1].extend(['--sort=no', '-f', 'tags_unsorted'])
+    cmd = ' && '.join(subprocess.list2cmdline(c) for c in cmds)
+
+    p = subprocess.Popen(cmd, cwd = dirname(tag_file), shell=1)
+    p.wait()
+
+    return tag_file
+
+################################################################################
+
+# def parse_tag_file(tag_file):
+#     with open(tag_file) as tf:
+#         tags = parse_tag_lines(tf)
+    
+#     return tags
+
+# def get_tags_for_file(ctags_exe, a_file):
+#     cmd = [ctags_exe, '-f', '-', a_file]
+    
+#     p = subprocess.Popen (
+#         cmd, stdout = subprocess.PIPE, stderr = subprocess.STDOUT, shell=1 )
+    
+#     p.wait()
+    
+#     tags = parse_tag_lines(p.stdout)
+#     p.stdout.close()
+
+#     return tags
+
+# def index_tag_file(tag_file, column=0):
+#     index = {}
+
+#     with open(tag_file, 'rb') as tags:
+#         position = 0
+
+#         for l in tags:
+#             field = l.split('\t')[column]
+#             if field not in index:
+#                 index[field] = position
+            
+#             position += len(l)
+
+#     return index
+
+# def get_tags_for_field(field, tag_file, index, column=0):
+#     position = index.get(field)
+#     if not position: return {}
+
+#     with open(tag_file) as fh:
+#         fh.seek(position)
+#         tag_lines = list(takewhile(lambda l:l.split('\t')[column] == field, fh))
+        
+#     return parse_tag_lines(tag_lines)
+
 ################################################################################
 
 class Tag(object):
@@ -129,47 +146,47 @@ class Tag(object):
 
 ################################################################################
 
-class CTagsCache(object):
-    cache   = {}
-    pending = {}
+# class CTagsCache(object):
+#     cache   = {}
+#     pending = {}
 
-    def __init__(self, status=None):
-        self.Q  = Queue.Queue()
-        self.OQ = Queue.Queue()
+#     def __init__(self, status=None):
+#         self.Q  = Queue.Queue()
+#         self.OQ = Queue.Queue()
         
-        self.t = threading.Thread(target=self.thread)
-        self.t.setDaemon(1)
-        self.t.start()
+#         self.t = threading.Thread(target=self.thread)
+#         self.t.setDaemon(1)
+#         self.t.start()
 
-        self.status=status
+#         self.status=status
 
-    def thread(self):
-        while True:
-            path = self.Q.get()
-            column = 1 if path.endswith('unsorted') else 0
+#     def thread(self):
+#         while True:
+#             path = self.Q.get()
+#             column = 1 if path.endswith('unsorted') else 0
 
-            self.OQ.put((path, index_tag_file(path, column)))
+#             self.OQ.put((path, index_tag_file(path, column)))
 
-            self.Q.task_done()
-            if self.status: self.status(path)
+#             self.Q.task_done()
+#             if self.status: self.status(path)
 
-    def get(self, path):
-        if path not in self.cache:
-            if path not in self.pending:
-                self.Q.put(path)
-                self.pending[path] = True
+#     def get(self, path):
+#         if path not in self.cache:
+#             if path not in self.pending:
+#                 self.Q.put(path)
+#                 self.pending[path] = True
 
-        while True:
-            try:
-                tag_path, tag_dict = self.OQ.get_nowait()
-                self.cache[tag_path] = tag_dict
-                self.pending.pop(tag_path)
-                self.OQ.task_done()
+#         while True:
+#             try:
+#                 tag_path, tag_dict = self.OQ.get_nowait()
+#                 self.cache[tag_path] = tag_dict
+#                 self.pending.pop(tag_path)
+#                 self.OQ.task_done()
             
-            except Queue.Empty:
-                break
+#             except Queue.Empty:
+#                 break
         
-        return self.cache.get(path, {})
+#         return self.cache.get(path, {})
 
 ################################################################################
 
@@ -188,6 +205,7 @@ class CTagsCache(object):
 # hooking them into auto-complete.
 
 ################################################################################
+
 
 class CTagsTest(unittest.TestCase):
     def test_all_search_strings_work(self):
@@ -209,26 +227,26 @@ class CTagsTest(unittest.TestCase):
 
         self.assertEqual(len(failures), 0, 'update tag files and try again')
 
-def scribble():
-    raw_input('About to use memory')
+# def scribble():
+    # raw_input('About to use memory')
     
-    import time
-    tags = 'C://python25//lib//tags'
+    # import time
+    # tags = 'C://python25//lib//tags'
     
-    t1 = time.time()
-    index = index_tag_file(tags)
-    print time.time() - t1
+    # t1 = time.time()
+    # index = index_tag_file(tags)
+    # print time.time() - t1
     
-    t1 = time.time()
-    print get_tags_for_field("struct_GLUnurbs", tags, index)
-    print time.time() - t1
+    # t1 = time.time()
+    # print get_tags_for_field("struct_GLUnurbs", tags, index)
+    # print time.time() - t1
     
-    raw_input('Press enter')
+    # raw_input('Press enter')
     
     # print get_tags_for_file('ctags.exe', 'ctags.py')
         
 if __name__ == '__main__':
-    if 1:  scribble()
+    if 1: pass
     else: unittest.main()
 
 ################################################################################
