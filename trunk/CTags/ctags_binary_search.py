@@ -47,24 +47,17 @@ class TagFile(object):
         self.fh.close()
 
     def get(self, tag):
-        with open(self.p, 'rb') as self.fh:
-            pos = bisect.bisect(self, tag)
-            b4 = bisect.bisect_left(self, tag, 0, pos)
-
+        with open(self.p) as self.fh:
+            b4 = bisect.bisect_left(self, tag)
             self.fh.seek(b4)
-    
-            found = 0
-            tag_first_letter = tag[0]
-            
-            for i, l in enumerate(self.fh):
-                m = re.match('%s\t' % tag, l)
-                if not found and not m and l.startswith(tag_first_letter): 
-                    continue
-                elif m:
-                    found = 1 
-                    yield l
-                else: break
 
+            for l in self.fh:
+                comp = cmp(first.match(l).group(1), tag)
+
+                if   comp == -1: continue
+                elif comp ==  1: break
+                
+                yield l                
 
     def get_tags_dict(self, tag):
         return ctags.parse_tag_lines(self.get(tag))
@@ -72,20 +65,18 @@ class TagFile(object):
 ################################################################################
         
 if __name__ == '__main__':
-    # raw_input = lambda s: s
+    if 0: raw_input = lambda s: s
 
     raw_input('About to use memory')
 
     t = time.time()
-
     b = TagFile(r'C://python25//lib//tags')
-    
     print time.time() - t
     
     t = time.time()
-    pprint.pprint(b.get_tags_dict('Tests'))
+    c = b.get_tags_dict('Test')
+    print len(c['Test']), 'tags'
     print time.time() - t
-    
     
     raw_input('Press enter to continue')
     
