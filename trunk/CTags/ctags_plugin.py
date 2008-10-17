@@ -80,8 +80,11 @@ def scroll_to_tag(view, file, symbol, pattern_or_line):
             select(view, symbol_region)
 
 def format_tag_for_quickopen(tag):
-    if 'class' in tag: format = "%(filename)s : %(class)s %(ex_command)s" 
-    else:              format = "%(filename)s : %(ex_command)s" 
+    if 'class' in tag: format = "%(filename)s : %(class)s "
+    else:              format = "%(filename)s : " 
+    
+    if tag['ex_command'].isdigit(): format += " %(symbol)s"
+    else: format += "%(ex_command)s" 
     
     return format % tag
 
