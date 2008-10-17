@@ -108,7 +108,6 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
         fn = view_fn(view, None)
         if not fn: return
 
-        JumpBack.append(view)
         tag_dir = normpath(dirname(tags_file))
         common_prefix = os.path.commonprefix([tag_dir, fn])
         current_file = str('.\\' + fn[len(common_prefix)+1:])
@@ -126,7 +125,7 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
         
         tags = ctags.get_tags_for_field(current_file, tags_file, index, 1)
         
-        print tags
+        if tags:  JumpBack.append(view)
  
         args, display = [], []
         
