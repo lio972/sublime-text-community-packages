@@ -80,10 +80,9 @@ def get_tags_for_field(field, tag_file, index, column=0):
 
     with open(tag_file) as fh:
         fh.seek(position)
-        tag_lines = list(takewhile (
-            lambda l:l.split('\t')[column] == field, fh.xreadlines() ))
-
-    return parse_tag_lines(list(tag_lines))
+        tag_lines = list(takewhile(lambda l:l.split('\t')[column] == field, fh))
+        
+    return parse_tag_lines(tag_lines)
 
 def unescape_ex(ex):
     return re.sub(r"\\(\$|/|\^|\\)", r'\1', ex)
@@ -227,7 +226,7 @@ def scribble():
     
     raw_input('Press enter')
     
-    print get_tags_for_file('ctags.exe', 'ctags.py')
+    # print get_tags_for_file('ctags.exe', 'ctags.py')
         
 if __name__ == '__main__':
     if 1:  scribble()
