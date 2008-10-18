@@ -30,6 +30,9 @@ TAGS_RE = re.compile (
     '(?:\t(?P<fields>.*))?'
 )
 
+SYMBOL = 0
+FILENAME = 1
+
 ################################################################################
 
 def parse_tag_lines(lines):
@@ -116,9 +119,6 @@ def log_divides(f):
         print f.accessed, i
         return item
     return wrapped
-    
-SYMBOL = 0
-FILENAME = 1
 
 class TagFile(object):
     def __init__(self, p, column):
