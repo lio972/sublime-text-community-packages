@@ -199,7 +199,7 @@ class RebuildCTags(sublimeplugin.TextCommand):
         tag_file = find_tags_relative_to(view, ask_to_build=0)
         if not tag_file:
             tag_file = join(dirname(view_fn(view)), 'tags')
-            if not sublime.questionBox('`ctags -R` in %s ?' % dirname(tag_file)):
+            if not sublime.questionBox('`ctags -R` in %s ?'% dirname(tag_file)):
                 return
         
         RebuildCTags.building = True
@@ -210,7 +210,6 @@ class RebuildCTags(sublimeplugin.TextCommand):
 ################################################################################
 
 class NavigateToDefinition(sublimeplugin.TextCommand):
-    last_open = None
     isEnabled = checkIfBuilding
     
     def jump(self, view, args):

@@ -1459,8 +1459,7 @@ TRUE	.\general.h	99;"	d
 TableSize	.\keyword.c	/^static const unsigned int TableSize = 1 << HASH_EXPONENT;$/;"	v	file:
 Tag	.\ctags.py	/^class Tag(object):$/;"	c
 TagFailure	.\readtags.h	/^typedef enum { TagFailure = 0, TagSuccess = 1 } tagResult;$/;"	e	enum:__anon48
-TagFile	.\binary_ctags.py	/^class TagFile(object):$/;"	c
-TagFile	.\ctags_binary_search.py	/^class TagFile(object):$/;"	c
+TagFile	.\ctags.py	/^class TagFile(object):$/;"	c
 TagFile	.\entry.c	/^tagFile TagFile = {$/;"	v
 TagFileName	.\readtags.c	/^static const char *TagFileName = "tags";$/;"	v	file:
 TagSuccess	.\readtags.h	/^typedef enum { TagFailure = 0, TagSuccess = 1 } tagResult;$/;"	e	enum:__anon48
@@ -1527,14 +1526,11 @@ _STRLIST_H	.\strlist.h	12;"	d
 _VSTRING_H	.\vstring.h	12;"	d
 __REGEXP_LIBRARY_H__	.\regex.h	21;"	d
 __call__	.\plugin_helpers.py	/^    def __call__(self, times=2, delay = 50):  $/;"	m	class:FocusRestorer	file:
-__getitem__	.\binary_ctags.py	/^    def __getitem__(self, index):$/;"	m	class:TagFile	file:
-__getitem__	.\ctags_binary_search.py	/^    def __getitem__(self, index):$/;"	m	class:TagFile	file:
-__init__	.\binary_ctags.py	/^    def __init__(self, p):$/;"	m	class:TagFile
+__getitem__	.\ctags.py	/^    def __getitem__(self, index):$/;"	m	class:TagFile	file:
+__init__	.\ctags.py	/^    def __init__(self, p, column):$/;"	m	class:TagFile
 __init__	.\ctags.py	/^    def __init__(self, tag_dict):$/;"	m	class:Tag
-__init__	.\ctags_binary_search.py	/^    def __init__(self, p, column):$/;"	m	class:TagFile
 __init__	.\plugin_helpers.py	/^    def __init__(self):$/;"	m	class:FocusRestorer
-__len__	.\binary_ctags.py	/^    def __len__(self):$/;"	m	class:TagFile	file:
-__len__	.\ctags_binary_search.py	/^    def __len__(self):$/;"	m	class:TagFile	file:
+__len__	.\ctags.py	/^    def __len__(self):$/;"	m	class:TagFile	file:
 __pad1	.\e_mac.h	/^	unsigned short int __pad1;$/;"	m	struct:stat
 __printf__	.\general.h	61;"	d
 __printf__	.\general.h	64;"	d
@@ -1722,7 +1718,6 @@ clearLanguageMap	.\parse.c	/^extern void clearLanguageMap (const langType langua
 clearPatternSet	.\lregex.c	/^static void clearPatternSet (const langType language)$/;"	f	file:
 clock	.\main.c	/^static clock_t clock (void)$/;"	f	file:
 clock	.\main.c	417;"	d	file:
-close	.\binary_ctags.py	/^    def close(self):$/;"	m	class:TagFile
 close	.\entry.c	70;"	d	file:
 closeTagFile	.\entry.c	/^extern void closeTagFile (const boolean resize)$/;"	f
 closedir	.\mac.c	/^int closedir(DIR *dirp)$/;"	f
@@ -2039,8 +2034,7 @@ freeTagFileResources	.\entry.c	/^extern void freeTagFileResources (void)$/;"	f
 freebasic_keywords	.\basic.c	/^static KeyWord freebasic_keywords[] = {$/;"	v	file:
 fsetpos	.\routines.c	/^extern int fsetpos (FILE *stream, fpos_t const *pos)$/;"	f
 function	.\lregex.c	/^			regexCallback function;$/;"	m	struct:__anon26::__anon27::__anon29	file:
-get	.\binary_ctags.py	/^    def get(self, tag):$/;"	m	class:TagFile
-get	.\ctags_binary_search.py	/^    def get(self, tag):$/;"	m	class:TagFile
+get	.\ctags.py	/^    def get(self, tag):$/;"	m	class:TagFile
 getBooleanOption	.\options.c	/^static boolean getBooleanOption ($/;"	f	file:
 getChar	.\fortran.c	/^static int getChar (void)$/;"	f	file:
 getDirectiveNestLevel	.\get.c	/^extern unsigned int getDirectiveNestLevel (void)$/;"	f
@@ -2066,7 +2060,7 @@ getSourceLanguage	.\read.h	39;"	d
 getSourceLanguageName	.\read.h	40;"	d
 getSourceLineNumber	.\read.h	41;"	d
 get_path	.\mac.c	/^static int get_path(const char* in_unix_path, unsigned char* out_mac_path)$/;"	f	file:
-get_tags_dict	.\ctags_binary_search.py	/^    def get_tags_dict(self, tag):$/;"	m	class:TagFile
+get_tags_dict	.\ctags.py	/^    def get_tags_dict(self, tag):$/;"	m	class:TagFile
 getcwd	.\mac.c	/^char* getcwd(char* out_path, int out_path_len)$/;"	f
 getcwd	.\routines.c	128;"	d	file:
 getredirection	.\argproc.c	/^getredirection (ac, av)$/;"	f
@@ -2354,8 +2348,7 @@ list	.\strlist.h	/^	vString    **list;$/;"	m	struct:sStringList
 listTags	.\readtags.c	/^static void listTags (void)$/;"	f	file:
 list_item	.\argproc.c	/^struct list_item$/;"	s	file:
 locate	.\options.h	/^	exCmd locate;           \/* --excmd  EX command used to locate tag *\/$/;"	m	struct:sOptionValues
-log_divides	.\binary_ctags.py	/^def log_divides(f):$/;"	f
-log_divides	.\ctags_binary_search.py	/^def log_divides(f):$/;"	f
+log_divides	.\ctags.py	/^def log_divides(f):$/;"	f
 longOption	.\options.h	/^	boolean longOption;$/;"	m	struct:sCookedArgs
 lookupKeyword	.\keyword.c	/^extern int lookupKeyword (const char *const string, langType language)$/;"	f
 lstat	.\e_mac.h	139;"	d
@@ -2635,6 +2628,7 @@ parseVariable	.\sql.c	/^static void parseVariable (tokenInfo *const token)$/;"	f
 parseView	.\sql.c	/^static void parseView (tokenInfo *const token)$/;"	f	file:
 parseVimFile	.\vim.c	/^static void parseVimFile (const unsigned char *line)$/;"	f	file:
 parseVimLine	.\vim.c	/^static boolean parseVimLine (const unsigned char *line)$/;"	f	file:
+parse_tag_file	.\ctags.py	/^def parse_tag_file(tag_file):$/;"	f
 parse_tag_lines	.\ctags.py	/^def parse_tag_lines(lines):$/;"	f
 parser	.\parse.h	/^	simpleParser parser;           \/* simple parser (common case) *\/$/;"	m	struct:__anon37
 parser2	.\parse.h	/^	rescanParser parser2;          \/* rescanning parser (unusual case) *\/$/;"	m	struct:__anon37
@@ -2831,7 +2825,7 @@ reportType	.\eiffel.c	/^static void reportType (tokenInfo *const token)$/;"	f	fi
 rescanParser	.\parse.h	/^typedef boolean (*rescanParser) (const unsigned int passCount);$/;"	t
 resizeTagFile	.\entry.c	/^static void resizeTagFile (const long newSize)$/;"	f	file:
 resolveRequired	.\get.c	/^	boolean resolveRequired;     \/* must resolve if\/else\/elif\/endif branch *\/$/;"	m	struct:sCppState	file:
-resort_ctags	.\ctags_binary_search.py	/^def resort_ctags(tag_file):$/;"	f
+resort_ctags	.\ctags.py	/^def resort_ctags(tag_file):$/;"	f
 restartStatement	.\c.c	/^static void restartStatement (statementInfo *const st)$/;"	f	file:
 retardToken	.\c.c	/^static void retardToken (statementInfo *const st)$/;"	f	file:
 rewinddir	.\mac.c	/^void rewinddir(DIR *dirp)$/;"	f
@@ -3090,6 +3084,7 @@ tempnam	.\e_msoft.h	38;"	d
 terminate	.\readtags.c	/^static void terminate (tagFile *const file)$/;"	f	file:
 testEtagsInvocation	.\options.c	/^extern void testEtagsInvocation (void)$/;"	f
 test_all_search_strings_work	.\ctags.py	/^    def test_all_search_strings_work(self):$/;"	m	class:CTagsTest
+test_tags_files	.\ctags.py	/^    def test_tags_files(self):$/;"	m	class:CTagsTest
 threaded	.\plugin_helpers.py	/^        def threaded(*args, **kwargs):$/;"	f	function:threaded/decorator
 threaded	.\plugin_helpers.py	/^def threaded(finish=None, msg="Thread already running"):$/;"	f
 timeStamp	.\main.c	485;"	d	file:
@@ -3197,8 +3192,7 @@ wordbeg	.\regex.c	/^  wordbeg,	\/* Succeeds if at word beginning.  *\/$/;"	e	enu
 wordbound	.\regex.c	/^  wordbound,	\/* Succeeds if at a word boundary.  *\/$/;"	e	enum:__anon57	file:
 wordchar	.\regex.c	/^  wordchar,	\/* Matches any word-constituent character.  *\/$/;"	e	enum:__anon57	file:
 wordend	.\regex.c	/^  wordend,	\/* Succeeds if at word end.  *\/$/;"	e	enum:__anon57	file:
-wrapped	.\binary_ctags.py	/^    def wrapped(self, i):$/;"	f	function:log_divides
-wrapped	.\ctags_binary_search.py	/^    def wrapped(self, i):$/;"	f	function:log_divides
+wrapped	.\ctags.py	/^    def wrapped(self, i):$/;"	f	function:log_divides
 wrapper	.\ctags_plugin.py	/^    def wrapper(f):$/;"	f	function:wait_until_loaded
 wrapper	.\helpers.py	/^        def wrapper(*args, **kw):$/;"	f	function:time_function/decorator
 writeCompactSourceLine	.\entry.c	/^static size_t writeCompactSourceLine (FILE *const fp, const char *const line)$/;"	f	file:

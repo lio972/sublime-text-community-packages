@@ -15,9 +15,10 @@ import functools
 import subprocess
 import bisect
 import time
+import mmap
 
 from os.path import join, normpath, dirname
-# from itertools import takewhile, repeat
+from itertools import izip
 
 ################################################################################
 
@@ -135,17 +136,21 @@ class TagFile(object):
         return os.stat(self.p)[6]
 
     def get(self, tag):
-        with open(self.p) as self.fh:
-            b4 = bisect.bisect_left(self, tag)
-            self.fh.seek(b4)
+        with open(self.p, 'r+') as fh:
+            self.fh = mmap.mmap(fh.fileno(), 0)
 
-            for l in self.fh:
+            b4 = bisect.bisect_left(self, tag)
+            fh.seek(b4)
+
+            for l in fh:
                 comp = cmp(l.split('\t')[self.column], tag)
 
                 if   comp == -1: continue
                 elif comp ==  1: break
                 
-                yield l                
+                yield l
+
+            self.fh.close()
 
     def get_tags_dict(self, tag):
         return parse_tag_lines(self.get(tag))
@@ -154,11 +159,11 @@ class TagFile(object):
 
 
 
-# def parse_tag_file(tag_file):
-#     with open(tag_file) as tf:
-#         tags = parse_tag_lines(tf)
+def parse_tag_file(tag_file):
+    with open(tag_file) as tf:
+        tags = parse_tag_lines(tf)
     
-#     return tags
+    return tags
 
 # def get_tags_for_file(ctags_exe, a_file):
 #     cmd = [ctags_exe, '-f', '-', a_file]
@@ -281,16 +286,33 @@ class CTagsTest(unittest.TestCase):
         for symbol, tag_list in tags.iteritems():
             for tag in (Tag(t) for t in tag_list):
                 if not tag.ex_command.isdigit():
-                    with open(tag.filename) as fh:
-                        file_str = fh.read()
-                        if tag.ex_command not in file_str:
-                            failures += [tag.ex_command]
+                    with open(tag.filename, 'r+') as fh:
+                        mapped = mmap.mmap(fh.fileno(), 0)
+                        if not mapped.find(tag.ex_command):
+                            failures += [tag.ex_command]                        
 
         for f in failures:
             print f
 
         self.assertEqual(len(failures), 0, 'update tag files and try again')
+        
+    def test_tags_files(self):
+        # tags = r'C://python25//lib//tags'
+        tags = r"tags"
 
+        symbols = {}
+            
+        with open(tags, 'r') as fh:
+            for l in fh:
+                symbols.setdefault(l.split('\t')[SYMBOL], []).append(l)
+
+        tag_file = TagFile(tags, SYMBOL)
+
+        for symbol, line_list in symbols.iteritems():
+            for file_l, dict_l in izip(tag_file.get(symbol), line_list):
+                # print file_l
+                self.assertEquals(file_l, dict_l)
+                
 # def scribble():
     # raw_input('About to use memory')
     
@@ -308,9 +330,28 @@ class CTagsTest(unittest.TestCase):
     # raw_input('Press enter')
     
     # print get_tags_for_file('ctags.exe', 'ctags.py')
-        
+
+def scribble():
+    raw_input('About to use memory')
+    
+    import time
+    tags = 'C://python25//lib//tags'
+    
+    t1 = time.time()
+    
+    a =  list(TagFile(tags, SYMBOL).get('Test'))
+    
+    print time.time() - t1
+    
+    a = parse_tag_lines(a)
+    print len(a['Test'])
+    
+    raw_input('Press enter')
+    
+
+
 if __name__ == '__main__':
-    if 1: pass
+    if 0: scribble()
     else: unittest.main()
 
 ################################################################################
