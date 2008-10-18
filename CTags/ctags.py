@@ -117,7 +117,7 @@ def log_divides(f):
     def wrapped(self, i):
         item = f(self, i)
         f.accessed += 1
-        print f.accessed, i
+        print f.accessed, i, self.fh.tell()
         return item
     return wrapped
 
@@ -142,11 +142,11 @@ class TagFile(object):
             b4 = bisect.bisect_left(self, tag)
             fh.seek(b4)
 
-            for l in fh:
+            for l in fh:                
                 comp = cmp(l.split('\t')[self.column], tag)
-
-                if   comp == -1: continue
-                elif comp ==  1: break
+                
+                if    comp == -1:    continue
+                elif  comp:          break
                 
                 yield l
 
@@ -297,21 +297,27 @@ class CTagsTest(unittest.TestCase):
         self.assertEqual(len(failures), 0, 'update tag files and try again')
         
     def test_tags_files(self):
-        # tags = r'C://python25//lib//tags'
         tags = r"tags"
-
-        symbols = {}
-            
-        with open(tags, 'r') as fh:
-            for l in fh:
-                symbols.setdefault(l.split('\t')[SYMBOL], []).append(l)
-
         tag_file = TagFile(tags, SYMBOL)
+                
+        with open(tags, 'r') as fh:
+            latest = ''
+            lines  = [] 
 
-        for symbol, line_list in symbols.iteritems():
-            for file_l, dict_l in izip(tag_file.get(symbol), line_list):
-                # print file_l
-                self.assertEquals(file_l, dict_l)
+            for l in fh:
+                symbol = l.split('\t')[SYMBOL]
+
+                if symbol != latest:
+
+                    if latest:
+                        tags = list(tag_file.get(latest))                        
+                        self.assertEqual(lines, tags)
+                        
+                        lines = []
+                    
+                    latest = symbol
+
+                lines += [l]
                 
 # def scribble():
     # raw_input('About to use memory')
@@ -351,7 +357,7 @@ def scribble():
 
 
 if __name__ == '__main__':
-    if 1: scribble()
+    if 0: scribble()
     else: unittest.main()
 
 ################################################################################
