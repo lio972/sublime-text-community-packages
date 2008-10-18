@@ -351,7 +351,7 @@ def scribble():
 
 
 if __name__ == '__main__':
-    if 0: scribble()
+    if 1: scribble()
     else: unittest.main()
 
 ################################################################################
