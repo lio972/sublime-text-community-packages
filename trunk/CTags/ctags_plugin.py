@@ -9,7 +9,6 @@ import functools
 import subprocess
 
 from os.path import join, normpath, dirname, abspath
-from itertools import takewhile, groupby
 from operator import itemgetter as iget
 
 # Sublime Libs
@@ -20,7 +19,6 @@ import sublimeplugin
 import ctags
 
 from ctags import TagFile, SYMBOL, FILENAME
-
 from plugin_helpers import threaded, FocusRestorer, in_main
 
 # from helpers import time_function
@@ -72,9 +70,12 @@ def select(view, region):
     sel_set.add(region)
     view.show(region)    
 
-def scroll_to_tag(view, file, symbol, pattern_or_line):
+def scroll_to_tag(view, tag_dir, tag):
+    tag = ctags.Tag(tag)
+ 
+    symbol, pattern_or_line = tag.symbol, tag.ex_command
 
-    @wait_until_loaded(file, view.window())
+    @wait_until_loaded(join(tag_dir, tag.filename), view.window())
     def and_then(view):
         look_from = None
         if pattern_or_line.isdigit():
@@ -106,22 +107,23 @@ def checkIfBuilding(self, view, args):
 
 ################################################################################
 
+def prepared_4_quickpanel(sorter):
+    args, display = [], []
+
+    for t in sorter():
+        display.append(format_tag_for_quickopen(t))
+        args.append(t)
+
+    return args, display
+
 class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
     isEnabled = checkIfBuilding
     
+    # @time_function
     def run(self, view, args):
-        
-        if args:
-            view = self.view
-            scroll_to_tag(view, view.fileName(), *eval(args[0]))
-            del self.view
-            return
-        
-        ################################################################
-        
         tags_file = find_tags_relative_to(view)
         if not tags_file: return
-                
+
         fn = view_fn(view, None)
         if not fn: return
 
@@ -131,30 +133,50 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
 
         ################################################################
         
-        tags_file = tags_file + '_unsorted'        
+        tags_file = tags_file + '_unsorted'
         tags = TagFile(tags_file, FILENAME).get_tags_dict(current_file)
 
         if tags:  JumpBack.append(view)
- 
-        args, display = [], []
         
-        for k in sorted(tags):
-            for t in tags[k]:
-                args    += [`(t['symbol'], t['ex_command'])`]
-                display += [format_tag_for_quickopen(t)]
+        @prepared_4_quickpanel
+        def sorted_tags():
+            for l in (tags[k] for k in sorted(tags)):
+                for t in l: yield t
 
         ################################################################
-
-        self.view = view
-
-        window = view.window()
-        window.showQuickPanel('', 'showSymbolsForCurrentFile', args, display)
         
+        (QuickPanel.partial(scroll_to_tag, view, tag_dir)
+                   .show(*sorted_tags))
+        
+################################################################################
+
+class QuickPanel(sublimeplugin.TextCommand):
+    def onActivated(self, view):
+        QuickPanel.window = view.window()
+
+    @classmethod
+    def show(cls, args, display, skip_if_one=False):
+        if skip_if_one and len(args) < 2: return cls.f(args[0])
+        cls.args = args
+        args = map(repr, range(len(args)))
+        cls.window.showQuickPanel('', 'quickPanel', args, display)
+
+    @classmethod
+    def partial(cls, f, *args, **kw):
+        cls.f = staticmethod(functools.partial(f, *args, **kw))
+        return cls
+
+    def run(self, view, args):
+        arg = self.args[eval(args[0])]
+        self.f(arg)
+        del QuickPanel.f, QuickPanel.args
+
 ################################################################################
 
 class JumpBack(sublimeplugin.TextCommand):
     last = [(0, 0)]
- 
+    
+    # @time_function
     def run(self, view, args):                    
         the_view, sel = JumpBack.last[-1]
         if len(JumpBack.last) > 1:  del JumpBack.last[-1]
@@ -162,7 +184,7 @@ class JumpBack(sublimeplugin.TextCommand):
         if the_view:
             w = view.window()
             sel = sublime.Region(*eval(sel))
-            
+
             if isinstance(the_view, unicode):
                 @wait_until_loaded(the_view, w)
                 def and_then(view):
@@ -177,7 +199,7 @@ class JumpBack(sublimeplugin.TextCommand):
         fn = view.fileName()
         if fn:
             cls.last.append((fn, `view.sel()[0]`))
-                                                                           
+    
     def onModified(self, view):
         JumpBack.last[-1] = (view, `view.sel()[0]`)
 
@@ -189,8 +211,9 @@ class RebuildCTags(sublimeplugin.TextCommand):
     def done_building(self, tag_file):
         sublime.statusMessage('Finished building %s' % tag_file)
         RebuildCTags.building = False
-
+    
     @threaded(finish=done_building, msg="Already running CTags")
+    # @time_function
     def build_ctags(self, tag_file):
         ctags.build_ctags(ctags_exe, tag_file)
         return tag_file
@@ -213,18 +236,8 @@ class RebuildCTags(sublimeplugin.TextCommand):
 class NavigateToDefinition(sublimeplugin.TextCommand):
     isEnabled = checkIfBuilding
     
-    def jump(self, view, args):
-        scroll_to_tag(view, *args)
-
-    def quickOpen(self, view, files, disp):
-        window = view.window()
-        window.showQuickPanel("", "navigateToDefinition", files, disp)
-    
-    # @time_function(times=1)
+    # @time_function
     def run(self, view, args):
-        if args:
-            return self.jump(view, eval(args[0]))
-        
         tags_file = find_tags_relative_to(view)
         if not tags_file: return
 
@@ -233,16 +246,15 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
         
         tags = TagFile(tags_file, SYMBOL).get_tags_dict(current_symbol)
         
-        args, display = [], []
-        for t in sorted(tags.get(current_symbol, []), key=iget('filename')):
-            args.append (
-                (join(tag_dir, t['filename']), t['symbol'], t['ex_command']) )
-
-            display.append(format_tag_for_quickopen(t))
+        def sorted_tags():
+            for t in sorted(tags.get(current_symbol, []), key=iget('filename')):
+                yield t
+        
+        args, display = prepared_4_quickpanel(sorted_tags)
 
         if args:
-            JumpBack.append(view)    
-            if len(args) > 1: self.quickOpen(view, [`a`for a in args], display)
-            else:             self.jump(view, args[0])
+            JumpBack.append(view)
+            (QuickPanel.partial(scroll_to_tag, view, tag_dir)
+                       .show(args, display, skip_if_one = True))
 
 ################################################################################

@@ -36,12 +36,12 @@ FILENAME = 1
 
 ################################################################################
 
-def parse_tag_lines(lines):
+def parse_tag_lines(lines, order_by='symbol'):
     tags_lookup = {}
     
     for search_obj in (t for t in (TAGS_RE.search(l) for l in lines) if t):
         tag = post_process_tag(search_obj)
-        tags_lookup.setdefault(tag['symbol'], []).append(tag)
+        tags_lookup.setdefault(tag[order_by], []).append(tag)
         
     return tags_lookup
 
@@ -146,25 +146,26 @@ class TagFile(object):
     def __len__(self):
         return os.stat(self.p)[6]
 
-    def get(self, tag):
+    def get(self, *tags):
         with open(self.p, 'r+') as fh:
             self.fh = mmap.mmap(fh.fileno(), 0)
-
-            b4 = bisect.bisect_left(self, tag)
-            fh.seek(b4)
-
-            for l in fh:                
-                comp = cmp(l.split('\t')[self.column], tag)
-                
-                if    comp == -1:    continue
-                elif  comp:          break
-                
-                yield l
-
+            
+            for tag in tags:
+                b4 = bisect.bisect_left(self, tag)
+                fh.seek(b4)
+    
+                for l in fh:                
+                    comp = cmp(l.split('\t')[self.column], tag)
+                    
+                    if    comp == -1:    continue
+                    elif  comp:          break
+                    
+                    yield l
+    
             self.fh.close()
 
-    def get_tags_dict(self, tag):
-        return parse_tag_lines(self.get(tag))
+    def get_tags_dict(self, *tags):
+        return parse_tag_lines(self.get(*tags))
 
 ################################################################################
 
@@ -349,23 +350,21 @@ class CTagsTest(unittest.TestCase):
     # print get_tags_for_file('ctags.exe', 'ctags.py')
 
 def scribble():
-    raw_input('About to use memory')
+    # raw_input('About to use memory')
     
     import time
     tags = 'C://python25//lib//tags'
     
     t1 = time.time()
     
-    a =  list(TagFile(tags, SYMBOL).get('Test'))
+    a =  list(TagFile(tags, SYMBOL).get_tags_dict('Test','Tests'))
     
     print time.time() - t1
     
-    a = parse_tag_lines(a)
-    print len(a['Test'])
+    print len(a)
     
-    raw_input('Press enter')
+    # raw_input('Press enter')
     
-
 
 if __name__ == '__main__':
     if 0: scribble()
