@@ -14,7 +14,7 @@ DEBUG = 1
 
 def command(func):
     @functools.wraps(func)
-    def put(self, *args):  
+    def put(self, *args):
         self.Q.put((func, args))
     return put
 
