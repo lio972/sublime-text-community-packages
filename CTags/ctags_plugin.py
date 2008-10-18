@@ -161,12 +161,13 @@ class JumpBack(sublimeplugin.TextCommand):
   
         if the_view:
             w = view.window()
+            sel = sublime.Region(*eval(sel))
             
             if isinstance(the_view, unicode):
                 @wait_until_loaded(the_view, w)
                 def and_then(view):
                     select(view, sel)
-            
+
             else:
                 w.focusView(the_view)
                 select(the_view, sel)        
@@ -175,10 +176,10 @@ class JumpBack(sublimeplugin.TextCommand):
     def append(cls, view):
         fn = view.fileName()
         if fn:
-            cls.last.append((fn, view.sel()[0]))
-
+            cls.last.append((fn, `view.sel()[0]`))
+                                                                           
     def onModified(self, view):
-        JumpBack.last[-1] = (view, view.sel()[0])
+        JumpBack.last[-1] = (view, `view.sel()[0]`)
 
 ################################################################################
 

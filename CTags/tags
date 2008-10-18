@@ -1012,6 +1012,7 @@ NestingLevel	.\python.c	/^struct NestingLevel$/;"	s	file:
 NestingLevel	.\python.c	/^typedef struct NestingLevel NestingLevel;$/;"	t	typeref:struct:NestingLevel	file:
 NestingLevels	.\python.c	/^struct NestingLevels$/;"	s	file:
 NestingLevels	.\python.c	/^typedef struct NestingLevels NestingLevels;$/;"	t	typeref:struct:NestingLevels	file:
+NewTagFile	.\bla.py	/^class NewTagFile(object):$/;"	c
 NonOptionEncountered	.\options.c	/^static boolean NonOptionEncountered;$/;"	v	file:
 NumTokens	.\c.c	/^enum { NumTokens = 3 };$/;"	e	enum:__anon11	file:
 OBJ	.\mk_mpw.mak	/^OBJ = ¶$/;"	m
@@ -1526,10 +1527,13 @@ _STRLIST_H	.\strlist.h	12;"	d
 _VSTRING_H	.\vstring.h	12;"	d
 __REGEXP_LIBRARY_H__	.\regex.h	21;"	d
 __call__	.\plugin_helpers.py	/^    def __call__(self, times=2, delay = 50):  $/;"	m	class:FocusRestorer	file:
+__getitem__	.\bla.py	/^    def __getitem__(self, index):$/;"	m	class:NewTagFile	file:
 __getitem__	.\ctags.py	/^    def __getitem__(self, index):$/;"	m	class:TagFile	file:
+__init__	.\bla.py	/^    def __init__(self, p, column):$/;"	m	class:NewTagFile
 __init__	.\ctags.py	/^    def __init__(self, p, column):$/;"	m	class:TagFile
 __init__	.\ctags.py	/^    def __init__(self, tag_dict):$/;"	m	class:Tag
 __init__	.\plugin_helpers.py	/^    def __init__(self):$/;"	m	class:FocusRestorer
+__len__	.\bla.py	/^    def __len__(self):$/;"	m	class:NewTagFile	file:
 __len__	.\ctags.py	/^    def __len__(self):$/;"	m	class:TagFile	file:
 __pad1	.\e_mac.h	/^	unsigned short int __pad1;$/;"	m	struct:stat
 __printf__	.\general.h	61;"	d
@@ -1581,6 +1585,7 @@ addToScope	.\jscript.c	/^static void addToScope (tokenInfo* const token, vString
 addToScope	.\sql.c	/^static void addToScope (tokenInfo* const token, vString* const extra)$/;"	f	file:
 addTotals	.\main.c	/^extern void addTotals ($/;"	f
 add_item	.\argproc.c	/^static add_item (head, tail, value, count)$/;"	f	file:
+add_line	.\bla.py	/^    def add_line(self, line):$/;"	m	class:NewTagFile
 added	.\entry.h	/^	struct sNumTags { unsigned long added, prev; } numTags;$/;"	m	struct:eTagFile::sNumTags
 address	.\readtags.h	/^	} address;$/;"	m	struct:__anon54	typeref:struct:__anon54::__anon55
 advanceToken	.\c.c	/^static void advanceToken (statementInfo* const st)$/;"	f	file:
@@ -1643,6 +1648,7 @@ awkKind	.\awk.c	/^} awkKind;$/;"	t	typeref:enum:eAwkKinds	file:
 background_process	.\argproc.c	/^background_process (argc, argv)$/;"	f
 backward	.\options.h	/^	boolean backward;       \/* -B  regexp patterns search backwards *\/$/;"	m	struct:sOptionValues
 baseFilename	.\routines.c	/^extern const char *baseFilename (const char *const filePath)$/;"	f
+batch_sort	.\bla.py	/^def batch_sort(input,output,key=None,buffer_size=32000,tempdirs=[]):$/;"	f
 bcmp	.\regex.c	54;"	d	file:
 bcmp_translate	.\regex.c	/^bcmp_translate (s1, s2, len, translate)$/;"	f	file:
 bcopy	.\regex.c	57;"	d	file:
@@ -1718,6 +1724,7 @@ clearLanguageMap	.\parse.c	/^extern void clearLanguageMap (const langType langua
 clearPatternSet	.\lregex.c	/^static void clearPatternSet (const langType language)$/;"	f	file:
 clock	.\main.c	/^static clock_t clock (void)$/;"	f	file:
 clock	.\main.c	417;"	d	file:
+close	.\bla.py	/^    def close(self):$/;"	m	class:NewTagFile
 close	.\entry.c	70;"	d	file:
 closeTagFile	.\entry.c	/^extern void closeTagFile (const boolean resize)$/;"	f
 closedir	.\mac.c	/^int closedir(DIR *dirp)$/;"	f
@@ -2348,6 +2355,7 @@ list	.\strlist.h	/^	vString    **list;$/;"	m	struct:sStringList
 listTags	.\readtags.c	/^static void listTags (void)$/;"	f	file:
 list_item	.\argproc.c	/^struct list_item$/;"	s	file:
 locate	.\options.h	/^	exCmd locate;           \/* --excmd  EX command used to locate tag *\/$/;"	m	struct:sOptionValues
+log_divides	.\bla.py	/^def log_divides(f):$/;"	f
 log_divides	.\ctags.py	/^def log_divides(f):$/;"	f
 longOption	.\options.h	/^	boolean longOption;$/;"	m	struct:sCookedArgs
 lookupKeyword	.\keyword.c	/^extern int lookupKeyword (const char *const string, langType language)$/;"	f
@@ -2402,6 +2410,7 @@ max	.\strlist.h	/^	unsigned int max;$/;"	m	struct:sStringList
 maybe_pop_jump	.\regex.c	/^  maybe_pop_jump,$/;"	e	enum:__anon57	file:
 member	.\c.c	/^	memberInfo	member;         \/* information regarding parent class\/struct *\/$/;"	m	struct:sStatementInfo	file:
 memberInfo	.\c.c	/^} memberInfo;$/;"	t	typeref:struct:sMemberInfo	file:
+merge	.\bla.py	/^def merge(chunks,key=None):$/;"	f
 method	.\ctags_plugin.py	/^    @classmethod$/;"	c	class:JumpBack
 mfopen	.\mac.c	/^FILE* mfopen(const char* file, const char* mode)$/;"	f
 mode_t	.\e_mac.h	/^typedef unsigned long  mode_t;$/;"	t
@@ -2884,8 +2893,10 @@ scope	.\jscript.c	/^	vString *		scope;$/;"	m	struct:sTokenInfo	file:
 scope	.\options.h	/^	boolean scope;$/;"	m	struct:sExtFields
 scope	.\sql.c	/^	vString *	scope;$/;"	m	struct:sTokenInfo	file:
 scopeString	.\c.c	/^static const char *scopeString (const tagScope scope)$/;"	f	file:
+scribble	.\ctags.py	/^def scribble():$/;"	f
 scroll_to_tag	.\ctags_plugin.py	/^def scroll_to_tag(view, file, symbol, pattern_or_line):$/;"	f
 search	.\readtags.c	/^	} search;$/;"	m	struct:sTagFile	typeref:struct:sTagFile::__anon44	file:
+second_column	.\bla.py	/^    def second_column(l):$/;"	m	class:NewTagFile
 secondary	.\fortran.c	/^	struct sTokenInfo *secondary;$/;"	m	struct:sTokenInfo	typeref:struct:sTokenInfo::sTokenInfo	file:
 select	.\ctags_plugin.py	/^def select(view, region):$/;"	f
 selected	.\routines.c	148;"	d	file:
@@ -3192,6 +3203,7 @@ wordbeg	.\regex.c	/^  wordbeg,	\/* Succeeds if at word beginning.  *\/$/;"	e	enu
 wordbound	.\regex.c	/^  wordbound,	\/* Succeeds if at a word boundary.  *\/$/;"	e	enum:__anon57	file:
 wordchar	.\regex.c	/^  wordchar,	\/* Matches any word-constituent character.  *\/$/;"	e	enum:__anon57	file:
 wordend	.\regex.c	/^  wordend,	\/* Succeeds if at word end.  *\/$/;"	e	enum:__anon57	file:
+wrapped	.\bla.py	/^    def wrapped(self, i):$/;"	f	function:log_divides
 wrapped	.\ctags.py	/^    def wrapped(self, i):$/;"	f	function:log_divides
 wrapper	.\ctags_plugin.py	/^    def wrapper(f):$/;"	f	function:wait_until_loaded
 wrapper	.\helpers.py	/^        def wrapper(*args, **kw):$/;"	f	function:time_function/decorator
