@@ -5,7 +5,6 @@ import time
 
 from ctypes import windll, create_unicode_buffer
 
-
 def threaded(finish=None, msg="Thread already running"):
     def decorator(func):
         func.running = 0

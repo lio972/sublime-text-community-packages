@@ -13,12 +13,11 @@ import Queue
 import os
 import functools
 import subprocess
+import bisect
+import time
 
 from os.path import join, normpath, dirname
-from itertools import takewhile, repeat
-
-# User Libs
-import ctags_binary_search
+# from itertools import takewhile, repeat
 
 ################################################################################
 
@@ -79,6 +78,17 @@ def process_fields(fields):
 
 ################################################################################
 
+def resort_ctags(tag_file):
+    keys = {}
+    
+    with open(tag_file) as fh:
+        for l in fh:
+            keys.setdefault(l.split('\t')[FILENAME], []).append(l)
+        
+    with open(tag_file + '_unsorted', 'w') as fw:
+        for k in sorted(keys):
+            fw.write(''.join(keys[k]))
+
 def build_ctags(ctags_exe, tag_file):
     cmd = [ctags_exe, '-R']
         
@@ -92,11 +102,57 @@ def build_ctags(ctags_exe, tag_file):
     p.wait()
 
     # Faster than ctags.exe again:
-    ctags_binary_search.resort_ctags(tag_file)    
+    resort_ctags(tag_file)    
 
     return tag_file
 
 ################################################################################
+    
+def log_divides(f):
+    f.accessed = 0
+    def wrapped(self, i):
+        item = f(self, i)
+        f.accessed += 1
+        print f.accessed, i
+        return item
+    return wrapped
+    
+SYMBOL = 0
+FILENAME = 1
+
+class TagFile(object):
+    def __init__(self, p, column):
+        self.p = p
+        self.column = column
+    
+    # @log_divides
+    def __getitem__(self, index):
+        self.fh.seek(index)
+        self.fh.readline()
+        return self.fh.readline().split('\t')[self.column]
+
+    def __len__(self):
+        return os.stat(self.p)[6]
+
+    def get(self, tag):
+        with open(self.p) as self.fh:
+            b4 = bisect.bisect_left(self, tag)
+            self.fh.seek(b4)
+
+            for l in self.fh:
+                comp = cmp(l.split('\t')[self.column], tag)
+
+                if   comp == -1: continue
+                elif comp ==  1: break
+                
+                yield l                
+
+    def get_tags_dict(self, tag):
+        return parse_tag_lines(self.get(tag))
+
+################################################################################
+
+
 
 # def parse_tag_file(tag_file):
 #     with open(tag_file) as tf:

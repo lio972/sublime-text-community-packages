@@ -18,11 +18,12 @@ import sublimeplugin
 
 # User Libs
 import ctags
+
+from ctags import TagFile, SYMBOL, FILENAME
+
 from plugin_helpers import threaded, FocusRestorer, in_main
 
-from ctags_binary_search import TagFile, SYMBOL, FILENAME
-
-from helpers import time_function
+# from helpers import time_function
 
 ################################################################################
 
