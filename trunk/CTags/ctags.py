@@ -92,6 +92,17 @@ def resort_ctags(tag_file):
     with open(tag_file + '_unsorted', 'w') as fw:
         for k in sorted(keys):
             fw.write(''.join(keys[k]))
+            
+# def resort_ctags_mmap(tag_file):
+#     with open(tag_file) as read_in:
+#         with open(tag_file + '_mmap', 'r+') as fh:
+#             mapped = mmap.mmap(fh.fileno(), 0)
+
+#             for l in read_in:
+#                 mapped.write(l)
+            
+#             mapped.flush()
+#             mapped.close()
 
 def build_ctags(ctags_exe, tag_file):
     cmd = [ctags_exe, '-R']
