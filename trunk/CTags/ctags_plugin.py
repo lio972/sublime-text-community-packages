@@ -14,6 +14,7 @@ from operator import itemgetter as iget
 # Sublime Libs
 import sublime
 import sublimeplugin
+from sublime import statusMessage
 
 # User Libs
 import ctags
@@ -42,7 +43,7 @@ def find_tags_relative_to(view, ask_to_build=True):
         else: dirs.pop()
     
     if ask_to_build:
-        sublime.statusMessage("Can't find any relevant tags file")
+        statusMessage("Can't find any relevant tags file")
         view.runCommand('rebuildCTags')
 
 def view_fn(view, if_None = '.'):
@@ -88,33 +89,37 @@ def scroll_to_tag(view, tag_dir, tag):
             symbol_region = view.find(symbol, look_from, sublime.LITERAL)
             select(view, symbol_region)
 
-def format_tag_for_quickopen(tag):
-    if 'class' in tag: format = "%(filename)s : %(class)s "
-    else:              format = "%(filename)s : " 
-    
-    if tag['ex_command'].isdigit(): format += " %(symbol)s"
-    else: format += "%(ex_command)s" 
-    
+def format_tag_for_quickopen(tag, file=1):
+
+    format                     = ""
+    if file:           format += "%(filename)s : "
+    if 'class' in tag: format += "%(class)s "
+    format                    += "%(ex_command)s" 
+
     return format % tag
+
+format_for_current_file = functools.partial(format_tag_for_quickopen, file=0)
 
 ################################################################################
 
 def checkIfBuilding(self, view, args):
     if RebuildCTags.building:
-        sublime.statusMessage('Please wait while tags are built')
+        statusMessage('Please wait while tags are built')
 
     else:  return 1
 
 ################################################################################
 
-def prepared_4_quickpanel(sorter):
-    args, display = [], []
+def prepared_4_quickpanel(formatter=format_tag_for_quickopen):
+    def compile_lists(sorter):
+        args, display = [], []
 
-    for t in sorter():
-        display.append(format_tag_for_quickopen(t))
-        args.append(t)
+        for t in sorter():
+            display.append(formatter(t))
+            args.append(t)
+        return args, display
 
-    return args, display
+    return compile_lists
 
 class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
     isEnabled = checkIfBuilding
@@ -138,7 +143,7 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
 
         if tags:  JumpBack.append(view)
         
-        @prepared_4_quickpanel
+        @prepared_4_quickpanel(format_for_current_file)
         def sorted_tags():
             for l in (tags[k] for k in sorted(tags)):
                 for t in l: yield t
@@ -150,7 +155,7 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
         
 ################################################################################
 
-class QuickPanel(sublimeplugin.TextCommand):
+class QuickPanel(sublimeplugin.WindowCommand):
     def onActivated(self, view):
         QuickPanel.window = view.window()
 
@@ -166,33 +171,33 @@ class QuickPanel(sublimeplugin.TextCommand):
         cls.f = staticmethod(functools.partial(f, *args, **kw))
         return cls
 
-    def run(self, view, args):
+    def run(self, window, args):
         arg = self.args[eval(args[0])]
         self.f(arg)
         del QuickPanel.f, QuickPanel.args
 
 ################################################################################
 
-class JumpBack(sublimeplugin.TextCommand):
+class JumpBack(sublimeplugin.WindowCommand):
     last = [(0, 0)]
     
     # @time_function
-    def run(self, view, args):                    
+    def run(self, w, args):                    
         the_view, sel = JumpBack.last[-1]
         if len(JumpBack.last) > 1:  del JumpBack.last[-1]
   
-        if the_view:
-            w = view.window()
-            sel = sublime.Region(*eval(sel))
+        if not the_view: return statusMessage('JumpBack buffer empty')
 
-            if isinstance(the_view, unicode):
-                @wait_until_loaded(the_view, w)
-                def and_then(view):
-                    select(view, sel)
+        sel = sublime.Region(*eval(sel))
 
-            else:
-                w.focusView(the_view)
-                select(the_view, sel)        
+        if isinstance(the_view, unicode):
+            @wait_until_loaded(the_view, w)
+            def and_then(view):
+                select(view, sel)
+
+        else:
+            w.focusView(the_view)
+            select(the_view, sel)
 
     @classmethod
     def append(cls, view):
@@ -209,7 +214,7 @@ class RebuildCTags(sublimeplugin.TextCommand):
     building = False
 
     def done_building(self, tag_file):
-        sublime.statusMessage('Finished building %s' % tag_file)
+        statusMessage('Finished building %s' % tag_file)
         RebuildCTags.building = False
     
     @threaded(finish=done_building, msg="Already running CTags")
@@ -229,7 +234,7 @@ class RebuildCTags(sublimeplugin.TextCommand):
         RebuildCTags.building = True
         
         self.build_ctags(tag_file)
-        sublime.statusMessage('Re/Building CTags: Please be patient')
+        statusMessage('Re/Building CTags: Please be patient')
 
 ################################################################################
 
@@ -240,17 +245,20 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
     def run(self, view, args):
         tags_file = find_tags_relative_to(view)
         if not tags_file: return
-
-        current_symbol = view.substr(view.word(view.sel()[0]))
+        
+        symbol = view.substr(view.word(view.sel()[0]))
         tag_dir = dirname(tags_file)
         
-        tags = TagFile(tags_file, SYMBOL).get_tags_dict(current_symbol)
+        tags = TagFile(tags_file, SYMBOL).get_tags_dict(symbol)
         
+        if not tags: 
+            return statusMessage('Can\'t find "%s" in %s' % (symbol, tags_file))
+
         def sorted_tags():
-            for t in sorted(tags.get(current_symbol, []), key=iget('filename')):
+            for t in sorted(tags.get(symbol, []), key=iget('filename')):
                 yield t
         
-        args, display = prepared_4_quickpanel(sorted_tags)
+        args, display = prepared_4_quickpanel()(sorted_tags)
 
         if args:
             JumpBack.append(view)

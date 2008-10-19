@@ -1,0 +1,6 @@
+<menu>
+    <item caption="Navigate To Definition" command="navigateToDefinition"/>
+    <item caption="Show Symbols For Current File" command="showSymbolsForCurrentFile"/>    
+    <item caption="Jump Back" command="jumpBack"/>
+    <item caption="Rebuild CTags" command="rebuildCTags"/>
+</menu>
