@@ -85,13 +85,17 @@ def process_fields(fields):
 def resort_ctags(tag_file):
     keys = {}
     
+    t = time.time()
+    
     with open(tag_file) as fh:
         for l in fh:
             keys.setdefault(l.split('\t')[FILENAME], []).append(l)
-        
+
     with open(tag_file + '_unsorted', 'w') as fw:
         for k in sorted(keys):
-            fw.write(''.join(keys[k]))
+            fw.writelines(keys[k])
+            
+    print time.time() - t
             
 # def resort_ctags_mmap(tag_file):
 #     with open(tag_file) as read_in:
@@ -105,9 +109,9 @@ def resort_ctags(tag_file):
 #             mapped.close()
 
 def build_ctags(ctags_exe, tag_file):
-    cmd = [ctags_exe, '-R']
+    # cmd = [ctags_exe]
         
-    # cmd = [ctags_exe, '-R']
+    cmd = [ctags_exe, '-R']
         
     # cmds = [cmd] + [cmd[:]]
     # cmds[-1].extend(['--sort=no', '-f', 'tags_unsorted'])
