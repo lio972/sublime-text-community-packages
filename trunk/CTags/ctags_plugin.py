@@ -74,27 +74,32 @@ def select(view, region):
     view.show(region)    
 
 def follow_tag_path(view, tag_path, pattern):
-    start = 0
-    last_start = 0
-
+    last_start = 0 
+    
     for p in list(tag_path)[1:-1] + [pattern]:
+        # i = 0
         while True:
-            start = view.find(p, start, sublime.LITERAL)
+            # i += 1
+            # print p, i
+
+            start = view.find(p, last_start, sublime.LITERAL)
             if not start: break
 
-            syntax = view.syntaxName(start.begin())
-            
-            if ( last_start == start or 
-                 view.matchSelector(start.a, 'meta.function | meta.class')):
-                break 
+            if p == pattern:
+                last_start = start.begin() -1
+                break
 
-            start = start.end()
-            last_start = start
+            if start.begin() == last_start:  break
 
-        if not start: break
-        else: start = start.begin()
+            syntax  = view.syntaxName(start.begin())
+            for scope in ('class.', 'function.'):
+                is_func = scope in syntax
+                if is_func: break
+
+            last_start = start.begin() + 1
+            if is_func: break
     
-    return start or 0
+    return view.line(last_start).begin() -1
 
 def scroll_to_tag(view, tag_dir, tag):
     tag = ctags.Tag(tag)
@@ -130,10 +135,7 @@ def format_tag_for_quickopen(tag, file=1):
     s = format % tag
     space = (80 - len(s)) * ' ' 
     
-    display = s + space
-    print len(display)
-    
-    return    display  + ("%(ex_command)s" % tag)
+    return    s + space + ("%(ex_command)s" % tag)
 
 format_for_current_file = functools.partial(format_tag_for_quickopen, file=0)
 
