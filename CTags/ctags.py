@@ -34,6 +34,19 @@ TAGS_RE = re.compile (
 SYMBOL = 0
 FILENAME = 1
 
+TAG_PATH_SPLITTERS = ('/', '.', '::', ':')
+
+################################################################################
+
+def splits(string, *splitters):
+    if splitters: 
+        split = string.split(splitters[0])
+        for s in split:
+            for c in splits(s, *splitters[1:]):
+                yield c
+    else:
+        if string: yield string
+
 ################################################################################
 
 def parse_tag_lines(lines, order_by='symbol'):
@@ -45,36 +58,11 @@ def parse_tag_lines(lines, order_by='symbol'):
         
     return tags_lookup
 
-
 def unescape_ex(ex):
     return re.sub(r"\\(\$|/|\^|\\)", r'\1', ex)
 
 def process_ex_cmd(ex):
     return ex if ex.isdigit() else unescape_ex(ex[2:-2])
-
-def create_tag_path(tag):
-    cls     =  tag.get('class')
-    type    =  tag.get('type')
-    func    =  tag.get('function')
-    symbol  =  tag.get('symbol')
-    
-    if  func:  
-        tag_path = "%s.%s" % (func, symbol)
-    
-    elif cls:  tag_path = "%s.%s" % (cls, symbol)
-    else:      tag_path = symbol
-    
-    tag['tag_path'] = "%s\n%s" % (tag.get('filename'), tag_path)
-    # tag['class'] = cls
-
-def tag_path_key(tag):
-    fn, path = tag['tag_path'].split('\n')
-    path = (l.split('/') for l in path.split('.'))
-    return tuple(chain([fn], *path))
-
-def get_tag_class(tag):
-    cls  = tag.get('function', '').split('.')[:1]
-    return cls and cls[0] or tag.get('class')
 
 def post_process_tag(search_obj):
     tag = search_obj.groupdict()
@@ -105,6 +93,37 @@ def process_fields(fields):
 
     return fields_dict
 
+################################################################################
+
+def parse_tag_file(tag_file):
+    with open(tag_file) as tf:
+        tags = parse_tag_lines(tf)
+    
+    return tags
+
+################################################################################
+
+def create_tag_path(tag):
+    cls     =  tag.get('class') or tag.get('struct')
+    type    =  tag.get('type')
+    func    =  tag.get('function')
+    symbol  =  tag.get('symbol')
+
+    if  func:
+        tag_path = "%s.%s" % (func, symbol)
+
+    elif cls:  tag_path = "%s.%s" % (cls, symbol)
+    else:      tag_path = symbol
+
+    splitup = [tag.get('filename')]+ list(splits(tag_path, *TAG_PATH_SPLITTERS))
+
+    tag['tag_path'] = tuple(splitup)
+
+################################################################################
+
+def get_tag_class(tag):
+    cls  = tag.get('function', '').split('.')[:1]
+    return cls and cls[0] or tag.get('class') or tag.get('struct')
 
 ################################################################################
 
@@ -123,26 +142,8 @@ def resort_ctags(tag_file):
             
     print time.time() - t
             
-# def resort_ctags_mmap(tag_file):
-#     with open(tag_file) as read_in:
-#         with open(tag_file + '_mmap', 'r+') as fh:
-#             mapped = mmap.mmap(fh.fileno(), 0)
-
-#             for l in read_in:
-#                 mapped.write(l)
-            
-#             mapped.flush()
-#             mapped.close()
-
 def build_ctags(ctags_exe, tag_file):
-    # cmd = [ctags_exe]
-        
     cmd = [ctags_exe, '-R']
-        
-    # cmds = [cmd] + [cmd[:]]
-    # cmds[-1].extend(['--sort=no', '-f', 'tags_unsorted'])
-    # cmd = ' && '.join(subprocess.list2cmdline(c) for c in cmds)    
-    
     p = subprocess.Popen(cmd, cwd = dirname(tag_file), shell=1)
     p.wait()
 
@@ -196,124 +197,6 @@ class TagFile(object):
 
     def get_tags_dict(self, *tags):
         return parse_tag_lines(self.get(*tags))
-
-################################################################################
-
-
-
-def parse_tag_file(tag_file):
-    with open(tag_file) as tf:
-        tags = parse_tag_lines(tf)
-    
-    return tags
-
-# def get_tags_for_file(ctags_exe, a_file):
-#     cmd = [ctags_exe, '-f', '-', a_file]
-    
-#     p = subprocess.Popen (
-#         cmd, stdout = subprocess.PIPE, stderr = subprocess.STDOUT, shell=1 )
-    
-#     p.wait()
-    
-#     tags = parse_tag_lines(p.stdout)
-#     p.stdout.close()
-
-#     return tags
-
-# def index_tag_file(tag_file, column=0):
-#     index = {}
-
-#     with open(tag_file, 'rb') as tags:
-#         position = 0
-
-#         for l in tags:
-#             field = l.split('\t')[column]
-#             if field not in index:
-#                 index[field] = position
-            
-#             position += len(l)
-
-#     return index
-
-# def get_tags_for_field(field, tag_file, index, column=0):
-#     position = index.get(field)
-#     if not position: return {}
-
-#     with open(tag_file) as fh:
-#         fh.seek(position)
-#         tag_lines = list(takewhile(lambda l:l.split('\t')[column] == field, fh))
-        
-#     return parse_tag_lines(tag_lines)
-
-################################################################################
-
-class Tag(object):
-    "dot.syntatic sugar for tag dicts"
-    def __init__(self, tag_dict):
-        self.__dict__ = tag_dict
-
-    def __repr__(self):
-        return pprint.pformat(self.__dict__)
-
-################################################################################
-
-# class CTagsCache(object):
-#     cache   = {}
-#     pending = {}
-
-#     def __init__(self, status=None):
-#         self.Q  = Queue.Queue()
-#         self.OQ = Queue.Queue()
-        
-#         self.t = threading.Thread(target=self.thread)
-#         self.t.setDaemon(1)
-#         self.t.start()
-
-#         self.status=status
-
-#     def thread(self):
-#         while True:
-#             path = self.Q.get()
-#             column = 1 if path.endswith('unsorted') else 0
-
-#             self.OQ.put((path, index_tag_file(path, column)))
-
-#             self.Q.task_done()
-#             if self.status: self.status(path)
-
-#     def get(self, path):
-#         if path not in self.cache:
-#             if path not in self.pending:
-#                 self.Q.put(path)
-#                 self.pending[path] = True
-
-#         while True:
-#             try:
-#                 tag_path, tag_dict = self.OQ.get_nowait()
-#                 self.cache[tag_path] = tag_dict
-#                 self.pending.pop(tag_path)
-#                 self.OQ.task_done()
-            
-#             except Queue.Empty:
-#                 break
-        
-#         return self.cache.get(path, {})
-
-################################################################################
-
-# - Parse an existing CTAGS file, and implement go-to-tag-under-cursor. CTAGS
-# files can get quite large, so representing them efficiently should be a goal.
-# Ideally, parsing should also be done in another thread, so the editor isn't
-# blocked while reading in a multi-megabyte file. Getting this implemented
-# nicely is a fair bit of work.
-
-# Next step would be to automatically run exuberant ctags in the current
-# directory, if there isn't a CTAGS file already, or then one that does exist is
-# out of date.
-
-# Once we're at a start where symbol definitions are in memory, there's a number
-# of other things that can be done, such as listing them in the quick panel, and
-# hooking them into auto-complete.
 
 ################################################################################
 
