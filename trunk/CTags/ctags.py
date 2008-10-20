@@ -104,7 +104,7 @@ def parse_tag_file(tag_file):
 ################################################################################
 
 def create_tag_path(tag):
-    cls     =  tag.get('class') or tag.get('struct')
+    cls     =  tag.get('class') or tag.get('struct') 
     func    =  tag.get('function')
     symbol  =  tag.get('symbol')
 

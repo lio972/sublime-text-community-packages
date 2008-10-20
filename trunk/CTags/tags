@@ -1886,10 +1886,6 @@ errorSelection	.\routines.h	/^typedef int errorSelection;$/;"	t
 error_number	.\readtags.h	/^		int error_number;$/;"	m	struct:__anon49::__anon50
 errout	.\e_msoft.h	17;"	d
 errout	.\general.h	48;"	d
-es	.\ctags_plugin.py	/^                    if cls: classes.setdefault(cls, []).append(t)$/;"	c	class:ShowSymbolsForCurrentFile.run/sorted_tags/es
-es	.\ctags_plugin.py	/^                for t in sorted(classes[s], key=tag_path_key):$/;"	c	class:ShowSymbolsForCurrentFile.run/sorted_tags/es
-es	.\ctags_plugin.py	/^            classes   = {}$/;"	c	function:ShowSymbolsForCurrentFile.run/sorted_tags
-es	.\ctags_plugin.py	/^            for s in sorted(classes):$/;"	c	function:ShowSymbolsForCurrentFile.run/sorted_tags
 etags	.\entry.h	/^	} etags;$/;"	m	struct:eTagFile	typeref:struct:eTagFile::sEtags
 etags	.\options.h	/^	boolean etags;          \/* -e  output Emacs style tags file *\/$/;"	m	struct:sOptionValues
 etagsInclude	.\main.c	/^static boolean etagsInclude (void)$/;"	f	file:
