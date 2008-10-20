@@ -127,6 +127,10 @@ def format_tag_for_quickopen(tag, file=1):
     
     if 'class' in tag: 
         format         += "\t%(class)s.%(symbol)s:\t" % tag
+
+    elif 'struct' in tag: 
+        format         += "\t%(struct)s::%(symbol)s:\t" % tag
+        
     elif 'function' in tag:
         format         += "\t%(function)s/%(symbol)s:\t" % tag
     
