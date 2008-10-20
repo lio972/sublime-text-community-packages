@@ -533,7 +533,7 @@ JavaParser	.\c.c	/^extern parserDefinition* JavaParser (void)$/;"	f
 JavaScriptParser	.\jscript.c	/^extern parserDefinition* JavaScriptParser (void)$/;"	f
 JsKeywordTable	.\jscript.c	/^static const keywordDesc JsKeywordTable [] = {$/;"	v	file:
 JsKinds	.\jscript.c	/^static kindOption JsKinds [] = {$/;"	v	file:
-JumpBack	.\ctags_plugin.py	/^class JumpBack(sublimeplugin.TextCommand):$/;"	c
+JumpBack	.\ctags_plugin.py	/^class JumpBack(sublimeplugin.WindowCommand):$/;"	c
 KEYWORD_ABSTRACT	.\c.c	/^	KEYWORD_ATTRIBUTE, KEYWORD_ABSTRACT,$/;"	e	enum:eKeywordId	file:
 KEYWORD_ATTRIBUTE	.\c.c	/^	KEYWORD_ATTRIBUTE, KEYWORD_ABSTRACT,$/;"	e	enum:eKeywordId	file:
 KEYWORD_BAD_STATE	.\c.c	/^	KEYWORD_BOOLEAN, KEYWORD_BYTE, KEYWORD_BAD_STATE, KEYWORD_BAD_TRANS,$/;"	e	enum:eKeywordId	file:
@@ -1129,7 +1129,7 @@ ProgramName	.\readtags.c	/^static const char *ProgramName;$/;"	v	file:
 PseudoTagPrefix	.\readtags.c	/^const char *const PseudoTagPrefix = "!_";$/;"	v
 PythonKinds	.\python.c	/^static kindOption PythonKinds[] = {$/;"	v	file:
 PythonParser	.\python.c	/^extern parserDefinition *PythonParser (void)$/;"	f
-QuickPanel	.\ctags_plugin.py	/^class QuickPanel(sublimeplugin.TextCommand):$/;"	c
+QuickPanel	.\ctags_plugin.py	/^class QuickPanel(sublimeplugin.WindowCommand):$/;"	c
 READTAGS_H	.\readtags.h	22;"	d
 RECURSE_SUPPORTED	.\options.c	57;"	d	file:
 REGEX_ALLOCATE	.\regex.c	184;"	d	file:
@@ -1606,7 +1606,7 @@ ancestorPop	.\fortran.c	/^static void ancestorPop (void)$/;"	f	file:
 ancestorPush	.\fortran.c	/^static void ancestorPush (tokenInfo *const token)$/;"	f	file:
 ancestorScope	.\fortran.c	/^static const tokenInfo* ancestorScope (void)$/;"	f	file:
 ancestorTop	.\fortran.c	/^static const tokenInfo* ancestorTop (void)$/;"	f	file:
-and_then	.\ctags_plugin.py	/^                def and_then(view):$/;"	f	function:JumpBack.run
+and_then	.\ctags_plugin.py	/^            def and_then(view):$/;"	f	function:JumpBack.run
 and_then	.\ctags_plugin.py	/^    def and_then(view):$/;"	f	function:scroll_to_tag
 anychar	.\regex.c	/^  anychar,$/;"	e	enum:__anon57	file:
 append	.\ctags_plugin.py	/^    def append(cls, view):$/;"	m	class:JumpBack
@@ -1729,6 +1729,7 @@ compareStringInsensitive	.\strlist.c	/^static boolean compareStringInsensitive (
 compareTags	.\sort.c	/^static int compareTags (const void *const one, const void *const two)$/;"	f	file:
 compareTagsFolded	.\sort.c	/^static int compareTagsFolded(const void *const one, const void *const two)$/;"	f	file:
 compileRegex	.\lregex.c	/^static regex_t* compileRegex (const char* const regexp, const char* const flags)$/;"	f	file:
+compile_lists	.\ctags_plugin.py	/^    def compile_lists(sorter):$/;"	f	function:prepared_4_quickpanel
 compile_range	.\regex.c	/^compile_range (p_ptr, pend, translate, syntax, b)$/;"	f	file:
 compile_stack_elt_t	.\regex.c	/^} compile_stack_elt_t;$/;"	t	typeref:struct:__anon58	file:
 compile_stack_type	.\regex.c	/^} compile_stack_type;$/;"	t	typeref:struct:__anon59	file:
@@ -1767,6 +1768,7 @@ createTagsForWildcardUsingFindfirst	.\main.c	/^static boolean createTagsForWildc
 createTagsFromFileInput	.\main.c	/^static boolean createTagsFromFileInput (FILE *const fp, const boolean filter)$/;"	f	file:
 createTagsFromListFile	.\main.c	/^static boolean createTagsFromListFile (const char *const fileName)$/;"	f	file:
 createTagsWithFallback	.\parse.c	/^static boolean createTagsWithFallback ($/;"	f	file:
+create_tag_path	.\ctags.py	/^def create_tag_path(tag):$/;"	f
 csharpKind	.\c.c	/^} csharpKind;$/;"	t	typeref:enum:__anon13	file:
 csharpTagKind	.\c.c	/^static csharpKind csharpTagKind (const tagType type)$/;"	f	file:
 currentConditional	.\get.c	/^static conditionalInfo *currentConditional (void)$/;"	f	file:
@@ -1884,6 +1886,10 @@ errorSelection	.\routines.h	/^typedef int errorSelection;$/;"	t
 error_number	.\readtags.h	/^		int error_number;$/;"	m	struct:__anon49::__anon50
 errout	.\e_msoft.h	17;"	d
 errout	.\general.h	48;"	d
+es	.\ctags_plugin.py	/^                    if cls: classes.setdefault(cls, []).append(t)$/;"	c	class:ShowSymbolsForCurrentFile.run/sorted_tags/es
+es	.\ctags_plugin.py	/^                for t in sorted(classes[s], key=tag_path_key):$/;"	c	class:ShowSymbolsForCurrentFile.run/sorted_tags/es
+es	.\ctags_plugin.py	/^            classes   = {}$/;"	c	function:ShowSymbolsForCurrentFile.run/sorted_tags
+es	.\ctags_plugin.py	/^            for s in sorted(classes):$/;"	c	function:ShowSymbolsForCurrentFile.run/sorted_tags
 etags	.\entry.h	/^	} etags;$/;"	m	struct:eTagFile	typeref:struct:eTagFile::sEtags
 etags	.\options.h	/^	boolean etags;          \/* -e  output Emacs style tags file *\/$/;"	m	struct:sOptionValues
 etagsInclude	.\main.c	/^static boolean etagsInclude (void)$/;"	f	file:
@@ -2010,11 +2016,12 @@ findfirst_t	.\e_msoft.h	69;"	d
 fixup_alt_jump	.\regex.c	/^  pattern_offset_t fixup_alt_jump;$/;"	m	struct:__anon58	file:
 flink	.\argproc.c	/^	struct exit_control_block *flink;$/;"	m	struct:exit_control_block	typeref:struct:exit_control_block::exit_control_block	file:
 followLinks	.\options.h	/^	boolean followLinks;    \/* --link  follow symbolic links? *\/$/;"	m	struct:sOptionValues
+follow_tag_path	.\ctags_plugin.py	/^def follow_tag_path(view, tag_path, pattern):$/;"	f
 fopen	.\e_mac.h	137;"	d
 fopen	.\mac.c	192;"	d	file:
 format	.\readtags.c	/^	short format;$/;"	m	struct:sTagFile	file:
 format	.\readtags.h	/^			short format;$/;"	m	struct:__anon49::__anon51
-format_tag_for_quickopen	.\ctags_plugin.py	/^def format_tag_for_quickopen(tag):$/;"	f
+format_tag_for_quickopen	.\ctags_plugin.py	/^def format_tag_for_quickopen(tag, file=1):$/;"	f
 fp	.\args.h	/^			FILE* fp;$/;"	m	struct:sArgs::__anon2::sFileArgs
 fp	.\entry.h	/^		FILE *fp;$/;"	m	struct:eTagFile::sEtags
 fp	.\entry.h	/^	FILE *fp;$/;"	m	struct:eTagFile
@@ -2060,6 +2067,7 @@ getSourceLanguage	.\read.h	39;"	d
 getSourceLanguageName	.\read.h	40;"	d
 getSourceLineNumber	.\read.h	41;"	d
 get_path	.\mac.c	/^static int get_path(const char* in_unix_path, unsigned char* out_mac_path)$/;"	f	file:
+get_tag_class	.\ctags.py	/^def get_tag_class(tag):$/;"	f
 get_tags_dict	.\ctags.py	/^    def get_tags_dict(self, *tags):$/;"	m	class:TagFile
 getcwd	.\mac.c	/^char* getcwd(char* out_path, int out_path_len)$/;"	f
 getcwd	.\routines.c	128;"	d	file:
@@ -2656,7 +2664,7 @@ pop_failure_jump	.\regex.c	/^  pop_failure_jump,$/;"	e	enum:__anon57	file:
 pos	.\readtags.c	/^			off_t pos; $/;"	m	struct:sTagFile::__anon44	file:
 pos	.\readtags.c	/^	off_t pos;$/;"	m	struct:sTagFile	file:
 post_process_tag	.\ctags.py	/^def post_process_tag(search_obj):$/;"	f
-prepared_4_quickpanel	.\ctags_plugin.py	/^def prepared_4_quickpanel(sorter):$/;"	f
+prepared_4_quickpanel	.\ctags_plugin.py	/^def prepared_4_quickpanel(formatter=format_tag_for_quickopen):$/;"	f
 prev	.\entry.h	/^	struct sNumTags { unsigned long added, prev; } numTags;$/;"	m	struct:eTagFile::sNumTags
 prevToken	.\c.c	/^static tokenInfo *prevToken (const statementInfo *const st, unsigned int n)$/;"	f	file:
 previewFirstOption	.\options.c	/^extern void previewFirstOption (cookedArgs* const args)$/;"	f
@@ -2834,11 +2842,11 @@ rewinddir	.\mac.c	/^void rewinddir(DIR *dirp)$/;"	f
 rm_eo	.\regex.h	/^  regoff_t rm_eo;  \/* Byte offset from string's start to substring's end.  *\/$/;"	m	struct:__anon64
 rm_so	.\regex.h	/^  regoff_t rm_so;  \/* Byte offset from string's start to substring's start.  *\/$/;"	m	struct:__anon64
 rubyKind	.\ruby.c	/^} rubyKind;$/;"	t	typeref:enum:__anon66	file:
-run	.\ctags_plugin.py	/^    def run(self, view, args):                    $/;"	m	class:JumpBack
 run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:NavigateToDefinition
-run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:QuickPanel
 run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:RebuildCTags
 run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:ShowSymbolsForCurrentFile
+run	.\ctags_plugin.py	/^    def run(self, w, args):                    $/;"	m	class:JumpBack
+run	.\ctags_plugin.py	/^    def run(self, window, args):$/;"	m	class:QuickPanel
 run	.\plugin_helpers.py	/^            def run():$/;"	f	function:threaded/decorator/threaded
 sArgs	.\args.h	/^typedef struct sArgs {$/;"	s
 sArgvArgs	.\args.h	/^		struct sArgvArgs {$/;"	s	union:sArgs::__anon2
@@ -3076,6 +3084,8 @@ tagResult	.\readtags.h	/^typedef enum { TagFailure = 0, TagSuccess = 1 } tagResu
 tagScope	.\c.c	/^} tagScope;$/;"	t	typeref:enum:eTagScope	file:
 tagType	.\c.c	/^} tagType;$/;"	t	typeref:enum:eTagType	file:
 tagType	.\fortran.c	/^} tagType;$/;"	t	typeref:enum:eTagType	file:
+tag_path_key	.\bla.py	/^def tag_path_key(tag):$/;"	f
+tag_path_key	.\ctags.py	/^def tag_path_key(tag):$/;"	f
 tagsClose	.\readtags.c	/^extern tagResult tagsClose (tagFile *const file)$/;"	f
 tagsField	.\readtags.c	/^extern const char *tagsField (const tagEntry *const entry, const char *const key)$/;"	f
 tagsFind	.\readtags.c	/^extern tagResult tagsFind (tagFile *const file, tagEntry *const entry,$/;"	f
