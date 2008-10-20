@@ -124,10 +124,16 @@ def format_tag_for_quickopen(tag, file=1):
         format         += "\t%(class)s.%(symbol)s:\t" % tag
     elif 'function' in tag:
         format         += "\t%(function)s/%(symbol)s:\t" % tag
-        
-    format            += "%(ex_command)s" 
-
-    return format % tag
+    
+    if not format: format = '%(symbol)s'
+    
+    s = format % tag
+    space = (80 - len(s)) * ' ' 
+    
+    display = s + space
+    print len(display)
+    
+    return    display  + ("%(ex_command)s" % tag)
 
 format_for_current_file = functools.partial(format_tag_for_quickopen, file=0)
 
