@@ -74,14 +74,27 @@ def select(view, region):
     view.show(region)    
 
 def follow_tag_path(view, tag_path, pattern):
-    last_start = 0 
+    # path = map(re.escape, list(tag_path)[1:-1])
+    # path = '(.|[\r\n])*?'.join('%s' % p for p in path + [re.escape(pattern)])
     
-    for p in list(tag_path)[1:-1] + [pattern]:
-        # i = 0
-        while True:
-            # i += 1
-            # print p, i
+    # regions = []
+    
+    # start = 0
+    
+    # while True:
+    #     regions.append(view.find(path, start, 0))
+    #     if not regions[-1]: break
+    #     else: start = regions[-1].end()
 
+    # regions = sorted((t for t in regions if t), key=sublime.Region.size)
+    # if regions: start = view.line(regions[0].end()).begin()
+    
+    # return view.find(pattern, start, sublime.LITERAL).begin()
+    
+    last_start = 0
+        
+    for p in list(tag_path)[1:-1] + [pattern]:
+        while True:
             start = view.find(p, last_start, sublime.LITERAL)
             if not start: break
 
@@ -91,15 +104,11 @@ def follow_tag_path(view, tag_path, pattern):
 
             if start.begin() == last_start:  break
 
-            syntax  = view.syntaxName(start.begin())
-            for scope in ('class.', 'function.'):
-                is_func = scope in syntax
-                if is_func: break
-
             last_start = start.begin() + 1
+            is_func = view.matchSelector(last_start, 'entity')
             if is_func: break
-    
-    return view.line(last_start).begin() -1
+
+    return view.line(last_start).begin()
 
 def scroll_to_tag(view, tag_dir, tag):
     tag = ctags.Tag(tag)
@@ -256,16 +265,6 @@ class JumpBack(sublimeplugin.WindowCommand):
 class RebuildCTags(sublimeplugin.TextCommand):
     building = False
 
-    def done_building(self, tag_file):
-        statusMessage('Finished building %s' % tag_file)
-        RebuildCTags.building = False
-    
-    @threaded(finish=done_building, msg="Already running CTags")
-    # @time_function
-    def build_ctags(self, tag_file):
-        ctags.build_ctags(ctags_exe, tag_file)
-        return tag_file
-        
     def run(self, view, args):
 
         tag_file = find_tags_relative_to(view, ask_to_build=0)
@@ -279,6 +278,16 @@ class RebuildCTags(sublimeplugin.TextCommand):
         self.build_ctags(tag_file)
         statusMessage('Re/Building CTags: Please be patient')
 
+    def done_building(self, tag_file):
+        statusMessage('Finished building %s' % tag_file)
+        RebuildCTags.building = False
+    
+    @threaded(finish=done_building, msg="Already running CTags")
+    # @time_function
+    def build_ctags(self, tag_file):
+        ctags.build_ctags(ctags_exe, tag_file)
+        return tag_file
+        
 ################################################################################
 
 class NavigateToDefinition(sublimeplugin.TextCommand):
