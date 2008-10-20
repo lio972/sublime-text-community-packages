@@ -73,13 +73,19 @@ def process_fields(fields):
 
     for f in fields.split('\t'):
         f = f.split(':')
-
+        
+        key = f[0]
+        value = ''.join(f[1:])
+        
         # These, if existing, are keys with no values... retarded
-        for key in f[:-2]:
-            fields_dict[key] = True # Essentially boolean?
+        # for key in f[:-2]:
+        #     print fields
+        #     if key == "struct": print f
+            
+        #     fields_dict[key] = True # Essentially boolean?
 
         # The last two are actual key value pairs because separated by \t
-        key, value =  f[-2:]
+        # key, value =  f[-2:]
         fields_dict[key] = value
 
     return fields_dict
