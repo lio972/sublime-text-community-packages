@@ -74,23 +74,6 @@ def select(view, region):
     view.show(region)    
 
 def follow_tag_path(view, tag_path, pattern):
-    # path = map(re.escape, list(tag_path)[1:-1])
-    # path = '(.|[\r\n])*?'.join('%s' % p for p in path + [re.escape(pattern)])
-    
-    # regions = []
-    
-    # start = 0
-    
-    # while True:
-    #     regions.append(view.find(path, start, 0))
-    #     if not regions[-1]: break
-    #     else: start = regions[-1].end()
-
-    # regions = sorted((t for t in regions if t), key=sublime.Region.size)
-    # if regions: start = view.line(regions[0].end()).begin()
-    
-    # return view.find(pattern, start, sublime.LITERAL).begin()
-    
     last_start = 0
         
     for p in list(tag_path)[1:-1] + [pattern]:
@@ -108,11 +91,10 @@ def follow_tag_path(view, tag_path, pattern):
             is_func = view.matchSelector(last_start, 'entity')
             if is_func: break
 
-    return view.line(last_start).begin()
+    return view.line(last_start-1).begin()
 
 def scroll_to_tag(view, tag_dir, tag):
     tag = ctags.Tag(tag)
-    
     symbol, pattern_or_line = tag.symbol, tag.ex_command
 
 
