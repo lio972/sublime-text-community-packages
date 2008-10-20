@@ -21,7 +21,7 @@ from sublime import statusMessage
 # User Libs
 import ctags
 
-from ctags import TagFile, SYMBOL, FILENAME, tag_path_key
+from ctags import TagFile, SYMBOL, FILENAME
 from plugin_helpers import threaded, FocusRestorer, in_main
 
 # from helpers import time_function
@@ -97,7 +97,6 @@ def follow_tag_path(view, tag_path, pattern):
     return start or 0
 
 def scroll_to_tag(view, tag_dir, tag):
-    tag_path = tag_path_key(tag)
     tag = ctags.Tag(tag)
  
     symbol, pattern_or_line = tag.symbol, tag.ex_command
@@ -110,7 +109,7 @@ def scroll_to_tag(view, tag_dir, tag):
         if pattern_or_line.isdigit():
             look_from = view.textPoint(int(pattern_or_line)-1, 0)
         else:
-            look_from = follow_tag_path(view, tag_path, pattern_or_line)
+            look_from = follow_tag_path(view, tag.tag_path, pattern_or_line)
 
         if look_from is not None:
             symbol_region = view.find(symbol, look_from, sublime.LITERAL)
@@ -177,7 +176,7 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
         
         @prepared_4_quickpanel(format_for_current_file)
         def sorted_tags():
-            for t in sorted(chain(*(tags[k] for k in tags)), key=tag_path_key):
+            for t in sorted(chain(*(tags[k] for k in tags)), key=iget('tag_path')):
                 yield t
 
         ################################################################
@@ -287,7 +286,7 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
             return statusMessage('Can\'t find "%s" in %s' % (symbol, tags_file))
 
         def sorted_tags():
-            for t in sorted(tags.get(symbol, []), key=tag_path_key):
+            for t in sorted(tags.get(symbol, []), key=iget('tag_path')):
                 yield t
 
         args, display = prepared_4_quickpanel()(sorted_tags)
