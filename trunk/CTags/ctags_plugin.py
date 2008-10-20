@@ -24,7 +24,7 @@ import ctags
 from ctags import TagFile, SYMBOL, FILENAME
 from plugin_helpers import threaded, FocusRestorer, in_main
 
-from helpers import time_function
+# from helpers import time_function
 
 ################################################################################
 
@@ -112,8 +112,6 @@ def follow_tag_path(view, tag_path, pattern):
 
 def scroll_to_tag(view, tag_dir, tag):
     tag = ctags.Tag(tag)
-    print tag
-    
     
     symbol, pattern_or_line = tag.symbol, tag.ex_command
 
@@ -187,7 +185,7 @@ def prepared_4_quickpanel(formatter=format_tag_for_quickopen):
 class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
     isEnabled = checkIfBuilding
     
-    @time_function
+    # @time_function
     def run(self, view, args):
         tags_file = find_tags_relative_to(view)
         if not tags_file: return
