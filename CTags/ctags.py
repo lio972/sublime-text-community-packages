@@ -36,8 +36,6 @@ TAGS_RE = re.compile (
 SYMBOL = 0
 FILENAME = 1
 
-TAG_PATH_SPLITTERS = ('/', '.', '::', ':')
-
 ################################################################################
 
 def splits(string, *splitters):
@@ -73,7 +71,7 @@ def post_process_tag(search_obj):
     if fields:
         fieldy = process_fields(fields)
         tag.update(fieldy)
-        tag['field_keys'] = fieldy.keys()
+        tag['field_keys'] = sorted(fieldy.keys())
 
     tag['ex_command'] =   process_ex_cmd(tag['ex_command'])
     
@@ -121,14 +119,39 @@ def parse_tag_file(tag_file):
 
 ################################################################################
 
-def create_tag_path(tag):
-    cls     =  tag.get('class') or tag.get('struct') 
-    func    =  tag.get('function')
-    symbol  =  tag.get('symbol')
+PATH_ORDER = (
+    'function', 'class', 'struct',
+)
 
-    if  func:  tag_path = "%s.%s" % (func, symbol)
-    elif cls:  tag_path = "%s.%s" % (cls, symbol)
-    else:      tag_path = symbol
+TAG_PATH_SPLITTERS = ('/', '.', '::', ':')
+
+def create_tag_path(tag):
+    # cls     =  tag.get('class') or tag.get('struct') 
+    # func    =  tag.get('function')
+    symbol  =  tag.get('symbol')
+    
+    field_keys = tag.get('field_keys', [])[:]
+    
+    fields = []
+    
+    for i, field in enumerate(PATH_ORDER):
+        if field in field_keys:
+            fields.append(field)
+            field_keys.pop(field_keys.index(field))
+    
+    fields.extend(field_keys)
+    
+    tag_path = '' 
+    for field in fields:
+        if field != 'file':
+            tag_path += (tag.get(field) + '.')
+    
+    tag_path += symbol
+
+    # if  func:  tag_path = "%s.%s" % (func, symbol)
+    # elif cls:  tag_path = "%s.%s" % (cls, symbol)
+
+    # else:      tag_path = symbol
 
     splitup = [tag.get('filename')]+ list(splits(tag_path, *TAG_PATH_SPLITTERS))
 
