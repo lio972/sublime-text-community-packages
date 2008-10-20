@@ -18,7 +18,7 @@ import time
 import mmap
 
 from os.path import join, normpath, dirname
-from itertools import izip
+from itertools import izip, chain
 
 ################################################################################
 
@@ -27,7 +27,7 @@ TAGS_RE = re.compile (
     '(?P<symbol>[^\t]+)\t'
     '(?P<filename>[^\t]+)\t'
     '(?P<ex_command>.*?);"\t'
-    '(?P<type>[^\t]+)'
+    '(?P<type>[^\t\r\n]+)'
     '(?:\t(?P<fields>.*))?'
 )
 
@@ -52,6 +52,30 @@ def unescape_ex(ex):
 def process_ex_cmd(ex):
     return ex if ex.isdigit() else unescape_ex(ex[2:-2])
 
+def create_tag_path(tag):
+    cls     =  tag.get('class')
+    type    =  tag.get('type')
+    func    =  tag.get('function')
+    symbol  =  tag.get('symbol')
+    
+    if  func:  
+        tag_path = "%s.%s" % (func, symbol)
+    
+    elif cls:  tag_path = "%s.%s" % (cls, symbol)
+    else:      tag_path = symbol
+    
+    tag['tag_path'] = "%s\n%s" % (tag.get('filename'), tag_path)
+    # tag['class'] = cls
+
+def tag_path_key(tag):
+    fn, path = tag['tag_path'].split('\n')
+    path = (l.split('/') for l in path.split('.'))
+    return tuple(chain([fn], *path))
+
+def get_tag_class(tag):
+    cls  = tag.get('function', '').split('.')[:1]
+    return cls and cls[0] or tag.get('class')
+
 def post_process_tag(search_obj):
     tag = search_obj.groupdict()
 
@@ -60,6 +84,8 @@ def post_process_tag(search_obj):
         tag.update(process_fields(fields))
 
     tag['ex_command'] =   process_ex_cmd(tag['ex_command'])
+    
+    create_tag_path(tag)
 
     return tag
 

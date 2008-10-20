@@ -8,8 +8,10 @@ import threading
 import functools
 import subprocess
 
-from os.path import join, normpath, dirname, abspath
+from os.path import join, normpath, dirname, abspath, basename
 from operator import itemgetter as iget
+
+from itertools import chain, groupby
 
 # Sublime Libs
 import sublime
@@ -19,7 +21,7 @@ from sublime import statusMessage
 # User Libs
 import ctags
 
-from ctags import TagFile, SYMBOL, FILENAME
+from ctags import TagFile, SYMBOL, FILENAME, tag_path_key
 from plugin_helpers import threaded, FocusRestorer, in_main
 
 # from helpers import time_function
@@ -71,30 +73,60 @@ def select(view, region):
     sel_set.add(region)
     view.show(region)    
 
+def follow_tag_path(view, tag_path, pattern):
+    start = 0
+    last_start = 0
+
+    for p in list(tag_path)[1:-1] + [pattern]:
+        while True:
+            start = view.find(p, start, sublime.LITERAL)
+            if not start: break
+
+            syntax = view.syntaxName(start.begin())
+            
+            if ( last_start == start or 
+                 view.matchSelector(start.a, 'meta.function | meta.class')):
+                break 
+
+            start = start.end()
+            last_start = start
+
+        if not start: break
+        else: start = start.begin()
+    
+    return start or 0
+
 def scroll_to_tag(view, tag_dir, tag):
+    tag_path = tag_path_key(tag)
     tag = ctags.Tag(tag)
  
     symbol, pattern_or_line = tag.symbol, tag.ex_command
 
+
     @wait_until_loaded(join(tag_dir, tag.filename), view.window())
     def and_then(view):
+        
         look_from = None
         if pattern_or_line.isdigit():
             look_from = view.textPoint(int(pattern_or_line)-1, 0)
         else:
-            found_tag = view.find(pattern_or_line, 0, sublime.LITERAL)
-            if found_tag: look_from = found_tag.begin()
+            look_from = follow_tag_path(view, tag_path, pattern_or_line)
 
         if look_from is not None:
             symbol_region = view.find(symbol, look_from, sublime.LITERAL)
             select(view, symbol_region)
 
 def format_tag_for_quickopen(tag, file=1):
-
-    format                     = ""
-    if file:           format += "%(filename)s : "
-    if 'class' in tag: format += "%(class)s "
-    format                    += "%(ex_command)s" 
+    
+    if file: format         = "%(filename)s:\t"
+    else:    format         = ""
+    
+    if 'class' in tag: 
+        format         += "\t%(class)s.%(symbol)s:\t" % tag
+    elif 'function' in tag:
+        format         += "\t%(function)s/%(symbol)s:\t" % tag
+        
+    format            += "%(ex_command)s" 
 
     return format % tag
 
@@ -137,7 +169,7 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
         current_file = '.\\' + fn[len(common_prefix)+1:]
 
         ################################################################
-        
+
         tags_file = tags_file + '_unsorted'
         tags = TagFile(tags_file, FILENAME).get_tags_dict(current_file)
 
@@ -145,8 +177,8 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
         
         @prepared_4_quickpanel(format_for_current_file)
         def sorted_tags():
-            for l in (tags[k] for k in sorted(tags)):
-                for t in l: yield t
+            for t in sorted(chain(*(tags[k] for k in tags)), key=tag_path_key):
+                yield t
 
         ################################################################
         
@@ -189,7 +221,7 @@ class JumpBack(sublimeplugin.WindowCommand):
         if not the_view: return statusMessage('JumpBack buffer empty')
 
         sel = sublime.Region(*eval(sel))
-
+        
         if isinstance(the_view, unicode):
             @wait_until_loaded(the_view, w)
             def and_then(view):
@@ -255,9 +287,9 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
             return statusMessage('Can\'t find "%s" in %s' % (symbol, tags_file))
 
         def sorted_tags():
-            for t in sorted(tags.get(symbol, []), key=iget('filename')):
+            for t in sorted(tags.get(symbol, []), key=tag_path_key):
                 yield t
-        
+
         args, display = prepared_4_quickpanel()(sorted_tags)
 
         if args:
@@ -265,4 +297,37 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
             (QuickPanel.partial(scroll_to_tag, view, tag_dir)
                        .show(args, display, skip_if_one = True))
 
+################################################################################
+"""
+
+TODO:
+
+Each command has this in common:
+
+    Trys to find the tags relative to the view
+    
+    Finds the `field` to look for, eg symbol under cursor or filename
+    
+    Gets the tag_dir, dir housing relevant `tags` file
+    
+    Opens a TagFile, get a dictionary of of symbols
+    
+    Sorts all those dicts to the current commands specifications
+    
+    Creates `args and displays` for the quick panel for each Tag
+    
+    Appends to JumpBack the view
+    
+    Opens the QuickPanel
+    
+    
+Ways to clean up the design:
+    
+    Less decorators and nested functions:
+        Hard to test or debug
+
+    Need a multisort (name ?):
+        multisort(sequence, keys=(iget('filename'), iget('classname'))) * DONE *
+
+"""
 ################################################################################
