@@ -20,6 +20,8 @@ import mmap
 from os.path import join, normpath, dirname
 from itertools import izip, chain
 
+from helpers import splits
+
 ################################################################################
 
 TAGS_RE = re.compile (
@@ -35,17 +37,6 @@ SYMBOL = 0
 FILENAME = 1
 
 TAG_PATH_SPLITTERS = ('/', '.', '::', ':')
-
-################################################################################
-
-def splits(string, *splitters):
-    if splitters: 
-        split = string.split(splitters[0])
-        for s in split:
-            for c in splits(s, *splitters[1:]):
-                yield c
-    else:
-        if string: yield string
 
 ################################################################################
 
@@ -92,6 +83,14 @@ def process_fields(fields):
         fields_dict[key] = value
 
     return fields_dict
+
+class Tag(object):
+    "dot.syntatic sugar for tag dicts"
+    def __init__(self, tag_dict):
+        self.__dict__ = tag_dict
+
+    def __repr__(self):
+        return pprint.pformat(self.__dict__)
 
 ################################################################################
 

@@ -1458,7 +1458,6 @@ TRUE	.\general.h	/^typedef enum { FALSE, TRUE } booleanType;$/;"	e	enum:__anon21
 TRUE	.\general.h	91;"	d
 TRUE	.\general.h	99;"	d
 TableSize	.\keyword.c	/^static const unsigned int TableSize = 1 << HASH_EXPONENT;$/;"	v	file:
-Tag	.\ctags.py	/^class Tag(object):$/;"	c
 TagFailure	.\readtags.h	/^typedef enum { TagFailure = 0, TagSuccess = 1 } tagResult;$/;"	e	enum:__anon48
 TagFile	.\ctags.py	/^class TagFile(object):$/;"	c
 TagFile	.\entry.c	/^tagFile TagFile = {$/;"	v
@@ -1529,13 +1528,11 @@ __REGEXP_LIBRARY_H__	.\regex.h	21;"	d
 __call__	.\plugin_helpers.py	/^    def __call__(self, times=2, delay = 50):  $/;"	m	class:FocusRestorer	file:
 __getitem__	.\ctags.py	/^    def __getitem__(self, index):$/;"	m	class:TagFile	file:
 __init__	.\ctags.py	/^    def __init__(self, p, column):$/;"	m	class:TagFile
-__init__	.\ctags.py	/^    def __init__(self, tag_dict):$/;"	m	class:Tag
 __init__	.\plugin_helpers.py	/^    def __init__(self):$/;"	m	class:FocusRestorer
 __len__	.\ctags.py	/^    def __len__(self):$/;"	m	class:TagFile	file:
 __pad1	.\e_mac.h	/^	unsigned short int __pad1;$/;"	m	struct:stat
 __printf__	.\general.h	61;"	d
 __printf__	.\general.h	64;"	d
-__repr__	.\ctags.py	/^    def __repr__(self):$/;"	m	class:Tag	file:
 __unused__	.\general.h	60;"	d
 __unused__	.\general.h	63;"	d
 _cmdwildcard	.\qdos.c	/^int  (*_cmdwildcard) ()  = custom_expand;$/;"	v
@@ -2985,6 +2982,8 @@ sorted_tags	.\ctags_plugin.py	/^        def sorted_tags():$/;"	f	function:Naviga
 sorted_tags	.\ctags_plugin.py	/^        def sorted_tags():$/;"	f	function:ShowSymbolsForCurrentFile.run
 source	.\read.h	/^	} source;$/;"	m	struct:sInputFile	typeref:struct:sInputFile::sSource
 sourceFileName	.\entry.h	/^	const char *sourceFileName;   \/* name of source file *\/$/;"	m	struct:sTagEntryInfo
+splits	.\bla.py	/^def splits(string, *splitters):$/;"	f
+splits	.\helpers.py	/^def splits(string, *splitters):$/;"	f
 sqlKind	.\sql.c	/^} sqlKind;$/;"	t	typeref:enum:__anon71	file:
 st_atime	.\e_mac.h	/^	time_t             st_atime;    \/* Time of last access.  *\/$/;"	m	struct:stat
 st_blksize	.\e_mac.h	/^	unsigned long int  st_blksize;  \/* Optimal block size for I\/O.  *\/$/;"	m	struct:stat
@@ -3080,8 +3079,6 @@ tagResult	.\readtags.h	/^typedef enum { TagFailure = 0, TagSuccess = 1 } tagResu
 tagScope	.\c.c	/^} tagScope;$/;"	t	typeref:enum:eTagScope	file:
 tagType	.\c.c	/^} tagType;$/;"	t	typeref:enum:eTagType	file:
 tagType	.\fortran.c	/^} tagType;$/;"	t	typeref:enum:eTagType	file:
-tag_path_key	.\bla.py	/^def tag_path_key(tag):$/;"	f
-tag_path_key	.\ctags.py	/^def tag_path_key(tag):$/;"	f
 tagsClose	.\readtags.c	/^extern tagResult tagsClose (tagFile *const file)$/;"	f
 tagsField	.\readtags.c	/^extern const char *tagsField (const tagEntry *const entry, const char *const key)$/;"	f
 tagsFind	.\readtags.c	/^extern tagResult tagsFind (tagFile *const file, tagEntry *const entry,$/;"	f
