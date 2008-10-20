@@ -24,7 +24,7 @@ import ctags
 from ctags import TagFile, SYMBOL, FILENAME
 from plugin_helpers import threaded, FocusRestorer, in_main
 
-# from helpers import time_function
+from helpers import time_function
 
 ################################################################################
 
@@ -112,7 +112,9 @@ def follow_tag_path(view, tag_path, pattern):
 
 def scroll_to_tag(view, tag_dir, tag):
     tag = ctags.Tag(tag)
- 
+    print tag
+    
+    
     symbol, pattern_or_line = tag.symbol, tag.ex_command
 
 
@@ -129,26 +131,35 @@ def scroll_to_tag(view, tag_dir, tag):
             symbol_region = view.find(symbol, look_from, sublime.LITERAL)
             select(view, symbol_region)
 
+################################################################################
+
+FORMATTERS = (
+    ('class',     '.'),
+    ('struct',    '::'),
+    ('function',  '/')
+)
+
+formatters = [f[0] for f in FORMATTERS]
+
 def format_tag_for_quickopen(tag, file=1):
-    
     if file: format         = "%(filename)s:\t"
     else:    format         = ""
     
-    if 'class' in tag: 
-        format         += "\t%(class)s.%(symbol)s:\t" % tag
-
-    elif 'struct' in tag: 
-        format         += "\t%(struct)s::%(symbol)s:\t" % tag
-        
-    elif 'function' in tag:
-        format         += "\t%(function)s/%(symbol)s:\t" % tag
+    for key, punctuation in FORMATTERS:
+        if key in tag:
+            format += ('\t' + '%('+key+')s' +punctuation+ "%(symbol)s") % tag
+            break
     
+    for field in tag.get("field_keys", []):
+        if field != "file" and field not in formatters:
+            format += ('\t' + '%('+field+')s' +' -> '+ "%(symbol)s") % tag
+
     if not format: format = '%(symbol)s'
     
-    s = format % tag
-    space = (80 - len(s)) * ' ' 
+    tag_info = format % tag
+    space    = (80 - len(tag_info)) * ' ' 
     
-    return    s + space + ("%(ex_command)s" % tag)
+    return tag_info + space + ("%(ex_command)s" % tag)
 
 format_for_current_file = functools.partial(format_tag_for_quickopen, file=0)
 
@@ -176,7 +187,7 @@ def prepared_4_quickpanel(formatter=format_tag_for_quickopen):
 class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
     isEnabled = checkIfBuilding
     
-    # @time_function
+    @time_function
     def run(self, view, args):
         tags_file = find_tags_relative_to(view)
         if not tags_file: return

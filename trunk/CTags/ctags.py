@@ -60,7 +60,9 @@ def post_process_tag(search_obj):
 
     fields = tag.get('fields')
     if fields:
-        tag.update(process_fields(fields))
+        fieldy = process_fields(fields)
+        tag.update(fieldy)
+        tag['field_keys'] = fieldy.keys()
 
     tag['ex_command'] =   process_ex_cmd(tag['ex_command'])
     
