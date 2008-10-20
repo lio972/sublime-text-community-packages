@@ -105,13 +105,10 @@ def parse_tag_file(tag_file):
 
 def create_tag_path(tag):
     cls     =  tag.get('class') or tag.get('struct')
-    type    =  tag.get('type')
     func    =  tag.get('function')
     symbol  =  tag.get('symbol')
 
-    if  func:
-        tag_path = "%s.%s" % (func, symbol)
-
+    if  func:  tag_path = "%s.%s" % (func, symbol)
     elif cls:  tag_path = "%s.%s" % (cls, symbol)
     else:      tag_path = symbol
 
