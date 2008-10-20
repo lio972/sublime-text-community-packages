@@ -15,14 +15,4 @@ def time_function(f):
         return result
     return wrapper
 
-
-def splits(string, *splitters):
-    if splitters: 
-        split = string.split(splitters[0])
-        for s in split:
-            for c in splits(s, *splitters[1:]):
-                yield c
-    else:
-        if string: yield string
-
 ################################################################################

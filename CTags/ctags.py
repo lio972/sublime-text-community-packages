@@ -20,7 +20,7 @@ import mmap
 from os.path import join, normpath, dirname
 from itertools import izip, chain
 
-from helpers import splits
+# from helpers import splits
 
 ################################################################################
 
@@ -37,6 +37,17 @@ SYMBOL = 0
 FILENAME = 1
 
 TAG_PATH_SPLITTERS = ('/', '.', '::', ':')
+
+################################################################################
+
+def splits(string, *splitters):
+    if splitters: 
+        split = string.split(splitters[0])
+        for s in split:
+            for c in splits(s, *splitters[1:]):
+                yield c
+    else:
+        if string: yield string
 
 ################################################################################
 
