@@ -154,7 +154,7 @@ def resort_ctags(tag_file):
         for l in fh:
             keys.setdefault(l.split('\t')[FILENAME], []).append(l)
 
-    with open(tag_file + '_unsorted', 'w') as fw:
+    with open(tag_file + '_sorted_by_file', 'w') as fw:
         for k in sorted(keys):
             fw.writelines(keys[k])
             
