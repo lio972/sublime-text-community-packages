@@ -1,9 +1,0 @@
-Issues:
-    The regexes for the EX commands don't escape \t tab characters so you can't 
-    just line.split('\t')
-    
-    The key value pairs sometimes do not have values, and are only separated by
-    a \t if they do. Makes parsing somewhat more complicated.
-    
-    Theres more than one tag per symbol so a dict of {symbol:tag} not possible
-    instead {symbol:[tag1, tag2, ...]} etc
