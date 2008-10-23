@@ -212,7 +212,12 @@ class QuickPanel(sublimeplugin.WindowCommand):
         del QuickPanel.f, QuickPanel.args
 
 ################################################################################
-                          
+
+def different_mod_area(f1, f2, r1, r2):
+    same_file   = f1 == f2
+    same_region = abs(r1[0] - r2[0]) < 40
+    return not same_file or not same_region
+
 class JumpBack(sublimeplugin.WindowCommand):
     last    =     []
     mods    =     []
@@ -223,28 +228,36 @@ class JumpBack(sublimeplugin.WindowCommand):
 
         if not JumpBack.last: return statusMessage('JumpBack buffer empty')
 
-        f, sel = JumpBack.pop()
+        f, sel = JumpBack.last.pop()
         self.jump(f, eval(sel))
-                                            
-    def lastModifications(self):
-        if not JumpBack.mods: return statusMessage('Modification buffer empty')
+              
+    def lastModifications(self): 
+        # Current Region
+        cv = sublime.activeWindow().activeView()
+        cr = eval(`cv.sel()[0]`)
+        cf   = cv.fileName()
+      
+        # Very latest, s)tarting modification
+        sf, sr = JumpBack.mods.pop(0)
+        sr = eval(sr)
 
-        start_file, r = JumpBack.mods.pop(0) 
-        start_region = eval(r)
+        not_still_same_mod_region = different_mod_area (sf, cf, cr, sr)
+        
+        # Default J)ump F)ile and R)egion
+        jf, jr = sf, sr
 
-        if JumpBack.mods:      
+        if JumpBack.mods:
             for i, (f, r) in enumerate(JumpBack.mods):
-
-                region      = eval(r)
-                same_file   = start_file == f
-                same_region = abs(region[0] - start_region[0])  < 40
-
-                if not same_file or not same_region:  break
-
+                region = eval(r)
+                if different_mod_area(sf, f, sr, region):  
+                    break
+ 
             del JumpBack.mods[:i+1]
-            self.jump(f, region)
-        else:
-            self.jump(start_file, start_region)
+            if not not_still_same_mod_region:
+                jf, jr = f, region
+
+        if not JumpBack.mods: JumpBack.mods.append((jf, `jr`))        
+        self.jump(jf, jr)
 
     def jump(self, fn, sel):
         @wait_until_loaded(fn)
@@ -257,7 +270,7 @@ class JumpBack(sublimeplugin.WindowCommand):
         if fn:
             cls.last.append((fn, `view.sel()[0]`))
                                                                             
-    def onModified(self, view):
+    def onModified(self, view):             
         JumpBack.mods.insert(0, (view.fileName(), `view.sel()[0]`))
         del JumpBack.mods[100:]
                  
