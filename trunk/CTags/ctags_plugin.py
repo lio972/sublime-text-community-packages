@@ -227,7 +227,7 @@ class JumpBack(sublimeplugin.WindowCommand):
         self.jump(f, eval(sel))
                                             
     def lastModifications(self):
-        if not JumpBack.mods: return statusMessage('JumpBack buffer empty')
+        if not JumpBack.mods: return statusMessage('Modification buffer empty')
 
         start_file, r = JumpBack.mods.pop(0) 
         start_region = eval(r)
