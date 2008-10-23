@@ -29,7 +29,7 @@ if not hasattr(sublimeplugin.onActivated, '__wrapped__'):
     on_load_cbs = {}
     cb_lock     = threading.RLock()
     
-    def addOnLoadCallback(f, cb):
+    def addOnLoadedCallback(f, cb):
         with cb_lock:
             on_load_cbs.setdefault(normpath(f), []).append(cb)
 
@@ -37,7 +37,7 @@ if not hasattr(sublimeplugin.onActivated, '__wrapped__'):
         return sublime._activeWindow
 
     sublime.activeWindow = activeWindow
-    sublime.addOnLoadCallback = addOnLoadCallback
+    sublime.addOnLoadedCallback = addOnLoadedCallback
     sublimeplugin.onActivated.__wrapped__ = 1
     sublimeplugin.onActivated = onActivated(sublimeplugin.onActivated)
     
