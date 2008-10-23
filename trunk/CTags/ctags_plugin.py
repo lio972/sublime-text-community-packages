@@ -66,20 +66,18 @@ def select(view, region):
 SELECTOR = "entity.name.function, entity.name.type, meta.toc-list"
 
 def follow_tag_path(view, tag_path, pattern):
-    last_start = 0
+    regions = [sublime.Region(0, 0)]
 
     for p in list(tag_path)[1:-1]:
         while True:
-            start = view.find(p, last_start, sublime.LITERAL)
-            if not start: break
+            regions.append(view.find(p, regions[-1].end(), sublime.LITERAL))
+            if (not regions[-1] or (regions[-1] == regions[-2]) or
+                view.matchSelector(regions[-1].begin(), SELECTOR)):
+                break
+            
+    start_at = max(regions, key=lambda r: r.begin()).begin()
 
-            if start.begin() == last_start:  break
-
-            last_start = start.begin() + 1
-            is_func = view.matchSelector(last_start, SELECTOR)
-            if is_func: break
-
-    return view.find(pattern, max(0, last_start-1), sublime.LITERAL).begin()
+    return view.find(pattern, start_at, sublime.LITERAL).begin()
 
 def scroll_to_tag(view, tag_dir, tag):
     tag = ctags.Tag(tag)
