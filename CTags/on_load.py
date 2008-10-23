@@ -19,23 +19,23 @@ if not hasattr(sublimeplugin.onActivated, '__wrapped__'):
             
             if not v.isLoading():
                 fn = normpath(v.fileName() or '')
-                while sublime.on_load_cbs.get(fn):
-                    sublime.on_load_cbs[fn].pop()(v)
+                while on_load_cbs.get(fn):
+                    on_load_cbs[fn].pop()(v)
 
             f(v)
         
         return wrapper
     
-    sublime.on_load_cbs = {}
-    sublime.cb_lock     = threading.RLock()
+    on_load_cbs = {}
+    cb_lock     = threading.RLock()
     
     def addOnLoadCallback(f, cb):
-        with sublime.cb_lock:
-            sublime.on_load_cbs.setdefault(normpath(f), []).append(cb)
-    
+        with cb_lock:
+            on_load_cbs.setdefault(normpath(f), []).append(cb)
+
     def activeWindow():
         return sublime._activeWindow
-    
+
     sublime.activeWindow = activeWindow
     sublime.addOnLoadCallback = addOnLoadCallback
     sublimeplugin.onActivated.__wrapped__ = 1
