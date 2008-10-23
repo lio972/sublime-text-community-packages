@@ -9,10 +9,10 @@ import functools
 import subprocess
 import string
 
-from os.path import join, normpath, dirname, abspath, basename
+from os.path import join, normpath, dirname
 from operator import itemgetter as iget
 
-from itertools import chain, groupby
+from itertools import chain
 
 # Sublime Libs
 import sublime
@@ -25,9 +25,39 @@ import ctags
 from ctags import TagFile, SYMBOL, FILENAME
 from plugin_helpers import threaded, FocusRestorer, in_main
 
+# NOTE
+
+# This plugin relies on in_load.py to decorate sublimeplugin.onActivated
+
 ################################################################################
 
-ctags_exe = join(sublime.packagesPath(), 'CTags', 'ctags.exe')
+CTAGS_EXE = join(sublime.packagesPath(), 'CTags', 'ctags.exe')
+
+PUNCTUATORS = {
+    'class'    :  '.',
+    'struct'   :  '::',
+    'function' :  '/',
+}
+
+ENTITY = "entity.name.function, entity.name.type, meta.toc-list"
+
+################################################################################
+
+def view_fn(view, if_None = '.'):
+    return normpath(view.fileName() or if_None)
+
+def wait_until_loaded(file):
+    def wrapper(f):
+        sublime.addOnLoadCallback(file, f)
+        sublime.activeWindow().openFile(file)
+
+    return wrapper
+
+def select(view, region):
+    sel_set = view.sel()
+    sel_set.clear()
+    sel_set.add(region)
+    view.show(region)    
 
 ################################################################################
 
@@ -47,23 +77,7 @@ def find_tags_relative_to(view, ask_to_build=True):
         statusMessage("Can't find any relevant tags file")
         view.runCommand('rebuildCTags')
 
-def view_fn(view, if_None = '.'):
-    return normpath(view.fileName() or if_None)
-
-def wait_until_loaded(file):
-    def wrapper(f):
-        sublime.addOnLoadCallback(file, f)
-        sublime.activeWindow().openFile(file)
-
-    return wrapper
-
-def select(view, region):
-    sel_set = view.sel()
-    sel_set.clear()
-    sel_set.add(region)
-    view.show(region)    
-
-SELECTOR = "entity.name.function, entity.name.type, meta.toc-list"
+################################################################################
 
 def follow_tag_path(view, tag_path, pattern):
     regions = [sublime.Region(0, 0)]
@@ -72,7 +86,7 @@ def follow_tag_path(view, tag_path, pattern):
         while True:
             regions.append(view.find(p, regions[-1].end(), sublime.LITERAL))
             if (not regions[-1] or (regions[-1] == regions[-2]) or
-                view.matchSelector(regions[-1].begin(), SELECTOR)):
+                view.matchSelector(regions[-1].begin(), ENTITY)):
                 break
             
     start_at = max(regions, key=lambda r: r.begin()).begin()
@@ -98,19 +112,13 @@ def scroll_to_tag(view, tag_dir, tag):
 
 ################################################################################
 
-FORMATTERS = {
-    'class'    :  '.',
-    'struct'   :  '::',
-    'function' :  '/',
-}
-
 def format_tag_for_quickopen(tag, file=1):
     if file: format         = "%(filename)s:\t"
     else:    format         = ""
 
     for field in tag.get("field_keys", []):
         if field != "file":
-            punct = FORMATTERS.get(field, ' -> ')
+            punct = PUNCTUATORS.get(field, ' -> ')
             format += string.Template (
                 '\t%($field)s$punct%(symbol)s' ).substitute(locals())
 
@@ -118,17 +126,9 @@ def format_tag_for_quickopen(tag, file=1):
     tag_info = format % tag
     space    = (80 - len(tag_info)) * ' ' 
 
-    return (tag_info + space + ("%(ex_command)s" % tag)).decode('utf8', 'ignore')
+    return (tag_info + space + tag["ex_command"]).decode('utf8', 'ignore')
 
 format_for_current_file = functools.partial(format_tag_for_quickopen, file=0)
-
-################################################################################
-
-def checkIfBuilding(self, view, args):
-    if RebuildCTags.building:
-        statusMessage('Please wait while tags are built')
-
-    else:  return 1
 
 ################################################################################
 
@@ -142,6 +142,16 @@ def prepared_4_quickpanel(formatter=format_tag_for_quickopen):
         return args, display
 
     return compile_lists
+
+################################################################################
+
+def checkIfBuilding(self, view, args):
+    if RebuildCTags.building:
+        statusMessage('Please wait while tags are built')
+
+    else:  return 1
+
+################################################################################
 
 class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
     isEnabled = checkIfBuilding
@@ -250,7 +260,7 @@ class RebuildCTags(sublimeplugin.TextCommand):
 
     @threaded(finish=done_building, msg="Already running CTags")
     def build_ctags(self, tag_file):
-        ctags.build_ctags(ctags_exe, tag_file)
+        ctags.build_ctags(CTAGS_EXE, tag_file)
         return tag_file
 
 ################################################################################
