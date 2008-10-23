@@ -224,8 +224,8 @@ class JumpBack(sublimeplugin.WindowCommand):
         if not JumpBack.last: return statusMessage('JumpBack buffer empty')
 
         f, sel = JumpBack.pop()
-        self.jump(f, eval(sel)) 
-                                      
+        self.jump(f, eval(sel))
+                                            
     def lastModifications(self):
         if not JumpBack.mods: return statusMessage('JumpBack buffer empty')
 
@@ -243,17 +243,14 @@ class JumpBack(sublimeplugin.WindowCommand):
 
             del JumpBack.mods[:i+1]
             self.jump(f, region)
-
         else:
             self.jump(start_file, start_region)
-                                                 
+
     def jump(self, fn, sel):
-        sel = sublime.Region(*sel)
-                           
         @wait_until_loaded(fn)
         def and_then(view):
-            select(view, sel)
-                                                                    
+            select(view, sublime.Region(*sel))
+
     @classmethod                       
     def append(cls, view):                                          
         fn = view.fileName()
@@ -262,9 +259,8 @@ class JumpBack(sublimeplugin.WindowCommand):
                                                                             
     def onModified(self, view):
         JumpBack.mods.insert(0, (view.fileName(), `view.sel()[0]`))
-        if len(JumpBack.mods) > 100:
-            del JumpBack.mods[100]
-                      
+        del JumpBack.mods[100:]
+                 
 ################################################################################
 
 class RebuildCTags(sublimeplugin.TextCommand):
