@@ -33,13 +33,17 @@ from plugin_helpers import threaded, FocusRestorer, in_main
 
 CTAGS_EXE = join(sublime.packagesPath(), 'CTags', 'ctags.exe')
 
-PUNCTUATORS = {
+
+# These are used for formatting tag paths for the QuickPanel
+
+OBJECT_PUNCTUATORS = {
     'class'    :  '.',
     'struct'   :  '::',
     'function' :  '/',
 }
 
-ENTITY = "entity.name.function, entity.name.type, meta.toc-list"
+
+ENTITY_SCOPE = "entity.name.function, entity.name.type, meta.toc-list"
 
 ################################################################################
 
@@ -86,7 +90,7 @@ def follow_tag_path(view, tag_path, pattern):
         while True:
             regions.append(view.find(p, regions[-1].end(), sublime.LITERAL))
             if (not regions[-1] or (regions[-1] == regions[-2]) or
-                view.matchSelector(regions[-1].begin(), ENTITY)):
+                view.matchSelector(regions[-1].begin(), ENTITY_SCOPE)):
                 break
             
     start_at = max(regions, key=lambda r: r.begin()).begin()
@@ -118,7 +122,7 @@ def format_tag_for_quickopen(tag, file=1):
 
     for field in tag.get("field_keys", []):
         if field != "file":
-            punct = PUNCTUATORS.get(field, ' -> ')
+            punct = OBJECT_PUNCTUATORS.get(field, ' -> ')
             format += string.Template (
                 '\t%($field)s$punct%(symbol)s' ).substitute(locals())
 
@@ -169,7 +173,7 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
 
         ################################################################
 
-        tags_file = tags_file + '_unsorted'
+        tags_file = tags_file + '_sorted_by_file'
         tags = TagFile(tags_file, FILENAME).get_tags_dict(current_file)
 
         if tags:  JumpBack.append(view)
