@@ -181,7 +181,7 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
         @prepared_4_quickpanel(format_for_current_file)
         def sorted_tags():
             for t in sorted (
-                chain(*(tags[k] for k in tags)), key=iget('tag_path') ):
+                chain(*(tags[k] for k in tags)), key=iget('tag_path')):
                 yield t
 
         ################################################################
