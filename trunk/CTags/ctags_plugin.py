@@ -216,7 +216,7 @@ class QuickPanel(sublimeplugin.WindowCommand):
 def different_mod_area(f1, f2, r1, r2):
     same_file   = f1 == f2
     same_region = abs(r1[0] - r2[0]) < 40
-    return not same_file or not same_region
+    return not same_file or not same_region 
 
 class JumpBack(sublimeplugin.WindowCommand):
     last    =     []
@@ -230,7 +230,7 @@ class JumpBack(sublimeplugin.WindowCommand):
 
         f, sel = JumpBack.last.pop()
         self.jump(f, eval(sel))
-              
+
     def lastModifications(self): 
         # Current Region
         cv = sublime.activeWindow().activeView()
@@ -312,7 +312,6 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
 
         symbol = view.substr(view.word(view.sel()[0]))
         tag_dir = dirname(tags_file)         
-      
         tags = TagFile(tags_file, SYMBOL).get_tags_dict(symbol)
 
         if not tags: 
