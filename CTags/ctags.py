@@ -36,6 +36,12 @@ TAGS_RE = re.compile (
 SYMBOL = 0
 FILENAME = 1
 
+PATH_ORDER = (
+    'function', 'class', 'struct',
+)
+
+TAG_PATH_SPLITTERS = ('/', '.', '::', ':')
+
 ################################################################################
 
 def splits(string, *splitters):
@@ -69,9 +75,9 @@ def post_process_tag(search_obj):
 
     fields = tag.get('fields')
     if fields:
-        fieldy = process_fields(fields)
-        tag.update(fieldy)
-        tag['field_keys'] = sorted(fieldy.keys())
+        fields_dict = process_fields(fields)
+        tag.update(fields_dict)
+        tag['field_keys'] = sorted(fields_dict.keys())
 
     tag['ex_command'] =   process_ex_cmd(tag['ex_command'])
     
@@ -87,16 +93,6 @@ def process_fields(fields):
         
         key = f[0]
         value = ''.join(f[1:])
-        
-        # These, if existing, are keys with no values... retarded
-        # for key in f[:-2]:
-        #     print fields
-        #     if key == "struct": print f
-            
-        #     fields_dict[key] = True # Essentially boolean?
-
-        # The last two are actual key value pairs because separated by \t
-        # key, value =  f[-2:]
         fields_dict[key] = value
 
     return fields_dict
@@ -119,41 +115,27 @@ def parse_tag_file(tag_file):
 
 ################################################################################
 
-PATH_ORDER = (
-    'function', 'class', 'struct',
-)
-
-TAG_PATH_SPLITTERS = ('/', '.', '::', ':')
-
 def create_tag_path(tag):
-    # cls     =  tag.get('class') or tag.get('struct') 
-    # func    =  tag.get('function')
-    symbol  =  tag.get('symbol')
-    
-    field_keys = tag.get('field_keys', [])[:]
+    symbol     =  tag.get('symbol')
+    field_keys =  tag.get('field_keys', [])[:]
     
     fields = []
-    
     for i, field in enumerate(PATH_ORDER):
         if field in field_keys:
             fields.append(field)
             field_keys.pop(field_keys.index(field))
     
     fields.extend(field_keys)
-    
-    tag_path = '' 
+
+    tag_path = ''
     for field in fields:
         if field != 'file':
             tag_path += (tag.get(field) + '.')
     
     tag_path += symbol
 
-    # if  func:  tag_path = "%s.%s" % (func, symbol)
-    # elif cls:  tag_path = "%s.%s" % (cls, symbol)
-
-    # else:      tag_path = symbol
-
-    splitup = [tag.get('filename')]+ list(splits(tag_path, *TAG_PATH_SPLITTERS))
+    splitup = ([tag.get('filename')] + 
+               list(splits(tag_path, *TAG_PATH_SPLITTERS)))
 
     tag['tag_path'] = tuple(splitup)
 
@@ -168,8 +150,6 @@ def get_tag_class(tag):
 def resort_ctags(tag_file):
     keys = {}
     
-    t = time.time()
-    
     with open(tag_file) as fh:
         for l in fh:
             keys.setdefault(l.split('\t')[FILENAME], []).append(l)
@@ -177,8 +157,6 @@ def resort_ctags(tag_file):
     with open(tag_file + '_unsorted', 'w') as fw:
         for k in sorted(keys):
             fw.writelines(keys[k])
-            
-    print time.time() - t
             
 def build_ctags(ctags_exe, tag_file):
     cmd = [ctags_exe, '-R']
@@ -191,22 +169,12 @@ def build_ctags(ctags_exe, tag_file):
     return tag_file
 
 ################################################################################
-    
-def log_divides(f):
-    f.accessed = 0
-    def wrapped(self, i):
-        item = f(self, i)
-        f.accessed += 1
-        print f.accessed, i, self.fh.tell()
-        return item
-    return wrapped
 
 class TagFile(object):
     def __init__(self, p, column):
         self.p = p
         self.column = column
     
-    # @log_divides
     def __getitem__(self, index):
         self.fh.seek(index)
         self.fh.readline()
@@ -281,45 +249,9 @@ class CTagsTest(unittest.TestCase):
                     latest = symbol
 
                 lines += [l]
-                
-# def scribble():
-    # raw_input('About to use memory')
-    
-    # import time
-    # tags = 'C://python25//lib//tags'
-    
-    # t1 = time.time()
-    # index = index_tag_file(tags)
-    # print time.time() - t1
-    
-    # t1 = time.time()
-    # print get_tags_for_field("struct_GLUnurbs", tags, index)
-    # print time.time() - t1
-    
-    # raw_input('Press enter')
-    
-    # print get_tags_for_file('ctags.exe', 'ctags.py')
-
-def scribble():
-    # raw_input('About to use memory')
-    
-    import time
-    tags = 'C://python25//lib//tags'
-    
-    t1 = time.time()
-    
-    a =  list(TagFile(tags, SYMBOL).get_tags_dict('Test','Tests'))
-    
-    print time.time() - t1
-    
-    print len(a)
-    
-    # raw_input('Press enter')
-    
 
 if __name__ == '__main__':
-    if 0: scribble()
-    else: unittest.main()
+    unittest.main()
 
 ################################################################################
 # TAG FILE FORMAT
