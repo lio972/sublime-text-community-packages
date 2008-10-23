@@ -52,7 +52,7 @@ def view_fn(view, if_None = '.'):
 
 def wait_until_loaded(file):
     def wrapper(f):
-        sublime.addOnLoadCallback(file, f)
+        sublime.addOnLoadedCallback(file, f)
         sublime.activeWindow().openFile(file)
 
     return wrapper
