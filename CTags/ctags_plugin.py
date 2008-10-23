@@ -8,6 +8,7 @@ import threading
 import functools
 import subprocess
 import string
+import pprint
 
 from os.path import join, normpath, dirname
 from operator import itemgetter as iget
@@ -80,7 +81,7 @@ def find_tags_relative_to(view, ask_to_build=True):
     if ask_to_build:
         statusMessage("Can't find any relevant tags file")
         view.runCommand('rebuildCTags')
-
+                 
 ################################################################################
 
 def follow_tag_path(view, tag_path, pattern):
@@ -94,8 +95,9 @@ def follow_tag_path(view, tag_path, pattern):
                 break
             
     start_at = max(regions, key=lambda r: r.begin()).begin()
+    pattern_region = view.find(pattern, start_at, sublime.LITERAL)
 
-    return view.find(pattern, start_at, sublime.LITERAL).begin()
+    return pattern_region.begin() if pattern_region else start_at
 
 def scroll_to_tag(view, tag_dir, tag):
     tag = ctags.Tag(tag)
@@ -133,7 +135,7 @@ def format_tag_for_quickopen(tag, file=1):
     return (tag_info + space + tag["ex_command"]).decode('utf8', 'ignore')
 
 format_for_current_file = functools.partial(format_tag_for_quickopen, file=0)
-
+                     
 ################################################################################
 
 def prepared_4_quickpanel(formatter=format_tag_for_quickopen):
@@ -196,7 +198,7 @@ class QuickPanel(sublimeplugin.WindowCommand):
     def show(cls, args, display, skip_if_one=False):
         if skip_if_one and len(args) < 2: return cls.f(args[0])
         cls.args = args
-        args = map(repr, range(len(args)))
+        args = map(repr, xrange(len(args)))
         sublime.activeWindow().showQuickPanel('', 'quickPanel', args, display)
 
     @classmethod
@@ -210,36 +212,59 @@ class QuickPanel(sublimeplugin.WindowCommand):
         del QuickPanel.f, QuickPanel.args
 
 ################################################################################
-
+                          
 class JumpBack(sublimeplugin.WindowCommand):
-    last = [(0, 0)]
+    last    =     []
+    mods    =     []
 
-    def run(self, w, args):                    
-        the_view, sel = JumpBack.last[-1]
-        if len(JumpBack.last) > 1:  del JumpBack.last[-1]
+    def run(self, w, args):
+        if 'toLastModification' in args:
+            return self.lastModifications()
 
-        if not the_view: return statusMessage('JumpBack buffer empty')
+        if not JumpBack.last: return statusMessage('JumpBack buffer empty')
 
-        sel = sublime.Region(*eval(sel))
+        f, sel = JumpBack.pop()
+        self.jump(f, eval(sel)) 
+                                      
+    def lastModifications(self):
+        if not JumpBack.mods: return statusMessage('JumpBack buffer empty')
 
-        if isinstance(the_view, unicode):
-            @wait_until_loaded(the_view)
-            def and_then(view):
-                select(view, sel)
+        start_file, r = JumpBack.mods.pop(0) 
+        start_region = eval(r)
+
+        if JumpBack.mods:      
+            for i, (f, r) in enumerate(JumpBack.mods):
+
+                region      = eval(r)
+                same_file   = start_file == f
+                same_region = abs(region[0] - start_region[0])  < 40
+
+                if not same_file or not same_region:  break
+
+            del JumpBack.mods[:i+1]
+            self.jump(f, region)
 
         else:
-            w.focusView(the_view)
-            select(the_view, sel)
-
-    @classmethod
-    def append(cls, view):
+            self.jump(start_file, start_region)
+                                                 
+    def jump(self, fn, sel):
+        sel = sublime.Region(*sel)
+                           
+        @wait_until_loaded(fn)
+        def and_then(view):
+            select(view, sel)
+                                                                    
+    @classmethod                       
+    def append(cls, view):                                          
         fn = view.fileName()
         if fn:
             cls.last.append((fn, `view.sel()[0]`))
-
+                                                                            
     def onModified(self, view):
-        JumpBack.last[-1] = (view, `view.sel()[0]`)
-
+        JumpBack.mods.insert(0, (view.fileName(), `view.sel()[0]`))
+        if len(JumpBack.mods) > 100:
+            del JumpBack.mods[100]
+                      
 ################################################################################
 
 class RebuildCTags(sublimeplugin.TextCommand):
@@ -253,11 +278,11 @@ class RebuildCTags(sublimeplugin.TextCommand):
             if not sublime.questionBox('`ctags -R` in %s ?'% dirname(tag_file)):
                 return
 
-        RebuildCTags.building = True
+        RebuildCTags.building = True       
 
         self.build_ctags(tag_file)
         statusMessage('Re/Building CTags: Please be patient')
-
+                                     
     def done_building(self, tag_file):
         statusMessage('Finished building %s' % tag_file)
         RebuildCTags.building = False
@@ -266,7 +291,7 @@ class RebuildCTags(sublimeplugin.TextCommand):
     def build_ctags(self, tag_file):
         ctags.build_ctags(CTAGS_EXE, tag_file)
         return tag_file
-
+           
 ################################################################################
 
 class NavigateToDefinition(sublimeplugin.TextCommand):
@@ -274,25 +299,25 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
 
     def run(self, view, args):
         tags_file = find_tags_relative_to(view)
-        if not tags_file: return
+        if not tags_file: return      
 
         symbol = view.substr(view.word(view.sel()[0]))
-        tag_dir = dirname(tags_file)
-
+        tag_dir = dirname(tags_file)         
+      
         tags = TagFile(tags_file, SYMBOL).get_tags_dict(symbol)
 
         if not tags: 
             return statusMessage('Can\'t find "%s" in %s' % (symbol, tags_file))
-
+                    
         def sorted_tags():
             for t in sorted(tags.get(symbol, []), key=iget('tag_path')):
                 yield t
 
         args, display = prepared_4_quickpanel()(sorted_tags)
 
-        if args:
+        if args:            
             JumpBack.append(view)
             (QuickPanel.partial(scroll_to_tag, view, tag_dir)
                        .show(args, display, skip_if_one = True))
-
+ 
 ################################################################################
