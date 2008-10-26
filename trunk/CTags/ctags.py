@@ -86,16 +86,7 @@ def post_process_tag(search_obj):
     return tag
 
 def process_fields(fields):
-    fields_dict = {}
-
-    for f in fields.split('\t'):
-        f = f.split(':')
-        
-        key = f[0]
-        value = ''.join(f[1:])
-        fields_dict[key] = value
-
-    return fields_dict
+    return dict(f.split(':', 1) for f in fields.split('\t'))
 
 class Tag(object):
     "dot.syntatic sugar for tag dicts"
