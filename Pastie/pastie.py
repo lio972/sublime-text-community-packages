@@ -43,19 +43,41 @@ activateIrcClient = partial( activateApp,
 ################################################################################        
                   
 SYNTAXES = {}
-SYNTAXES["Packages/C++/C.tmLanguage"] = "c"
-SYNTAXES["Packages/CSS/CSS.tmLanguage"] = "css" 
-SYNTAXES["Packages/Rails/HTML (Rails).tmLanguage"] = "html_rails"
-SYNTAXES["Packages/HTML/HTML.tmLanguage"] = "html"
-SYNTAXES["Packages/Java/Java.tmLanguage"] = "java"
-SYNTAXES["Packages/JavaScript/JavaScript.tmLanguage"] = "javascript"
-SYNTAXES["Packages/PHP/PHP.tmLanguage"] = "php"
-SYNTAXES["Packages/Text/Plain text.tmLanguage"] = "plain_text"
-SYNTAXES["Packages/Python/Python.tmLanguage"] =  "python"
-SYNTAXES["Packages/Ruby/Ruby.tmLanguage"] =  "ruby"
-SYNTAXES["Packages/Rails/Ruby on Rails.tmLanguage"] = "ruby_on_rails"
-SYNTAXES["Packages/SQL/SQL.tmLanguage"] = "sql"
-SYNTAXES["Packages/ShellScript/Shell-Unix-Generic.tmLanguage"] = "shell-unix-generic"
+SYNTAXES["Packages/C++/C.tmLanguage"] = "7"
+SYNTAXES["Packages/CSS/CSS.tmLanguage"] = "8" 
+SYNTAXES["Packages/Rails/HTML (Rails).tmLanguage"] = "12"
+SYNTAXES["Packages/HTML/HTML.tmLanguage"] = "11"
+SYNTAXES["Packages/Java/Java.tmLanguage"] = "9"
+SYNTAXES["Packages/JavaScript/JavaScript.tmLanguage"] = "10"
+SYNTAXES["Packages/PHP/PHP.tmLanguage"] = "15"
+SYNTAXES["Packages/Text/Plain text.tmLanguage"] = "6"
+SYNTAXES["Packages/Python/Python.tmLanguage"] =  "16"
+SYNTAXES["Packages/Ruby/Ruby.tmLanguage"] =  "3"
+SYNTAXES["Packages/Rails/Ruby on Rails.tmLanguage"] = "4"
+SYNTAXES["Packages/SQL/SQL.tmLanguage"] = "14"
+SYNTAXES["Packages/ShellScript/Shell-Unix-Generic.tmLanguage"] = "13"
+
+# <option value="2">ActionScript</option>
+# <option value="7">C/C++</option>
+# <option value="8">CSS</option>
+# <option value="5">Diff</option>
+# <option value="12">HTML (ERB / Rails)</option>
+# <option value="11">HTML / XML</option>
+# <option value="9">Java</option>
+
+# <option value="10">Javascript</option>
+# <option value="1">Objective C/C++</option>
+# <option value="17">Pascal</option>
+# <option value="18">Perl</option>
+# <option value="15">PHP</option>
+# <option value="6">Plain text</option>
+# <option value="16">Python</option>
+# <option value="3">Ruby</option>
+# <option value="4" selected="selected">Ruby (on Rails)</option>
+
+# <option value="13">Shell Script (Bash)</option>
+# <option value="14">SQL</option>
+# <option value="19">YAML</option>
 
 ################################################################################
 
@@ -74,7 +96,7 @@ class PastieServiceCommand(sublimeplugin.TextCommand):
                 form.set_all_readonly(False)    
                 pastie.set_handle_robots(False)
                 
-                form['paste[parser]'] = [lang]
+                form['paste[parser_id]'] = [lang]
                 form['paste[body]'] = input_text.encode(ENCODE_AS)
                 form['paste[authorization]'] = 'burger'
                 
