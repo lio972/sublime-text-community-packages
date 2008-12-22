@@ -4,4 +4,7 @@
     <binding key="/keymap|binding/,tab" command="insertSnippet 'Packages/Plugins/newKeyMap.sublime-snippet'" />
     <binding key="/keymapc|bindingc/,tab" command="insertSnippet 'Packages/Plugins/newKeyMapwithContext.sublime-snippet'" />
     <binding key="ctrl+alt+f1" command="browseUrl http://www.sublimetext.com/docs/api-reference" />
+    
+    <binding key="ctrl+equals" command="zoomIn"/>
+    <binding key="ctrl+minus" command="zoomOut"/>
 </bindings>
