@@ -23,7 +23,7 @@ class SearchCommand(sublimeplugin.TextCommand):
             if region is not None:
                (row, col) = a_view.rowcol(region.begin())
                s = a_view.substr(a_view.line(region))
-               full_s = a_view.fileName() + ":" + str(row) + ": " + s
+               full_s = a_view.fileName() + ":" + str(row+1) + ":> " + s
                result.append(full_s)
                next_region = self.advance_line(view, region)
             else:
@@ -33,7 +33,7 @@ class SearchCommand(sublimeplugin.TextCommand):
             if counter > failesafe:
                break
             
-      view.window().showQuickPanel("", "", result)  
+      view.window().showQuickPanel("", "searchRebound", result)  
       #for line in result:
       #   print line
       
@@ -52,3 +52,16 @@ class SearchCommand(sublimeplugin.TextCommand):
          return next_region
       else:
          return False
+
+class SearchReboundCommand(sublimeplugin.TextCommand):
+   def run(self, view, args):
+      (file_and_line, sep, line_content) = args[0].partition(">")
+      (file, sep, row) = file_and_line.rstrip(":").rpartition(":")
+      
+      view_list = view.window().views()
+      for a_view in view_list:
+         print "|" + file + "|" + a_view.fileName() + "|"
+         if file == a_view.fileName():
+            view.window().focusView(a_view)
+            position = a_view.textPoint(int(row), 0)
+            a_view.show(position)
