@@ -30,7 +30,7 @@ class SearchCommand(sublimeplugin.TextCommand):
                s = a_view.substr(a_view.line(region))
                full_s = a_view.fileName() + "<" + str(row+1) + "> " + s
                result.append(full_s)
-               next_region = self.advance_line(view, region)
+               next_region = self.advance_line(a_view, region)
             else:
                break
             
