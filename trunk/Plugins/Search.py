@@ -7,7 +7,12 @@ class SearchCommand(sublimeplugin.TextCommand):
       result = []
       files_i_have_been = []
       view_list = view.window().views()
-      pattern = sublime.getClipboard()
+
+      selection = view.sel()[0]
+      if selection.begin() - selection.end() != 0:
+         pattern = view.substr(selection)
+      else:
+         pattern = sublime.getClipboard()
       
       for a_view in view_list:
          # avoid re-searching same view (if opened twice)
@@ -23,7 +28,7 @@ class SearchCommand(sublimeplugin.TextCommand):
             if region is not None:
                (row, col) = a_view.rowcol(region.begin())
                s = a_view.substr(a_view.line(region))
-               full_s = a_view.fileName() + ":" + str(row+1) + ":> " + s
+               full_s = a_view.fileName() + "<" + str(row+1) + "> " + s
                result.append(full_s)
                next_region = self.advance_line(view, region)
             else:
@@ -56,7 +61,7 @@ class SearchCommand(sublimeplugin.TextCommand):
 class SearchReboundCommand(sublimeplugin.TextCommand):
    def run(self, view, args):
       (file_and_line, sep, line_content) = args[0].partition(">")
-      (file, sep, row) = file_and_line.rstrip(":").rpartition(":")
+      (file, sep, row) = file_and_line.rpartition("<")
       
       view_list = view.window().views()
       for a_view in view_list:
