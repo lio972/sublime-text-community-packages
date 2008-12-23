@@ -5,11 +5,20 @@ class SearchCommand(sublimeplugin.TextCommand):
       failesafe = 1000
       counter = 0
       result = []
+      files_i_have_been = []
       view_list = view.window().views()
       pattern = sublime.getClipboard()
+      
       for a_view in view_list:
+         # avoid re-searching same view (if opened twice)
+         if a_view.fileName() in files_i_have_been:
+            continue
+         else:  
+            files_i_have_been.append(a_view.fileName())
+         
+         # search   
          next_region = view.line(0) # start from 0
-         while True:
+         while next_region is not False:
             region = a_view.find(pattern, next_region.begin(), 0)
             if region is not None:
                (row, col) = a_view.rowcol(region.begin())
@@ -34,8 +43,12 @@ class SearchCommand(sublimeplugin.TextCommand):
       else:
          return False
    
-   def advance_line(self, view, region):
-      (row, col) = view.rowcol(region.begin())
+   def advance_line(self, view, last_region):
+      (row, col) = view.rowcol(last_region.begin())
       next_point = view.textPoint(row+1, 0)
-      next_line = view.line(next_point)
-      return next_line
+      next_region = view.line(next_point)
+      
+      if next_region.begin() > last_region.end():
+         return next_region
+      else:
+         return False
