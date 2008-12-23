@@ -7,4 +7,5 @@
     
     <binding key="ctrl+equals" command="zoomIn"/>
     <binding key="ctrl+minus" command="zoomOut"/>
+    <binding key="ctrl+alt+f" command="search"/>
 </bindings>
