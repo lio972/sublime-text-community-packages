@@ -93,7 +93,8 @@ def follow_tag_path(view, tag_path, pattern):
             if (not regions[-1] or (regions[-1] == regions[-2]) or
                 view.matchSelector(regions[-1].begin(), ENTITY_SCOPE)):
                 break
-            
+    
+    regions = [r for r in regions if r is not None]
     start_at = max(regions, key=lambda r: r.begin()).begin()
     pattern_region = view.find(pattern, start_at, sublime.LITERAL)
 
@@ -316,12 +317,13 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
 
         if not tags: 
             return statusMessage('Can\'t find "%s" in %s' % (symbol, tags_file))
-                    
+        
+        @prepared_4_quickpanel()
         def sorted_tags():
             for t in sorted(tags.get(symbol, []), key=iget('tag_path')):
                 yield t
 
-        args, display = prepared_4_quickpanel()(sorted_tags)
+        args, display = sorted_tags
 
         if args:            
             JumpBack.append(view)
