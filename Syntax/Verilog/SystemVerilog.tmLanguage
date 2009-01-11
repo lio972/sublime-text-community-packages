@@ -109,6 +109,25 @@
 					</dict>
 				</dict>
 				<key>match</key>
+				<string>\b(function)\s+\b([a-zA-Z_][a-zA-Z0-9_]*)\b</string>
+				<key>name</key>
+				<string>meta.definition.systemverilog</string>
+			</dict>			
+			<dict>
+				<key>captures</key>
+				<dict>
+					<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>storage.type.systemverilog</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>name</key>
+						<string>entity.name.type.class.systemverilog</string>
+					</dict>
+				</dict>
+				<key>match</key>
 				<string>^\s*(module|function|primitive|class|package|constraint|interface|covergroup|program)\s+\b([a-zA-Z_][a-zA-Z0-9_]*)\b</string>
 				<key>name</key>
 				<string>meta.definition.systemverilog</string>
@@ -131,7 +150,7 @@
 			</dict>
 			<dict>
 				<key>match</key>
-				<string>(!|&amp;&amp;|\|\||or)</string>
+				<string>(!|&amp;&amp;|\|\||\bor\b)</string>
 				<key>name</key>
 				<string>keyword.operator.logical.systemverilog</string>
 			</dict>
