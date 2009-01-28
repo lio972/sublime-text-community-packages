@@ -38,7 +38,7 @@ if not hasattr(sublimeplugin.onActivated, '__wrapped__'):
 
     sublime.activeWindow = activeWindow
     sublime.addOnLoadedCallback = addOnLoadedCallback
-    sublimeplugin.onActivated.__wrapped__ = 1
     sublimeplugin.onActivated = onActivated(sublimeplugin.onActivated)
-    
+    sublimeplugin.onActivated.__wrapped__ = 1
+
 ################################################################################
