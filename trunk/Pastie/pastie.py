@@ -127,7 +127,7 @@ class PastieServiceCommand(sublimeplugin.TextCommand):
         
         fn = view.fileName() 
         if fn and fn.endswith('.php'): 
-            syntax = 'php'
+            syntax = '15'
         else: 
             syntax = SYNTAXES.get(view.options().get('syntax'), DEFAULT_SYNTAX)
         
