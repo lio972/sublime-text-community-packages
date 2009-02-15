@@ -45,7 +45,7 @@ TAG_PATH_SPLITTERS = ('/', '.', '::', ':')
 ################################################################################
 
 def splits(string, *splitters):
-    if splitters: 
+    if splitters:
         split = string.split(splitters[0])
         for s in split:
             for c in splits(s, *splitters[1:]):
@@ -57,11 +57,11 @@ def splits(string, *splitters):
 
 def parse_tag_lines(lines, order_by='symbol'):
     tags_lookup = {}
-    
+
     for search_obj in (t for t in (TAGS_RE.search(l) for l in lines) if t):
         tag = post_process_tag(search_obj)
         tags_lookup.setdefault(tag[order_by], []).append(tag)
-        
+
     return tags_lookup
 
 def unescape_ex(ex):
@@ -80,7 +80,7 @@ def post_process_tag(search_obj):
         tag['field_keys'] = sorted(fields_dict.keys())
 
     tag['ex_command'] =   process_ex_cmd(tag['ex_command'])
-    
+
     create_tag_path(tag)
 
     return tag
@@ -101,7 +101,7 @@ class Tag(object):
 def parse_tag_file(tag_file):
     with open(tag_file) as tf:
         tags = parse_tag_lines(tf)
-    
+
     return tags
 
 ################################################################################
@@ -109,23 +109,23 @@ def parse_tag_file(tag_file):
 def create_tag_path(tag):
     symbol     =  tag.get('symbol')
     field_keys =  tag.get('field_keys', [])[:]
-    
+
     fields = []
     for i, field in enumerate(PATH_ORDER):
         if field in field_keys:
             fields.append(field)
             field_keys.pop(field_keys.index(field))
-    
+
     fields.extend(field_keys)
 
     tag_path = ''
     for field in fields:
         if field != 'file':
             tag_path += (tag.get(field) + '.')
-    
+
     tag_path += symbol
 
-    splitup = ([tag.get('filename')] + 
+    splitup = ([tag.get('filename')] +
                list(splits(tag_path, *TAG_PATH_SPLITTERS)))
 
     tag['tag_path'] = tuple(splitup)
@@ -140,22 +140,25 @@ def get_tag_class(tag):
 
 def resort_ctags(tag_file):
     keys = {}
-    
+
     with open(tag_file) as fh:
         for l in fh:
             keys.setdefault(l.split('\t')[FILENAME], []).append(l)
 
     with open(tag_file + '_sorted_by_file', 'w') as fw:
         for k in sorted(keys):
-            fw.writelines(keys[k])
-            
+            for line in keys[k]:
+                split = line.split('\t')
+                split[FILENAME] = split[FILENAME].lstrip('.\\')
+                fw.write('\t'.join(split))
+
 def build_ctags(ctags_exe, tag_file):
     cmd = [ctags_exe, '-R']
     p = subprocess.Popen(cmd, cwd = dirname(tag_file), shell=1)
     p.wait()
 
     # Faster than ctags.exe again:
-    resort_ctags(tag_file)    
+    resort_ctags(tag_file)
 
     return tag_file
 
@@ -165,7 +168,7 @@ class TagFile(object):
     def __init__(self, p, column):
         self.p = p
         self.column = column
-    
+
     def __getitem__(self, index):
         self.fh.seek(index)
         self.fh.readline()
@@ -177,23 +180,26 @@ class TagFile(object):
     def get(self, *tags):
         with open(self.p, 'r+') as fh:
             self.fh = mmap.mmap(fh.fileno(), 0)
-            
+
             for tag in tags:
                 b4 = bisect.bisect_left(self, tag)
                 fh.seek(b4)
-    
-                for l in fh:                
+
+                for l in fh:
                     comp = cmp(l.split('\t')[self.column], tag)
-                    
+
                     if    comp == -1:    continue
                     elif  comp:          break
-                    
+
                     yield l
-    
+
             self.fh.close()
 
     def get_tags_dict(self, *tags):
-        return parse_tag_lines(self.get(*tags))
+        try:
+            return parse_tag_lines(self.get(*tags))
+        except IndexError:
+            return {}
 
 ################################################################################
 
@@ -211,20 +217,20 @@ class CTagsTest(unittest.TestCase):
                     with open(tag.filename, 'r+') as fh:
                         mapped = mmap.mmap(fh.fileno(), 0)
                         if not mapped.find(tag.ex_command):
-                            failures += [tag.ex_command]                        
+                            failures += [tag.ex_command]
 
         for f in failures:
             print f
 
         self.assertEqual(len(failures), 0, 'update tag files and try again')
-        
+
     def test_tags_files(self):
         tags = r"tags"
         tag_file = TagFile(tags, SYMBOL)
-                
+
         with open(tags, 'r') as fh:
             latest = ''
-            lines  = [] 
+            lines  = []
 
             for l in fh:
                 symbol = l.split('\t')[SYMBOL]
@@ -232,11 +238,11 @@ class CTagsTest(unittest.TestCase):
                 if symbol != latest:
 
                     if latest:
-                        tags = list(tag_file.get(latest))                        
+                        tags = list(tag_file.get(latest))
                         self.assertEqual(lines, tags)
-                        
+
                         lines = []
-                    
+
                     latest = symbol
 
                 lines += [l]
@@ -255,23 +261,23 @@ if __name__ == '__main__':
 # The fields and separators of these lines are specified as follows:
 
 # 1.
-    
+
 #     tag name
 
 # 2.
-    
+
 #     single tab character
 
 # 3.
-    
+
 #     name of the file in which the object associated with the tag is located
 
 # 4.
-    
+
 #     single tab character
 
 # 5.
-    
+
 #     EX command used to locate the tag within the file; generally a search
 #     pattern (either /pattern/ or ?pattern?) or line number (see −−excmd). Tag
 #     file format 2 (see −−format) extends this EX command under certain
@@ -299,17 +305,17 @@ if __name__ == '__main__':
 # values are as follows:
 
 # access
-    
+
 #     Indicates the visibility of this class member, where value is specific to
 #     the language.
 
 # file
-    
+
 #     Indicates that the tag has file-limited visibility. This key has no
 #     corresponding value.
 
 # kind
-    
+
 #     Indicates the type, or kind, of tag. Its value is either one of the
 #     corresponding one-letter flags described under the various −−<LANG>−kinds
 #     options above, or a full name. It is permitted (and is, in fact, the
@@ -323,12 +329,12 @@ if __name__ == '__main__':
 # "pure virtual" for C++; "abstract" for Java).
 
 # inherits
-    
+
 #     When present, value. is a comma-separated list of classes from which this
 #     class is derived (i.e. inherits from).
 
 # signature
-    
+
 #     When present, value is a language-dependent representation of the
 #     signature of a routine. A routine signature in its complete form specifies
 #     the return type of a routine and its formal argument list. This extension
