@@ -1,5 +1,7 @@
 ################################################################################
 
+from __future__ import with_statement
+
 # Std Libs
 import os
 import re
@@ -19,6 +21,8 @@ from itertools import chain
 import sublime
 import sublimeplugin
 from sublime import statusMessage
+
+# Thread
 
 # User Libs
 import ctags
@@ -312,11 +316,22 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
         if not tags_file: return
 
         symbol = view.substr(view.word(view.sel()[0]))
-        tag_dir = dirname(tags_file)
-        tags = TagFile(tags_file, SYMBOL).get_tags_dict(symbol)
+
+        tags_paths = '%s_search_paths' % tags_file
+        search_paths = [tags_file]
+
+        if os.path.exists(tags_paths):
+            search_paths.extend(open(tags_paths).read().split('\n'))
+
+        for tags_file in search_paths:
+            tag_dir = dirname(tags_file)
+            tags = TagFile(tags_file, SYMBOL).get_tags_dict(symbol)
+            if tags:
+                break
 
         if not tags:
-            return statusMessage('Can\'t find "%s" in %s' % (symbol, tags_file))
+            # in %s' % (symbol, tags_file))
+            return statusMessage('Can\'t find "%s"' % symbol) 
 
         @prepared_4_quickpanel()
         def sorted_tags():
