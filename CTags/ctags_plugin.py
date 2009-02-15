@@ -62,7 +62,7 @@ def select(view, region):
     sel_set = view.sel()
     sel_set.clear()
     sel_set.add(region)
-    view.show(region)    
+    view.show(region)
 
 ################################################################################
 
@@ -81,7 +81,7 @@ def find_tags_relative_to(view, ask_to_build=True):
     if ask_to_build:
         statusMessage("Can't find any relevant tags file")
         view.runCommand('rebuildCTags')
-                 
+
 ################################################################################
 
 def follow_tag_path(view, tag_path, pattern):
@@ -93,7 +93,7 @@ def follow_tag_path(view, tag_path, pattern):
             if (not regions[-1] or (regions[-1] == regions[-2]) or
                 view.matchSelector(regions[-1].begin(), ENTITY_SCOPE)):
                 break
-    
+
     regions = [r for r in regions if r is not None]
     start_at = max(regions, key=lambda r: r.begin()).begin()
     pattern_region = view.find(pattern, start_at, sublime.LITERAL)
@@ -127,16 +127,16 @@ def format_tag_for_quickopen(tag, file=1):
         if field != "file":
             punct = OBJECT_PUNCTUATORS.get(field, ' -> ')
             format += string.Template (
-                '\t%($field)s$punct%(symbol)s' ).substitute(locals())
+                '    %($field)s$punct%(symbol)s' ).substitute(locals())
 
     if not format: format = '%(symbol)s'
-    tag_info = format % tag
-    space    = (80 - len(tag_info)) * ' ' 
+    tag_info = (format % tag).rstrip()
+    space    = (80 - len(tag_info)) * ' '
 
     return (tag_info + space + tag["ex_command"]).decode('utf8', 'ignore')
 
 format_for_current_file = functools.partial(format_tag_for_quickopen, file=0)
-                     
+
 ################################################################################
 
 def prepared_4_quickpanel(formatter=format_tag_for_quickopen):
@@ -172,7 +172,7 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
 
         tag_dir = normpath(dirname(tags_file))
         common_prefix = os.path.commonprefix([tag_dir, fn])
-        current_file = '.\\' + fn[len(common_prefix)+1:]
+        current_file = fn[len(common_prefix)+1:]
 
         ################################################################
 
@@ -217,7 +217,7 @@ class QuickPanel(sublimeplugin.WindowCommand):
 def different_mod_area(f1, f2, r1, r2):
     same_file   = f1 == f2
     same_region = abs(r1[0] - r2[0]) < 40
-    return not same_file or not same_region 
+    return not same_file or not same_region
 
 class JumpBack(sublimeplugin.WindowCommand):
     last    =     []
@@ -232,32 +232,32 @@ class JumpBack(sublimeplugin.WindowCommand):
         f, sel = JumpBack.last.pop()
         self.jump(f, eval(sel))
 
-    def lastModifications(self): 
+    def lastModifications(self):
         # Current Region
         cv = sublime.activeWindow().activeView()
         cr = eval(`cv.sel()[0]`)
         cf   = cv.fileName()
-      
+
         # Very latest, s)tarting modification
         sf, sr = JumpBack.mods.pop(0)
         sr = eval(sr)
 
-        not_still_same_mod_region = different_mod_area (sf, cf, cr, sr)
-        
+        in_different_mod_area = different_mod_area (sf, cf, cr, sr)
+
         # Default J)ump F)ile and R)egion
         jf, jr = sf, sr
 
         if JumpBack.mods:
             for i, (f, r) in enumerate(JumpBack.mods):
                 region = eval(r)
-                if different_mod_area(sf, f, sr, region):  
+                if different_mod_area(sf, f, sr, region):
                     break
- 
+
             del JumpBack.mods[:i+1]
-            if not not_still_same_mod_region:
+            if not in_different_mod_area:
                 jf, jr = f, region
 
-        if not JumpBack.mods: JumpBack.mods.append((jf, `jr`))        
+        if not JumpBack.mods: JumpBack.mods.append((jf, `jr`))
         self.jump(jf, jr)
 
     def jump(self, fn, sel):
@@ -265,16 +265,16 @@ class JumpBack(sublimeplugin.WindowCommand):
         def and_then(view):
             select(view, sublime.Region(*sel))
 
-    @classmethod                       
-    def append(cls, view):                                          
+    @classmethod
+    def append(cls, view):
         fn = view.fileName()
         if fn:
             cls.last.append((fn, `view.sel()[0]`))
-                                                                            
-    def onModified(self, view):             
+
+    def onModified(self, view):
         JumpBack.mods.insert(0, (view.fileName(), `view.sel()[0]`))
         del JumpBack.mods[100:]
-                 
+
 ################################################################################
 
 class RebuildCTags(sublimeplugin.TextCommand):
@@ -288,11 +288,11 @@ class RebuildCTags(sublimeplugin.TextCommand):
             if not sublime.questionBox('`ctags -R` in %s ?'% dirname(tag_file)):
                 return
 
-        RebuildCTags.building = True       
+        RebuildCTags.building = True
 
         self.build_ctags(tag_file)
         statusMessage('Re/Building CTags: Please be patient')
-                                     
+
     def done_building(self, tag_file):
         statusMessage('Finished building %s' % tag_file)
         RebuildCTags.building = False
@@ -301,7 +301,7 @@ class RebuildCTags(sublimeplugin.TextCommand):
     def build_ctags(self, tag_file):
         ctags.build_ctags(CTAGS_EXE, tag_file)
         return tag_file
-           
+
 ################################################################################
 
 class NavigateToDefinition(sublimeplugin.TextCommand):
@@ -309,15 +309,15 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
 
     def run(self, view, args):
         tags_file = find_tags_relative_to(view)
-        if not tags_file: return      
+        if not tags_file: return
 
         symbol = view.substr(view.word(view.sel()[0]))
-        tag_dir = dirname(tags_file)         
+        tag_dir = dirname(tags_file)
         tags = TagFile(tags_file, SYMBOL).get_tags_dict(symbol)
 
-        if not tags: 
+        if not tags:
             return statusMessage('Can\'t find "%s" in %s' % (symbol, tags_file))
-        
+
         @prepared_4_quickpanel()
         def sorted_tags():
             for t in sorted(tags.get(symbol, []), key=iget('tag_path')):
@@ -325,9 +325,9 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
 
         args, display = sorted_tags
 
-        if args:            
+        if args:
             JumpBack.append(view)
             (QuickPanel.partial(scroll_to_tag, view, tag_dir)
                        .show(args, display, skip_if_one = True))
- 
+
 ################################################################################
