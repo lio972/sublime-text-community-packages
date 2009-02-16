@@ -28,7 +28,7 @@ class SearchCommand(sublimeplugin.TextCommand):
             if region is not None:
                (row, col) = a_view.rowcol(region.begin())
                s = a_view.substr(a_view.line(region))
-               full_s = a_view.fileName() + "<" + str(row+1) + "> " + s
+               full_s = a_view.fileName() + "<" + str(row) + "> " + s
                result.append(full_s)
                next_region = self.advance_line(a_view, region)
             else:
@@ -68,5 +68,12 @@ class SearchReboundCommand(sublimeplugin.TextCommand):
          print "|" + file + "|" + a_view.fileName() + "|"
          if file == a_view.fileName():
             view.window().focusView(a_view)
-            position = a_view.textPoint(int(row), 0)
-            a_view.show(position)
+            position = a_view.textPoint(int(row)-1, 0)
+            # mark new region
+            region = a_view.line(position)
+            # reset selection
+            view_selection = a_view.sel()
+            view_selection.clear()
+            # add new selection
+            view_selection.add(region)
+            a_view.show(region)
