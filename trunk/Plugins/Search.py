@@ -28,7 +28,7 @@ class SearchCommand(sublimeplugin.TextCommand):
             if region is not None:
                (row, col) = a_view.rowcol(region.begin())
                s = a_view.substr(a_view.line(region))
-               full_s = a_view.fileName() + "<" + str(row) + "> " + s
+               full_s = a_view.fileName() + "<" + str(row+1) + "> " + s
                result.append(full_s)
                next_region = self.advance_line(a_view, region)
             else:
