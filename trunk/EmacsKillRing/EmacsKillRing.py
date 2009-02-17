@@ -1,7 +1,7 @@
 #
 # emacs-style killbuffer commands; kill, and yank
 # 
-import sublimeplugin, sublime, win32clipboard as w, win32con, re, unicodedata
+import sublimeplugin, sublime, re
 
 #
 # An implementation of the emacs kill ring.
@@ -22,7 +22,7 @@ class KillRing:
  
   def choices(self):
     choiceArr = []
-    for i in range(0,len(self.killRing)):
+    for i in range(1,len(self.killRing)):
       choiceArr.append( (i,self.killRing[i]) )
     return choiceArr
     
@@ -35,17 +35,17 @@ killRing = KillRing()
 #
 # Clipboard commands.
 #
-def getText(): 
-    w.OpenClipboard() 
-    d=w.GetClipboardData(win32con.CF_TEXT) 
-    w.CloseClipboard() 
-    return d 
- 
-def setText(aType,aString): 
-    w.OpenClipboard()
-    w.EmptyClipboard()
-    w.SetClipboardData(aType,aString) 
-    w.CloseClipboard()
+# def getText(): 
+#     w.OpenClipboard() 
+#     d=w.GetClipboardData(win32con.CF_TEXT) 
+#     w.CloseClipboard() 
+#     return d 
+#  
+# def setText(aType,aString): 
+#     w.OpenClipboard()
+#     w.EmptyClipboard()
+#     w.SetClipboardData(aType,aString) 
+#     w.CloseClipboard()
 
 def expandSelectionForKill(view, begin, end):
   nextChar = view.substr(end)
