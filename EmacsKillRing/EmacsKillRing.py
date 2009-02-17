@@ -75,7 +75,16 @@ class EmacsKillLineCommand(sublimeplugin.TextCommand):
         
   def isEnabled(self, view, args):
     # disable kill for multi-selection. Too much of a headache!
-    return len(view.sel()) == 1
+    if len(view.sel()) != 1:
+      return False
+      
+    s = view.sel()[0]
+    charAfterPoint = view.substr(s.end())
+    if ord(charAfterPoint) == 0:
+      # EOF
+      return False
+      
+    return True
 
   def run(self, view, args):
     global killRing
@@ -109,26 +118,27 @@ class EmacsYankChoice(sublimeplugin.TextCommand):
 #
 # Yank the most recent kill
 #
-#class EmacsYank(sublimeplugin.TextCommand):
-#  def _init__(self):
-#    pass
-#  
-#  def run(self, view, args):
-#    global killRing
-#    if len(args) == 0:
-#      valueToYank = killRing.peek()
-#    else:
-#      idx = int(args[0])
-#      valueToYank = killRing.get(idx)
-#      
-#    print "YANKING '%s'" % valueToYank
-#    for s in view.sel():
-#      # yank the killBuffer here.  
-#      view.erase(s)
-#      view.insert(s.begin(), valueToYank)
-#      
-#    # once we've yanked, we definitely don't want to
-#    # reuse the old kill buffer
-#    killRing.LastKillPosition = -1
+class EmacsYank(sublimeplugin.TextCommand):
+ 
+  def run(self, view, args):
+    global killRing
+    if len(args) == 0:
+      # no arguments means the command is being called directly
+      valueToYank = killRing.peek()
+    else:
+      # an argument means it's been called from the EmacsYankChoiceCommand
+      idx = int(args[0])
+      valueToYank = killRing.get(idx)
+      #print "not yet implemented"
+      #return
+      
+    print "YANKING '%s'" % valueToYank
+    for s in view.sel():
+      # yank the killBuffer here.  
+      view.insert(s.begin(), valueToYank)
+      
+    # once we've yanked, we definitely don't want to
+    # reuse the old kill buffer
+    killRing.LastKillPosition = -1
     
     
