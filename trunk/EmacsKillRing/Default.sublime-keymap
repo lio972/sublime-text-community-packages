@@ -3,6 +3,6 @@
   <binding key="ctrl+k" command="emacsKillLine" />
   <binding key="ctrl+shift+k" command="singleSelection" />
   <binding key="ctrl+y" command="emacsYank" />
-  <!--<binding key="ctrl+shift+y" command="emacsYankChoice" />-->
+  <binding key="ctrl+shift+y" command="emacsYankChoice" />
 
 </bindings>
