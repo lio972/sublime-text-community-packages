@@ -1,12 +1,18 @@
-This is an implementation of the emacs kill ring, for Sublime Text.
+If you've used emacs, you may be used to a text-manipulation system that is very different from windows cut-and-paste. This is the emacs kill ring, and if you are like me, you miss the ability to hit ctrl+k to kill lines, ctrl+y to yank text back, ctrl+space to set a mark, and ctrl+w to cut a region to the kill buffer.
 
-Rather than explain the emacs kill ring, I'm assuming you're interested because you're moving from emacs, and already know what the kill ring is. 
+This package is for you; it implements these emacs commands;
 
-You can use ctrl+k to do exactly what emacs does; yanks until the end of a line, or the new line if your cursor is there. This builds up an entry in the kill ring, and also sets the windows clipboard to the killed text. 
+- kill-line (ctrl+k)
+- yank (ctrl+y)
+- set-mark-command (ctrl+space)
+- kill-region (ctrl+w)
+- kill-ring-save (alt+w)
 
-ctrl+y Yank always pulls the windows clipboard.
+These are bound in Sublime Text to the same keys used by a default install of emacs.
 
-ctrl+shift+y allows you to choose from everything in the kill ring, and includes the current windows clipboard. 
+This is tightly integrated with the windows clipboard; the most-recent cut is copied to the windows clipboard, and yank is really just paste, remapped. 
+
+Additionally, there is another command in the package I'll call `yank-any`, which lets you yank any item in the kill ring.
 
 These mapping overwrite singleSelection (ctrl+k) and redo (ctrl+y) so I've remapped them;
 
