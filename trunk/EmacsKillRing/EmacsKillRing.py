@@ -209,9 +209,9 @@ class EmacsYankChoiceCommand(sublimeplugin.TextCommand):
 # if an argument is specified, 
 # that numbered kill ring entry
 #
-class EmacsYankCommand(sublimeplugin.WindowCommand):
+class EmacsYankCommand(sublimeplugin.TextCommand):
  
-  def run(self, window, args):
+  def run(self, view, args):
     global killRing
     
     if len(args) == 0:
@@ -227,11 +227,9 @@ class EmacsYankCommand(sublimeplugin.WindowCommand):
       idx = int(args[0])
       valueToYank = killRing.get(idx)
     
-    viewToInsert = window.activeView()
-    
-    for s in viewToInsert.sel():
-      viewToInsert.erase(s)
-      viewToInsert.insert(s.begin(), valueToYank)
+    for s in view.sel():
+      view.erase(s)
+      view.insert(s.begin(), valueToYank)
             
     # once we've yanked, we definitely don't want to
     # reuse the old kill buffer
