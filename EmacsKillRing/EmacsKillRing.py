@@ -181,7 +181,8 @@ class EmacsYankCommand(sublimeplugin.TextCommand):
       viewToInsert = yankView
       valueToYank = killRing.get(idx)
       #print "not yet implemented"
-    
+      
+    # we no longer need the yankView, if it was set.
     yankView = None
     for s in viewToInsert.sel():
       viewToInsert.erase(s)
