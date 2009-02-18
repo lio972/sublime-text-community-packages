@@ -127,33 +127,21 @@ class EmacsYankChoiceCommand(sublimeplugin.TextCommand):
   def run(self, view, args):
     # choose from the yank-buffer using the quick panel
     global killRing
-    global yankView
     choices = killRing.choices()
     names = [name for (idx, name) in choices]
     idx = ["%s" % idx for (idx, name) in choices]
-    print "YANK CHOICE IN " + view.fileName()
-    yankView = view
+    #print "YANK CHOICE IN " + view.fileName()
     view.window().showQuickPanel("", "emacsYank", idx, names)
-
-# something of a hack. When the quickpanel is
-# visible, the view argument passed to the run 
-# command is not the one that the panel
-# was launched from. It is basically not useable.
-# Therefore, we store the view used by the 
-# yankChoice command, so that the yank command can
-# yank to the right place.
-yankView = None
 
 #
 # Yank the most recent kill, or 
 # if an argument is specified, 
 # that numbered kill ring entry
 #
-class EmacsYankCommand(sublimeplugin.TextCommand):
+class EmacsYankCommand(sublimeplugin.WindowCommand):
  
-  def run(self, view, args):
+  def run(self, window, args):
     global killRing
-    global yankView
     
     valueToYank = killRing.peek()
 
@@ -161,18 +149,17 @@ class EmacsYankCommand(sublimeplugin.TextCommand):
       # no arguments means the command 
       # is being called directly
       valueToYank = sublime.getClipboard()
-      viewToInsert = view
     elif args[0] == "clipboard":
       # the user has chosen to yank windows clipboard.
       valueToYank = sublime.getClipboard()
-      viewToInsert = yankView
     else:
       # an argument means it's been called from 
       # the EmacsYankChoiceCommand
       idx = int(args[0])
-      viewToInsert = yankView
       valueToYank = killRing.get(idx)
-      
+    
+    viewToInsert = window.activeView()
+    
     # we no longer need the yankView, if it was set.
     yankView = None
     for s in viewToInsert.sel():
