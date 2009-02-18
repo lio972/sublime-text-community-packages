@@ -27,8 +27,11 @@ class KillRing:
     
     
   def append(self, content):
-    # appends killed data to the current entry.
+    # appends killed data to the current entry. 
+    # Also updates the windows clipboard with 
+    # everything in this kill entry
     self.killRing[-1] = self.killRing[-1] + content
+    sublime.setClipboard(self.killRing[-1])
  
   def choices(self):
     # tuples of integers with kill-ring entries. 
@@ -36,6 +39,7 @@ class KillRing:
     choiceArr = []
     for i in range(1,len(self.killRing)):
       choiceArr.append( (i,self.killRing[i]) )
+    choiceArr.append( ("clipboard", "Windows Clipboard: " + sublime.getClipboard()))
     return choiceArr
     
   def get(self, idx):
@@ -43,22 +47,6 @@ class KillRing:
     return self.killRing[idx]
 
 killRing = KillRing()
-
-
-#
-# Clipboard commands.
-#
-# def getText(): 
-#     w.OpenClipboard() 
-#     d=w.GetClipboardData(win32con.CF_TEXT) 
-#     w.CloseClipboard() 
-#     return d 
-#  
-# def setText(aType,aString): 
-#     w.OpenClipboard()
-#     w.EmptyClipboard()
-#     w.SetClipboardData(aType,aString) 
-#     w.CloseClipboard()
 
 def expandSelectionForKill(view, begin, end):
   """Returns a selection that will be cut; basically, 
@@ -172,15 +160,18 @@ class EmacsYankCommand(sublimeplugin.TextCommand):
     if len(args) == 0:
       # no arguments means the command 
       # is being called directly
-      valueToYank = killRing.peek()
+      valueToYank = sublime.getClipboard()
       viewToInsert = view
+    elif args[0] == "clipboard":
+      # the user has chosen to yank windows clipboard.
+      valueToYank = sublime.getClipboard()
+      viewToInsert = yankView
     else:
       # an argument means it's been called from 
       # the EmacsYankChoiceCommand
       idx = int(args[0])
       viewToInsert = yankView
       valueToYank = killRing.get(idx)
-      #print "not yet implemented"
       
     # we no longer need the yankView, if it was set.
     yankView = None
