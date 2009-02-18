@@ -91,7 +91,6 @@ class Marks:
   def copyMark(self, view):
     global marks
     global killRing
-    print "COPYMARK"
     region = self.selectMark(view)
     content = view.substr(region)
     killRing.new()
