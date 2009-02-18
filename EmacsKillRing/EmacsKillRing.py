@@ -158,8 +158,6 @@ class EmacsYankCommand(sublimeplugin.WindowCommand):
     
     viewToInsert = window.activeView()
     
-    # we no longer need the yankView, if it was set.
-    yankView = None
     for s in viewToInsert.sel():
       viewToInsert.erase(s)
       viewToInsert.insert(s.begin(), valueToYank)
