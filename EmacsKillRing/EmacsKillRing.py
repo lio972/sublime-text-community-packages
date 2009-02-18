@@ -143,8 +143,6 @@ class EmacsYankCommand(sublimeplugin.WindowCommand):
   def run(self, window, args):
     global killRing
     
-    valueToYank = killRing.peek()
-
     if len(args) == 0:
       # no arguments means the command 
       # is being called directly
