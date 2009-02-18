@@ -187,8 +187,6 @@ class EmacsYankCommand(sublimeplugin.TextCommand):
     for s in viewToInsert.sel():
       viewToInsert.erase(s)
       viewToInsert.insert(s.begin(), valueToYank)
-
-
             
     # once we've yanked, we definitely don't want to
     # reuse the old kill buffer
