@@ -46,7 +46,80 @@ class KillRing:
     # gets a numbered entry in the kill ring
     return self.killRing[idx]
 
+#
+# An implementation of the system of marks in emacs buffers
+#
+class Marks:
+  def __init__(self):
+    self.innerMarks = {}
+    
+  def setMark(self, view):
+    s = view.sel()[0]
+    viewName = self.viewIdentifier(view)
+    point = s.begin()
+    self.innerMarks[viewName] = s.begin()
+    sublime.statusMessage("Set mark at char %s in %s" % (point, viewName))
+    
+  def viewIdentifier(self, view):
+    id = view.fileName()
+    if id == None:
+      id = "<?unknown?>" # unlikely to be a filename
+    return id
+    
+  def clearMark(self, view):
+    # if we've cut, we want to unset the mark
+    # on this buffer
+    s = view.sel()[0]
+    viewName = self.viewIdentifier(view)
+    print "NYI"
+    
+  def selectMark(self, view):
+    s = view.sel()[0]
+    viewName = self.viewIdentifier(view)
+    sublime.statusMessage("NOT YET IMPLEMENTED")
+    start = min(s.begin(), self.innerMarks[viewName])
+    end = max(s.end(), self.innerMarks[viewName])
+    region = sublime.Region(start, end)
+    return region
+    
+  def killMark(self, view):
+    global marks
+    region = self.selectMark(view)
+    view.sel().add(region)
+    view.runCommand("emacsKillLine")
+    
+  def copyMark(self, view):
+    global marks
+    global killRing
+    print "COPYMARK"
+    region = self.selectMark(view)
+    content = view.substr(region)
+    killRing.new()
+    killRing.append(content)
+    print content
+    
+
+#
+# Base class for Emacs selection commands. 
+#
+# Only enabled if there is exactly one selection.
+#
+class EmacsSelectionCommand(sublimeplugin.TextCommand):
+  def run(self, view, args):
+    print "Not appropriate in base class"
+
+  def isEnabled(self, view, args):
+    # disable kill for multi-selection. Too much of a headache!
+    if len(view.sel()) != 1:
+      return False
+    return True
+    
+  
+#
+# the global killring and mark collection
+#  
 killRing = KillRing()
+marks = Marks()
 
 def expandSelectionForKill(view, begin, end):
   """Returns a selection that will be cut; basically, 
@@ -89,11 +162,10 @@ def atEOF(view, point):
 #
 # Kill Line
 #
-class EmacsKillLineCommand(sublimeplugin.TextCommand):
+class EmacsKillLineCommand(EmacsSelectionCommand):
         
   def isEnabled(self, view, args):
-    # disable kill for multi-selection. Too much of a headache!
-    if len(view.sel()) != 1:
+    if EmacsSelectionCommand.isEnabled(self, view, args) == False:
       return False
       
     # if we are at the end of the file, we can't kill.
@@ -114,7 +186,7 @@ class EmacsKillLineCommand(sublimeplugin.TextCommand):
       # we've moved the cursor, meaning we can't 
       # continue to use the same kill buffer
       killRing.new()
-      
+       
     expanded = expandSelectionForKill(view, s.begin(), s.end())
     killRing.LastKillPosition = expanded.begin()
     killRing.append(view.substr(expanded))
@@ -166,4 +238,30 @@ class EmacsYankCommand(sublimeplugin.WindowCommand):
     # reuse the old kill buffer
     killRing.LastKillPosition = -1
     
+#
+# Set a mark in the current view
+#
+class EmacsSetMarkCommand(EmacsSelectionCommand):
+  def run(self, view, args):
+    global marks
+    marks.setMark(view)
+            
+#
+# Kill between the current cursor and the mark
+#
+class EmacsKillToMarkCommand(EmacsSelectionCommand):
+  def run(self, view, args):
+    global marks
+    marks.killMark(view)
 
+#
+# Kill between the current cursor and the mark
+#
+class EmacsKillRingSaveCommand(EmacsSelectionCommand):
+  def run(self, view, args):
+    global marks
+    marks.copyMark(view)
+  
+  
+  
+  

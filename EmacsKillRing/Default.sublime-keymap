@@ -6,6 +6,9 @@
   <binding key="ctrl+k" command="emacsKillLine" />
   <binding key="ctrl+y" command="paste" />
   <binding key="ctrl+shift+y" command="emacsYankChoice" />
+  <binding key="ctrl+space" command="emacsSetMark" />
+  <binding key="ctrl+w" command="emacsKillToMark" />
+  <binding key="alt+w" command="emacsKillRingSave" />
 
   <!-- 
     these are replacements for the functions we've just mapped over
