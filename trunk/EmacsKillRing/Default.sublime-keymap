@@ -1,11 +1,15 @@
 <bindings>
 
-  <!-- these bindings are emacs defaults -->
+  <!-- 
+    these bindings are emacs defaults 
+  -->
   <binding key="ctrl+k" command="emacsKillLine" />
-  <binding key="ctrl+y" command="emacsYank" />
+  <binding key="ctrl+y" command="paste" />
   <binding key="ctrl+shift+y" command="emacsYankChoice" />
 
-  <!-- these are replacements for the functions we've just mapped over-->
+  <!-- 
+    these are replacements for the functions we've just mapped over
+  -->
   <binding key="ctrl+shift+k" command="singleSelection" />
   <binding key="ctrl+shift+z" command="redo" />
   
