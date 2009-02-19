@@ -6,6 +6,7 @@
 !_TAG_PROGRAM_VERSION	5.7	//
 EscapeRegex	search_in_files.py	/^class EscapeRegex(sublimeplugin.TextCommand):$/;"	c
 FindInFiles	search_in_files.py	/^class FindInFiles(sublimeplugin.TextCommand):$/;"	c
+add_jumpback	search_in_files.py	/^def add_jumpback():$/;"	f
 and_then	search_in_files.py	/^            def and_then(view):$/;"	f	function:FindInFiles.co_routine
 co_routine	search_in_files.py	/^    def co_routine(self, view, args):$/;"	m	class:FindInFiles
 decorator	plugin_helpers.py	/^    def decorator(func):$/;"	f	function:threaded
@@ -15,10 +16,11 @@ full_buffer	search_in_files.py	/^def full_buffer(view):$/;"	f
 isEnabled	search_in_files.py	/^    def isEnabled(self, view, args):$/;"	m	class:FindInFiles
 is_regex_search	search_in_files.py	/^def is_regex_search(view):$/;"	f
 notify	search_in_files.py	/^        def notify():$/;"	f	function:FindInFiles.finish
+quick_panel	search_in_files.py	/^    def quick_panel(self, args, files=False, display=None):$/;"	m	class:FindInFiles
 run	plugin_helpers.py	/^            def run():$/;"	f	function:threaded/decorator/threaded
 run	search_in_files.py	/^    def run(self, view, args):$/;"	m	class:EscapeRegex
 run	search_in_files.py	/^    def run(self, view, args):$/;"	m	class:FindInFiles
-search	search_in_files.py	/^                    def search(search_in):$/;"	f	function:FindInFiles.search/status
+search	search_in_files.py	/^                def search(search_in):$/;"	f	function:FindInFiles.search/status
 search	search_in_files.py	/^    def search(self, files, pattern, is_regex):$/;"	m	class:FindInFiles
 show_find_panel	search_in_files.py	/^def show_find_panel():$/;"	f
 status	search_in_files.py	/^            def status():$/;"	f	function:FindInFiles.search
