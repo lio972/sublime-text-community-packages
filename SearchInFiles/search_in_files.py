@@ -25,7 +25,7 @@ from plugin_helpers import wait_until_loaded, view_fn, threaded
 
 ################################### SETTINGS ###################################
 
-choose_files_to_search = 1
+choose_files_to_search = 0
 
 ################################################################################
 
@@ -125,14 +125,15 @@ class FindInFiles(sublimeplugin.TextCommand):
                 w.runCommand('findAll')
  
         yield STOP
-        
+
     def finish(self, results):
         finds, errors = results
-        if not finds: 
+        if not finds:
+            sublime.activeWindow().runCommand('hidePanel')
             return sublime.setTimeout (
                 functools.partial(sublime.statusMessage, 'Found no files'), 100
             )
-        
+
         results = 'Finds:\n%s\nErrors:\n%s' % \
                    tuple(map(pprint.pformat, [finds, errors]))
         
