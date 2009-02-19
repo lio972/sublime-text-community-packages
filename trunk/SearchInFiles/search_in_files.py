@@ -82,6 +82,12 @@ class FindInFiles(sublimeplugin.TextCommand):
         yield # Initiate
 
         window = sublime.activeWindow()
+
+        try:
+            sublimeplugin.allCommands[1]['jumpBack'].append(window.activeView())
+        except Exception, e:
+            pass
+
         is_regex = is_regex_search(view)
         
         mount_points = window.project().mountPoints()
@@ -116,7 +122,7 @@ class FindInFiles(sublimeplugin.TextCommand):
             return sublime.setTimeout (
                 functools.partial(sublime.statusMessage, 'Found no files'), 100
             )
-        
+
         results = 'Finds:\n%s\nErrors:\n%s' % \
                    tuple(map(pprint.pformat, [finds, errors]))
         
@@ -154,11 +160,8 @@ class FindInFiles(sublimeplugin.TextCommand):
                         if matches:
                             findings.append(f)
                             display.append('(%3s) %s' % (len(matches), f) ) 
-
                     try:
-                        mapped = True
                         search(mmap.mmap(fh.fileno(), 0))
-
                     except Exception, e:
                         try:
                             fh.seek(0)
@@ -166,7 +169,6 @@ class FindInFiles(sublimeplugin.TextCommand):
 
                         except Exception, e:
                             errors.append((f, `e`))
-
             except IOError, e:
                 errors.append((f, "fh: %s" % `e`))
 
