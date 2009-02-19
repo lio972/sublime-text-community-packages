@@ -62,12 +62,7 @@ class FindInFiles(sublimeplugin.TextCommand):
     routine = None
     
     def isEnabled(self, view, args):
-        print args
-
         enabled = args or view_is_find_panel(view)
-        
-        print enabled
-        
         if not enabled:
             show_find_panel()
             self.routine = None
@@ -81,7 +76,6 @@ class FindInFiles(sublimeplugin.TextCommand):
 
         ret  = self.routine.send(args)
         if ret is STOP: 
-            print 'STOP'
             self.routine = None
 
     def co_routine(self, view, args):
@@ -152,7 +146,7 @@ class FindInFiles(sublimeplugin.TextCommand):
             @timeout
             def status():
                 sublime.statusMessage(f)
-            
+
             try:
                 with open(f, 'r+') as fh:
                     def search(search_in):
