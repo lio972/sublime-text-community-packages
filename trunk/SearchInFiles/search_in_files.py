@@ -35,7 +35,7 @@ def is_regex_search(view):
 
 ################################################################################
 
-STOP = object()
+STOP, NEXT = object(), object()
 
 def timeout(f):
     return sublime.setTimeout(f, 10)
@@ -62,7 +62,12 @@ class FindInFiles(sublimeplugin.TextCommand):
     routine = None
     
     def isEnabled(self, view, args):
+        print args
+
         enabled = args or view_is_find_panel(view)
+        
+        print enabled
+        
         if not enabled:
             show_find_panel()
             self.routine = None
@@ -75,7 +80,9 @@ class FindInFiles(sublimeplugin.TextCommand):
             self.routine.next() # Initiate
 
         ret  = self.routine.send(args)
-        if ret is STOP: self.routine = None
+        if ret is STOP: 
+            print 'STOP'
+            self.routine = None
 
     def co_routine(self, view, args):
         yield # Initiate
@@ -148,23 +155,26 @@ class FindInFiles(sublimeplugin.TextCommand):
             
             try:
                 with open(f, 'r+') as fh:
-                    try:
-                        mapping = mmap.mmap(fh.fileno(), 0)
-                        matches = matcher.findall(mapping)
+                    def search(search_in):
+                        matches = matcher.findall(search_in)
                         if matches:
                             findings.append(f)
                             display.append('(%3s) %s' % (len(matches), f) ) 
-    
-                    except Exception, e:
-                        errors.append((f, `e`))
 
-                    finally:
-                        try: mapping.close()
-                        except UnboundLocalError, e:
-                            pass
+                    try:
+                        mapped = True
+                        search(mmap.mmap(fh.fileno(), 0))
+
+                    except Exception, e:
+                        try:
+                            fh.seek(0)
+                            search(fh.read())
+
+                        except Exception, e:
+                            errors.append((f, `e`))
 
             except IOError, e:
-                errors.append((f, `e`))
+                errors.append((f, "fh: %s" % `e`))
 
         return findings, display, errors
 
