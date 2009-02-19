@@ -59,15 +59,6 @@ def replace_full_buffer(view, replacement):
 
 ################################################################################
 
-class openSearch(sublimeplugin.TextCommand):
-    def run(self, view, args):
-        for f in args:
-            @wait_until_loaded(f)
-            def and_then(view):
-                w = sublime.activeWindow()
-                w.focusView(view)
-                w.runCommand('findAll')
-
 class FindInFiles(sublimeplugin.TextCommand):
     routine = None
     
@@ -113,6 +104,13 @@ class FindInFiles(sublimeplugin.TextCommand):
 
         self.search(files, full_buffer(view), is_regex)
 
+        for f in (yield):
+            @wait_until_loaded(f)
+            def and_then(view):
+                w = sublime.activeWindow()
+                w.focusView(view)
+                w.runCommand('findAll')
+
     def finish(self, results):
         finds, display, errors = results
         if not finds: return sublime.statusMessage('Found no files')
@@ -127,7 +125,7 @@ class FindInFiles(sublimeplugin.TextCommand):
             'Else msgs from thread will drown it out'
             sublime.statusMessage('Results are on clipboard as python list')
             
-        sublime.activeWindow().showQuickPanel ( "",'openSearch', finds, display,
+        sublime.activeWindow().showQuickPanel ( "",'findInFiles', finds, display,
             sublime.QUICK_PANEL_FILES | sublime.QUICK_PANEL_MULTI_SELECT
          )
 
