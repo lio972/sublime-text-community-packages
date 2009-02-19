@@ -23,6 +23,10 @@ import sublimeplugin
 # User Libs
 from plugin_helpers import wait_until_loaded, view_fn, threaded
 
+################################### SETTINGS ###################################
+
+choose_files_to_search = 1
+
 ################################################################################
 
 PANEL_SYNTAXES = [
@@ -104,10 +108,13 @@ class FindInFiles(sublimeplugin.TextCommand):
             mount_paths = (yield)
             mount_points = [d for d in mount_points if d['path'] in mount_paths]
 
-        self.quick_panel (
-            list( chain(*(d['files'] for d in mount_points)) ), files=1 )
+        files_to_search = list( chain(*(d['files'] for d in mount_points)) )
+        
+        if choose_files_to_search:
+            self.quick_panel (files_to_search, files=1 )
+            files_to_search = (yield)
 
-        self.search((yield), full_buffer(view), is_regex_search(view))
+        self.search(files_to_search, full_buffer(view), is_regex_search(view))
         add_jumpback()
 
         for f in (yield):
