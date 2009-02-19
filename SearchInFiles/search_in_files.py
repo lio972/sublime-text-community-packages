@@ -35,6 +35,8 @@ def is_regex_search(view):
 
 ################################################################################
 
+STOP = object()
+
 def timeout(f):
     return sublime.setTimeout(f, 10)
 
@@ -53,9 +55,6 @@ def view_is_find_panel(view):
 
 def full_buffer(view):
     return view.substr(sublime.Region(0, view.size()))
-
-def replace_full_buffer(view, replacement):
-    view.replace(sublime.Region(0, view.size()), replacement)
 
 ################################################################################
 
@@ -76,7 +75,10 @@ class FindInFiles(sublimeplugin.TextCommand):
             self.routine.next() # Initiate
 
         try:
-            self.routine.send(args)
+            ret  = self.routine.send(args)
+            if ret is STOP:
+                self.routine.next()
+
         except StopIteration:  
             self.routine = None
             return
@@ -110,10 +112,15 @@ class FindInFiles(sublimeplugin.TextCommand):
                 w = sublime.activeWindow()
                 w.focusView(view)
                 w.runCommand('findAll')
-
+ 
+        yield STOP
+        
     def finish(self, results):
         finds, display, errors = results
-        if not finds: return sublime.statusMessage('Found no files')
+        if not finds: 
+            return sublime.setTimeout (
+                functools.partial(sublime.statusMessage, 'Found no files'), 100
+            )
         
         results = 'Finds:\n%s\nErrors:\n%s' % \
                    tuple(map(pprint.pformat, [finds, errors]))
