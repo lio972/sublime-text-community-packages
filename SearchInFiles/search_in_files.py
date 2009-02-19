@@ -117,23 +117,29 @@ class FindInFiles(sublimeplugin.TextCommand):
         yield STOP
         
     def finish(self, results):
-        finds, display, errors = results
+        finds, errors = results
         if not finds: 
             return sublime.setTimeout (
                 functools.partial(sublime.statusMessage, 'Found no files'), 100
             )
-
+        
         results = 'Finds:\n%s\nErrors:\n%s' % \
                    tuple(map(pprint.pformat, [finds, errors]))
         
         sublime.setClipboard(results)
-        
+
         @timeout
         def notify():
             'Else msgs from thread will drown it out'
-            sublime.statusMessage('Results are on clipboard as python list')
-            
-        sublime.activeWindow().showQuickPanel ( "",'findInFiles', finds, display,
+            if errors:
+                sublime.messageBox( 'Files couldn\'t be searched: \n\n%s' %
+                                     '\n'.join(errors) )
+            sublime.statusMessage("Results are on clipboard as python list")
+
+        sublime.activeWindow().showQuickPanel (
+             "",'findInFiles', 
+            [f[1] for f in finds],
+            ['(%3s) %s' % f for f in finds],
             sublime.QUICK_PANEL_FILES | sublime.QUICK_PANEL_MULTI_SELECT
          )
 
@@ -143,7 +149,6 @@ class FindInFiles(sublimeplugin.TextCommand):
     def search(self, files, pattern, is_regex):
         findings = []
         errors = []
-        display = []
 
         if not is_regex: pattern = re.escape(pattern)
         matcher = re.compile(pattern, re.M)
@@ -153,26 +158,23 @@ class FindInFiles(sublimeplugin.TextCommand):
             def status():
                 sublime.statusMessage(f)
 
-            try:
-                with open(f, 'r+') as fh:
-                    def search(search_in):
-                        matches = matcher.findall(search_in)
-                        if matches:
-                            findings.append(f)
-                            display.append('(%3s) %s' % (len(matches), f) ) 
+            with open(f, 'r+') as fh:
+                def search(search_in):
+                    matches = matcher.findall(search_in)
+                    if matches:
+                        findings.append((len(matches), f))
+                try:
+                    search(mmap.mmap(fh.fileno(), 0))
+
+                except Exception, e:
                     try:
-                        search(mmap.mmap(fh.fileno(), 0))
+                        fh.seek(0)
+                        search(fh.read())
+
                     except Exception, e:
-                        try:
-                            fh.seek(0)
-                            search(fh.read())
+                        errors.append((f, `e`))
 
-                        except Exception, e:
-                            errors.append((f, `e`))
-            except IOError, e:
-                errors.append((f, "fh: %s" % `e`))
-
-        return findings, display, errors
+        return sorted(findings, reverse=True), errors
 
 class EscapeRegex(sublimeplugin.TextCommand):
     def run(self, view, args):
