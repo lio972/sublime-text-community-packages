@@ -76,9 +76,7 @@ class FindInFiles(sublimeplugin.TextCommand):
 
         try:
             ret  = self.routine.send(args)
-            if ret is STOP:
-                self.routine.next()
-
+            if ret is STOP: self.routine = None
         except StopIteration:  
             self.routine = None
             return
