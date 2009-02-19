@@ -26,6 +26,7 @@ from plugin_helpers import wait_until_loaded, view_fn, threaded
 ################################### SETTINGS ###################################
 
 choose_files_to_search = 0
+open_new_window = 1
 
 ################################################################################
 
@@ -46,7 +47,8 @@ def timeout(f):
 
 def add_jumpback():
     try:
-        sublimeplugin.allCommands[1]['jumpBack'].append(window.activeView())
+        ( sublimeplugin.allCommands[1]['jumpBack'].append(sublime.activeWindow()
+                                                  .activeView()))
     except Exception, e:
         pass
 
@@ -91,9 +93,14 @@ class FindInFiles(sublimeplugin.TextCommand):
         if self.routine is None:
             self.routine = self.co_routine(view, args)
             self.routine.next()
-
-        ret  = self.routine.send(args)
-        if ret is STOP: 
+        
+        try:
+            ret  = self.routine.send(args)
+            if ret is STOP:
+                self.routine = None
+            elif ret is NEXT:
+                sublime.setTimeout(self.routine.next, 0)
+        except StopIteration:
             self.routine = None
 
     def co_routine(self, view, args):
@@ -117,19 +124,36 @@ class FindInFiles(sublimeplugin.TextCommand):
         self.search(files_to_search, full_buffer(view), is_regex_search(view))
         add_jumpback()
 
-        for f in (yield):
-            @wait_until_loaded(f)
-            def and_then(view):
-                w = sublime.activeWindow()
-                w.focusView(view)
-                w.runCommand('findAll')
+        finds = map(eval, (yield))
+        
+        self.quick_panel ( [f[1] for f in finds], files=1,
+                           display=['(%3s) %s' % f for f in finds] )
+                           
+        finds = (yield)
+
+        if open_new_window and len(finds) > 1:
+            @timeout
+            def later():
+                window.activeView().runCommand('findInFiles NEXT')
+            noop = (yield NEXT)
+            yield sublime.runCommand('newWindow')
+
+        @timeout
+        def later():
+            for f in finds:
+                @wait_until_loaded(f)
+                def and_then(view):
+                    w = sublime.activeWindow()
+                    w.focusView(view)
+                    w.runCommand('findAll')
  
         yield STOP
 
     def finish(self, results):
+        sublime.activeWindow().runCommand('hidePanel')
+        
         finds, errors = results
         if not finds:
-            sublime.activeWindow().runCommand('hidePanel')
             return sublime.setTimeout (
                 functools.partial(sublime.statusMessage, 'Found no files'), 100
             )
@@ -147,9 +171,9 @@ class FindInFiles(sublimeplugin.TextCommand):
                                      '\n'.join(errors) )
             sublime.statusMessage("Results are on clipboard as python list")
 
-        self.quick_panel( [f[1] for f in finds], files=1,
-                          display=['(%3s) %s' % f for f in finds] )
-
+        sublime.activeWindow().activeView().runCommand('findInFiles', 
+            map(repr, finds))
+        
 ################################################################################
 
     @threaded(finish=finish, msg='search already running')
