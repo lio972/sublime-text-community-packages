@@ -74,12 +74,8 @@ class FindInFiles(sublimeplugin.TextCommand):
             self.routine = self.co_routine(view, args)
             self.routine.next() # Initiate
 
-        try:
-            ret  = self.routine.send(args)
-            if ret is STOP: self.routine = None
-        except StopIteration:  
-            self.routine = None
-            return
+        ret  = self.routine.send(args)
+        if ret is STOP: self.routine = None
 
     def co_routine(self, view, args):
         yield # Initiate
