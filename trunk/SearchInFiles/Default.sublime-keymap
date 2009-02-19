@@ -33,7 +33,7 @@ Also note that if the same key is bound twice, the last binding takes precedence
     <!-- Use whatever ctrl+alt+shift inserts on your if system if any
         Otherwise heuristic for detecting the find panel will fail
     -->  
-        <context name="allPreceedingText" value="[^Ã]"/>
+        <!-- <context name="allPreceedingText" value="[^Ã]"/> -->
         
     </binding>
     <binding key="ctrl+slash" command="escapeRegex">

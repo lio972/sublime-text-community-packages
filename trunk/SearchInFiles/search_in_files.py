@@ -6,24 +6,22 @@ from __future__ import with_statement
 import re
 import os
 import functools
-
-from os.path import dirname, split, join, splitext, normpath
-
-# Sublime Modules
-
-import sublime
-import sublimeplugin
-import os
 import time
 import glob
 import mmap
 import threading
 import pprint
 
-# User Libs
+from itertools import chain
+from os.path import dirname, split, join, splitext, normpath
 
+# Sublime Modules
+
+import sublime
+import sublimeplugin
+
+# User Libs
 from plugin_helpers import wait_until_loaded, view_fn, threaded
-from walk_files import find_files
 
 ################################################################################
 
@@ -40,9 +38,18 @@ def is_regex_search(view):
 def timeout(f):
     return sublime.setTimeout(f, 10)
 
-def show_find_panel(window):
+def show_find_panel():
+    window = sublime.activeWindow()
     window.runCommand('hidePanel')
     window.runCommand('showPanel find')
+
+def view_is_find_panel(view):
+    # Is the `view` a reference to the find panel?
+    syntax = view.options().get('syntax')
+    return (
+        # in case of untitled view, `None != None`
+        syntax in PANEL_SYNTAXES and 
+        view.fileName() != sublime.activeWindow().activeView().fileName() ) 
 
 def full_buffer(view):
     return view.substr(sublime.Region(0, view.size()))
@@ -52,122 +59,90 @@ def replace_full_buffer(view, replacement):
 
 ################################################################################
 
+class openSearch(sublimeplugin.TextCommand):
+    def run(self, view, args):
+        for f in args:
+            @wait_until_loaded(f)
+            def and_then(view):
+                w = sublime.activeWindow()
+                w.focusView(view)
+                w.runCommand('findAll')
+
 class FindInFiles(sublimeplugin.TextCommand):
-    def __init__(self):
-        self.reset()
+    routine = None
     
     def isEnabled(self, view, args):
-        return self.state != 3
-    
-    def reset(self):
-        self.pattern    = None
-        self.file_mask  = None
-        self.wd         = None
-        self.is_regex   = None
-        self.state      = 1
+        enabled = args or view_is_find_panel(view)
+        if not enabled:
+            show_find_panel()
+            self.routine = None
+        else:
+            return 1
 
     def run(self, view, args):
-        if args:
-            if 'reset' in args:
-                return self.reset()
-        
-        window = view.window()
-        self.window = window        
-        
-        # This will always return the currently active file
-        activeView = window.activeView()
-        
-        # Is the `view` a reference to the find panel?
-        syntax = view.options().get('syntax')
-        view_is_find_panel= (
-            syntax in PANEL_SYNTAXES and 
-            view.fileName() != activeView.fileName() ) 
-            
-        if view_is_find_panel:
-            getattr(self, 'command%s' % self.state)(view, activeView)
-            self.state += 1
-        else:
-            sublime.statusMessage('FindInFiles Reset')
-            self.reset()
-    
-    def command1(self, panel, activeView):
-        self.pattern = full_buffer(panel)
-        # print self.state, `self.pattern`
-                
-        fn = activeView.fileName()
-        
-        self.is_regex = is_regex_search(panel)
-        self.wd = normpath(dirname(fn))
-        
-        ext = splitext(fn)[1]
-        
-        if self.is_regex:
-            mask = '.\\;%s$' % ('.*' + re.escape(ext))
-            msg = 'Enter file mask $PATH(recursive);$REGEX'
-        else:
-            mask = '.\\*' + ext
-            msg = 'Enter file mask $PATH/$GLOB'
+        if self.routine is None:
+            self.routine = self.co_routine(view, args)
+            self.routine.next() # Initiate
 
-        replace_full_buffer(panel, mask)
-        panel.sel().clear()
-        panel.sel().add(sublime.Region(1, 1))
+        try:
+            self.routine.send(args)
+        except StopIteration:  
+            self.routine = None
+            return
 
-        sublime.statusMessage(msg)
+    def co_routine(self, view, args):
+        yield # Initiate
 
-    def command2(self, panel, activeView):
-        self.mask = full_buffer(panel)
-        replace_full_buffer(panel, self.pattern)
+        window = sublime.activeWindow()
+        is_regex = is_regex_search(view)
         
-        if not self.is_regex:
-            self.pattern = re.escape(self.pattern)
+        mount_points = window.project().mountPoints()
+        mount_paths = [d['path'] for d in mount_points]
         
-        self.search(self.pattern, self.mask, self.wd, is_regex_search(panel))
+        if len(mount_paths) > 1:
+            sublime.activeWindow().showQuickPanel ( "",'findInFiles', 
+                    mount_paths,
+                    mount_paths,
+                    sublime.QUICK_PANEL_MULTI_SELECT )
+
+            mount_paths = (yield)
+            mount_points = [d for d in mount_points if d['path'] in mount_paths]
+
+        files = list (
+            chain(*(d['files'] for d in mount_points)) )
+
+        self.search(files, full_buffer(view), is_regex)
 
     def finish(self, results):
-        finds, errors = results
+        finds, display, errors = results
+        if not finds: return sublime.statusMessage('Found no files')
         
-        if not finds: sublime.statusMessage('Found no files')
-        else:
-            results = 'Finds:\n%s\nErrors:\n%s' % \
-                       tuple(map(pprint.pformat, [finds, errors]))
-
-            sublime.setClipboard(results)
-
-            @timeout
-            def notify():
-                'Else msgs from thread will drown it out'
-                sublime.statusMessage('Results are on clipboard as python list')
-
-        if len(finds) > 1000:
-            self.window.showQuickPanel ( "",
-                'open', finds
-            )
-        else:
-            for f in finds:
-                @wait_until_loaded(f)
-                def and_then(view):
-                    self.window.focusView(view)
-                    self.window.runCommand('findAll')
-
-        self.reset()
+        results = 'Finds:\n%s\nErrors:\n%s' % \
+                   tuple(map(pprint.pformat, [finds, errors]))
+        
+        sublime.setClipboard(results)
+        
+        @timeout
+        def notify():
+            'Else msgs from thread will drown it out'
+            sublime.statusMessage('Results are on clipboard as python list')
+            
+        sublime.activeWindow().showQuickPanel ( "",'openSearch', finds, display,
+            sublime.QUICK_PANEL_FILES | sublime.QUICK_PANEL_MULTI_SELECT
+         )
 
 ################################################################################
 
     @threaded(finish=finish, msg='search already running')
-    def search(self, search, mask, wd, mask_is_regex):
+    def search(self, files, pattern, is_regex):
         findings = []
-        errors   = []
-        
-        matcher = re.compile(search, re.M)
-        
-        if mask_is_regex:        files = find_files(wd, mask)
-        else:                    files = glob.glob(normpath(join(wd, mask)))
+        errors = []
+        display = []
 
-        MB_10 = 10 * (2 ** 20) 
+        if not is_regex: pattern = re.escape(pattern)
+        matcher = re.compile(pattern, re.M)
 
         for f in files:
-            print f
-            
             @timeout
             def status():
                 sublime.statusMessage(f)
@@ -176,11 +151,14 @@ class FindInFiles(sublimeplugin.TextCommand):
                 with open(f, 'r+') as fh:
                     try:
                         mapping = mmap.mmap(fh.fileno(), 0)
-                        if matcher.search(mapping): findings.append(f)
-
+                        matches = matcher.findall(mapping)
+                        if matches:
+                            findings.append(f)
+                            display.append('(%3s) %s' % (len(matches), f) ) 
+    
                     except Exception, e:
                         errors.append((f, `e`))
-            
+
                     finally:
                         try: mapping.close()
                         except UnboundLocalError, e:
@@ -188,12 +166,12 @@ class FindInFiles(sublimeplugin.TextCommand):
 
             except IOError, e:
                 errors.append((f, `e`))
-                
-        return findings, errors
 
-################################################################################
+        return findings, display, errors
 
 class EscapeRegex(sublimeplugin.TextCommand):
     def run(self, view, args):
         for sel in view.sel():
             view.replace(sel, re.escape(view.substr(sel)))
+
+################################################################################
