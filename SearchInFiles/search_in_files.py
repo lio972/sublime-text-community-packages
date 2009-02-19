@@ -40,6 +40,12 @@ STOP, NEXT = object(), object()
 def timeout(f):
     return sublime.setTimeout(f, 10)
 
+def add_jumpback():
+    try:
+        sublimeplugin.allCommands[1]['jumpBack'].append(window.activeView())
+    except Exception, e:
+        pass
+
 def show_find_panel():
     window = sublime.activeWindow()
     window.runCommand('hidePanel')
@@ -60,7 +66,15 @@ def full_buffer(view):
 
 class FindInFiles(sublimeplugin.TextCommand):
     routine = None
-    
+
+    def quick_panel(self, args, files=False, display=None):
+        flags = sublime.QUICK_PANEL_MULTI_SELECT
+        if files:
+            flags = flags | sublime.QUICK_PANEL_FILES
+
+        sublime.activeWindow().showQuickPanel ( "",'findInFiles',
+                args, display or args, flags)
+
     def isEnabled(self, view, args):
         enabled = args or view_is_find_panel(view)
         if not enabled:
@@ -72,40 +86,29 @@ class FindInFiles(sublimeplugin.TextCommand):
     def run(self, view, args):
         if self.routine is None:
             self.routine = self.co_routine(view, args)
-            self.routine.next() # Initiate
+            self.routine.next()
 
         ret  = self.routine.send(args)
         if ret is STOP: 
             self.routine = None
 
     def co_routine(self, view, args):
-        yield # Initiate
+        yield
 
         window = sublime.activeWindow()
-
-        try:
-            sublimeplugin.allCommands[1]['jumpBack'].append(window.activeView())
-        except Exception, e:
-            pass
-
-        is_regex = is_regex_search(view)
-        
         mount_points = window.project().mountPoints()
         mount_paths = [d['path'] for d in mount_points]
-        
-        if len(mount_paths) > 1:
-            sublime.activeWindow().showQuickPanel ( "",'findInFiles', 
-                    mount_paths,
-                    mount_paths,
-                    sublime.QUICK_PANEL_MULTI_SELECT )
 
+        if len(mount_paths) > 1:
+            self.quick_panel(mount_paths)
             mount_paths = (yield)
             mount_points = [d for d in mount_points if d['path'] in mount_paths]
 
-        files = list (
-            chain(*(d['files'] for d in mount_points)) )
+        self.quick_panel (
+            list( chain(*(d['files'] for d in mount_points)) ), files=1 )
 
-        self.search(files, full_buffer(view), is_regex)
+        self.search((yield), full_buffer(view), is_regex_search(view))
+        add_jumpback()
 
         for f in (yield):
             @wait_until_loaded(f)
@@ -136,12 +139,8 @@ class FindInFiles(sublimeplugin.TextCommand):
                                      '\n'.join(errors) )
             sublime.statusMessage("Results are on clipboard as python list")
 
-        sublime.activeWindow().showQuickPanel (
-             "",'findInFiles', 
-            [f[1] for f in finds],
-            ['(%3s) %s' % f for f in finds],
-            sublime.QUICK_PANEL_FILES | sublime.QUICK_PANEL_MULTI_SELECT
-         )
+        self.quick_panel( [f[1] for f in finds], files=1,
+                          display=['(%3s) %s' % f for f in finds] )
 
 ################################################################################
 
