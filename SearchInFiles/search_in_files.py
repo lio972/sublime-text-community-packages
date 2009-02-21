@@ -29,9 +29,12 @@ from plugin_helpers import wait_until_loaded, view_fn, threaded
 choose_files_to_search = 0
 open_new_window = 1
 
+re_compile_flags = re.M
+
 ################################################################################
 
-CONSTANTS = (NEXT, STOP_SEARCH) = ('NEXT', 'STOP_SEARCH')
+CONSTANTS = (NEXT,     STOP_SEARCH,     HIDE_PANEL) = (
+           ['NEXT'], ['STOP_SEARCH'], ['HIDE_PANEL'] )
 
 PANEL_SYNTAXES = [
     "Packages/Text/Plain text.tmLanguage",
@@ -99,21 +102,32 @@ class FindInFiles(sublimeplugin.TextCommand):
                                                 args, display or args, flags )
 
     def isEnabled(self, view, args):
-        # If getting sent back args from quickpanel
+        # If getting sent back args from quickpanel or in the find panel
         enabled = args or view_is_find_panel(view)
 
-        if not enabled:
+        if not self.searching and not enabled:
+            # Kill the routine in case of command escaped out of  
+            # early before generator was consumed
+
             show_find_panel()
             self.routine = None
 
-        # Heuristic for determining whether selected from a panel
-        if self.searching and args != [STOP_SEARCH]:
-            self.stop_search = True
-            w = view.window()
+        # Heuristic for determining whether selected from the async updated
+        # findings panel. If so, must stop searching and hide overlay[s]
+        # brought up by the timeouts set in the search thread
 
-            @do_in(len(args) * 10)
-            def shut_panel():
-                w.runCommand('hideOverlay')
+        if self.searching and args not in CONSTANTS:
+            if args:
+                self.stop_search = True
+                w = view.window()
+    
+                @do_in(len(args) * 10)
+                def shut_panel():
+                    w.runCommand('hideOverlay')
+
+            else:
+                self.close_panel = False
+                return False
 
         return enabled
     
@@ -121,28 +135,37 @@ class FindInFiles(sublimeplugin.TextCommand):
         self.routine = self.co_routine(view, args)
         self.stop_search = False
         self.searching = False
+        self.close_panel = False
         self.routine.next()
     
     def run(self, view, args):
         if self.routine is None:
             self.reset(view, args)
         try:
-            if args == [NEXT]:
+            if args == NEXT:
                 self.routine.next()
-            
-            elif args == [STOP_SEARCH]:
+
+            elif args == STOP_SEARCH:
                 self.stop_search = True
 
+            elif args == HIDE_PANEL:
+                if self.searching:
+                    self.close_panel = True
+                
+                @do_in(10)
+                def l8r():
+                    view.window().runCommand('hideOverlay')
+                
             else:
                 # stopped the search and pressed escape without finishing
-                # co routine
+                # co routine ( selecting a file sent through `args`)
                 if not args and self.stop_search:
                     self.reset(view, args)
 
                 self.routine.send(args)
 
         except StopIteration:
-            self.reset()
+            self.reset(view, args)
 
     def co_routine(self, view, args):
         yield
@@ -166,9 +189,9 @@ class FindInFiles(sublimeplugin.TextCommand):
         self.searching = True
         self.search(
             files_to_search,  full_buffer(view), is_regex_search(view), window )
-        
+
         add_jumpback()
-        
+
         finds = (yield)
         if open_new_window and len(finds) > 1:
             self.NEXT()
@@ -179,11 +202,10 @@ class FindInFiles(sublimeplugin.TextCommand):
             for f in finds:
                 @wait_until_loaded(f)
                 def and_then(view):
-                    view.window().focusView(view)
                     view.window().runCommand('findAll')
 
     def NEXT(self):
-        self.run_self(['NEXT'])
+        self.run_self(NEXT)
 
     def run_self(self, args=[]):
         @do_in(10)
@@ -192,24 +214,24 @@ class FindInFiles(sublimeplugin.TextCommand):
 
     def finish_up(self, results):
         finds, errors = results
-        
+
         if not finds:
             return sublime.setTimeout (
                 functools.partial(sublime.statusMessage, 'Found no files'), 100
             )
         
-        results = 'Finds:\n%s\nErrors:\n%s' % \
-                   tuple(map(pprint.pformat, [finds, errors]))
+        results = pprint.pformat({'finds':finds, 'errors':errors})
         
         if errors:
             sublime.messageBox( 'Files couldn\'t be searched: \n\n%s' %
                                      '\n'.join(errors) )
-        
+
         sublime.setClipboard(results)
         @do_in(50)
         def notify():
             'Else msgs from thread will drown it out'
-            sublime.statusMessage("Results are on clipboard as python list")
+            sublime.statusMessage("%s finds) %s errors) on clipboard" %
+                                    (len(finds), len(errors)) )
         
 ################################################################################
 
@@ -219,7 +241,7 @@ class FindInFiles(sublimeplugin.TextCommand):
         errors = []
 
         if not is_regex: pattern = re.escape(pattern)
-        matcher = re.compile(pattern, re.M)
+        matcher = re.compile(pattern, re_compile_flags)
         num_files = len(files)
         self.stop_search = 0
 
@@ -229,9 +251,14 @@ class FindInFiles(sublimeplugin.TextCommand):
             if matcher.search(search_in):
                 findings.append(f)
 
+        def show_panel():
+            window.showQuickPanel (
+                panel_key, 'findInFiles', findings, findings,
+                sublime.QUICK_PANEL_FILES | sublime.QUICK_PANEL_MULTI_SELECT
+            )
+
         for i, f in enumerate(files):
             if self.stop_search:
-                sublime.statusMessage('search halted')                
                 break
 
             @do_in(5)
@@ -239,10 +266,8 @@ class FindInFiles(sublimeplugin.TextCommand):
                 sublime.statusMessage(" (%s of %s) ctrl+shift+z to halt %s"
                                         % (i+1, num_files, f) )
 
-                window.showQuickPanel (
-                    panel_key, 'findInFiles', findings, findings,
-                    sublime.QUICK_PANEL_FILES | sublime.QUICK_PANEL_MULTI_SELECT
-                )
+                if not self.close_panel:
+                    show_panel()
 
             try:
                 with open(f, 'r+') as fh:
@@ -255,7 +280,12 @@ class FindInFiles(sublimeplugin.TextCommand):
 
                 except Exception, e:
                     errors.append((f, `e`))
-        
+
+        @do_in(5)
+        def status():
+            if self.close_panel:
+                show_panel()
+ 
         self.searching = False
         return findings, errors
 
