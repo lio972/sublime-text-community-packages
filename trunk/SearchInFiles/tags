@@ -6,26 +6,34 @@
 !_TAG_PROGRAM_VERSION	5.7	//
 EscapeRegex	search_in_files.py	/^class EscapeRegex(sublimeplugin.TextCommand):$/;"	c
 FindInFiles	search_in_files.py	/^class FindInFiles(sublimeplugin.TextCommand):$/;"	c
+NEXT	search_in_files.py	/^    def NEXT(self):$/;"	m	class:FindInFiles
 add_jumpback	search_in_files.py	/^def add_jumpback():$/;"	f
-and_then	search_in_files.py	/^            def and_then(view):$/;"	f	function:FindInFiles.co_routine
+and_then	search_in_files.py	/^                def and_then(view):$/;"	f	function:FindInFiles.co_routine/later
 co_routine	search_in_files.py	/^    def co_routine(self, view, args):$/;"	m	class:FindInFiles
 decorator	plugin_helpers.py	/^    def decorator(func):$/;"	f	function:threaded
+do_in	search_in_files.py	/^def do_in(t=0):$/;"	f
 find_files	walk_files.py	/^def find_files(wd, mask):$/;"	f
-finish	search_in_files.py	/^    def finish(self, results):$/;"	m	class:FindInFiles
+finish_up	search_in_files.py	/^    def finish_up(self, results):$/;"	m	class:FindInFiles
 full_buffer	search_in_files.py	/^def full_buffer(view):$/;"	f
 isEnabled	search_in_files.py	/^    def isEnabled(self, view, args):$/;"	m	class:FindInFiles
 is_regex_search	search_in_files.py	/^def is_regex_search(view):$/;"	f
-notify	search_in_files.py	/^        def notify():$/;"	f	function:FindInFiles.finish
-quick_panel	search_in_files.py	/^    def quick_panel(self, args, files=False, display=None):$/;"	m	class:FindInFiles
+later	search_in_files.py	/^        def later():$/;"	f	function:FindInFiles.co_routine
+later	search_in_files.py	/^        def later():$/;"	f	function:FindInFiles.run_self
+notify	search_in_files.py	/^        def notify():$/;"	f	function:FindInFiles.finish_up
+quick_panel	search_in_files.py	/^    def quick_panel(self, args, files=False, display=None, safe=True):$/;"	m	class:FindInFiles
+reset	search_in_files.py	/^    def reset(self, view, args):$/;"	m	class:FindInFiles
 run	plugin_helpers.py	/^            def run():$/;"	f	function:threaded/decorator/threaded
 run	search_in_files.py	/^    def run(self, view, args):$/;"	m	class:EscapeRegex
 run	search_in_files.py	/^    def run(self, view, args):$/;"	m	class:FindInFiles
-search	search_in_files.py	/^                def search(search_in):$/;"	f	function:FindInFiles.search/status
-search	search_in_files.py	/^    def search(self, files, pattern, is_regex):$/;"	m	class:FindInFiles
+run_self	search_in_files.py	/^    def run_self(self, args=[]):$/;"	m	class:FindInFiles
+search	search_in_files.py	/^        def search(search_in, f):$/;"	f	function:FindInFiles.search
+search	search_in_files.py	/^    def search(self, files, pattern, is_regex, window):$/;"	m	class:FindInFiles
 show_find_panel	search_in_files.py	/^def show_find_panel():$/;"	f
-status	search_in_files.py	/^            def status():$/;"	f	function:FindInFiles.search
+shut_panel	search_in_files.py	/^            def shut_panel():$/;"	f	function:FindInFiles.isEnabled
+status	search_in_files.py	/^            def status():$/;"	f	function:FindInFiles.search/search
 threaded	plugin_helpers.py	/^        def threaded(*args, **kwargs):$/;"	f	function:threaded/decorator
 threaded	plugin_helpers.py	/^def threaded(finish=None, msg="Thread already running"):$/;"	f
+timeout	search_in_files.py	/^    def timeout(f):$/;"	f	function:do_in
 timeout	search_in_files.py	/^def timeout(f):$/;"	f
 view_fn	plugin_helpers.py	/^def view_fn(view, if_None = '.'):$/;"	f
 view_is_find_panel	search_in_files.py	/^def view_is_find_panel(view):$/;"	f
