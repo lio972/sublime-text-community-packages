@@ -63,13 +63,21 @@ def show_find_panel():
     window.runCommand('hidePanel')
     window.runCommand('showPanel find')
 
+def tuple_regions(view):
+    return tuple((r.begin(), r.end()) for r in view.sel())
+
 def view_is_find_panel(view):
     # Is the `view` a reference to the find panel?
     syntax = view.options().get('syntax')
+    active_view = sublime.activeWindow().activeView()
+
     return (
         # in case of untitled view, `None != None`
-        syntax in PANEL_SYNTAXES and 
-        view.fileName() != sublime.activeWindow().activeView().fileName() ) 
+            syntax in PANEL_SYNTAXES and
+            view.fileName() != active_view.fileName() or
+            view.size() != active_view.size() or
+            tuple_regions(view) != tuple_regions(active_view)
+        )
 
 def full_buffer(view):
     return view.substr(sublime.Region(0, view.size()))
@@ -91,8 +99,9 @@ class FindInFiles(sublimeplugin.TextCommand):
                                                 args, display or args, flags )
 
     def isEnabled(self, view, args):
+        # If getting sent back args from quickpanel
         enabled = args or view_is_find_panel(view)
-        
+
         if not enabled:
             show_find_panel()
             self.routine = None
@@ -123,17 +132,17 @@ class FindInFiles(sublimeplugin.TextCommand):
             
             elif args == [STOP_SEARCH]:
                 self.stop_search = True
-            
+
             else:
-                # stopped the search and pressed escape
+                # stopped the search and pressed escape without finishing
+                # co routine
                 if not args and self.stop_search:
                     self.reset(view, args)
 
                 self.routine.send(args)
 
-        except Exception, e:
-            print e
-            self.routine = None
+        except StopIteration:
+            self.reset()
 
     def co_routine(self, view, args):
         yield
@@ -145,8 +154,7 @@ class FindInFiles(sublimeplugin.TextCommand):
         if len(mount_paths) > 1:
             sublime.statusMessage('Pick mount[s] to search in')
             self.quick_panel(mount_paths)
-            mount_paths = (yield)
-            mount_points = [d for d in mount_points if d['path'] in mount_paths]
+            mount_points = [d for d in mount_points if d['path'] in (yield)]
 
         files_to_search = list( chain(*(d['files'] for d in mount_points)) )
 
