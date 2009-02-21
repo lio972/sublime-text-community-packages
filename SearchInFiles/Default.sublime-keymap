@@ -27,7 +27,8 @@ Also note that if the same key is bound twice, the last binding takes precedence
 -->
 
 <bindings>
-    <binding key="ctrl+alt+shift+f" command="findInFiles"></binding>
+    <binding key="ctrl+alt+shift+f" command="findInFiles">
+    </binding>
     
     <binding key="ctrl+shift+z" command="findInFiles STOP_SEARCH">
     </binding>
@@ -43,7 +44,7 @@ Also note that if the same key is bound twice, the last binding takes precedence
     -->  
         <!-- <context name="allPreceedingText" value="[^Ã]"/> -->
         
-    <binding key="ctrl+slash" command="escapeRegex">
-        <context name="selector" value="source.regex"/>
+    <binding key="ctrl+alt+slash" command="escapeRegex">
+        <!-- <context name="selector" value="source.regex"/> -->
     </binding>    
 </bindings>

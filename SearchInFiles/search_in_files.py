@@ -31,18 +31,20 @@ open_new_window = 1
 
 re_compile_flags = re.M
 
+print_debug = 1
+
 ################################################################################
 
-CONSTANTS = (NEXT,     STOP_SEARCH,     HIDE_PANEL) = (
-           ['NEXT'], ['STOP_SEARCH'], ['HIDE_PANEL'] )
+CONSTANTS = (NEXT,     STOP_SEARCH,     HIDE_PANEL,     INIT) = (
+           ['NEXT'], ['STOP_SEARCH'], ['HIDE_PANEL'], ['INIT'] )
 
-PANEL_SYNTAXES = [
-    "Packages/Text/Plain text.tmLanguage",
-    "Packages/Regular Expressions/RegExp.tmLanguage",
-]
+PANEL_SYNTAXES = {
+    "Packages/Text/Plain text.tmLanguage" : 0,
+    "Packages/Regular Expressions/RegExp.tmLanguage" : 1,
+}
 
 def is_regex_search(view):
-    return PANEL_SYNTAXES.index(view.options().get('syntax'))
+    return PANEL_SYNTAXES.get(view.options().get('syntax'), 0)
 
 ################################################################################
 
@@ -105,12 +107,13 @@ class FindInFiles(sublimeplugin.TextCommand):
         # If getting sent back args from quickpanel or in the find panel
         enabled = args or view_is_find_panel(view)
 
-        if not self.searching and not enabled:
-            # Kill the routine in case of command escaped out of  
+        if (not enabled and not self.searching):
+            # Kill the routine in case of command escaped out of
             # early before generator was consumed
-
-            show_find_panel()
+            self.debug('show_find_panel')
             self.routine = None
+            show_find_panel()
+            return enabled
 
         # Heuristic for determining whether selected from the async updated
         # findings panel. If so, must stop searching and hide overlay[s]
@@ -118,26 +121,31 @@ class FindInFiles(sublimeplugin.TextCommand):
 
         if self.searching and args not in CONSTANTS:
             if args:
+                self.debug('stop_search_by_selection')
                 self.stop_search = True
-                w = view.window()
-    
-                @do_in(len(args) * 10)
+                
+                # Must get reference to a window now so it runs the command
+                # in the right window
+                w = sublime.activeWindow()
+                
+                @do_in(len(args) * 15)
                 def shut_panel():
                     w.runCommand('hideOverlay')
 
             else:
+                # Show the async updated quick panel again
                 self.close_panel = False
-                return False
 
         return enabled
-    
+
     def reset(self, view, args):
+        self.debug('reset')
         self.routine = self.co_routine(view, args)
         self.stop_search = False
         self.searching = False
         self.close_panel = False
         self.routine.next()
-    
+
     def run(self, view, args):
         if self.routine is None:
             self.reset(view, args)
@@ -146,16 +154,18 @@ class FindInFiles(sublimeplugin.TextCommand):
                 self.routine.next()
 
             elif args == STOP_SEARCH:
+                self.debug('stop_search')
                 self.stop_search = True
 
             elif args == HIDE_PANEL:
+                self.debug('hide_panel')
                 if self.searching:
                     self.close_panel = True
-                
+
                 @do_in(10)
                 def l8r():
                     view.window().runCommand('hideOverlay')
-                
+
             else:
                 # stopped the search and pressed escape without finishing
                 # co routine ( selecting a file sent through `args`)
@@ -186,26 +196,35 @@ class FindInFiles(sublimeplugin.TextCommand):
             self.quick_panel (files_to_search, files=1, safe=0 )
             files_to_search = (yield)
 
-        self.searching = True
+        self.stop_search = 0
+        self.searching = True        
+        
         self.search(
             files_to_search,  full_buffer(view), is_regex_search(view), window )
 
+        finds = (yield)
+        self.searching = False
         add_jumpback()
 
-        finds = (yield)
         if open_new_window and len(finds) > 1:
             self.NEXT()
             yield sublime.runCommand('newWindow')
-
+        
         @do_in(10)
         def later():
             for f in finds:
                 @wait_until_loaded(f)
                 def and_then(view):
-                    view.window().runCommand('findAll')
+                    sublime.activeWindow().runCommand('findAll')
+        
+        self.debug('stop')
 
     def NEXT(self):
         self.run_self(NEXT)
+
+    def debug(self, state, msg=''):
+        if print_debug:
+            print state, msg, datetime.datetime.now()
 
     def run_self(self, args=[]):
         @do_in(10)
@@ -219,7 +238,7 @@ class FindInFiles(sublimeplugin.TextCommand):
             return sublime.setTimeout (
                 functools.partial(sublime.statusMessage, 'Found no files'), 100
             )
-        
+
         results = pprint.pformat({'finds':finds, 'errors':errors})
         
         if errors:
@@ -243,8 +262,6 @@ class FindInFiles(sublimeplugin.TextCommand):
         if not is_regex: pattern = re.escape(pattern)
         matcher = re.compile(pattern, re_compile_flags)
         num_files = len(files)
-        self.stop_search = 0
-
         panel_key = `hash(datetime.datetime.now())`
 
         def search(search_in, f):
@@ -286,12 +303,13 @@ class FindInFiles(sublimeplugin.TextCommand):
             if self.close_panel:
                 show_panel()
  
-        self.searching = False
         return findings, errors
 
 class EscapeRegex(sublimeplugin.TextCommand):
     def run(self, view, args):
-        for sel in view.sel():
-            view.replace(sel, re.escape(view.substr(sel)))
+        print view.option.syntax
+
+        # for sel in view.sel():
+        #     view.replace(sel, re.escape(view.substr(sel)))
 
 ################################################################################
