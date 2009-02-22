@@ -33,10 +33,10 @@ Also note that if the same key is bound twice, the last binding takes precedence
     <binding key="ctrl+shift+z" command="findInFiles STOP_SEARCH">
     </binding>
 
-    <binding key="escape" command="findInFiles HIDE_PANEL">
+<!--     <binding key="escape" command="findInFiles HIDE_PANEL">
         <context name="isOverlayVisible" value="true"/>
     </binding>
-
+ -->
 
 
     <!-- Use whatever ctrl+alt+shift inserts on your if system if any
