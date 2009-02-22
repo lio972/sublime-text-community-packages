@@ -177,15 +177,14 @@ class FindInFiles(sublimeplugin.TextCommand):
 
     def finish(self, results):
         sublime.activeWindow().runCommand('hidePanel')
-        
+
         finds, errors = results
         if not finds:
             return sublime.setTimeout (
                 functools.partial(sublime.statusMessage, 'Found no files'), 100
             )
 
-        results = 'Finds:\n%s\nErrors:\n%s' % \
-                   tuple(map(pprint.pformat, [finds, errors]))
+        results = pprint.pformat({'finds':finds, 'errors':errors})
 
         sublime.setClipboard(results)
 
@@ -195,7 +194,7 @@ class FindInFiles(sublimeplugin.TextCommand):
             if errors:
                 sublime.messageBox( 'Files couldn\'t be searched: \n\n%s' %
                                      '\n'.join(errors) )
-            sublime.statusMessage("Results are on clipboard as python list")
+            sublime.statusMessage("Results are on clipboard as python dict")
 
         sublime.activeWindow().activeView().runCommand('findInFiles', 
             map(repr, finds))
@@ -220,11 +219,10 @@ class FindInFiles(sublimeplugin.TextCommand):
         for i, f in enumerate(files):
             if self.stop_search:
                 break
-                sublime.statusMessage('search cancelled')
 
             @timeout
             def status():
-                sublime.statusMessage(" (%s of %s) ctrl+shift+z to cancel %s"
+                sublime.statusMessage(" (%s of %s) ctrl+shift+z to stop %s"
                                         % (i+1, num_files, f) )
             try:
                 with open(f, 'r+') as fh:
