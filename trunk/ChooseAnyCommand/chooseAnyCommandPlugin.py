@@ -8,9 +8,18 @@ import sublime, sublimeplugin
 #
 class ChooseAnyCommandCommand(sublimeplugin.WindowCommand):
   def run(self, window, args):
-    textCommands = [cmd for cmd in sublimeplugin.textCommands if window.activeView().canRunCommand(cmd)]
-    windowCommands = [cmd for cmd in sublimeplugin.windowCommands if window.canRunCommand(cmd)]
-    appCommands = [cmd for cmd in sublimeplugin.applicationCommands if sublime.canRunCommand(cmd)] 
+    
+    textCommandNames = sublimeplugin.textCommands.keys()
+    windowCommandNames = sublimeplugin.windowCommands.keys()
+    appCommandNames = sublimeplugin.applicationCommands.keys()
+
+    textCommandNames.sort()
+    windowCommandNames.sort()
+    appCommandNames.sort()
+    
+    textCommands = [cmd for cmd in textCommandNames if window.activeView().canRunCommand(cmd)]
+    windowCommands = [cmd for cmd in windowCommandNames if window.canRunCommand(cmd)]
+    appCommands = [cmd for cmd in appCommandNames if sublime.canRunCommand(cmd)] 
 
     textNames = ["text\\" + cmd for cmd in textCommands]
     appNames = ["application\\" + cmd for cmd in appCommands]
