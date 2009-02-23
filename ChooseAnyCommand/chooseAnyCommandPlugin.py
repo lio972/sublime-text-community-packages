@@ -1,12 +1,23 @@
 #
 # Choose Any Command -- lets you choose any runnable command.
 # 
-import sublime, sublimeplugin
+import sublime, sublimeplugin, os
+
+#
+# Provides the quickpanel entry for the command;
+#
+# commands = the dictionary of commands (text, window, app)
+# cmd = the name of the command
+# typ = a string representing the command type
+#
+def cmdinfo(commands, cmd, typ):
+  return typ + "\\" + commands[cmd].__module__ + "\\" + cmd # + " " + " - ".join(dir(cmd))
 
 #
 # shows the QuickPanel with every runnable command available to Sublime Text.
 #
 class ChooseAnyCommandCommand(sublimeplugin.WindowCommand):
+  
   def run(self, window, args):
     
     textCommandNames = sublimeplugin.textCommands.keys()
@@ -25,10 +36,14 @@ class ChooseAnyCommandCommand(sublimeplugin.WindowCommand):
     appNames = ["application\\" + cmd for cmd in appCommands]
     wndNames = ["window\\" + cmd for cmd in windowCommands]
     
-    cmds = textCommands + appCommands + windowCommands
-    names = textNames + appNames + wndNames
+    displayTextNames = [cmdinfo(sublimeplugin.textCommands, cmd, "text") for cmd in textCommands]
+    displayAppNames = [cmdinfo(sublimeplugin.applicationCommands, cmd, "application") for cmd in appCommands]
+    displayWndNames = [cmdinfo(sublimeplugin.windowCommands, cmd, "window") for cmd in windowCommands]
     
-    window.showQuickPanel("", "executeNamedCommand", names, sublime.QUICK_PANEL_FILES)
+    display = displayTextNames + displayAppNames + displayWndNames
+    cmds = textNames + appNames + wndNames
+    
+    window.showQuickPanel("", "executeNamedCommand", cmds, display, sublime.QUICK_PANEL_FILES)
     
 class ExecuteNamedCommandCommand(sublimeplugin.WindowCommand):
   def run(self, window, args):    
