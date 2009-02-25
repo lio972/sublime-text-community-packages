@@ -89,6 +89,21 @@ def select_all(view, regions):
     for region in joining(list(regions)):
         view.sel().add(region)
 
+def handle_caps(split):
+    W = "%s[a-zA-Z0-9]+"
+    A = r'(?<=[^a-zA-Z0-9])%s(?=[^\\]*$)'
+
+    resplit= []
+
+    for chunk in split:
+        if re.match('^[A-Z ]+$', chunk):
+            for c in chunk.strip():
+                resplit.append(A % (W % c))
+        else:
+            resplit.append(chunk)
+
+    return resplit
+
 ############################### SET REGEX COMMAND ##############################
 
 class SetRegex(sublimeplugin.TextCommand):
@@ -146,7 +161,9 @@ class FilterList(sublimeplugin.TextCommand):
             chunks,  nots, highlights = [], [], []
             P = lambda o: o.strip() and not all(c == '.' for c in o.strip())
 
-            for chunk in filter(P, re.findall(r"(\S+(?:\s+)?)", s)):
+            split = filter(P, re.findall(r"(\S+(?:\s+)?)", s))
+
+            for chunk in handle_caps(split):
                 if chunk.startswith('!'):
                     chunk = chunk[1:]
                     if chunk.strip():
@@ -160,7 +177,9 @@ class FilterList(sublimeplugin.TextCommand):
                         highlights.append(chunk.strip('|'))
                     else:
                         chunks.append(chunk)
-
+            
+            print chunks
+            
             compiled = [re.compile(c, re.I) for c in chunks]
 
             lines = [ l for l in files_to_search if
