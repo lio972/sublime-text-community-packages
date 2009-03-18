@@ -11,6 +11,8 @@ import sys
 import re
 import difflib
 
+from xml.dom import minidom
+
 # Sublime Modules
 import sublime
 import sublimeplugin
@@ -56,6 +58,16 @@ Also note that if the same key is bound twice, the last binding takes precedence
 
 ################################### FUNCTIONS ##################################
 
+def parse_keymap(f):
+    dom = minidom.parse(f)
+    bindings = dom.getElementsByTagName('binding')
+    
+    for binding in bindings:
+        key = binding.getAttribute('key')
+        command = binding.getAttribute('command')
+
+        yield key, command
+
 def get_contextual_packages(view):
     try: fn = view.fileName()
     except: return []
@@ -98,12 +110,15 @@ def openPreference(f, window):
 
     window.openFile(f)
 
+def asset_path(f):
+    pkg_path = sublime.packagesPath()
+    return join('Packages', f[len(pkg_path)+1:]).replace("\\", '/')
+
 #################################### PLUGINS ###################################
 
 class EditPackageFiles(sublimeplugin.WindowCommand):
     def run(self, window, args):
         pref_type = args[0]
-        set_option = len(args) == 2 and args[1] or None
         
         pkg_path = sublime.packagesPath()
         files = []
@@ -133,16 +148,20 @@ class EditPackageFiles(sublimeplugin.WindowCommand):
             for f in files 
         ]
 
-        sublime.statusMessage('Please choose %s file to edit' % args[0])
+        sublime.statusMessage('Please choose %s file to %s' % (
+            args[0], ' '.join(args[1:]) or 'edit')
+        )
 
         def onSelect(i):
             f = files[i][2]
             
-            if not set_option:
+            if len(args) == 1:
                 openPreference( f, window)
             else:
-                f = join('Packages', f[len(pkg_path)+1:]).replace("\\", '/')
-                window.activeView().options().set(set_option, f)
+                cmd = args[1]
+                cmd_args = args[2:] + [asset_path(f)]
+                
+                sublime.activeWindow().activeView().runCommand(cmd, cmd_args )
 
         def onCancel(): pass
 
@@ -151,30 +170,28 @@ class EditPackageFiles(sublimeplugin.WindowCommand):
 
 ############################## LIST SHORTCUTS KEYS #############################
 
-commands_regex = re.compile('<binding key="(.*?)".*?command="(.*?)"')
-
 class ListShortcutKeysCommand(sublimeplugin.WindowCommand):
     def run(self, window, args):
-        args, display = [], []
+        args = []
 
         pkg_path = sublime.packagesPath()
         pkg_list = contextual_packages_list(window.activeView())
 
         for pkg in pkg_list:
-            keymaps = glob.glob(join(pkg_path, pkg,  "*.sublime-keymap"))            
+            keymaps = glob.glob(join(pkg_path, pkg,  "*.sublime-keymap"))
 
             for f in keymaps:
-                with open(f) as fh:
-                    for lines in fh:
-                        match = commands_regex.search(lines)
-                        if match:
-                            args.append((pkg, f, match.groups()))
+                try:
+                    for key, command in parse_keymap(f):
+                        args.append((pkg, f, key, command))
+                except Exception, e:
+                    print f
 
         pkg_format = "%" + `max(len(f) for f in pkg_list)` + 's'
 
-        display = [("%s %30s: %s" % (pkg_format % f[0], f[2][0], f[2][1])) for f in args]
-        args = [f[1] for f in args]
+        display = [
+            ("%s %30s: %s" % (pkg_format % f[0], f[2], f[3])) for f in args ]
         
-        window.showQuickPanel("", "open", args, display)
+        window.showQuickPanel("", "open", [f[1] for f in args], display)
         
 ################################################################################
