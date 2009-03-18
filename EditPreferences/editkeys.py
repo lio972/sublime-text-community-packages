@@ -100,7 +100,7 @@ def openPreference(f, window):
 
 #################################### PLUGINS ###################################
 
-class EditPreferences(sublimeplugin.WindowCommand):
+class EditPackageFiles(sublimeplugin.WindowCommand):
     def run(self, window, args):
         pref_type = args[0]
         set_option = len(args) == 2 and args[1] or None
