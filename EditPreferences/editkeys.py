@@ -100,9 +100,11 @@ def openPreference(f, window):
 
 #################################### PLUGINS ###################################
 
-class EditPackageFiles(sublimeplugin.WindowCommand):
+class EditPreferences(sublimeplugin.WindowCommand):
     def run(self, window, args):
         pref_type = args[0]
+        set_option = len(args) == 2 and args[1] or None
+        
         pkg_path = sublime.packagesPath()
         files = []
 
@@ -134,7 +136,13 @@ class EditPackageFiles(sublimeplugin.WindowCommand):
         sublime.statusMessage('Please choose %s file to edit' % args[0])
 
         def onSelect(i):
-            openPreference( files[i][2], window)
+            f = files[i][2]
+            
+            if not set_option:
+                openPreference( f, window)
+            else:
+                f = join('Packages', f[len(pkg_path)+1:]).replace("\\", '/')
+                window.activeView().options().set(set_option, f)
 
         def onCancel(): pass
 
