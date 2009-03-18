@@ -17,7 +17,7 @@ import sublimeplugin
 
 ################################### SETTINGS ###################################
 
-CREATE_FILES_FOR = ('sublime-keymap')
+CREATE_FILES_FOR = ('sublime-keymap')#, 'sublime-options')
 
 ################################### CONSTANTS ##################################
 
@@ -125,7 +125,7 @@ class EditPackageFiles(sublimeplugin.WindowCommand):
                 [(pkg, splitext(basename(f))[0], f) for f in found_files] )
 
         display = [
-            (("%s: %s" % f[:2]) if pref_type != 'sublime-keymap' 
+            (("%s: %s" % f[:2]) if pref_type != 'sublime-keymap'
                                 and f[0] != f[1] 
                                 else f[0]) + (' (create)' if not os.path.exists(f[2]) else '')
             for f in files 
@@ -147,26 +147,26 @@ commands_regex = re.compile('<binding key="(.*?)".*?command="(.*?)"')
 
 class ListShortcutKeysCommand(sublimeplugin.WindowCommand):
     def run(self, window, args):
-        mapping, clip = [], []
+        args, display = [], []
+
+        pkg_path = sublime.packagesPath()
+        pkg_list = contextual_packages_list(window.activeView())
+
+        for pkg in pkg_list:
+            keymaps = glob.glob(join(pkg_path, pkg,  "*.sublime-keymap"))            
+
+            for f in keymaps:
+                with open(f) as fh:
+                    for lines in fh:
+                        match = commands_regex.search(lines)
+                        if match:
+                            args.append((pkg, f, match.groups()))
+
+        pkg_format = "%" + `max(len(f) for f in pkg_list)` + 's'
+
+        display = [("%s %30s: %s" % (pkg_format % f[0], f[2][0], f[2][1])) for f in args]
+        args = [f[1] for f in args]
         
-        for path, dirs, files in os.walk(sublime.packagesPath()):
-            if path.endswith('.svn'): continue
-            
-            for f in files:
-                if f.endswith('sublime-keymap'):
-                    package = os.path.basename(path) + " ***"
-                    mapping.append(("\n\n%30s: %s\n" % ("*** PACKAGE", package), ""))
-                    with open(os.path.join(path, f)) as fh:
-                        for lines in fh:
-                            match = commands_regex.search(lines)
-                            if match:
-                                mapping.append(match.groups())
-
-        for combo, command in mapping:
-            if combo.startswith("\n"): clip.append(combo)
-            else: clip.append("%30s: %s" % (combo, command))
-
-        window.runCommand('new')
-        window.activeView().insert(0, "\n".join(clip)[2:])
+        window.showQuickPanel("", "open", args, display)
         
 ################################################################################
