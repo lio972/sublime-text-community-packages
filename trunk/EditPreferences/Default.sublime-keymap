@@ -1,11 +1,10 @@
 <bindings>
     <binding key="ctrl+alt+shift+p" command="editPackageFiles sublime-options" />
     <binding key="ctrl+alt+shift+k" command="editPackageFiles sublime-keymap" />
-    <binding key="ctrl+alt+shift+m" command="editPackageFiles sublime-theme" />
+    <binding key="ctrl+alt+shift+m" command="editPackageFiles tmTheme" />
     <binding key="ctrl+alt+shift+n" command="editPackageFiles tmLanguage" />
     <binding key="ctrl+alt+shift+s" command="editPackageFiles sublime-snippet" />
     <binding key="ctrl+alt+shift+g" command="editPackageFiles py" />
-    
     <binding key="ctrl+alt+shift+l" command="listShortcutKeys" />
 
     <binding key="/keymap|binding/,tab" command="insertSnippet 'Packages/EditPreferences/newKeyMap.sublime-snippet'">
