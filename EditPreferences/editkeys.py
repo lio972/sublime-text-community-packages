@@ -1,13 +1,23 @@
 #################################### IMPORTS ###################################
 
+# Std Libraries
 from __future__ import with_statement
 
-import sublime, sublimeplugin, os, sys, re, difflib
-from os.path import split, join
+import os
+import glob
+from os.path import split, splitext, join, normpath, abspath, isdir, basename
+
+import sys
+import re
+import difflib
+
+# Sublime Modules
+import sublime
+import sublimeplugin
 
 ################################### SETTINGS ###################################
 
-DONT_CREATE_FILES = 0
+CREATE_FILES_FOR = ('sublime-keymap')
 
 ################################### CONSTANTS ##################################
 
@@ -15,23 +25,23 @@ SUBLIME_KEYMAP = """
 <!--
 Bindable keys are:
 (a-z, 0-9, f1-f15)
-backquote, backslash, backspace, browser_back, browser_favorites, browser_forward,
-browser_home, browser_refresh, browser_search, browser_stop, capslock, clear, comma,
-contextmenu, delete, down, end, enter, equals, escape, home, insert, keypad0,
-keypad1, keypad2, keypad3, keypad4, keypad5, keypad6, keypad7, keypad8, keypad9,
-keypad_divide, keypad_enter, keypad_equals, keypad_minus, keypad_multiply,
-keypad_period, keypad_plus, left, leftalt, leftbracket, leftcontrol, leftmeta,
-leftshift, leftsuper, minus, numlock, pagedown, pageup, pause, period, printscreen,
-quote, right, rightalt, rightbracket, rightsuper, scrolllock, semicolon, slash,
-space, tab, up
 
-Available modifiers are ctrl, alt, shift
+backquote, backslash, backspace, browser_back, browser_favorites,
+browser_forward, browser_home, browser_refresh, browser_search, browser_stop,
+capslock, clear, comma, contextmenu, delete, down, end, enter, equals, escape,
+home, insert, left, leftalt, leftbracket, leftcontrol, leftmeta, leftshift,
+leftsuper, minus, numlock, pagedown, pageup, pause, period, printscreen, quote,
+right, rightalt, rightbracket, rightsuper, scrolllock, semicolon, slash, space,
+tab, up
 
-Lines of the form "key1,key2 bind" will trigger when key1 is pressed, then key2 is
-pressed. Make sure you don't include a space after the comma!
+Available modifiers are ctrl, alt, shift.
+
+Lines of the form "key1,key2 bind" will trigger when key1 is pressed, then key2
+is pressed.
 
 For example:
-ctrl+x,ctrl+s save
+<binding key="ctrl+x,ctrl+s" command="save"/>
+
 
 New key bindings take effect as soon as you save this file, there's no need to
 restart Sublime Text.
@@ -46,18 +56,31 @@ Also note that if the same key is bound twice, the last binding takes precedence
 
 ################################### FUNCTIONS ##################################
 
-def getPackageDir(view):
+def get_contextual_packages(view):
     try: fn = view.fileName()
-    except: return None
+    except: return []
+
+    pkg_path = sublime.packagesPath()
+    dirs = []
+
+    if fn and pkg_path in fn: 
+        dirs.append(split(fn[len(pkg_path)+1:])[0])
     
-    pkgsPath = sublime.packagesPath()
+    dirs.append(split(split(view.options().get("syntax"))[0])[1])
     
-    if fn and pkgsPath in fn: 
-        pkgDir = split(fn[len(pkgsPath)+1:])[0]
-    else:
-        pkgDir = split(split(view.options().get("syntax"))[0])[1]
+    return dirs
+
+def contextual_packages_list(view=None):
+    if view is None:
+        view = sublime.activeWindow().activeView()
+
+    contextual = get_contextual_packages(view)
+    pkg_path = sublime.packagesPath()
     
-    return pkgDir
+    others = sorted((f for f in os.listdir(pkg_path) if isdir(join(pkg_path, f)) 
+                        and not f in contextual), key = lambda f: f.lower())
+    
+    return contextual + others
 
 def openPreference(f, window):
     if not os.path.exists(f):
@@ -65,75 +88,58 @@ def openPreference(f, window):
             toWrite = SUBLIME_KEYMAP
 
         elif f.endswith('sublime-options'):
-            toWrite = None #'# sublime-options'
-        else:       
+            toWrite = '# sublime-options'
+        else:
             toWrite = None #"EditPreferenceCommand: created non existing file"
         
-        if not DONT_CREATE_FILES and toWrite:
+        if splitext(f)[1][1:] in CREATE_FILES_FOR and toWrite:
             with open(f, 'w') as fh:    
                 fh.write(toWrite)
-                
+
     window.openFile(f)
 
 #################################### PLUGINS ###################################
-    
-class EditPreferenceCommand(sublimeplugin.WindowCommand):
+
+class EditPackageFiles(sublimeplugin.WindowCommand):
     def run(self, window, args):
-        
-        openPreference(
-            join(sublime.packagesPath(), args[0]), window
-        )
+        pref_type = args[0]
+        pkg_path = sublime.packagesPath()
+        files = []
 
-class EditPreferenceContextualCommand(sublimeplugin.WindowCommand):
-    def run(self, window, args):
-        pkgDir = getPackageDir(window.activeView())
-        if not pkgDir: return
-        
-        if args[0] == 'shortcutKeys':
-            f = 'Default.sublime-keymap'
-        
-        elif args[0] == 'preferences':
-            f = '%s.sublime-options' % pkgDir
-        
-        openPreference(
-            os.path.normpath(join(sublime.packagesPath(), pkgDir, f)),
-            window
-        )
+        for pkg in contextual_packages_list(window.activeView()):
+            path_joins = [pkg_path, pkg, '*.%s' % pref_type]
+            if pkg == 'Default' and pref_type == 'sublime-options':
+                path_joins.insert(2, 'Options')
 
-################################### SNIPPETS ###################################
+            found_files = glob.glob(join(*path_joins ))
+            if not found_files and pref_type in CREATE_FILES_FOR:
+                found_files.append(
+                    join (
+                        pkg_path, pkg , "%s.%s" % (
+                            'Default' if pref_type == 'sublime-keymap' 
+                             else pkg, pref_type)
+                    )
+                )
 
-snippetsRe = re.compile(r"Packages/.*?\.sublime-snippet", re.DOTALL | re.MULTILINE)
+            files.extend (
+                [(pkg, splitext(basename(f))[0], f) for f in found_files] )
 
-def findSnippets(path):
-    snippets = []
-    keyMaps = [f for f in os.listdir(path) if f.endswith('sublime-keymap')]
+        display = [
+            (("%s: %s" % f[:2]) if pref_type != 'sublime-keymap' 
+                                and f[0] != f[1] 
+                                else f[0]) + (' (create)' if not os.path.exists(f[2]) else '')
+            for f in files 
+        ]
 
-    for f in keyMaps:
-        with open(join(path, f)) as fh:
-            snippets += snippetsRe.findall(fh.read())
-    
-    return snippets
+        sublime.statusMessage('Please choose %s file to edit' % args[0])
 
-class EditSnippetCommand(sublimeplugin.TextCommand):
-            
-    def run(self, view, args):
-        pkgDir = getPackageDir(view)
-        if not pkgDir: return
-        
-        pkgDirAbs = os.path.normpath(join(sublime.packagesPath(), pkgDir))
-        
-        snippets = findSnippets(pkgDirAbs)
-        
-        if len(snippets) > 1:
-            snippets = difflib.get_close_matches(args[0], 
-                                                 [l.lower() for l in snippets], 
-                                                 n=1,
-                                                 cutoff=0.1)
-        
-        sublimeTextPath = split(sublime.packagesPath())[0]
-        if snippets:
-            for f in snippets:
-                view.window().openFile(join(sublimeTextPath, f))
+        def onSelect(i):
+            openPreference( files[i][2], window)
+
+        def onCancel(): pass
+
+        window.showSelectPanel(display, onSelect, onCancel, 
+          sublime.SELECT_PANEL_MULTI_SELECT, "", 0)
 
 ############################## LIST SHORTCUTS KEYS #############################
 
@@ -155,11 +161,11 @@ class ListShortcutKeysCommand(sublimeplugin.WindowCommand):
                             match = commands_regex.search(lines)
                             if match:
                                 mapping.append(match.groups())
-                                        
+
         for combo, command in mapping:
             if combo.startswith("\n"): clip.append(combo)
             else: clip.append("%30s: %s" % (combo, command))
-        
+
         window.runCommand('new')
         window.activeView().insert(0, "\n".join(clip)[2:])
         
