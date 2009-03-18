@@ -1,20 +1,14 @@
 <bindings>
-
-    <binding key="ctrl+alt+shift+p" command="editPreference 'Default/Options/User File Type.sublime-options'" />
-    <binding key="ctrl+alt+shift+p,ctrl+alt+shift+d" command="editPreference 'Default/Options/Default File Type.sublime-options'" />
-    <binding key="ctrl+alt+shift+p,ctrl+alt+shift+a" command="editPreference 'Default/Options/Application.sublime-options'" />
-    <binding key="ctrl+alt+shift+p,ctrl+alt+shift+p" command="editPreferenceContextual preferences" />
+    <binding key="ctrl+alt+shift+p" command="editPackageFiles sublime-options" />
+    <binding key="ctrl+alt+shift+k" command="editPackageFiles sublime-keymap" />
+    <binding key="ctrl+alt+shift+m" command="editPackageFiles tmTheme" />
+    <binding key="ctrl+alt+shift+n" command="editPackageFiles tmLanguage" />
+    <binding key="ctrl+alt+shift+s" command="editPackageFiles sublime-snippet" />
+    <binding key="ctrl+alt+shift+g" command="editPackageFiles py" />
     
-    <binding key="ctrl+alt+shift+k" command="editPreference 'User/Default.sublime-keymap'" />
-    <binding key="ctrl+alt+shift+k,ctrl+alt+shift+d" command="editPreference 'Default/Default.sublime-keymap'" />
-    <binding key="ctrl+alt+shift+k,ctrl+alt+shift+k" command="editPreferenceContextual shortcutKeys" />
-
     <binding key="ctrl+alt+shift+l" command="listShortcutKeys" />
-    
-    <binding key="ctrl+alt+shift+s,/[a-zA-Z]+/,tab" command="editSnippet $1" />
-    
+
     <binding key="/keymap|binding/,tab" command="insertSnippet 'Packages/EditPreferences/newKeyMap.sublime-snippet'">
         <context name="selector" value="text.xml"/>
     </binding>
-
 </bindings>
