@@ -1,0 +1,6 @@
+expandSelectionTo word
+splitSelection
+singleSelection
+move characters +1 extend
+swapCase
+expandSelectionTo word

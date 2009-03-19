@@ -1,0 +1,6 @@
+<!--
+Place this Macros Bindings at Packages/User folder
+-->
+<bindings> 
+    <binding key="ctrl+shift+u" command="runMacroFileSilently 'Packages/User/Swap First Letter Case.sublime-macro'"/>
+</bindings>
