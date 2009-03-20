@@ -139,15 +139,16 @@ class EditPackageFiles(sublimeplugin.WindowCommand):
                              else pkg, pref_type)
                     )
                 )
-
             files.extend (
                 [(pkg, splitext(basename(f))[0], f) for f in found_files] )
 
         display = [
             (("%s: %s" % f[:2]) if pref_type != 'sublime-keymap'
                                 and f[0] != f[1] 
-                                else f[0]) + (' (create)' if not os.path.exists(f[2]) else '')
-            for f in files 
+                                else ( f[0]) + 
+                                      (' (create)' if not os.path.exists(f[2]) 
+                                       else '') )
+            for f in files
         ]
 
         sublime.statusMessage('Please choose %s file to %s' % (
@@ -185,6 +186,13 @@ def select(view, region):
     sel_set.add(region)
     view.show(region)
 
+def format_for_display(args, ix):
+    fmt = ': '.join (
+        ("%" + `min(30, max(len(a[i]) for a in args)+2)` + 's') for i in ix
+    )
+    
+    return [ fmt % tuple(a[i] for i in ix) for a in args  ] 
+
 class ListShortcutKeysCommand(sublimeplugin.WindowCommand):
     def run(self, window, args):
         args = []
@@ -202,35 +210,31 @@ class ListShortcutKeysCommand(sublimeplugin.WindowCommand):
                 except Exception, e:
                     print f
 
-        pkg_format = "%" + `max(len(f) for f in pkg_list)` + 's'
-
-        display = [
-            ("%s %30s: %s" % (pkg_format % f[0], f[2], f[3])) for f in args ]
-
         def onSelect(i):
-            f = args[i]
+            f, key, command = args[i][1:]
 
-            @wait_until_loaded(f[1])
+            @wait_until_loaded(f)
             def and_then(view):
-                region = view.find(f[3], 0, sublime.LITERAL)
-                if region:
-                    region = view.find(f[2], 
-                        view.line(region).begin(), sublime.LITERAL)
- 
-                    if region:
-                        select(view, region)
+                regions = [sublime.Region(0, 0)]
 
-        def onCancel():
-            pass
-        
-        window.showSelectPanel(display, onSelect, onCancel, 0, "", 0)
-        
+                for search in command, key:
+                    regions.append (
+                        view.find (
+                            search, view.line(regions[-1]).begin(), 1)
+                    )
+
+                for region in regions[-1:]:
+                    select(view, region)
+
+        display = format_for_display(args, (0, 2, 3))
+
+        window.showSelectPanel(display, onSelect, None, 0, "", 0)
+
 ################################################################################
 
 class ListCommands(sublimeplugin.WindowCommand):
     def run(self, window, args):
         pkg_path = sublime.packagesPath()
-        
         pkg_list = contextual_packages_list()
         
         commands = []
@@ -248,23 +252,12 @@ class ListCommands(sublimeplugin.WindowCommand):
                     if 'sublimeplugin' in ''.join(unicode(b) for b in c.super)
                 ]
 
-        pkg_format = "%" + `max(len(f) for f in pkg_list)+2` + 's'
-        m_format = "%" + `max(len(c[1]) for c in commands)+2` + 's'
-        c_format = "%" + `max(len(c[2]) for c in commands)+2` + 's'
-        
-        display = [ "%s %s %s" % ( pkg_format % c[0], 
-                                   m_format % c[1],
-                                   c_format % c[2]) 
-                    
-                    for c in commands ]
+        display = format_for_display(commands, (0,1,2))
 
         def onSelect(i):
             arg = commands[i]
             window.openFile(arg[-2], arg[-1])
 
-        def onCancel():
-            pass
-        
-        window.showSelectPanel(display, onSelect, onCancel, 0, "", 0)
+        window.showSelectPanel(display, onSelect, None, 0, "", 0)
 
 ################################################################################
