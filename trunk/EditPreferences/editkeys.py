@@ -170,6 +170,19 @@ class EditPackageFiles(sublimeplugin.WindowCommand):
 
 ############################## LIST SHORTCUTS KEYS #############################
 
+def wait_until_loaded(file):
+    def wrapper(f):
+        sublime.addOnLoadedCallback(file, f)
+        sublime.activeWindow().openFile(file)
+
+    return wrapper
+
+def select(view, region):
+    sel_set = view.sel()
+    sel_set.clear()
+    sel_set.add(region)
+    view.show(region)
+
 class ListShortcutKeysCommand(sublimeplugin.WindowCommand):
     def run(self, window, args):
         args = []
@@ -191,7 +204,23 @@ class ListShortcutKeysCommand(sublimeplugin.WindowCommand):
 
         display = [
             ("%s %30s: %s" % (pkg_format % f[0], f[2], f[3])) for f in args ]
+
+        def onSelect(i):
+            f = args[i]
+
+            @wait_until_loaded(f[1])
+            def and_then(view):
+                region = view.find(f[3], 0, sublime.LITERAL)
+                if region:
+                    region = view.find(f[2], 
+                        view.line(region).begin(), sublime.LITERAL)
+ 
+                    if region:
+                        select(view, region)
+
+        def onCancel():
+            pass
         
-        window.showQuickPanel("", "open", [f[1] for f in args], display)
+        window.showSelectPanel(display, onSelect, onCancel, 0, "", 0)
         
 ################################################################################
