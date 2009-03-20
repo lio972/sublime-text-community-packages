@@ -10,8 +10,10 @@
     <!-- EDIT PLUGIN FILES -->    
     <binding key="ctrl+alt+shift+g" command="editPackageFiles py" />
     
-    <!-- LIST/EDIT SHORTCUT KEYS -->
+    <!-- LIST/EDIT SHORTCUT KEYS/COMMANDS -->
     <binding key="ctrl+alt+shift+l" command="listShortcutKeys" />
+    <binding key="ctrl+alt+shift+c" command="listCommands" />
+    
 
     <!-- OPTIONS SET PREFERENCES-->
     <binding key="ctrl+alt+shift+m" command="editPackageFiles tmTheme set colorscheme" />

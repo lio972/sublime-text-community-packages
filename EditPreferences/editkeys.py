@@ -5,17 +5,19 @@ from __future__ import with_statement
 
 import os
 import glob
-from os.path import split, splitext, join, normpath, abspath, isdir, basename
+from os.path import split, splitext, join, normpath, abspath, isdir, basename, dirname
 
 import sys
 import re
 import difflib
+import pyclbr
 
 from xml.dom import minidom
 
 # Sublime Modules
 import sublime
 import sublimeplugin
+from sublimeplugin import commandName
 
 ################################### SETTINGS ###################################
 
@@ -223,4 +225,46 @@ class ListShortcutKeysCommand(sublimeplugin.WindowCommand):
         
         window.showSelectPanel(display, onSelect, onCancel, 0, "", 0)
         
+################################################################################
+
+class ListCommands(sublimeplugin.WindowCommand):
+    def run(self, window, args):
+        pkg_path = sublime.packagesPath()
+        
+        pkg_list = contextual_packages_list()
+        
+        commands = []
+
+        for pkg in pkg_list:
+            modules = glob.glob(join(pkg_path, pkg, '*.py'))
+            
+            for m in modules:
+                path = [dirname(m)]
+                module_name = splitext(basename(m))[0]
+                
+                commands += [
+                    (pkg, module_name, commandName(c.name), c.file, c.lineno) 
+                    for c in pyclbr.readmodule(module_name, path).values()
+                    if 'sublimeplugin' in ''.join(unicode(b) for b in c.super)
+                ]
+
+        pkg_format = "%" + `max(len(f) for f in pkg_list)+2` + 's'
+        m_format = "%" + `max(len(c[1]) for c in commands)+2` + 's'
+        c_format = "%" + `max(len(c[2]) for c in commands)+2` + 's'
+        
+        display = [ "%s %s %s" % ( pkg_format % c[0], 
+                                   m_format % c[1],
+                                   c_format % c[2]) 
+                    
+                    for c in commands ]
+
+        def onSelect(i):
+            arg = commands[i]
+            window.openFile(arg[-2], arg[-1])
+
+        def onCancel():
+            pass
+        
+        window.showSelectPanel(display, onSelect, onCancel, 0, "", 0)
+
 ################################################################################
