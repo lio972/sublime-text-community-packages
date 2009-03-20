@@ -27,7 +27,7 @@ from sublimeplugin import commandName
 
 ################################### SETTINGS ###################################
 
-CREATE_FILES_FOR = ('sublime-keymap')#, 'sublime-options')
+CREATE_FILES_FOR = ('sublime-keymap', 'sublime-options')
 
 ################################### CONSTANTS ##################################
 
@@ -240,6 +240,7 @@ class ListOptions(sublimeplugin.WindowCommand):
         options = []
 
         for pkg, name, f in glob_packages('sublime-options'):
+            if not os.path.exists(f): continue
             pkg_display = "%s - %s" % (pkg, name) if name != pkg else pkg        
             with open(f) as fh:
                 for i, line in enumerate(fh):
