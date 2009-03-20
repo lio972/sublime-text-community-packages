@@ -3,13 +3,19 @@
 # Std Libraries
 from __future__ import with_statement
 
+import sys
+
 import os
 import glob
-from os.path import split, splitext, join, normpath, abspath, isdir, basename, dirname
+from os.path import ( split, splitext, join, normpath, abspath, isdir, 
+                      basename, dirname )
 
-import sys
+from itertools import chain
+import mmap
+
 import re
 import difflib
+
 import pyclbr
 
 from xml.dom import minidom
@@ -63,7 +69,7 @@ Also note that if the same key is bound twice, the last binding takes precedence
 def parse_keymap(f):
     dom = minidom.parse(f)
     bindings = dom.getElementsByTagName('binding')
-    
+
     for binding in bindings:
         key = binding.getAttribute('key')
         command = binding.getAttribute('command')
@@ -116,62 +122,25 @@ def asset_path(f):
     pkg_path = sublime.packagesPath()
     return join('Packages', f[len(pkg_path)+1:]).replace("\\", '/')
 
-#################################### PLUGINS ###################################
+def glob_packages(file_type='sublime-keymap', view=None):
+    pkg_path = sublime.packagesPath()
 
-class EditPackageFiles(sublimeplugin.WindowCommand):
-    def run(self, window, args):
-        pref_type = args[0]
+    for pkg in contextual_packages_list(view):
+        path_joins = [pkg_path, pkg, '*.%s' % file_type]
+        if pkg == 'Default' and file_type == 'sublime-options':
+            path_joins.insert(2, 'Options')
         
-        pkg_path = sublime.packagesPath()
-        files = []
+        found_files = glob.glob(join(*path_joins))
+        
+        if not found_files and file_type in CREATE_FILES_FOR:
+            found_files.append ( join (
+                pkg_path, pkg , "%s.%s" % (
+                'Default' if file_type == 'sublime-keymap' else pkg, 
+                file_type)
+            ))
 
-        for pkg in contextual_packages_list(window.activeView()):
-            path_joins = [pkg_path, pkg, '*.%s' % pref_type]
-            if pkg == 'Default' and pref_type == 'sublime-options':
-                path_joins.insert(2, 'Options')
-
-            found_files = glob.glob(join(*path_joins ))
-            if not found_files and pref_type in CREATE_FILES_FOR:
-                found_files.append(
-                    join (
-                        pkg_path, pkg , "%s.%s" % (
-                            'Default' if pref_type == 'sublime-keymap' 
-                             else pkg, pref_type)
-                    )
-                )
-            files.extend (
-                [(pkg, splitext(basename(f))[0], f) for f in found_files] )
-
-        display = [
-            (("%s: %s" % f[:2]) if pref_type != 'sublime-keymap'
-                                and f[0] != f[1] 
-                                else ( f[0]) + 
-                                      (' (create)' if not os.path.exists(f[2]) 
-                                       else '') )
-            for f in files
-        ]
-
-        sublime.statusMessage('Please choose %s file to %s' % (
-            args[0], ' '.join(args[1:]) or 'edit')
-        )
-
-        def onSelect(i):
-            f = files[i][2]
-            
-            if len(args) == 1:
-                openPreference( f, window)
-            else:
-                cmd = args[1]
-                cmd_args = args[2:] + [asset_path(f)]
-                
-                sublime.activeWindow().activeView().runCommand(cmd, cmd_args )
-
-        def onCancel(): pass
-
-        window.showSelectPanel(display, onSelect, onCancel, 
-          sublime.SELECT_PANEL_MULTI_SELECT, "", 0)
-
-############################## LIST SHORTCUTS KEYS #############################
+        for f in found_files:
+            yield pkg, splitext(basename(f))[0], f
 
 def wait_until_loaded(file):
     def wrapper(f):
@@ -186,29 +155,65 @@ def select(view, region):
     sel_set.add(region)
     view.show(region)
 
-def format_for_display(args, ix):
+def format_for_display(args, ix, no_space=()):
     fmt = ': '.join (
-        ("%" + `min(30, max(len(a[i]) for a in args)+2)` + 's') for i in ix
+        [("%" + `min(30, max(len(a[i]) for a in args)+2)` + 's') for i in ix] +
+        ["%s" for i in no_space]
     )
     
-    return [ fmt % tuple(a[i] for i in ix) for a in args  ] 
+    return [ fmt % tuple(a[i] for i in chain(ix, no_space)) for a in args  ] 
+
+#################################### PLUGINS ###################################
+
+class EditPackageFiles(sublimeplugin.WindowCommand):
+    def run(self, window, args):
+        pref_type = args[0]
+        files = []
+
+        for pkg, name, f in glob_packages(pref_type):
+            files.append((pkg, name, f))
+
+        display = [
+            (("%s: %s" % f[:2]) if pref_type != 'sublime-keymap' and f[0] != f[1]
+            
+                else ( 
+                    f[0]) + (' (create)' if not os.path.exists(f[2]) else '') )
+
+            for f in files ]
+        
+        sublime.statusMessage (
+         'Please choose %s file to %s' % (args[0], ' '.join(args[1:]) or 'edit'))
+
+        def onSelect(i):
+            f = files[i][2]
+
+            if len(args) == 1:
+                openPreference( f, window)
+            else:
+                cmd = args[1]
+                cmd_args = args[2:] + [asset_path(f)]
+
+                sublime.activeWindow().activeView().runCommand(cmd, cmd_args )
+
+        def onCancel(): pass
+
+        window.showSelectPanel(display, onSelect, onCancel, 
+          sublime.SELECT_PANEL_MULTI_SELECT, "", 0)
+
+
+###################### LIST SHORTCUT KEYS COMMANDS OPTIONS #####################
 
 class ListShortcutKeysCommand(sublimeplugin.WindowCommand):
     def run(self, window, args):
         args = []
 
-        pkg_path = sublime.packagesPath()
-        pkg_list = contextual_packages_list(window.activeView())
-
-        for pkg in pkg_list:
-            keymaps = glob.glob(join(pkg_path, pkg,  "*.sublime-keymap"))
-
-            for f in keymaps:
-                try:
-                    for key, command in parse_keymap(f):
-                        args.append((pkg, f, key, command))
-                except Exception, e:
-                    print f
+        for pkg, name, f in glob_packages('sublime-keymap'):
+            if not os.path.exists(f): continue
+            try:
+                for key, command in parse_keymap(f):
+                    args.append((pkg, f, key, command))
+            except Exception, e:
+                print e, f
 
         def onSelect(i):
             f, key, command = args[i][1:]
@@ -230,33 +235,40 @@ class ListShortcutKeysCommand(sublimeplugin.WindowCommand):
 
         window.showSelectPanel(display, onSelect, None, 0, "", 0)
 
-################################################################################
+class ListOptions(sublimeplugin.WindowCommand):
+    def run(self, window, args):
+        options = []
+
+        for pkg, name, f in glob_packages('sublime-options'):
+            pkg_display = "%s - %s" % (pkg, name) if name != pkg else pkg        
+            with open(f) as fh:
+                for i, line in enumerate(fh):
+                    if line.strip() and not line.startswith('#'):
+                        options.append (
+                            (pkg_display, line.strip(), f, i + 1) )
+
+        display = format_for_display(options, [0], [1] )
+
+        def onSelect(i):
+            window.openFile(*options[i][-2:])
+
+        window.showSelectPanel(display, onSelect, None, 0, "", 0)
 
 class ListCommands(sublimeplugin.WindowCommand):
     def run(self, window, args):
-        pkg_path = sublime.packagesPath()
-        pkg_list = contextual_packages_list()
-        
         commands = []
 
-        for pkg in pkg_list:
-            modules = glob.glob(join(pkg_path, pkg, '*.py'))
-            
-            for m in modules:
-                path = [dirname(m)]
-                module_name = splitext(basename(m))[0]
-                
-                commands += [
-                    (pkg, module_name, commandName(c.name), c.file, c.lineno) 
-                    for c in pyclbr.readmodule(module_name, path).values()
-                    if 'sublimeplugin' in ''.join(unicode(b) for b in c.super)
-                ]
+        for pkg, module_name, f in glob_packages('py'):
+            commands += [
+                (pkg, module_name, commandName(c.name), c.file, c.lineno) 
+                for c in pyclbr.readmodule(module_name, [dirname(f)]).values()
+                if 'sublimeplugin' in ''.join(unicode(b) for b in c.super)
+            ]
 
-        display = format_for_display(commands, (0,1,2))
+        display = format_for_display(commands, [0,1,2])
 
         def onSelect(i):
-            arg = commands[i]
-            window.openFile(arg[-2], arg[-1])
+            window.openFile(*commands[i][-2:])
 
         window.showSelectPanel(display, onSelect, None, 0, "", 0)
 
