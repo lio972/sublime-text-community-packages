@@ -13,7 +13,7 @@ import sublimeplugin
 def region_range(region):
     return xrange(region.begin(), region.end())
 
-def pts_match_selector(view, region, selector=None, match=True, cond=any):
+def pts_match_selector(view, region, selector=None, match=True, cond=all):
     return  cond (
         view.matchSelector(pt, selector) is match for pt in region_range(region)
     )
