@@ -40,9 +40,10 @@ def find_all(view, search, region, flags=0, P=None):
 
 class BookmarkArea(sublimeplugin.TextCommand):
     def run(self, view, args):
+        sels = view.sel()
+
         # Set bookmarks
-        if view.hasNonEmptySelectionRegion():
-            sels = view.sel()
+        if view.hasNonEmptySelectionRegion() or len(sels) > 1:
             region = sels[0].cover(sels[-1])
 
             for pos in (region.end(), region.begin()):
@@ -52,13 +53,13 @@ class BookmarkArea(sublimeplugin.TextCommand):
 
         # Clear bookmarks
         else:
-            sel = view.sel()[0]
+            sel = sels[0]
 
             for cmd in ('prev', 'toggle', 'next', 'toggle'):
                 view.runCommand('%sBookmark' % cmd)
 
-            view.sel().clear()
-            view.sel().add(sel)
+            sels.clear()
+            sels.add(sel)
 
 class SearchInArea(sublimeplugin.TextCommand):
     def isEnabled(self, view, args):
@@ -66,17 +67,19 @@ class SearchInArea(sublimeplugin.TextCommand):
          len(view.sel()) != 3 and view.word(view.sel()[0]).empty() )
 
     def run(self, view, args):
-        if len(view.sel()) == 3:
-            start, search_sel, end = view.sel()
+        sels = view.sel()
+        
+        if len(sels) == 3:
+            start, search_sel, end = sels
         else:
-            search_sel = view.sel()[0]
+            search_sel = sels[0]
 
             view.runCommand('prevBookmark')
-            start = view.sel()[0]
+            start = sels[0]
 
             view.runCommand('nextBookmark')
-            end = view.sel()[-1]
-        
+            end = sels[-1]
+
         ###############################################################
 
         full_word = view.word(search_sel)
