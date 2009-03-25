@@ -18,6 +18,17 @@ def pts_match_selector(view, region, selector=None, match=True, cond=all):
         view.matchSelector(pt, selector) is match for pt in region_range(region)
     )
 
+def expand_region_by(view, region, expand=1):
+    start = max(0, region.begin() -1)
+    end =  min(view.size(), region.end() +1)
+    return sublime.Region(start, end)
+
+re_special_chars = re.compile (
+    '(\\\\|\\*|\\+|\\?|\\||\\{|\\[|\\(|\\)|\\^|\\$|\\.|\\#|\\ )' )
+
+def escape_regex(s):
+    return re_special_chars.sub(lambda m: '\\%s' % m.group(1), s)
+    
 def regions_equal(r1, r2):
     """ Region.__eq__ seems to compare by r.a and r.b """
     return r1.begin() == r2.begin() and r1.end() == r2.end()
@@ -84,7 +95,11 @@ class SearchInArea(sublimeplugin.TextCommand):
 
         full_word = view.word(search_sel)
         search_sel = search_sel or full_word
-        search = re.escape(view.substr(search_sel))
+
+        #TODO: write sublime compatible version of re.escape
+        search = escape_regex(view.substr(search_sel))
+        
+        
 
         search_region = start.cover(end)
         if not search_region or regions_equal(search_sel, search_region):
@@ -95,8 +110,10 @@ class SearchInArea(sublimeplugin.TextCommand):
         flags = sublime.IGNORECASE if 'ignore_case' in args else 0
 
         if 'detect_whole_word' in args:
-            if regions_equal(search_sel, full_word):
-                search = r'\b%s\b' % search
+            context = view.substr(expand_region_by(view, search_sel))
+            whole_word_search = r'((?<=\s)|\b)%s(?=\s|\b)' % search
+            if re.search(whole_word_search, context):
+                search = whole_word_search
 
         P = None
 
