@@ -1,0 +1,4 @@
+<bindings>
+	<binding key="ctrl+shift+up" command="swapLine up"/>
+	<binding key="ctrl+shift+down" command="swapLine down"/>
+</bindings>
