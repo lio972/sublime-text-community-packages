@@ -44,8 +44,8 @@ Also note that if the same key is bound twice, the last binding takes precedence
     <context name="selector" value="source.python"/>
 </binding>
 
-<binding key="alt+p" command="iPythonBridge launchIPython">
-    <context name="selector" value="source.python"/>
+<binding key="ctrl+alt+p" command="iPythonBridge launchIPython">
+    <!-- <context name="selector" value="source.python"/> -->
 </binding>
 
 </bindings>
