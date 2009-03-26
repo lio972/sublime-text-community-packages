@@ -6,7 +6,10 @@ from __future__ import with_statement
 import functools
 import sys
 import string
+import textwrap
+
 from itertools import takewhile
+from os.path import join
 
 # 3rd Party Libs
 import Pyro.core
@@ -18,6 +21,8 @@ import sublimeplugin
 # User Libs
 
 from pywinauto_ipython import launch_ipython
+
+completion_server = join(sublime.packagesPath(), 'IPython', 'server')
 
 ################################################################################
 
@@ -38,12 +43,13 @@ def contig(view, pt):
 ################################################################################
 
 class IPythonBridge(sublimeplugin.TextCommand):
+    pywinauto_ip   = None
+    
     def __init__(self):
         self.reset()
-        
+
     def reset(self):
         self.IP = Pyro.core.getProxyForURI("PYROLOC://localhost:7380/IPython")
-        self.pywinauto_ip   = None
         self.history_length = 0
         self.history_pos    = -1
 
@@ -52,7 +58,7 @@ class IPythonBridge(sublimeplugin.TextCommand):
 
     def launchIPython(self, view):
         if not self.pywinauto_ip:
-            self.pywinauto_ip = launch_ipython()
+            self.pywinauto_ip = launch_ipython(completion_server)
         else:
             try:
                 self.pywinauto_ip.TypeKeys('', 0)
@@ -60,7 +66,10 @@ class IPythonBridge(sublimeplugin.TextCommand):
                 # print type(self.pywinauto_ip)
                 # print self.pywinauto_ip.criteria
                 # print dir(self.pywinauto_ip.app)
-                self.pywinauto_ip = None
+                try:
+                    self.pywinauto_ip = launch_ipython(completion_server)
+                except Exception, e:
+                    self.pywinauto_ip = None
 
     def historyLines(self, view, direction):
         history = self.IP.input_hist()
@@ -85,10 +94,10 @@ class IPythonBridge(sublimeplugin.TextCommand):
     def pushLines(self, view):
         lines = []
         for sel in view.sel():
-            for l in view.substr(view.line(sel)).splitlines(1):
+            for l in view.substr(view.fullLine(sel)).splitlines(1):
                 lines += [l]
-
-        self.IP.push(''.join(lines))
+        to_push = textwrap.dedent(''.join(lines))
+        self.IP.push(to_push)
         self.statusMessage('%s lines pushed to IPython' % len(lines))
     
     def autoComplete(self, view):
@@ -109,6 +118,9 @@ class IPythonBridge(sublimeplugin.TextCommand):
         except Exception, e:
             self.statusMessage(e)
             self.reset()
+
+            if e.message == 'connection failed':
+                view.runCommand('iPythonBridge')
 
 class InsertIPythonCompletion(sublimeplugin.TextCommand):
     def run(self, view, args):
