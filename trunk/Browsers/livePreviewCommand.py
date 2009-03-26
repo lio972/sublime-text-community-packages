@@ -36,7 +36,7 @@ def whenActive(func):
 ################################################################################
 
 class LivePreviewCommand(sublimeplugin.TextCommand):
-    # procQ = None
+    procQ = None
 
     def __init__(self):
         self.reset()
@@ -60,13 +60,13 @@ class LivePreviewCommand(sublimeplugin.TextCommand):
     def init(self, view):
         self.restoreFocus = sublime.FocusRestorer()
         self.readyIE()
-        # self.procQ = processors.WorkerQueue(self.ie)
+        self.procQ = processors.WorkerQueue(self.ie)
         self.initHTML(view)
 
     def reset(self):
         self.ie = self.visible = self.currentFile = None
         self.headRegion = sublime.Region(0, 0)
-        # if self.procQ: self.procQ.stop()
+        if self.procQ: self.procQ.stop()
         print 'Garbage collection', gc.collect()
 
     def initHTML(self, view):
@@ -107,14 +107,14 @@ class LivePreviewCommand(sublimeplugin.TextCommand):
     def onModified(self, view):
         self.buffer(view)
 
-    # def onProcQ(self, buf):
-        # self.procQ.put(processors.markups[self.syntax], buf)
+    def onProcQ(self, buf):
+        self.procQ.put(processors.markups[self.syntax], buf)
 
     def buffer(self, view):
         buf = view.buffer
 
-        # if self.syntax in processors.markups:
-        #     return self.onProcQ(buf)
+        if self.syntax in processors.markups:
+            return self.onProcQ(buf)
 
         sel = view.sel()[0]
         cursorInHead = self.headRegion.contains(sel) and sel.end() != 0

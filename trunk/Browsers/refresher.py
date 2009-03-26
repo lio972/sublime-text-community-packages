@@ -15,7 +15,7 @@ from iexplore import IE
 
 ################################## SETTINGS ####################################
 
-SYNC_EVERY = 1    # seconds, 0 for don't sync
+SYNC_EVERY = 0    # seconds, 0 for don't sync
 
 DEBUG = 1
 
@@ -44,7 +44,7 @@ class BrowsersCommand(sublimeplugin.TextCommand):
             self.readyIE()
 
             if self.readyFireFox():
-                self.navigateTo(START_URL)
+                # self.navigateTo(START_URL)
                 sublime.setTimeout(self.syncBrowsers, 200)
             else:
                 if DEBUG: print "Can't connect to firefox"
