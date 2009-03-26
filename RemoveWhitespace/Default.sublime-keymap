@@ -1,0 +1,5 @@
+<bindings>
+	<binding key="ctrl+k,l" command="removeWhitespace"/>
+	<binding key="ctrl+k,L" command="removeWhitespace extra"/>
+	<binding key="ctrl+k,ctrl+l" command="removeWhitespace trailing"/>
+</bindings>
