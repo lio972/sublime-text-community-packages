@@ -12,7 +12,7 @@ from windows import findAppHandle, SetForegroundWindow
 # http://www.koders.com/lisp/fidF13DCDF15FD63D89F363654D9CB840DCF84C81DA.aspx?s=TV+Raman#L2
 
 repl_re = re.compile("(.*?)repl[0-9]{0,2}>", re.DOTALL | re.MULTILINE)
-firefox_path = '"H:\PortableApps\FirefoxPortable\FirefoxPortable.exe"'
+firefox_path = '"D:\portable_sync\PortableApps\FirefoxPortable\FirefoxPortable.exe"'
 firefox_window_class = "MozillaUIWindowClass"
 
 def check_mozlab_installed(sublime):
