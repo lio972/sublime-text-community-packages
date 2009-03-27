@@ -1,0 +1,3 @@
+<bindings>
+	<binding key="ctrl+alt+l" command="stripSelection"/>
+</bindings>
