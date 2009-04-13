@@ -36,6 +36,8 @@ SCREEN_WIDTH = 150  # char width of quick panel (select then copy => status)
 
 CELL_PADDING = 4
 
+CELL_ALIGN = unicode.ljust  # rjust for right alignment
+
 ################################### CONSTANTS ##################################
 
 SUBLIME_KEYMAP = """
@@ -198,7 +200,7 @@ def find_widths(columns, total_width=SCREEN_WIDTH, cell_padding=CELL_PADDING):
 
         yield width
 
-def pad_columns(columns, align=unicode.ljust):
+def pad_columns(columns, align=CELL_ALIGN):
     padded = []
     
     for i, (col, width) in enumerate(zip(columns, find_widths(columns))):
