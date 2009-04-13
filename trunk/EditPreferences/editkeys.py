@@ -11,7 +11,10 @@ from os.path import ( split, splitext, join, normpath, abspath, isdir,
                       basename, dirname )
 
 from itertools import chain
+from collections import defaultdict
 import mmap
+
+from math import ceil
 
 import re
 import difflib
@@ -28,6 +31,10 @@ from sublimeplugin import commandName
 ################################### SETTINGS ###################################
 
 CREATE_FILES_FOR = ('sublime-keymap', 'sublime-options')
+
+SCREEN_WIDTH = 150  # char width of quick panel (select then copy => status)
+
+CELL_PADDING = 2
 
 ################################### CONSTANTS ##################################
 
@@ -155,13 +162,50 @@ def select(view, region):
     sel_set.add(region)
     view.show(region)
 
-def format_for_display(args, ix, no_space=()):
-    fmt = ': '.join (
-        [("%" + `min(30, max(len(a[i]) for a in args)+2)` + 's') for i in ix] +
-        ["%s" for i in no_space]
-    )
+############################### COLUMN RENDERING ###############################
+
+def pad_columns(columns, align=unicode.ljust):
+    padded = []
+
+    O = int(len(columns[0]) / 10)
+
+    # Find the average, discarding some outliers
+    seq =  [ (sum(len(element) for element in L) /len(L)) for L in   
+             [sorted(S)[O:len(S)-O] for S in columns] ]
     
-    return [ fmt % tuple(a[i] for i in chain(ix, no_space)) for a in args  ] 
+    n = len(columns)
+    screen_width = SCREEN_WIDTH - n * CELL_PADDING  # padded by render_rows func
+
+    # Inverse square scaling; smaller get more share
+    scaling = [(float((x ** -0.5) * screen_width)/sum(seq)) for x in seq]
+    seq = [x*y for x,y in zip(scaling, seq)]
+
+    column_widths = [int(x*screen_width/sum(seq)) for x in seq]
+    column_widths[-1] += screen_width - sum(column_widths)
+    
+    for col, width in zip(columns, column_widths):
+        width = min(max(len(l) for l in col), width)
+
+        def ellipsis(s):
+            return (len(s) < width) and s or s[:width-3] + ' ..'
+
+        padded.append([align(unicode(ellipsis(c.strip())), width) for c in col ])
+    
+    return padded
+
+def columns_2_rows(columns): # [[], [], []]
+    return [tuple(a[i] for a in columns) for i in xrange(len(columns[0]))]
+
+def rows_2_columns(rows):
+    [ [r[i] for r in rows] for i,_ in enumerate(rows[0])]
+
+def rendered_rows(rows, pl=0, pr=CELL_PADDING):
+    pad = lambda r: [(pl*' ') + c + (pr*' ') for c in r]
+    return [''.join(pad(r)) for r in rows]
+
+def format_for_display(args, ix, no_space=()):
+    columns = [ [a[i] for a in args] for i in chain(ix, no_space) ]
+    return rendered_rows(columns_2_rows(pad_columns(columns)))
 
 #################################### PLUGINS ###################################
 
@@ -231,7 +275,7 @@ class ListShortcutKeysCommand(sublimeplugin.WindowCommand):
                 for region in regions[-1:]:
                     select(view, region)
 
-        display = format_for_display(args, (0, 2, 3))
+        display = format_for_display(args, (0, 2, 3,))
 
         window.showSelectPanel(display, onSelect, None, 0, "", 0)
 
@@ -241,7 +285,7 @@ class ListOptions(sublimeplugin.WindowCommand):
 
         for pkg, name, f in glob_packages('sublime-options'):
             if not os.path.exists(f): continue
-            pkg_display = "%s - %s" % (pkg, name) if name != pkg else pkg        
+            pkg_display = "%s - %s" % (pkg, name) if name != pkg else pkg
             with open(f) as fh:
                 for i, line in enumerate(fh):
                     if line.strip() and not line.startswith('#'):
@@ -256,21 +300,33 @@ class ListOptions(sublimeplugin.WindowCommand):
         window.showSelectPanel(display, onSelect, None, 0, "", 0)
 
 class ListCommands(sublimeplugin.WindowCommand):
+    def finish(self, args):
+        display, commands = args
+        window = sublime.activeWindow()
+
+        def onSelect(i):
+            window.openFile(*commands[i][-2:])
+
+        window.showSelectPanel(display, onSelect, None, 0, "", 0)
+    
+    
     def run(self, window, args):
         commands = []
 
         for pkg, module_name, f in glob_packages('py'):
+            sublime.statusMessage('parsing %s' % module_name)
             commands += [
                 (pkg, module_name, commandName(c.name), c.file, c.lineno) 
                 for c in pyclbr.readmodule(module_name, [dirname(f)]).values()
                 if 'sublimeplugin' in ''.join(unicode(b) for b in c.super)
             ]
 
-        display = format_for_display(commands, [0,1,2])
-
-        def onSelect(i):
-            window.openFile(*commands[i][-2:])
-
-        window.showSelectPanel(display, onSelect, None, 0, "", 0)
+        return format_for_display(commands, [0,1,2]), commands
+        
+    try:
+        # Requires AAALoadfirstExtensions
+        run = sublimeplugin.threaded(finish=finish, msg='Be Patient!')(run)
+    except Exception, e:
+        pass
 
 ################################################################################
