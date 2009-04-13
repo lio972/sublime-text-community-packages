@@ -1,5 +1,3 @@
 <bindings>
-
-  <binding key="ctrl+alt+shift+y" command="chooseAnyCommand" />
-
+  <binding key="control+alt+shift+c,control+alt+shift+c" command="chooseAnyCommand" />
 </bindings>
