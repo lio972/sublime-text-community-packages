@@ -16,7 +16,7 @@ from mechanize import Browser
 
 ################################## SETTINGS ####################################
 
-DEFAULT_SYNTAX = 'plain_text'
+DEFAULT_SYNTAX = '6' # plain text
 ENCODE_AS = 'utf8'
 
 ############################ IRC CLIENT SETTINGS ###############################
@@ -57,27 +57,29 @@ SYNTAXES["Packages/Rails/Ruby on Rails.tmLanguage"] = "4"
 SYNTAXES["Packages/SQL/SQL.tmLanguage"] = "14"
 SYNTAXES["Packages/ShellScript/Shell-Unix-Generic.tmLanguage"] = "13"
 
-# <option value="2">ActionScript</option>
-# <option value="7">C/C++</option>
-# <option value="8">CSS</option>
-# <option value="5">Diff</option>
-# <option value="12">HTML (ERB / Rails)</option>
-# <option value="11">HTML / XML</option>
-# <option value="9">Java</option>
+# mapping = {
+# 'ActionScript' : '2',
+# 'C/C++' : '7',
+# 'CSS' : '8',
+# 'Diff' : '5',
+# 'HTML (ERB / Rails)' : '12',
+# 'HTML / XML' : '11',
+# 'Java' : '9',
 
-# <option value="10">Javascript</option>
-# <option value="1">Objective C/C++</option>
-# <option value="17">Pascal</option>
-# <option value="18">Perl</option>
-# <option value="15">PHP</option>
-# <option value="6">Plain text</option>
-# <option value="16">Python</option>
-# <option value="3">Ruby</option>
-# <option value="4" selected="selected">Ruby (on Rails)</option>
+# 'Javascript' : '10',
+# 'Objective C/C++' : '1',
+# 'Pascal' : '17',
+# 'Perl' : '18',
+# 'PHP' : '15',
+# 'Plain text' : '6',
+# 'Python' : '16',
+# 'Ruby' : '3',
+# 'Ruby (on Rails)' : '4',
 
-# <option value="13">Shell Script (Bash)</option>
-# <option value="14">SQL</option>
-# <option value="19">YAML</option>
+# 'Shell Script (Bash)' : '13',
+# 'SQL' : '14',
+# 'YAML' : '19',
+# }
 
 ################################################################################
 
