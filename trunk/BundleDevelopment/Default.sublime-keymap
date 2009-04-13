@@ -28,17 +28,26 @@ restart Sublime Text.
 
 Also note that if the same key is bound twice, the last binding takes precedence
 -->
-
 <bindings>
-    <binding key="ctrl+alt+e" command="extractSnippet">
-        <!-- <context name="" value=""/> -->
+  <binding key="ctrl+alt+e" command="extractSnippet">
+    <!-- <context name="" value=""/> -->
+  </binding>
+  <binding key="ctrl+alt+s" command="extractSnippet test">
+    <!-- <context name="" value=""/> -->
+  </binding>
+  <!--
+<binding key="t,i,p,tab" command="insertAndDecodeCharacters t,i,p,tab">
     </binding>
-    <binding key="ctrl+alt+s" command="parseAndInsertSnippet 'Packages/BundleDevelopment/development_snippet.xml'">
-        <!-- <context name="" value=""/> -->
-    </binding>    
-    
-    <binding key="ctrl+alt+shift+s" command="snippetQuickMenu" />
+
+    <binding key="p,tab" command="insertAndDecodeCharacters p,tab">
+    </binding>
+ -->
+  <binding key="ctrl+backslash" command="sortTabs">
+    <!-- <context name="" value=""/> -->
+  </binding>
+  <!-- <binding key="ctrl+alt+e" command="stripSpace" /> -->
+  <!--     <binding key="ctrl+alt+shift+s" command="snippetQuickMenu" /> -->
+  <binding command="insertSnippet 'Packages/BundleDevelopment/on_post_save.sublime-snippet'" uuid="0a375549-a2b3-4ad3-80cf-29cbbf9c78d5" key="o,n,s,a,v,e,tab">
+    <context name="selector" value="source.python"/>
+  </binding>
 </bindings>
-
-
-

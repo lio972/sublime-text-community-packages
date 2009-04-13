@@ -8,6 +8,10 @@ import textwrap
 import string
 import re
 import functools
+import datetime
+import textwrap
+import uuid
+import shutil
 
 from itertools import takewhile
 from os.path import join, normpath, dirname, basename, splitext, split
@@ -15,53 +19,99 @@ from array import array
 
 from xml.dom import minidom
 
+# TODO:
+try:
+    from lxml import etree as ElementTree
+except Exception, e:
+    from xml.etree import ElementTree
+
 # Sublime Libs
 import sublime
 import sublimeplugin
 
+################################### SETTINGS ###################################
+
+TIME_STAMPED = 0
+
+SYMBOLIC_BINDINGS =    [ 'backquote', 'backslash', 'backspace',
+                        'browser_back', 'browser_favorites', 'browser_forward',
+                        'browser_home', 'browser_refresh', 'browser_search',
+                        'browser_stop', 'capslock', 'clear', 'comma',
+                        'contextmenu', 'delete', 'down', 'end', 'enter',
+                        'equals', 'escape', 'home', 'insert', 'left',
+                        'leftalt', 'leftbracket', 'leftcontrol', 'leftmeta',
+                        'leftshift', 'leftsuper', 'minus', 'numlock',
+                        'pagedown', 'pageup', 'pause', 'period', 'printscreen',
+                        'quote', 'right', 'rightalt', 'rightbracket',
+                        'rightsuper', 'scrolllock', 'semicolon', 'slash',
+                        'space', 'tab', 'up' ]
+
 ################################################################################
 
 SNIPPET_TEMPLATE = (
-"""<!-- See http://www.sublimetext.com/docs/snippets for more information 
--->
+"""
 <snippet>
-    <content><![CDATA[%s]]></content>
+<content><![CDATA[%(snippet)s$15]]></content>
+<!-- 
+scope:   %(scope)s
+syntax:  %(syntax)s
+project: %(project)s
+package: %(package)s
+filename: %(filename)s
+-->
+
+INSERT_META_HERE
+
+<!--
+Test PlayGround (Saver needs to parse) so do inside comments
+
+
+
+-->                
 </snippet>""" )
 
-################################################################################
+META = """
+<meta>
+    <name>${0:leave_blank_until_save}</name>
+    <package>${1:%(package)s}${2:%(plugin_package)s}</package>
+</meta>
+<binding key="${3:a,u,t,o,tab_unless_symbolic_binding_or+}" 
+         uuid="%(UUID)s" msg="DO_NOT_EDIT_AUTO_GENERATED">
+    <context name="selector" value="${4:%(scope)s}%(base_scope)s"/>
+</binding>$15
+"""
 
-def consume(iterable, i=None):
-    'Returns the last in an iterable or defaults to i if None in iterable'
-    for i in iterable: pass
-    return i
+############################# TIMESTAMPED FILENAMES ############################
 
-def contig(view, pt):
-    if isinstance(pt, sublime.Region): pt = pt.begin()
-    notAtBoundary = lambda p: view.substr(p) not in string.whitespace
+def timestamped(file_name):
+  """Puts a datestamp in file_name, just before the extension."""
+  now = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+  f, ext = splitext(file_name)
+  return "%s-%s%s" % ( f, now, ext )
 
-    start = consume(takewhile(notAtBoundary, xrange(pt-1, -1, -1)),      pt)
-    end   = consume(takewhile(notAtBoundary, xrange(pt, view.size())), pt-1)
+#################################### HELPERS ###################################
 
-    return sublime.Region(start, end + 1)
-    
-class DeleteTabTriggerAndInsertSnippetCommand(sublimeplugin.TextCommand):
-    def run(self, view, args):
-        tab_trigger = args[0]
+class Object(dict):
+    __setattr__ = dict.__setitem__
+    def __delattr__(self, name):
+        try:
+            del self[name]
+        except KeyError:
+            raise AttributeError
+    def __getattr__(self, name):
+        try:
+            return self[name]
+        except KeyError:
+            raise AttributeError
 
-        for sel in view.sel():
-            start    =  max(sel.begin() - len(tab_trigger), 0)
-            region   =  view.find(tab_trigger, start, 0)
+def currentSyntaxPackage(view):
+    return split(split(view.options().get("syntax"))[0])[1]
 
-            if region:  view.erase(region)
+def get_package_dir(view):
+        fn = view.fileName()
+        if not fn: return
 
-        view.runCommand('insertSnippet', args[1:])
-
-# class DeleteContigAndInsertSnippetCommand(sublimeplugin.TextCommand):
-#     def run(self, view, args):
-#         for sel in view.sel(): 
-#             view.erase(contig(view, sel))
-#             print contig(view, sel), sel
-#         view.runCommand('insertSnippet', args)
+        return join( sublime.packagesPath(), currentSyntaxPackage(view) )
 
 def parse_snippet(path):
     "('TEXT_NODE', 3) ('CDATA_SECTION_NODE', 4)"
@@ -69,139 +119,252 @@ def parse_snippet(path):
         return ''.join(n.data for n in c.childNodes if n.nodeType in (3, 4))
 
 class ParseAndInsertSnippetCommand(sublimeplugin.TextCommand):
-    cache = {}
-    
     def run(self, view, args):
         f = normpath(join(split(sublime.packagesPath())[0], args[0]))
-        if f not in self.cache: self.cache[f] = parse_snippet(f)
-        view.runCommand('insertInlineSnippet', [self.cache[f]] + args[1:])
-        
-    def onPostSave(self, view):
-        fn = view.fileName()
-        if fn:
-            if fn in self.cache: self.cache.pop(fn)
+        view.runCommand('insertInlineSnippet', [parse_snippet(f)] + args[1:])
+
+################################ REGION HELPERS ################################
+
+def find_all(view, search, region, flags=0, P=None):
+    pos = region.begin() #start position
+    while True:
+        r = view.find(search, pos, flags) #find next string
+        if r is None or not region.contains(r) or pos >= region.end():
+            break #string not found or past end of search area
+
+        pos = r.end() #update current position
+
+        if P is None or P(view, r):
+            yield r
+
+def expanded_selection_extents(view):
+    sels = view.sel()
+    return view.line(sels[0]).begin(), sels[-1].end()
+
+################################## XML HELPERS #################################
+
+def indent(elem, level=0):
+    i = "\n" + level*"  "
+    if len(elem):
+        if not elem.text or not elem.text.strip():
+            elem.text = i + "  "
+        for e in elem:
+            indent(e, level+1)
+            if not e.tail or not e.tail.strip():
+                e.tail = i + "  "
+        if not e.tail or not e.tail.strip():
+            e.tail = i
+    else:
+        if level and (not elem.tail or not elem.tail.strip()):
+            elem.tail = i
+
+################################ CREATE SNIPPET ################################
+
+def escape_extents(view):
+    """ Escapes characters that are `special` to snippet format """
+    region = sublime.Region(*expanded_selection_extents(view))
+    # Escaping $ Do it in reverse order to maintain selections
+    escapes = sorted(find_all(view, r'\$', region)) 
+    for r in reversed(escapes): view.insert(r.begin(), '\\')
+    return escapes
+
+def extract_snippet(view, hard_tabs = True):
+    """ Does not escape selection """
+    
+    # Escape (reversed order)
+    escapes = escape_extents(view)
+    
+    # Reset start end_points
+    starts_at, ends_at = expanded_selection_extents(view)
+
+    # Get array of characters
+    substr = view.substr(sublime.Region(starts_at, ends_at))
+    # Mutable: can set slices
+    snippet = array('u', substr)
+
+    # Find all the tab stops: any selection that is not empty
+    tab_stops = [ (s.begin(), s.end()) for s in view.sel() if not s.empty()]
+
+    # Replace all the tab stops with ${i:placeholder}
+    adjustment = -starts_at
+    
+    for i, region in enumerate(tab_stops):
+        adjusted_region = slice(region[0]+adjustment, region[1]+adjustment)
+    
+        replaced = ''.join(snippet[adjusted_region])
+        replacement = array('u', '${%s:%s}' % (i, replaced))
+        snippet[adjusted_region] = replacement
+        adjustment += len(replacement) - len(replaced)
+    
+    # Unescape
+    for r in escapes: view.erase(r)
+    
+    snippet = textwrap.dedent(''.join(snippet))
+    
+    if hard_tabs:
+        # Replace  softtabs with hard tabs for compatibility
+        tab = (view.options().get('tabSize') or 8) * ' '
+        snippet = snippet.replace(tab, '\t')
+
+    return snippet
+
+def save_snippet(view, snippet):
+    # Get metadata ready for saving
+    scope = view.syntaxName(view.sel()[0].begin()).strip().split()
+    base_scope = scope[-1]    
+    scope = ' '.join(scope[:-1])
+    
+    fn = filename = view.fileName()
+    
+    pkg_path = sublime.packagesPath()
+    if fn and pkg_path in fn:
+        plugin_package = split(fn[len(pkg_path)+1:])[0]
+    else:
+        plugin_package = ''
+    
+    syntax = view.options().get('syntax')
+    project = view.window().project()
+    if project: project = project.fileName()
+    package = dirname(syntax).split('/', 1)[1]
+    UUID = uuid.uuid4()
+
+    if not TIME_STAMPED: timestamped = lambda s: s  # noop
+
+    development_snippet = timestamped(os.path.join (
+        sublime.packagesPath(),
+        'BundleDevelopment',
+        'development_snippet.xml',
+    ))
+
+    with open(development_snippet, 'w') as fh:  
+        snippet = SNIPPET_TEMPLATE % locals()
+        fh.write(snippet)
+
+    return development_snippet, META % locals()
+
+############################## PARSE SNIPPET META ##############################
+
+def parse_development_snippet(fn):
+    et = ElementTree.parse(fn)
+    root = et.getroot()
+    meta = root.find('meta')
+    binding = root.find('binding')
+    if meta is None: return 
+    return Object( (e.tag, e.text) for e in meta.getiterator() ), binding
+
+def config_binding(binding, meta, snippet_name):
+    key = binding.get('key')
+    
+    if ( all(c.isalpha() for c in key) and key not in SYMBOLIC_BINDINGS ):
+        key = ','.join(list(key) + ['tab'])
+
+    binding.set('key', key)
+    binding.set('command', "insertSnippet '%s'" % snippet_name)
+
+    return binding
+
+def pretty_dump_xml(et, fn):
+    indent(et.getroot())
+    try:
+        # lxml
+        et.write(fn, encoding='utf-8', pretty_print=True)
+    except Exception, e:
+        # shitty builtin ElementTree
+        et.write(fn, encoding='utf-8')
+
+################################################################################
 
 class ExtractSnippetCommand(sublimeplugin.TextCommand):
     snippet = ''
-    
-    def run(self, view, args):
-        sels = view.sel()
 
-        # If we don't have at least two selections the command won't work
-        if len(sels) < 2: return
-    
-        # Find the bounds of the text to extract as a snippet
+    def isEnabled(self, view, args):
+        return args or len(view.sel()) > 2
 
-        starts_at = sels[0].begin()
-        ends_at = sels[-1].end()
+    def onPostSave(self, view):
+        fn = view.fileName()
+        if not fn or not fn.endswith(('xml', 'sublime-snippet')): return
 
-        # Get the snippet text as an array of chars
-        snippet = array('u', view.substr(sublime.Region(starts_at, ends_at)))
+        meta, binding = parse_development_snippet(fn)
+        if not meta or not (meta.name or meta.name): 
+            sublime.setTimeout(
+                lambda: sublime.statusMessage('Found No Meta'), 20 )
+            return
 
-        # Find all the tab stops: any selection that is not empty
-        tab_stops = [ (s.begin(), s.end()) for s in sels if not s.empty()]
+        UUID = binding.get('uuid')
 
-        # Replace all the tab stops with ${i:placeholder}
-        adjustment = -starts_at
+        pkg_dir = join(sublime.packagesPath(), meta.package)
+        snippet_name = join(pkg_dir, '%s.sublime-snippet' % meta.name)
+        self.snippet = snippet_name
 
-        for i, region in enumerate(tab_stops):
-            adjusted_region = slice(region[0]+adjustment, region[1]+adjustment)
+        window = view.window()
 
-            replaced = snippet[adjusted_region]
-            replacement = array('u', '${%s:%s}' % (i, ''.join(replaced)))
+        if fn != snippet_name:
+            shutil.copy(fn, snippet_name)
+            sels = list(view.sel())
 
-            snippet[adjusted_region] = replacement
+            def l8r():
+                os.remove(fn)
+                window.focusView(view)
+                window.runCommand('close')
+                window.openFile(snippet_name)
 
-            adjustment += len(replacement) - len(replaced)
+                active_view_sel = window.activeView().sel()
+                active_view_sel.clear()
+                for sel in sels:
+                    active_view_sel.add(sel)
 
-        # Turn the snippet char array into a string
-        # Replace  softtabs with hard tabs for compatibility
+            sublime.setTimeout(l8r , 50)
 
-        tab = (view.options().get('tabSize') or 8) * ' '
-        snippet = (SNIPPET_TEMPLATE % ''.join(snippet)).replace(tab, '\t')
-
-        # Save snippet file and open it
-        development_snippet = os.path.join (
-            sublime.packagesPath(),
-            'BundleDevelopment',
-            'development_snippet.xml',
-        )
+        keymap =  join(pkg_dir, 'Default.sublime-keymap')
+        window.openFile(keymap)
+        window.openFile(snippet_name)
         
-        with open(development_snippet, 'w') as fh:  fh.write(snippet)
+        et = ElementTree.parse(keymap)
+        root = et.getroot()
+        
+        snippet_name = join('Packages', meta.package, basename(snippet_name))
+        binding = config_binding(binding, meta, snippet_name.replace('\\', '/'))
+        
+        try:
+            already_bound = root.xpath("binding[@uuid='%s']" % UUID)
+        except Exception, e: # TODO: Less blanket handling
+            sublime.messageBox('Needs lxml! or you to refactor!')
+
+        if already_bound:
+            root.replace(already_bound[0], binding)
+        else:
+            root.append(binding)
+
+        pretty_dump_xml(et, keymap)
+
+    def test(self, view):
+        if self.snippet:
+            view.runCommand('insertInlineSnippet', [parse_snippet(self.snippet)])
+
+    def run(self, view, args):
+        if 'test' in args:  return self.test(view)
+
+        snippet = extract_snippet(view)
+        development_snippet, meta = save_snippet(view, snippet)        
+
+        # Save snippet file, store path in instance var for `test` cmd
+        self.snippet = development_snippet
+
+        # Open for editing
         window = view.window()
         window.openFile(development_snippet)
-        
-################################################################################
 
-def getPackageDir(view):
-    try: fn = view.fileName()
-    except: return None
-    
-    return join (
-       sublime.packagesPath(), split(split(view.options().get("syntax"))[0])[1]
-    )
-    
-commands_regex = re.compile('<binding key="(.*?)".*?command="(.*?)"')
-snippets_regex = re.compile("Packages/(.*?)\.sublime-snippet")
+        def insert():
+            v = window.activeView()
+            if v.fileName() == development_snippet:
+                v.sel().clear()
+                meta_region = v.find("INSERT_META_HERE", 0)
+                v.erase(meta_region)
+                v.sel().add(sublime.Region(meta_region.begin(), meta_region.begin()))
+                v.runCommand('insertInlineSnippet', [meta])
+            else:
+                sublime.setTimeout(insert, 50)
 
-def parse_keymap(f):
-    dom = minidom.parse(f)
-    bindings = dom.getElementsByTagName('binding')
-    
-    for binding in bindings:
-        key = binding.getAttribute('key')
-        command = binding.getAttribute('command')
-        
-        tab_trigger = None 
-        
-        for context in binding.getElementsByTagName('context'):
-            if context.getAttribute('name') == 'allPreceedingText':
-                tab_trigger = context.getAttribute('value').rstrip('$')[2:]
+        sublime.setTimeout(insert, 1)
 
-        yield key, command, tab_trigger
-                
-def findSnippets(path):
-    snippets = []
-    keyMaps = [f for f in os.listdir(path) if f.endswith('sublime-keymap')]
-
-    for f in (join(path, f) for f in keyMaps):
-        for key, command, context in parse_keymap(f):
-            if snippets_regex.search(command):
-                snippets.append((context or key, command))
-
-    return snippets
-
-################################################################################
-
-def snippetName(s):
-    return basename(snippets_regex.search(s).group(1))
-
-class SnippetQuickMenuCommand(sublimeplugin.TextCommand):
-    def run(self, view, args):
-        if args: 
-            return self.quickOpen(args)
-
-        window = view.window()
-
-        snippetPath = getPackageDir(view)
-        if snippetPath:
-            snippets = findSnippets(snippetPath)
-            if snippets:
-                args = [`s` for s in snippets]
-                display = [snippetName(s[1]) for s in snippets]
-                self.view = view
-
-                window.showQuickPanel('', 'snippetQuickMenu', args, display)
-    
-    def quickOpen(self, args):
-        binding, command = eval(args[0])
-        sublime.statusMessage(binding)
-        self.view.runCommand(command)
-        del self.view
-
-################################################################################
-
-if __name__ == '__main__':
-    unittest.main()
-    
 ################################################################################
