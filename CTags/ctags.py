@@ -33,6 +33,8 @@ TAGS_RE = re.compile (
     '(?:\t(?P<fields>.*))?'
 )
 
+# Column indexes
+
 SYMBOL = 0
 FILENAME = 1
 
@@ -88,13 +90,19 @@ def post_process_tag(search_obj):
 def process_fields(fields):
     return dict(f.split(':', 1) for f in fields.split('\t'))
 
-class Tag(object):
+class Tag(dict):
     "dot.syntatic sugar for tag dicts"
-    def __init__(self, tag_dict):
-        self.__dict__ = tag_dict
-
-    def __repr__(self):
-        return pprint.pformat(self.__dict__)
+    __setattr__ = dict.__setitem__
+    def __delattr__(self, name):
+        try:
+            del self[name]
+        except KeyError:
+            raise AttributeError
+    def __getattr__(self, name):
+        try:
+            return self[name]
+        except KeyError:
+            raise AttributeError
 
 ################################################################################
 
@@ -153,7 +161,7 @@ def resort_ctags(tag_file):
                 fw.write('\t'.join(split))
 
 def build_ctags(ctags_exe, tag_file):
-    cmd = [ctags_exe, '-R']
+    cmd = [ctags_exe, '-R', '--languages=python']
     p = subprocess.Popen(cmd, cwd = dirname(tag_file), shell=1)
     p.wait()
 
@@ -172,10 +180,14 @@ class TagFile(object):
     def __getitem__(self, index):
         self.fh.seek(index)
         self.fh.readline()
-        return self.fh.readline().split('\t')[self.column]
+        
+        try:  return self.fh.readline().split('\t')[self.column]
+        # Ask forgiveness not permission
+        except IndexError:
+            return ''
 
     def __len__(self):
-        return os.stat(self.p)[6]
+        return os.stat(self.p).st_size
 
     def get(self, *tags):
         with open(self.p, 'r+') as fh:
@@ -196,10 +208,7 @@ class TagFile(object):
             self.fh.close()
 
     def get_tags_dict(self, *tags):
-        try:
-            return parse_tag_lines(self.get(*tags))
-        except IndexError:
-            return {}
+        return parse_tag_lines(self.get(*tags))
 
 ################################################################################
 
@@ -225,27 +234,37 @@ class CTagsTest(unittest.TestCase):
         self.assertEqual(len(failures), 0, 'update tag files and try again')
 
     def test_tags_files(self):
-        tags = r"tags"
-        tag_file = TagFile(tags, SYMBOL)
+        tests = [ ( r"tags", SYMBOL ), 
+                  ( r"sorted_by_file_test_tags", FILENAME ),
+                  # ( r"C:\python25\lib\tags_sorted_by_file", FILENAME ) 
+                  ]
+        
+        fails = []
+        
+        for tags_file, column_index in tests:
+            tag_file = TagFile(tags_file, column_index)
 
-        with open(tags, 'r') as fh:
-            latest = ''
-            lines  = []
+            with open(tags_file, 'r') as fh:
+                latest = ''
+                lines  = []
+    
+                for l in fh:
+                    symbol = l.split('\t')[column_index]
+    
+                    if symbol != latest:
+    
+                        if latest:
+                            tags = list(tag_file.get(latest))
+                            if not lines == tags:
+                                fails.append( tags_file, lines, tags )
+    
+                            lines = []
+    
+                        latest = symbol
+    
+                    lines += [l]
 
-            for l in fh:
-                symbol = l.split('\t')[SYMBOL]
-
-                if symbol != latest:
-
-                    if latest:
-                        tags = list(tag_file.get(latest))
-                        self.assertEqual(lines, tags)
-
-                        lines = []
-
-                    latest = symbol
-
-                lines += [l]
+        self.assertEquals(fails, [])
 
 if __name__ == '__main__':
     unittest.main()

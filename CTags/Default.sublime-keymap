@@ -3,5 +3,8 @@
     <binding key="ctrl+leftbracket" command="jumpBack" />
     <binding key="ctrl+shift+leftbracket" command="jumpBack toLastModification" />
     <binding key="ctrl+alt+shift+t" command="rebuildCTags" />
-    <binding key="alt+s" command="showSymbolsForCurrentFile" />
+    
+    <binding key="alt+s" command="showSymbols" />
+    <!-- <binding key="alt+s" command="showSymbols multi" /> -->
+    
 </bindings>

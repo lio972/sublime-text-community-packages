@@ -16,7 +16,7 @@ if not hasattr(sublimeplugin.onActivated, '__wrapped__'):
             w = v.window()
             if w:
                 sublime._activeWindow = w
-            
+
             if not v.isLoading():
                 fn = normpath(v.fileName() or '')
                 while on_load_cbs.get(fn):
