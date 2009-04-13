@@ -11,6 +11,7 @@ import functools
 import subprocess
 import string
 import pprint
+import glob
 
 from os.path import join, normpath, dirname
 from operator import itemgetter as iget
@@ -22,22 +23,20 @@ import sublime
 import sublimeplugin
 from sublime import statusMessage
 
-# Thread
-
 # User Libs
 import ctags
 
 from ctags import TagFile, SYMBOL, FILENAME
 from plugin_helpers import threaded, FocusRestorer, in_main
 
-# NOTE
+from columns import format_for_display
 
-# This plugin relies on in_load.py to decorate sublimeplugin.onActivated
+# NOTE
+# This plugin relies on on_load.py to decorate sublimeplugin.onActivated
 
 ################################################################################
 
 CTAGS_EXE = join(sublime.packagesPath(), 'CTags', 'ctags.exe')
-
 
 # These are used for formatting tag paths for the QuickPanel
 
@@ -46,7 +45,6 @@ OBJECT_PUNCTUATORS = {
     'struct'   :  '::',
     'function' :  '/',
 }
-
 
 ENTITY_SCOPE = "entity.name.function, entity.name.type, meta.toc-list"
 
@@ -124,33 +122,33 @@ def scroll_to_tag(view, tag_dir, tag):
 ################################################################################
 
 def format_tag_for_quickopen(tag, file=1):
-    if file: format         = "%(filename)s:\t"
-    else:    format         = ""
+    format = []
+    tag = ctags.Tag(tag)
 
-    for field in tag.get("field_keys", []):
+    if file: format.append(tag.filename )
+
+    f=''
+    for field in getattr(tag, "field_keys", []):
         if field != "file":
             punct = OBJECT_PUNCTUATORS.get(field, ' -> ')
-            format += string.Template (
+            f += string.Template (
                 '    %($field)s$punct%(symbol)s' ).substitute(locals())
 
-    if not format: format = '%(symbol)s'
-    tag_info = (format % tag).rstrip()
-    space    = (80 - len(tag_info)) * ' '
-
-    return (tag_info + space + tag["ex_command"]).decode('utf8', 'ignore')
+    return format + [(f or tag.symbol) % tag, tag.ex_command]
 
 format_for_current_file = functools.partial(format_tag_for_quickopen, file=0)
 
 ################################################################################
 
-def prepared_4_quickpanel(formatter=format_tag_for_quickopen):
+def prepared_4_quickpanel(formatter=format_tag_for_quickopen, paths=()):
     def compile_lists(sorter):
         args, display = [], []
 
         for t in sorter():
             display.append(formatter(t))
             args.append(t)
-        return args, display
+
+        return args, format_for_display(display, paths=paths)
 
     return compile_lists
 
@@ -164,7 +162,24 @@ def checkIfBuilding(self, view, args):
 
 ################################################################################
 
-class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
+def tagged_project_files(view, tag_dir):
+    window = view.window()
+    if not window: return []
+    project = window.project()
+    fn = view_fn(view)
+        
+    if not project or (project and not fn.startswith(dirname(project.fileName()))):
+        prefix_arg = fn
+        files = glob.glob(join(dirname(fn),"*"))
+    else:
+        prefix_arg = project.fileName()
+        mount_points = project.mountPoints()
+        files = list( chain(*(d['files'] for d in mount_points)) )
+    
+    common_prefix = os.path.commonprefix([tag_dir, prefix_arg])
+    return [fn[len(common_prefix)+1:] for fn in files]
+
+class ShowSymbols(sublimeplugin.TextCommand):
     isEnabled = checkIfBuilding
 
     def run(self, view, args):
@@ -175,17 +190,31 @@ class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):
         if not fn: return
 
         tag_dir = normpath(dirname(tags_file))
+        
         common_prefix = os.path.commonprefix([tag_dir, fn])
-        current_file = fn[len(common_prefix)+1:]
+        files = [fn[len(common_prefix)+1:]]
+        
+        if 'multi' in args:
+            more_files = tagged_project_files(view, tag_dir)
+            files.extend(more_files)
 
         ################################################################
 
         tags_file = tags_file + '_sorted_by_file'
-        tags = TagFile(tags_file, FILENAME).get_tags_dict(current_file)
+        tags = TagFile(tags_file, FILENAME).get_tags_dict(*files)
+        
+        if not tags:
+            if not 'multi' in args: 
+                view.runCommand('showSymbols', ['multi'])
+            return statusMessage('No symbols found')
+        
+        JumpBack.append(view)
+        
+        paths = (0,) if len(files) > 1 else ()
+        formatting = functools.partial( format_tag_for_quickopen, 
+                                        file = bool(paths)  )
 
-        if tags:  JumpBack.append(view)
-
-        @prepared_4_quickpanel(format_for_current_file)
+        @prepared_4_quickpanel(formatting, paths=paths)
         def sorted_tags():
             for t in sorted (
                 chain(*(tags[k] for k in tags)), key=iget('tag_path')):
@@ -328,10 +357,9 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
             tags = TagFile(tags_file, SYMBOL).get_tags_dict(symbol)
             if tags:
                 break
-
+        
         if not tags:
-            # in %s' % (symbol, tags_file))
-            return statusMessage('Can\'t find "%s"' % symbol) 
+            return statusMessage('Can\'t find "%s"' % symbol)
 
         @prepared_4_quickpanel()
         def sorted_tags():
