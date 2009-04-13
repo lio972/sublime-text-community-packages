@@ -34,7 +34,7 @@ CREATE_FILES_FOR = ('sublime-keymap', 'sublime-options')
 
 SCREEN_WIDTH = 150  # char width of quick panel (select then copy => status)
 
-CELL_PADDING = 2
+CELL_PADDING = 4
 
 ################################### CONSTANTS ##################################
 
@@ -164,30 +164,47 @@ def select(view, region):
 
 ############################### COLUMN RENDERING ###############################
 
-def pad_columns(columns, align=unicode.ljust):
-    padded = []
+def pop(l, ix, default):
+    try:               return l.pop(ix)
+    except IndexError: return default
 
+def find_widths(columns, total_width=SCREEN_WIDTH, cell_padding=CELL_PADDING):
     O = int(len(columns[0]) / 10)
 
     # Find the average, discarding some outliers
     seq =  [ (sum(len(element) for element in L) /len(L)) for L in   
              [sorted(S)[O:len(S)-O] for S in columns] ]
-    
+
     n = len(columns)
-    screen_width = SCREEN_WIDTH - n * CELL_PADDING  # padded by render_rows func
+    screen_width = total_width - n * cell_padding  # padded by render_rows func
 
     # Inverse square scaling; smaller get more share
     scaling = [(float((x ** -0.5) * screen_width)/sum(seq)) for x in seq]
     seq = [x*y for x,y in zip(scaling, seq)]
 
-    column_widths = [int(x*screen_width/sum(seq)) for x in seq]
-    column_widths[-1] += screen_width - sum(column_widths)
-    
-    for col, width in zip(columns, column_widths):
-        width = min(max(len(l) for l in col), width)
+    column_widths = [ int(x*screen_width/sum(seq))  for x in seq]
 
+    for i, col in enumerate(columns):
+        colw = column_widths.pop(0)
+        maxw = max(len(l) for l in col)
+        width = min(maxw, colw)
+
+        if maxw < colw:
+            remaining_cols = columns[i+1:]
+            remaining_width = abs( maxw - colw ) + sum(column_widths)
+            if remaining_cols:
+                column_widths = list( 
+                    find_widths(remaining_cols, remaining_width, 0))
+
+        yield width
+
+def pad_columns(columns, align=unicode.ljust):
+    padded = []
+    
+    for i, (col, width) in enumerate(zip(columns, find_widths(columns))):
         def ellipsis(s):
-            return (len(s) < width) and s or s[:width-3] + ' ..'
+            return ( s if (len(s) <= width or i+1 == len(columns)) 
+                     else s[:width-3] + ' ..')
 
         padded.append([align(unicode(ellipsis(c.strip())), width) for c in col ])
     
@@ -300,8 +317,8 @@ class ListOptions(sublimeplugin.WindowCommand):
         window.showSelectPanel(display, onSelect, None, 0, "", 0)
 
 class ListCommands(sublimeplugin.WindowCommand):
-    def finish(self, args):
-        display, commands = args
+    def finish(self, commands):
+        display = format_for_display(commands, [0,1,2])
         window = sublime.activeWindow()
 
         def onSelect(i):
@@ -321,7 +338,7 @@ class ListCommands(sublimeplugin.WindowCommand):
                 if 'sublimeplugin' in ''.join(unicode(b) for b in c.super)
             ]
 
-        return format_for_display(commands, [0,1,2]), commands
+        return commands
         
     try:
         # Requires AAALoadfirstExtensions
