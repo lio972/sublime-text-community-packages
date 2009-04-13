@@ -28,15 +28,13 @@ import sublime
 import sublimeplugin
 from sublimeplugin import commandName
 
+from columns import format_for_display
+
 ################################### SETTINGS ###################################
 
 CREATE_FILES_FOR = ('sublime-keymap', 'sublime-options')
 
-SCREEN_WIDTH = 150  # char width of quick panel (select then copy => status)
-
-CELL_PADDING = 4
-
-CELL_ALIGN = unicode.ljust  # rjust for right alignment
+# see columns.py for quickpanel display settings
 
 ################################### CONSTANTS ##################################
 
@@ -164,68 +162,6 @@ def select(view, region):
     sel_set.add(region)
     view.show(region)
 
-############################### COLUMN RENDERING ###############################
-
-def pop(l, ix, default):
-    try:               return l.pop(ix)
-    except IndexError: return default
-
-def find_widths(columns, total_width=SCREEN_WIDTH, cell_padding=CELL_PADDING):
-    O = int(len(columns[0]) / 10)
-
-    # Find the average, discarding some outliers
-    seq =  [ (sum(len(element) for element in L) /len(L)) for L in   
-             [sorted(S)[O:len(S)-O] for S in columns] ]
-
-    n = len(columns)
-    screen_width = total_width - n * cell_padding  # padded by render_rows func
-
-    # Inverse square scaling; smaller get more share
-    scaling = [(float((x ** -0.5) * screen_width)/sum(seq)) for x in seq]
-    seq = [x*y for x,y in zip(scaling, seq)]
-
-    column_widths = [ int(x*screen_width/sum(seq))  for x in seq]
-
-    for i, col in enumerate(columns):
-        colw = column_widths.pop(0)
-        maxw = max(len(l) for l in col)
-        width = min(maxw, colw)
-
-        if maxw < colw:
-            remaining_cols = columns[i+1:]
-            remaining_width = abs( maxw - colw ) + sum(column_widths)
-            if remaining_cols:
-                column_widths = list( 
-                    find_widths(remaining_cols, remaining_width, 0))
-
-        yield width
-
-def pad_columns(columns, align=CELL_ALIGN):
-    padded = []
-    
-    for i, (col, width) in enumerate(zip(columns, find_widths(columns))):
-        def ellipsis(s):
-            return ( s if (len(s) <= width or i+1 == len(columns)) 
-                     else s[:width-3] + ' ..')
-
-        padded.append([align(unicode(ellipsis(c.strip())), width) for c in col ])
-    
-    return padded
-
-def columns_2_rows(columns): # [[], [], []]
-    return [tuple(a[i] for a in columns) for i in xrange(len(columns[0]))]
-
-def rows_2_columns(rows):
-    [ [r[i] for r in rows] for i,_ in enumerate(rows[0])]
-
-def rendered_rows(rows, pl=0, pr=CELL_PADDING):
-    pad = lambda r: [(pl*' ') + c + (pr*' ') for c in r]
-    return [''.join(pad(r)) for r in rows]
-
-def format_for_display(args, ix, no_space=()):
-    columns = [ [a[i] for a in args] for i in chain(ix, no_space) ]
-    return rendered_rows(columns_2_rows(pad_columns(columns)))
-
 #################################### PLUGINS ###################################
 
 class EditPackageFiles(sublimeplugin.WindowCommand):
@@ -294,7 +230,7 @@ class ListShortcutKeysCommand(sublimeplugin.WindowCommand):
                 for region in regions[-1:]:
                     select(view, region)
 
-        display = format_for_display(args, (0, 2, 3,))
+        display = format_for_display(args, cols = (0, 2, 3))
 
         window.showSelectPanel(display, onSelect, None, 0, "", 0)
 
@@ -311,7 +247,7 @@ class ListOptions(sublimeplugin.WindowCommand):
                         options.append (
                             (pkg_display, line.strip(), f, i + 1) )
 
-        display = format_for_display(options, [0], [1] )
+        display = format_for_display(options, cols= (0, 1) )
 
         def onSelect(i):
             window.openFile(*options[i][-2:])
@@ -320,7 +256,7 @@ class ListOptions(sublimeplugin.WindowCommand):
 
 class ListCommands(sublimeplugin.WindowCommand):
     def finish(self, commands):
-        display = format_for_display(commands, [0,1,2])
+        display = format_for_display(commands, cols=(0,1,2))
         window = sublime.activeWindow()
 
         def onSelect(i):
