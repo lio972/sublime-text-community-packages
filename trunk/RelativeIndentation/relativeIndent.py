@@ -35,7 +35,7 @@ def linesGetFirstsDisplacement(view, region):
     """
     
     region = view.line(region)
-    start, end = region.begin(), region.end()
+    start, end = region.begin(), region.end()   
     displace = 0
     for x in xrange(start, end):
         if view.substr(x).isspace():
@@ -104,7 +104,7 @@ def move_cursor_down(view, cursor_pt, cursor_abs):
 
     if len(next_line) < cursor_pt:
         padding = (cursor_pt - len(next_line)) * ' '
-        view.insert(next_line.end(), handleTabs(view, padding))
+        view.insert(next_line.end(), padding)
 
     new_pt = (next_line.begin() + cursor_pt)
     view.sel().add(sublime.Region(new_pt, new_pt  ))
@@ -121,19 +121,24 @@ class RelativeIndentCommand(sublimeplugin.TextCommand):
                 for region in view.sel():
                     insertOrReplace(view, region, clip.pop(0))
             else:
-                for i, l in enumerate(clip):
-                    last_line = i+1 == n    
-
-                    sel =  view.sel()[0]               
-                    line = view.line(sel)   
-                    if not last_line and view.substr(line).isspace():
-                        view.runCommand('insertAndDecodeCharacters', ['\n'])
-
-                    cursor_at = sel.end() - line.begin()
-                    insertOrReplace(view, sel, l)
-
-                    if not last_line:
-                        move_cursor_down(view, cursor_at, sel.end())
+                if view.options().get('translateTabsToSpaces'):
+                    for i, l in enumerate(clip):
+                        last_line = i+1 == n    
+    
+                        sel =  view.sel()[0]               
+                        line = view.line(sel)
+                        if not last_line and view.substr(line).isspace():
+                            view.runCommand('insertAndDecodeCharacters', ['\n'])
+    
+                        cursor_at = sel.end() - line.begin()
+                        insertOrReplace(view, sel, l)
+    
+                        if not last_line:
+                            move_cursor_down(view, cursor_at, sel.end())
+                else:
+                    # Handling tabs is a PITA!!
+                    view.runCommand('insertInlineSnippet', ['\n'.join(clip)])
+                    
         else:
             for sel in view.sel(): view.sel().add(view.line(sel))
             view.runCommand(args[0])
@@ -148,15 +153,15 @@ class ParamPerSelectionSnippetCommand(sublimeplugin.TextCommand):
             selections.append(substrStripPrecedingCommonSpace(view, sel))
 
         start, end, displace = linesGetFirstsDisplacement( view, sel1) 
-        
+
         eraseSelectionLines(view)               
         selSet.clear()
-        
+
         view.insert(start, (displace * ' ') + '\n')
         putCursorAt = start+displace
-        
+
         selSet.add(sublime.Region(putCursorAt, putCursorAt))
-        
+
         view.runCommand('insertSnippet', args + selections)
 
 class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
