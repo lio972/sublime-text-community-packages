@@ -1,4 +1,4 @@
-################################################################################
+#################################### IMPORTS ###################################
 
 from __future__ import with_statement
 
@@ -42,7 +42,7 @@ from columns import format_for_display
 
 CTAGS_EXE = join(sublime.packagesPath(), 'CTags', 'ctags.exe')
 
-CTAGS_CMD = [CTAGS_EXE, '-R' ] #, '--languages=python']
+CTAGS_CMD = [CTAGS_EXE, '-R', '--languages=python']
 
 TAGS_PATHS = {
     'source.python' :  r'C:\Python25\Lib\tags',
@@ -349,11 +349,7 @@ class RebuildCTags(sublimeplugin.TextCommand):
         ctags.build_ctags(CTAGS_CMD, tag_file)
         return tag_file
 
-
 class TestCTags(sublimeplugin.TextCommand):
-    isEnabled = lambda s, v, a: v.fileName()
-    routine = None
-
     @staggered(every=1)
     def run(self, view, *args):
         if not sublime.questionBox (
