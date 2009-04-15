@@ -4,7 +4,8 @@
     <binding key="ctrl+shift+leftbracket" command="jumpBack toLastModification" />
     <binding key="ctrl+alt+shift+t" command="rebuildCTags" />
     
+    <!-- <binding key="ctrl+alt+shift+t" command="testCTags" /> -->
+
     <binding key="alt+s" command="showSymbols" />
     <!-- <binding key="alt+s" command="showSymbols multi" /> -->
-    
 </bindings>

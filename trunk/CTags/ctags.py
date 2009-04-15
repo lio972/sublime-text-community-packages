@@ -57,11 +57,12 @@ def splits(string, *splitters):
 
 ################################################################################
 
-def parse_tag_lines(lines, order_by='symbol'):
+def parse_tag_lines(lines, order_by='symbol', hook=None):
     tags_lookup = {}
 
     for search_obj in (t for t in (TAGS_RE.search(l) for l in lines) if t):
         tag = post_process_tag(search_obj)
+        if hook is not None: tag = hook(tag)
         tags_lookup.setdefault(tag[order_by], []).append(tag)
 
     return tags_lookup
@@ -160,8 +161,7 @@ def resort_ctags(tag_file):
                 split[FILENAME] = split[FILENAME].lstrip('.\\')
                 fw.write('\t'.join(split))
 
-def build_ctags(ctags_exe, tag_file):
-    cmd = [ctags_exe, '-R', '--languages=python']
+def build_ctags(cmd, tag_file):
     p = subprocess.Popen(cmd, cwd = dirname(tag_file), shell=1)
     p.wait()
 
@@ -207,8 +207,17 @@ class TagFile(object):
 
             self.fh.close()
 
+    @property
+    def dir(self):
+        return dirname(self.p)
+
+    def tags_hook(self):
+        cls = type('Tag', (Tag,), dict(root_dir = self.dir))
+        def hook(t): return cls(t)
+        return hook
+
     def get_tags_dict(self, *tags):
-        return parse_tag_lines(self.get(*tags))
+        return parse_tag_lines(self.get(*tags), hook=self.tags_hook())
 
 ################################################################################
 
