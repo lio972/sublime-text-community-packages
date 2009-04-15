@@ -42,7 +42,7 @@ from columns import format_for_display
 
 CTAGS_EXE = join(sublime.packagesPath(), 'CTags', 'ctags.exe')
 
-CTAGS_CMD = [CTAGS_EXE, '-R', '--languages=python']
+CTAGS_CMD = [CTAGS_EXE, '-R' ] #, '--languages=python']
 
 TAGS_PATHS = {
     'source.python' :  r'C:\Python25\Lib\tags',
@@ -356,11 +356,11 @@ class TestCTags(sublimeplugin.TextCommand):
 
     @staggered(every=1)
     def run(self, view, *args):
-        sublime.messageBox (
-                'Make sure all .py files are open from CTags package and '
-                'tags file is fresh' )
+        if not sublime.questionBox (
+                'Are all .py files open from CTags package and '
+                'is `tags` file fresh?' ):  return
 
-        tag_file = join(dirname(view_fn(view)), 'tags')
+        tag_file = join(dirname(CTAGS_EXE), 'tags')
 
         with open(tag_file) as tf:
             tags = parse_tag_lines(tf, hook=lambda t: Tag(t))
