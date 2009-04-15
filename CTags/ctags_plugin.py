@@ -6,9 +6,7 @@ from __future__ import with_statement
 import os
 import re
 import time
-import threading
 import functools
-import subprocess
 import string
 import pprint
 import glob
@@ -24,21 +22,33 @@ import sublimeplugin
 from sublime import statusMessage
 
 # User Libs
+
+# Ctags
 import ctags
+from ctags import TagFile, SYMBOL, FILENAME, parse_tag_lines, Tag
 
-from ctags import TagFile, SYMBOL, FILENAME
-from plugin_helpers import threaded, FocusRestorer, in_main
+# Helpers
+from plugin_helpers import ( threaded, FocusRestorer, in_main, staggered,
+                             view_fn, quick_panel, wait_until_loaded, select )
 
+# QuickPanel formatting
 from columns import format_for_display
 
-# NOTE
-# This plugin relies on on_load.py to decorate sublimeplugin.onActivated
+#################################### README ####################################
 
-################################################################################
+#  This plugin relies on on_load.py to decorate sublimeplugin.onActivated
+
+################################### SETTINGS ###################################
 
 CTAGS_EXE = join(sublime.packagesPath(), 'CTags', 'ctags.exe')
 
-# These are used for formatting tag paths for the QuickPanel
+CTAGS_CMD = [CTAGS_EXE, '-R', '--languages=python']
+
+TAGS_PATHS = {
+    'source.python' :  r'C:\Python25\Lib\tags',
+}
+
+################################### CONSTANTS ##################################
 
 OBJECT_PUNCTUATORS = {
     'class'    :  '.',
@@ -50,31 +60,13 @@ ENTITY_SCOPE = "entity.name.function, entity.name.type, meta.toc-list"
 
 ################################################################################
 
-def view_fn(view, if_None = '.'):
-    return normpath(view.fileName() or if_None)
-
-def wait_until_loaded(file):
-    def wrapper(f):
-        sublime.addOnLoadedCallback(file, f)
-        sublime.activeWindow().openFile(file)
-
-    return wrapper
-
-def select(view, region):
-    sel_set = view.sel()
-    sel_set.clear()
-    sel_set.add(region)
-    view.show(region)
-
-################################################################################
-
 def find_tags_relative_to(view, ask_to_build=True):
     fn = view.fileName()
-    if not fn: return
+    if not fn: return ''
 
     dirs = normpath(join(dirname(fn), 'tags')).split(os.path.sep)
     f = dirs.pop()
-
+    
     while dirs:
         joined = normpath(os.path.sep.join(dirs + [f]))
         if os.path.exists(joined): return joined
@@ -84,6 +76,19 @@ def find_tags_relative_to(view, ask_to_build=True):
         statusMessage("Can't find any relevant tags file")
         view.runCommand('rebuildCTags')
 
+def alternate_tags_paths(view, tags_file):
+    tags_paths = '%s_search_paths' % tags_file
+    search_paths = [tags_file]
+
+    if os.path.exists(tags_paths):
+        search_paths.extend(open(tags_paths).read().split('\n'))
+
+    for selector, path in TAGS_PATHS.items():
+        if view.matchSelector(view.sel()[0].begin(), selector):
+            search_paths.append(path)
+
+    return filter(os.path.exists, search_paths)
+
 ################################################################################
 
 def follow_tag_path(view, tag_path, pattern):
@@ -92,8 +97,8 @@ def follow_tag_path(view, tag_path, pattern):
     for p in list(tag_path)[1:-1]:
         while True:
             regions.append(view.find(p, regions[-1].end(), sublime.LITERAL))
-            if (not regions[-1] or (regions[-1] == regions[-2]) or
-                view.matchSelector(regions[-1].begin(), ENTITY_SCOPE)):
+            if ( view.matchSelector(regions[-1].begin(), ENTITY_SCOPE) 
+                  or not regions[-1] ):
                 break
 
     regions = [r for r in regions if r is not None]
@@ -102,21 +107,17 @@ def follow_tag_path(view, tag_path, pattern):
 
     return pattern_region.begin() if pattern_region else start_at
 
-def scroll_to_tag(view, tag_dir, tag):
-    tag = ctags.Tag(tag)
-
-    symbol, pattern_or_line = tag.symbol, tag.ex_command
-
-    @wait_until_loaded(join(tag_dir, tag.filename))
+def scroll_to_tag(view, tag):
+    @wait_until_loaded(join(tag.root_dir, tag.filename))
     def and_then(view):
         look_from = None
-        if pattern_or_line.isdigit():
-            look_from = view.textPoint(int(pattern_or_line)-1, 0)
+        if tag.ex_command.isdigit():
+            look_from = view.textPoint(int(tag.ex_command)-1, 0)
         else:
-            look_from = follow_tag_path(view, tag.tag_path, pattern_or_line)
+            look_from = follow_tag_path(view, tag.tag_path, tag.ex_command)
 
         if look_from is not None:
-            symbol_region = view.find(symbol, look_from, sublime.LITERAL)
+            symbol_region = view.find(tag.symbol, look_from, sublime.LITERAL)
             select(view, symbol_region)
 
 ################################################################################
@@ -136,11 +137,7 @@ def format_tag_for_quickopen(tag, file=1):
 
     return format + [(f or tag.symbol) % tag, tag.ex_command]
 
-format_for_current_file = functools.partial(format_tag_for_quickopen, file=0)
-
-################################################################################
-
-def prepared_4_quickpanel(formatter=format_tag_for_quickopen, paths=()):
+def prepared_4_quickpanel(formatter=format_tag_for_quickopen, path_cols=()):
     def compile_lists(sorter):
         args, display = [], []
 
@@ -148,17 +145,9 @@ def prepared_4_quickpanel(formatter=format_tag_for_quickopen, paths=()):
             display.append(formatter(t))
             args.append(t)
 
-        return args, format_for_display(display, paths=paths)
+        return args, format_for_display(display, paths=path_cols)
 
     return compile_lists
-
-################################################################################
-
-def checkIfBuilding(self, view, args):
-    if RebuildCTags.building:
-        statusMessage('Please wait while tags are built')
-
-    else:  return 1
 
 ################################################################################
 
@@ -167,8 +156,9 @@ def tagged_project_files(view, tag_dir):
     if not window: return []
     project = window.project()
     fn = view_fn(view)
-        
-    if not project or (project and not fn.startswith(dirname(project.fileName()))):
+
+    if not project or ( project and 
+                        not  fn.startswith(dirname(project.fileName())) ):
         prefix_arg = fn
         files = glob.glob(join(dirname(fn),"*"))
     else:
@@ -179,71 +169,20 @@ def tagged_project_files(view, tag_dir):
     common_prefix = os.path.commonprefix([tag_dir, prefix_arg])
     return [fn[len(common_prefix)+1:] for fn in files]
 
-class ShowSymbols(sublimeplugin.TextCommand):
-    isEnabled = checkIfBuilding
+def files_to_search(view, tags_file, args):
+    fn = view_fn(view, None)
+    if not fn: return
+    
+    tag_dir = normpath(dirname(tags_file))
+    
+    common_prefix = os.path.commonprefix([tag_dir, fn])
+    files = [fn[len(common_prefix)+1:]]
+    
+    if 'multi' in args:
+        more_files = tagged_project_files(view, tag_dir)
+        files.extend(more_files)
 
-    def run(self, view, args):
-        tags_file = find_tags_relative_to(view)
-        if not tags_file: return
-
-        fn = view_fn(view, None)
-        if not fn: return
-
-        tag_dir = normpath(dirname(tags_file))
-        
-        common_prefix = os.path.commonprefix([tag_dir, fn])
-        files = [fn[len(common_prefix)+1:]]
-        
-        if 'multi' in args:
-            more_files = tagged_project_files(view, tag_dir)
-            files.extend(more_files)
-
-        ################################################################
-
-        tags_file = tags_file + '_sorted_by_file'
-        tags = TagFile(tags_file, FILENAME).get_tags_dict(*files)
-        
-        if not tags:
-            if not 'multi' in args: 
-                view.runCommand('showSymbols', ['multi'])
-            return statusMessage('No symbols found')
-        
-        JumpBack.append(view)
-        
-        paths = (0,) if len(files) > 1 else ()
-        formatting = functools.partial( format_tag_for_quickopen, 
-                                        file = bool(paths)  )
-
-        @prepared_4_quickpanel(formatting, paths=paths)
-        def sorted_tags():
-            for t in sorted (
-                chain(*(tags[k] for k in tags)), key=iget('tag_path')):
-                yield t
-
-        ################################################################
-
-        (QuickPanel.partial(scroll_to_tag, view, tag_dir)
-                   .show(*sorted_tags))
-
-################################################################################
-
-class QuickPanel(sublimeplugin.WindowCommand):
-    @classmethod
-    def show(cls, args, display, skip_if_one=False):
-        if skip_if_one and len(args) < 2: return cls.f(args[0])
-        cls.args = args
-        args = map(repr, xrange(len(args)))
-        sublime.activeWindow().showQuickPanel('', 'quickPanel', args, display)
-
-    @classmethod
-    def partial(cls, f, *args, **kw):
-        cls.f = staticmethod(functools.partial(f, *args, **kw))
-        return cls
-
-    def run(self, window, args):
-        arg = self.args[eval(args[0])]
-        self.f(arg)
-        del QuickPanel.f, QuickPanel.args
+    return files
 
 ################################################################################
 
@@ -310,54 +249,43 @@ class JumpBack(sublimeplugin.WindowCommand):
 
 ################################################################################
 
-class RebuildCTags(sublimeplugin.TextCommand):
-    building = False
+def ctags_command(jump_directly_if_one=False):
+    def wrapper(f):
+        def command(self, view, args):
+            tags_file = find_tags_relative_to(view)
+            
+            result = f(self, view, args, tags_file, {})
 
-    def run(self, view, args):
+            if isinstance(result, tuple):
+                args, display = result
+                def on_select(i):
+                    JumpBack.append(view)
+                    scroll_to_tag(view, args[i])
 
-        tag_file = find_tags_relative_to(view, ask_to_build=0)
-        if not tag_file:
-            tag_file = join(dirname(view_fn(view)), 'tags')
-            if not sublime.questionBox('`ctags -R` in %s ?'% dirname(tag_file)):
-                return
+                ( on_select(0) if   jump_directly_if_one and len(args) == 1
+                               else quick_panel(display, on_select) )
+        return command
+    return wrapper
 
-        RebuildCTags.building = True
+def checkIfBuilding(self, view, args):
+    if RebuildCTags.build_ctags.running:
+        statusMessage('Please wait while tags are built')
 
-        self.build_ctags(tag_file)
-        statusMessage('Re/Building CTags: Please be patient')
-
-    def done_building(self, tag_file):
-        statusMessage('Finished building %s' % tag_file)
-        RebuildCTags.building = False
-
-    @threaded(finish=done_building, msg="Already running CTags")
-    def build_ctags(self, tag_file):
-        ctags.build_ctags(CTAGS_EXE, tag_file)
-        return tag_file
+    else:  return 1
 
 ################################################################################
 
 class NavigateToDefinition(sublimeplugin.TextCommand):
     isEnabled = checkIfBuilding
 
-    def run(self, view, args):
-        tags_file = find_tags_relative_to(view)
-        if not tags_file: return
-
+    @ctags_command(jump_directly_if_one=True)
+    def run(self, view, args, tags_file, tags):
         symbol = view.substr(view.word(view.sel()[0]))
 
-        tags_paths = '%s_search_paths' % tags_file
-        search_paths = [tags_file]
-
-        if os.path.exists(tags_paths):
-            search_paths.extend(open(tags_paths).read().split('\n'))
-
-        for tags_file in search_paths:
-            tag_dir = dirname(tags_file)
+        for tags_file in alternate_tags_paths(view, tags_file):
             tags = TagFile(tags_file, SYMBOL).get_tags_dict(symbol)
-            if tags:
-                break
-        
+            if tags: break
+
         if not tags:
             return statusMessage('Can\'t find "%s"' % symbol)
 
@@ -366,11 +294,89 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
             for t in sorted(tags.get(symbol, []), key=iget('tag_path')):
                 yield t
 
-        args, display = sorted_tags
+        return sorted_tags
 
-        if args:
-            JumpBack.append(view)
-            (QuickPanel.partial(scroll_to_tag, view, tag_dir)
-                       .show(args, display, skip_if_one = True))
+################################################################################
+
+class ShowSymbols(sublimeplugin.TextCommand):
+    isEnabled = checkIfBuilding
+
+    @ctags_command()
+    def run(self, view, args, tags_file, tags):
+        files = files_to_search(view, tags_file, args)
+        if not files: return
+
+        tags_file = tags_file + '_sorted_by_file'
+        tags = TagFile(tags_file, FILENAME).get_tags_dict(*files)
+
+        if not tags:
+            return (
+             'multi' in args and view.runCommand('showSymbols', ['multi'])
+                     or sublime.questionBox (
+                        'No symbols found **FOR CURRENT FILE**; Try Rebuild?' )
+                    and view.runCommand('rebuildCTags') )
+
+        path_cols = (0,) if len(files) > 1 else ()
+        formatting = functools.partial( format_tag_for_quickopen, 
+                                        file = bool(path_cols)  )
+
+        @prepared_4_quickpanel(formatting, path_cols=path_cols)
+        def sorted_tags():
+            for t in sorted (
+                chain(*(tags[k] for k in tags)), key=iget('tag_path')):
+                yield t
+
+        return sorted_tags
+
+################################################################################
+
+class RebuildCTags(sublimeplugin.TextCommand):
+    def run(self, view, args):
+        tag_file = find_tags_relative_to(view, ask_to_build=0)
+        if not tag_file:
+            tag_file = join(dirname(view_fn(view)), 'tags')
+            if not sublime.questionBox('`ctags -R` in %s ?'% dirname(tag_file)):
+                return
+
+        self.build_ctags(tag_file)
+
+    def done_building(self, tag_file):
+        statusMessage('Finished building %s' % tag_file)
+
+    @threaded(finish=done_building, msg="Already running CTags!")
+    def build_ctags(self, tag_file):
+        in_main(lambda: statusMessage('Re/Building CTags: Please be patient'))()
+        ctags.build_ctags(CTAGS_CMD, tag_file)
+        return tag_file
+
+
+class TestCTags(sublimeplugin.TextCommand):
+    isEnabled = lambda s, v, a: v.fileName()
+    routine = None
+
+    @staggered(every=1)
+    def run(self, view, *args):
+        sublime.messageBox (
+                'Make sure all .py files are open from CTags package and '
+                'tags file is fresh' )
+
+        tag_file = join(dirname(view_fn(view)), 'tags')
+
+        with open(tag_file) as tf:
+            tags = parse_tag_lines(tf, hook=lambda t: Tag(t))
+
+        print 'Starting Test'
+
+        for symbol, tag_list in tags.items():
+            for tag in tag_list:
+                tag.root_dir = dirname(tag_file)
+                yield scroll_to_tag(view, tag)
+                
+                av = sublime.activeWindow().activeView()
+                                
+                if not av.substr(av.line(av.sel()[0])) == tag.ex_command:
+                    raise 'FAILURE %s' %pprint.pformat(tag)
+
+        print len(tags), "Tags Tested OK"
 
 ################################################################################
