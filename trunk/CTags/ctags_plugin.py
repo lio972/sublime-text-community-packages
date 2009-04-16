@@ -25,7 +25,8 @@ from sublime import statusMessage
 
 # Ctags
 import ctags
-from ctags import TagFile, SYMBOL, FILENAME, parse_tag_lines, Tag
+from ctags import ( TagFile, SYMBOL, FILENAME, parse_tag_lines, Tag,
+                    PATH_IGNORE_FIELDS )
 
 # Helpers
 from plugin_helpers import ( threaded, FocusRestorer, in_main, staggered,
@@ -42,7 +43,7 @@ from columns import format_for_display
 
 CTAGS_EXE = join(sublime.packagesPath(), 'CTags', 'ctags.exe')
 
-CTAGS_CMD = [CTAGS_EXE, '-R']# , '--languages=python']
+CTAGS_CMD = [CTAGS_EXE, '-R', '--languages=python']
 
 TAGS_PATHS = {
     'source.python' :  r'C:\Python25\Lib\tags',
@@ -97,17 +98,18 @@ def follow_tag_path(view, tag_path, pattern):
     for p in list(tag_path)[1:-1]:
         while True:
             regions.append(view.find(p, regions[-1].end(), sublime.LITERAL))
-            if ( view.matchSelector(regions[-1].begin(), ENTITY_SCOPE) 
-                  or not regions[-1] ):
+            if ( regions[-1] is None or (regions[-1] == regions[-2]) or 
+                 view.matchSelector(regions[-1].begin(), ENTITY_SCOPE) ):
+                regions = [r for r in regions if r is not None]
                 break
 
-    regions = [r for r in regions if r is not None]
-    start_at = max(regions, key=lambda r: r.begin()).begin()
+    start_at = max(regions, key=lambda r: r.begin()).begin() -1
     pattern_region = view.find(pattern, start_at, sublime.LITERAL)
+    # print map(view.substr, regions)
+    
+    return pattern_region.begin()-1 if pattern_region else start_at
 
-    return pattern_region.begin() if pattern_region else start_at
-
-def scroll_to_tag(view, tag):
+def scroll_to_tag(view, tag, hook=None):
     @wait_until_loaded(join(tag.root_dir, tag.filename))
     def and_then(view):
         look_from = None
@@ -118,7 +120,10 @@ def scroll_to_tag(view, tag):
 
         if look_from is not None:
             symbol_region = view.find(tag.symbol, look_from, sublime.LITERAL)
-            select(view, symbol_region)
+            if symbol_region: select(view, symbol_region)
+            # else: print 'no symbol region'
+
+        if hook: hook(view)
 
 ################################################################################
 
@@ -130,7 +135,7 @@ def format_tag_for_quickopen(tag, file=1):
 
     f=''
     for field in getattr(tag, "field_keys", []):
-        if field != "file":
+        if field not in PATH_IGNORE_FIELDS:
             punct = OBJECT_PUNCTUATORS.get(field, ' -> ')
             f += string.Template (
                 '    %($field)s$punct%(symbol)s' ).substitute(locals())
@@ -236,7 +241,7 @@ class JumpBack(sublimeplugin.WindowCommand):
         @wait_until_loaded(fn)
         def and_then(view):
             select(view, sublime.Region(*sel))
-
+ 
     @classmethod
     def append(cls, view):
         fn = view.fileName()
@@ -253,7 +258,7 @@ def ctags_command(jump_directly_if_one=False):
     def wrapper(f):
         def command(self, view, args):
             tags_file = find_tags_relative_to(view)
-            
+
             result = f(self, view, args, tags_file, {})
 
             if isinstance(result, tuple):
@@ -349,38 +354,62 @@ class RebuildCTags(sublimeplugin.TextCommand):
         ctags.build_ctags(CTAGS_CMD, tag_file)
         return tag_file
 
+import pprint
+import time
+
 class TestCTags(sublimeplugin.TextCommand):
-    @staggered(every=1)
-    def run(self, view, *args):
-        ready = sublime.questionBox (
-                'Are all .py files open from CTags package?' )
-
+    routine = None
+    
+    def run(self, view, args):
+        if self.routine is None:
+            self.routine = self.co_routine(view)
+            self.routine.next()
+    
+    def next(self):
+        try:
+            self.routine.next()
+        except Exception, e:
+            self.routine = None                                    
+    
+    def co_routine(self, view, *args):
         tag_file = join(dirname(CTAGS_EXE), 'tags')
-
         with open(tag_file) as tf:
             tags = parse_tag_lines(tf, hook=lambda t: Tag(t))
 
         print 'Starting Test'
         
+        ex_failures = []
+        line_failures = []
+        
         for symbol, tag_list in tags.items():
             for tag in tag_list:
                 tag.root_dir = dirname(tag_file)
-                yield scroll_to_tag(view, tag)
-
-                if ready:
-                    av = sublime.activeWindow().activeView()
-
+                
+                def hook(av):
                     if not av.substr(av.line(av.sel()[0])) == tag.ex_command:
                         failure = 'FAILURE %s' %pprint.pformat(tag)
-                        sublime.messageBox (
-                            '%s\n\n\n'
-                            'Is `tags` file fresh?' % failure)
-                        raise failure
+                        failure += av.fileName()
+                        sublime.messageBox('%s\n\n\n' % failure)
+                        ex_failures.append(tag)
+                    
+                    if tag.get('line'):
+                        line = view.rowcol(av.sel()[0].begin())[0]+1
+                        tag_line = int(tag.line)
+                        
+                        if not tag_line == line:
+                            line_failures.append((line, abs(line-tag_line), tag))
+                    
+                    sublime.setTimeout( lambda: self.next(), 1 )
 
-        if ready:
-            tags_tested = sum(len(v) for v in tags.values())
-            sublime.messageBox('%s Tags Tested OK' % tags_tested)
-        else:
-            view.runCommand('testCTags')
+                scroll_to_tag(view, tag, hook)
+                yield
+        
+        failures = line_failures + ex_failures        
+        tags_tested = sum(len(v) for v in tags.values()) - len(failures)
 
+        sublime.messageBox('%s Tags Tested OK' % tags_tested)
+        sublime.messageBox('%s Tags Failed'    % len(failures))
+        
+        sublime.setClipboard(pprint.pformat(failures))
+        
 ################################################################################
