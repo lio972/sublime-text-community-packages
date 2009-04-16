@@ -20,8 +20,6 @@ import mmap
 from os.path import join, normpath, dirname
 from itertools import izip, chain
 
-# from helpers import splits
-
 ################################################################################
 
 TAGS_RE = re.compile (
@@ -41,6 +39,8 @@ FILENAME = 1
 PATH_ORDER = (
     'function', 'class', 'struct',
 )
+
+PATH_IGNORE_FIELDS = ('file', 'access', 'language', 'line', 'inherits')
 
 TAG_PATH_SPLITTERS = ('/', '.', '::', ':')
 
@@ -129,7 +129,7 @@ def create_tag_path(tag):
 
     tag_path = ''
     for field in fields:
-        if field != 'file':
+        if field not in PATH_IGNORE_FIELDS:
             tag_path += (tag.get(field) + '.')
 
     tag_path += symbol
