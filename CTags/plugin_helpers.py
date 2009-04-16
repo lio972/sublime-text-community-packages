@@ -5,7 +5,7 @@ import sublime
 import functools
 import threading
 import time
-
+from os.path import normpath
 from ctypes import windll
 
 ################################################################################

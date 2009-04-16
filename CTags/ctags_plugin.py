@@ -42,7 +42,7 @@ from columns import format_for_display
 
 CTAGS_EXE = join(sublime.packagesPath(), 'CTags', 'ctags.exe')
 
-CTAGS_CMD = [CTAGS_EXE, '-R', '--languages=python']
+CTAGS_CMD = [CTAGS_EXE, '-R']# , '--languages=python']
 
 TAGS_PATHS = {
     'source.python' :  r'C:\Python25\Lib\tags',
@@ -352,9 +352,8 @@ class RebuildCTags(sublimeplugin.TextCommand):
 class TestCTags(sublimeplugin.TextCommand):
     @staggered(every=1)
     def run(self, view, *args):
-        if not sublime.questionBox (
-                'Are all .py files open from CTags package and '
-                'is `tags` file fresh?' ):  return
+        ready = sublime.questionBox (
+                'Are all .py files open from CTags package?' )
 
         tag_file = join(dirname(CTAGS_EXE), 'tags')
 
@@ -362,17 +361,26 @@ class TestCTags(sublimeplugin.TextCommand):
             tags = parse_tag_lines(tf, hook=lambda t: Tag(t))
 
         print 'Starting Test'
-
+        
         for symbol, tag_list in tags.items():
             for tag in tag_list:
                 tag.root_dir = dirname(tag_file)
                 yield scroll_to_tag(view, tag)
-                
-                av = sublime.activeWindow().activeView()
-                                
-                if not av.substr(av.line(av.sel()[0])) == tag.ex_command:
-                    raise 'FAILURE %s' %pprint.pformat(tag)
 
-        print len(tags), "Tags Tested OK"
+                if ready:
+                    av = sublime.activeWindow().activeView()
+
+                    if not av.substr(av.line(av.sel()[0])) == tag.ex_command:
+                        failure = 'FAILURE %s' %pprint.pformat(tag)
+                        sublime.messageBox (
+                            '%s\n\n\n'
+                            'Is `tags` file fresh?' % failure)
+                        raise failure
+
+        if ready:
+            tags_tested = sum(len(v) for v in tags.values())
+            sublime.messageBox('%s Tags Tested OK' % tags_tested)
+        else:
+            view.runCommand('testCTags')
 
 ################################################################################
