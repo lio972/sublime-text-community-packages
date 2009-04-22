@@ -1,6 +1,6 @@
 import sublime, sublimeplugin
 import os, os.path, sys, stat
-import pickle
+import cPickle as pickle
 import datetime
 from pprint import pprint as pp
 
