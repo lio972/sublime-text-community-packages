@@ -24,7 +24,7 @@ def expand_region_by(view, region, expand=1):
     return sublime.Region(start, end)
 
 re_special_chars = re.compile (
-    '(\\\\|\\*|\\+|\\?|\\||\\{|\\[|\\(|\\)|\\^|\\$|\\.|\\#|\\ )' )
+    '(\\\\|\\*|\\+|\\?|\\||\\{|\\}|\\[|\\]|\\(|\\)|\\^|\\$|\\.|\\#|\\ )' )
 
 def escape_regex(s):
     return re_special_chars.sub(lambda m: '\\%s' % m.group(1), s)
