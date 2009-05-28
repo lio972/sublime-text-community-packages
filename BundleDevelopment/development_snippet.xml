@@ -1,15 +1,17 @@
 
 <snippet>
-<content><![CDATA[class ExtractSnippetCommand(sublimeplugin.TextCommand):
-	snippet = ''
+<content><![CDATA[for i, region in enumerate(tab_stops):
+	adjusted_region = slice(region[0]+adjustment, region[1]+adjustment)
 
-	def isEnabled(self, view, args):
-		return args or len(view.sel()) > 1
+	${0:replaced} = ''.join(snippet[adjusted_region])
+	tab_stop_index = tab_stop_map.get(replaced, i)
 
-	def onPostSave(self, view):
-		fn = view.fileName()$15]]></content>
+	replacement = array('u', '\${%s:%s}' % (tab_stop_index, replaced))
+
+	if tab_stop_index == i:
+		tab_stop_map[${0:replaced}] = i$15]]></content>
 <!-- 
-scope:   meta.class.python storage.type.class.python
+scope:   keyword.control.flow.python
 syntax:  Packages/Python/Python.tmLanguage
 project: E:\python_repos\sqaencode\sqacodec.sublime-project
 package: Python
