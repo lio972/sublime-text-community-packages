@@ -276,7 +276,7 @@ class ExtractSnippetCommand(sublimeplugin.TextCommand):
     snippet = ''
 
     def isEnabled(self, view, args):
-        return args or len(view.sel()) > 2
+        return args or len(view.sel()) > 1
 
     def onPostSave(self, view):
         fn = view.fileName()

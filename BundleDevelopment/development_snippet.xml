@@ -1,7 +1,27 @@
-<!-- See http://www.sublimetext.com/docs/snippets for more information 
--->
+
 <snippet>
-	<content><![CDATA[lineSnippet', [self.cache[f]] + args[1:])
-		
-	def (self, view):]]></content>
+<content><![CDATA[class ExtractSnippetCommand(sublimeplugin.TextCommand):
+	snippet = ''
+
+	def isEnabled(self, view, args):
+		return args or len(view.sel()) > 1
+
+	def onPostSave(self, view):
+		fn = view.fileName()$15]]></content>
+<!-- 
+scope:   meta.class.python storage.type.class.python
+syntax:  Packages/Python/Python.tmLanguage
+project: E:\python_repos\sqaencode\sqacodec.sublime-project
+package: Python
+filename: D:\portable_sync\APPDATA\SublimeText\Packages\BundleDevelopment\snippets.py
+-->
+
+INSERT_META_HERE
+
+<!--
+Test PlayGround (Saver needs to parse) so do inside comments
+
+
+
+-->                
 </snippet>
