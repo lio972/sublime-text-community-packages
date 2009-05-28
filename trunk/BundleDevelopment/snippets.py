@@ -185,11 +185,20 @@ def extract_snippet(view, hard_tabs = True):
     # Replace all the tab stops with ${i:placeholder}
     adjustment = -starts_at
     
+    tab_stop_map = {}
+
+
     for i, region in enumerate(tab_stops):
         adjusted_region = slice(region[0]+adjustment, region[1]+adjustment)
-    
+
         replaced = ''.join(snippet[adjusted_region])
-        replacement = array('u', '${%s:%s}' % (i, replaced))
+        tab_stop_index = tab_stop_map.get(replaced, i)
+        
+        replacement = array('u', '${%s:%s}' % (tab_stop_index, replaced))
+
+        if tab_stop_index == i:
+            tab_stop_map[replaced] = i
+
         snippet[adjusted_region] = replacement
         adjustment += len(replacement) - len(replaced)
     
