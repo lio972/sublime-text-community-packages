@@ -19,11 +19,7 @@ from array import array
 
 from xml.dom import minidom
 
-# TODO:
-try:
-    from lxml import etree as ElementTree
-except Exception, e:
-    from xml.etree import ElementTree
+from lxml import etree as ElementTree
 
 # Sublime Libs
 import sublime
@@ -33,18 +29,18 @@ import sublimeplugin
 
 TIME_STAMPED = 0
 
-SYMBOLIC_BINDINGS =    [ 'backquote', 'backslash', 'backspace',
-                        'browser_back', 'browser_favorites', 'browser_forward',
-                        'browser_home', 'browser_refresh', 'browser_search',
-                        'browser_stop', 'capslock', 'clear', 'comma',
-                        'contextmenu', 'delete', 'down', 'end', 'enter',
-                        'equals', 'escape', 'home', 'insert', 'left',
-                        'leftalt', 'leftbracket', 'leftcontrol', 'leftmeta',
-                        'leftshift', 'leftsuper', 'minus', 'numlock',
-                        'pagedown', 'pageup', 'pause', 'period', 'printscreen',
-                        'quote', 'right', 'rightalt', 'rightbracket',
-                        'rightsuper', 'scrolllock', 'semicolon', 'slash',
-                        'space', 'tab', 'up' ]
+SYMBOLIC_BINDINGS =  [ 'backquote', 'backslash', 'backspace',
+					   'browser_back', 'browser_favorites', 'browser_forward',
+					   'browser_home', 'browser_refresh', 'browser_search',
+					   'browser_stop', 'capslock', 'clear', 'comma',
+					   'contextmenu', 'delete', 'down', 'end', 'enter',
+					   'equals', 'escape', 'home', 'insert', 'left',
+					   'leftalt', 'leftbracket', 'leftcontrol', 'leftmeta',
+					   'leftshift', 'leftsuper', 'minus', 'numlock',
+					   'pagedown', 'pageup', 'pause', 'period', 'printscreen',
+					   'quote', 'right', 'rightalt', 'rightbracket',
+					   'rightsuper', 'scrolllock', 'semicolon', 'slash',
+					   'space', 'tab', 'up' ]
 
 ################################################################################
 
@@ -75,9 +71,10 @@ META = """
     <name>${0:leave_blank_until_save}</name>
     <package>${1:%(package)s}${2:%(plugin_package)s}</package>
 </meta>
-<binding key="${3:a,u,t,o,tab_unless_symbolic_binding_or+}" 
-         uuid="%(UUID)s" msg="DO_NOT_EDIT_AUTO_GENERATED">
-    <context name="selector" value="${4:%(scope)s}%(base_scope)s"/>
+<binding tab="${3:a,u,t,o,tab_unless_rename_attr_to_key}" 
+         uuid="%(UUID)s"
+         command="insertSnippet">
+    <context name="selector" value="${4:%(base_scope)s} ${5:%(scope)s}"/>
 </binding>$15
 """
 
@@ -200,7 +197,7 @@ def extract_snippet(view, hard_tabs = True):
     for r in escapes: view.erase(r)
     
     snippet = textwrap.dedent(''.join(snippet))
-    
+
     if hard_tabs:
         # Replace  softtabs with hard tabs for compatibility
         tab = (view.options().get('tabSize') or 8) * ' '
@@ -210,10 +207,10 @@ def extract_snippet(view, hard_tabs = True):
 
 def save_snippet(view, snippet):
     # Get metadata ready for saving
-    scope = view.syntaxName(view.sel()[0].begin()).strip().split()
-    base_scope = scope[-1]    
-    scope = ' '.join(scope[:-1])
-    
+    scope = list(reversed(view.syntaxName(view.sel()[0].begin()).strip().split()))
+    base_scope = scope[0]    
+    scope = ' '.join(scope[1:])
+
     fn = filename = view.fileName()
     
     pkg_path = sublime.packagesPath()
@@ -253,24 +250,25 @@ def parse_development_snippet(fn):
     return Object( (e.tag, e.text) for e in meta.getiterator() ), binding
 
 def config_binding(binding, meta, snippet_name):
-    key = binding.get('key')
-    
-    if ( all(c.isalpha() for c in key) and key not in SYMBOLIC_BINDINGS ):
+    tab = binding.get('tab')
+    key = tab or binding.get('key')
+
+    if ( tab ):
         key = ','.join(list(key) + ['tab'])
 
     binding.set('key', key)
-    binding.set('command', "insertSnippet '%s'" % snippet_name)
+
+    default = "insertSnippet '%(snippet_name)s'"
+    command = binding.get('command', default) # TODO
+
+    if command == 'insertSnippet': command = default
+    binding.set('command', command % dict(snippet_name=snippet_name) )
 
     return binding
 
 def pretty_dump_xml(et, fn):
     indent(et.getroot())
-    try:
-        # lxml
-        et.write(fn, encoding='utf-8', pretty_print=True)
-    except Exception, e:
-        # shitty builtin ElementTree
-        et.write(fn, encoding='utf-8')
+    et.write(fn, encoding='utf-8', pretty_print=True)
 
 ################################################################################
 
@@ -285,8 +283,8 @@ class ExtractSnippetCommand(sublimeplugin.TextCommand):
         if not fn or not fn.endswith(('xml', 'sublime-snippet')): return
 
         meta, binding = parse_development_snippet(fn)
-        if not meta or not (meta.name or meta.name): 
-            sublime.setTimeout(
+        if not meta or not (meta.name or meta.name):
+            sublime.setTimeout (
                 lambda: sublime.statusMessage('Found No Meta'), 20 )
             return
 
@@ -317,18 +315,15 @@ class ExtractSnippetCommand(sublimeplugin.TextCommand):
 
         keymap =  join(pkg_dir, 'Default.sublime-keymap')
         window.openFile(keymap)
-        window.openFile(snippet_name)
-        
+        window.openFile(snippet_name) #TODO
+
         et = ElementTree.parse(keymap)
         root = et.getroot()
-        
+
         snippet_name = join('Packages', meta.package, basename(snippet_name))
         binding = config_binding(binding, meta, snippet_name.replace('\\', '/'))
-        
-        try:
-            already_bound = root.xpath("binding[@uuid='%s']" % UUID)
-        except Exception, e: # TODO: Less blanket handling
-            sublime.messageBox('Needs lxml! or you to refactor!')
+
+        already_bound = root.xpath("binding[@uuid='%s']" % UUID)
 
         if already_bound:
             root.replace(already_bound[0], binding)

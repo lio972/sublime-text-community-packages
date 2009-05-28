@@ -32,7 +32,7 @@ Also note that if the same key is bound twice, the last binding takes precedence
   <binding key="ctrl+alt+e" command="extractSnippet">
     <!-- <context name="" value=""/> -->
   </binding>
-  <binding key="ctrl+alt+s" command="extractSnippet test">
+  <binding key="ctrl+alt+s" command="newStyleSnippet insert">
     <!-- <context name="" value=""/> -->
   </binding>
   <!--
