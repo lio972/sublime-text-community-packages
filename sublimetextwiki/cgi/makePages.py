@@ -3,6 +3,8 @@ import util, markdown
 
 template = util.loadFile("../templates/page.template.html")
 
+print template
+
 for f in os.listdir('../pagesource'):
   print f
   #src = loadFile(f)
