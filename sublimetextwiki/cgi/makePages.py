@@ -9,6 +9,7 @@ for f in os.listdir(srcdir):
   if f.endswith(".txt"):
     noext = f[:-4]
     fl = os.path.join(srcdir, f)
+    print "converting %s" % fl
     src = util.loadFile(fl)
     src = util.rewriteWikiLinks(src)
     htm = markdown.markdown(src)
