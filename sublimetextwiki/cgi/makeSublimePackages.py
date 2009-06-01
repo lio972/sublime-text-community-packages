@@ -1,5 +1,5 @@
 #!/usr/bin/python -u
-import sys, os, subprocess, traceback, markdown, datetime
+import sys, os, subprocess, traceback, markdown, datetime, util
 
 print "Content-type: text/plain\n\n"
 
@@ -15,33 +15,8 @@ cmdline = "%s %s" % (svn, args)
 
 def getFromSvn():
   print "getting packages from SVN\n"
-  run([svn, "up", gcode, root], root)
-    
-def saveFile(filename, content):
-  f = open(filename, 'w')
-  f.write(content)
-  f.close()
+  util.run([svn, "up", gcode, root], root)
   
-def loadFile(filename):
-  f = open(filename, 'r')
-  content = f.read()
-  return content
-  
-def deleteAll(top):
-  for root, dirs, files in os.walk(top, topdown=False):
-    for name in files:
-        os.remove(os.path.join(root, name))
-    for name in dirs:
-        dirName = os.path.join(root, name) 
-        print "deleting " + dirName[len(top):]
-        os.rmdir(dirName)
-
-def run(args, cwd):
-  print "Running '" + " ".join(args) + "'"
-  print "cwd will be " + cwd
-  subprocess.call(args, cwd=cwd)
-  
-
 def packageDirs(dirName):
   result = []
   dirs  = os.listdir(dirName)
@@ -64,12 +39,12 @@ def copyReadmeFile(dirName, root, dest):
   currentFile = filenameForPackagePage(dirName, dest)
    
   if os.path.exists(readmeFile):
-    readmeContent = loadFile(readmeFile)
+    readmeContent = util.loadFile(readmeFile)
   else:
     readmeContent = "This package does not have a README.txt file. If you are the developer, please add one to improve this page. The file should be written in [Markdown](http://daringfireball.net/projects/markdown/)"
     
-  pageContent = loadFile("../templates/package.template.html") % (dirName, dirName, markdown.markdown(readmeContent), dirName, dirName, dirName)
-  saveFile(currentFile, pageContent)
+  pageContent = util.loadFile("../templates/package.template.html") % (dirName, dirName, markdown.markdown(readmeContent), dirName, dirName, dirName)
+  util.saveFile(currentFile, pageContent)
   print "wrote web page for %s to %s" % (dirName, currentFile)
     
 def zipDirectory(dirName, root, dest):
@@ -81,7 +56,7 @@ def zipDirectory(dirName, root, dest):
   zipDestPath = os.path.join(dest, zipFileName)
   
   print "zipping all files to %s"  % zipBuildPath
-  run(["zip", "-r", zipBuildPath, ".", "-x", "*.svn*"], pathToPackageFiles)
+  util.run(["zip", "-r", zipBuildPath, ".", "-x", "*.svn*"], pathToPackageFiles)
   
   print "moving file from %s to %s" % (zipBuildPath, zipDestPath)
   os.rename(zipBuildPath, zipDestPath)
@@ -131,8 +106,8 @@ try:
   f.close()
   
   today = datetime.datetime.now().ctime()
-  homepage = loadFile("../templates/index.template.html") % (homepageList, today)
-  saveFile(os.path.join(webout, "index.html"), homepage)
+  homepage = util.loadFile("../templates/index.template.html") % (homepageList, today)
+  util.saveFile(os.path.join(webout, "index.html"), homepage)
   print "Done. Please hit the 'back' button on your browser to browse the new pages."
   
 except:
