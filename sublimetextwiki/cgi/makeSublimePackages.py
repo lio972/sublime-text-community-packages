@@ -3,7 +3,7 @@ import sys, os, subprocess, traceback, markdown, datetime, util
 
 print "Content-type: text/plain\n\n"
 
-root    = "/homepages/25/d96254051/htdocs/sublime-subversion/trunk/"
+root    = util.root
 gcode   = "http://sublime-text-community-packages.googlecode.com/svn/trunk/"
 
 webout  = "/homepages/25/d96254051/htdocs/sublime"
