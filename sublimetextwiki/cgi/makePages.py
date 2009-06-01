@@ -1,4 +1,3 @@
-#!/usr/bin/python
 import util, markdown
 
 template = util.loadFile("../templates/page.template.html")
