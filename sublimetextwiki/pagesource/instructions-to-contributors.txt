@@ -1,0 +1,20 @@
+To contribute to the documents on this site, you'll need to be a contributor to the package collection. If so, you'll be largely set. 
+
+At the very root of the subversion tree, there is a directory called `sublimetextwiki`. This is the full content of the site. To edit, you'll need to;
+
+  - check out the source code from `https://sublime-text-community-packages.googlecode.com/svn/sublimetextwiki`
+  - edit the site. 
+  - commit changes back.
+  
+The site is set up to receive a callback every time the subversion repository, and this callback should refresh the site automatically. It may take 30 seconds or so for changes to appear -- more if you've committed something large like a screencast, so you may need to be a little patient.
+
+Editing the site is just a matter of knowing the subversion structure. The page content is build in [Markdown][md]; all the page content is stored in `sublimetextwiki/pagesource`, and translated into html pages in `sublimetextwiki/pages`. 
+
+Since markdown doesn't feature a nice way to link to other markdown documents, I've added one. Source content that looks like so:
+  
+    (\@page-name)
+    
+will be considered a link to another maarkdown page, and translated into a link to `page-name.html`.
+
+  [md]: http://daringfireball.net/projects/markdown/
+  

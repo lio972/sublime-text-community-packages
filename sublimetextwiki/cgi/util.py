@@ -25,4 +25,5 @@ def run(args, cwd):
 def rewriteWikiLinks(content):
   linkre = re.compile(r'\(\@(.*?)\)')
   content = linkre.sub(r'[\1](\1.html)', content)
+  content = content.replace("\@","@")
   return content
