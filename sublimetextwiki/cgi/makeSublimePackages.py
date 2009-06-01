@@ -4,11 +4,11 @@ import sys, os, subprocess, traceback, markdown, datetime, util
 print "Content-type: text/plain\n\n"
 
 root    = util.root
+site    = util.site
 gcode   = "http://sublime-text-community-packages.googlecode.com/svn/trunk/"
 
-webout  = "/homepages/25/d96254051/htdocs/sublime"
-dest    = webout + "/sublime-packages/"
-pages   = webout + "/pages"
+dest    = site + "/sublime-packages/"
+pages   = site + "/pages"
 svn     = "/usr/bin/svn"
 args    = "co %s %s" % (gcode, root)
 cmdline = "%s %s" % (svn, args)
@@ -107,7 +107,7 @@ try:
   
   today = datetime.datetime.now().ctime()
   homepage = util.loadFile("../templates/index.template.html") % (homepageList, today)
-  util.saveFile(os.path.join(webout, "index.html"), homepage)
+  util.saveFile(os.path.join(site, "index.html"), homepage)
   print "Done. Please hit the 'back' button on your browser to browse the new pages."
   
 except:

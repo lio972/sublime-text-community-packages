@@ -1,14 +1,17 @@
-import util, markdown
+#!/usr/bin/env python
+import util, markdown, os
 
-template = util.loadFile("../templates/page.template.html")
+template = util.templateContent("page.template.html")
 
-print template
+srcdir = os.path.join(util.site, 'pagesource')
 
-for f in os.listdir('../pagesource'):
-  print f
-  #src = loadFile(f)
-  #htm = markdown.markdown(src)
-  #out = template % (f, f, htm)
-  #util.saveFile()
-  
-
+for f in os.listdir(srcdir):
+  if f.endswith(".txt"):
+    noext = f[:-4]
+    fl = os.path.join(srcdir, f)
+    src = util.loadFile(fl)
+    htm = markdown.markdown(src)
+    out = template % (noext, noext, htm)
+    ouf = os.path.join(util.site, 'pages', noext + '.html')
+    util.saveFile(ouf, out)
+    

@@ -1,6 +1,11 @@
-import subprocess
+import subprocess, os
 
 root = "/homepages/25/d96254051/htdocs/sublime-subversion/trunk/"
+site  = "/homepages/25/d96254051/htdocs/sublime"
+
+def templateContent(filename):
+  f = os.path.join(site, "templates", filename)
+  return loadFile(f)
 
 def saveFile(filename, content):
   f = open(filename, 'w')
