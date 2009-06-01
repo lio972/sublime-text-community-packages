@@ -10,6 +10,7 @@ for f in os.listdir(srcdir):
     noext = f[:-4]
     fl = os.path.join(srcdir, f)
     src = util.loadFile(fl)
+    src = util.rewriteWikiLinks(src)
     htm = markdown.markdown(src)
     out = template % (noext, noext, htm)
     ouf = os.path.join(util.site, 'pages', noext + '.html')
