@@ -9,11 +9,12 @@ for f in os.listdir(srcdir):
   if f.endswith(".txt"):
     noext = f[:-4]
     fl = os.path.join(srcdir, f)
-    print "converting %s" % fl
+    print "converting %s" % noext
     src = util.loadFile(fl)
     src = util.rewriteWikiLinks(src)
     htm = markdown.markdown(src)
-    out = template % (noext, noext, htm)
+    nam = noext.replace('-', ' ')
+    out = template % (nam, nam, htm)
     ouf = os.path.join(util.site, 'pages', noext + '.html')
     util.saveFile(ouf, out)
     
