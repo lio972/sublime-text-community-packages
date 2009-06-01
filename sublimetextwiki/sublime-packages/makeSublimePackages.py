@@ -131,7 +131,7 @@ try:
   f.close()
   
   today = datetime.datetime.now().ctime()
-  homepage = loadFile("../template/index.template.html") % (homepageList, today)
+  homepage = loadFile("../templates/index.template.html") % (homepageList, today)
   saveFile(os.path.join(webout, "index.html"), homepage)
   print "Done. Please hit the 'back' button on your browser to browse the new pages."
   
