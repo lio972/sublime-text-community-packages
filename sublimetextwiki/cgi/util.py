@@ -1,5 +1,7 @@
 import subprocess
 
+root = "/homepages/25/d96254051/htdocs/sublime-subversion/trunk/"
+
 def saveFile(filename, content):
   f = open(filename, 'w')
   f.write(content)
