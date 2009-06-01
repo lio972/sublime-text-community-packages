@@ -5,8 +5,3 @@ Here's some content
 - baz
 
 (@testing)
-
-(@testing)
-
-(@testing)
-

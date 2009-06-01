@@ -2,7 +2,6 @@ import subprocess, os, re
 
 root = "/homepages/25/d96254051/htdocs/sublime-subversion/trunk/"
 site  = "/homepages/25/d96254051/htdocs/sublime"
-linkre = re.compile('\(\@(.*?)\)')
 
 def templateContent(filename):
   f = os.path.join(site, "templates", filename)
@@ -24,4 +23,6 @@ def run(args, cwd):
   subprocess.call(args, cwd=cwd)
 
 def rewriteWikiLinks(content):
-  return linkre.sub(content, r'[\1](\1.html)')
+  linkre = re.compile(r'\(\@(.*?)\)')
+  content = linkre.sub(r'[\1](\1.html)', content)
+  return content
