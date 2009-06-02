@@ -12,11 +12,9 @@ for f in os.listdir(srcdir):
     fl = os.path.join(srcdir, f)
     print "converting %s" % noext
     src = util.loadFile(fl)
-    src = util.rewriteWikiLinks(src)
-    htm = markdown.markdown(src)
-    nam = noext.replace('-', ' ')
+    htm = util.processMarkdown(src)
     tpl = Template(template)
-    ctx = dict(name=nam, content=htm)
+    ctx = dict(name=displayName(noext), content=htm)
     out = tpl.substitute(ctx)
     ouf = os.path.join(util.site, 'pages', noext + '.html')
     util.saveFile(ouf, out)

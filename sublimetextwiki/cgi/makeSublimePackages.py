@@ -1,5 +1,5 @@
 #!/usr/bin/python -u
-import sys, os, subprocess, traceback, markdown, datetime, util
+import sys, os, subprocess, traceback, datetime, util
 from string import Template
 
 print "Content-type: text/plain\n\n"
@@ -45,7 +45,7 @@ def copyReadmeFile(dirName, root, dest):
     readmeContent = "This package does not have a README.txt file. If you are the developer, please add one to improve this page. The file should be written in [Markdown](http://daringfireball.net/projects/markdown/)"
     
   template = Template(util.loadFile("../templates/package.template.html"))
-  html = markdown.markdown(readmeContent)
+  html = util.processMarkdown(readmeContent)
   pageContent = template.substitute(dict(pluginname=dirName, content=html))
   util.saveFile(currentFile, pageContent)
   print "wrote web page for %s to %s" % (dirName, currentFile)

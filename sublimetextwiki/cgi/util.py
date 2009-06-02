@@ -1,4 +1,4 @@
-import subprocess, os, re
+import subprocess, os, re, markdown
 
 root = "/homepages/25/d96254051/htdocs/sublime-subversion/trunk/"
 site  = "/homepages/25/d96254051/htdocs/sublime"
@@ -22,8 +22,22 @@ def run(args, cwd):
   #print "cwd will be " + cwd
   subprocess.call(args, cwd=cwd)
 
+def processMarkdown(content):
+  content = rewriteWikiLinks(content)
+  content = markdown.markdown(content)
+  return content
+  
+def wikiLinkToNormal(match):
+  name = match.groups(1)[0]
+  clean = displayName(name)
+  result = "[%s](%s.html)" % (clean,name)
+  return result
+
+def displayName(name):
+  return name.replace('-', ' ')
+
 def rewriteWikiLinks(content):
   linkre = re.compile(r'\(\@(.*?)\)')
-  content = linkre.sub(r'[\1](\1.html)', content)
+  content = linkre.sub(wikiLinkToNormal, content)
   content = content.replace("\@","@")
   return content
