@@ -51,17 +51,14 @@ def copyReadmeFile(dirName, root, dest):
   print "wrote web page for %s to %s" % (dirName, currentFile)
     
 def zipDirectory(dirName, root, dest):
-  print "Zipping %s\n" % dirName
   pathToPackageFiles = os.path.join(root, dirName) 
   
   zipFileName = dirName + ".sublime-package"
   zipBuildPath = os.path.join(root, zipFileName)
   zipDestPath = os.path.join(dest, zipFileName)
-  
-  print "zipping all files to %s"  % zipBuildPath
-  util.run(["zip", "-r", zipBuildPath, ".", "-x", "*.svn*"], pathToPackageFiles)
-  
-  print "moving file from %s to %s" % (zipBuildPath, zipDestPath)
+  util.run(["zip", "-r", zipBuildPath, ".", "-x", "-q", "*.svn*"], pathToPackageFiles)
+  print "built %s at %s"  % (dirName, zipDestPath)
+
   os.rename(zipBuildPath, zipDestPath)
 
 def partOfMainDistribution(packageDir, root):

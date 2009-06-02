@@ -18,8 +18,8 @@ def loadFile(filename):
   return content
   
 def run(args, cwd):
-  print "Running '" + " ".join(args) + "'"
-  print "cwd will be " + cwd
+  #print "Running '" + " ".join(args) + "'"
+  #print "cwd will be " + cwd
   subprocess.call(args, cwd=cwd)
 
 def rewriteWikiLinks(content):
