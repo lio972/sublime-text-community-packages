@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-import util, markdown, os
+import util, markdown, os, string
+from string import Template
 
 template = util.templateContent("page.template.html")
 
@@ -14,7 +15,9 @@ for f in os.listdir(srcdir):
     src = util.rewriteWikiLinks(src)
     htm = markdown.markdown(src)
     nam = noext.replace('-', ' ')
-    out = template % (nam, nam, htm)
+    tpl = Template(template)
+    ctx = dict(name=nam, content=htm)
+    out = tpl.substitute(ctx)
     ouf = os.path.join(util.site, 'pages', noext + '.html')
     util.saveFile(ouf, out)
     

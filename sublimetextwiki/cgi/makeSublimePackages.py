@@ -1,5 +1,6 @@
 #!/usr/bin/python -u
 import sys, os, subprocess, traceback, markdown, datetime, util
+from string import Template
 
 print "Content-type: text/plain\n\n"
 
@@ -43,7 +44,9 @@ def copyReadmeFile(dirName, root, dest):
   else:
     readmeContent = "This package does not have a README.txt file. If you are the developer, please add one to improve this page. The file should be written in [Markdown](http://daringfireball.net/projects/markdown/)"
     
-  pageContent = util.loadFile("../templates/package.template.html") % (dirName, dirName, markdown.markdown(readmeContent), dirName, dirName, dirName)
+  template = Template(util.loadFile("../templates/package.template.html"))
+  html = markdown.markdown(readmeContent)
+  pageContent = template.substitute(dict(pluginname=dirName, content=html))
   util.saveFile(currentFile, pageContent)
   print "wrote web page for %s to %s" % (dirName, currentFile)
     
@@ -106,7 +109,8 @@ try:
   f.close()
   
   today = datetime.datetime.now().ctime()
-  homepage = util.loadFile("../templates/index.template.html") % (homepageList, today)
+  template = Template(util.loadFile("../templates/index.template.html"))
+  homepage = template.substitute(dict(packagelist=homepageList, today=today))
   util.saveFile(os.path.join(site, "index.html"), homepage)
   print "Done. Please hit the 'back' button on your browser to browse the new pages."
   
