@@ -358,7 +358,7 @@ class RebuildCTags(sublimeplugin.TextCommand):
 ################################# AUTOCOMPLETE #################################
 
 def auto_complete(view, pos, prefix, completions):
-    tags = find_tags_relative_to(view)
+    tags = find_tags_relative_to(view, ask_to_build=False)
     if tags:
         tag_file = TagFile(tags, SYMBOL, MATCHES_STARTWITH)
 
