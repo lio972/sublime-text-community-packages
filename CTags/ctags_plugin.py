@@ -26,7 +26,7 @@ from sublime import statusMessage
 # Ctags
 import ctags
 from ctags import ( TagFile, SYMBOL, FILENAME, parse_tag_lines, Tag,
-                    PATH_IGNORE_FIELDS )
+                    PATH_IGNORE_FIELDS, MATCHES_STARTWITH )
 
 # Helpers
 from plugin_helpers import ( threaded, FocusRestorer, in_main, staggered,
@@ -43,7 +43,7 @@ from columns import format_for_display
 
 CTAGS_EXE = join(sublime.packagesPath(), 'CTags', 'ctags.exe')
 
-CTAGS_CMD = [CTAGS_EXE, '-R', '--languages=python']
+CTAGS_CMD = [CTAGS_EXE, '-R', '--languages=python,php']
 
 TAGS_PATHS = {
     'source.python' :  r'C:\Python25\Lib\tags',
@@ -59,7 +59,7 @@ OBJECT_PUNCTUATORS = {
 
 ENTITY_SCOPE = "entity.name.function, entity.name.type, meta.toc-list"
 
-################################################################################
+#################################### HELPERS ###################################
 
 def find_tags_relative_to(view, ask_to_build=True):
     fn = view.fileName()
@@ -90,7 +90,7 @@ def alternate_tags_paths(view, tags_file):
 
     return filter(os.path.exists, search_paths)
 
-################################################################################
+################################# SCROLL TO TAG ################################
 
 def follow_tag_path(view, tag_path, pattern):
     regions = [sublime.Region(0, 0)]
@@ -125,7 +125,7 @@ def scroll_to_tag(view, tag, hook=None):
 
         if hook: hook(view)
 
-################################################################################
+############################## FORMATTING HELPERS ##############################
 
 def format_tag_for_quickopen(tag, file=1):
     format = []
@@ -154,7 +154,7 @@ def prepared_4_quickpanel(formatter=format_tag_for_quickopen, path_cols=()):
 
     return compile_lists
 
-################################################################################
+############################ FILE COLLECTION HELPERS ###########################
 
 def tagged_project_files(view, tag_dir):
     window = view.window()
@@ -174,7 +174,7 @@ def tagged_project_files(view, tag_dir):
     common_prefix = os.path.commonprefix([tag_dir, prefix_arg])
     return [fn[len(common_prefix)+1:] for fn in files]
 
-def files_to_search(view, tags_file, args):
+def files_to_search(view, tags_file, multiple=True):
     fn = view_fn(view, None)
     if not fn: return
     
@@ -182,14 +182,14 @@ def files_to_search(view, tags_file, args):
     
     common_prefix = os.path.commonprefix([tag_dir, fn])
     files = [fn[len(common_prefix)+1:]]
-    
-    if 'multi' in args:
+
+    if multiple:
         more_files = tagged_project_files(view, tag_dir)
         files.extend(more_files)
 
     return files
 
-################################################################################
+############################### JUMPBACK COMMANDS ##############################
 
 def different_mod_area(f1, f2, r1, r2):
     same_file   = f1 == f2
@@ -249,12 +249,14 @@ class JumpBack(sublimeplugin.WindowCommand):
             cls.last.append((fn, `view.sel()[0]`))
 
     def onModified(self, view):
-        JumpBack.mods.insert(0, (view.fileName(), `view.sel()[0]`))
-        del JumpBack.mods[100:]
+        sel = view.sel()
+        if len(sel):
+            JumpBack.mods.insert(0, (view.fileName(), `sel[0]`))
+            del JumpBack.mods[100:]
 
-################################################################################
+################################ CTAGS COMMANDS ################################
 
-def ctags_command(jump_directly_if_one=False):
+def ctags_goto_command(jump_directly_if_one=False):
     def wrapper(f):
         def command(self, view, args):
             tags_file = find_tags_relative_to(view)
@@ -278,12 +280,12 @@ def checkIfBuilding(self, view, args):
 
     else:  return 1
 
-################################################################################
+######################### GOTO DEFINITION UNDER CURSOR #########################
 
 class NavigateToDefinition(sublimeplugin.TextCommand):
     isEnabled = checkIfBuilding
 
-    @ctags_command(jump_directly_if_one=True)
+    @ctags_goto_command(jump_directly_if_one=True)
     def run(self, view, args, tags_file, tags):
         symbol = view.substr(view.word(view.sel()[0]))
 
@@ -296,19 +298,18 @@ class NavigateToDefinition(sublimeplugin.TextCommand):
 
         @prepared_4_quickpanel()
         def sorted_tags():
-            for t in sorted(tags.get(symbol, []), key=iget('tag_path')):
-                yield t
+            return sorted(tags.get(symbol, []), key=iget('tag_path'))
 
         return sorted_tags
 
-################################################################################
+################################# SHOW SYMBOLS #################################
 
 class ShowSymbols(sublimeplugin.TextCommand):
     isEnabled = checkIfBuilding
 
-    @ctags_command()
+    @ctags_goto_command()
     def run(self, view, args, tags_file, tags):
-        files = files_to_search(view, tags_file, args)
+        files = files_to_search(view, tags_file, 'multi' in args)
         if not files: return
 
         tags_file = tags_file + '_sorted_by_file'
@@ -327,13 +328,12 @@ class ShowSymbols(sublimeplugin.TextCommand):
 
         @prepared_4_quickpanel(formatting, path_cols=path_cols)
         def sorted_tags():
-            for t in sorted (
-                chain(*(tags[k] for k in tags)), key=iget('tag_path')):
-                yield t
+            return sorted (
+                chain(*(tags[k] for k in tags)), key=iget('tag_path'))
 
         return sorted_tags
 
-################################################################################
+################################# REBUILD CTAGS ################################
 
 class RebuildCTags(sublimeplugin.TextCommand):
     def run(self, view, args):
@@ -354,8 +354,24 @@ class RebuildCTags(sublimeplugin.TextCommand):
         ctags.build_ctags(CTAGS_CMD, tag_file)
         return tag_file
 
-import pprint
-import time
+
+################################# AUTOCOMPLETE #################################
+
+def auto_complete(view, pos, prefix, completions):
+    tags = find_tags_relative_to(view)
+    if tags:
+        tag_file = TagFile(tags, SYMBOL, MATCHES_STARTWITH)
+
+        for tag_name in tag_file.get_tags_dict(prefix):
+            if tag_name not in completions:
+                completions.append(tag_name)
+
+    return completions
+
+from AutoComplete import AutoCompleteCommand
+AutoCompleteCommand.completionCallbacks['ctags_plugin'] = auto_complete
+
+##################################### TEST #####################################
 
 class TestCTags(sublimeplugin.TextCommand):
     routine = None
@@ -370,11 +386,11 @@ class TestCTags(sublimeplugin.TextCommand):
             self.routine.next()
         except Exception, e:
             self.routine = None                                    
-    
+
     def co_routine(self, view, *args):
         tag_file = join(dirname(CTAGS_EXE), 'tags')
         with open(tag_file) as tf:
-            tags = parse_tag_lines(tf, hook=lambda t: Tag(t))
+            tags = parse_tag_lines(tf, tag_class=Tag)
 
         print 'Starting Test'
         
@@ -384,14 +400,14 @@ class TestCTags(sublimeplugin.TextCommand):
         for symbol, tag_list in tags.items():
             for tag in tag_list:
                 tag.root_dir = dirname(tag_file)
-                
+
                 def hook(av):
                     if not av.substr(av.line(av.sel()[0])) == tag.ex_command:
                         failure = 'FAILURE %s' %pprint.pformat(tag)
                         failure += av.fileName()
                         sublime.messageBox('%s\n\n\n' % failure)
                         ex_failures.append(tag)
-                    
+
                     if tag.get('line'):
                         line = view.rowcol(av.sel()[0].begin())[0]+1
                         tag_line = int(tag.line)
@@ -399,7 +415,7 @@ class TestCTags(sublimeplugin.TextCommand):
                         if not tag_line == line:
                             line_failures.append((line, abs(line-tag_line), tag))
                     
-                    sublime.setTimeout( lambda: self.next(), 1 )
+                    sublime.setTimeout( self.next, 1 )
 
                 scroll_to_tag(view, tag, hook)
                 yield

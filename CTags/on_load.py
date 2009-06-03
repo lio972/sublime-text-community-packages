@@ -23,7 +23,7 @@ if not hasattr(sublimeplugin.onActivated, '__wrapped__'):
                     on_load_cbs[fn].pop()(v)
 
             f(v)
-        
+
         return wrapper
     
     on_load_cbs = {}

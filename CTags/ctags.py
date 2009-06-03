@@ -36,6 +36,9 @@ TAGS_RE = re.compile (
 SYMBOL = 0
 FILENAME = 1
 
+MATCHES_STARTWITH = 'starts_with'
+
+
 PATH_ORDER = (
     'function', 'class', 'struct',
 )
@@ -57,12 +60,12 @@ def splits(string, *splitters):
 
 ################################################################################
 
-def parse_tag_lines(lines, order_by='symbol', hook=None):
+def parse_tag_lines(lines, order_by='symbol', tag_class=None):
     tags_lookup = {}
 
     for search_obj in (t for t in (TAGS_RE.search(l) for l in lines) if t):
         tag = post_process_tag(search_obj)
-        if hook is not None: tag = hook(tag)
+        if tag_class is not None: tag = tag_class(tag)
         tags_lookup.setdefault(tag[order_by], []).append(tag)
 
     return tags_lookup
@@ -98,7 +101,7 @@ class Tag(dict):
         try:
             del self[name]
         except KeyError:
-            raise AttributeError
+            raise AttributeError            
     def __getattr__(self, name):
         try:
             return self[name]
@@ -173,14 +176,19 @@ def build_ctags(cmd, tag_file):
 ################################################################################
 
 class TagFile(object):
-    def __init__(self, p, column):
+    def __init__(self, p, column, match_as=None):
         self.p = p
         self.column = column
+        
+        if isinstance(match_as, basestring):
+            match_as = getattr(self, match_as)
+
+        self.match_as = match_as or self.exact_matches
 
     def __getitem__(self, index):
         self.fh.seek(index)
         self.fh.readline()
-        
+
         try:  return self.fh.readline().split('\t')[self.column]
         # Ask forgiveness not permission
         except IndexError:
@@ -197,27 +205,42 @@ class TagFile(object):
                 b4 = bisect.bisect_left(self, tag)
                 fh.seek(b4)
 
-                for l in fh:
-                    comp = cmp(l.split('\t')[self.column], tag)
-
-                    if    comp == -1:    continue
-                    elif  comp:          break
-
+                for l in self.match_as(fh, tag):
                     yield l
 
             self.fh.close()
+
+    def exact_matches(self, iterator, tag):
+        for l in iterator:
+            comp = cmp(l.split('\t')[self.column], tag)
+
+            if    comp == -1:    continue
+            elif  comp:          break
+
+            yield l
+
+    def starts_with(self, iterator, tag):
+        lines = []
+
+        for l in iterator:
+            field = l.split('\t')[self.column]
+            comp = cmp(field, tag)
+            
+            if comp == -1: continue
+
+            if field.startswith(tag): yield l
+            else: break
 
     @property
     def dir(self):
         return dirname(self.p)
 
-    def tags_hook(self):
-        cls = type('Tag', (Tag,), dict(root_dir = self.dir))
-        def hook(t): return cls(t)
-        return hook
+    def tag_class(self):
+        return type('Tag', (Tag,), dict(root_dir = self.dir))
 
     def get_tags_dict(self, *tags):
-        return parse_tag_lines(self.get(*tags), hook=self.tags_hook())
+        return parse_tag_lines( self.get(*tags), 
+                                tag_class=self.tag_class())
 
 ################################################################################
 
@@ -241,36 +264,41 @@ class CTagsTest(unittest.TestCase):
             print f
 
         self.assertEqual(len(failures), 0, 'update tag files and try again')
+    
+    def test_startswith(self):
+        f = TagFile('tags', SYMBOL, MATCHES_STARTWITH)
+
+        assert len(list(f.get('co'))) == 5
 
     def test_tags_files(self):
-        tests = [ ( r"tags", SYMBOL ), 
+        tests = [ ( r"tags", SYMBOL ),
                   ( r"sorted_by_file_test_tags", FILENAME ),
-                  # ( r"C:\python25\lib\tags_sorted_by_file", FILENAME ) 
+                  # ( r"C:\python25\lib\tags_sorted_by_file", FILENAME )
                   ]
-        
+
         fails = []
-        
+
         for tags_file, column_index in tests:
             tag_file = TagFile(tags_file, column_index)
 
             with open(tags_file, 'r') as fh:
                 latest = ''
                 lines  = []
-    
+
                 for l in fh:
                     symbol = l.split('\t')[column_index]
-    
+
                     if symbol != latest:
-    
+
                         if latest:
                             tags = list(tag_file.get(latest))
                             if not lines == tags:
-                                fails.append( tags_file, lines, tags )
-    
+                                fails.append( (tags_file, lines, tags) )
+
                             lines = []
-    
+
                         latest = symbol
-    
+
                     lines += [l]
 
         self.assertEquals(fails, [])
