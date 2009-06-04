@@ -1,6 +1,5 @@
 ################################################################################
 # Std Libs
-
 from __future__ import with_statement
 
 import re
@@ -12,43 +11,47 @@ import mmap
 import threading
 import pprint
 import datetime
+from collections import deque
 
-from itertools import chain
+from itertools import chain, count
 from os.path import dirname, split, join, splitext, normpath
 
 # Sublime Modules
-
 import sublime
 import sublimeplugin
 
 # User Libs
 from plugin_helpers import wait_until_loaded, view_fn, threaded
 
+from cache import SearchResultsCache
+
 ################################### SETTINGS ###################################
 
-choose_files_to_search = 0
-open_new_window = 1
+find_panel_view_id = 3
 
+choose_files_to_search = 0
+open_new_window = 0
 re_compile_flags = re.M
 
-print_debug = 1
-
 ################################################################################
 
+CONSTANTS = (NEXT, STOP_SEARCH, RESET) = (['NEXT'], ['STOP_SEARCH'], ['RESET'])
 
-CONSTANTS = (NEXT, STOP_SEARCH) = (['NEXT'], ['STOP_SEARCH'])
+REGEX_SYNTAX = "Packages/Regular Expressions/RegExp.tmLanguage"
+TEXT_SYNTAX  = "Packages/Text/Plain text.tmLanguage"
 
-regex_syntax = "Packages/Regular Expressions/RegExp.tmLanguage"
-
-PANEL_SYNTAXES = [
-    "Packages/Text/Plain text.tmLanguage",
-    regex_syntax,
-]
+PANEL_SYNTAXES = (TEXT_SYNTAX, REGEX_SYNTAX)
 
 def is_regex_search(view):
-    return view.options().get('syntax') == regex_syntax
+    return view.options().get('syntax') == REGEX_SYNTAX
 
 ################################################################################
+
+re_special_chars = re.compile (
+    '(\\\\|\\*|\\+|\\?|\\||\\{|\\[|\\(|\\)|\\^|\\$|\\.|\\#|\\ )' )
+
+def escape_regex(s):
+    return re_special_chars.sub(lambda m: '\\%s' % m.group(1), s)
 
 def do_in(t=0):
     def timeout(f):
@@ -74,20 +77,44 @@ def tuple_regions(view):
     return tuple((r.begin(), r.end()) for r in view.sel())
 
 def view_is_find_panel(view):
-    # Is the `view` a reference to the find panel?
-    syntax = view.options().get('syntax')
-    active_view = sublime.activeWindow().activeView()
-
+    aw = sublime.activeWindow()
     return (
-        # in case of untitled view, `None != None`
-            syntax in PANEL_SYNTAXES and
-            view.fileName() != active_view.fileName() or
-            view.size() != active_view.size() or
-            tuple_regions(view) != tuple_regions(active_view)
-        )
+        ( aw.id() == 1 and view.id() == find_panel_view_id) or
+         (aw.id() != 1 and view.id() not in [v.id() for v in aw.views()] )
+    )
 
 def full_buffer(view):
     return view.substr(sublime.Region(0, view.size()))
+
+################################# CACHED SEARCH ################################
+
+CACHE = SearchResultsCache()
+
+def cached_search(f, pattern, matcher):
+    def do_search():
+        def search(search_in):
+            matches = [0 for i in matcher.finditer(search_in)]
+            if matches:
+                return (len(matches), f)
+
+        try:
+            with open(f, 'r+') as fh:
+                return search(mmap.mmap(fh.fileno(), 0)), None
+
+        except Exception, e:
+            try:
+                with open(f) as fh:
+                    return search(fh.read()), None
+
+            except Exception, e:
+                return None, (f, `e`)
+
+    return CACHE.get((f, pattern), do_search)
+
+################################# MESSAGE QUEUE ################################
+
+def send_message(msg):
+    sublime.setTimeout(lambda: sublime.statusMessage(msg), 10)
 
 ################################################################################
 
@@ -105,9 +132,16 @@ class FindInFiles(sublimeplugin.TextCommand):
                                                 args, display or args, flags )
 
     def isEnabled(self, view, args):
-        enabled = args or view_is_find_panel(view)
+        is_find_panel = view_is_find_panel(view)
+
+        enabled = args or is_find_panel
         if not enabled:
             show_find_panel()
+            self.routine = None
+
+        # Reset the command if in find panel with no args and routine already 
+        # started
+        elif is_find_panel and not args and self.routine:
             self.routine = None
 
         return enabled
@@ -116,13 +150,12 @@ class FindInFiles(sublimeplugin.TextCommand):
         if self.routine is None:
             self.routine = self.co_routine(view, args)
             self.routine.next()
-        
+
         try:
             if args == NEXT:
                 self.routine.next()
             elif args == STOP_SEARCH:
                 self.stop_search = True
-                # self.routine = None
             else:
                 self.routine.send(args)
 
@@ -142,7 +175,7 @@ class FindInFiles(sublimeplugin.TextCommand):
             mount_points = [d for d in mount_points if d['path'] in mount_paths]
 
         files_to_search = list( chain(*(d['files'] for d in mount_points)) )
-        
+
         if choose_files_to_search:
             self.quick_panel (files_to_search, files=1, safe=0 )
             files_to_search = (yield)
@@ -165,7 +198,8 @@ class FindInFiles(sublimeplugin.TextCommand):
             for f in finds:
                 @wait_until_loaded(f)
                 def and_then(view):
-                    view.window().runCommand('findAll')
+                    sublime.activeWindow().focusView(view)
+                    sublime.activeWindow().runCommand('findAll')
 
     def NEXT(self):
         self.run_self(NEXT)
@@ -175,17 +209,13 @@ class FindInFiles(sublimeplugin.TextCommand):
         def later():
             sublime.activeWindow().activeView().runCommand('findInFiles', args)
 
-    def finish(self, results):
-        sublime.activeWindow().runCommand('hidePanel')
-
-        finds, errors = results
+    def finish(self, finds, errors):
         if not finds:
             return sublime.setTimeout (
                 functools.partial(sublime.statusMessage, 'Found no files'), 100
             )
 
         results = pprint.pformat({'finds':finds, 'errors':errors})
-
         sublime.setClipboard(results)
 
         @timeout
@@ -206,41 +236,32 @@ class FindInFiles(sublimeplugin.TextCommand):
         findings = []
         errors = []
 
-        if not is_regex: pattern = re.escape(pattern)
-        matcher = re.compile(pattern, re.M)
+        if not is_regex: pattern = escape_regex(pattern)
+        matcher = re.compile(pattern, re_compile_flags)
         num_files = len(files)
         self.stop_search = 0
 
-        def search(search_in):
-            matches = matcher.findall(search_in)
-            if matches:
-                findings.append((len(matches), f))
+        with CACHE.lock:
+            for i, f in enumerate(files):
+                if self.stop_search:
+                    break
 
-        for i, f in enumerate(files):
-            if self.stop_search:
-                break
+                t = time.time()
 
-            @timeout
-            def status():
-                sublime.statusMessage(" (%s of %s) ctrl+shift+z to stop %s"
-                                        % (i+1, num_files, f) )
-            try:
-                with open(f, 'r+') as fh:
-                    search(mmap.mmap(fh.fileno(), 0))
-                    
-            except Exception, e:
-                try:
-                    with open(f) as fh:
-                        search(fh.read())
+                found, error  = cached_search(f, pattern, matcher)
 
-                except Exception, e:
-                    errors.append((f, `e`))
-
-        return sorted(findings, reverse=True), errors
+                if (time.time() - t) > 0.03 or (i % 20 == 0):
+                    send_message(" (%s of %s) ctrl+shift+z to stop %s"
+                            % (i+1, num_files, f) )
+    
+                if found:    findings.append(found)
+                if error:    errors.append(error)
+    
+            return sorted(findings, reverse=True), errors        
 
 class EscapeRegex(sublimeplugin.TextCommand):
     def run(self, view, args):
         for sel in view.sel():
-            view.replace(sel, re.escape(view.substr(sel)))
+            view.replace(sel, escape_regex(view.substr(sel)))
 
 ################################################################################

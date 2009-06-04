@@ -4,37 +4,44 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.7	//
-EscapeRegex	search_in_files.py	/^class EscapeRegex(sublimeplugin.TextCommand):$/;"	c
-FindInFiles	search_in_files.py	/^class FindInFiles(sublimeplugin.TextCommand):$/;"	c
-NEXT	search_in_files.py	/^    def NEXT(self):$/;"	m	class:FindInFiles
-add_jumpback	search_in_files.py	/^def add_jumpback():$/;"	f
-and_then	search_in_files.py	/^                def and_then(view):$/;"	f	function:FindInFiles.co_routine/later
-co_routine	search_in_files.py	/^    def co_routine(self, view, args):$/;"	m	class:FindInFiles
-decorator	plugin_helpers.py	/^    def decorator(func):$/;"	f	function:threaded
-do_in	search_in_files.py	/^def do_in(t=0):$/;"	f
-find_files	walk_files.py	/^def find_files(wd, mask):$/;"	f
-finish	search_in_files.py	/^    def finish(self, results):$/;"	m	class:FindInFiles
-full_buffer	search_in_files.py	/^def full_buffer(view):$/;"	f
-isEnabled	search_in_files.py	/^    def isEnabled(self, view, args):$/;"	m	class:FindInFiles
-is_regex_search	search_in_files.py	/^def is_regex_search(view):$/;"	f
-later	search_in_files.py	/^        def later():$/;"	f	function:FindInFiles.co_routine
-later	search_in_files.py	/^        def later():$/;"	f	function:FindInFiles.run_self
-notify	search_in_files.py	/^        def notify():$/;"	f	function:FindInFiles.finish
-quick_panel	search_in_files.py	/^    def quick_panel(self, args, files=False, display=None, safe=True):$/;"	m	class:FindInFiles
-run	plugin_helpers.py	/^            def run():$/;"	f	function:threaded/decorator/threaded
-run	search_in_files.py	/^    def run(self, view, args):$/;"	m	class:EscapeRegex
-run	search_in_files.py	/^    def run(self, view, args):$/;"	m	class:FindInFiles
-run_self	search_in_files.py	/^    def run_self(self, args=[]):$/;"	m	class:FindInFiles
-search	search_in_files.py	/^        def search(search_in):$/;"	f	function:FindInFiles.search
-search	search_in_files.py	/^    def search(self, files, pattern, is_regex):$/;"	m	class:FindInFiles
-show_find_panel	search_in_files.py	/^def show_find_panel():$/;"	f
-status	search_in_files.py	/^            def status():$/;"	f	function:FindInFiles.search/search
-threaded	plugin_helpers.py	/^        def threaded(*args, **kwargs):$/;"	f	function:threaded/decorator
-threaded	plugin_helpers.py	/^def threaded(finish=None, msg="Thread already running"):$/;"	f
-timeout	search_in_files.py	/^    def timeout(f):$/;"	f	function:do_in
-timeout	search_in_files.py	/^def timeout(f):$/;"	f
-tuple_regions	search_in_files.py	/^def tuple_regions(view):$/;"	f
-view_fn	plugin_helpers.py	/^def view_fn(view, if_None = '.'):$/;"	f
-view_is_find_panel	search_in_files.py	/^def view_is_find_panel(view):$/;"	f
-wait_until_loaded	plugin_helpers.py	/^def wait_until_loaded(file):$/;"	f
-wrapper	plugin_helpers.py	/^    def wrapper(f):$/;"	f	function:wait_until_loaded
+EscapeRegex	.\search_in_files.py	/^class EscapeRegex(sublimeplugin.TextCommand):$/;"	c
+FindInFiles	.\search_in_files.py	/^class FindInFiles(sublimeplugin.TextCommand):$/;"	c
+NEXT	.\search_in_files.py	/^    def NEXT(self):$/;"	m	class:FindInFiles
+SearchResultsCache	.\cache.py	/^class SearchResultsCache(dict):$/;"	c
+__init__	.\cache.py	/^    def __init__(self):$/;"	m	class:SearchResultsCache
+add_jumpback	.\search_in_files.py	/^def add_jumpback():$/;"	f
+and_then	.\search_in_files.py	/^                def and_then(view):$/;"	f	function:FindInFiles.co_routine/later
+cached_search	.\search_in_files.py	/^def cached_search(f, pattern, matcher):$/;"	f
+clean_up	.\cache.py	/^    def clean_up(self):$/;"	m	class:SearchResultsCache
+co_routine	.\search_in_files.py	/^    def co_routine(self, view, args):$/;"	m	class:FindInFiles
+decorator	.\plugin_helpers.py	/^    def decorator(func):$/;"	f	function:threaded
+do_in	.\search_in_files.py	/^def do_in(t=0):$/;"	f
+do_search	.\search_in_files.py	/^    def do_search():$/;"	f	function:cached_search
+escape_regex	.\search_in_files.py	/^def escape_regex(s):$/;"	f
+find_files	.\walk_files.py	/^def find_files(wd, mask):$/;"	f
+finish	.\search_in_files.py	/^    def finish(self, finds, errors):$/;"	m	class:FindInFiles
+full_buffer	.\search_in_files.py	/^def full_buffer(view):$/;"	f
+get	.\cache.py	/^    def get(self, (f, search), setter=None):$/;"	m	class:SearchResultsCache
+isEnabled	.\search_in_files.py	/^    def isEnabled(self, view, args):$/;"	m	class:FindInFiles
+is_regex_search	.\search_in_files.py	/^def is_regex_search(view):$/;"	f
+later	.\search_in_files.py	/^        def later():$/;"	f	function:FindInFiles.co_routine
+later	.\search_in_files.py	/^        def later():$/;"	f	function:FindInFiles.run_self
+notify	.\search_in_files.py	/^        def notify():$/;"	f	function:FindInFiles.finish
+quick_panel	.\search_in_files.py	/^    def quick_panel(self, args, files=False, display=None, safe=True):$/;"	m	class:FindInFiles
+run	.\plugin_helpers.py	/^            def run():$/;"	f	function:threaded/decorator/threaded
+run	.\search_in_files.py	/^    def run(self, view, args):$/;"	m	class:EscapeRegex
+run	.\search_in_files.py	/^    def run(self, view, args):$/;"	m	class:FindInFiles
+run_self	.\search_in_files.py	/^    def run_self(self, args=[]):$/;"	m	class:FindInFiles
+search	.\search_in_files.py	/^        def search(search_in):$/;"	f	function:cached_search/do_search
+search	.\search_in_files.py	/^    def search(self, files, pattern, is_regex):$/;"	m	class:FindInFiles
+send_message	.\search_in_files.py	/^def send_message(msg):$/;"	f
+show_find_panel	.\search_in_files.py	/^def show_find_panel():$/;"	f
+threaded	.\plugin_helpers.py	/^        def threaded(*args, **kwargs):$/;"	f	function:threaded/decorator
+threaded	.\plugin_helpers.py	/^def threaded(finish=None, msg="Thread already running"):$/;"	f
+timeout	.\search_in_files.py	/^    def timeout(f):$/;"	f	function:do_in
+timeout	.\search_in_files.py	/^def timeout(f):$/;"	f
+tuple_regions	.\search_in_files.py	/^def tuple_regions(view):$/;"	f
+view_fn	.\plugin_helpers.py	/^def view_fn(view, if_None = '.'):$/;"	f
+view_is_find_panel	.\search_in_files.py	/^def view_is_find_panel(view):$/;"	f
+wait_until_loaded	.\plugin_helpers.py	/^def wait_until_loaded(file):$/;"	f
+wrapper	.\plugin_helpers.py	/^    def wrapper(f):$/;"	f	function:wait_until_loaded
