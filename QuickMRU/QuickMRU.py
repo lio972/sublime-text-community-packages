@@ -1,5 +1,8 @@
+from __future__ import with_statement
+
 import sublime, sublimeplugin
-import os, os.path, sys, stat
+import os, sys, stat
+from os import path
 import cPickle as pickle
 from datetime import datetime
 from pprint import pprint as pp
@@ -9,9 +12,11 @@ class QuickMRUCommand(sublimeplugin.WindowCommand):
 	Shows a quick panel with the most recently closed files and the	files closed most often.
 	"""
 
-	dbfilename = sublime.packagesPath() + "/QuickMRU/QuickMRU.db" # is there a better way to get the plugin's folder?
-
-	__db = None
+	def __init__(self):
+		sublimeplugin.WindowCommand.__init__(self)
+		self.__db = None
+		pluginDir = path.dirname(path.realpath(__file__))
+		self.dbfilename = path.join(pluginDir, "QuickMRU.db")
 
 	def _get_db(self):
 		if(self.__db is None): self.reloadDB()
@@ -26,24 +31,22 @@ class QuickMRUCommand(sublimeplugin.WindowCommand):
 	def reloadDB(self):
 		# print "QuickMRU: loading DB from disk"
 		try:
-			myfile = open(self.dbfilename, "r")
-			self.__db = pickle.load(myfile)
-			myfile.close()
+			with open(self.dbfilename, "r") as myfile:
+				self.__db = pickle.load(myfile)
 		except IOError:
 			print "QuickMRU: DB not found, creating new one"
 			self.__db = {}
 
 	def dumpDB(self):
 		# print "QuickMRU: dumping DB to disk"
-		myfile = open(self.dbfilename, "w")
-		pickle.dump(self.db, myfile)
-		myfile.close()
+		with open(self.dbfilename, "w") as myfile:
+			pickle.dump(self.db, myfile)
 
 	def trimDB(self):
 		print "QuickMRU: Trimming DB"
 		db = self.db
-		latest       = sorted(db.keys(), key=lambda x:db[x]['date'   ], reverse=True)
-		mostFrequent = sorted(db.keys(), key=lambda x:db[x]['counter'], reverse=True)
+		latest       = sorted(db, key=lambda x:db[x]['date'   ], reverse=True)
+		mostFrequent = sorted(db, key=lambda x:db[x]['counter'], reverse=True)
 		files = set(mostFrequent[:100] + latest[:100])
 		newDB = {}
 		for x in files:
@@ -93,15 +96,15 @@ class QuickMRUCommand(sublimeplugin.WindowCommand):
 	def run(self, window, args):
 		db = self.db
 
-		latest       = sorted(db.keys(), key=lambda x:db[x]['date'   ], reverse=True)
-		mostFrequent = sorted(db.keys(), key=lambda x:db[x]['counter'], reverse=True)
+		latest       = sorted(db, key=lambda x:db[x]['date'   ], reverse=True)
+		mostFrequent = sorted(db, key=lambda x:db[x]['counter'], reverse=True)
 		files = sorted(
 			set(mostFrequent[:10] + latest[:10]),
 			key=lambda x:db[x]['date'],
 			reverse=True)
 
 		# remove unavailable files (i.e. deleted, on a removable drive, etc)
-		files = [f for f in files if f and os.path.isfile(f)]
+		files = [f for f in files if f and path.isfile(f)]
 
 		display = [self.getDesc(f) for f in files]
 		# pp(files)
