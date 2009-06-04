@@ -10,7 +10,7 @@ import time
 
 def launch_ipython(completion_server):
     cmd_list = [
-        'python', 
+        'C:/python25/ipython_exe.exe', 
         'C:/python25/scripts/ipython.py',
         join(completion_server, 'completion_server.py')
     ]
