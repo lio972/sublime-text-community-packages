@@ -43,11 +43,19 @@ from columns import format_for_display
 
 CTAGS_EXE = join(sublime.packagesPath(), 'CTags', 'ctags.exe')
 
-CTAGS_CMD = [CTAGS_EXE, '-R', '--languages=python,php']
+CTAGS_CMD = [CTAGS_EXE, '-R']
 
 TAGS_PATHS = {
     'source.python' :  r'C:\Python25\Lib\tags',
 }
+
+# Create a local_settings.py, (don't version control .. hrmm) and shadow any of
+# the settings above
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
 
 ################################### CONSTANTS ##################################
 
