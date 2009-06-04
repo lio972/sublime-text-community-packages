@@ -17,14 +17,19 @@ import sublimeplugin
 #
 def threaded(finish=None, msg="Thread already running"):
     """
-    
+
     Wraps a function call in a thread, and only allows one thread to run at a 
     time.
-    
-    finish is the function to call in main thread with results of the @threaded 
-    function.
 
-    msg will be displayed in status bar if thread already running
+    ``finish`` is the function to call in main thread with ``result`` of the
+    threaded decorated function.
+
+        if not isinstance(result, tuple):
+            result = (result, )
+
+        finish(self, *result)
+
+    ``msg`` will be displayed in the status bar if thread already running
 
     eg.
 
@@ -34,13 +39,18 @@ def threaded(finish=None, msg="Thread already running"):
         
         def finitre(self, result):
             print result
-    
-        @sublimeplugin.threaded(finitre)
+        
+        def some_other_command():
+            if self.printout.running:
+                do_stuff()
+
+        @threaded(finitre)
         def printout(self):
             time.sleep(5)
             return 'hey from thread'
 
     """
+
     def decorator(func):
         func.running = 0
         @functools.wraps(func)
@@ -48,9 +58,11 @@ def threaded(finish=None, msg="Thread already running"):
             def run():
                 try:
                     result = func(*args, **kwargs)
+                    if not isinstance(result, tuple):
+                        result = (result, )
                     if finish:
                         sublime.setTimeout (
-                            functools.partial(finish, args[0], result), 0
+                            functools.partial(finish, args[0], *result), 0
                         )
                 finally:
                     func.running = 0
@@ -58,6 +70,7 @@ def threaded(finish=None, msg="Thread already running"):
                 func.running = 1
                 threading.Thread(target=run).start()
             else:
+                if callable(msg): msg = msg()
                 sublime.statusMessage(msg)
         return threaded
     return decorator
@@ -69,5 +82,5 @@ def wait_until_loaded(file):
     def wrapper(f):
         sublime.addOnLoadedCallback(file, f)
         sublime.activeWindow().openFile(file)
-        
+
     return wrapper
