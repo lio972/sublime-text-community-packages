@@ -69,7 +69,7 @@ class SearchResultsCache(dict):
         if sublime:
             aw = sublime.activeWindow()
             for v in aw.views():
-                if norm(v.fileName()) == norm(f) and v.isDirty():
+                if norm(v.fileName() or '') == norm(f) and v.isDirty():
                     found = len(v.findAll(search))
                     cached = ((found, f), None)
                     break
