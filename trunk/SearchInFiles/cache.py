@@ -7,6 +7,7 @@ from __future__ import with_statement
 
 import sys
 import os
+from os.path import normpath as norm
 import pprint
 import threading
 from datetime import datetime
@@ -68,15 +69,18 @@ class SearchResultsCache(dict):
         if sublime:
             aw = sublime.activeWindow()
             for v in aw.views():
-                if v.fileName() == f and v.isDirty():
-                    cached = False
+                if norm(v.fileName()) == norm(f) and v.isDirty():
+                    found = len(v.findAll(search))
+                    cached = ((found, f), None)
                     break
 
-        if not (results or cached):
+        if not cached:
             new_results = setter()
             self[(f, search)] = { stat       : new_results, 
                                   'cached_at': datetime.now() }
-
+        
+        # print `(cached, new_results)`
+        
         return cached or new_results
 
 ################################################################################
