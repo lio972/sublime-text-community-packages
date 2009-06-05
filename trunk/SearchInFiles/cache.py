@@ -7,14 +7,9 @@ from __future__ import with_statement
 
 import sys
 import os
-from os.path import normpath as norm
 import pprint
 import threading
 from datetime import datetime
-
-# App Libs
-try:                 import sublime
-except ImportError:  sublime = None
 
 ################################### CONSTANTS ##################################
 
@@ -45,41 +40,16 @@ class SearchResultsCache(dict):
     def __init__(self):
         self.lock = threading.RLock()
 
-        if sublime:
-            self.clean_up()
-
-    def clean_up(self):
-        now = datetime.now()
-
-        with self.lock:
-            for key in list(self):
-                delta = now - self[key]['cached_at']
-    
-                if delta.seconds > MAX_AGE:
-                    del self[key]
-
-        sublime.setTimeout(self.clean_up, 1000 * 60 * 10)
-
     def get(self, (f, search), setter=None):
         stat = tuple(os.stat(f))
         results = dict.get(self, (f, search))
         cached = results.get(stat) if results else None
         new_results = None
 
-        if sublime:
-            aw = sublime.activeWindow()
-            for v in aw.views():
-                if norm(v.fileName() or '') == norm(f) and v.isDirty():
-                    found = len(v.findAll(search))
-                    cached = ((found, f), None)
-                    break
-
         if not cached:
             new_results = setter()
             self[(f, search)] = { stat       : new_results, 
                                   'cached_at': datetime.now() }
-        
-        # print `(cached, new_results)`
         
         return cached or new_results
 

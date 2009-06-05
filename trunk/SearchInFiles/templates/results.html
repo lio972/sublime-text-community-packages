@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+			xmlns:xi="http://www.w3.org/2001/XInclude"
+			xmlns:py="http://genshi.edgewall.org/">
+	<head>
+		<title>Results</title>
+		<style type='text/css'>
+			th {text-align: left}
+			td.matches_meta {text-align: right}
+		</style>
+	</head>
+
+	<body>
+		<h3>
+			SearchInFiles results for ${pattern}
+		</h3>
+
+		<table>
+			<tr>
+				<th>
+					File
+				</th>
+				<th>
+					Number Of Matches
+				</th>
+				<th>
+					TODO
+				</th>
+			</tr>
+		
+			<tr py:for="(num_matches, file_name) in findings">
+				<td>
+					<a href="sblm://${file_name}">${file_name}</a> 
+				</td>
+				<td class='matches_meta'>
+					 ${num_matches} 
+				</td>
+				<td class='matches_meta'>
+					<input type='checkbox' />
+				</td>
+			</tr>
+		</table>
+		
+	</body>
+</html>
