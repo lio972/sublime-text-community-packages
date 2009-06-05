@@ -22,6 +22,14 @@ class IPython(Pyro.core.ObjBase):
 
     def input_hist(self):
         return list(IP.input_hist)
+        
+    def import_hist(self):
+        hist = list(IP.input_hist)
+
+        return list(set( l for l in hist if 
+                         l.strip().startswith (
+                              ('import', 'from')   
+                         )))
 
 ################################################################################    
 

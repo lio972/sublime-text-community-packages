@@ -94,7 +94,12 @@ class IPythonBridge(sublimeplugin.TextCommand):
         sublime.statusMessage(indexed_line)
 
         view.replace(sel, history_line)
-
+    
+    def importHistory(self, view):
+        history = ''.join(sorted(self.IP.import_hist(), reverse=True))
+        view.runCommand('insertInlineSnippet', ['$PARAM1', history])
+        
+    
     def pushLines(self, view):
         lines = []
         for sel in view.sel():
@@ -108,12 +113,17 @@ class IPythonBridge(sublimeplugin.TextCommand):
         if view.matchSelector(0, 'source.python') and self.connected:
             contiguous_region = contig(view, pos)
             contiguous = view.substr(contiguous_region)
-            current_line = view.substr(view.line(view.sel()[0]))
-    
+            current_line = view.substr(view.line(view.sel()[0])).lstrip()
+            
             completion, matches = self.IP.complete(contiguous, current_line)
             prefix_length_diff = len(contiguous) - len(prefix)
-    
-            matches = sorted( (s[prefix_length_diff:] for s in matches), 
+            
+            if prefix_length_diff < 0:
+                operation = lambda s: ' ' + s
+            else:
+                operation = lambda s: s[prefix_length_diff:]
+            
+            matches = sorted( (operation(s) for s in matches), 
                               reverse=True )
 
             for c in (m for m in matches if m not in completions):
