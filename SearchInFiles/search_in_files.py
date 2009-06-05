@@ -11,7 +11,7 @@ import mmap
 import threading
 import pprint
 import datetime
-from collections import deque
+from ctypes import windll
 
 from itertools import chain, count
 from os.path import dirname, split, join, splitext, normpath as norm
@@ -55,6 +55,15 @@ RE_SPECIAL_CHARS = re.compile (
     '(\\\\|\\*|\\+|\\?|\\||\\{|\\[|\\(|\\)|\\^|\\$|\\.|\\#|\\ )' )
 
 ################################################################################
+
+class FocusRestorer(object):
+    def __init__(self): 
+        self.h = windll.user32.GetForegroundWindow()
+    def __call__(self, times=2, delay = 50):  
+        for t in xrange(1, (delay * times) + 2, delay):
+            sublime.setTimeout (
+                functools.partial(windll.user32.SetForegroundWindow, self.h), t
+            )
 
 def is_regex_search(view):
     return view.options().get('syntax') == REGEX_SYNTAX
@@ -169,6 +178,8 @@ class FindInFiles(sublimeplugin.TextCommand):
                                                 args, display or args, flags )
 
     def isEnabled(self, view, args):
+        if self.search.running: return False
+
         is_find_panel = view_is_find_panel(view)
 
         enabled = args or is_find_panel
@@ -218,7 +229,7 @@ class FindInFiles(sublimeplugin.TextCommand):
             files_to_search = (yield)
         
         self.pattern = full_buffer(view)
-        self.restore = sublime.FocusRestorer()
+        self.restore = FocusRestorer()
         
         self.search(files_to_search, self.pattern, is_regex_search(view))
         add_jumpback()
