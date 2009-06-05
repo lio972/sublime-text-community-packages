@@ -49,6 +49,11 @@ Also note that if the same key is bound twice, the last binding takes precedence
     <context name="selector" value="source.python"/>
 </binding>
 
+<binding key="i,p,i,m,p,tab" command="iPythonBridge importHistory">
+    <!-- <context name="" value=""/> -->
+</binding>
+
+
 <binding key="ctrl+alt+p" command="iPythonBridge launchIPython">
     <!-- <context name="selector" value="source.python"/> -->
 </binding>
