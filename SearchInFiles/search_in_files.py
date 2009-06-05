@@ -14,7 +14,8 @@ import datetime
 from collections import deque
 
 from itertools import chain, count
-from os.path import dirname, split, join, splitext, normpath
+from os.path import dirname, split, join, splitext, normpath as norm
+from datetime import datetime
 
 # Sublime Modules
 import sublime
@@ -24,34 +25,42 @@ import sublimeplugin
 from plugin_helpers import wait_until_loaded, view_fn, threaded
 
 from cache import SearchResultsCache
+from render_results import render_and_dump
 
 ################################### SETTINGS ###################################
 
-find_panel_view_id = 3
+FIND_PANEL_VIEW_ID = 3
+CHOOSE_FILES_TO_SEARCH = 0
+OPEN_NEW_WINDOW = 0
+RE_COMPILE_FLAGS = re.M
 
-choose_files_to_search = 0
-open_new_window = 0
-re_compile_flags = re.M
+OPEN_HTML_SUBLIME_PROTOCOL = 1
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
 
 ################################################################################
 
-CONSTANTS = (NEXT, STOP_SEARCH, RESET) = (['NEXT'], ['STOP_SEARCH'], ['RESET'])
+CONSTANTS = (NEXT, STOP_SEARCH) = (['NEXT'], ['STOP_SEARCH'])
 
 REGEX_SYNTAX = "Packages/Regular Expressions/RegExp.tmLanguage"
 TEXT_SYNTAX  = "Packages/Text/Plain text.tmLanguage"
 
 PANEL_SYNTAXES = (TEXT_SYNTAX, REGEX_SYNTAX)
 
-def is_regex_search(view):
-    return view.options().get('syntax') == REGEX_SYNTAX
+
+RE_SPECIAL_CHARS = re.compile (
+    '(\\\\|\\*|\\+|\\?|\\||\\{|\\[|\\(|\\)|\\^|\\$|\\.|\\#|\\ )' )
 
 ################################################################################
 
-re_special_chars = re.compile (
-    '(\\\\|\\*|\\+|\\?|\\||\\{|\\[|\\(|\\)|\\^|\\$|\\.|\\#|\\ )' )
+def is_regex_search(view):
+    return view.options().get('syntax') == REGEX_SYNTAX
 
 def escape_regex(s):
-    return re_special_chars.sub(lambda m: '\\%s' % m.group(1), s)
+    return RE_SPECIAL_CHARS.sub(lambda m: '\\%s' % m.group(1), s)
 
 def do_in(t=0):
     def timeout(f):
@@ -79,7 +88,7 @@ def tuple_regions(view):
 def view_is_find_panel(view):
     aw = sublime.activeWindow()
     return (
-        ( aw.id() == 1 and view.id() == find_panel_view_id) or
+        ( aw.id() == 1 and view.id() == FIND_PANEL_VIEW_ID) or
          (aw.id() != 1 and view.id() not in [v.id() for v in aw.views()] )
     )
 
@@ -90,17 +99,45 @@ def full_buffer(view):
 
 CACHE = SearchResultsCache()
 
+def clean_up(cache):
+    now = datetime.now()
+    have_lock = cache.lock.acquire(0)
+
+    if have_lock:
+        try:
+            for key in list(cache):
+                delta = now - cache[key]['cached_at']
+
+                if delta.seconds > MAX_AGE:
+                    del cache[key]                
+        finally:
+            cache.lock.release()
+
+    sublime.setTimeout(clean_up, 1000 * 60 * 10)
+
+clean_up(CACHE)
+
 def cached_search(f, pattern, matcher):
+    aw = sublime.activeWindow()
+    
+    # Check open dirty files using view findAll api 
+    for v in aw.views():
+        if norm(v.fileName() or '') == norm(f) and v.isDirty():
+            found = len(v.findAll(pattern))
+            return ((found, f) if found else None, None)
+
     def do_search():
         def search(search_in):
             matches = [0 for i in matcher.finditer(search_in)]
             if matches:
                 return (len(matches), f)
 
+        # MMAP
         try:
             with open(f, 'r+') as fh:
                 return search(mmap.mmap(fh.fileno(), 0)), None
 
+        # Normal File Open
         except Exception, e:
             try:
                 with open(f) as fh:
@@ -176,11 +213,14 @@ class FindInFiles(sublimeplugin.TextCommand):
 
         files_to_search = list( chain(*(d['files'] for d in mount_points)) )
 
-        if choose_files_to_search:
+        if CHOOSE_FILES_TO_SEARCH:
             self.quick_panel (files_to_search, files=1, safe=0 )
             files_to_search = (yield)
-
-        self.search(files_to_search, full_buffer(view), is_regex_search(view))
+        
+        self.pattern = full_buffer(view)
+        self.restore = sublime.FocusRestorer()
+        
+        self.search(files_to_search, self.pattern, is_regex_search(view))
         add_jumpback()
 
         finds = map(eval, (yield))
@@ -189,7 +229,7 @@ class FindInFiles(sublimeplugin.TextCommand):
 
         finds = (yield)
 
-        if open_new_window and len(finds) > 1:
+        if OPEN_NEW_WINDOW and len(finds) > 1:
             self.NEXT()
             yield sublime.runCommand('newWindow')
 
@@ -217,7 +257,11 @@ class FindInFiles(sublimeplugin.TextCommand):
 
         results = pprint.pformat({'finds':finds, 'errors':errors})
         sublime.setClipboard(results)
-
+        
+        if OPEN_HTML_SUBLIME_PROTOCOL:
+            render_and_dump(findings=finds, pattern=self.pattern)
+            self.restore()
+        
         @timeout
         def notify():
             'Else msgs from thread will drown it out'
@@ -237,7 +281,7 @@ class FindInFiles(sublimeplugin.TextCommand):
         errors = []
 
         if not is_regex: pattern = escape_regex(pattern)
-        matcher = re.compile(pattern, re_compile_flags)
+        matcher = re.compile(pattern, RE_COMPILE_FLAGS)
         num_files = len(files)
         self.stop_search = 0
 
@@ -256,8 +300,8 @@ class FindInFiles(sublimeplugin.TextCommand):
     
                 if found:    findings.append(found)
                 if error:    errors.append(error)
-    
-            return sorted(findings, reverse=True), errors        
+
+            return sorted(findings, reverse=True), errors
 
 class EscapeRegex(sublimeplugin.TextCommand):
     def run(self, view, args):
