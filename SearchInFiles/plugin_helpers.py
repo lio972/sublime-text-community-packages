@@ -79,8 +79,11 @@ def view_fn(view, if_None = '.'):
     return normpath(view.fileName() or if_None)
 
 def wait_until_loaded(file):
-    def wrapper(f):
-        sublime.addOnLoadedCallback(file, f)
-        sublime.activeWindow().openFile(file)
+    def wrapper(cb):
+        view = sublime.activeWindow().openFile(file)
+        if view.isLoading():
+            sublime.addOnLoadedCallback(view, cb)
+        else:
+            cb(view)
 
     return wrapper
