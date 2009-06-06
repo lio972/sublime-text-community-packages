@@ -9,13 +9,12 @@
             th {text-align: left}
             td.matches_meta {text-align: right}
             #results{ width : 600px  }
-            /*span.todo_list{ display : none  }*/
         </style>
         <script type="text/javascript">
             tablesorter_options = {
                widgets: ['zebra'],
-               headers: {
-                 3: {sorter: false} }
+               // headers: {
+               //   3: {sorter: false} }
              }
             $(document).ready(function(){
                 $("#results").tablesorter(tablesorter_options);
@@ -46,6 +45,19 @@
             <tbody>
                 <tr>
                     <td>
+                        <a href="sblm://E:\Web projects\new_rugs\dump.sql">E:\Web projects\new_rugs\dump.sql</a>
+                    </td>
+                    <td>
+                        sql
+                    </td>
+                    <td class="matches_meta">
+                         416
+                    </td>
+                    <td class="matches_meta todo_list">
+                        <input type="checkbox" />
+                    </td>
+                </tr><tr>
+                    <td>
                         <a href="sblm://E:\Web projects\new_rugs\pre_test.sql">E:\Web projects\new_rugs\pre_test.sql</a>
                     </td>
                     <td>
@@ -66,19 +78,6 @@
                     </td>
                     <td class="matches_meta">
                          47
-                    </td>
-                    <td class="matches_meta todo_list">
-                        <input type="checkbox" />
-                    </td>
-                </tr><tr>
-                    <td>
-                        <a href="sblm://E:\Web projects\new_rugs\dump.sql">E:\Web projects\new_rugs\dump.sql</a>
-                    </td>
-                    <td>
-                        sql
-                    </td>
-                    <td class="matches_meta">
-                         32
                     </td>
                     <td class="matches_meta todo_list">
                         <input type="checkbox" />
