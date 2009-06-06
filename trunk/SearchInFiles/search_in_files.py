@@ -122,7 +122,7 @@ def clean_up(cache):
         finally:
             cache.lock.release()
 
-    sublime.setTimeout(clean_up, 1000 * 60 * 10)
+    sublime.setTimeout(lambda: clean_up(cache), 1000 * 60 * 10)
 
 clean_up(CACHE)
 
