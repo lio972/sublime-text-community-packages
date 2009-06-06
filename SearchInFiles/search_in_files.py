@@ -33,6 +33,7 @@ FIND_PANEL_VIEW_ID = 3
 CHOOSE_FILES_TO_SEARCH = 0
 OPEN_NEW_WINDOW = 0
 RE_COMPILE_FLAGS = re.M
+MAX_CACHE_AGE = 60 * 60 # seconds
 
 OPEN_HTML_SUBLIME_PROTOCOL = 1
 
@@ -117,7 +118,7 @@ def clean_up(cache):
             for key in list(cache):
                 delta = now - cache[key]['cached_at']
 
-                if delta.seconds > MAX_AGE:
+                if delta.seconds > MAX_CACHE_AGE:
                     del cache[key]                
         finally:
             cache.lock.release()
