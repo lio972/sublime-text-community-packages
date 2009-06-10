@@ -23,6 +23,8 @@ If no filtering is done just return None (implicit with no return)
 
 INTERPOLATIONS_RE = re.compile(r"`([^`\\]|\\`|\\)+`")
 
+DONT_CONVERT = object()
+
 
 def log_filter_diffs(f):
     @functools.wraps(f)
@@ -41,16 +43,18 @@ def log_filter_diffs(f):
     return wrapper
 
 # @log_filter_diffs
-def filter_ruby_snippet_paren_rb(content, _, bundle):
+def dont_filter_ruby_snippet_paren_rb(content, _, bundle):
     if bundle == 'Ruby':
         s = content.replace('`snippet_paren.rb end`', ')')
         return s.replace('`snippet_paren.rb`', '(')
 
-def dont_filter_log_interpolations(content, plist_dict, bundle):
+def filter_interpolations(content, plist_dict, bundle):
     m = INTERPOLATIONS_RE.search(content)
-    if m: print bundle, content[slice(*m.span())]
+    if m:
+        print bundle, content[slice(*m.span())]
+        return DONT_CONVERT
 
-def filter_last_tabstops(content, plist_dict, bundle):
+def dont_filter_last_tabstops(content, plist_dict, bundle):
     """
 
     $0 placeholder used to denote `last` tabstop in TM. In Sublime the last

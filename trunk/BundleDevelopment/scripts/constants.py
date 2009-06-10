@@ -7,7 +7,9 @@ import unittest
 
 SNIPPET_TEMPLATE = """
 <snippet>
-    <content><![CDATA[%s]]></content>
+    <content><![CDATA[%(content)s]]></content>
+    <tabTrigger>%(tabTrigger)s</tabTrigger>
+    <scope>%(scope)s</scope> 
 </snippet>
 """
 

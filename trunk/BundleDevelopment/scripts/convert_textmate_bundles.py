@@ -130,6 +130,9 @@ snippet_filters = [
 def convert_snippet(s, snippet_dict, bundle_name):
     for s_filter in snippet_filters:
         s = s_filter(s, snippet_dict, bundle_name) or s
+        
+        if s is snippet_filters.DONT_CONVERT:
+            return s
     
     return s
 
@@ -221,12 +224,15 @@ def convert_textmate_snippets(bundle):
         ################################################################
 
         if binding and content:
-            snippets[file_name] = (
-                convert_snippet (
-                    SNIPPET_TEMPLATE % content.encode('utf-8'), 
-                    snippet_dict, package_name
-                )
-            )
+            converted_snippet = convert_snippet (
+                (SNIPPET_TEMPLATE % snippet_dict).encode('utf-8'), 
+                snippet_dict, package_name
+            )        
+            
+            if converted_snippet is snippet_filters.DONT_CONVERT:
+                continue
+            
+            snippets[file_name] = converted_snippet
             
             snippet_path = '/'.join(['Packages', package_name, file_name])
             snippet_path = "'%s'" % snippet_path.replace("'", "\\'")
