@@ -100,7 +100,8 @@ def get_contextual_packages(view):
 
 ############################## INCREMENT TAB STOPS #############################
 
-tab_stop = re.compile(r"(?<!\\)\$(\d+)|\$\{(\d+):")
+tab_stop_re = r"(?<!\\)\$(%s)|\$\{(%s):"
+tab_stop = re.compile(tab_stop_re % ('\\d+', '\\d+'))
 
 def inc_stop(m):
     return re.sub('\d+', lambda d: str(int(d.group()) + 1), m)
@@ -108,11 +109,16 @@ def inc_stop(m):
 def increment_tabstops(s):
     return tab_stop.sub(lambda m: '%s' % inc_stop(m.group()), s)
 
-class IncrementTabstops(sublimeplugin.TextCommand):
-    def run(self, view, args):
-        for sel in view.sel():
-            selection = view.substr(sel)
-            view.replace(sel, increment_tabstops(selection))
+def zero_stop(s, replace):
+    return re.sub(replace, '0', s)
+
+def replace_highest(s):
+    h = str(max(int(max(g)) for g in tab_stop.findall(s)))
+    
+    return re.sub (
+        tab_stop_re % (h,h),
+        lambda m: '%s' % zero_stop(m.group(), h),
+        s )
 
 def wait_until_loaded(file):
     def wrapper(cb):
@@ -123,6 +129,12 @@ def wait_until_loaded(file):
             cb(view)
 
     return wrapper
+
+class IncrementTabstops(sublimeplugin.TextCommand):
+    def run(self, view, args):
+        for sel in view.sel():
+            selection = view.substr(sel)
+            view.replace(sel, replace_highest(increment_tabstops(selection)))
 
 class WalkThroughSnippets(sublimeplugin.TextCommand):
     walker = None
@@ -139,22 +151,44 @@ class WalkThroughSnippets(sublimeplugin.TextCommand):
 
     def walk(self):
         for pkg, ext, f in glob_packages('sublime-snippet'):
+            with open(f) as fh:
+                s = fh.read()
+                dom = minidom.parseString(s)
+
+                if  dom.getElementsByTagName('tabTrigger'):
+                    continue
+                
+                content = ''
+                for c in dom.getElementsByTagName('content'):
+                    content = ''.join(
+                        n.data for n in c.childNodes if n.nodeType in (3, 4))
+                    
+                if content.endswith('$0'): 
+                    continue
+
             @wait_until_loaded(f)
             def and_then(view):
                 view.sel().clear()
                 
                 start_pt = 0
-                
-                for rx in ('<content>', r"<!\[CDATA\["):
-                    reg = view.find(rx, start_pt)
+
+                for rx in ('<content>', '</content>'):
+                    reg = view.find(rx, 0)
+
                     if reg:
                         start_pt = reg.end()
-                        view.sel().clear()
-                        view.sel().add(sublime.Region(reg.end(), reg.end()))
+                        view.sel().add(reg)
                 
-                if len(view.sel()):
-                    sublime.setTimeout(
-                    lambda: view.runCommand('expandSelectionTo scope'), 2 )
+                regions = list(view.sel())
+                                
+                if all(regions) and len(regions) == 2:
+                    view.sel().clear()
+
+                    view.sel().add(sublime.Region(
+                        regions[0].end(),
+                        regions[1].begin()
+                    ))
+                
                 
             yield
 
@@ -212,16 +246,6 @@ def glob_packages(file_type='sublime-keymap', view=None):
 
         for f in found_files:
             yield pkg, splitext(basename(f))[0], f
-
-def wait_until_loaded(file):
-    def wrapper(cb):
-        view = sublime.activeWindow().openFile(file)
-        if view.isLoading():
-            sublime.addOnLoadedCallback(view, cb)
-        else:
-            cb(view)
-
-    return wrapper
 
 def select(view, region):
     sel_set = view.sel()
