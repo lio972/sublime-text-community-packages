@@ -68,14 +68,14 @@ Test PlayGround (Saver needs to parse) so do inside comments
 
 META = """
 <meta>
-    <name>${0:leave_blank_until_save}</name>
-    <package>${1:%(package)s}${2:%(plugin_package)s}</package>
+    <name>${1:leave_blank_until_save}</name>
+    <package>${2:%(package)s}${3:%(plugin_package)s}</package>
 </meta>
-<binding tab="${3:a,u,t,o,tab_unless_rename_attr_to_key}" 
+<binding tab="${4:a,u,t,o,tab_unless_rename_attr_to_key}" 
          uuid="%(UUID)s"
          command="insertSnippet">
-    <context name="selector" value="${4:%(base_scope)s} ${5:%(scope)s}"/>
-</binding>$15
+    <context name="selector" value="${5:%(base_scope)s} ${6:%(scope)s}"/>
+</binding>$0
 """
 
 ############################# TIMESTAMPED FILENAMES ############################
@@ -269,7 +269,7 @@ def config_binding(binding, meta, snippet_name):
 
     default = "insertSnippet '%(snippet_name)s'"
     command = binding.get('command', default) # TODO
-
+    # hrmm .... not sure what is going on here ....
     if command == 'insertSnippet': command = default
     binding.set('command', command % dict(snippet_name=snippet_name) )
 
