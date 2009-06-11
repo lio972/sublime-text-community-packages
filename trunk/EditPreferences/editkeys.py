@@ -97,6 +97,15 @@ def get_contextual_packages(view):
     
     return dirs
 
+def wait_until_loaded(file):
+    def wrapper(cb):
+        view = sublime.activeWindow().openFile(file)
+        if view.isLoading():
+            sublime.addOnLoadedCallback(view, cb)
+        else:
+            cb(view)
+
+    return wrapper
 
 ############################## INCREMENT TAB STOPS #############################
 
@@ -120,16 +129,6 @@ def replace_highest(s):
         lambda m: '%s' % zero_stop(m.group(), h),
         s )
 
-def wait_until_loaded(file):
-    def wrapper(cb):
-        view = sublime.activeWindow().openFile(file)
-        if view.isLoading():
-            sublime.addOnLoadedCallback(view, cb)
-        else:
-            cb(view)
-
-    return wrapper
-
 class IncrementTabstops(sublimeplugin.TextCommand):
     def run(self, view, args):
         for sel in view.sel():
@@ -145,9 +144,11 @@ class WalkThroughSnippets(sublimeplugin.TextCommand):
 
         try:
             self.walker.next()
+
         except StopIteration:
             sublime.messageBox('FINISHED')
             self.walker = None
+
         except Exception, e:
             self.walker = None
             raise
@@ -156,46 +157,38 @@ class WalkThroughSnippets(sublimeplugin.TextCommand):
         for pkg, ext, f in glob_packages('sublime-snippet'):
             with open(f) as fh:
                 s = fh.read()
-                try:
-                    dom = minidom.parseString(s)
 
-                except:
-                    pass
+                try:        dom = minidom.parseString(s)
+                except:     pass
                 else:
                     if  dom.getElementsByTagName('tabTrigger'):
                         continue
-                    
+
                     content = ''
                     for c in dom.getElementsByTagName('content'):
-                        content = ''.join(
+                        content = ''.join (
                             n.data for n in c.childNodes if n.nodeType in (3, 4))
-                        
+
                     if content.endswith('$0'): 
                         continue
 
             @wait_until_loaded(f)
             def and_then(view):
-                view.sel().clear()
-                
+                regions  = []
                 start_pt = 0
 
+                # No god damn multi line find
                 for rx in ('<content>', '</content>'):
-                    reg = view.find(rx, 0)
+                    regions.append(view.find(rx, start_pt))
+                    if regions and regions[-1]: start_pt = regions[-1].end()
 
-                    if reg:
-                        start_pt = reg.end()
-                        view.sel().add(reg)
-                
-                regions = list(view.sel())
-                                
-                if all(regions) and len(regions) == 2:
+                if all(regions):
                     view.sel().clear()
 
                     view.sel().add(sublime.Region(
                         regions[0].end(),
                         regions[1].begin()
                     ))
-                
                 
             yield
 
