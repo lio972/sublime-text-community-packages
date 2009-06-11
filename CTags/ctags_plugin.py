@@ -364,14 +364,28 @@ class RebuildCTags(sublimeplugin.TextCommand):
 
 ################################# AUTOCOMPLETE #################################
 
-from AutoComplete import register_autocomplete
-
-@register_autocomplete()
-def ctags_completion(view, prefix, cursor_pt):
+def auto_complete(view, pos, prefix, completions):
     tags = find_tags_relative_to(view, ask_to_build=False)
     if tags:
         tag_file = TagFile(tags, SYMBOL, MATCHES_STARTWITH)
-        return tag_file.get_tags_dict(prefix)
+
+        for tag_name in tag_file.get_tags_dict(prefix):
+            if tag_name not in completions:
+                completions.append(tag_name)
+
+    return completions
+
+from AutoComplete import AutoCompleteCommand
+AutoCompleteCommand.completionCallbacks['ctags_plugin'] = auto_complete
+
+# from AutoComplete import register_autocomplete
+
+# @register_autocomplete()
+# def ctags_completion(view, prefix, cursor_pt):
+#     tags = find_tags_relative_to(view, ask_to_build=False)
+#     if tags:
+#         tag_file = TagFile(tags, SYMBOL, MATCHES_STARTWITH)
+#         return tag_file.get_tags_dict(prefix)
 
 ##################################### TEST #####################################
 
