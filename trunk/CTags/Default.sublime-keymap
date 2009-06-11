@@ -7,5 +7,5 @@
     <!-- <binding key="ctrl+alt+shift+t" command="testCTags" /> -->
 
     <binding key="alt+s" command="showSymbols" />
-    <!-- <binding key="alt+s" command="showSymbols multi" /> -->
+    <binding key="alt+shift+s" command="showSymbols multi" />
 </bindings>

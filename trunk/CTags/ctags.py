@@ -38,12 +38,11 @@ FILENAME = 1
 
 MATCHES_STARTWITH = 'starts_with'
 
-
-PATH_ORDER = (
+PATH_ORDER = [
     'function', 'class', 'struct',
-)
+]
 
-PATH_IGNORE_FIELDS = ('file', 'access', 'language', 'line', 'inherits')
+PATH_IGNORE_FIELDS = ('file', 'access', 'signature', 'language', 'line', 'inherits')
 
 TAG_PATH_SPLITTERS = ('/', '.', '::', ':')
 
