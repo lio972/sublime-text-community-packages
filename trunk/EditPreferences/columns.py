@@ -15,6 +15,8 @@ POWARRAH = -0.5
 
 CELL_PADDING = 2
 
+DECODE = lambda s: s.decode('utf8', 'ignore')
+
 ############################### COLUMN RENDERING ###############################
 
 def find_widths(columns, total_width=SCREEN_WIDTH, cell_padding=CELL_PADDING):
@@ -63,7 +65,7 @@ def pad_columns(columns, align=CELL_ALIGN):
                      else s[:width-3] + ' ..')
 
         # rstrip each cell
-        padded.append([align(ellipsis(STRIP(unicode(c))), width) for c in col ])
+        padded.append([align(ellipsis(STRIP(DECODE(c))), width) for c in col ])
     return padded
 
 # Assumes all columns and rows or of equal length
@@ -77,7 +79,7 @@ def rows_2_columns(rows):
 def rendered_rows(rows, pl=0, pr=CELL_PADDING):
     # render each row as unicode with padded cells to stop them getting lonely
     pad = lambda r: [(pl*' ') + c + (pr*' ') for c in r]
-    return [''.join(pad(r)).decode('utf8', 'ignore') for r in rows]
+    return [''.join(pad(r)) for r in rows]
 
 def remove_common_prefix(col):
     common_prefix = os.path.commonprefix(col)
