@@ -145,6 +145,9 @@ class WalkThroughSnippets(sublimeplugin.TextCommand):
 
         try:
             self.walker.next()
+        except StopIteration:
+            sublime.messageBox('FINISHED')
+            self.walker = None
         except Exception, e:
             self.walker = None
             raise
@@ -153,18 +156,22 @@ class WalkThroughSnippets(sublimeplugin.TextCommand):
         for pkg, ext, f in glob_packages('sublime-snippet'):
             with open(f) as fh:
                 s = fh.read()
-                dom = minidom.parseString(s)
+                try:
+                    dom = minidom.parseString(s)
 
-                if  dom.getElementsByTagName('tabTrigger'):
-                    continue
-                
-                content = ''
-                for c in dom.getElementsByTagName('content'):
-                    content = ''.join(
-                        n.data for n in c.childNodes if n.nodeType in (3, 4))
+                except:
+                    pass
+                else:
+                    if  dom.getElementsByTagName('tabTrigger'):
+                        continue
                     
-                if content.endswith('$0'): 
-                    continue
+                    content = ''
+                    for c in dom.getElementsByTagName('content'):
+                        content = ''.join(
+                            n.data for n in c.childNodes if n.nodeType in (3, 4))
+                        
+                    if content.endswith('$0'): 
+                        continue
 
             @wait_until_loaded(f)
             def and_then(view):
