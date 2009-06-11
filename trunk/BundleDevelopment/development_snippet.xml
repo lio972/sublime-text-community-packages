@@ -1,19 +1,18 @@
 
 <snippet>
-<content><![CDATA[for i, region in enumerate(tab_stops):
-	adjusted_region = slice(region[0]+adjustment, region[1]+adjustment)
-
-	${0:replaced} = ''.join(snippet[adjusted_region])
-	tab_stop_index = tab_stop_map.get(replaced, i)
-
-	replacement = array('u', '\${%s:%s}' % (tab_stop_index, replaced))
-
-	if tab_stop_index == i:
-		tab_stop_map[${0:replaced}] = i$15]]></content>
+<content><![CDATA[<meta>
+	<name>\${1:leave_blank_until_save}</name>
+	<package>\${2:%(package)s}\${3:%(plugin_package)s}</package>
+</meta>
+<binding tab="\${4:a,u,t,o,tab_unless_rename_attr_to_key}" 
+		 uuid="%(UUID)s"
+		 command="insertSnippet">
+	<context name="selector" value="\${5:%(base_scope)s} \${6:%(scope)s}"/>
+</binding>\$0$15]]></content>
 <!-- 
-scope:   keyword.control.flow.python
+scope:   string.quoted.double.block.python
 syntax:  Packages/Python/Python.tmLanguage
-project: E:\python_repos\sqaencode\sqacodec.sublime-project
+project: E:\Web projects\new_rugs\rugs.sublime-project
 package: Python
 filename: D:\portable_sync\APPDATA\SublimeText\Packages\BundleDevelopment\snippets.py
 -->
