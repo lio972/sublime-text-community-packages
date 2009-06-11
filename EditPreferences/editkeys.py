@@ -174,20 +174,11 @@ class WalkThroughSnippets(sublimeplugin.TextCommand):
 
             @wait_until_loaded(f)
             def and_then(view):
-                regions  = []
-                start_pt = 0
-
-                # No god damn multi line find
-                for rx in ('<content>', '</content>'):
-                    regions.append(view.find(rx, start_pt))
-                    if regions and regions[-1]: start_pt = regions[-1].end()
-
-                if all(regions):
+                for region in view.findAll('(?s)<content>(.*)</content>'):
                     view.sel().clear()
-
                     view.sel().add(sublime.Region(
-                        regions[0].end(),
-                        regions[1].begin()
+                        region.begin() + 9,
+                        region.end() - 10
                     ))
                 
             yield
