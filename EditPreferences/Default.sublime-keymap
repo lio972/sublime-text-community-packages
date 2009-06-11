@@ -2,7 +2,9 @@
     <!-- OPEN/CREATE EDIT PREFERENCES -->
     <binding key="ctrl+alt+shift+p" command="editPackageFiles sublime-options" />
     <binding key="ctrl+alt+shift+k" command="editPackageFiles sublime-keymap" />
-
+    
+    <![CDATA[ That is pretty much it ]]>
+    
     <!-- EDIT/INSERT SNIPPETS  -->
     <binding key="ctrl+alt+shift+s" command="editPackageFiles sublime-snippet" />
     <binding key="ctrl+alt+shift+i" command="editPackageFiles sublime-snippet insertSnippet" />
@@ -19,9 +21,17 @@
     <!-- <binding key="ctrl+alt+shift+m" command="editPackageFiles tmTheme set colorscheme" /> -->
     <binding key="ctrl+alt+shift+m" command="editPackageFiles sublime-menu" />
     <binding key="ctrl+alt+shift+n" command="editPackageFiles tmLanguage set syntax" />
-
+    
     <!-- NEW KEYBINDING -->
     <binding key="/keymap|binding/,tab" command="insertSnippet 'Packages/EditPreferences/newKeyMap.sublime-snippet'">
         <context name="selector" value="text.xml"/>
     </binding>
+    
+    <binding key="ctrl+shift+i" command="incrementTabstops">
+        <context name="selector" value="text.xml"/>
+    </binding>
+    
+    <binding key="ctrl+alt+f7" command="walkThroughSnippets">
+    </binding>
+    
 </bindings>

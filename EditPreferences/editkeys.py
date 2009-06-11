@@ -97,15 +97,79 @@ def get_contextual_packages(view):
     
     return dirs
 
+
+############################## INCREMENT TAB STOPS #############################
+
+tab_stop = re.compile(r"(?<!\\)\$(\d+)|\$\{(\d+):")
+
+def inc_stop(m):
+    return re.sub('\d+', lambda d: str(int(d.group()) + 1), m)
+
+def increment_tabstops(s):
+    return tab_stop.sub(lambda m: '%s' % inc_stop(m.group()), s)
+
+class IncrementTabstops(sublimeplugin.TextCommand):
+    def run(self, view, args):
+        for sel in view.sel():
+            selection = view.substr(sel)
+            view.replace(sel, increment_tabstops(selection))
+
+def wait_until_loaded(file):
+    def wrapper(cb):
+        view = sublime.activeWindow().openFile(file)
+        if view.isLoading():
+            sublime.addOnLoadedCallback(view, cb)
+        else:
+            cb(view)
+
+    return wrapper
+
+class WalkThroughSnippets(sublimeplugin.TextCommand):
+    walker = None
+    
+    def run(self, view, args):
+        if self.walker is None:
+            self.walker = self.walk()
+
+        try:
+            self.walker.next()
+        except Exception, e:
+            self.walker = None
+            raise
+
+    def walk(self):
+        for pkg, ext, f in glob_packages('sublime-snippet'):
+            @wait_until_loaded(f)
+            def and_then(view):
+                view.sel().clear()
+                
+                start_pt = 0
+                
+                for rx in ('<content>', r"<!\[CDATA\["):
+                    reg = view.find(rx, start_pt)
+                    if reg:
+                        start_pt = reg.end()
+                        view.sel().clear()
+                        view.sel().add(sublime.Region(reg.end(), reg.end()))
+                
+                if len(view.sel()):
+                    sublime.setTimeout(
+                    lambda: view.runCommand('expandSelectionTo scope'), 2 )
+                
+            yield
+
+################################################################################
+
+
 def contextual_packages_list(view=None):
     if view is None:
         view = sublime.activeWindow().activeView()
 
     contextual = get_contextual_packages(view)
     pkg_path = sublime.packagesPath()
-    
+
     others = sorted((f for f in os.listdir(pkg_path) if isdir(join(pkg_path, f)) 
-                        and not f in contextual), key = lambda f: f.lower())
+                       and not f in contextual), key = lambda f: f.lower())
     
     return contextual + others
 
@@ -150,9 +214,12 @@ def glob_packages(file_type='sublime-keymap', view=None):
             yield pkg, splitext(basename(f))[0], f
 
 def wait_until_loaded(file):
-    def wrapper(f):
-        sublime.addOnLoadedCallback(file, f)
-        sublime.activeWindow().openFile(file)
+    def wrapper(cb):
+        view = sublime.activeWindow().openFile(file)
+        if view.isLoading():
+            sublime.addOnLoadedCallback(view, cb)
+        else:
+            cb(view)
 
     return wrapper
 
@@ -255,16 +322,15 @@ class ListOptions(sublimeplugin.WindowCommand):
         window.showSelectPanel(display, onSelect, None, 0, "", 0)
 
 class ListCommands(sublimeplugin.WindowCommand):
-    def finish(self, commands):
-        display = format_for_display(commands, cols=(0,1,2))
+    def finish(self, commands, display):
         window = sublime.activeWindow()
 
         def onSelect(i):
             window.openFile(*commands[i][-2:])
 
         window.showSelectPanel(display, onSelect, None, 0, "", 0)
-    
-    
+
+    @sublimeplugin.threaded(finish=finish, msg='Be Patient!')
     def run(self, window, args):
         commands = []
 
@@ -276,12 +342,6 @@ class ListCommands(sublimeplugin.WindowCommand):
                 if 'sublimeplugin' in ''.join(unicode(b) for b in c.super)
             ]
 
-        return commands
-        
-    try:
-        # Requires AAALoadfirstExtensions
-        run = sublimeplugin.threaded(finish=finish, msg='Be Patient!')(run)
-    except Exception, e:
-        pass
+        return commands, format_for_display(commands, cols=(0,1,2))
 
 ################################################################################
