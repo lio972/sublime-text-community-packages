@@ -26,7 +26,7 @@ from sublime import statusMessage
 # Ctags
 import ctags
 from ctags import ( TagFile, SYMBOL, FILENAME, parse_tag_lines, Tag,
-                    PATH_IGNORE_FIELDS, MATCHES_STARTWITH )
+                    MATCHES_STARTWITH, PATH_ORDER )
 
 # Helpers
 from plugin_helpers import ( threaded, FocusRestorer, in_main, staggered,
@@ -143,7 +143,7 @@ def format_tag_for_quickopen(tag, file=1):
 
     f=''
     for field in getattr(tag, "field_keys", []):
-        if field not in PATH_IGNORE_FIELDS:
+        if field in PATH_ORDER:
             punct = OBJECT_PUNCTUATORS.get(field, ' -> ')
             f += string.Template (
                 '    %($field)s$punct%(symbol)s' ).substitute(locals())
@@ -362,22 +362,16 @@ class RebuildCTags(sublimeplugin.TextCommand):
         ctags.build_ctags(CTAGS_CMD, tag_file)
         return tag_file
 
-
 ################################# AUTOCOMPLETE #################################
 
-def auto_complete(view, pos, prefix, completions):
+from AutoComplete import register_autocomplete
+
+@register_autocomplete()
+def ctags_completion(view, prefix, cursor_pt):
     tags = find_tags_relative_to(view, ask_to_build=False)
     if tags:
         tag_file = TagFile(tags, SYMBOL, MATCHES_STARTWITH)
-
-        for tag_name in tag_file.get_tags_dict(prefix):
-            if tag_name not in completions:
-                completions.append(tag_name)
-
-    return completions
-
-from AutoComplete import AutoCompleteCommand
-AutoCompleteCommand.completionCallbacks['ctags_plugin'] = auto_complete
+        return tag_file.get_tags_dict(prefix)
 
 ##################################### TEST #####################################
 
