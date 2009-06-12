@@ -15,8 +15,9 @@ class QuickMRUCommand(sublimeplugin.WindowCommand):
 	def __init__(self):
 		sublimeplugin.WindowCommand.__init__(self)
 		self.__db = None
-		pluginDir = path.dirname(path.realpath(__file__))
-		self.dbfilename = path.join(pluginDir, "QuickMRU.db")
+		# pluginDir = path.dirname(path.realpath(__file__))
+		# self.dbfilename = path.join(pluginDir, "QuickMRU.db")
+		self.dbfilename = sublime.packagesPath() + "/QuickMRU/QuickMRU.db" # is there a better way to get the plugin's folder?
 
 	def _get_db(self):
 		if(self.__db is None): self.reloadDB()
