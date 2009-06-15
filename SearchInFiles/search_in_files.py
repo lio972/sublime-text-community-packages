@@ -35,7 +35,7 @@ OPEN_NEW_WINDOW = 0
 RE_COMPILE_FLAGS = re.M
 MAX_CACHE_AGE = 60 * 60 # seconds
 
-OPEN_HTML_SUBLIME_PROTOCOL = 1
+OPEN_HTML_SUBLIME_PROTOCOL = 0
 
 try:
     from local_settings import *
@@ -250,8 +250,12 @@ class FindInFiles(sublimeplugin.TextCommand):
             for f in finds:
                 @wait_until_loaded(f)
                 def and_then(view):
-                    sublime.activeWindow().focusView(view)
-                    sublime.activeWindow().runCommand('findAll')
+                    region = view.find(self.pattern, 0)
+
+                    if region:
+                        view.sel().clear()
+                        view.sel().add(region)
+                        view.show(region)
 
     def NEXT(self):
         self.run_self(NEXT)
