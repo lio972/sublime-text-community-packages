@@ -32,11 +32,8 @@ class BrowsePackagesOnSublimeTextWikiCommand(sublimeplugin.WindowCommand):
     # Interrupt main thread to notify          
     sublime.setTimeout(partial(self.notify, packageList), 1)
 
-  def notify(self, packageList):
+  def notify(self, packageNames):
     
-    packageNames = [name for (name, url) in packageList]
-    packageUrls = [url for (name, url) in packageList]
-       
     self.window.showQuickPanel("", "packageSelectedForInstallation", packageNames, packageNames, sublime.QUICK_PANEL_MULTI_SELECT)
         
   def run(self, window, args):
@@ -52,7 +49,7 @@ class PackageSelectedForInstallationCommand(sublimeplugin.TextCommand):
       sublime.messageBox("You didn't select anything.")
     else:
       name = args[0]      
-      url = packagedownloader.packageRoot() + name
+      url = packagedownloader.packageRoot() + name + ".sublime-package"
       answer = sublime.questionBox("Download '%s'?" % url)   
       if answer:
         localPackageRoot = packagedownloader.packageDir()
@@ -62,8 +59,7 @@ class PackageSelectedForInstallationCommand(sublimeplugin.TextCommand):
         destination = "c:/downloaded-by-sublime-text-package-downloader.sublime-package"
         packagedownloader.downloadSinglePackage(url, destination)
         
-        namesans = os.path.splitext(name)[0]
-        packageFolder = os.path.join(localPackageRoot, namesans)
+        packageFolder = os.path.join(localPackageRoot, name)
         
         existsAlready = ""
         if os.path.exists(packageFolder):

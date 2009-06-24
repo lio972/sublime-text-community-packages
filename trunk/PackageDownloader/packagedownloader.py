@@ -30,8 +30,8 @@ def readIter(f, blocksize=8192):
     yield data
 
 def progFilesDir():
-  progFiles64 = "c:\\program files (x86)"
   progFiles32 = "c:\\program files"
+  progFiles64 = "c:\\program files (x86)"
   if os.path.exists(progFiles64): return progFiles64
   if os.path.exists(progFiles32): return progFiles32
   return None
@@ -54,12 +54,10 @@ def packageRoot():
 
 def listPackages():
   packageList = getUrl(packageRoot() + "all.sublime-distro")
-  packageItems = [ line for line in packageList.split("\n") if line.strip() != ""]
-  
-  packages = [ (item, packageRoot() + item) for item in packageItems ]
-  return packages
-
-
+  packageLines = [ line for line in packageList.split("\n") if line.strip() != ""]
+  packageNames = [ os.path.splitext(line)[0] for line in packageLines ]
+  packageNames.sort()
+  return packageNames
 
 def downloadPackages():
   print "SublimeTextWiki.com Package Downloader"
