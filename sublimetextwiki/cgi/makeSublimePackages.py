@@ -83,6 +83,7 @@ def shouldBeBuilt(packageDir, root):
 try:
   print "Building\n"
   mainDistributionCOntents = ""
+  allPackagesContent = ""
   getFromSvn()
   included = []
   dirNames = packageDirs(root)
@@ -95,6 +96,7 @@ try:
       included.append(dirName)
       if (partOfMainDistribution(dirName, root)):
         mainDistributionCOntents = mainDistributionCOntents + dirName + ".sublime-package\n\n"
+      allPackagesContent = allPackagesContent + dirName + ".sublime-package\n\n"
     
   included.sort()
   homepageList = "\n".join(["<li><a href=\"pages/%s.html\">%s</a></li>\n" % (dirName, dirName)   for dirName in included]) 
@@ -104,6 +106,11 @@ try:
   f = open(os.path.join(dest, "main.sublime-distro"), 'w')
   f.write(mainDistributionCOntents)
   f.close()
+  
+  f = open(os.path.join(dest, "all.sublime-distro"), 'w')
+  f.write(allPackagesContent)
+  f.close()
+
   
   today = datetime.datetime.now().ctime()
   template = Template(util.loadFile("../templates/index.template.html"))
