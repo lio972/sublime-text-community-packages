@@ -14,7 +14,7 @@ for f in os.listdir(srcdir):
     src = util.loadFile(fl)
     htm = util.processMarkdown(src)
     tpl = Template(template)
-    ctx = dict(name=displayName(noext), content=htm)
+    ctx = dict(name=util.displayName(noext), content=htm)
     out = tpl.substitute(ctx)
     ouf = os.path.join(util.site, 'pages', noext + '.html')
     util.saveFile(ouf, out)
