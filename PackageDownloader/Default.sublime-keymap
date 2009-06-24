@@ -1,4 +1,5 @@
 <bindings>
   <!-- for 'download packages' -->
   <!-- <binding key="ctrl+alt+d,ctrl+alt+p" command="downloadPackagesOnSublimeTextWiki"/> -->
+  <binding key="ctrl+alt+b,ctrl+alt+p" command="browsePackagesOnSublimeTextWiki"/> -->
 </bindings>
