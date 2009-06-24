@@ -2,7 +2,8 @@
 # package downloader
 #
 
-import sys, os, urllib
+import sys, os, urllib, _winreg
+
 
 class FakeFile:
   content = ""
@@ -35,6 +36,31 @@ def progFilesDir():
   if os.path.exists(progFiles32): return progFiles32
   return None
 
+def packageDir():
+  Hive = _winreg.ConnectRegistry(None, _winreg.HKEY_CURRENT_USER)
+  Key = _winreg.OpenKey(Hive, "Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders")
+  _winreg.CloseKey(Hive)
+  for i in range(0, _winreg.QueryInfoKey(Key)[1]):
+    name, value, val_type = _winreg.EnumValue(Key, i)
+    if name == "AppData":
+      candidate = os.path.join(value, "Sublime Text", "Packages")
+      if os.path.exists(candidate):
+        return candidate
+
+  return None
+  
+def packageRoot():
+  return "http://www.sublimetextwiki.com/sublime-packages/"
+
+def listPackages():
+  packageList = getUrl(packageRoot() + "all.sublime-distro")
+  packageItems = [ line for line in packageList.split("\n") if line.strip() != ""]
+  
+  packages = [ (item, packageRoot() + item) for item in packageItems ]
+  return packages
+
+
+
 def downloadPackages():
   print "SublimeTextWiki.com Package Downloader"
   
@@ -53,11 +79,14 @@ def downloadPackages():
       downloadLink = packageUrl + "/" + package
       destination  = os.path.join(progFilesDir(), "Sublime Text\\Pristine Packages", package)
       print "Downloading %s from %s to %s..." % (package, downloadLink, destination)
-      downloadFile = open(destination, 'wb')
-      downloadUrl(downloadLink, downloadFile)
-      downloadFile.close()
+      downloadSinglePackage(downloadLink, destination)
       completedPackageNames.append(package)
       print "...Downloaded to %s" % destination
   
   print "done"
   return completedPackageNames
+  
+def downloadSinglePackage(downloadLink, destination):
+    downloadFile = open(destination, 'wb')
+    downloadUrl(downloadLink, downloadFile)
+    downloadFile.close()    
