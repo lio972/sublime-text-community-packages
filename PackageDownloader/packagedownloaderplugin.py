@@ -1,4 +1,4 @@
-import sublime, sublimeplugin, packagedownloader, threading, zipfile, sys, os
+import sublime, sublimeplugin, packagedownloader, threading, zipfile, sys, os, shutil
 from functools import partial
 
 # class DownloadPackagesOnSublimeTextWikiCommand(sublimeplugin.ApplicationCommand):
@@ -77,7 +77,7 @@ class PackageSelectedForInstallationCommand(sublimeplugin.TextCommand):
   def expandPackage(self, zipPath, destinationFolder):
     if os.path.exists(destinationFolder):
       # must delete existing path.
-      os.rmdir(destinationFolder)
+      shutil.rmtree(destinationFolder)
     os.mkdir(destinationFolder)
     zfobj = zipfile.ZipFile(zipPath)
     for name in zfobj.namelist():
