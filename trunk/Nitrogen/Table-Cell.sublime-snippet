@@ -1,0 +1,6 @@
+<snippet>
+    <content><![CDATA[#tablecell{body=${1:Body}}]]></content>
+    <tabTrigger>#td</tabTrigger>
+    <scope>source.erlang</scope>
+    <description>Table-Cell</description>
+</snippet>

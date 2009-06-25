@@ -1,0 +1,6 @@
+<snippet>
+    <content><![CDATA[#link{text=${1:Text}, url=${2:Url}}]]></content>
+    <tabTrigger>#a</tabTrigger>
+    <scope>source.erlang</scope>
+    <description>Link</description>
+</snippet>
