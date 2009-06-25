@@ -1,0 +1,6 @@
+<snippet>
+    <content><![CDATA[#button{id=${1}, class=${2}, text=${3}, postback=${4}}]]></content>
+    <tabTrigger>#btn</tabTrigger>
+    <scope>source.erlang</scope>
+    <description>Button</description>
+</snippet>
