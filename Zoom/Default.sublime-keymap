@@ -1,0 +1,4 @@
+<bindings>
+    <binding key="ctrl+equals" command="zoomIn" />
+    <binding key="ctrl+minus"  command="zoomOut" />
+</bindings>
