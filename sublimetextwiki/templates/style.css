@@ -196,7 +196,7 @@ body {
 	background-color: #EBE9ED;
 	font-family: "Courier New", Courier, monospace;
 	font-size: 12px;
-	padding: 5px;
+	/*padding: 5px; Disabled */
 	/* display: block; */
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
