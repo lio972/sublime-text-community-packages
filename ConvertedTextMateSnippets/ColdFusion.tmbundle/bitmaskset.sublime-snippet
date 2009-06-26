@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[BitMaskSet(${1:number}, ${2:mask}, ${3:start}, ${4:length})$15]]></content>
-</snippet>

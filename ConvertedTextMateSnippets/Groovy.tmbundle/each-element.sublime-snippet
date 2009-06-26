@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[each { ${1:element} -> ${1:element}.$15 }]]></content>
-</snippet>

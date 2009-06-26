@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[\paragraph{${1:paragraph name}} % (fold)
-\label{par:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3)/g}}}
-${15:$TM_SELECTED_TEXT}
-% paragraph $2 (end)]]></content>
-</snippet>

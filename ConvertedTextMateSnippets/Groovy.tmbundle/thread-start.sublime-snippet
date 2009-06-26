@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Thread.start {
-	$15
-}]]></content>
-</snippet>

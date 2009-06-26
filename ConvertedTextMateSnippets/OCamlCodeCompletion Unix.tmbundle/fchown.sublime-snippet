@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.fchown ${1:file_descr} ${2:uid} ${3:gid}$15]]></content>
-</snippet>

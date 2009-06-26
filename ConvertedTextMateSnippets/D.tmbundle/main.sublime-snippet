@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[void main() {
-	${1}
-}]]></content>
-</snippet>

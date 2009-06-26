@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[ToBinary(${1:string_in_Base64 or binary_value})$15]]></content>
-</snippet>

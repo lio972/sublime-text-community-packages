@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[@serialField ${1:name} ${2:type} ${15:description}]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<g:textField name="${1:name}" value="${2:someValue}" />]]></content>
-</snippet>

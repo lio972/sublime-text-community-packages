@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[\begin{cases}
-	${1:equation}, &\text{ if }${2:case}\\\\
-	$15
-\end{cases}]]></content>
-</snippet>

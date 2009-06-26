@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[URLDecode(${1:urlEncodedString}${2: [, charset]})$15]]></content>
-</snippet>

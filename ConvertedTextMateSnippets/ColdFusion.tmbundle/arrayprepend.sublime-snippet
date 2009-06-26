@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[ArrayPrepend(${1:array}, ${2:value})$15]]></content>
-</snippet>

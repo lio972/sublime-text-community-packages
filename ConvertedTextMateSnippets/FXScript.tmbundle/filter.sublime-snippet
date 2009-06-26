@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Filter "${1:Name}";
-Group "${2:Name}";
-]]></content>
-</snippet>

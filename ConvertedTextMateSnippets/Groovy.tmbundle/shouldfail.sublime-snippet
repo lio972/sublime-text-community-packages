@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[shouldFail${1/(.+)/(?1:\()/}${1:Exception}${1/(.+)/(?1:\))/} {
-	$15
-}]]></content>
-</snippet>

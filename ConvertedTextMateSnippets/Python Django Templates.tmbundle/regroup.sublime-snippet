@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[{% regroup $1 by $2 as $3 %}]]></content>
-</snippet>

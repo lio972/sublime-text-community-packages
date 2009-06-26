@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[new ${YUI_MODULE:YAHOO.widget.Module}(${1:element}${2:, ${3:configs}});$15]]></content>
-</snippet>

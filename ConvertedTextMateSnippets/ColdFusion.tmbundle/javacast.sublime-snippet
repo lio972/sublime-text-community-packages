@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[JavaCast(${1:type}, ${2:variable})$15]]></content>
-</snippet>

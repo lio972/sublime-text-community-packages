@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfthrow${1: type = "${2:[ ]}" message = "${3:[ ]}" detail = "${4:[ ]} " errorCode = "${5:[ ]} " extendedInfo = "${6:[ ]}" object = "${7:[ ]}"}>$15]]></content>
-</snippet>

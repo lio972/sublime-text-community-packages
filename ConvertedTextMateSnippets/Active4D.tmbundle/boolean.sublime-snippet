@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<boolean name="${1:name}" $2/>]]></content>
-</snippet>

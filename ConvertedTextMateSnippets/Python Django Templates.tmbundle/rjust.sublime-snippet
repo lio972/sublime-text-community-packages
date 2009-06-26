@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[|rjust:"${1:arg}"]]></content>
-</snippet>

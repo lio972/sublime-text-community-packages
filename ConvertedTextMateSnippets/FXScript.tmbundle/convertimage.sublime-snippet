@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[ConvertImage(${1:src1}, ${2:dest}, ${3:colorspace});]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[GetTempFile(${1:dir}, ${2:prefix})$15]]></content>
-</snippet>

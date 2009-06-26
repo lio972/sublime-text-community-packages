@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Position.positionedOffset(${1:'${2:element}'});]]></content>
-</snippet>

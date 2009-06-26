@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.umask ${1:mask}$15]]></content>
-</snippet>

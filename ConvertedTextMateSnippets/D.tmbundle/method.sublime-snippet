@@ -1,9 +1,0 @@
-
-<snippet>
-    <content><![CDATA[/**
- * $2
- */
-${1:void} ${2:method}() {
-	${3}
-}]]></content>
-</snippet>

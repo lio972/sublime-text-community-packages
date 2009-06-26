@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.WSTOPPED ${1:sig_no}$15]]></content>
-</snippet>

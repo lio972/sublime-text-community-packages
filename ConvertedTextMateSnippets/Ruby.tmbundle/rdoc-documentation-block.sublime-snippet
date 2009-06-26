@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[`[[ $TM_LINE_INDEX != 0 ]] && echo; echo`=begin rdoc
-	$15
-=end]]></content>
-</snippet>

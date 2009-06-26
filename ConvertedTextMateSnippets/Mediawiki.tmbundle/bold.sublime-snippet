@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA['''${15:${TM_SELECTED_TEXT:bold text}}''']]></content>
-</snippet>

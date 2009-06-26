@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[formatMsg = ${1:function(oLogMsg) {
-	$2
-\}};$15]]></content>
-</snippet>

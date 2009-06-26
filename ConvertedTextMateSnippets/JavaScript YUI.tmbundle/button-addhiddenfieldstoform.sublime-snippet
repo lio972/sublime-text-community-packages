@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_BUTTON:YAHOO.widget.Button}.addHiddenFieldsToForm(${1:formElement});$15]]></content>
-</snippet>

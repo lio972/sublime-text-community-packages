@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[exec("${15:script.sce}")]]></content>
-</snippet>

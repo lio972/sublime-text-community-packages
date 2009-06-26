@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfsavecontent variable = "$1">
-	$2
-</cfsavecontent>$15]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<g:${1:name} ${2:attr}="${3:value}">${15:$TM_SELECTED_TEXT}</g:$1>]]></content>
-</snippet>

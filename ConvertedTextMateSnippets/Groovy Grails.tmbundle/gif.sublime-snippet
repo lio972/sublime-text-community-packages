@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<g:if test="\${$1}">
-	${15:$TM_SELECTED_TEXT}
-</g:if>
-]]></content>
-</snippet>

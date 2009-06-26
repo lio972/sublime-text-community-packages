@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Array2.fill ${1:bigarray} ${2:value}$15]]></content>
-</snippet>

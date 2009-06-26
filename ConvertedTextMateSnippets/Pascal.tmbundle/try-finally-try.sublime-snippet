@@ -1,8 +1,0 @@
-
-<snippet>
-    <content><![CDATA[try
-	$15
-finally
-	$1
-end;]]></content>
-</snippet>

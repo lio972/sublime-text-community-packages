@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cftimer${1: label= "${2:[ ]}" type = "${3:[ ]}"}>
-	$4
-</cftimer>$15]]></content>
-</snippet>

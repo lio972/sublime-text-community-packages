@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:FIELDNAME} = models.ForeignKey(${2:RELATED_MODEL})]]></content>
-</snippet>

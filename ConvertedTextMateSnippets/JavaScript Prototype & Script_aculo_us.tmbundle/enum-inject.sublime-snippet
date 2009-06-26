@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[inject(${1:initial_value}, function(${2:accumulator}, ${3:value}) {
-	$15
-	return $2;
-});]]></content>
-</snippet>

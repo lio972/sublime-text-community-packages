@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[PStore.new(${1:"${2:file_name.pstore}"})]]></content>
-</snippet>

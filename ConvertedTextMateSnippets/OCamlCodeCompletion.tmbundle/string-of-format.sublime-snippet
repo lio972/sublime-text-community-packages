@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[string_of_format ${1:"${2:fmt}"}$15]]></content>
-</snippet>

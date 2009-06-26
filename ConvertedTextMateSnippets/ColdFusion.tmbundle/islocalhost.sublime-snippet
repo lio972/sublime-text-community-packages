@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[IsLocalHost(${1:ipaddress})$15]]></content>
-</snippet>

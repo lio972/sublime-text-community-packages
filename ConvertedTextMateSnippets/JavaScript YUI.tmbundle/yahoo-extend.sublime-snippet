@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_LANG:YAHOO.lang}.extend(${1:subclass}, ${2:superclass}${3:, ${4:overrides}});]]></content>
-</snippet>

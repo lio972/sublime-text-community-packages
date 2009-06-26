@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[close_out ${1:out_channel}$15]]></content>
-</snippet>

@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[enum ${1:name}{
-	| $2
-}]]></content>
-</snippet>

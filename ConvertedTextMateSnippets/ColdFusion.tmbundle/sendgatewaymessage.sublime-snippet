@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[SendGatewayMessage(${1:gatewayID}, ${2:data})$15]]></content>
-</snippet>

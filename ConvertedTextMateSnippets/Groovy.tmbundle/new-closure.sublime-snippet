@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[def ${1:closureName} =  { ${2:args} ->
-	$3
-}]]></content>
-</snippet>

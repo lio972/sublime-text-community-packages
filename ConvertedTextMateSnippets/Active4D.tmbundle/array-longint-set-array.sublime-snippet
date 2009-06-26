@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[array longint(${1:\$array}; 0)
-set array($1; ${2:longint})]]></content>
-</snippet>

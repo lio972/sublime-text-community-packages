@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_ENV:YAHOO.env}.getVersion(${1:componentName})]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[output_char ${1:out_channel} ${2:'${3:ch}'}$15]]></content>
-</snippet>

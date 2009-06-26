@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.recvfrom ${1:sock} ${2:buf} ${3:pos} ${4:len} ${5:[Unix.msg_$15]}]]></content>
-</snippet>

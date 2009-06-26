@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[for $1 in $2 loop
-	$15
-end loop;]]></content>
-</snippet>

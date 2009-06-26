@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[SetLocale(${1:new_locale})$15]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Event.always ${1:value}$15]]></content>
-</snippet>

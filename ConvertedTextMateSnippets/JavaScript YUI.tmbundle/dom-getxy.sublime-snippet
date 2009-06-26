@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_DOM:YAHOO.util.Dom}.getXY(${1:element});]]></content>
-</snippet>

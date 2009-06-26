@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfupdate dataSource = "$1" tableName = "$2"${3: tableOwner = "${4:[ ]}" tableQualifier = "${5:[ ]}" username = "${6:[ ]}" password = "${7:[ ]}" formFields = "${8:[ ]}"}>$15]]></content>
-</snippet>

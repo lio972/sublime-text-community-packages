@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[density(${1:x}${2:, bw=${3:bandwidth}})]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[XmlSearch(${1:xmlDoc}, ${2:xPathString})$15]]></content>
-</snippet>

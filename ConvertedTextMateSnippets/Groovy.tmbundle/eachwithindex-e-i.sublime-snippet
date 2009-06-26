@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[eachWithIndex { ${1:obj}, ${2:i} ->
-	$15 
-}]]></content>
-</snippet>

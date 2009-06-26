@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[DirectoryExists(${1:absolute_path})$15]]></content>
-</snippet>

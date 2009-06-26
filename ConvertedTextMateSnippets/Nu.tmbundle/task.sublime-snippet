@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[(task "${1:name}" ${2:: "${3:description}" }${4:=> "${5:dependency}" }is
-	$15)]]></content>
-</snippet>

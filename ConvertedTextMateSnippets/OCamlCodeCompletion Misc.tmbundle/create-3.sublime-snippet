@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Array2.create BA.kind$15 ${1:fortran}-layout ${2:dim1} ${3:dim2}]]></content>
-</snippet>

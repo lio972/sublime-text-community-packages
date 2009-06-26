@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<g:render ${1:template="$2" }${3:bean="$4" }${5:model="$6" }${7:collection="$8" }${9:var="$10" }${11:plugin="$12" }/>]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[REM ${1:`LANG=en_US date +'%b'`} ${2:`date +'%e'`} ${3:`date +'%Y'`} AT ${4:16}:${5:00} MSG ${15:message…}]]></content>
-</snippet>

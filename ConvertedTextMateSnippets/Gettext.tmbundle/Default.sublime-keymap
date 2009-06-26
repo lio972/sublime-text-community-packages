@@ -1,9 +1,0 @@
-<bindings>
-    <binding key="i,d,tab" command="insertSnippet 'Packages/Gettext.tmbundle/msgid.sublime-snippet'">
-        <context name="selector" value="source.po"/>
-    </binding>
-
-    <binding key="s,t,r,tab" command="insertSnippet 'Packages/Gettext.tmbundle/msgstr.sublime-snippet'">
-        <context name="selector" value="source.po"/>
-    </binding>
-</bindings>

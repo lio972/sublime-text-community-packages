@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Field.clear(${1:element(s)});]]></content>
-</snippet>

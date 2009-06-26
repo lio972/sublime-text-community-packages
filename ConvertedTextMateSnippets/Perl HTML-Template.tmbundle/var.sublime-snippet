@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<TMPL_VAR NAME="$1"${2:${3: DEFAULT="$4"}${5: ESCAPE="${6:html|js|url|none}"}}>]]></content>
-</snippet>

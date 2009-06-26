@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[interface ${1:name}
-	$15
-end interface ! $1]]></content>
-</snippet>

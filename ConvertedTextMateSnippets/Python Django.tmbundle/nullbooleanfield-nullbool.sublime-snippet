@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:FIELDNAME} = models.NullBooleanField(${2:default=True})]]></content>
-</snippet>

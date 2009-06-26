@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[rule ${1:RuleName}
-	$15
-end
-]]></content>
-</snippet>

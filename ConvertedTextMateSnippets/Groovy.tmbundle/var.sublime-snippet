@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:def} ${2:var}${3: = ${15:null}}]]></content>
-</snippet>

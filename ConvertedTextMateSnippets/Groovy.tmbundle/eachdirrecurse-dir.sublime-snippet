@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[eachDirRecurse { ${1:${2:dir} -> }$15 }]]></content>
-</snippet>

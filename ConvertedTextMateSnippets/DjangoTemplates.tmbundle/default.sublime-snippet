@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[|default:"${1:arg}"]]></content>
-</snippet>

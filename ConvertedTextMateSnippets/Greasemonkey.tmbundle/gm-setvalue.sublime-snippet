@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[GM_setValue("${1:key}", ${2:"${3:value}"});]]></content>
-</snippet>

@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[repeat
-	$15
-until (${1:condition})]]></content>
-</snippet>

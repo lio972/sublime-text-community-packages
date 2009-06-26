@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<?php echo ${1:\$var} ?>$15]]></content>
-</snippet>

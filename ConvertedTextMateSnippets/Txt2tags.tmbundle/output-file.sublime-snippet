@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[%%outfile(file:%f extension:%e dir:%d path:%p file-without-extension:%F parent-dir:%D)]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:FIELDNAME} = models.FileField(upload_to=${1:/path/for/upload})]]></content>
-</snippet>

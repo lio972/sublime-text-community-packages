@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[GetSOAPResponseHeader(${1:webservice}, ${2:namespace}, ${3:name} ${4:[, asXML]})$15]]></content>
-</snippet>

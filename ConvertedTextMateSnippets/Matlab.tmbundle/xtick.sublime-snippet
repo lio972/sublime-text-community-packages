@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[set(gca,'XTick',${1:[${2}]});]]></content>
-</snippet>

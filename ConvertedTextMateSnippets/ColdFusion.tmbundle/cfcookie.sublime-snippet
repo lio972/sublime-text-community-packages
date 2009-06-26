@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfcookie name = "$1"${2: value = "${3:[ ]}" expires = "${4:[ ]}" secure = "${5:[ ]}" path = "${6:[ ]}" domain = "${7:[ ]}"}>$15]]></content>
-</snippet>

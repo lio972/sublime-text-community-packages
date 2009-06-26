@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[logical${1:(${2:kind})}${3:, ${4:attributes}} :: ${5:name}]]></content>
-</snippet>

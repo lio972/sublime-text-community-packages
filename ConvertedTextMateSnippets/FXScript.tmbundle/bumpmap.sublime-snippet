@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[BumpMap(${1:srcImage}, ${2:destImage}, ${3:mapImage}, ${4:repeatEdges}, ${5:angle}, ${6:scale}, ${7:lumaScale}, ${8:AspectOf($2)});
-]]></content>
-</snippet>

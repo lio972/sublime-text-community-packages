@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[CharsetEncode(${1:binaryobject}, ${2:encoding})$15]]></content>
-</snippet>

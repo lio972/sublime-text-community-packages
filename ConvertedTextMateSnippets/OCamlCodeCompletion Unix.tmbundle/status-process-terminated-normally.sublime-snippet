@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.WEXITED ${1:exit_code}$15]]></content>
-</snippet>

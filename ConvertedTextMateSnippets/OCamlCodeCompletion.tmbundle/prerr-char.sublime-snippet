@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[prerr_char ${1:'${2:ch}'}$15]]></content>
-</snippet>

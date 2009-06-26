@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[new ${YUI_LOGWRITER:YAHOO.widget.LogWriter}(${1:sourceString});$15]]></content>
-</snippet>

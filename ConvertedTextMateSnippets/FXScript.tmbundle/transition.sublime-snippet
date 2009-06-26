@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Transition "${1:Name}";
-Group "${2:Name}";
-]]></content>
-</snippet>

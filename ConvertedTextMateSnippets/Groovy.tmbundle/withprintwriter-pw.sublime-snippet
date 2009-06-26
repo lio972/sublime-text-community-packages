@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[withPrintWriter {${1/(.+)/(?1: )/}${1:writer}${1/(.+)/(?1: ->)/}
-	$15
-}]]></content>
-</snippet>

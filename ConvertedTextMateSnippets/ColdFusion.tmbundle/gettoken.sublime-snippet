@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[GetToken(${1:string}, ${2:index} ${3:[, delimiters ]})$15]]></content>
-</snippet>

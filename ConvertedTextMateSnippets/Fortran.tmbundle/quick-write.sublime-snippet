@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[write(unit=${1:iounit}, fmt=*) ${15:variables}
-]]></content>
-</snippet>

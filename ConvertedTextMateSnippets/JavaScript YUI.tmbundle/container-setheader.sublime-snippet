@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[setHeader(${1:headerContent});$15]]></content>
-</snippet>

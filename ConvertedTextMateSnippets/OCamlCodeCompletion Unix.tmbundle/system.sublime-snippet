@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.system ${1:cmd}$15]]></content>
-</snippet>

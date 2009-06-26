@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[.mousedown(${1:function() {
-	${15:// Act on the event}
-\}});]]></content>
-</snippet>

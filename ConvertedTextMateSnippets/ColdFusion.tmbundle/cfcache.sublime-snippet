@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfcache action = "${2:[ ]}" directory = "${2:[ ]}" timespan = "${2:[ ]}" expireURL = "${2:[ ]}" username = "${2:[ ]}" password = "${2:[ ]}" port = "" protocol = "${2:[ ]}">]]></content>
-</snippet>

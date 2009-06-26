@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.nice ${1:i}$15]]></content>
-</snippet>

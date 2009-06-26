@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[`TZ=UTC date '+[[Date(%Y-%m-%dT%H:%m:%SZ)]]'`]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[StructInsert(${1:structure}, ${2:key}, ${3:value}${4: [, allowoverwrite]})$15]]></content>
-</snippet>

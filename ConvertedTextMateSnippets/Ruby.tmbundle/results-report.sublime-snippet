@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[results.report("${1:name}:") { TESTS.times { $15 } }]]></content>
-</snippet>

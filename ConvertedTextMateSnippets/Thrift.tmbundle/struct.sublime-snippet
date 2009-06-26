@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[struct ${1:Name} {
-	${2:1}${2/.+/: /m}${3:i32} ${4:field}${5/.+/ = /m}${5:value},$15
-}]]></content>
-</snippet>

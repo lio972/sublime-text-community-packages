@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_LANG:YAHOO.lang}.hasOwnProperty(${1:object}, ${2:property})]]></content>
-</snippet>

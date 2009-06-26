@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[array boolean(${1:\$array}; 0)
-set array($1; ${2:true/false})]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[BoundsOf(${1:image}, ${2:result});]]></content>
-</snippet>

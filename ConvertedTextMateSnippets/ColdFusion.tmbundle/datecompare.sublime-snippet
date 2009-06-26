@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[DateCompare(${1:"date1"}, ${2:"date2"} ${3:[, "datePart"]})$15]]></content>
-</snippet>

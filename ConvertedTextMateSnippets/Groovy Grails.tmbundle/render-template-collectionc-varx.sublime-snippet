@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[render(template:"${1:name}",collection:${2:col}, var:"${3:x}")]]></content>
-</snippet>

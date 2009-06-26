@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:slug} = models.SlugField(${2:prepopulate_from=("$3",$4)})]]></content>
-</snippet>

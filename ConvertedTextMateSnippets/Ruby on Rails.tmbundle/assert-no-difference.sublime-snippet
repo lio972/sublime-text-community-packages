@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[assert_no_difference "${1:Model}.${2:count}" do
-  $15
-end]]></content>
-</snippet>

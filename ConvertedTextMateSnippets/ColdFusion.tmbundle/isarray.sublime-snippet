@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[IsArray(${1:value} ${2:[, number ]})$15]]></content>
-</snippet>

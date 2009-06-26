@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[DrawSoftDot(${1:dest}, ${2:point/poly}, ${3:shape}, ${4:size}, ${5:softness}, ${6:subSteps}, ${7:color(s)}, ${8:opacity(s)}, ${9:aspectOf(${10:$1})});]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_SLIDER:YAHOO.widget.Slider}.getVertSlider("${1:backgroundId}", "${2:thumbId}", ${3:up}, ${4:down}${5:, ${6:tickSize}});$15]]></content>
-</snippet>

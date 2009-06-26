@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:FIELDNAME} = models.SmallIntegerField(${2:blank=True, null=True})]]></content>
-</snippet>

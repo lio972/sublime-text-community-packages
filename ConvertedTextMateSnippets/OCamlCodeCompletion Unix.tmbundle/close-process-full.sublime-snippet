@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.close_process_full ${1:(${2:in_channel}, ${3:out_channel}, ${4:err_channel})}$15]]></content>
-</snippet>

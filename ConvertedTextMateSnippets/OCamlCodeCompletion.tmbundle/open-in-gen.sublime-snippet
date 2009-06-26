@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[open_in_gen ${4:[Open_$15]} 0o${1:644} ${2:"${3:file_name}"}]]></content>
-</snippet>

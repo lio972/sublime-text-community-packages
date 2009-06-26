@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[at_least(${1:n}).times]]></content>
-</snippet>

@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:private}${1/(.+)/(?1: )/}${2:${TM_FILENAME/(.*?)(\..+)/$1/}}(${3:args}) {
-	$15
-}]]></content>
-</snippet>

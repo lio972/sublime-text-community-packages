@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[controller_name :${1:controller}]]></content>
-</snippet>

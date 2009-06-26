@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[repeat with $1 in $2
-	$15
-end repeat]]></content>
-</snippet>

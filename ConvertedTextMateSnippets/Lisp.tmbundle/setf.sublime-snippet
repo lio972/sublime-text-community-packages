@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[(setf ${1:place} ${2:value})]]></content>
-</snippet>

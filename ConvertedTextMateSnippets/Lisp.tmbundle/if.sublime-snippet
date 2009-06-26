@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[(if (${1:test})
-	($15))]]></content>
-</snippet>

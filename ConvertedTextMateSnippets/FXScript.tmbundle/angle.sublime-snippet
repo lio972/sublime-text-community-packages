@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[input ${1:varname}, "${2:${1/varname/text label/}}", Angle, ${3:default value}, ${4:min value}, ${5:max value};
-]]></content>
-</snippet>

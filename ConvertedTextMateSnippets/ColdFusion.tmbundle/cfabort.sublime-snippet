@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfabort showerror="$1">$15]]></content>
-</snippet>

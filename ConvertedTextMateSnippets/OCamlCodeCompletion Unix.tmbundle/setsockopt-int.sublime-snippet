@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.setsockopt_int ${1:sock} Unix.SOI_$15 ${2:value};]]></content>
-</snippet>

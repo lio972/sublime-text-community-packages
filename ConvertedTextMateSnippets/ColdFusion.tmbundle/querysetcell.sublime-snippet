@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[QuerySetCell(${1:query}, ${2:column_name}, ${3:value}${4: [, row_number ]})$15]]></content>
-</snippet>

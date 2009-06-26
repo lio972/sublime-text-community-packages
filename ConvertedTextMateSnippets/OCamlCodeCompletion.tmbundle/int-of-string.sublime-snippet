@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[int_of_string ${1:s}$15]]></content>
-</snippet>

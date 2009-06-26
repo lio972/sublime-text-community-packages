@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[le_big_int_ratio ${1:bi} ${2:ratio}$15]]></content>
-</snippet>

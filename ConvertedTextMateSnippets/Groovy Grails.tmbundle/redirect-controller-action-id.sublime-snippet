@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[redirect(controller:"${1:c}",action:"${2:a}",id:${3:1})]]></content>
-</snippet>

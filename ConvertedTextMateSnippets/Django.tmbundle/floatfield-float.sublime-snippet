@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:FIELDNAME} = models.FloatField(max_digits=$2, decimal_places=$3)]]></content>
-</snippet>

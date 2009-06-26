@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[|divisibleby:"${1:arg}"]]></content>
-</snippet>

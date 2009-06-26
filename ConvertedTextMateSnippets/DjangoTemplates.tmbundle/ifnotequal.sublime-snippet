@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[{% ifnotequal $1 $2 %}
-	$3
-{% endifnotequal %}]]></content>
-</snippet>

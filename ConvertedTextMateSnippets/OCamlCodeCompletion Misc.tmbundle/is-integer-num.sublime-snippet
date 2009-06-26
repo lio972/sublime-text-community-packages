@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[is_integer_num ${1:num}$15]]></content>
-</snippet>

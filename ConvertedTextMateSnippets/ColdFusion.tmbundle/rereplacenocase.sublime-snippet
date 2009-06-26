@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[REReplaceNoCase(${1:string}, ${2:reg_expression}, ${3:substring}${4: [, scope]})$15]]></content>
-</snippet>

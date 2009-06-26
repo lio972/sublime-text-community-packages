@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[if (${1:true}) {${15:$TM_SELECTED_TEXT}} else{};]]></content>
-</snippet>

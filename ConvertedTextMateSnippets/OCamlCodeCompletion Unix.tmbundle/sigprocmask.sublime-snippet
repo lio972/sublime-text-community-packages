@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.sigprocmask Unix.SIG_$15 [${1:signal list}]]]></content>
-</snippet>

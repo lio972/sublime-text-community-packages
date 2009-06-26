@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Str.global_substitute ${1:regexp} ${2:subst_func} ${3:str}$15]]></content>
-</snippet>

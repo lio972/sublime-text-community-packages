@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[(synchronized ${1:object}
-	($2))$15]]></content>
-</snippet>

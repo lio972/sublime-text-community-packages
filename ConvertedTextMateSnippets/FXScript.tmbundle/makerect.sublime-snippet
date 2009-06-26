@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[MakeRect(${1:result}, ${2:left}, ${3:top}, ${4:width}, ${5:height});]]></content>
-</snippet>

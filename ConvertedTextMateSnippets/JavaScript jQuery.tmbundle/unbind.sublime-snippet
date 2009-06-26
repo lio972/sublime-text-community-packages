@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[.unbind('${1:event name}')$15]]></content>
-</snippet>

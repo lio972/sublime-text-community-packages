@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfobject type = "Java" action = "$1" class = "$2" name = "$3">$15]]></content>
-</snippet>

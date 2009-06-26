@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:target}.should have(${2:num}).${3:things}
-$15]]></content>
-</snippet>

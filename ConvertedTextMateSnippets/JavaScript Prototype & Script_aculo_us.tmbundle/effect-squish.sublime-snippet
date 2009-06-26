@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[new Effect.Squish(${1:'${2:element}'}${3:, ${4:effect_options}});]]></content>
-</snippet>

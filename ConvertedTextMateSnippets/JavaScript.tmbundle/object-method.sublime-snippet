@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:method_name}: function(${3:attribute}){
-	$15
-}${10:,}]]></content>
-</snippet>

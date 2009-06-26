@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[for each (${1:\$string}; ${2:\$char}${3:; \$index})
-	$15
-end for each]]></content>
-</snippet>

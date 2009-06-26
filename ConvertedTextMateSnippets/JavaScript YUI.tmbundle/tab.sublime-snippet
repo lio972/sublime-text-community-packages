@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[new ${YUI_TAB:YAHOO.widget.Tab}(${1:element}${2:, ${3:configs}});$15]]></content>
-</snippet>

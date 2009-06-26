@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[{{${1:image}|${2:caption}}}]]></content>
-</snippet>

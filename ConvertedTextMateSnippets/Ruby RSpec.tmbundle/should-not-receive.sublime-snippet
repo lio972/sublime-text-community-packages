@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:mock}${1/^.+$/./}should_not_receive(:${2:message})]]></content>
-</snippet>

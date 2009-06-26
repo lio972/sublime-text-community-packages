@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.establish_server ${1:(fun in_channel out_channel -> )}Unix.ADDR_$15;]]></content>
-</snippet>

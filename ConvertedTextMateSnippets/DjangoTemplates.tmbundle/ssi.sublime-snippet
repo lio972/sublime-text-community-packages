@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[{% ssi $1 ${2:parsed} %}]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[QTimer::singleShot(${1:0}, ${2:this}, SLOT(${3:slotName()}))]]></content>
-</snippet>

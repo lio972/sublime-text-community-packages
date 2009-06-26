@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[ReplaceList(${1:string}, ${2:list1}, ${3:list2})$15]]></content>
-</snippet>

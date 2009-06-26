@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Arg.Unit ${1:(fun () -> ${2:})}$15]]></content>
-</snippet>

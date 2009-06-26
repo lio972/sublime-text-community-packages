@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfmail to="$1" from="$2" subject="$3" server="$4" type="${5:html}">
-	$6
-</cfmail>$15]]></content>
-</snippet>

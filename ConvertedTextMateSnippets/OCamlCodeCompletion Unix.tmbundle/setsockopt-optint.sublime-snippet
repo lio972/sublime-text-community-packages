@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.setsockopt_optint ${1:sock} Unix.SOIO_$15 ${2:value_option};]]></content>
-</snippet>

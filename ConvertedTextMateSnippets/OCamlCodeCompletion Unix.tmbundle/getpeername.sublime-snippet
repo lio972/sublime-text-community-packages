@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.getpeername ${1:sock}$15]]></content>
-</snippet>

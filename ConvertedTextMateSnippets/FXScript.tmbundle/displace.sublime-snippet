@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Displace(${1:srcImage}, ${2:destImage}, ${3:mapImage}, ${4:repeatEdges}, ${5:xScale}, ${6:yScale}, ${7:lumaScale}, ${8:AspectOf($2)});
-]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Dynlink.prohibit ${1:[${2:unit_list;}]}${3:;}$15]]></content>
-</snippet>

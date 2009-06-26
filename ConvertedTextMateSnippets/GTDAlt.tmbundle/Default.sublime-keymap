@@ -1,9 +1,0 @@
-<bindings>
-    <binding key="TODO[None]" command="insertSnippet 'Packages/GTDAlt.tmbundle/new-project.sublime-snippet'">
-        <context name="selector" value="text.gtdalt - meta.action - meta.line.project"/>
-    </binding>
-
-    <binding key="TODO[None]" command="insertSnippet 'Packages/GTDAlt.tmbundle/note-with-link.sublime-snippet'">
-        <context name="selector" value="text.gtdalt meta.note"/>
-    </binding>
-</bindings>

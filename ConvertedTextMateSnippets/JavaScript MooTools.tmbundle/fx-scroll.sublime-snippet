@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Fx.Scroll(${1:\$(${2:'${3:element}'})});]]></content>
-</snippet>

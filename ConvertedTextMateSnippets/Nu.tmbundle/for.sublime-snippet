@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[(for ((${1:initialize}) (${2:test}) (${3:modify}))
-	$4)$15]]></content>
-</snippet>

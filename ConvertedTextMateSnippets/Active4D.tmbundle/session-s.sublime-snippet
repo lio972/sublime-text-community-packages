@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[session{"${1:key}"}]]></content>
-</snippet>

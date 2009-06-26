@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:page}~\pageref{$2}$15
-]]></content>
-</snippet>

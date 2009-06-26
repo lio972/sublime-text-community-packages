@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[new ${YUI_DDPROXY:YAHOO.util.DDProxy}(${1:element});]]></content>
-</snippet>

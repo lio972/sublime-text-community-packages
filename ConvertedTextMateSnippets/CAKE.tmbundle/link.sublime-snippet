@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<?php echo \$ajax->link('${1:linkText}', '${2:linkPath}', ${3: array('update'=>'${4:id-of-element-to-update}'${5:, 'complete'=>'${6:function for callback'}}${7:, 'loading'=>'${8:function for loading'}}${9:, '${10:before|after|fallback|loaded|interactive|with|url|method|position|parameters|evalScripts|asynchronous|onComplete|onUninitialized|onLoading|onLoaded|onInteractive|requestHeaders}'=>'${11:function for $10'}})}); ?>
-$15]]></content>
-</snippet>

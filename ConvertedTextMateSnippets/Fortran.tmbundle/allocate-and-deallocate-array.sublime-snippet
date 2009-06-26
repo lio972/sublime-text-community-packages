@@ -1,8 +1,0 @@
-
-<snippet>
-    <content><![CDATA[allocate(${1:array}, stat=${2:err})
-if ($2 /= 0) print *, "${1/(\w+).*/$1/}: Allocation request denied"
-
-$15if (allocated(${1/(\w+).*/$1/})) deallocate(${1/(\w+).*/$1/}, stat=$2)
-if ($2 /= 0) print *, "${1/(\w+).*/$1/}: Deallocation request denied$15"]]></content>
-</snippet>

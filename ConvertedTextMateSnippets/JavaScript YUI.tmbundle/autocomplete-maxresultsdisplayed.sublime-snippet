@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[maxResultsDisplayed = ${1:20};$15]]></content>
-</snippet>

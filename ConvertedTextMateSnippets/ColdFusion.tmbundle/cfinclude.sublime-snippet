@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfinclude template = "$1">$15]]></content>
-</snippet>

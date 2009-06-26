@@ -1,9 +1,0 @@
-
-<snippet>
-    <content><![CDATA[/**
- * ${1:undocumented class}
- *
- * @package ${2:default}
- * @author ${PHPDOC_AUTHOR:$TM_FULLNAME}$3
- **/$15]]></content>
-</snippet>

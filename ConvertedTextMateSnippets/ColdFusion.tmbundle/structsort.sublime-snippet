@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[StructSort(${1:base}, ${2:sortType}, ${3:sortOrder}, ${4:pathToSubElement})$15]]></content>
-</snippet>

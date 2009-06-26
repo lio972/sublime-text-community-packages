@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[do{
-	$2
-} while (${1:condition})
-]]></content>
-</snippet>

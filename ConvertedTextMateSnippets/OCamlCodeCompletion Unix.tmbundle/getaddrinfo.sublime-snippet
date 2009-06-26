@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.getaddrinfo ${1:host} ${2:service} ${3:[Unix.AI_$15]}]]></content>
-</snippet>

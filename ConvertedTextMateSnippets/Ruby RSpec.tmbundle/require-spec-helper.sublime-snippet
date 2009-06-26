@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[require File.dirname(__FILE__) + '/../spec_helper']]></content>
-</snippet>

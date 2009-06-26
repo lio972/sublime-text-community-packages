@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[a4d.debug.dump collection(${1:\$collection})]]></content>
-</snippet>

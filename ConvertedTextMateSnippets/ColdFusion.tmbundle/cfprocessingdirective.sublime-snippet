@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfprocessingdirective suppressWhiteSpace = "${1:yes or no}"${2: pageEncoding = "${3:[ ]}"}>
-	$4
-</cfprocessingdirective>$15]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Dbm.opendbm ${1:file_name} [Dbm.Dbm_$15] 0o${2:644}]]></content>
-</snippet>

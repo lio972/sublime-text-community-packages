@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<?php foreach (\$${1:variable} as \$${2:key}${3: => \$${4:value}}): ?>
-	${15}
-<?php endforeach ?>]]></content>
-</snippet>

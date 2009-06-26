@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<?php if (${1:condition}): ?>
-	$15
-<?php endif ?>]]></content>
-</snippet>

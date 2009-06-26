@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[grep(${1:filter}) {${2/(.+)/(?1: )/}${2:obj}${2/(.+)/(?1: ->)/}
-	$15
-}]]></content>
-</snippet>

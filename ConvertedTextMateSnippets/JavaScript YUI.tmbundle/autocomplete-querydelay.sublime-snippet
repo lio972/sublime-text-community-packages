@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[queryDelay = ${1:0.5};$15]]></content>
-</snippet>

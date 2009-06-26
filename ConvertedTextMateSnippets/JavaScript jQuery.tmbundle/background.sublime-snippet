@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[.background(${1/(.+)/(?1:':)/}${1:backgroundColor}${1/(.+)/(?1:':)/})$15]]></content>
-</snippet>

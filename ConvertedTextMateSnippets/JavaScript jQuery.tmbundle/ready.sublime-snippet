@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[\$(document).ready(function() {
-	${15:// Stuff to do as soon as the DOM is ready;}
-});
-]]></content>
-</snippet>

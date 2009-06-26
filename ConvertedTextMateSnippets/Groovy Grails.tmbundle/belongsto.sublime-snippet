@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[static belongsTo = [${1:ClassName}]]]></content>
-</snippet>

@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[endCaptures = {
-	1 = { name = '$1'; };
-};]]></content>
-</snippet>

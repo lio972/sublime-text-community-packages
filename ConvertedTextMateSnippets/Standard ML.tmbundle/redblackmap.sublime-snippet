@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[structure ${1:Map} = RedBlackMapFn(struct
-                                          type ord_key = $2
-                                          val compare = $3
-                                    end)]]></content>
-</snippet>

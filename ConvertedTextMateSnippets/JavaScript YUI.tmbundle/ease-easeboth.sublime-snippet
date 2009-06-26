@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_EASING:YAHOO.util.Easing}.easeBoth]]></content>
-</snippet>

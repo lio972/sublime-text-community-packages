@@ -1,8 +1,0 @@
-
-<snippet>
-    <content><![CDATA[procedure ${1:Procedure} is
-	$2
-begin -- ${1/([a-zA-Z0-9_]*).*$/$1/}
-	$15
-end ${1/([a-zA-Z0-9_]*).*$/$1/};]]></content>
-</snippet>

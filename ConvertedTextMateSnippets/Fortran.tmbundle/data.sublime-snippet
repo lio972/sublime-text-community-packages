@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[data ${1:variable} / ${2:data} /]]></content>
-</snippet>

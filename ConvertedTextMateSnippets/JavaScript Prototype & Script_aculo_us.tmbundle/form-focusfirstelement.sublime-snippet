@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Form.focusFirstElement(${1:form});]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[cfg.setProperty("${1:configName}", ${2:configValue});$15]]></content>
-</snippet>

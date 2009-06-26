@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[ValueList(${1:query.column}${2: [, delimiter]})$15]]></content>
-</snippet>

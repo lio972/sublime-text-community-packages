@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.LargeFile.truncate ${1:file_name} ${2:i64}$15]]></content>
-</snippet>

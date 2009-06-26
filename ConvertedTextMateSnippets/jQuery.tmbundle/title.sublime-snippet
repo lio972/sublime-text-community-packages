@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[.title(${1/(.+)/(?1:':)/}${1:optional CSS Selector}${1/(.+)/(?1:':)/})$15]]></content>
-</snippet>

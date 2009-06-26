@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[page.hide ${1:"${2:id(s)}"}]]></content>
-</snippet>

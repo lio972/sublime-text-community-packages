@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[set_approx_printing ${1:true}${2:;}$15]]></content>
-</snippet>

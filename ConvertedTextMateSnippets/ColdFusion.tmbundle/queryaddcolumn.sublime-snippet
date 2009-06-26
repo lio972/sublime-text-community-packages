@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[QueryAddColumn(${1:query}, ${2:column-name}${3: [, datatype]}${4: [, array-name]})$15]]></content>
-</snippet>

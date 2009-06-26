@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfregistry action = "getAll" branch = "$1"${2: type = "${3:[ ]}" name = "${4:[ ]}"  sort = "${5:[ ]}"}>$15
-
-]]></content>
-</snippet>

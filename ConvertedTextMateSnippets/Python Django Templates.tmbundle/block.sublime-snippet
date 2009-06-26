@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[{% block $1 %}
-	$2
-{% endblock %}]]></content>
-</snippet>

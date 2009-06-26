@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[module procedure ${15:name}]]></content>
-</snippet>

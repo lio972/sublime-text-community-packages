@@ -1,8 +1,0 @@
-
-<snippet>
-    <content><![CDATA[unwind_protect 
-	$1
-unwnd_protect_cleanup 
-	$15
-end_unwind_protect]]></content>
-</snippet>

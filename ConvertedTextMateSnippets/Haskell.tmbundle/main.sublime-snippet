@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[module Main where
-
-main = ${1:putStrLn "Hello World"}]]></content>
-</snippet>

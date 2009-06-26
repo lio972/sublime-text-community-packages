@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfoutput${1: query = "${2:[ ]}" group = "${3:[ ]}" groupCaseSensitive = "${4:[ ]}" startRow = "${5:[ ]}" maxRows = "${6:[ ]}"}>
-	$7
-</cfoutput>$15]]></content>
-</snippet>

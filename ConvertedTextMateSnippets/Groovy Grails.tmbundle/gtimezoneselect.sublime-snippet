@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<g:timeZoneSelect name="${1:selectName}" value="\${${2:tz}}" />]]></content>
-</snippet>
