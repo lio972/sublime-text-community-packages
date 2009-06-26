@@ -1,0 +1,1 @@
+This plugin enables changing the font size (per view) via keybindings.
