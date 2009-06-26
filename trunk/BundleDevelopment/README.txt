@@ -6,7 +6,7 @@ For the moment:
 
 * Browse these forum threads
     *  [Extract Snippet Command][]
-    *  [Snippet Converter Script][]m
+    *  [Snippet Converter Script][]
 
 [screencast]: http://blogdata.akalias.net/sublime-fun/sublime-fun.htm
 [Extract Snippet Command]: http://www.sublimetext.com/forum/viewtopic.php?f=6&t=343&p=1318&hilit=extract+snippet#p1318
