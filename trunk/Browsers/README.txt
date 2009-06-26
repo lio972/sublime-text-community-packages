@@ -21,4 +21,4 @@ ctrl-shift-p to launch live preview or toggle visibility if already running.
 
 # Dependencies
 
-This package depends on the SublimeExtensions package ( available from sublime community svn repo )
+This package depends on the AAALoadFirstExtensions package ( available from sublime community svn repo )
