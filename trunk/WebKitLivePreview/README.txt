@@ -1,0 +1,1 @@
+A prototype for a PyQT4.4 WebKit based live Preview. Doesn't really work well. Only of interest if you want to play around.
