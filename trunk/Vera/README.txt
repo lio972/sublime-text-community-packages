@@ -1,0 +1,1 @@
+Adds support for editing Vera filetypes (*.vr, *.VR, *.vrh, *.VRH)

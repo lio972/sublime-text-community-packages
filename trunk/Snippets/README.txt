@@ -1,0 +1,1 @@
+A package containing snippets for various languages. Check the repo for exact contents.

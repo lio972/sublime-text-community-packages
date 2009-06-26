@@ -1,0 +1,1 @@
+Adds support for editing AutoIt filetypes (*.au3)
