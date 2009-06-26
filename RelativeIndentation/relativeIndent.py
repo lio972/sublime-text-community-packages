@@ -1,13 +1,22 @@
+#!/usr/bin/env python
+#coding: utf8
 #################################### IMPORTS ###################################
 
-import sublime, sublimeplugin, re, os
+# Std Libs
+
+import re
+import os
 import textwrap
+
+# Sublime Libs
+import sublime
+import sublimeplugin
 
 ############################### COMMON FUNCTIONS ###############################
 
-def stripPreceding(selection, padding="", rstrip=True):
+def strip_preceding(selection, padding="", rstrip=True):
     "Strips preceding common space so only relative indentation remains"
-    
+
     preceding_whitespace = re.compile("^(?:(\s*?)\S)?")
     common_start = len(selection)
 
@@ -19,22 +28,22 @@ def stripPreceding(selection, padding="", rstrip=True):
 
     stripped = "\n".join( [split[0][common_start:]]  +
                        [padding + l[common_start:] for l in split[1:]] )
-    
+
     return  stripped.rstrip("\n") if rstrip else stripped
 
-def linesGetFirstsDisplacement(view, region):
+def lines_get_firsts_displacement(view, region):
     """
-    
-    Expands a selection to encompass the lines it is situated in. 
-    It then contracts the start point to where the first non space 
-    character is found. Returns the start pt of the expanded 
-    selection, displacement( characters to contracted selection), 
+
+    Expands a selection to encompass the lines it is situated in.
+    It then contracts the start point to where the first non space
+    character is found. Returns the start pt of the expanded
+    selection, displacement( characters to contracted selection),
     and then the end pt.
-    
+
     """
-    
+
     region = view.line(region)
-    start, end = region.begin(), region.end()   
+    start, end = region.begin(), region.end()
     displace = 0
     for x in xrange(start, end):
         if view.substr(x).isspace():
@@ -42,161 +51,205 @@ def linesGetFirstsDisplacement(view, region):
         else: break
     return start, end, displace
 
-def linesFirstNoPrecedingSpace(view, region, returnDisplace=False):
+def line_regions_first_no_preceding(view, region):
     """
-    
+
     Expands a selection to encompass the lines it is situated in.
     It then contracts the start point to where the first non space
     character is found. Returns a region
-    
+
     """
-    
-    start, end, displace = linesGetFirstsDisplacement(view, region)
+
+    start, end, displace = lines_get_firsts_displacement(view, region)
     return sublime.Region(start+displace, end)
-    
-def getTab(view):
+
+def get_tab(view):
     """
-    
-    Gets a series of empty space characters of size 'tabSize', the 
+
+    Gets a series of empty space characters of size 'tabSize', the
     current views setting for size of tab
-    
+
     """
-    
+
     return view.options().get('tabSize') * " "
 
-def substrStripPrecedingCommonSpace(view, region, padSecondary=""):
+def substr_strip_common_preceding(view, region, pad_secondary=""):
     """
-    
-    Takes a view, and a Region of it, strips preceding common space 
+
+    Takes a view, and a Region of it, strips preceding common space
     so only relative indentation remains
-    
+
     """
-    
+
     region = view.line(region)
-    tab = getTab(view)
-    sel = view.substr(region).replace("\t", tab)
-    return stripPreceding(sel, padding = padSecondary or tab)   
+    tab = get_tab(view)
+    sel = view.substr(region).expandtabs(int(view.options().get('tabSize', 8)))
+    return strip_preceding(sel, padding = pad_secondary or tab)
 
-def eraseSelectionLines(view):
-    "Erases any line with any selection, even if empty"
-    for sel in view.sel(): view.erase(view.fullLine(sel))
+################################# PASTE HELPERS ################################
 
-def insertOrReplace(view, region, string):
+def insert_or_replace(view, region, string):
     if region:
-        view.replace(region, string)
+        return view.replace(region, string)
     else:
-        view.insert(region.begin(), string)
+        return view.insert(region.begin(), string)
 
-def handleTabs(view, string):
+########################### TAB NORMALIZATION HELPERS ##########################
+
+def handle_tabs(view, string, offset=0):
     if not view.options().get('translateTabsToSpaces'):
-        string = string.replace(getTab(view), '\t')
+        tab_size = view.options().get('tabSize', 8)
+
+        string = unexpand(string, tab_size, offset)
 
     return string
 
-################################ PLUGIN COMMANDS ###############################
+def get_tab_size(view):
+    return int(view.options().get('tabSize', 8))
 
-def move_cursor_down(view, cursor_pt, cursor_abs):
-    view.sel().clear()
+def normed_indentation_pt(view, sel):
+    """  Calculates tab normed `visual` position of sel.begin() relative "
+        to start of line 
 
-    next_line_starts = view.fullLine(sublime.Region(cursor_abs, cursor_abs)).end()
-    next_line = view.line(sublime.Region(next_line_starts, next_line_starts))
+        \n\t\t\t    => normed_indentation_pt => 12
+        \n  \t\t\t  => normed_indentation_pt => 12
 
-    next_line_str = view.substr(next_line).replace('\t', getTab(view))
-    tabSize = view.options().get('tabSize', 4)
+        Different amount of characters, same visual indentation.
+    """
 
-    if len(next_line_str) < cursor_pt:
-        spaces = cursor_pt - len(next_line_str)
-        tabs = (spaces / tabSize )
-        extra_spaces = (spaces % tabSize) * ' '
-        padding = (tabs * tabSize) * ' '
-    else:
-        extra_spaces = ''
-        padding = ''
+    tab_size = get_tab_size(view)
+    pos = 0
 
-    next_line_str = handleTabs(view, next_line_str + padding)
-    cursor_pt -= ((tabSize -1) * next_line_str.count('\t'))
+    for pt in xrange(view.line(sel).begin(), sel.begin()):
+        if view.substr(pt) == '\t':
+            pos += tab_size - (pos % tab_size)
+        else:
+            pos += 1
 
-    if padding: view.replace(next_line, next_line_str + extra_spaces)
+    return pos
 
-    new_pt = next_line.begin() + cursor_pt
-    view.sel().add(sublime.Region( new_pt, new_pt ))
+def compress_column(column, tab_size):
+    if all(c.isspace() for c in column):
+        column = '\t'
 
-def cursor_pos(view):
-    "visual `spacing` index  not char index; translates tabs to N spaces"
-    
-    sel = view.sel()[-1]
-    line = view.line(sel)
-    
-    # character index
-    cursor = sel.end()
-    chars = view.substr(sublime.Region(line.begin(), sel.end()))
+    elif column[-1] == ' ':
+        while column and column[-1] == ' ':
+            column.pop()
+        column.append('\t')
 
-    return len(chars.replace('\t', getTab(view)))
+    return column
 
-class RelativeIndentCommand(sublimeplugin.TextCommand):
+def unexpand(the_string, tab_size, first_line_offset = 0):
+    lines = the_string.split('\n')
+    compressed = []
+
+    for li, line in enumerate(lines):
+        pos                =      0
+
+        if not li: pos += first_line_offset
+
+        rebuilt_line       =     []
+        column             =     []
+
+        for char in line:
+            column.append(char)
+            pos += 1
+
+            if char == '\t':
+                pos += tab_size - (pos % tab_size)
+
+            if pos % tab_size == 0:
+                rebuilt_line.extend(compress_column(column, tab_size))
+                column = []
+
+        rebuilt_line.extend(column)
+        compressed.append(''.join(rebuilt_line))
+
+    return '\n'.join(compressed)
+
+################################ UN/EXPAND TABS ################################
+
+class TabCommand(sublimeplugin.TextCommand):
+    def isEnabled(self, view, args):
+        if 'set' in args or not self.translate:
+            view.options().set('translateTabsToSpaces', self.translate)
+
+        if not view.hasNonEmptySelectionRegion():
+            view.runCommand('selectAll')
+
+        return True
+
+class ExpandTabs(TabCommand):
+    translate = True
+
     def run(self, view, args):
-        sels = view.sel()  
+        tab_size = int(view.options().get('tabSize', 8))
+
+        for sel in view.sel():
+            view.replace(sel, view.substr(sel).expandtabs(tab_size))
+
+class UnexpandTabs(TabCommand):
+    translate = False
+
+    def run(self, view, args):
+        tab_size = get_tab_size(view)
+
+        for sel in view.sel():
+            the_string = view.substr(sel)
+            first_line_off_set = normed_indentation_pt( view, sel ) % tab_size
+
+            compressed = unexpand(the_string, tab_size, first_line_off_set)
+            view.replace(sel, compressed)
+
+################################################################################
+
+class RelativeIndent(sublimeplugin.TextCommand):
+    def run(self, view, args):
+        sels = view.sel()
 
         if args[0] == 'paste':
-            clip = textwrap.dedent(sublime.getClipboard()).rstrip().split(u'\n')
-            n = len(clip)  
+            clip = sublime.getClipboard().expandtabs(get_tab_size(view))
 
-            if len(sels) > 1:   # Columnar Paste
+            clip = textwrap.dedent(clip).rstrip().split(u'\n')
+            n = len(clip)
+
+            if len(sels) > 1: # Columnar Paste
                 for region in view.sel():
-                    insertOrReplace(view, region, clip.pop(0))
+                    insert_or_replace(view, region, clip.pop(0))
             else:
+                cursor_at = normed_indentation_pt(view, view.sel()[0])
+
                 for i, l in enumerate(clip):
-                    last_line = i+1 == n    
 
-                    sel =  view.sel()[0]               
-                    line = view.line(sel)
-                    # if not last_line and view.substr(line).isspace():
+                    padding = (cursor_at * ' ') if i else ''
 
-                    cursor_at= cursor_pos(view)
-                    insertOrReplace(view, sel, l)
-                    view.runCommand('insertAndDecodeCharacters', ['\n'])
-                    
+                    line = handle_tabs(view,  padding + l)
+                    insert_or_replace(view, view.sel()[0], line)
 
-                    if not last_line:
-                        move_cursor_down(view, cursor_at, sel.end())
+                    if not i+1 == n:
+                        view.runCommand('moveTo eol')
+                        view.runCommand('insertAndDecodeCharacters', ['\n'])
+                        view.erase(view.line(view.sel()[0]))
+
         else:
             for sel in view.sel(): view.sel().add(view.line(sel))
             view.runCommand(args[0])
 
-class ParamPerSelectionSnippetCommand(sublimeplugin.TextCommand):
+class RelativeIndentSnippet(sublimeplugin.TextCommand):
     def run(self, view, args):
-        selections = []
-        selSet = view.sel()
-        sel1 = selSet[0]
+        sel_set = view.sel()
 
-        for sel in selSet:
-            selections.append(substrStripPrecedingCommonSpace(view, sel))
-
-        start, end, displace = linesGetFirstsDisplacement( view, sel1) 
-
-        eraseSelectionLines(view)
-        selSet.clear()
-
-        view.insert(start, (displace * ' ') + '\n')
-        putCursorAt = start+displace
-
-        selSet.add(sublime.Region(putCursorAt, putCursorAt))
-
-        view.runCommand('insertSnippet', args + selections)
-
-class RelativeIndentSnippetCommand(sublimeplugin.TextCommand):
-    def run(self, view, args):
-        selSet = view.sel()
-        for sel in selSet:
+        for sel in sel_set:
             if sel.empty(): continue
 
-            selectionStripped = substrStripPrecedingCommonSpace(view, sel)
-            modifiedRegion = linesFirstNoPrecedingSpace(view, sel)
+            selection_stripped = handle_tabs ( view,
+                substr_strip_common_preceding(view, sel).rstrip() )
 
-            selSet.subtract(sel)
-            selSet.add(modifiedRegion)
-            view.replace(modifiedRegion, selectionStripped) 
-            
+            modified_region = line_regions_first_no_preceding(view, sel)
+            sel_set.subtract(sel)
+            sel_set.add(modified_region)
+            view.replace(modified_region, selection_stripped)
+
         view.runCommand('insertSnippet', args)
 
 ################################################################################
