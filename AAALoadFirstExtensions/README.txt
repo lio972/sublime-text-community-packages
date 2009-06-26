@@ -1,5 +1,6 @@
-Apologies, but documentation is in progress ;) For the moment:
+Apologies, but documentation is in progress ;)
 
-Know This:
-    This Package is a dependency for some others:
-        Browsers
+For the moment:
+
+* Know This:
+    * This Package is a dependency for some others: Browsers
