@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[def ${1:mname}(self${2/([^,])?.*/(?1:, )/}${2:arg}):
-	${3:pass}]]></content>
-</snippet>
