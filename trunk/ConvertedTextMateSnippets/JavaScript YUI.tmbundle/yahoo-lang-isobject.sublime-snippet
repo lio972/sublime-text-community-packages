@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_LANG:YAHOO.lang}.isObject(${1:variable})]]></content>
-</snippet>

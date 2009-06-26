@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[= ${1:${TM_SELECTED_TEXT:My Title}} =${2:[${3:optional-anchor}]}]]></content>
-</snippet>

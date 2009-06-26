@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.create_process ${1:prog} ${2:[${3:arg_list;}]} ${4:new_stdin_descr} ${5:new_stdout_descr} ${6:new_stderr_descr}$15]]></content>
-</snippet>

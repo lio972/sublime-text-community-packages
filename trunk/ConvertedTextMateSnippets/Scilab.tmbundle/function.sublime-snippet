@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[function ${3:output} = ${1:name}($2)
-	// ${4:Description of $1($2)}
-endfunction]]></content>
-</snippet>

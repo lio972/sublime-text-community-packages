@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[eachKey {${1/(.+)/(?1: )/}${1:key}${1/(.+)/(?1: ->)/}
-	$15
-}]]></content>
-</snippet>

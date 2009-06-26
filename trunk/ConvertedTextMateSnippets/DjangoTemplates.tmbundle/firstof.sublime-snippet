@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[{% firstof $1 %}]]></content>
-</snippet>

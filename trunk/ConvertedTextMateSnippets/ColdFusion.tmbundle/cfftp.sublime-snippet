@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfftp action = "$1" username = "$2" password = "$3" server = "$4"${5: timeout = "${6:[ ]}" port = "${7:[ ]}" connection = "${8:[ ]}" proxyServer = "${9:[ ]}" retryCount = "${10:[ ]}" stopOnError = "${11:[ ]}" passive = "yes"}>$15]]></content>
-</snippet>

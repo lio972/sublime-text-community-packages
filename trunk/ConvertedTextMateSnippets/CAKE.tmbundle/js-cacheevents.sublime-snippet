@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<?php $javascript->cacheEvents(${1:false},${2:true}); ?>
-$15]]></content>
-</snippet>

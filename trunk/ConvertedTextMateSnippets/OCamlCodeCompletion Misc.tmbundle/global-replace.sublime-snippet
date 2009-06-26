@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Str.global_replace ${1:regexp} ${2:"${3:templ}"} ${4:str}$15]]></content>
-</snippet>

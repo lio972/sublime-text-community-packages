@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.setuid ${1:uid}${2:;}$15]]></content>
-</snippet>

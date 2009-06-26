@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_CONNECT:YAHOO.util.Connect}.setForm('${1:form-id}');]]></content>
-</snippet>

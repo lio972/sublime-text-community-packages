@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[new ${YUI_SCROLL:YAHOO.util.Scroll}(${1:element}${2:, ${3:scrollAttributes}, ${4:duration}, ${5:YAHOO.util.Easing.easeOut}}$15);]]></content>
-</snippet>

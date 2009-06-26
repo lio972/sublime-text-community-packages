@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[exactly(${1:n}).times]]></content>
-</snippet>

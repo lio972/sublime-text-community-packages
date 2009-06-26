@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[reshape ${1:genarray} ${2:[|${3:new_dim_array;}|]}$15]]></content>
-</snippet>

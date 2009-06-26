@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfassociate${1: baseTag = "${2:[ ]}" dataCollection = "${3:[ ]}"}>$15]]></content>
-</snippet>

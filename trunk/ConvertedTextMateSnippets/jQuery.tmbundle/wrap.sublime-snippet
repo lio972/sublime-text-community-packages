@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[.wrap('${1:&lt;div class="extra-wrapper"&gt;&lt;/div&gt;}')$15]]></content>
-</snippet>

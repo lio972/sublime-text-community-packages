@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[considering ${1:case}
-	${15:-- insert actions here}
-end considering]]></content>
-</snippet>

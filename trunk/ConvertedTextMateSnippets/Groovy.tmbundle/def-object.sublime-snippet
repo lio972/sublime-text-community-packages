@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[def ${1:name} = new ${2:Object}(${3:args})]]></content>
-</snippet>

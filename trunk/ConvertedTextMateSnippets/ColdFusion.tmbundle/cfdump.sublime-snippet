@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfdump${1: var = "${2:#variable#}" expand = "${3:[ ]}" label = "${4:[ ]}" top = "${5:[ ]}"}>$15]]></content>
-</snippet>

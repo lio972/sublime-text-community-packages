@@ -1,5 +1,0 @@
-<bindings>
-    <binding key="s,o,tab" command="insertSnippet 'Packages/ODCompletion.tmbundle/setobjectforkey.sublime-snippet'">
-        <context name="selector" value="meta.bracketed.objc"/>
-    </binding>
-</bindings>

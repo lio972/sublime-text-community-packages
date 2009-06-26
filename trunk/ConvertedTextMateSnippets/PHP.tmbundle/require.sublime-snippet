@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[require '${1:file}';$15]]></content>
-</snippet>

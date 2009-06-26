@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[ubound(${1:source}${2:, dim=${3:1}})]]></content>
-</snippet>

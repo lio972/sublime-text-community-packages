@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[funsig $1 ($2) =
-sig
-	$3
-end]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[, ${1:function}/${2:arity}]]></content>
-</snippet>

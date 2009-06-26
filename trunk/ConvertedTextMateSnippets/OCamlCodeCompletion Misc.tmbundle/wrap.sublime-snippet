@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Event.wrap ${1:even} ${2:funct}$15]]></content>
-</snippet>

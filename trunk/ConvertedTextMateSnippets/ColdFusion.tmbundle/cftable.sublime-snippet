@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cftable query = "$1"${2: maxRows = "${3:[ ]}" colSpacing = "${4:[ ]}" headerLines = "${5:[ ]}" startRow = "${6:[ ]}"}>
-	$7
-</cftable>$15]]></content>
-</snippet>

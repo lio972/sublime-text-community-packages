@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[GetSOAPRequestHeader(${1:namespace}, ${2:name} ${3:[, asXML]})$15]]></content>
-</snippet>

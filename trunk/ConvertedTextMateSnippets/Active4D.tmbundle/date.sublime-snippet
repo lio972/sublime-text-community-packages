@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<date name="${1:name}" $2/>]]></content>
-</snippet>

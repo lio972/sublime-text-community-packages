@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[FindNoCase(${1:substring}, ${2:string} ${3:[, start ]})$15]]></content>
-</snippet>

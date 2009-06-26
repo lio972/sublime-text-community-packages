@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[.css({${1:attribute1}: '${2:value1}', ${3:attribute2}: '${4:value2}'})$15]]></content>
-</snippet>

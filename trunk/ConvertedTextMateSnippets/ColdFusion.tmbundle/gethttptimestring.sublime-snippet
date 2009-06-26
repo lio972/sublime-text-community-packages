@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[GetHttpTimeString(${1:date_time_object})$15]]></content>
-</snippet>

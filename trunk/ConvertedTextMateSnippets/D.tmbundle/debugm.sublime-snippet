@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[debug(${1:${TM_FILENAME/(.*?)(\..+)/$1/}}) {
-	$15
-}]]></content>
-</snippet>

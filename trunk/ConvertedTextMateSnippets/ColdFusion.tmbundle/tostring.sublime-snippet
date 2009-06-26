@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[ToString(${1:value}${2: [, encoding]})$15]]></content>
-</snippet>

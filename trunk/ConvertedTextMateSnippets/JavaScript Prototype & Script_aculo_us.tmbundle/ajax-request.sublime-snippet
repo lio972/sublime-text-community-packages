@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[new Ajax.Updater(${1:'${2:url}'}${3:, ${4:ajax_options}});]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<option${1: value="${2:option}"}>${3:$2}</option>]]></content>
-</snippet>

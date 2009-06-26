@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[XmlParse(${1:xmlText}${2: [, caseSensitive ]}${3: [, validator]})$15]]></content>
-</snippet>

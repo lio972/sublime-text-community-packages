@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[new ${YUI_TEXTNODE:YAHOO.widget.TextNode}("${1:nodeContent}", ${2:parentNode}, ${3:expanded});$15]]></content>
-</snippet>

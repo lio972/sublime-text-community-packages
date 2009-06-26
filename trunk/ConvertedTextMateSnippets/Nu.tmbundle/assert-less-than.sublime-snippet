@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[(assert_less_than ${1:first} ${2:second})$15]]></content>
-</snippet>

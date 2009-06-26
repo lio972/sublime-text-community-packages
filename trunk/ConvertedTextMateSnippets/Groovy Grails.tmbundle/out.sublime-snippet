@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[out << "${1:output}"]]></content>
-</snippet>

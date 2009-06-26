@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[close_out_noerr ${1:out_channel}$15]]></content>
-</snippet>

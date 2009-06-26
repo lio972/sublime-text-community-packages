@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[require ENV['TM_${1:S}${1/^(S)|(B)$|.*/(?1:UPPORT_PATH:(?2:UNDLE_SUPPORT))/}'] + '/lib/$2']]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[approx_num_exp ${1:precision} ${1:num}$15]]></content>
-</snippet>

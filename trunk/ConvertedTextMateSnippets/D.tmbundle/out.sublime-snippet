@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Stdout("$1").newline;]]></content>
-</snippet>

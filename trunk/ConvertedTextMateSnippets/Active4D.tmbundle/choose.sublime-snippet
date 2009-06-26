@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[choose(${1:condition}; ${2:true_value}; ${3:false_value})]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.rewinddir ${1:dir_handle}${2:;}$15]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.getgrnam ${1:name}$15]]></content>
-</snippet>

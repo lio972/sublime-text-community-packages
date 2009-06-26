@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[{	name = '${1:name}';
-	match = '${2:pattern}';
-},]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Interpolate(${1:p1}, ${2:p2}, ${3:percent}, ${4:result});]]></content>
-</snippet>

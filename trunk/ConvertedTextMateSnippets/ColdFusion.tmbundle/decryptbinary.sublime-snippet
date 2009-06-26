@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[DecryptBinary(${1:bytes}, ${2:key}, ${3:[, algorithm]} ${4:[, IVorSalt]} ${5:[, iterations]})$15]]></content>
-</snippet>

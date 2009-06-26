@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[DateDiff(${1:"datepart"}, ${2:"date1"}, ${3:"date2"})$15]]></content>
-</snippet>

@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_DOM:YAHOO.util.Dom}.removeClass(${1:element}, '${2:class-name}');
-$15]]></content>
-</snippet>

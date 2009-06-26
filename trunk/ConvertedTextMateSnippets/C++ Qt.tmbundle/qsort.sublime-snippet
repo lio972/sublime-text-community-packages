@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[qSort(${1:list}.begin(), ${1}.end())]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.open_process ${1:prog}$15]]></content>
-</snippet>

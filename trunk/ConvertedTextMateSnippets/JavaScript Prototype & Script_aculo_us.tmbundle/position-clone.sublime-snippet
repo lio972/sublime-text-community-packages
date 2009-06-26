@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Position.clone(${1:source}, ${2:target});]]></content>
-</snippet>

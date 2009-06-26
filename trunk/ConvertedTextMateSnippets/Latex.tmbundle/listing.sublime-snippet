@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:Listing}~\ref{${2:lst:}}$15
-]]></content>
-</snippet>

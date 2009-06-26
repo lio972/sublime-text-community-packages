@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<g:checkBox name="${1:name}" value="${2:true}" />]]></content>
-</snippet>

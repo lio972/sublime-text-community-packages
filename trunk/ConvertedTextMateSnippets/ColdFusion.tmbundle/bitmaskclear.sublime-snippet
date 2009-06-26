@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[BitMaskClear(${1:number}, ${2:start}, ${3:length})$15]]></content>
-</snippet>

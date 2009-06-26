@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[downto(${1:0}) {${2/(.+)/(?1: )/}${2:i}${2/(.+)/(?1: ->)/}
-	$15
-}]]></content>
-</snippet>

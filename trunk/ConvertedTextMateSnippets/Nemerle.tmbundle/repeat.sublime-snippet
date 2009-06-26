@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[repeat (${1:times}){
-	$2
-}]]></content>
-</snippet>

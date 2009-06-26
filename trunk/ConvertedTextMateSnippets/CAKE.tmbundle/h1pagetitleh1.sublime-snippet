@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<h${2:2}><?php e(\$this->pageTitle = "${1:Page Title}"); ?></h$2>
-]]></content>
-</snippet>

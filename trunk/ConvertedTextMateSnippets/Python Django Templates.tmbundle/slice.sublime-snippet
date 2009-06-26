@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[|slice:"${1:arg}"]]></content>
-</snippet>

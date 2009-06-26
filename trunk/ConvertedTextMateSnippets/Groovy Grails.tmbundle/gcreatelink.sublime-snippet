@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<g:createLink ${1:action="$2" }${3:controller="$4" }${5:id="$6" }${7:params="$8" }${9:url="$10" }${11:absolute="$12" }${13:base="$14" }>$15</g:createLink>]]></content>
-</snippet>

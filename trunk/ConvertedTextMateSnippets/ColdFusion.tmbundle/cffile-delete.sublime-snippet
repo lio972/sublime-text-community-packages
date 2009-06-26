@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cffile action = "delete" file = "$1">$15]]></content>
-</snippet>

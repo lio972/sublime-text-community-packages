@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[RJustify(${1:string}, ${2:length})$15]]></content>
-</snippet>

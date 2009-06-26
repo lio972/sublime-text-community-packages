@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[|removetags:"${1:arg}"]]></content>
-</snippet>

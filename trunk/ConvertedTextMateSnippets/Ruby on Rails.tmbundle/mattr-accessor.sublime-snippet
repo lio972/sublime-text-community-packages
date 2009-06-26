@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[mattr_accessor :${15:attr_names}]]></content>
-</snippet>

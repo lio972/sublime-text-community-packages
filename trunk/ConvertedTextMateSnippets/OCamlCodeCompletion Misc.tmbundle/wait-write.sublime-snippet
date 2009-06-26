@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Thread.wait_write ${1:Unix.file_descr}${2:;}$15]]></content>
-</snippet>

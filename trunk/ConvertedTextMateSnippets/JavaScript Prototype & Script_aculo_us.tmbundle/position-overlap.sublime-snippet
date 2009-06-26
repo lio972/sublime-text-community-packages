@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Position.overlap(${1:mode}, ${2:'${3:element}'});]]></content>
-</snippet>

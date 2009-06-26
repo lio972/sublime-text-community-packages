@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[{% for $1 in $2 %}
-	$3
-{% endfor %}]]></content>
-</snippet>

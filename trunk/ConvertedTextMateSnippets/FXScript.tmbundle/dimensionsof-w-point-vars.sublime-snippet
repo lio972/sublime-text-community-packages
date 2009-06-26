@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[point ${1:w};
-DimensionsOf(${2:dest}, $1.x, $1.y);
-image ${3:img0}[$1.x][$1.y];
-]]></content>
-</snippet>

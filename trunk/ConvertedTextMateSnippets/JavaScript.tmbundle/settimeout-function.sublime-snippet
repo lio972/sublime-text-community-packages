@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[setTimeout(function() {$15}${2:}, ${1:10});]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.wait ()${1:;}$15]]></content>
-</snippet>

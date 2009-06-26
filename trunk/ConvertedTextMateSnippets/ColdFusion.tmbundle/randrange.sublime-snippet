@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[RandRange(${1:number1}, ${2:number2}${3: [, algorithm]})$15]]></content>
-</snippet>

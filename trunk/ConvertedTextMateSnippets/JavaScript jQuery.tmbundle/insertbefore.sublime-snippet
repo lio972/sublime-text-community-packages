@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[.insertBefore('${1:selector expression}')$15]]></content>
-</snippet>

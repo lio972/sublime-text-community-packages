@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<g:form name="${1:name}" controller="${2:controller}" action="${3:action}">
-	${15:$TM_SELECTED_TEXT}
-</g:form>]]></content>
-</snippet>

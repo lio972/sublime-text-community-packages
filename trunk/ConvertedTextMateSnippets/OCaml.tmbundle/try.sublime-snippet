@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[try
-	$15
-with
-| _ -> failwith "Unknown"]]></content>
-</snippet>

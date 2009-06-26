@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[while (${1:$a <= 10}) {
-	${15:# code...}
-}]]></content>
-</snippet>

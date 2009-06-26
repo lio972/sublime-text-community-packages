@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[signature $1 =
-sig
-	$2
-end]]></content>
-</snippet>

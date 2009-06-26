@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfcomponent${1: extends ="${2:[ ]}" output = "${3:[ ]}" style = "${4:[ ]}" namespace = "${5:[ ]}" serviceportname = "${6:[ ]}" porttypename = "${7:[ ]}" bindingname = "${8:[ ]}" wsdlfile = "${9:[ ]}" displayname = "${10:[ ]}" hint = "${11:[ ]}"}>
-	$12
-</cfcomponent>$15]]></content>
-</snippet>

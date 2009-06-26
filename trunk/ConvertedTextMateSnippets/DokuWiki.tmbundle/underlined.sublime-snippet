@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[__${TM_SELECTED_TEXT:text}__]]></content>
-</snippet>

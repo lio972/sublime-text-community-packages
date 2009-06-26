@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cftextarea name = "$1"${2: label = "${3:[ ]}" style = "${4:[ ]}" required = "${5:[ ]}" validate = "${6:[ ]}" validateAt= "${7:[ ]}" message = "${8:[ ]}" range = "${9:[ ]}" maxlength = "${10:[ ]}" pattern = "${11:[ ]}" onValidate = "${12:[ ]}" onError = "${13:[ ]}" disabled = "${14:[ ]}" value = "${15:[ ]}" bind = "${16:[ ]}" onKeyUp = "${17:[ ]}" onKeyDown = "${18:[ ]}" onMouseUp = "${19:[ ]}" onMouseDown = "${20:[ ]}" onChange = "${21:[ ]}" onClick = "${22:[ ]}" enabled = "${23:[ ]}" visible = "${24:[ ]}" tooltip = "${25:[ ]}" height = "${26:[ ]}" width = "${27:[ ]}" html = "${28:[ ]}"}>
-	$29
-</cftextarea>$15]]></content>
-</snippet>

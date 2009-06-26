@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[FramePoly(${1:poly}, ${2:image}, ${3:color}, ${4:width});]]></content>
-</snippet>

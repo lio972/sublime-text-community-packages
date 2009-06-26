@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA['''${TM_SELECTED_TEXT:no text was selected}'''
-]]></content>
-</snippet>

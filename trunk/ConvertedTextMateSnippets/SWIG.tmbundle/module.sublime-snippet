@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[%module${1:($2)} "${3:name}"]]></content>
-</snippet>

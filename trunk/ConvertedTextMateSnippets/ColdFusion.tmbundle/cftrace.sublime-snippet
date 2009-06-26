@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cftrace${1: abort = "${2:[ ]}" category = "${3:[ ]}" inline = "${4:[ ]}" text = "${5:[ ]}" type = "${6:[ ]}" var = "${7:[ ]}"}>
-	$8
-</cftrace>$15]]></content>
-</snippet>

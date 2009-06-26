@@ -1,5 +1,0 @@
-<bindings>
-    <binding key="t,e,s,t,tab" command="insertSnippet 'Packages/Perl.tmbundle/test.sublime-snippet'">
-        <context name="selector" value="source.perl"/>
-    </binding>
-</bindings>

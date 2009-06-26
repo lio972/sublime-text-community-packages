@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.setsockopt ${1:sock} Unix.SOB_$15 ${2:true};]]></content>
-</snippet>

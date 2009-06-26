@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[@throws ${1:class} ${15:description}]]></content>
-</snippet>

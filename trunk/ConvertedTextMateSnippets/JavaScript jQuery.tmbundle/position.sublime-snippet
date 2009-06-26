@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[.position(${1/(.+)/(?1:':)/}${1:static/relative/absolute/fixed}${1/(.+)/(?1:':)/})$15]]></content>
-</snippet>

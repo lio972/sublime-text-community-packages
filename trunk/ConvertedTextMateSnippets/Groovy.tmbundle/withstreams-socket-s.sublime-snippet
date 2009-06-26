@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[withStreams {${1/(.+)/(?1: )/}${1:socket}${1/(.+)/(?1: ->)/}
-	$15
-}]]></content>
-</snippet>

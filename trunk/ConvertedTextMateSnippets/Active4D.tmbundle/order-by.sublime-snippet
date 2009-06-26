@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[order by([${1:table}]; [$1]${2:field}${3:; >}$15)]]></content>
-</snippet>

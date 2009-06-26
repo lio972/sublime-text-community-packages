@@ -1,9 +1,0 @@
-
-<snippet>
-    <content><![CDATA[class ${1:${TM_FILENAME/(.*?)(\..+)/$1/}} {
-	this($2) {
-		$15
-	}
-}
-]]></content>
-</snippet>

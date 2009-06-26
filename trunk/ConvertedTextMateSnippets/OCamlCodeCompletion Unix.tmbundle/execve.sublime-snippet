@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.execve ${1:prog} ${2:[|${3:arg_array;}|]} ${4:[|${5:env_array;}|]}$15]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cffile action = "read" file = "$1" variable = "$2"${3: charset = "${4:[ ]}"}>$15]]></content>
-</snippet>

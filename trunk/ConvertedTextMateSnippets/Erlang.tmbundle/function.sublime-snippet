@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:function} (${2:param})${3: when ${4:guard}} ->
-	${5:body}]]></content>
-</snippet>

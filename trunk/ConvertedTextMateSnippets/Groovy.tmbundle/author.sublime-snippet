@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[@author ${15:${JAVADOC_AUTHOR:`niutil -readprop / "/users/$USER" realname`}}]]></content>
-</snippet>

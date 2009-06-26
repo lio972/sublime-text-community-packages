@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<g:radio name="${1:name}" value="${2:true}" checked="${3:true}" />]]></content>
-</snippet>

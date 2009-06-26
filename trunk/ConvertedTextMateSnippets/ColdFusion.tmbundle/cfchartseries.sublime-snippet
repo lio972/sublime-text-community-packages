@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfchartseries type="$1"${2: colorlist = "${3:[ ]}" itemColumn="${4:[ ]}" markerStyle="${5:[ ]}" paintStyle="${6:[ ]}" query="${7:[ ]}" seriesColor="${8:[ ]}" seriesLabel="${9:[ ]}" valueColumn="${10:[ ]}" dataLabelStyle="${11:[ ]}"}>
-	$12
-</cfchartseries>$15]]></content>
-</snippet>

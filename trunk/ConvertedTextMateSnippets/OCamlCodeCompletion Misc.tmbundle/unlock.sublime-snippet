@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Mutex.unlock ${1:mtx}${2:;}$15]]></content>
-</snippet>

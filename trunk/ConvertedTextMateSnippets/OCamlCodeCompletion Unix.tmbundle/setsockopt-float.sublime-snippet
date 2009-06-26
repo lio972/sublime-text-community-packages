@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.setsockopt_float ${1:sock} Unix.SOF_$15 ${2:value};]]></content>
-</snippet>

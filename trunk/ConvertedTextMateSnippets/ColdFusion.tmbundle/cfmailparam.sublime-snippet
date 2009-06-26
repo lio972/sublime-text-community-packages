@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfmailparam file = "${1:[ ]}" type ="${2:[ ]}" contentID = "${3:[ ]}" disposition = "${4:[ ]}">$5]]></content>
-</snippet>

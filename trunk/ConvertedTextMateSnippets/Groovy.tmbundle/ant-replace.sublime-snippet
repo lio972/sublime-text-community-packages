@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[replace(dir:"${1:dirName}", includes:"${2:*.*}", token:"${3:tokenName}", value:"\${${4:value}}")$15]]></content>
-</snippet>

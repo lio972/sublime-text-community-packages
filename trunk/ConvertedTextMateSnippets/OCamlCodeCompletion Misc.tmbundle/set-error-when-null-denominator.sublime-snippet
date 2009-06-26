@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[set_error_when_null_denominator ${1:true}${2:;}$15]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[mod_big_int ${1:bi} ${2:bi2}$15]]></content>
-</snippet>

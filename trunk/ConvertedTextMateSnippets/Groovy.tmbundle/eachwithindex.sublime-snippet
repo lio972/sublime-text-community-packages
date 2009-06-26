@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[eachWithIndex { ${1:element}, ${2:idx} -> ${1:element}.$15 }]]></content>
-</snippet>

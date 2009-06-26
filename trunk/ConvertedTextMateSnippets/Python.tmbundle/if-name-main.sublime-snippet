@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[if __name__ == '__main__':
-	${1:main()}$15]]></content>
-</snippet>

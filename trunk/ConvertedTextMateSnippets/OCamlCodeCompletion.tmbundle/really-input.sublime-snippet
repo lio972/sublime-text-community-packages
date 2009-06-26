@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[really_input ${1:in_channel} ${2:buf} ${3:pos} ${4:len}$15]]></content>
-</snippet>

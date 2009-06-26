@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[case of
-	:(${1:condition})
-		$15
-end case]]></content>
-</snippet>

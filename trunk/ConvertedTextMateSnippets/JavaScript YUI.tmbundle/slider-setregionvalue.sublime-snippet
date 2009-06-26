@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[setRegionValue(${1:xOffset}, ${2:yOffset}, ${3:skipAnim}, ${4:force});$15]]></content>
-</snippet>

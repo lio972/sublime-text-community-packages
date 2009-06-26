@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[page.visual_effect :${1:toggle_slide}, ${2:"${3:DOM ID}"}]]></content>
-</snippet>

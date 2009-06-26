@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<label for="${2:${1/[[:alpha:]]+|( )/(?1:_:\L$15)/g}}">$1</label><input type="${3:text/submit/hidden/button}" name="${4:$2}" value="$5"${6: id="${7:$2}"}${TM_XHTML}>
-]]></content>
-</snippet>

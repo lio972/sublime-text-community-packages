@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Assert_failure ${1:(${2:file_name},${3:line_no},${4:col_no})}$15]]></content>
-</snippet>

@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[GM_registerMenuCommand("${1:Command Name}", ${3:function() {
-	$15
-\}});]]></content>
-</snippet>

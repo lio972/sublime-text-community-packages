@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<<-${1:identifier}
-$15${1/(.*)\n(?m:.*)/$1/})]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Form.findFirstElement(${1:form});]]></content>
-</snippet>

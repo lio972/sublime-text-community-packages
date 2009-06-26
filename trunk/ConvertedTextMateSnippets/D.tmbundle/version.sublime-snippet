@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[version(${1:Posix}) {
-	$15
-}]]></content>
-</snippet>

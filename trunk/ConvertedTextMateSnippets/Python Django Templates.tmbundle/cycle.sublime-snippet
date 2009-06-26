@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[{% cycle $1 as $2 %}]]></content>
-</snippet>

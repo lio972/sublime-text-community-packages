@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfswitch expression="$1">
-	<cfcase value="$2">$3</cfcase>
-	<cfdefaultcase>$4</cfdefaultcase>
-</cfswitch>$15]]></content>
-</snippet>

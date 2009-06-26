@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_EVENT:YAHOO.util.Event}.stopPropagation(${1:e});]]></content>
-</snippet>

@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[.one('${1:event name}', function(${2:event}) {
-	${15:// Act on the event once}
-});]]></content>
-</snippet>

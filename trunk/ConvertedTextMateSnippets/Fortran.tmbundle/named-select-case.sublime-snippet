@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:name}: select case ($2:variable)
-	case ($3:values) $1
-		$15
-end select $1]]></content>
-</snippet>

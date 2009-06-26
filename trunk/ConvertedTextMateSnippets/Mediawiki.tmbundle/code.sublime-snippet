@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<code>${15:${TM_SELECTED_TEXT:code}}</code>]]></content>
-</snippet>

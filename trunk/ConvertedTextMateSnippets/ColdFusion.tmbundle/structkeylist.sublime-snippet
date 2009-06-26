@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[StructKeyList(${1:structure}${2: [, delimiter]})$15]]></content>
-</snippet>

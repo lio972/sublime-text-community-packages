@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[(let (${1:variables})
-	($15))]]></content>
-</snippet>

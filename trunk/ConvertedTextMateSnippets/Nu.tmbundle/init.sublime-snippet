@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[(${1:imethod} (id) init is
-			(super init)
-			$2
-			(return self))$15]]></content>
-</snippet>

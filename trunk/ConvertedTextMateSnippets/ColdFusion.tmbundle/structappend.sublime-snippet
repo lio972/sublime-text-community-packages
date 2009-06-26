@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[StructAppend(${1:struct1}, ${2:struct2}, ${3:overwriteFlag})$15]]></content>
-</snippet>

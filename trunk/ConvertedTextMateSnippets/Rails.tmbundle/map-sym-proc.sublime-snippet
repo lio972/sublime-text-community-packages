@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[map(&:${1:id})]]></content>
-</snippet>

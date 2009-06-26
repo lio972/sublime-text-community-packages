@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfinvoke component = "$1" method = "$2"${3: returnVariable = "${4:[ ]}" argumentCollection = "${5:[ ]}"}>$15]]></content>
-</snippet>

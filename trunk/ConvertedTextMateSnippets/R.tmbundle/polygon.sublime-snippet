@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[lines(${1:x}${2:, color=${3:red}})]]></content>
-</snippet>

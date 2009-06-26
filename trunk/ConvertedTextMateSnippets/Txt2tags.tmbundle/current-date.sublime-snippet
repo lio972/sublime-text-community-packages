@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[%%date(year:%Y month:%m day:%d hour:%H min:%M sec:%S date:%c weekday:%A %a month-name:%B %b)]]></content>
-</snippet>

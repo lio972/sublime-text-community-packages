@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[it_should_behave_like ${2:"$1"}$15]]></content>
-</snippet>

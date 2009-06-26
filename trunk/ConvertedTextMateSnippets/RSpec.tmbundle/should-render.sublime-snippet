@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[response.should render_template(:${1:template})
-$15]]></content>
-</snippet>

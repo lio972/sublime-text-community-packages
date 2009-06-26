@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[print_string ${1:"${2:str}"}$15]]></content>
-</snippet>

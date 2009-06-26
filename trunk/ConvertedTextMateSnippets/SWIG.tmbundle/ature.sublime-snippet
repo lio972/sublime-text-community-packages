@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[%feature("${1:name}") $2; ]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Wrap(${1:string}, ${2:limit}${3: [, strip]})$15]]></content>
-</snippet>

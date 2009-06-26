@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:Section}~\ref{${2:sec:}}$15
-]]></content>
-</snippet>

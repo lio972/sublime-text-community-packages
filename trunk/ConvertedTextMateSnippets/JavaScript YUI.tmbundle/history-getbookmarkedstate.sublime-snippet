@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_HISTORY:YAHOO.util.History}.getBookmarkedState(${1:'moduleName'});]]></content>
-</snippet>

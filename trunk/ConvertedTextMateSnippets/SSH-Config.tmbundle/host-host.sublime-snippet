@@ -1,8 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Host ${1:AliasName}
-	User ${2:UserName}
-	Port ${3:22}
-	HostName ${4:hostname.com}
-]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[qWarning("$1"${1/[^%]*(%)?.*/(?1:, :\);)/}$2${1/[^%]*(%)?.*/(?1:\);)/}]]></content>
-</snippet>

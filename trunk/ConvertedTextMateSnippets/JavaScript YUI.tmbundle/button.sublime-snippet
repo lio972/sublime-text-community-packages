@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[new ${YUI_BUTTON:YAHOO.widget.Button}(${1:'${2:sourceElementId}', }${3:configs});$15 ]]></content>
-</snippet>

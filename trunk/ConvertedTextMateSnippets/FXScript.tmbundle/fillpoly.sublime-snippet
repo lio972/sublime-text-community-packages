@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[FillPoly(${1:poly}, ${2:image}, ${3:color});
-]]></content>
-</snippet>

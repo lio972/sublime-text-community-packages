@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[assert ${1:test}${2/(.+)/(?1: \: ")/}${2:Failure message}${2/(.+)/(?1:")/}$15]]></content>
-</snippet>

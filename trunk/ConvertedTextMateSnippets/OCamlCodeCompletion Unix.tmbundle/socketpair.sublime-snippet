@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.socketpair Unix.PF_$15 Unix.SOCK_ ${1:proto}]]></content>
-</snippet>

@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[macro ${1:name}
-	syntax("$1","$2"){
-	$3
-}]]></content>
-</snippet>

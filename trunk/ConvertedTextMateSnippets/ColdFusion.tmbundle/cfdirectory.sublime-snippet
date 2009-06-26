@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfdirectory directory = "$1" action = "${2:[ ]}" name = "${3:[ ]}" filter = "${4:[ ]}" mode = "${5:[ ]}" sort = "${6:[ ]}" newDirectory = "${7:[ ]}" recurse = "${8:[ ]}">$15]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[.ancestors(${1/(.+)/(?1:':)/}${1:CSS Selector}${1/(.+)/(?1:':)/})$15]]></content>
-</snippet>

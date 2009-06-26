@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_HISTORY:YAHOO.util.History}.navigate(${1:'moduleName'}, ${2:'moduleState'});$15]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[xtitle("${1:Main Title}", "${2:x-axis}", "${3:y-axis}")]]></content>
-</snippet>

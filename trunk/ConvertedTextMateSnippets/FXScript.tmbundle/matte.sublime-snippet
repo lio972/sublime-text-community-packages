@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Matte(${1:TopImage}, ${2:BottomImage}, ${3:destImage}, ${4:amount}, ${5:kAlpha});]]></content>
-</snippet>

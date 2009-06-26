@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Thread.delay ${1:secs}${2:;}$15]]></content>
-</snippet>

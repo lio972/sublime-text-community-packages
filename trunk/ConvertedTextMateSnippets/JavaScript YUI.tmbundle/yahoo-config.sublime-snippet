@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_CONFIG:YAHOO_config} = { listener: ${1:callbackFunc} };]]></content>
-</snippet>

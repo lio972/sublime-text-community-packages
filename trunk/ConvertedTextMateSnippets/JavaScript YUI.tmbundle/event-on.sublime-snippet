@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_EVENT:YAHOO.util.Event}.on(${1:element}, '${2:event}', ${3:function}${4:, ${5:scopeObject}, ${6:true}});]]></content>
-</snippet>

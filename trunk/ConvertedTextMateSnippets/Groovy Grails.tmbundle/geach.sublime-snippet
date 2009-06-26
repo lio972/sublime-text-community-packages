@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<g:each ${1:var="${2}" }in="\${$3}">
-	${15:$TM_SELECTED_TEXT}
-</g:each>]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[QueryNew(${1:columnlist}${2: [, columntypelist]})$15]]></content>
-</snippet>

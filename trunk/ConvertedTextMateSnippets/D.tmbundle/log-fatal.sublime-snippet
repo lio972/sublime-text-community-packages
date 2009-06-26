@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[log.fatal("$1");]]></content>
-</snippet>

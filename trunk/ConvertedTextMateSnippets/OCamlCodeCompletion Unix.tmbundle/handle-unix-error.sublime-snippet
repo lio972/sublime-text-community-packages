@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.handle_unix_error ${1:func} ${2:arg}$15]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[ListFirst(${1:list}${2: [, delimiters]})$15]]></content>
-</snippet>

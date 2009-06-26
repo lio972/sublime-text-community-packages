@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[@synthesize ${1:property};]]></content>
-</snippet>

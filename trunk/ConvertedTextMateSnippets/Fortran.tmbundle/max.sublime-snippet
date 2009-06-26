@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[max($1, $2${, $3:...})$15]]></content>
-</snippet>

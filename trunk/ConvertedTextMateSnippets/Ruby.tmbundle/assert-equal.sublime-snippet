@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[assert_equal`snippet_paren.rb`${1:expected}, ${15:actual}`snippet_paren.rb end`]]></content>
-</snippet>

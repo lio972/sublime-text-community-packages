@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[t.integer :${1:title}
-$15]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Str.search_forward ${1:regexp} ${2:str} ${3:start_pos}$15]]></content>
-</snippet>

@@ -1,8 +1,0 @@
-
-<snippet>
-    <content><![CDATA[describe "${1:description}" do
-  it "should ${2:description}" do
-    $15
-  end
-end]]></content>
-</snippet>

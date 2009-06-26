@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Genarray.fill ${1:genarray} ${2:value}${3:;}$15]]></content>
-</snippet>

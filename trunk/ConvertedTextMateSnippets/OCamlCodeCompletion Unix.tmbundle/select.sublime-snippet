@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.select ${1:[${2:read_descr_list;}]} ${3:[${4:write_descr_list;}]} ${5:[${6:exceptional_descr_list;}]} ${7:timeout_float}$15]]></content>
-</snippet>

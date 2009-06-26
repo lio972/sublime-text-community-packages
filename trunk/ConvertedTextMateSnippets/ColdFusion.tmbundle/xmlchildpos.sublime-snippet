@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[XmlChildPos(${1:elem}, ${2:childName}, ${3:N})$15]]></content>
-</snippet>

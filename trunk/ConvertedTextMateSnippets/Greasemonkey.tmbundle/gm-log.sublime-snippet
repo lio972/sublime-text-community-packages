@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[GM_log(${1:"${2:info}"});]]></content>
-</snippet>

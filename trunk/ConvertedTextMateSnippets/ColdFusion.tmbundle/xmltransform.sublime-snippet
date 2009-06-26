@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[XmlTransform(${1:xml}, ${2:xsl}${3: [, parameters]})$15]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[ColorTransform(${1:srcImage}, ${2:destImage}, ${3:matrix}, ${4:float[3]}, ${5:$4});]]></content>
-</snippet>

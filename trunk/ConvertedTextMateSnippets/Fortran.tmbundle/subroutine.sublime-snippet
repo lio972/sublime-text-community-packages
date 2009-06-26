@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[subroutine ${1:name}
-	${2:argument type}, intent(${3:inout}) :: ${1/\w+\((.*)\)|.*/$1/}
-	$15
-end subroutine ${1/(\w+).*/$1/}]]></content>
-</snippet>

@@ -1,8 +1,0 @@
-
-<snippet>
-    <content><![CDATA[module Main{
-	Main(${1:args}):void{
-		$2
-	}
-}]]></content>
-</snippet>

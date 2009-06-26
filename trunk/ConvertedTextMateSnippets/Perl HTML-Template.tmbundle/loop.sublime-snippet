@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<TMPL_LOOP NAME="$1">
-	$2
-</TMPL_LOOP>]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.getppid ()${1:;}$15]]></content>
-</snippet>

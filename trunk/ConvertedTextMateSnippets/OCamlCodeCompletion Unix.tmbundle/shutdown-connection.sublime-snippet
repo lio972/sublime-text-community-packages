@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.shutdown_connection ${1:in_channel}${2:;}$15]]></content>
-</snippet>

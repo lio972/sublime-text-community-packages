@@ -1,8 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<p>${7:<label for="$4">${8:text for label}</label>}${9:
-<?php echo \$html->tagErrorMsg('$1/$2', '${10:validation error message.}') ?>}
-<?php echo \$html->radio('${1:Model}/${2:field}', ${3:\$arrayOfOptions}, '${4:inBetween}', array('cols'=>'${5:cols}','id'=>'${6:$1_$2}')) ?>
-</p>
-$15]]></content>
-</snippet>

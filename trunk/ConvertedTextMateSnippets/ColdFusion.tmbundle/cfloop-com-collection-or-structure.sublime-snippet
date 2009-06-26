@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfloop collection = "$1" item = "$2">
-	$3
-</cfloop>$15]]></content>
-</snippet>

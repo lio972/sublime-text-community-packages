@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[(assert_throws "$1"
-	(do ($2) 
-		($3)))$15]]></content>
-</snippet>

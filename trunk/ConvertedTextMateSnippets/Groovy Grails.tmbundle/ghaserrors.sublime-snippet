@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<g:hasErrors ${1:bean="$2" }${3:model="$4" }${5:field="$6" }>
-	$15
-</g:hasErrors>
-]]></content>
-</snippet>

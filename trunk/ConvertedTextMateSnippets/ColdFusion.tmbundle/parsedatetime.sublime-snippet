@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[ParseDateTime(${1:date/time-string}${2: [, pop-conversion ]})$15]]></content>
-</snippet>

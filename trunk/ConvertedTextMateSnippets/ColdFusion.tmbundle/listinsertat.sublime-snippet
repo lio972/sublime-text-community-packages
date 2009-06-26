@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[ListInsertAt(${1:list}, ${2:position}, ${3:value}${4: [, delimiters]})$15]]></content>
-</snippet>

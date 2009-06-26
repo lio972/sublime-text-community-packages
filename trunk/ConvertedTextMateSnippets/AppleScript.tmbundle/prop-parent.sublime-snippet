@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[prop parent : app "${1:TextMate}"]]></content>
-</snippet>

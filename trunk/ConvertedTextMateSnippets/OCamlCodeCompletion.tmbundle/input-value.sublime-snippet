@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[(input_value ${1:in_channel} : ${2:type})$15]]></content>
-</snippet>

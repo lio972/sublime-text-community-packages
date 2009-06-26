@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[exception ${1:Name} {
-	1: string message,$15
-}]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_HISTORY:YAHOO.util.History}.register(${1:'moduleName'}, ${2:moduleInitialState}, ${3:moduleStateChangeHandler});$15]]></content>
-</snippet>

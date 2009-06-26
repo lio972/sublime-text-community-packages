@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfntauthenticate username="$1" password="$2" domain="$3"${4: result="${5:[ ]}" listGroups = "${6:[ ]}" throwOnError = "${7:[ ]}"}>$15]]></content>
-</snippet>

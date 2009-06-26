@@ -1,9 +1,0 @@
-
-<snippet>
-    <content><![CDATA[for arg in "\$@"
-do
-	#Treat each file dropped on to the widget as "\$arg" in this loop
-	${15:$TM_SELECTED_TEXT}
-done
-]]></content>
-</snippet>

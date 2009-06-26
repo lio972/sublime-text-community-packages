@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<g:createLinkTo ${1:dir="$2" }${3:file="$4" }${5:absolute="$6" }${7:base="$8" } />]]></content>
-</snippet>

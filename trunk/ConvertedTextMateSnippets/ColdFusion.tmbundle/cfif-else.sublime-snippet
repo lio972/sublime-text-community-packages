@@ -1,8 +1,0 @@
-
-<snippet>
-    <content><![CDATA[<cfif $1>
-	$2
-<cfelse>
-	$3
-</cfif>$15]]></content>
-</snippet>

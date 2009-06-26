@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[query([${1:table}]; [$1]${2:field})]]></content>
-</snippet>

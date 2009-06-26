@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[if (${1:Condition})
-	${15:${TM_SELECTED_TEXT/(.*)$/$1/: // insert code here}}
-end if
-]]></content>
-</snippet>

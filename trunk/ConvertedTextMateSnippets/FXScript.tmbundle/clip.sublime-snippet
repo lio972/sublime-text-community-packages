@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[input ${1:varName}, "${2:${1/varname/text label/}}", Clip;
-]]></content>
-</snippet>

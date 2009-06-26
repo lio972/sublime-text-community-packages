@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[withWriterAppend(${1:charset}) {${2/(.+)/(?1: )/}${2:writer}${2/(.+)/(?1: ->)/}
-	$15
-}]]></content>
-</snippet>

@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[Unix.gethostbyname ${1:hostname}$15]]></content>
-</snippet>

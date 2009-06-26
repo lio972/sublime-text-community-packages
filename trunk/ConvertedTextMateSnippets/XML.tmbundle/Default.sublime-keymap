@@ -1,9 +1,0 @@
-<bindings>
-    <binding key="c,d,a,t,a,tab" command="insertSnippet 'Packages/XML.tmbundle/cdata.sublime-snippet'">
-        <context name="selector" value="text.xml"/>
-    </binding>
-
-    <binding key="x,m,l,tab" command="insertSnippet 'Packages/XML.tmbundle/xml-processing-instruction.sublime-snippet'">
-        <context name="selector" value="text.xml"/>
-    </binding>
-</bindings>

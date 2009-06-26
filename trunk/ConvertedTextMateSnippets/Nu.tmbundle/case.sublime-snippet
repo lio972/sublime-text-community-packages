@@ -1,7 +1,0 @@
-
-<snippet>
-    <content><![CDATA[(case  ${1:expression}
-	(${2:first} ($3))
-	(${4:second} ($5))
-	(else ($6)))$15]]></content>
-</snippet>

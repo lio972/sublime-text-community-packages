@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[new YAHOO.widget.DS_JSFunction(${1:func});$15]]></content>
-</snippet>

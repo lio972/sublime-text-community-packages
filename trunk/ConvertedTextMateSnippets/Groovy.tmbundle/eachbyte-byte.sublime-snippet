@@ -1,6 +1,0 @@
-
-<snippet>
-    <content><![CDATA[eachByte {${1/(.+)/(?1: )/}${1:byte}${1/(.+)/(?1: ->)/}
-	$15
-}]]></content>
-</snippet>

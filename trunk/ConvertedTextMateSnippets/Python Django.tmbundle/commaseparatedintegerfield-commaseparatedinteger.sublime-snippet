@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:FIELDNAME} = models.CommaSeparatedIntegerField(max_length=$2)]]></content>
-</snippet>

@@ -1,9 +1,0 @@
-
-<snippet>
-    <content><![CDATA[class ${1:ClassName} {
-	var _${2/\u/_/g};
-	function $1($2){
-		_${2/:(.*)//g} = ${2/:(.*)//g};$15
-	}
-}]]></content>
-</snippet>

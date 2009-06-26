@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[mult_num ${1:num} ${2:num2}$15]]></content>
-</snippet>

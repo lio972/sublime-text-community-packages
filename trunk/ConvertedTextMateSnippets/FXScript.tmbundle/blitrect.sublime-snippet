@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[BlitRect(${1:sourceImage}, ${2:sourcePoly}, ${3:destImage}, ${4:destPoly});
-]]></content>
-</snippet>

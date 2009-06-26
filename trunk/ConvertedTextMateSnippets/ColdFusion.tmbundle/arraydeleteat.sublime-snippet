@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[ArrayDeleteAt(${1:array}, ${2:position})$15]]></content>
-</snippet>

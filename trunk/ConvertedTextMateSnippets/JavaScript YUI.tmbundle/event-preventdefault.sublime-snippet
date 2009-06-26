@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_EVENT:YAHOO.util.Event}.preventDefault(${1:e});]]></content>
-</snippet>

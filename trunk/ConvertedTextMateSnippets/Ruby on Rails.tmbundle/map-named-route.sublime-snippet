@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${1:map}.${2:connect} '${3::controller/:action/:id}']]></content>
-</snippet>

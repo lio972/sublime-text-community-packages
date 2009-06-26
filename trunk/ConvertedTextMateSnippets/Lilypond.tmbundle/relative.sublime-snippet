@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[\relative${1/(\S)?.*/(?1: )/}${1:c''} {$15}]]></content>
-</snippet>

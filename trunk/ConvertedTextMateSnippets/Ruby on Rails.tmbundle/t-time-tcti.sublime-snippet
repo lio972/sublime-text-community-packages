@@ -1,5 +1,0 @@
-
-<snippet>
-    <content><![CDATA[t.time :${1:title}
-t.$15]]></content>
-</snippet>

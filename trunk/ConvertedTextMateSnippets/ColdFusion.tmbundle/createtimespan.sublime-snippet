@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[CreateTimeSpan(${1:days}, ${2:hours}, ${3:minutes}, ${4:seconds})$15]]></content>
-</snippet>

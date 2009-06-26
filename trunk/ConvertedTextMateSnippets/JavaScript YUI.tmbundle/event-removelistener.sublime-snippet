@@ -1,4 +1,0 @@
-
-<snippet>
-    <content><![CDATA[${YUI_EVENT:YAHOO.util.Event}.removeListener(${1:element}, '${2:event}', ${3:function});]]></content>
-</snippet>
