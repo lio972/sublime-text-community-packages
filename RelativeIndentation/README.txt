@@ -1,5 +1,6 @@
-Pictures speaks louder than words... so a video?
+Apologies, but documentation is in progress ;)
 
-[http://www.sublimetextwiki.com/resources/video/relativeIndent/index.html](http://www.sublimetextwiki.com/resources/video/relativeIndent/index.html)
+For the moment:
+    * Check out this [screencast][]
 
-TODO: usage / configuring snippets
+[screencast]: http://www.sublimetextwiki.com/resources/video/relativeIndent/index.html

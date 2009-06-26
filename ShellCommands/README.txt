@@ -1,7 +1,8 @@
-Apologies, but documentation is in progress ;) For the moment:
+Apologies, but documentation is in progress ;)
 
-Check out this screen cast:
-    http://blogdata.akalias.net/console3/console3.htm
+For the moment:
+* Check out this [screencast][]
+* Browse this [forum thread][]
 
-Browse this forum thread:
-    http://www.sublimetext.com/forum/viewtopic.php?f=5&t=502
+[screencast]: http://blogdata.akalias.net/console3/console3.htm
+[forum thread]: http://www.sublimetext.com/forum/viewtopic.php?f=5&t=502
