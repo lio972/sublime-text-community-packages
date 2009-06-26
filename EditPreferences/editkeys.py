@@ -7,7 +7,7 @@ import sys
 
 import os
 import glob
-from os.path import ( split, splitext, join, normpath, abspath, isdir, 
+from os.path import ( split, splitext, join, normpath, abspath, isdir,
                       basename, dirname )
 
 from itertools import chain
@@ -90,11 +90,11 @@ def get_contextual_packages(view):
     pkg_path = sublime.packagesPath()
     dirs = []
 
-    if fn and pkg_path in fn: 
+    if fn and pkg_path in fn:
         dirs.append(split(fn[len(pkg_path)+1:])[0])
-    
+
     dirs.append(split(split(view.options().get("syntax"))[0])[1])
-    
+
     return dirs
 
 def wait_until_loaded(file):
@@ -123,7 +123,7 @@ def zero_stop(s, replace):
 
 def replace_highest(s):
     h = str(max(int(max(g)) for g in tab_stop.findall(s)))
-    
+
     return re.sub (
         tab_stop_re % (h,h),
         lambda m: '%s' % zero_stop(m.group(), h),
@@ -137,7 +137,7 @@ class IncrementTabstops(sublimeplugin.TextCommand):
 
 class WalkThroughSnippets(sublimeplugin.TextCommand):
     walker = None
-    
+
     def run(self, view, args):
         if self.walker is None:
             self.walker = self.walk()
@@ -169,7 +169,7 @@ class WalkThroughSnippets(sublimeplugin.TextCommand):
                         content = ''.join (
                             n.data for n in c.childNodes if n.nodeType in (3, 4))
 
-                    if content.endswith('$0'): 
+                    if content.endswith('$0'):
                         continue
 
             @wait_until_loaded(f)
@@ -180,8 +180,44 @@ class WalkThroughSnippets(sublimeplugin.TextCommand):
                         region.begin() + 9,
                         region.end() - 10
                     ))
-                
+
             yield
+
+##################################### TODO #####################################
+
+# Backported from my version; Eventually update to import from
+# sublimeconstants.py
+
+LITERAL_SYMBOLIC_BINDING_MAP = {
+    '\\'   :  'backslash',
+    ','    :  'comma',
+    '='    :  'equals',
+    '['    :  'leftbracket',
+    '-'    :  'minus',
+    '.'    :  'period',
+    '\''   :  'quote',
+    ']'    :  'rightbracket',
+    ''     :  'rightsuper',
+    ';'    :  'semicolon',
+    '/'    :  'slash',
+    ' '    :  'space',
+}
+
+class InsertBindingRepr(sublimeplugin.TextCommand):
+    def run(self, view, (insertion, )):
+        start_pt = view.sel()[0].begin() + len(insertion)
+        view.runCommand('insertAndDecodeCharacters', [insertion])
+
+        def l8r():
+            binding_region = sublime.Region(start_pt, view.sel()[0].begin() )
+            binding = view.substr( binding_region )
+
+            view.erase ( binding_region)
+            view.runCommand('insertAndDecodeCharacters',
+                [LITERAL_SYMBOLIC_BINDING_MAP.get(binding, binding)]
+            )
+
+        sublime.setTimeout(l8r, 0)
 
 ################################################################################
 
@@ -193,9 +229,9 @@ def contextual_packages_list(view=None):
     contextual = get_contextual_packages(view)
     pkg_path = sublime.packagesPath()
 
-    others = sorted((f for f in os.listdir(pkg_path) if isdir(join(pkg_path, f)) 
+    others = sorted((f for f in os.listdir(pkg_path) if isdir(join(pkg_path, f))
                        and not f in contextual), key = lambda f: f.lower())
-    
+
     return contextual + others
 
 def openPreference(f, window):
@@ -207,9 +243,9 @@ def openPreference(f, window):
             toWrite = '# sublime-options'
         else:
             toWrite = None #"EditPreferenceCommand: created non existing file"
-        
+
         if splitext(f)[1][1:] in CREATE_FILES_FOR and toWrite:
-            with open(f, 'w') as fh:    
+            with open(f, 'w') as fh:
                 fh.write(toWrite)
 
     window.openFile(f)
@@ -225,13 +261,13 @@ def glob_packages(file_type='sublime-keymap', view=None):
         path_joins = [pkg_path, pkg, '*.%s' % file_type]
         if pkg == 'Default' and file_type == 'sublime-options':
             path_joins.insert(2, 'Options')
-        
+
         found_files = glob.glob(join(*path_joins))
-        
+
         if not found_files and file_type in CREATE_FILES_FOR:
             found_files.append ( join (
                 pkg_path, pkg , "%s.%s" % (
-                'Default' if file_type == 'sublime-keymap' else pkg, 
+                'Default' if file_type == 'sublime-keymap' else pkg,
                 file_type)
             ))
 
@@ -256,12 +292,12 @@ class EditPackageFiles(sublimeplugin.WindowCommand):
 
         display = [
             (("%s: %s" % f[:2]) if pref_type != 'sublime-keymap' and f[0] != f[1]
-            
-                else ( 
+
+                else (
                     f[0]) + (' (create)' if not os.path.exists(f[2]) else '') )
 
             for f in files ]
-        
+
         sublime.statusMessage (
          'Please choose %s file to %s' % (args[0], ' '.join(args[1:]) or 'edit'))
 
@@ -278,7 +314,7 @@ class EditPackageFiles(sublimeplugin.WindowCommand):
 
         def onCancel(): pass
 
-        window.showSelectPanel(display, onSelect, onCancel, 
+        window.showSelectPanel(display, onSelect, onCancel,
           sublime.SELECT_PANEL_MULTI_SELECT, "", 0)
 
 
@@ -352,7 +388,7 @@ class ListCommands(sublimeplugin.WindowCommand):
         for pkg, module_name, f in glob_packages('py'):
             sublime.statusMessage('parsing %s' % module_name)
             commands += [
-                (pkg, module_name, commandName(c.name), c.file, c.lineno) 
+                (pkg, module_name, commandName(c.name), c.file, c.lineno)
                 for c in pyclbr.readmodule(module_name, [dirname(f)]).values()
                 if 'sublimeplugin' in ''.join(unicode(b) for b in c.super)
             ]
