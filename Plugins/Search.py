@@ -8,9 +8,9 @@ class SearchCommand(sublimeplugin.TextCommand):
       files_i_have_been = []
       view_list = view.window().views()
 
-      selection = view.sel()[0]
-      if selection.begin() - selection.end() != 0:
-         pattern = view.substr(selection)
+      first_selection = view.sel()[0]
+      if first_selection.begin() - first_selection.end() != 0:
+         pattern = view.substr(first_selection)
       else:
          pattern = sublime.getClipboard()
       
@@ -65,7 +65,6 @@ class SearchReboundCommand(sublimeplugin.TextCommand):
       
       view_list = view.window().views()
       for a_view in view_list:
-         print "|" + file + "|" + a_view.fileName() + "|"
          if file == a_view.fileName():
             view.window().focusView(a_view)
             position = a_view.textPoint(int(row)-1, 0)
