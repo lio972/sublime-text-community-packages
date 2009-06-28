@@ -263,13 +263,14 @@ class ListShortcutKeysCommand(sublimeplugin.WindowCommand):
                 print e, f
 
         view = window.activeView()
-        scope = normalize_scope( view.syntaxName(
-                                 view.sel()[0].begin() ))
-        args = sorted (
-            args,
-            key = lambda t: selector_specificity(t[-1], scope ),
-            cmp = compare_candidates,
-            reverse = True )
+        if view:
+            scope = normalize_scope( view.syntaxName(
+                                     view.sel()[0].begin() ))
+            args = sorted (
+                args,
+                key = lambda t: selector_specificity(t[-1], scope ),
+                cmp = compare_candidates,
+                reverse = True )
 
         def onSelect(i):
             f, key, nkey, command, line, scope = args[i][1:7]
