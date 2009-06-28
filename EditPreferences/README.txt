@@ -1,8 +1,10 @@
+This package helps with editing/navigating to Package files (keybindings/snippets etc)
+
 Apologies, but documentation is in progress ;)
 
 For the moment:
 
-* This Package helps with navigation of preferences (keybindings etc)
+* This package requires AAALoadFirstExtensions to be loaded
 * Check out this [screencast][]
 * Also this [one][]
 * Browse this [forum thread][]
