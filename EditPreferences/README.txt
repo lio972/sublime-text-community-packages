@@ -32,8 +32,8 @@ Changes
 
 *   Documented dependency on AAALoadFirstExtensions
 *   Now uses lxml for element.sourceline ( jump to binding to edit )
-*   Normalises sequencing of combination keys for
-    quickpanel ( eg alt+shift+t displays normalizes to ctrl+shift+t)
-*   Normalizes x,x,x,x,x,x,tab bindings to xxxxxx<tab> for easy typing
-*   Includes insertBindingRepr command and keycombos
+*   Includes `insertBindingRepr` command and &lt;bindings&gt;
+*   Normalises sequencing of key combos for use of `insertBindingRepr` in the
+    quickpanel ( eg alt+shift+t normalizes to ctrl+shift+t )
+*   Normalises x,y,z,tab bindings to xyz&lt;tab&gt; for easy typing
 *   Sorts key list by scope ( where possible )
