@@ -7,7 +7,6 @@ Apologies, but documentation is in progress ;)
 
 For the moment:
 
-* This package requires AAALoadFirstExtensions ( 06/28/09 )  to be loaded
 * Check out this [screencast][]
 * Also this [one][]
 * Browse this [forum thread][]
