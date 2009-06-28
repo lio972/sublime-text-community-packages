@@ -1,8 +1,44 @@
-Apologies, but documentation is in progress ;)
+Readme
+======
 
-For the moment:
+This Package contains various plugin helpers, monkey-patches and 3rd Party Libs
 
-* Know This:
-    * This Package is a dependency for some others: Browsers
-    * Named AAALoadFirstExtensions so it will `load first` and provide extensions for other plugins
-    * This package is to be deprecated
+A lot of plugins depend on this. If you aren't sure whether you need it, just get it.
+
+Plugin helper modules:
+----------------------
+
+* pluginhelpers
+* quickpanelcols
+* tmscopes
+* sublimeconstants
+
+3rd Party Libs:
+---------------
+
+These are all placed on sys.path with use of a GetShortPathName call.
+
+*   lxml
+*   comtypes
+*   SendKeys
+*   docutils
+*   markdown
+*   smartypants
+*   Pyro
+*   pywinauto
+
+Patches
+-------
+
+*   sublime.activeWindow()
+*   sublime.addOnLoadedCallback(view, cb)
+*   sublime.addOnActivatedCallback(view, cb)
+
+Changes
+=======
+
+06/28/09
+--------
+
+*   Added in pluginhelpers/quickpanelcols/tmscopes/sublimeconstants
+*   Added in lxml/comtypes/SendKeys/docutils/markdown/smartypants/Pyro/pywinauto
