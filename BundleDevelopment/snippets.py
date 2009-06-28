@@ -29,19 +29,6 @@ import sublimeplugin
 
 TIME_STAMPED = 0
 
-SYMBOLIC_BINDINGS =  [ 'backquote', 'backslash', 'backspace',
-					   'browser_back', 'browser_favorites', 'browser_forward',
-					   'browser_home', 'browser_refresh', 'browser_search',
-					   'browser_stop', 'capslock', 'clear', 'comma',
-					   'contextmenu', 'delete', 'down', 'end', 'enter',
-					   'equals', 'escape', 'home', 'insert', 'left',
-					   'leftalt', 'leftbracket', 'leftcontrol', 'leftmeta',
-					   'leftshift', 'leftsuper', 'minus', 'numlock',
-					   'pagedown', 'pageup', 'pause', 'period', 'printscreen',
-					   'quote', 'right', 'rightalt', 'rightbracket',
-					   'rightsuper', 'scrolllock', 'semicolon', 'slash',
-					   'space', 'tab', 'up' ]
-
 ################################################################################
 
 SNIPPET_TEMPLATE = (
@@ -59,7 +46,8 @@ filename: %(filename)s
 INSERT_META_HERE
 
 <!--
-Test PlayGround (Saver needs to parse) so do inside comments
+Test PlayGround (Saver needs to parse) so do inside comment 
+(ctrl+alt+s is default keybinding)
 
 
 
@@ -90,16 +78,7 @@ def timestamped(file_name):
 
 class Object(dict):
     __setattr__ = dict.__setitem__
-    def __delattr__(self, name):
-        try:
-            del self[name]
-        except KeyError:
-            raise AttributeError
-    def __getattr__(self, name):
-        try:
-            return self[name]
-        except KeyError:
-            raise AttributeError
+    __getattr__ = lambda s, i: s[i]
 
 def currentSyntaxPackage(view):
     return split(split(view.options().get("syntax"))[0])[1]
@@ -141,14 +120,14 @@ def expanded_selection_extents(view):
 ################################## XML HELPERS #################################
 
 def indent(elem, level=0):
-    i = "\n" + level*"  "
+    i = "\n" + level * "\t"
     if len(elem):
         if not elem.text or not elem.text.strip():
-            elem.text = i + "  "
+            elem.text = i + "\t"
         for e in elem:
             indent(e, level+1)
             if not e.tail or not e.tail.strip():
-                e.tail = i + "  "
+                e.tail = i +"\t"
         if not e.tail or not e.tail.strip():
             e.tail = i
     else:
@@ -161,16 +140,16 @@ def escape_extents(view):
     """ Escapes characters that are `special` to snippet format """
     region = sublime.Region(*expanded_selection_extents(view))
     # Escaping $ Do it in reverse order to maintain selections
-    escapes = sorted(find_all(view, r'\$', region)) 
+    escapes = sorted(find_all(view, r'\$', region))
     for r in reversed(escapes): view.insert(r.begin(), '\\')
     return escapes
 
 def extract_snippet(view, hard_tabs = True):
     """ Does not escape selection """
-    
+
     # Escape (reversed order)
     escapes = escape_extents(view)
-    
+
     # Reset start end_points
     starts_at, ends_at = expanded_selection_extents(view)
 
@@ -184,16 +163,18 @@ def extract_snippet(view, hard_tabs = True):
 
     # Replace all the tab stops with ${i:placeholder}
     adjustment = -starts_at
-    
+
     tab_stop_map = {}
 
 
     for i, region in enumerate(tab_stops):
+        i+= 1
+
         adjusted_region = slice(region[0]+adjustment, region[1]+adjustment)
 
         replaced = ''.join(snippet[adjusted_region])
         tab_stop_index = tab_stop_map.get(replaced, i)
-        
+
         replacement = array('u', '${%s:%s}' % (tab_stop_index, replaced))
 
         if tab_stop_index == i:
@@ -201,33 +182,34 @@ def extract_snippet(view, hard_tabs = True):
 
         snippet[adjusted_region] = replacement
         adjustment += len(replacement) - len(replaced)
-    
+
     # Unescape
     for r in escapes: view.erase(r)
-    
+
     snippet = textwrap.dedent(''.join(snippet))
 
-    if hard_tabs:
-        # Replace  softtabs with hard tabs for compatibility
-        tab = (view.options().get('tabSize') or 8) * ' '
-        snippet = snippet.replace(tab, '\t')
+    # TODO:
+    # if hard_tabs:
+    #     Replace  softtabs with hard tabs for compatibility
+    #     tab = (view.options().get('tabSize') or 8) * ' '
+    #     snippet = snippet.replace(tab, '\t')
 
     return snippet
 
 def save_snippet(view, snippet):
     # Get metadata ready for saving
     scope = list(reversed(view.syntaxName(view.sel()[0].begin()).strip().split()))
-    base_scope = scope[0]    
+    base_scope = scope[0]
     scope = ' '.join(scope[1:])
 
     fn = filename = view.fileName()
-    
+
     pkg_path = sublime.packagesPath()
     if fn and pkg_path in fn:
         plugin_package = split(fn[len(pkg_path)+1:])[0]
     else:
         plugin_package = ''
-    
+
     syntax = view.options().get('syntax')
     project = view.window().project()
     if project: project = project.fileName()
@@ -242,7 +224,7 @@ def save_snippet(view, snippet):
         'development_snippet.xml',
     ))
 
-    with open(development_snippet, 'w') as fh:  
+    with open(development_snippet, 'w') as fh:
         snippet = SNIPPET_TEMPLATE % locals()
         fh.write(snippet)
 
@@ -255,15 +237,13 @@ def parse_development_snippet(fn):
     root = et.getroot()
     meta = root.find('meta')
     binding = root.find('binding')
-    if meta is None: return 
+    if meta is None: return
     return Object( (e.tag, e.text) for e in meta.getiterator() ), binding
 
 def config_binding(binding, meta, snippet_name):
     tab = binding.get('tab')
     key = tab or binding.get('key')
-
-    if ( tab ):
-        key = ','.join(list(key) + ['tab'])
+    if tab : key = ','.join(list(key) + ['tab'])
 
     binding.set('key', key)
 
@@ -278,6 +258,34 @@ def config_binding(binding, meta, snippet_name):
 def pretty_dump_xml(et, fn):
     indent(et.getroot())
     et.write(fn, encoding='utf-8', pretty_print=True)
+
+############################## INCREMENT TAB STOPS #############################
+
+tab_stop_re = r"(?<!\\)\$(%s)|\$\{(%s)(?::|/)"
+tab_stop = re.compile(tab_stop_re % ('\\d+', '\\d+'))
+
+def inc_stop(m):
+    return re.sub('\d+', lambda d: str(int(d.group()) + 1), m)
+
+def increment_tabstops(s):
+    return tab_stop.sub(lambda m: inc_stop(m.group()), s)
+
+def zero_stop(s, replace):
+    return re.sub(replace, '0', s)
+
+def replace_highest(s):
+    h = str(max(int(max(g)) for g in tab_stop.findall(s)))
+
+    return re.sub (
+        tab_stop_re % (h,h),
+        lambda m: '%s' % zero_stop(m.group(), h),
+        s )
+
+class IncrementTabstops(sublimeplugin.TextCommand):
+    def run(self, view, args):
+        for sel in view.sel():
+            selection = view.substr(sel)
+            view.replace(sel, replace_highest(increment_tabstops(selection)))
 
 ################################################################################
 
@@ -322,8 +330,10 @@ class ExtractSnippetCommand(sublimeplugin.TextCommand):
 
             sublime.setTimeout(l8r , 50)
 
-        keymap =  join(pkg_dir, 'Default.sublime-keymap')
-        window.openFile(keymap)
+        keymap = sublime.options().get('keymap')
+        keymap =  join(pkg_dir, '%s.sublime-keymap' % keymap)
+
+        # window.openFile(keymap)
         window.openFile(snippet_name) #TODO
 
         et = ElementTree.parse(keymap)
@@ -349,7 +359,7 @@ class ExtractSnippetCommand(sublimeplugin.TextCommand):
         if 'test' in args:  return self.test(view)
 
         snippet = extract_snippet(view)
-        development_snippet, meta = save_snippet(view, snippet)        
+        development_snippet, meta = save_snippet(view, snippet)
 
         # Save snippet file, store path in instance var for `test` cmd
         self.snippet = development_snippet
