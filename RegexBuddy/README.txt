@@ -3,8 +3,6 @@ Readme
 
 Apologies, but documentation is in progress ;)
 
-Apologies, but documentation is in progress ;)
-
 For the moment:
 * Check out this [screencast][]
 
