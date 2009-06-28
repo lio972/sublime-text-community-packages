@@ -34,4 +34,6 @@ Changes
 *   Now uses lxml for element.sourceline ( jump to binding to edit )
 *   Normalises sequencing of combination keys for
     quickpanel ( eg alt+shift+t displays normalizes to ctrl+shift+t)
+*   Normalizes x,x,x,x,x,x,tab bindings to xxxxxx<tab> for easy typing
 *   Includes insertBindingRepr command and keycombos
+*   Sorts key list by scope ( where possible )
