@@ -6,9 +6,6 @@ from __future__ import with_statement
 
 import gc
 
-from absoluteSublimePath import addSublimePackage2SysPath
-addSublimePackage2SysPath(u'Browsers')
-
 import sublime, sublimeplugin, re,  functools
 
 import iexplore, processors
@@ -25,7 +22,7 @@ reFlags = re.DOTALL | re.IGNORECASE | re.MULTILINE
 headRe = re.compile("(<head.*?>.*?</head>)", reFlags)
 
 ################################################################################
- 
+
 def whenActive(func):
     @functools.wraps(func)
     def isActive(self, view):
@@ -40,7 +37,7 @@ class LivePreviewCommand(sublimeplugin.TextCommand):
 
     def __init__(self):
         self.reset()
-        
+
     def run(self, view, args):
         if not self.ie:
             self.init(view)
@@ -83,9 +80,9 @@ class LivePreviewCommand(sublimeplugin.TextCommand):
 
     def findHead(self, view):
        head = headRe.search(view.buffer)
-       if head: self.headRegion = sublime.Region(*head.span(1))                                      
+       if head: self.headRegion = sublime.Region(*head.span(1))
 
-    def isActive(self): 
+    def isActive(self):
         return self.ie and (self.ie.isAlive() or self.reset())
 
     @whenActive
@@ -98,10 +95,10 @@ class LivePreviewCommand(sublimeplugin.TextCommand):
     @sublimeplugin.onIdle(TIMEOUT)
     def onActivated(self, view):
         self.activateView(view)
-    
+
     def activateView(self, view):
         self.initHTML(view)
-    
+
     @whenActive
     @sublimeplugin.onIdle(TIMEOUT)
     def onModified(self, view):

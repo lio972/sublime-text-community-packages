@@ -7,9 +7,6 @@ from contextlib import contextmanager
 
 import sublime, sublimeplugin, urllib, traceback
 
-from absoluteSublimePath import addSublimePackage2SysPath
-addSublimePackage2SysPath('Browsers')
-
 from firefox import FireFox, check_mozlab_installed
 from iexplore import IE
 
@@ -52,7 +49,7 @@ class BrowsersCommand(sublimeplugin.TextCommand):
             with errorHandling(self, 'reInit: '):
                 if 'toggleVisibility' in args:     self.toggleVisibility()
                 elif 'alternate' in args:          self.alternateBrowsers()
-                else:                   
+                else:
                                         self.navigateTo(view.fileName(), 1)
 
         self.restoreFocus()
