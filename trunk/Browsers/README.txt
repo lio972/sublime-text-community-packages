@@ -4,7 +4,7 @@ This package contains two plugins: Refresher and Live Preview
 
 Will launch Internet Explorer and Firefox, and refresh on every save. Internet Explorer will automatically "follow" firefox, so there is no need to copy and paste urls between the two. Refresher is useful for when working with PHP etc and dynamically generated html.
 
-`ctrl-alt-i` to launch browsers
+ctrl-alt-i to launch browsers
 ctrl-alt-shift-i to swap between the two
 
 # Live Preview
