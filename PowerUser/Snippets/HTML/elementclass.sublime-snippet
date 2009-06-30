@@ -1,0 +1,4 @@
+<!-- See http://www.sublimetext.com/docs/snippets for more information -->
+<snippet>
+  <content><![CDATA[<$PARAM1 class="$PARAM2">${3:$SELECTION}</$PARAM1>]]></content>
+</snippet>

@@ -1,0 +1,5 @@
+insertAndDecodeCharacters "calendar.TextCalendar(calendar.SUNDAY).formatmonth(datetime.datetime.now().year, datetime.datetime.now().month)"
+times 26 move words -1 extend
+execSelReplace
+move characters 1
+move characters -1

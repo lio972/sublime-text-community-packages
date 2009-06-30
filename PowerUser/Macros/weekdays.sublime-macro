@@ -1,0 +1,4 @@
+insertAndDecodeCharacters "\"\\n\".join(calendar.day_name)"
+times 9 move words -1 extend
+execSelReplace
+move characters 1

@@ -1,0 +1,4 @@
+<!-- See http://www.sublimetext.com/docs/snippets for more information -->
+<snippet>
+  <content><![CDATA[border:${1:1px} ${2:solid} ${3:#ebebeb};]]></content>
+</snippet>

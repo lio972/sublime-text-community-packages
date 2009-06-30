@@ -1,0 +1,441 @@
+<!--
+Sublime Text - PowerUser Package
+By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
+-->
+<bindings>
+
+  <!-- Column Select (Experimental) -->
+  <binding key="alt+shift+q" command="selectColumn" />
+
+  <!--
+  Select text between quotes " or '
+  It ignores escaped quotes \' \"
+  :)
+   -->
+  <binding key="ctrl+quote" command="selectString" />
+
+  <!-- Do multiple selections with keyboard. -->
+  <!-- I use ctrl+q (which by default mapped to toggle record) -->
+  <binding key="ctrl+q" command="doMultipleSelection store" />
+  <binding key="ctrl+shift+q" command="doMultipleSelection restore" />
+
+  <!-- Remapped toggle record to (ctrl+period) -->
+  <binding key="ctrl+period" command="toggleRecord" />
+
+  <!-- Insert open/close tab - textmate way -->
+  <binding key="ctrl+comma" command="insertSnippet 'Packages/PowerUser/Snippets/HTML/textmate_tag.sublime-snippet'">
+    <context name="selector" value="text.html - source, text.xml"/>
+  </binding>
+
+  <!-- Auto curly braces -->
+  <binding key="}" command="move characters 1">
+    <context name="option" value="autoMatchEnabled"/>
+    <context name="allSelectionsEmpty" value="true"/>
+    <context name="allFollowingCharacter" value="}"/>
+  </binding>
+  <binding key="{" command="insertSnippet 'Packages/PowerUser/Snippets/curly_braces.sublime-snippet'">
+    <context name="option" value="autoMatchEnabled"/>
+    <context name="allSelectionsEmpty" value="true"/>
+    <context name="allFollowingText" value="^(\t| |$)"/>
+  </binding>
+  <binding key="{" command="insertSnippet 'Packages/PowerUser/Snippets/curly_braces.sublime-snippet'">
+    <context name="option" value="autoMatchEnabled"/>
+    <context name="allSelectionsNonEmpty" value="true"/>
+  </binding>
+
+  <!--
+  When doing html, if you do this <div class=> (when you type [ = ] nothing happens)
+  With this macro when you type the equal sign [ = ], you get the following
+  <div class="|">
+  if you press tab, cursor jumps to after quote, ready for you to type something else
+  <div class="sometext"|>
+  Disable if you have no need for it.
+  -->
+  <binding key="=" command="insertSnippet 'Packages/PowerUser/Snippets/HTML/html_equal_quotes.sublime-snippet'">
+      <context name="selector" value="punctuation.definition.tag.end.html, punctuation.definition.tag.html"/>
+  </binding>
+
+  <!-- Delete Line -->
+
+  <binding key="ctrl+e" command="runMacroFileSilently 'Packages/Default/Delete Line.sublime-macro'" />
+
+  <!-- 
+  When cutting a blank line don't override the clipboard just kill the line,
+  Nobody wants empty lines in their clipbard :P    
+   -->
+  <binding key="ctrl+x" command="deleteLine">
+   <context name="noPreceedingText" value="\S" />
+   <context name="noFollowingText" value="\S" />
+ </binding>
+
+  <!-- New tab, I'm used to firefox ctrl+t = new tab  -->
+  <binding key="ctrl+t" command="new"/>
+
+  <!-- Uppercase, Lowercase, Titlecase -->
+  <binding key="alt+k,u" command="upperCase"/>
+  <binding key="alt+k,l" command="lowerCase"/>
+  <binding key="alt+k,t" command="titleCase"/>
+  <binding key="alt+k,s" command="swapCase"/>
+
+  <!-- HTML Entities -->
+  <binding key="ctrl+k,d,e" command="doEntities">
+      <context name="selector" value="text.html - source"/>
+  </binding>
+  <binding key="ctrl+k,u,e" command="undoEntities">
+      <context name="selector" value="text.html - source"/>
+  </binding>
+  <!-- URL Escaping -->
+  <binding key="ctrl+k,d,u" command="doURLEscape">
+      <context name="selector" value="text.html - source"/>
+  </binding>
+  <binding key="ctrl+k,u,u" command="undoURLEscape">
+      <context name="selector" value="text.html - source"/>
+  </binding>
+
+  <!-- Swap Lines -->
+  <binding key="ctrl+shift+up" command="swapLine up"/>
+  <binding key="ctrl+shift+down" command="swapLine down"/>
+
+  <!-- Strip Selection [strips whitespace from selection only :)] -->
+  <binding key="ctrl+alt+l" command="stripSelection"/>
+
+  <!-- PasteColumn -->
+  <binding key="ctrl+alt+v" command="pasteColumn"/>
+
+  <!--
+  This just goes to end of line adds a semicolon (;) and makes a new line (useful for snippets)
+  Enable if you have no use for it...
+  -->
+  <!-- <binding key="alt+enter" command="runMacroFileSilently 'Packages/PowerUser/Macros/add_line_with_semicolon.sublime-macro'"/> -->
+
+  <!--
+  body#hello {|} -- if you press enter with cursor there you get this
+
+  body#hello {
+    |}
+  ==================================
+  with this macro you get this:
+    body#hello {
+      |
+    }
+
+   -->
+  <binding key="enter" command="runMacroFileSilently 'Packages/PowerUser/Macros/css_enter.sublime-macro'">
+    <context name="selector" value="source.css"/>
+    <context name="option" value="autoMatchEnabled"/>
+    <context name="allSelectionsEmpty" value="true"/>
+    <context name="allFollowingCharacter" value="}"/>
+  </binding>
+
+  <!--
+  <td>|</td> -- if you press enter here you get the following:
+
+  <td>
+  |</td>
+  ==========
+  with this macro you get this:
+    <td>
+      |
+    </td>
+   -->
+  <binding key="enter" command="runMacroFileSilently 'Packages/PowerUser/Macros/htmltags_enter_indent.sublime-macro'">
+    <context name="selector" value="punctuation.definition.tag.html, meta.scope.between-tag-pair.html, punctuation.definition.tag.begin.html"/>
+    <context name="option" value="autoMatchEnabled"/>
+    <context name="allSelectionsEmpty" value="true"/>
+    <context name="allFollowingCharacter" value="<"/>
+    <context name="allPreceedingText" value=">$"/>
+  </binding>
+
+  <!-- Copy current scope to clipboard -- remember ctrl+alt+p shows scope in status bar -->
+  <binding key="ctrl+shift+p" command="scopeToClipboard"/>
+
+  <!-- This one just paste whatever text is on clipboard to bookmark.
+  Usage: bookmark a line, go to any other line in the document copy something,
+         press the shortcut key and it will paste whatever you copied to the position where cursor was when you bookmarked.
+   -->
+  <binding key="alt+shift+v" command="runMacroFileSilently 'Packages/PowerUser/Macros/paste_at_bookmark.sublime-macro'"/>
+
+  <!-- Firebug-like number increase/decrease -->
+  <binding key="alt+up" command="upNum" />
+  <binding key="alt+down" command="downNum" />
+  <binding key="alt+pageup" command="upNumTen" />
+  <binding key="alt+pagedown" command="downNumTen" />
+
+  <!-- Select whole lines -- very useful :) -->
+  <binding key="alt+shift+up" command="move wholelines -1 extend"/>
+  <binding key="alt+shift+down" command="move wholelines 1 extend"/>
+
+  <!--
+  Execute Selection (eval python commands)
+  VERY USEFUL & Powerful :)
+   -->
+  <binding key="alt+shift+e" command="execSel"/>
+  <binding key="alt+shift+r" command="execSelReplace"/>
+
+  <!--
+  Shortcut for view.runCommand() on selected text.
+  It runs the command and replaces the selection.
+   -->
+  <binding key="alt+shift+c" command="sublimeRunCmd"/>
+
+  <!-- Add numbers in selection -->
+  <binding key="alt+shift+a" command="addNumbers"/>
+
+  <!-- See documentation on PowerUser.py for these functions -->
+  <binding key="shift+backspace" command="singleLeftEraseByCharClass"/>
+  <binding key="ctrl+backspace" command="leftEraseByCharClass"/>
+  <binding key="shift+delete" command="singleRightEraseByCharClass"/>
+  <binding key="ctrl+delete" command="rightEraseByCharClass"/>
+
+  <!--
+  Duplicates Line or Selected Text
+  by default, ctrl+d = Expand selection to word
+  I remapped to ctrl+shift+d
+  -->
+  <binding key="ctrl+d" command="duplicateLine"/>
+  <binding key="ctrl+shift+d" command="expandSelectionTo word"/>
+
+  <!-- Revert Changes (reload file from disk) -->
+  <binding key="ctrl+alt+shift+r" command="revert"/>
+
+  <!--
+  Reload Project
+  Whenever you add new files to your project you need to reload it in order for the files to be shown
+  when you do ctrl+p "open file in project"
+  -->
+  <binding key="alt+shift+r" command="reloadProject"/>
+
+  <!-- Date/Calendar/Weekdays Macros (snippets) -->
+  <binding key="/date/,tab" command="runMacroFileSilently 'Packages/PowerUser/Macros/notepad_date.sublime-macro'" />
+  <binding key="/cal/,tab" command="runMacroFileSilently 'Packages/PowerUser/Macros/calendar.sublime-macro'" />
+  <binding key="/weekdays/,tab" command="runMacroFileSilently 'Packages/PowerUser/Macros/weekdays.sublime-macro'" />
+
+  <!-- PHP -->
+    <!-- PHP (HTML) Snippets -->
+    <binding key="/phpt/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/HTML/phpt.sublime-snippet'">
+      <context name="selector" value="text.html - source, source.php"/>
+    </binding>
+    <binding key="/if/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/HTML/phpif.sublime-snippet'">
+      <context name="selector" value="text.html - source"/>
+    </binding>
+    <binding key="/else/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/HTML/phpelse.sublime-snippet'">
+        <context name="selector" value="text.html - source"/>
+    </binding>
+    <binding key="/endif/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/HTML/phpendif.sublime-snippet'">
+        <context name="selector" value="text.html - source"/>
+    </binding>
+    <binding key="/echo/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/HTML/phpecho.sublime-snippet'">
+        <context name="selector" value="text.html - source"/>
+    </binding>
+    <binding key="/print/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/HTML/phpprint.sublime-snippet'">
+        <context name="selector" value="text.html - source"/>
+    </binding>
+    <binding key="/mypr/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/mypr.sublime-snippet'">
+        <context name="selector" value="source.php"/>
+    </binding>
+
+  <!-- HTML -->
+    <binding key="/html/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/HTML/html.sublime-snippet'">
+      <context name="selector" value="text.html - source, meta.scope.between-tag-pair.html"/>
+    </binding>
+    <binding key="/csslink/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/HTML/csslink.sublime-snippet'">
+      <context name="selector" value="text.html - source, meta.scope.between-tag-pair.html"/>
+    </binding>
+    <binding key="/(?i:style)/,tab" command="insertSnippet 'Packages/PowerUser/HTML/style_tag.sublime-snippet'">
+      <context name="selector" value="text.html - source, meta.scope.between-tag-pair.html"/>
+    </binding>
+    <binding key="/(?i:script)/,tab" command="insertSnippet 'Packages/PowerUser/HTML/script_tag.sublime-snippet'">
+      <context name="selector" value="text.html - source, meta.scope.between-tag-pair.html"/>
+    </binding>
+
+  <!-- CSS -->
+  <binding key="/fs/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/fontsize.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/bold/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/bold.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/center/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/center.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/c/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/color.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/bgurl/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/bgurl.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/block/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/block.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/wh/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/wh.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/w/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/width.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/dn/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/dn.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/nowrap/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/nowrap.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/lowercase/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/lowercase.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/uppercase/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/uppercase.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/capitalize/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/capitalize.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/smallcaps/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/smallcaps.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/ls/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/ls.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/abs/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/abs.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/rel/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/rel.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/h/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/h.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/bg/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/bg.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/ff/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/ff.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/lh/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/lh.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/tdn/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/tdn.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/nr/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/nr.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/rx/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/rx.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/ry/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/ry.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/on/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/on.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/ti/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/ti.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/m/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/m.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/m2/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/m2.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/m3/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/m3.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/m4/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/m4.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/p/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/p.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/p2/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/p2.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/p3/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/p3.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/p4/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/p4.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/fl/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/fl.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/fr/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/fr.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/mt/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/mt.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/mr/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/mr.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/mb/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/mb.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/ml/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/ml.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/pt/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/pt.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/pr/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/pr.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/pb/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/pb.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/pl/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/pl.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/npm/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/npm.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/both/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/both.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/b/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/b.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+    <binding key="/bo/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/bo.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/bt/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/bt.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/br/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/br.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/bb/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/bb.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/bl/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/bl.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/t/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/t.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/r/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/r.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/b/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/b.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/l/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/l.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/b0/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/b0.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+  <binding key="/fwn/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/CSS/fwn.sublime-snippet'">
+      <context name="selector" value="source.css"/>
+  </binding>
+
+  <!-- Plain Text Snippets -->
+  <!-- This is the "Comment Banner" snippet from textmate "Source" bundle -->
+  <binding key="/chead/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/Text/textheader.sublime-snippet'">
+      <!-- <context name="selector" value="text.plain"/> -->
+  </binding>
+  
+  <!--
+  Example keybinding showing how you can do commands X amount of times
+  Usage: type 5,q,q it will select 5 lines
+  -->
+  <!-- <binding key="/([0-9]+)/,q,q" command="times $1 expandSelectionTo line"/> -->
+</bindings>

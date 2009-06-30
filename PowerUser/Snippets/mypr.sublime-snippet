@@ -1,0 +1,4 @@
+<!-- See http://www.sublimetext.com/docs/snippets for more information -->
+<snippet>
+  <content><![CDATA[print "<pre>"; print_r(${1:$SELECTION}); print "</pre>";]]></content>
+</snippet>

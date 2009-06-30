@@ -1,0 +1,4 @@
+<!-- See http://www.sublimetext.com/docs/snippets for more information -->
+<snippet>
+  <content><![CDATA[height:${1:100}${2:px};]]></content>
+</snippet>

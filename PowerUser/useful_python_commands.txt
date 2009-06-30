@@ -1,0 +1,77 @@
+You can use all these with Execute[&Replace] selection commands.
+****************************************************************************************************
+
+print "Current date and time using instance attributes:"
+print "Current year: %d" % now.year
+print "Current month: %d" % now.month
+print "Current day: %d" % now.day
+print "Current hour: %d" % now.hour
+print "Current minute: %d" % now.minute
+print "Current second: %d" % now.second
+print "Current microsecond: %d" % now.microsecond
+
+****************************************************************************************************
+
+#print april 2009 plain text calendar :)
+calendar.TextCalendar(calendar.SUNDAY).formatmonth(2009, 4) =      
+
+    April 2009
+Su Mo Tu We Th Fr Sa
+          1  2  3  4
+ 5  6  7  8  9 10 11
+12 13 14 15 16 17 18
+19 20 21 22 23 24 25
+26 27 28 29 30
+
+calendar.TextCalendar(calendar.SUNDAY).formatmonth(datetime.datetime.now().year, datetime.datetime.now().month)
+
+****************************************************************************************************
+
+#print "Day and Date:"
+time.strftime("%a %m/%d/%y", time.localtime()) = Fri 05/01/09
+--------------------------------------------------
+#print "Day, Date :"
+time.strftime("%A, %B %d, %Y", time.localtime()) = Friday, May 01, 2009
+--------------------------------------------------
+#print "Time (12hr) :"
+time.strftime("%I:%M:%S %p", time.localtime()) = 01:21:15 PM
+--------------------------------------------------
+#print "Time (24hr) :"
+time.strftime("%H:%M:%S", time.localtime()) = 13:21:05
+--------------------------------------------------
+#print "DayMonthYear:"
+time.strftime("%d%b%Y", time.localtime()) = 01May2009
+--------------------------------------------------
+#print NOTEPAD Time/date
+time.strftime("%I:%M %p %m/%d/%Y", time.localtime())
+
+****************************************************************************************************
+
+#print day names list
+"\n".join(calendar.day_name) = 
+
+Monday
+Tuesday
+Wednesday
+Thursday
+Friday
+Saturday
+Sunday
+
+****************************************************************************************************
+
+#print string * X times
+"*" * 100
+
+****************************************************************************************************
+
+#print random float number
+random.random()
+
+****************************************************************************************************
+
+****************************************************************************************************
+REGEX NOTES:
+****************************************************************************************************
+Select between quotes:
+(?<!\\)"(.+?)(?<!\\)"
