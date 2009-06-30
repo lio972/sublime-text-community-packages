@@ -1,0 +1,4 @@
+<!-- See http://www.sublimetext.com/docs/snippets for more information -->
+<snippet>
+  <content><![CDATA[<script type="${1:text/javascript}">$2</style>]]></content>
+</snippet>

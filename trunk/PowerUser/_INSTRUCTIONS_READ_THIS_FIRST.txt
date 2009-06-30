@@ -1,0 +1,6 @@
+----------------------------------------------------------------------------
+THESE CHANGES ARE ONLY NEEDED IF YOU WANT TO HAVE MY SAME SETTINGS AND THEME
+----------------------------------------------------------------------------
+
+COPY: User File Type.sublime-options
+TO: Packages/Default/Options

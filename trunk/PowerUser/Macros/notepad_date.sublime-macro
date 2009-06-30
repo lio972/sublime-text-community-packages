@@ -1,0 +1,4 @@
+insertAndDecodeCharacters "time.strftime(\"%I:%M %p %m/%d/%Y\", time.localtime())"
+times 20 move words -1 extend
+execSelReplace
+move characters 1

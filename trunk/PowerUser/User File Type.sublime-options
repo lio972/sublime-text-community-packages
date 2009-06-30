@@ -1,0 +1,29 @@
+# Settings in here override those this Default File Type.sublime-options, and
+# are overridden in turn by file type specific options.
+# This is a good place to put your own settings and not have them overwritten
+# when upgrading.
+
+font Anonymous 12
+#font Envy Code R 10
+#font Terminus 12
+#font ProFontWindows 9
+#font ProggyClean 12
+#font Bitstream Vera Sans Mono 12
+#font Dina 10
+#font Monaco 10
+#font Andale Mono 12
+#font Pragmata 14
+#font ProggyOpti 12
+tabSize 2
+translateTabsToSpaces true
+wordWrap false
+colorscheme Packages/PowerUser/PowerUser.tmTheme
+detectIndentation false
+
+autoMatchEnabled true
+matchBrackets true
+matchBracketsContent true
+matchBracketsSquare true
+matchBracketsBraces true
+matchBracketsAngle true
+drawWhiteSpace all
