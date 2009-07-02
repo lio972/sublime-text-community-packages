@@ -21,6 +21,8 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
 
   <!-- Remapped toggle record to (ctrl+period) -->
   <binding key="ctrl+period" command="toggleRecord" />
+  <!-- Remapped playback macro to (ctrl+shift+period) -->
+  <binding key="ctrl+shift+period" command="runMacro" />
 
   <!-- Insert open/close tab - textmate way -->
   <binding key="ctrl+comma" command="insertSnippet 'Packages/PowerUser/Snippets/HTML/textmate_tag.sublime-snippet'">
@@ -203,7 +205,7 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
   Whenever you add new files to your project you need to reload it in order for the files to be shown
   when you do ctrl+p "open file in project"
   -->
-  <binding key="alt+shift+r" command="reloadProject"/>
+  <binding key="ctrl+shift+r" command="reloadProject"/>
 
   <!-- Date/Calendar/Weekdays Macros (snippets) -->
   <binding key="/date/,tab" command="runMacroFileSilently 'Packages/PowerUser/Macros/notepad_date.sublime-macro'" />
