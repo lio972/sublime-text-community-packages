@@ -12,6 +12,7 @@ Plugin helper modules:
 * quickpanelcols
 * tmscopes
 * sublimeconstants
+* indentation
 
 3rd Party Libs:
 ---------------
@@ -36,6 +37,11 @@ Patches
 
 Changes
 =======
+
+07/12/09
+--------
+
+*   Added in indentation helpers
 
 06/28/09
 --------
