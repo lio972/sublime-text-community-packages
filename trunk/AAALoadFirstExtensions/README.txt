@@ -19,7 +19,7 @@ Plugin helper modules:
 
 These are all placed on sys.path with use of a GetShortPathName call.
 
-*   lxml
+*   lxml        	2.2.2
 *   comtypes
 *   SendKeys
 *   docutils
@@ -42,6 +42,7 @@ Changes
 --------
 
 *   Added in indentation helpers
+*   Update lxml to version 2.2.2
 
 06/28/09
 --------
