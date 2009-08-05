@@ -1,0 +1,19 @@
+<menu>
+	<menu caption="Mercurial">
+		<item caption="Commit All Changes" command="mercurial commit" />
+		<separator />
+		<item caption="Add Current File to Mercurial" command="mercurial addCurrent" />
+		<item caption="Remove Current File from Mercurial" command="mercurial removeCurrent" />
+		<separator />
+		<item caption="Status of current repository" command="mercurial status" />
+		<item caption="Diff between this and the latest version in repository" command="mercurial diff" />
+		<item caption="Revert this file to latest version from repository" command="mercurial revert" />
+		<separator />
+		<item caption="Initialize New Repository" command="mercurial initCurrent" />
+		<separator />
+		<item caption="Push all changes to remote repository" command="mercurial push" />
+		<item caption="Pull all changes from remote repository (No update)" command="mercurial pull" />
+		<item caption="Update all local copies with remote copies (Manually pull first)" command="mercurial update" />
+		<item caption="Pull and update all local files from remote repository" command="mercurial pullAndUpdate" />
+	</menu>
+</menu>
