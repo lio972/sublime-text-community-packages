@@ -1,0 +1,13 @@
+<bindings>
+	
+	<!--
+		Mercurial Bindings
+		Add these into your own keymap file, if you like.
+		You can map the other commands, but these will most likely be the most frequently used.
+	-->
+	<binding key="ctrl+alt+shift+c" command="mercurial commit" />
+	<binding key="ctrl+alt+shift+a" command="mercurial addCurrent" />
+	<binding key="ctrl+alt+shift+r" command="mercurial removeCurrent" />
+	<binding key="ctrl+alt+shift+d" command="mercurial diff" />
+	
+</bindings>
