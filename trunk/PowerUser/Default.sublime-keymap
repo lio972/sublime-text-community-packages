@@ -4,6 +4,19 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
 -->
 <bindings>
 
+  <!--
+  By default in sublime you have to select more than one line if you want to indent,
+  With this you don't have to select any line if you want to indent just 1 line, and that's what I'm used to.
+  Sp, comment out the line if you don't want this behavior.
+   -->
+  <binding key="shift+tab" command="unindent" />
+
+  <!-- Reverse Selection Directions -- very cool & useful :) -->
+  <binding key="ctrl+r" command="reverseSelectionDirections" />
+  
+  <!-- Reverse String Command == dnammoC gnirtS esreveR -->
+  <binding key="alt+k,r" command="reverseString" />
+
   <!-- Column Select (Experimental) -->
   <binding key="alt+shift+q" command="selectColumn" />
 

@@ -22,6 +22,45 @@ class ScopeToClipboardCommand(sublimeplugin.TextCommand):
   def run(self, view, args):
     sublime.setClipboard(view.syntaxName(view.sel()[0].begin()).strip());
     sublime.statusMessage('Scope copied to clipboard')
+    
+class ReverseStringCommand(sublimeplugin.TextCommand):
+  def run(self, view, args):
+    for region in view.sel():
+      sublime.statusMessage('reversing strings!')
+      s = view.substr(region)
+      s = s[::-1]
+      view.replace(region, s)
+
+class ReverseSelectionDirections(sublimeplugin.TextCommand):
+  def run(self, view, args):
+    sels = [sublime.Region(sel.b, sel.a) for sel in view.sel()]
+    view.sel().clear()
+    map(view.sel().add, sels)
+
+class OpenFileUnderCursorCommand(sublimeplugin.WindowCommand):
+  def run(self, window, args):
+    curdir = os.getcwdu()
+    view = window.activeView()
+    for region in view.sel():
+      s = view.substr(region)
+      if(s != ''):
+        f = curdir + '\\' + s
+        
+        if(os.path.exists(f)):
+          window.openFile(f)
+        else:
+          sublime.errorMessage('The file under cursor does not exists in the directory of the current file')
+      else:
+        # f = curdir + '\\' + str(args[1])
+        word_under_cursor = view.substr(view.word(view.sel()[0].begin()))
+        dot_pos = view.find('\.',view.sel()[0].begin())
+        if(dot_pos):
+          f = view.substr(view.word(dot_pos))
+          
+      if(os.path.exists(f)):
+        window.openFile(f)
+      else:
+        sublime.errorMessage('The file under cursor does not exists in the directory of the current file')
 
 """
 Nick (sublimator) functions :)
