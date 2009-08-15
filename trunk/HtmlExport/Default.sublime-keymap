@@ -1,5 +1,0 @@
-<bindings>
-<!-- 4 htmlexport Package -->
-    <binding key="ctrl+alt+shift+e,ctrl+alt+shift+l" command="htmlExport withLineNumbers"/>
-    <binding key="ctrl+alt+shift+e,ctrl+alt+shift+e" command="htmlExport"/>    
-</bindings>

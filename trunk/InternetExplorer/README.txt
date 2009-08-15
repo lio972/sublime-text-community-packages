@@ -1,1 +1,0 @@
-Will open an instance of InternetExplorer using comtypes. Refreshes InternetExplorer `onPostSave`. Simple but predictable and effective.

@@ -1,7 +1,0 @@
-<bindings>
-    <binding key="ctrl+shift+v" command="relativeIndent paste"/>
-    <binding key="ctrl+shift+x" command="relativeIndent cut"/>
-    <binding key="ctrl+shift+c" command="relativeIndent copy"/>
-    <binding key="ctrl+shift+u" command="unexpandTabs" />
-    <binding key="ctrl+shift+e" command="expandTabs set" />
-</bindings>

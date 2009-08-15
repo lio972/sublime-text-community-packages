@@ -1,4 +1,0 @@
-<bindings>
-<!-- 4 winmerge Package -->
-    <binding key="ctrl+alt+shift+m" command="winMerge"/>
-</bindings>

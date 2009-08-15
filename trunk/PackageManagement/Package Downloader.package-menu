@@ -1,4 +1,0 @@
-<menu>
-    <!-- <item caption="Download &amp;Packages" command="downloadPackagesOnSublimeTextWiki"/> -->
-    <item caption="Browse &amp;Packages" command="browsePackagesOnSublimeTextWiki"/>
-</menu>

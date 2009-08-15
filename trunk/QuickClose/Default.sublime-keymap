@@ -1,4 +1,0 @@
-<bindings>
-  <binding key="ctrl+alt+f4" command="quickClose" />
-  <!-- <binding key="ctrl+shift+d" command="closeAndDelete" /> -->
-</bindings>
