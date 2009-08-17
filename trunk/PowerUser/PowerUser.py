@@ -10,6 +10,16 @@ import string, textwrap, re
 import __builtin__, sys, os, calendar, datetime, random, time, cgi, urllib
 from htmlentitydefs import name2codepoint as n2cp
 
+
+"""
+Save current buffer (tab) and exits sublime but preserves the session :)
+"""
+class saveAndExit(sublimeplugin.TextCommand):
+  def run(self, view, args):
+    window = view.window();
+    window.runCommand('save')
+    window.runCommand('hotExit')
+
 """
 Copies Scope to Clipboard
 ---
