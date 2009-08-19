@@ -51,6 +51,9 @@ class MercurialCommand(sublimeplugin.TextCommand):
 		elif(args[0]=="revert"):
 			Results = doSystemCommand("hg revert " + str(bufferName))
 			displayResults(Results, "Window", view)
+		elif(args[0]=="status"):
+			Results = doSystemCommand("hg status")
+			displayResults(Results, "Window", view)
 
 # Runs a system command from the command line
 # Captures and returns both stdout and stderr as an array, in that respective order
