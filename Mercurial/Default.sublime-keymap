@@ -9,5 +9,6 @@
 	<binding key="ctrl+alt+shift+a" command="mercurial addCurrent" />
 	<binding key="ctrl+alt+shift+r" command="mercurial removeCurrent" />
 	<binding key="ctrl+alt+shift+d" command="mercurial diff" />
+	<binding key="ctrl+alt+shift+s" command="mercurial status" />
 	
 </bindings>
