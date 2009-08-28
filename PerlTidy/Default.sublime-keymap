@@ -1,0 +1,5 @@
+<bindings>
+	<binding key="ctrl+t" command="perlTidy">
+		<context name="selector" value="source.perl"/>
+	</binding>	
+</bindings>
