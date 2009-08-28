@@ -65,7 +65,7 @@ class PerlTidyCommand(sublimeplugin.TextCommand):
 
 		if error:
 			print "\nPerlTidy error:\n", error
-			sublime.statusMessage("Error detected, check output panel for more information")
+			sublime.messageBox("PerlTidy: Error detected, check output panel for more information")
 
 	def isEnabled(self, view, args):
 		# enabled for Perl files, with at most 1 selection region
