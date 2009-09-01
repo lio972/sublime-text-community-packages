@@ -94,7 +94,7 @@ class ReloadProjectCommand(sublimeplugin.WindowCommand):
 
 class StripTrailingOnSaveCommand(sublimeplugin.TextCommand):
 
-  def strip_trailing(view, save_recent_indentation=True, ignore='string'):
+  def strip_trailing(self, view, save_recent_indentation=True, ignore='string'):
     trailing_spaces = view.findAll('[ \t]+(?![^\n])')
     if not trailing_spaces: return
 
