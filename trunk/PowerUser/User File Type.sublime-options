@@ -3,9 +3,10 @@
 # This is a good place to put your own settings and not have them overwritten
 # when upgrading.
 
-font Anonymous 12
-#font Envy Code R 10
-#font Terminus 12
+font Envy Code R 16
+#font Anonymous 14
+#font Terminus 18
+#font Inconsolata 14
 #font ProFontWindows 9
 #font ProggyClean 12
 #font Bitstream Vera Sans Mono 12
@@ -14,6 +15,7 @@ font Anonymous 12
 #font Andale Mono 12
 #font Pragmata 14
 #font ProggyOpti 12
+
 tabSize 2
 translateTabsToSpaces true
 wordWrap false
@@ -27,3 +29,9 @@ matchBracketsSquare true
 matchBracketsBraces true
 matchBracketsAngle true
 drawWhiteSpace all
+
+lineNumbers true
+gutter true
+showMinimap false
+
+wordSeparators ./\\()"'-:,.;<>~!@#$%^&*|+=[]{}`~?
