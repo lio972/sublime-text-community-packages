@@ -80,12 +80,16 @@ have something like:
 in your file. You then need to reference this lemma later on. Invoke the
 "texRef" command and pick from the list. In particular, if you begin writing
 "lem" and then hit ctrl+alt+r, only labels beginning with "lem" are shown. The
-"\ref{...}" command is inserted for you.
+"\ref{...}" command is NOT automatically inserted for you. So, the typical use
+case is to enter "\ref{" (which generates a matching "}" and places the cursor
+in between the braces), hit ctrl+alt+r, and choose the label. Notice that if
+you have too many labels, only a few are shown (this is Sublime Text
+functionality---I'm not clear how these are chosen).
 
 Similarly for citations: entries, however, are drawn from a bibtex file
 (specified by the \bibliography command in your tex file). This pops up a
 quick panel that shows both the key and the title of the article or book.
-Again, "\cite{...}" is automatically inserted, and the words "cite" is
+The "\cite{...}" command is automatically inserted, and the words "cite" is
 highlighted so you can change it to, e.g. "citep" or "citet" if you use
 natbib.
 
