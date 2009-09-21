@@ -1,0 +1,22 @@
+<bindings>
+	<binding key="/(lp|rp|a|b|c|d|e|f|g|h|i|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|<=|>=|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z)/,ctrl+backslash" command='texMacro $1'>
+		<context name="selector" value="text.tex.latex"/>
+	</binding>
+	<binding key="ctrl+alt+e" command="showTeXError">
+		<context name="selector" value="text.tex.latex"/>
+	</binding>
+	<binding key="ctrl+alt+r" command="texRef">
+		<context name="selector" value="text.tex.latex"/>
+	</binding>
+	<binding key="ctrl+alt+c" command="texCite">
+		<context name="selector" value="text.tex.latex"/>
+	</binding>	<binding key="ctrl+alt+p" command="displayName">
+		<context name="selector" value="text.tex.latex"/>
+	</binding>
+	<binding key="ctrl+alt+v" command="viewPDF">
+		<context name="selector" value="text.tex.latex"/>
+	</binding>
+	<binding key="ctrl+alt+t" command="texify">
+		<context name="selector" value="text.tex.latex"/>
+	</binding>
+</bindings>
