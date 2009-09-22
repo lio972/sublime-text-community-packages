@@ -13,7 +13,8 @@ class ViewPDFCommand(sublimeplugin.WindowCommand):
 		if texExt.upper() != ".TEX":
 			sublime.errorMessage("%s is not a TeX source file: cannot view." % (os.path.basename(view.fileName()),))
 			return
-		pdfFile = texFile + u'.pdf'
-		sumatra = u'SumatraPDF -reuse-instance -inverse-search \"sublimetext %f:%l\" '
+		quotes = "\""
+		pdfFile = quotes + texFile + u'.pdf' + quotes
+		sumatra = u'SumatraPDF -reuse-instance -inverse-search \"sublimetext \\\"%f\\\":%l\" '
 		print sumatra + pdfFile
 		Popen(sumatra + pdfFile)
