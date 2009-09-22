@@ -41,9 +41,10 @@ upon clicking one line, but you can reopen it via the showTeXErrors command.
 
 
 REQUIRES: 
-* MiKTeX distribution (www.miktex.org); I have ver. 2.7
-* SumatraPDF previewer, ver. 0.93 or recent preview release
+* MiKTeX distribution (www.miktex.org); I have ver. 2.7; ver. 2.8 also works
+* SumatraPDF previewer, ver. 0.93, 0.94 or recent preview release
  (http://blog.kowalczyk.info/software/sumatrapdf/)
+* Make sure that both SumatraPDF and Sublime Text are on the %PATH%
 
 SHORTCUTS: ctrl+alt+t (texify), ctrl+alt+e (show tex errors)
 

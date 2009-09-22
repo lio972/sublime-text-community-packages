@@ -14,6 +14,7 @@ from subprocess import Popen, PIPE, STDOUT
 # information is already in <basename>.log
 
 DEBUG = 0
+quotes = "\""
 
 class TexifyCommand(sublimeplugin.WindowCommand):
 	def run(self, window, args):
@@ -27,7 +28,7 @@ class TexifyCommand(sublimeplugin.WindowCommand):
 			print "saving..."
 			window.runCommand('save')
 		texify = u'texify -b -p --tex-option=\"--synctex=1\" '
-		cmd = texify + texFile + texExt
+		cmd = texify + quotes + texFile + texExt + quotes
 		if DEBUG:
 			output = open(texFile + ".texify", 'w')
 			output.write(cmd + "\n")
