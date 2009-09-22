@@ -4,11 +4,14 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
 -->
 <bindings>
 
+  <binding key="alt+equals" command="zoomIn" />
+  <binding key="alt+minus" command="zoomOut" />
+
   <!-- Save and Exit + Preserve Session -->
   <binding key="ctrl+alt+s" command="saveAndExit" />
   <!-- Exit + Preserve Session -->
   <binding key="alt+f4" command="hotExit" />
-  
+
   <!--
   By default in sublime you have to select more than one line if you want to indent,
   With this you don't have to select any line if you want to indent just 1 line, and that's what I'm used to.
@@ -21,7 +24,7 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
 
   <!-- Reverse Selection Directions - very cool & useful :) -->
   <binding key="ctrl+r" command="reverseSelectionDirections" />
-  
+
   <!-- Reverse String Command == dnammoC gnirtS esreveR -->
   <binding key="alt+k,r" command="reverseString" />
 
@@ -82,9 +85,9 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
 
   <binding key="ctrl+e" command="runMacroFileSilently 'Packages/Default/Delete Line.sublime-macro'" />
 
-  <!-- 
+  <!--
   When cutting a blank line don't override the clipboard just kill the line,
-  Nobody wants empty lines in their clipbard :P    
+  Nobody wants empty lines in their clipbard :P
    -->
   <binding key="ctrl+x" command="deleteLine">
    <context name="noPreceedingText" value="\S" />
@@ -455,11 +458,11 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
   <binding key="/chead/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/Text/textheader.sublime-snippet'">
       <!-- <context name="selector" value="text.plain"/> -->
   </binding>
-  
+
   <!--
   Example keybinding showing how you can do commands X amount of times
   Usage: type 5,q,q it will select 5 lines
   -->
   <!-- <binding key="/([0-9]+)/,q,q" command="times $1 expandSelectionTo line"/> -->
-  
+
 </bindings>

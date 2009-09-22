@@ -3,16 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>comment</key>
-	<string>Created by minimal design, inspired by GANDI website</string>
+	<string>originally created by minimal design, originally inspired by GANDI website -- modified by EJ12N :)</string>
 	<key>name</key>
-	<string>minimal Theme</string>
+	<string>PowerUser Theme</string>
 	<key>settings</key>
 	<array>
 		<dict>
 			<key>settings</key>
 			<dict>
 				<key>background</key>
-				<string>#111111</string>
+				<string>#000000</string>
 				<key>caret</key>
 				<string>#FF9900</string>
 				<key>foreground</key>

@@ -453,6 +453,24 @@ THEY ARE HERE BECAUSE I USE THEM AND INSTEAD OF DOWNLOADING A BUNCH OF PACKAGES
 I CAN JUST USE THIS ONE :) -- VERY CONVINIENT WHEN YOU WORK IN MORE THAN 1 PC.
 """
 
+class ZoomInCommand(sublimeplugin.TextCommand):
+   def run(self, view, args):
+      current_font = view.options().get('font')
+      (font, sep, size) = current_font.rpartition(" ")
+      new_size = int(size) + 1
+      new_font = font + " " + str(new_size)
+      view.options().set('font', new_font)
+      print "set new font to: " + new_font
+      
+class ZoomOutCommand(sublimeplugin.TextCommand):
+   def run(self, view, args):
+      current_font = view.options().get('font')
+      (font, sep, size) = current_font.rpartition(" ")
+      new_size = int(size) - 1
+      new_font = font + " " + str(new_size)
+      view.options().set('font', new_font)
+      print "set new font to: " + new_font
+    
 """
 Excellent plugins by gpfsmurf
 """
