@@ -34,10 +34,11 @@ right back to the corresponding point in the source tex file.
 
 The previewer is NOT automatically started; use the viewPDF command.
 
-If errors are detected, a quick panel is shown with a list of "helpful" error
-messages taken from tex's log file. Click on any line that contains a line
-number, and you will be taken to the offending line. The quick-panel is closed
-upon clicking one line, but you can reopen it via the showTeXErrors command.
+If errors or warnings are detected, a quick panel is shown with a list of
+"helpful" messages taken from tex's log file. Click on any line that contains a
+line number, and you will be taken to the offending line. The quick-panel is
+closed upon clicking one line, but you can reopen it via the showTeXErrors
+command.
 
 
 REQUIRES: 

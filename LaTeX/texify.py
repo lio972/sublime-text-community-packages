@@ -27,7 +27,9 @@ class TexifyCommand(sublimeplugin.WindowCommand):
 		if view.isDirty():
 			print "saving..."
 			window.runCommand('save')
-		texify = u'texify -b -p --tex-option=\"--synctex=1\" '
+		# --max-print-line makes sure that no line is truncated, or we would not catch
+		# line numbers in some warnings
+		texify = u'texify -b -p --tex-option=\"--synctex=1\" --tex-option=\"--max-print-line=200\" '
 		cmd = texify + quotes + texFile + texExt + quotes
 		if DEBUG:
 			output = open(texFile + ".texify", 'w')
@@ -49,6 +51,8 @@ class ShowTeXErrorCommand(sublimeplugin.WindowCommand):
 		log = logfile.readlines()
 		logfile.close()
 		errors = [line for line in log if line[0:2] in ['! ','l.']]
+		warnings = [line for line in log if "LaTeX Warning: " in line]
+		panelContent = []
 		if errors:
 			print "There were errors.\n"
 			skip = 0
@@ -57,23 +61,46 @@ class ShowTeXErrorCommand(sublimeplugin.WindowCommand):
 				if skip:
 					print ""
 				skip = 1-skip
-			panelText = ["There were errors in your LaTeX source", 
-						 "Click on any message below that shows a line number",
-						 ""]
-			window.showQuickPanel("", "gotoTeXError", panelText + errors)
+			panelContent.append("There were errors in your LaTeX source") 
+			panelContent.append("Click on any message below that shows a line number")
+			panelContent.append("")
+			panelContent.extend(errors)
 		else:
-			print "No errors. Goodbye!\n"
-
+			print "No errors.\n"
+		if warnings:
+			print "There were no warnings.\n"
+			skip = 0
+			for warning in warnings:
+				print warning[15:]
+				if skip:
+					print ""
+				skip = 1-skip
+			if errors:
+				panelContent.append("")
+				panelContent.append("There were also warnings.") 
+				panelContent.append("You can click on these, too.")
+			else:
+				panelContent.append("There were warnings in your LaTeX source") 
+				panelContent.append("Click on any message below that shows a line number")
+			panelContent.append("")
+			panelContent.extend(warnings)
+		else:
+			print "No warnings.\n"
+		
+		window.showQuickPanel("", "gotoTeXError", panelContent)
 
 
 
 		
 class GotoTeXErrorCommand(sublimeplugin.WindowCommand):
 	def run(self, window, args):
-		error = args[0]
+		message = args[0]
 #		print error
-		p = re.compile('[^\d]*(\d*)')
-		lineno = p.search(error).group(1)
+		if "LaTeX Warning:" in message:
+			p = re.compile('input line (\d*)')
+		else:
+			p = re.compile('[^\d]*(\d*)')
+		lineno = p.search(message).group(1)
 		if lineno == '':
 			return
 #		print lineno
