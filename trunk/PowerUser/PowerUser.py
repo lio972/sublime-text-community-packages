@@ -27,12 +27,12 @@ Useful for when you are creating snippets or macros and you want to assign it
 to a certain scope only. By default Sublime Text only allows you to see
 the current scope, so you have to memorize it and then write it. That's gone with
 this command :) 
-""" 
+"""
 class ScopeToClipboardCommand(sublimeplugin.TextCommand):
   def run(self, view, args):
     sublime.setClipboard(view.syntaxName(view.sel()[0].begin()).strip());
     sublime.statusMessage('Scope copied to clipboard')
-    
+
 class ReverseStringCommand(sublimeplugin.TextCommand):
   def run(self, view, args):
     for region in view.sel():
@@ -55,7 +55,7 @@ class OpenFileUnderCursorCommand(sublimeplugin.WindowCommand):
       s = view.substr(region)
       if(s != ''):
         f = curdir + '\\' + s
-        
+
         if(os.path.exists(f)):
           window.openFile(f)
         else:
@@ -66,7 +66,7 @@ class OpenFileUnderCursorCommand(sublimeplugin.WindowCommand):
         dot_pos = view.find('\.',view.sel()[0].begin())
         if(dot_pos):
           f = view.substr(view.word(dot_pos))
-          
+
       if(os.path.exists(f)):
         window.openFile(f)
       else:
@@ -102,7 +102,7 @@ class StripTrailingOnSaveCommand(sublimeplugin.TextCommand):
       for sel in view.sel():
         if not sel.empty(): continue
         line = view.line(sel)
-  
+
         if view.substr(line).isspace() and sel.end() == line.end():
           pos = bisect.bisect(trailing_spaces, line) - 1
           trailing_sel = trailing_spaces[pos]
@@ -113,7 +113,7 @@ class StripTrailingOnSaveCommand(sublimeplugin.TextCommand):
     for sel in reversed(trailing_spaces):
       if ignore:
         pt_range = xrange(sel.begin(), sel.end())
-  
+
         if any(view.matchSelector(pt, ignore) for pt in pt_range):
           continue
 
@@ -121,7 +121,7 @@ class StripTrailingOnSaveCommand(sublimeplugin.TextCommand):
 
   def onPreSave(self, view):
     self.strip_trailing(view)
-  
+
   def run(self, view, args):
     self.strip_trailing(view, ignore=None, save_recent_indentation=False)
 
@@ -190,10 +190,10 @@ class UndoEntitiesCommand(sublimeplugin.TextCommand):
           cp = n2cp.get(ent)
           if cp: return unichr(cp)
           else: return match.group()
-  
+
         entity_re = re.compile(r'&(#?)(x?)(\w+);')
         return entity_re.subn(substitute_entity, string)[0]
-  
+
     for region in view.sel():
       # line = view.line(region)
       s = view.substr(region)
@@ -453,6 +453,35 @@ THEY ARE HERE BECAUSE I USE THEM AND INSTEAD OF DOWNLOADING A BUNCH OF PACKAGES
 I CAN JUST USE THIS ONE :) -- VERY CONVINIENT WHEN YOU WORK IN MORE THAN 1 PC.
 """
 
+
+"""
+ZOOMIN / ZOOMOUT
+----------------
+IF YOU WANT TO BIND THESE COMMANDS TO CTRL+MWHEELUP/CTRL+MWHEELDOWN
+YOU CAN USE AUTOHOTKEY TO ACHIEVE THIS.
+USE THE FOLLOWING SCRIPT.
+THIS WORKS FOR AS LONG AS THE ZOOMIN/ZOOMOUT COMMAND ARE BINDED TO
+<binding key="alt+equals" command="zoomIn" />
+<binding key="alt+minus" command="zoomOut" />
+IF YOU CHANGE THE BINDINGS THEN U MUST MODIFY THE SCRIPT.
+
+;=========================================================
+;Sublime ZoomIn/ZoomOut
+;=========================================================
+^WheelUp::
+  IfWinActive, ahk_class SKMainWindowClass
+    Send !{=}
+    return
+^WheelDown::
+  IfWinActive, ahk_class SKMainWindowClass
+    Send !{-}
+    return
+;=========================================================
+;END Sublime ZoomIn/ZoomOut
+;=========================================================
+
+HAPPY ZOOMING!
+"""
 class ZoomInCommand(sublimeplugin.TextCommand):
    def run(self, view, args):
       current_font = view.options().get('font')
@@ -461,7 +490,7 @@ class ZoomInCommand(sublimeplugin.TextCommand):
       new_font = font + " " + str(new_size)
       view.options().set('font', new_font)
       print "set new font to: " + new_font
-      
+
 class ZoomOutCommand(sublimeplugin.TextCommand):
    def run(self, view, args):
       current_font = view.options().get('font')
@@ -470,7 +499,7 @@ class ZoomOutCommand(sublimeplugin.TextCommand):
       new_font = font + " " + str(new_size)
       view.options().set('font', new_font)
       print "set new font to: " + new_font
-    
+
 """
 Excellent plugins by gpfsmurf
 """
@@ -579,17 +608,17 @@ http://www.sublimetext.com/forum/viewtopic.php?p=1772#p1772
 """
 class SingleRightEraseByCharClassCommand(sublimeplugin.TextCommand):
   def run(self, view, args):
-  
+
     # patterns
     pt_s = re.compile(r"\s")
     pt_w = re.compile(r"\w")
     pt_o = re.compile(r"[^\w\s]")
-  
+
     sz = view.size()
-  
+
     for region in view.sel():
        pos = region.begin()
-  
+
        # check first char
        if pt_w.match(view.substr(pos)) :
           pt = pt_w
@@ -597,7 +626,7 @@ class SingleRightEraseByCharClassCommand(sublimeplugin.TextCommand):
           pt = pt_s
        else :
           pt = pt_o
-  
+
        # removes according to first char
        if pt.match(view.substr(pos)) and pos < sz :
           view.erase(sublime.Region(pos,pos+1))
