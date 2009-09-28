@@ -26,6 +26,9 @@ class TexRefCommand(sublimeplugin.TextCommand):
 		# The drop-down completion menu contains at most 16 items, so
 		# show selection panel if we have more.
 		print prefix, len(fcompletions)
+		if len(fcompletions) == 0:
+			sublime.errorMessage("No references starting with %s!" % (prefix,))
+			return
 		if len(fcompletions) <= 16:
 			view.showCompletions(point, prefix, fcompletions)
 		else:
