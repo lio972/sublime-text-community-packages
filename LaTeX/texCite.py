@@ -28,9 +28,14 @@ class TexCiteCommand(sublimeplugin.TextCommand):
 		texfiledir = os.path.dirname(view.fileName())
 		bibfname = os.path.normpath(texfiledir + os.path.sep + bibfname)
 		print bibfname 
-		bibf = open(bibfname)
-		bib = bibf.readlines()
-		bibf.close()
+		try:
+			bibf = open(bibfname)
+		except IOError:
+			sublime.errorMessage("Cannot open bibliography file %s !" % (bibfname,))
+			return
+		else:
+			bib = bibf.readlines()
+			bibf.close()
 		kp = re.compile(r'@[^\{]+\{(.+),')
 		tp = re.compile(r'\btitle\b[^\{]+\{(.+)\}', re.IGNORECASE)
 		kp2 = re.compile(r'([^\t]+)\t*')
@@ -44,7 +49,10 @@ class TexCiteCommand(sublimeplugin.TextCommand):
 		else:
 			prefix = "" # in case it's {}
 			fcompletions = completions
-#		view.showCompletions(point, prefix, fcompletions)
+		# are there any completions?
+		if len(fcompletions) == 0:
+			sublime.errorMessage("No bibliography keys start with %s!" % (prefix,))
+			return
 		
 		def onSelect(i):
 			key = kp2.search(fcompletions[i]).group(1)

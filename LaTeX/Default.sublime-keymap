@@ -10,13 +10,20 @@
 	</binding>
 	<binding key="ctrl+alt+c" command="texCite">
 		<context name="selector" value="text.tex.latex"/>
-	</binding>	<binding key="ctrl+alt+p" command="displayName">
+	</binding>	
+	<binding key="ctrl+alt+p" command="displayName">
 		<context name="selector" value="text.tex.latex"/>
 	</binding>
 	<binding key="ctrl+alt+v" command="viewPDF">
 		<context name="selector" value="text.tex.latex"/>
 	</binding>
 	<binding key="ctrl+alt+t" command="texify">
+		<context name="selector" value="text.tex.latex"/>
+	</binding>
+	<binding key="ctrl+shift+rightbracket" command="latexCommand">
+		<context name="selector" value="text.tex.latex"/>
+	</binding>
+	<binding key="ctrl+shift+leftbracket" command="latexEnvironment">
 		<context name="selector" value="text.tex.latex"/>
 	</binding>
 </bindings>
