@@ -1,5 +1,8 @@
 <bindings>
 	<binding key="ctrl+t" command="perlTidy">
 		<context name="selector" value="source.perl"/>
-	</binding>	
+	</binding>
+	<binding key="ctrl+shift+t" command="perlTidy runPerl">
+		<context name="selector" value="source.perl,text.plain"/>
+	</binding>
 </bindings>
