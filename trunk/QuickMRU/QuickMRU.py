@@ -48,7 +48,7 @@ class QuickMRUCommand(sublimeplugin.WindowCommand):
 		db = self.db
 		latest       = sorted(db, key=lambda x:db[x]['date'   ], reverse=True)
 		mostFrequent = sorted(db, key=lambda x:db[x]['counter'], reverse=True)
-		files = set(mostFrequent[:100] + latest[:100])
+		files = set(mostFrequent[:200] + latest[:200])
 		newDB = {}
 		for x in files:
 			newDB[x]=db[x]
@@ -70,10 +70,10 @@ class QuickMRUCommand(sublimeplugin.WindowCommand):
 
 		self.dumpDB()
 
-		# if the DB exceeds 128kb, trim it
+		# if the DB is becoming too large, trim it
 		file_stats = os.stat(self.dbfilename)
 		file_size = file_stats[stat.ST_SIZE]
-		if file_size >= 128 * 1024**2:
+		if file_size >= 256 * 1024**2:
 			self.trimDB()
 
 	def getDesc(self, item):
@@ -100,11 +100,11 @@ class QuickMRUCommand(sublimeplugin.WindowCommand):
 		latest       = sorted(db, key=lambda x:db[x]['date'   ], reverse=True)
 		mostFrequent = sorted(db, key=lambda x:db[x]['counter'], reverse=True)
 		files = sorted(
-			set(mostFrequent[:10] + latest[:10]),
+			set(mostFrequent[:20] + latest[:20]),
 			key=lambda x:db[x]['date'],
 			reverse=True)
 
-		# remove unavailable files (i.e. deleted, on a removable drive, etc)
+		# hide unavailable files (i.e. deleted, on a removable drive, etc)
 		files = [f for f in files if f and path.isfile(f)]
 
 		display = [self.getDesc(f) for f in files]
