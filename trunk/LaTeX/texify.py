@@ -29,16 +29,23 @@ class TexifyCommand(sublimeplugin.WindowCommand):
 		cmd = texify + quotes + texFile + texExt + quotes
 		print "\n\nTexify executing command:"
 		print cmd
+		sublime.statusMessage("Texifying %s..." % (texFile + texExt,))
 		p = Popen(cmd, stdout=PIPE, stderr=STDOUT, shell=False)
 		(stdoutdata, stderrdata) = p.communicate()
 		window.runCommand('showTeXError')
+		sublime.statusMessage("Done")
 
 class ShowTeXErrorCommand(sublimeplugin.WindowCommand):
 	def run(self, window, args):
 		texFile = os.path.splitext(window.activeView().fileName())[0]
-		logfile = open(texFile + ".log")
-		log = logfile.readlines()
-		logfile.close()
+		try:
+			logfile = open(texFile + ".log")
+		except IOError:
+			sublime.errorMessage("Cannot open log file %s!" % (texFile + ".log",))
+			return
+		else:
+			log = logfile.readlines()
+			logfile.close()
 		errors = [line for line in log if line[0:2] in ['! ','l.']]
 		warnings = [line for line in log if "LaTeX Warning: " in line]
 		panelContent = []

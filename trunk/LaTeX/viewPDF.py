@@ -17,4 +17,9 @@ class ViewPDFCommand(sublimeplugin.WindowCommand):
 		pdfFile = quotes + texFile + u'.pdf' + quotes
 		sumatra = u'SumatraPDF -reuse-instance -inverse-search \"sublimetext \\\"%f\\\":%l\" '
 		print sumatra + pdfFile
-		Popen(sumatra + pdfFile)
+		try:
+			Popen(sumatra + pdfFile)
+		except WindowsError:
+			sublime.errorMessage("Cannot launch SumatraPDF. Make sure it is on your PATH.")
+
+			

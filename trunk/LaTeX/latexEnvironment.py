@@ -8,5 +8,6 @@ class latexEnvironmentCommand(sublimeplugin.TextCommand):
 	def run(self, view, args):
 		currword = view.word(view.sel()[0])
 		command = view.substr(currword)
-		view.replace(currword, "\\begin{" + command + "}\n\n\\end{" + command + "}")
-		view.runCommand("move lines -1")
+		view.erase(currword)
+		snippet = "\\\\begin{" + command + "}\n$1\n\\\\end{" + command + "}$0"
+		view.runCommand("insertInlineSnippet", [snippet])

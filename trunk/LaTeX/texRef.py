@@ -6,8 +6,6 @@ done = False
 
 class TexRefCommand(sublimeplugin.TextCommand):
 	def run(self, view, args):
-		print "entering texRef"
-		# test only for now
 		# get current point
 		# assume no selection, or a singe selection (for now)
 		currsel = view.sel()[0]
@@ -18,10 +16,11 @@ class TexRefCommand(sublimeplugin.TextCommand):
 		view.findAll('\\label\{([^\{]*)\}',0,'\\1',completions)
 #		print completions
 #		print "%d labels" % (len(completions),)
+		# no prefix, or braces
 		if not prefix in ["", "{}", "{", "}"]:
 			fcompletions = [comp for comp in completions if prefix in comp]
 		else:
-			prefix = "" # in case it's {} or {
+			prefix = "" # in case it's {} or { or }
 			fcompletions = completions
 		# The drop-down completion menu contains at most 16 items, so
 		# show selection panel if we have more.
