@@ -44,9 +44,15 @@ class TexCiteCommand(sublimeplugin.TextCommand):
 		if len(keywords) != len(titles):
 			print "Bibliography " + bibfname + " is broken!"
 		completions = ["%s\t\t%s" % kt for kt in zip(keywords, titles)]
-		if not prefix in ["", "{}"]:
+		# need ",}" for multiple citations
+		# support is limited: this only OK if there is no prefix after the
+		# comma.
+		multicites = False
+		if not prefix in ["", "{}", ",}"]:
 			fcompletions = [comp for comp in completions if prefix in comp]
 		else:
+			if prefix == ",}":
+				multicites = True
 			prefix = "" # in case it's {}
 			fcompletions = completions
 		# are there any completions?
@@ -64,10 +70,17 @@ class TexCiteCommand(sublimeplugin.TextCommand):
 				newsel = view.word(point)
 			else:
 				newsel = currsel
-			view.replace(newsel, "\\cite{" + key + "}")
-			newsel = sublime.Region(newsel.a + 1, newsel.a+5)
-			view.sel().clear()
-			view.sel().add(newsel)
-		
-		view.window().showSelectPanel(fcompletions, onSelect, None, 0)
+			view.erase(newsel)
+			# Use all-powerful insertInlineSnippet! woot!
+			# Note: must escape '\' twice
+			if not multicites:
+				snippet = "\\\\${1:cite}{" + key + "} $0"
+			else:
+				snippet = "," + key + "}"
+			view.runCommand('insertInlineSnippet', [snippet])
+			
+		if len(fcompletions) == 1:
+			onSelect(0)
+		else:
+			view.window().showSelectPanel(fcompletions, onSelect, None, 0)
 		print "done"
