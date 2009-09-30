@@ -1,5 +1,5 @@
 <bindings>
-	<binding key="/(lp|rp|a|b|c|d|e|f|g|h|i|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|<=|>=|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z)/,ctrl+backslash" command='texMacro $1'>
+	<binding key="/(lp|rp|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|<=>|=>|<=|>=|->|>|<|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z)/,ctrl+backslash" command='texMacro $1'>
 		<context name="selector" value="text.tex.latex"/>
 	</binding>
 	<binding key="ctrl+alt+e" command="showTeXError">
