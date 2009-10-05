@@ -14,7 +14,9 @@ Introduction
 ------------
 
 This package provides support for editing TeX / LaTeX files, emulating functionality
-in TextMate's well-known LaTeX bundle. While it is not(yet!) as powerful as its TextMate counterpart, it does offer a number of convenient features:
+in TextMate's well-known LaTeX bundle. Like its TextMate counterpart, it is designed with the creation of *PDF* rather than *DVI* output in mind.
+
+While it is not(yet!) as powerful as its TextMate counterpart, it does offer a number of convenient features:
 	
 * A command to run tex & friends, and then show the user any errors that might have occurred
 * A command to view the PDF file, setting things up so that **PDF inverse search** works (see below for details)
@@ -32,7 +34,11 @@ source tex file. This is a *huge* time saver! Sublime Text has a very
 sane command-line syntax, which makes it relatively easy to implement
 this feature.
 
+Forward search is a planned feature (DDE communication with SumatraPDF is required).
+
 [SumatraPDF]: http://blog.kowalczyk.info/software/sumatrapdf/ "SumatraPDF"
+
+All commands are available both via keyboard shortcuts and from the `Tools|Packages|LaTeX Package` menu. (Invoking snippets from the menu does not seem to work right now: use the tab trigger)
 
 Compiling and viewing your document
 -----------------------------------
@@ -90,11 +96,7 @@ simultaneously":
 
 `A, ctrl+backslash` gives `\forall`
 
-etc. Look at the `texMacro.py` and `Default.sublime-keymap` files for details.
-If you want to add your own macros, remember that the first match is used in
-the keymap. This is why, for instance, I have `lp` for `\left(` listed before
-the single-letter commands, and `p` in particular; otherwise,
-`l,p,ctrl+backslash` would yield `l\pi`.
+etc. Look at the `texMacro.py` file for a complete list of available shortcuts. You can also add your own shortcuts to the `macros` Python dictionary. Your shortcut can consists of letters or numbers, without spaces or other symbols. Remember to escape the leading backslash.
 
 
 References and citations
@@ -120,9 +122,9 @@ texRef command and pick from the list. In particular, if you begin writing
 `lem` and then hit `ctrl+alt+r`, only labels beginning with "lem" are shown. The
 `\ref{...}` command is NOT automatically inserted for you. So, the typical use
 case is to enter `\ref{` (which generates a matching `}` and places the cursor
-in between the braces), hit `ctrl+alt+r`, and choose the label. Notice that if
-you have too many labels, only a few are shown (this is Sublime Text
-functionality---I'm not clear how these are chosen).
+in between the braces), hit `ctrl+alt+r`, and choose the label. 
+
+If there are no more than 16 matches, then a pop-up completion menu is shown; otherwise, the quick panel will list all matches. 
 
 Similarly for citations: entries, however, are drawn from a bibtex file
 (specified by the `\bibliography` command in your tex file). This pops up a
@@ -134,6 +136,7 @@ natbib. Hitting Tab moves you after the closing brace.
 There is an attempt to handle multiple cites; if you start a cite command, then type a comma, as in
 
 	\cite{mycite1,}
+
 
 and invoke texCite again, the quick panel is shown with a list of all citations. But if you try to provide a prefix, it won't work.
 

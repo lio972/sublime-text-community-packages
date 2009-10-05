@@ -27,15 +27,6 @@ macros = {
 'x' : '\\xi',
 'y' : '\\vartheta',
 'z' : '\\zeta',
-'>=' : '\\geq',
-'<=' : '\\leq',
-'->' : '\\rightarrow',
-'=>' : '\\Rightarrow',
-'<=>' : '\\Leftrightarrow',
-'>' : '\\rangle',
-'<' : '\\langle',
-'lp' : '\\left(',
-'rp' : '\\right)',
 'A' : '\\forall',
 'B' : 'FREE',
 'C' : '\\Chi',
@@ -61,17 +52,33 @@ macros = {
 'W' : '\\Omega',
 'X' : '\\Xi',
 'Y' : '\\Upsilon',
-'Z' : '\\sum' 
+'Z' : '\\sum',
+'ge' : '\\geq',
+'le' : '\\leq',
+'la' : '\\leftarrow',
+'ra' : '\\rightarrow',
+'La' : '\\Leftarrow',
+'Ra' : '\\Rightarrow',
+'lra' : '\\leftrightarrow',
+'up' : '\\uparrow',
+'dn' : '\\downarrow',
+'iff' : '\\Leftrightarrow',
+'raa' : '\\rangle',
+'laa' : '\\langle',
+'lp' : '\\left(',
+'rp' : '\\right)',
+'lbk' : '\\left[',
+'rbk' : '\\right]',
+'lbr' : '\\left\{',
+'rbr' : '\\right\}'
 }
 
 class texMacroCommand(sublimeplugin.TextCommand):
 	def run(self, view, args):
-		k = args[0]
-		print "texMacro: " + k
-		if k:
-			# the following incantation means: 
-			# 1. take the selection; this is a RegionSet
-			# 2. get the first region (arbitrary, because this command is not meant
-			#    to be used with selections anyway)
-			# 3. take the endpoint and insert
-			view.insert(view.sel()[0].b, macros[k])
+		currsel = view.sel()[0]
+		currword = view.word(currsel)
+		k = view.substr(currword)
+		if macros.has_key(k):
+			view.replace(currword, macros[k])
+		else:
+			sublime.errorMessage("%s is not a valid TeX symbol shortcut" % (k,))
