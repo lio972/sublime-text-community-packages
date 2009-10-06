@@ -1,0 +1,18 @@
+<menu>
+	<menu caption="LaTeX Package">
+		<item caption="Texify current file" command="texify"/>
+		<item caption="View PDF output" command="viewPDF"/>
+		<item caption="Show errors" command="showTeXError"/>
+		<separator/>
+		<item caption="Insert cross-reference" command="texRef"/>
+		<item caption="Insert citation" command="texCite"/>
+		<item caption="Insert matching \end{...}" command="latexEnvCloser"/>
+		<item caption="Insert TeX symbol based on current word" command="texMacro"/>
+		<item caption="Insert TeX command based on current word" command="latexCommand"/>
+		<item caption="Insert LaTeX environment based on current word" command="latexEnvironment"/>
+		<menu caption="Insert font...">
+			<item caption="Emphasize" command="insertSnippet emphasize"/>
+			<item caption="Boldface" command="insertSnippet boldface"/>
+		</menu>
+	</menu>
+</menu>
