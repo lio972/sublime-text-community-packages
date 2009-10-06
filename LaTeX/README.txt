@@ -67,6 +67,8 @@ line number, and you will be taken to the offending line. The quick-panel is
 closed upon clicking one line, but you can reopen it via the "showTeXErrors"
 command.
 
+A "build system" profile is also provided; you can run pdflatex by hitting the standard F7 key (or whatever you use to build stuff) as well, but error detection is very flaky. Consider this experimental for the time being, and use the "texify" command instead.
+
 ###Requirements
 
 * MiKTeX distribution at <http://www.miktex.org>; I have ver. 2.7; ver. 2.8 also works

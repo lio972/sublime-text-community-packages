@@ -37,15 +37,18 @@ class TexifyCommand(sublimeplugin.WindowCommand):
 
 class ShowTeXErrorCommand(sublimeplugin.WindowCommand):
 	def run(self, window, args):
+		print "Show tex errors"
+		errors = []
+		warnings = []
 		texFile = os.path.splitext(window.activeView().fileName())[0]
 		try:
-			logfile = open(texFile + ".log")
+			# Read it in as binary, as there may be NULLs
+			# No need to close as we do not create a file object
+			logdata = open(texFile + ".log", 'rb').read()
 		except IOError:
 			sublime.errorMessage("Cannot open log file %s!" % (texFile + ".log",))
 			return
-		else:
-			log = logfile.readlines()
-			logfile.close()
+		log = logdata.splitlines()
 		errors = [line for line in log if line[0:2] in ['! ','l.']]
 		warnings = [line for line in log if "LaTeX Warning: " in line]
 		panelContent = []

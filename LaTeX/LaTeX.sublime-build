@@ -1,0 +1,2 @@
+build pdflatex --interaction=nonstopmode --synctex=1 --max-print-line=200 $File
+lineNumberRegex ^()l\.(\d+)

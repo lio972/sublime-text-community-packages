@@ -11,8 +11,8 @@
 		<item caption="Insert TeX command based on current word" command="latexCommand"/>
 		<item caption="Insert LaTeX environment based on current word" command="latexEnvironment"/>
 		<menu caption="Insert font...">
-			<item caption="Emphasize" command="insertSnippet emphasize"/>
-			<item caption="Boldface" command="insertSnippet boldface"/>
+			<item caption="Emphasize" command="insertSnippet Packages/LaTeX/Emphasize.sublime-snippet"/>
+			<item caption="Boldface" command="insertSnippet Packages/LaTeX/Boldface.sublime-snippet"/>
 		</menu>
 	</menu>
 </menu>
