@@ -3,7 +3,7 @@ LaTeX Package for Sublime Text
 
 First draft "release" September 21, 2009
 
-Current revision October 2, 2009
+Current revision October 7, 2009
 
 Contributors:
 Marciano Siniscalchi
@@ -20,6 +20,7 @@ While it is not(yet!) as powerful as its TextMate counterpart, it does offer a n
 	
 * A command to run tex & friends, and then show the user any errors that might have occurred
 * A command to view the PDF file, setting things up so that **PDF inverse search** works (see below for details)
+* A command to display the structure (chapters, sections, subsections...) of the current document and quickly jump to any of them
 * Quick insertion of Greek letters and other LaTeX macros, e.c. `\sum`, `\bigcup` etc.
 * Insertion of references (`\ref{xxx}`) and citations (`\cite{xxx}`), listing the available labels or, respectively, keys in a pop-up menu or quick-panel
 * Closing the current environment
@@ -38,7 +39,9 @@ Forward search is a planned feature (DDE communication with SumatraPDF is requir
 
 [SumatraPDF]: http://blog.kowalczyk.info/software/sumatrapdf/ "SumatraPDF"
 
-All commands are available both via keyboard shortcuts and from the `Tools|Packages|LaTeX Package` menu. (Invoking snippets from the menu does not seem to work right now: use the tab trigger)
+All commands are available both via keyboard shortcuts and from the `Tools|Packages|LaTeX Package` menu.
+
+This document is divided into sections, each describing a different aspect of LaTeX editing and processing that this package aids or enhances. Each section begins with a list of *commands* and the corresponding *default shortcuts*, followed by an explanation of the features provided, and in some cases a list of requirements. The latter explanation always refers to *commands* rather than shortcuts. This way, if you choose to change one or more shortcuts, the text will still be accurate.
 
 Compiling and viewing your document
 -----------------------------------
@@ -67,7 +70,7 @@ line number, and you will be taken to the offending line. The quick-panel is
 closed upon clicking one line, but you can reopen it via the "showTeXErrors"
 command.
 
-A "build system" profile is also provided; you can run pdflatex by hitting the standard F7 key (or whatever you use to build stuff) as well, but error detection is very flaky. Consider this experimental for the time being, and use the "texify" command instead.
+A "build system" profile is also provided; you can run pdflatex by hitting the standard F7 key (or whatever you use to build stuff) as well, but error detection is very flaky. Consider this experimental for the time being, and use the "texify" and "showTeXErrors" commands instead.
 
 ###Requirements
 
@@ -77,12 +80,29 @@ A "build system" profile is also provided; you can run pdflatex by hitting the s
 * Make sure that both SumatraPDF and Sublime Text are on the `%PATH%`
 
 
+Document structure
+------------------
+
+###Commands and Shortcuts
+
+texSections : `ctrl+alt+s`
+
+
+###Explanation
+
+Brings up a quick panel listing all parts, chapters, secions, subsections, etc. in the current document. Click on any element to jump to the corresponding line in the buffer.
+
+
+
 Easy insertion of tex math macros
 ---------------------------------
 
 ###Shortcuts
 
 texMacro : `ctrl+shift+\`
+
+
+###Explanation
 
 This feature is also inspired by TextMate's LaTeX bundle, and implemented
 stealing ideas from the html snippets. I used the Textmate keybindings, but
@@ -110,6 +130,8 @@ texRef : `ctrl+alt+r`
 
 texCite : `ctrl+alt+c`
 
+
+###Explanation
 
 This is functionality that might perhaps be achieved with ctags. Suppose you
 have something like:
@@ -151,6 +173,8 @@ Environment closer
 
 latexEnvCloser : `ctrl+alt+.`
 
+###Explanation
+
 Looks for the last `\begin{...}` that is not matched by the corresponding `\end{...}`, and inserts the `\end{...}` statement automatically. It also checks for mismatched `begin/end` pairs, just in case.
 
 
@@ -162,6 +186,8 @@ Insert command or environment based on current word
 latexEnvironment : `ctrl+shift+[`
 
 latexCommand : `ctrl+shift+]`
+
+###Explanation
 
 Type `test`, invoke latexCommand, get `\test{}` with the cursor between braces; type something, then hit Tab to exit the braces. Similarly, type `test`, invoke latexEnvironment, get 
 

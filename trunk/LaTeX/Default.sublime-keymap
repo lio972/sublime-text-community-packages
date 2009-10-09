@@ -29,4 +29,7 @@
 	<binding key="ctrl+alt+period" command="latexEnvCloser">
 		<context name="selector" value="text.tex.latex"/>
 	</binding>
+	<binding key="ctrl+alt+s" command="texSections">
+		<context name="selector" value="text.tex.latex"/>
+	</binding>
 </bindings>
