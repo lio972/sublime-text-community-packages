@@ -3,6 +3,7 @@
 		<item caption="Texify current file" command="texify"/>
 		<item caption="View PDF output" command="viewPDF"/>
 		<item caption="Show errors" command="showTeXError"/>
+		<item caption="Show document structure" command="texSections"/>
 		<separator/>
 		<item caption="Insert cross-reference" command="texRef"/>
 		<item caption="Insert citation" command="texCite"/>
