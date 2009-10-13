@@ -4,6 +4,17 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
 -->
 <bindings>
 
+  <binding key="ctrl+alt+1" command="selectView 1" />
+  <binding key="ctrl+alt+2" command="selectView 2" />
+  <binding key="ctrl+alt+3" command="selectView 3" />
+  <binding key="ctrl+alt+4" command="selectView 4" />
+  <binding key="ctrl+alt+5" command="selectView 5" />
+  <binding key="ctrl+alt+6" command="selectView 6" />
+  <binding key="ctrl+alt+7" command="selectView 7" />
+  <binding key="ctrl+alt+8" command="selectView 8" />
+  <binding key="ctrl+alt+9" command="selectView 9" />
+  <binding key="ctrl+alt+0" command="selectView 10" />
+
   <binding key="alt+equals" command="zoomIn" />
   <binding key="alt+minus" command="zoomOut" />
 

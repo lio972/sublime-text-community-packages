@@ -544,6 +544,96 @@
 				<string>bold</string>
 			</dict>
 		</dict>
+            <dict>
+                <key>name</key>
+                <string>braces</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#B7FBF9</string>
+                </dict>
+                <key>scope</key>
+                <string>meta.braces.curly.ahk</string>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>section title</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#BDFBE6</string>
+                </dict>
+                <key>scope</key>
+                <string>entity.name.section.group-title.ahk</string>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Keyword control</string>
+                <key>settings</key>
+                <dict>
+                    <key>fontStyle</key>
+                    <string>bold</string>
+                    <key>foreground</key>
+                    <string>#ffccff</string>
+                </dict>
+                <key>scope</key>
+                <string>keyword.control.ahk</string>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Keyword command</string>
+                <key>scope</key>
+                <string>keyword.command.ahk</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#ddffff</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Keyword function</string>
+                <key>scope</key>
+                <string>keyword.function.ahk</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#aaeeff</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Keyword keys</string>
+                <key>scope</key>
+                <string>keyword.keys.ahk</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#FFdd66</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>predefined variables</string>
+                <key>scope</key>
+                <string>variable.predefined.ahk</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#00ffaa</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>label</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#DAFCD3</string>
+                </dict>
+                <key>scope</key>
+                <string>label.ahk</string>
+            </dict>
 	</array>
 	<key>uuid</key>
 	<string>87F051F7-B6FB-408C-96F8-467B66C14E9F</string>
