@@ -10,6 +10,43 @@ import string, textwrap, re
 import __builtin__, sys, os, calendar, datetime, random, time, cgi, urllib
 from htmlentitydefs import name2codepoint as n2cp
 
+""" #delete this line to use project panel command
+#FEEL FREE TO USE THIS IF YOU'D LIKE.
+#ALL IT DOES IS OPEN A PROJECT PANEL (on the left) whenever you open/refresh a project
+class showProjectPanel(sublimeplugin.TextCommand):
+  def run(self, view, args):
+    window = view.window()
+    project = window.project().fileName()
+    if (project != ''):
+      # window.runCommand('openBrowseableProject', [project.replace('\\','/')])
+      self.onProjectLoad(window)
+    else:
+      window.runCommand('openProject')
+  # This takes care of showing the projects panel whenever
+  # you open/reload a project.
+  def onProjectLoad(self, window):
+    project = window.project().fileName()
+    window.runCommand('openBrowseableProject', [project.replace('\\','/')])
+  def onProjectClose(self, window):
+    window.runCommand('closeBrowseableProject')
+
+class hideProjectPanel(sublimeplugin.TextCommand):
+  def run(self, view, args):
+    window = view.window()
+    window.runCommand('closeBrowseableProject')
+""" #delete this line to use project panel command
+
+"""
+Allows me to select tabs by numbers :) 
+Order: leftmost to rightmost
+Todo: number tabs with aliases or something.
+"""
+class selectView(sublimeplugin.TextCommand):
+  views = {}
+  def run(self, view, args):
+    for index, window_view in enumerate(view.window().views()):
+      self.views[index+1] = window_view
+    view.window().focusView(self.views[int(args[0])])
 
 """
 Save current buffer (tab) and exits sublime but preserves the session :)
