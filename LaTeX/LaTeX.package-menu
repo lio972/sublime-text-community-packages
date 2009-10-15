@@ -2,6 +2,7 @@
 	<menu caption="LaTeX Package">
 		<item caption="Texify current file" command="texify"/>
 		<item caption="View PDF output" command="viewPDF"/>
+		<item caption="Jump to current line in PDF file" command="jumpToPDF"/>
 		<item caption="Show errors" command="showTeXError"/>
 		<item caption="Show document structure" command="texSections"/>
 		<separator/>

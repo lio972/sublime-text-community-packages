@@ -3,7 +3,7 @@ LaTeX Package for Sublime Text
 
 First draft "release" September 21, 2009
 
-Current revision October 7, 2009
+Current revision October 15, 2009
 
 Contributors:
 Marciano Siniscalchi
@@ -19,27 +19,28 @@ in TextMate's well-known LaTeX bundle. Like its TextMate counterpart, it is desi
 While it is not(yet!) as powerful as its TextMate counterpart, it does offer a number of convenient features:
 	
 * A command to run tex & friends, and then show the user any errors that might have occurred
-* A command to view the PDF file, setting things up so that **PDF inverse search** works (see below for details)
-* A command to display the structure (chapters, sections, subsections...) of the current document and quickly jump to any of them
+* A command to view the PDF file, setting things up so that **PDF forward and inverse search** work (see below for details)
 * Quick insertion of Greek letters and other LaTeX macros, e.c. `\sum`, `\bigcup` etc.
 * Insertion of references (`\ref{xxx}`) and citations (`\cite{xxx}`), listing the available labels or, respectively, keys in a pop-up menu or quick-panel
 * Closing the current environment
 * Inserting emphasize / boldface commands (more in the future)
 	
-The most useful feature is probably PDF inverse search. The TeX/LaTeX world has moved beyond DVI; on the Mac, PDF output is the default for LaTeX documents, thanks to excellent built-in support for PDF rendering, and several great PDF previewers. The "SyncTeX" technology has finally brought reliable forward- and inverse-search to PDF documents. Luckily, SyncTeX is built into MikTeX from version 2.7 up, and
+The most useful feature is probably PDF forward/inverse search. The TeX/LaTeX world has moved beyond DVI; on the Mac, PDF output is the default for LaTeX documents, thanks to excellent built-in support for PDF rendering, and several great PDF previewers. The "SyncTeX" technology has finally brought reliable forward- and inverse-search to PDF documents. Luckily, SyncTeX is built into MikTeX from version 2.7 up, and
 the [SumatraPDF][] previewer. The same technology is also used by TextMate and the Skim
 previewer on the Mac, and makes for a much more efficient and
-enjoyable texing experience. You can double-click anywhere in the PDF
-window, and you jump right back to the corresponding point in the
-source tex file. This is a *huge* time saver! Sublime Text has a very
-sane command-line syntax, which makes it relatively easy to implement
-this feature.
+enjoyable texing experience. 
 
-Forward search is a planned feature (DDE communication with SumatraPDF is required).
+*Inverse search* means that you can double-click anywhere in the PDF
+window, and you jump right back to the corresponding point in the
+source tex file. 
+
+*Forward search* is the opposite: by invoking the appropriate command or shortcut ("jumpToPDF" and `ctrl+alt+j` in this package), the PDF file scrolls to the line corresponding to the current position of the cursor in the source tex file. 
+
+These are *huge* time savers! Sublime Text has a very sane command-line syntax, which makes it relatively easy to implement this feature.
 
 [SumatraPDF]: http://blog.kowalczyk.info/software/sumatrapdf/ "SumatraPDF"
 
-All commands are available both via keyboard shortcuts and from the `Tools|Packages|LaTeX Package` menu.
+All commands are available both via keyboard shortcuts and from the `Tools|Packages|LaTeX Package` menu. (Invoking snippets from the menu does not seem to work right now: use the tab trigger)
 
 This document is divided into sections, each describing a different aspect of LaTeX editing and processing that this package aids or enhances. Each section begins with a list of *commands* and the corresponding *default shortcuts*, followed by an explanation of the features provided, and in some cases a list of requirements. The latter explanation always refers to *commands* rather than shortcuts. This way, if you choose to change one or more shortcuts, the text will still be accurate.
 
@@ -54,12 +55,13 @@ showTeXErrors :	`ctrl+alt+e`
 
 viewPDF : `ctrl+alt+v`
 
+jumpToPDF: `ctrl+alt+j`
 
 ###Explanation
 
 The "texify" command compiles the file in the current buffer, invoking `texify`
 (which in turn takes care of invoking e.g. `bibtex`, `makeindex`, etc. as needed).
-Furthermore, it sets up inverse search with the SumatraPDF previewer, using
+Furthermore, it sets up forward and inverse search with the SumatraPDF previewer, using
 the SyncTeX technology. 
 
 The previewer is *not* automatically started; use the viewPDF command.
@@ -70,7 +72,7 @@ line number, and you will be taken to the offending line. The quick-panel is
 closed upon clicking one line, but you can reopen it via the "showTeXErrors"
 command.
 
-A "build system" profile is also provided; you can run pdflatex by hitting the standard F7 key (or whatever you use to build stuff) as well, but error detection is very flaky. Consider this experimental for the time being, and use the "texify" and "showTeXErrors" commands instead.
+A "build system" profile is also provided; you can run pdflatex by hitting the standard F7 key (or whatever you use to build stuff) as well, but error detection is very flaky. Consider this experimental for the time being, and use the "texify" command instead.
 
 ###Requirements
 
@@ -78,20 +80,6 @@ A "build system" profile is also provided; you can run pdflatex by hitting the s
 * SumatraPDF previewer, ver. 0.93, 0.94 or recent preview release
  at <http://blog.kowalczyk.info/software/sumatrapdf/>
 * Make sure that both SumatraPDF and Sublime Text are on the `%PATH%`
-
-
-Document structure
-------------------
-
-###Commands and Shortcuts
-
-texSections : `ctrl+alt+s`
-
-
-###Explanation
-
-Brings up a quick panel listing all parts, chapters, secions, subsections, etc. in the current document. Click on any element to jump to the corresponding line in the buffer.
-
 
 
 Easy insertion of tex math macros
