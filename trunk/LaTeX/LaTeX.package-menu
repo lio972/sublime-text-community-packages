@@ -8,6 +8,8 @@
 		<separator/>
 		<item caption="Insert cross-reference" command="texRef"/>
 		<item caption="Insert citation" command="texCite"/>
+		<item caption="Lookup cross-reference or citation" command="lookupRefCite"/>
+		<separator/>
 		<item caption="Insert matching \end{...}" command="latexEnvCloser"/>
 		<item caption="Insert TeX symbol based on current word" command="texMacro"/>
 		<item caption="Insert TeX command based on current word" command="latexCommand"/>
