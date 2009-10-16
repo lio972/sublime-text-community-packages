@@ -35,4 +35,7 @@
 	<binding key="ctrl+alt+j" command="jumpToPDF">
 		<context name="selector" value="text.tex.latex"/>
 	</binding>
+	<binding key="ctrl+alt+l" command="lookupRefCite">
+		<context name="selector" value="text.tex.latex"/>
+	</binding>
 </bindings>

@@ -82,6 +82,20 @@ A "build system" profile is also provided; you can run pdflatex by hitting the s
 * Make sure that both SumatraPDF and Sublime Text are on the `%PATH%`
 
 
+Show document structure
+-----------------------
+
+###Shortcut
+
+texSections : `ctrl+shift+s`
+
+###Explanation
+
+Displays parts, chapters, sections, subsections, etc. in a quick panel, indented to emphasize the overall structure of the document.
+
+Click on any line and you will be taken to the corresponding point in the source tex file.
+
+
 Easy insertion of tex math macros
 ---------------------------------
 
@@ -118,6 +132,8 @@ texRef : `ctrl+alt+r`
 
 texCite : `ctrl+alt+c`
 
+lookupRefCite : `ctrl+alt+l`
+
 
 ###Explanation
 
@@ -152,6 +168,9 @@ There is an attempt to handle multiple cites; if you start a cite command, then 
 
 and invoke texCite again, the quick panel is shown with a list of all citations. But if you try to provide a prefix, it won't work.
 
+Finally, I often forget what a given label is associated with. If you are like me, no worries: that's what the "lookupRefCite" command is for! Position the cursor immediately after the brace in a `\ref{mystery_label}` command (or similar), invoke the "lookupRefCite" command, and a quick panel will pop up, displaying some text before and after the corresponding `\label{mystery_label}` command.
+
+This will be extended to `\cite{}` commands as well, but right now this functionality is not implemented.
 
 
 Environment closer
