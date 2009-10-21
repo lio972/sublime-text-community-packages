@@ -1,14 +1,54 @@
 """
 Sublime Text - PowerUser Package
-By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
+By: EJ12N
 """
 #stuff for plugins :)
 import sublime, sublimeplugin
 import string, textwrap, re
-
-#stuff for execSel command
-import __builtin__, sys, os, calendar, datetime, random, time, cgi, urllib
+import webbrowser
+import __builtin__, sys, os, calendar, random, time, cgi, urllib
 from htmlentitydefs import name2codepoint as n2cp
+from datetime import datetime
+
+"""
+Long awaited online help for PHP/XHTML/CSS :)
+default binding: shift+f1
+If word is selected it'll use selection else it'll use word under cursor
+"""
+class getOnlineHelp(sublimeplugin.TextCommand):
+  def run(self, view, args):
+    word_under_cursor = view.substr(view.word(view.sel()[0].begin()))
+    view_scope = view.syntaxName(view.sel()[0].begin()).strip()
+    #seleted text
+    for region in view.sel():
+      if not region.empty():
+        # line = view.line(region)
+        s = view.substr(region)
+        for match in re.finditer(r"(?sim)(source\.php)|(text\.html)|(source\.css)", view_scope):
+          if match.group(0) == 'source.php':
+            # sublime.messageBox('php!')
+            webbrowser.open_new_tab('http://www.php.net/' + s)
+            break
+          elif match.group(0) == 'text.html':
+            # sublime.messageBox('html!')
+            webbrowser.open_new_tab('http://reference.sitepoint.com/html/' + s)
+          elif match.group(0) == 'source.css':
+            # sublime.messageBox('css!')
+            webbrowser.open_new_tab('http://reference.sitepoint.com/css/' + s)
+      # no text selected? use word under cursor
+      else:
+        # sublime.messageBox('no selection')
+        for match in re.finditer(r"(?sim)(source\.php)|(text\.html)|(source\.css)", view_scope):
+          if match.group(0) == 'source.php':
+            # sublime.messageBox('php!')
+            webbrowser.open_new_tab('http://www.php.net/' + word_under_cursor)
+            break
+          elif match.group(0) == 'text.html':
+            # sublime.messageBox('html!')
+            webbrowser.open_new_tab('http://reference.sitepoint.com/html/' + word_under_cursor)
+          elif match.group(0) == 'source.css':
+            # sublime.messageBox('css!')
+            webbrowser.open_new_tab('http://reference.sitepoint.com/css/' + word_under_cursor)
 
 """ #delete this line to use project panel command
 #FEEL FREE TO USE THIS IF YOU'D LIKE.
@@ -120,14 +160,15 @@ class DeleteLineCommand(sublimeplugin.TextCommand):
     for sel in view.sel():
       view.erase(view.fullLine(sel))
 
-class ReloadProjectCommand(sublimeplugin.WindowCommand):
-  def isEnabled(self, window, args):
-    return window.project()
+# -- REPLACED BY DEFAULT scanProject command
+# class ReloadProjectCommand(sublimeplugin.WindowCommand):
+#   def isEnabled(self, window, args):
+#     return window.project()
 
-  def run(self, window, args):
-    project = window.project().fileName()
-    window.runCommand('closeProject')
-    window.runCommand('openProject', [project.replace('\\','/')])
+#   def run(self, window, args):
+#     project = window.project().fileName()
+#     window.runCommand('closeProject')
+#     window.runCommand('openProject', [project.replace('\\','/')])
 
 class StripTrailingOnSaveCommand(sublimeplugin.TextCommand):
 

@@ -1,9 +1,8 @@
 """
 Sublime Text - PowerUser Package
-By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
-
+By: EJ12N
 Plugin Code By: Nicholas (Sublimator)
-Experimental
+!Experimental!
 """
 #!/usr/bin/env python
 #coding: utf8
