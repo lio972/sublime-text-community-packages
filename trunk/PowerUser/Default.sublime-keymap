@@ -4,6 +4,9 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
 -->
 <bindings>
 
+  <binding key="shift+f1" command="getOnlineHelp" />
+
+  <!-- Select Tabs by numbers -->
   <binding key="ctrl+alt+1" command="selectView 1" />
   <binding key="ctrl+alt+2" command="selectView 2" />
   <binding key="ctrl+alt+3" command="selectView 3" />
@@ -15,6 +18,7 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
   <binding key="ctrl+alt+9" command="selectView 9" />
   <binding key="ctrl+alt+0" command="selectView 10" />
 
+  <!-- Zoom In/Out -->
   <binding key="alt+equals" command="zoomIn" />
   <binding key="alt+minus" command="zoomOut" />
 
@@ -26,7 +30,7 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
   <!--
   By default in sublime you have to select more than one line if you want to indent,
   With this you don't have to select any line if you want to indent just 1 line, and that's what I'm used to.
-  Sp, comment out the line if you don't want this behavior.
+  comment out the line if you don't want this behavior.
    -->
   <binding key="shift+tab" command="unindent" />
   <binding key="shift+tab" command="prevField">
@@ -39,7 +43,7 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
   <!-- Reverse String Command == dnammoC gnirtS esreveR -->
   <binding key="alt+k,r" command="reverseString" />
 
-  <!-- Column Select (Experimental) -->
+  <!-- Column Select (Experimental, but works most of the time...) -->
   <binding key="alt+shift+q" command="selectColumn" />
 
   <!--
@@ -93,7 +97,6 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
   </binding>
 
   <!-- Delete Line -->
-
   <binding key="ctrl+e" command="runMacroFileSilently 'Packages/Default/Delete Line.sublime-macro'" />
 
   <!--
@@ -108,7 +111,7 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
   <!-- New tab, I'm used to firefox ctrl+t = new tab  -->
   <binding key="ctrl+t" command="new"/>
 
-  <!-- Uppercase, Lowercase, Titlecase -->
+  <!-- Uppercase, Lowercase, Titlecase, SwapCase -->
   <binding key="alt+k,u" command="upperCase"/>
   <binding key="alt+k,l" command="lowerCase"/>
   <binding key="alt+k,t" command="titleCase"/>
@@ -133,36 +136,17 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
   <binding key="ctrl+shift+up" command="swapLine up"/>
   <binding key="ctrl+shift+down" command="swapLine down"/>
 
-  <!-- Strip Selection [strips whitespace from selection only :)] -->
+  <!-- Strip Selection [strips whitespace from selection only :)] [Very useful!] -->
   <binding key="ctrl+alt+l" command="stripSelection"/>
 
-  <!-- PasteColumn -->
+  <!-- PasteColumn [super useful] -->
   <binding key="ctrl+alt+v" command="pasteColumn"/>
 
   <!--
   This just goes to end of line adds a semicolon (;) and makes a new line (useful for snippets)
-  Enable if you have no use for it...
+  Enable if you have a use for it...
   -->
   <!-- <binding key="alt+enter" command="runMacroFileSilently 'Packages/PowerUser/Macros/add_line_with_semicolon.sublime-macro'"/> -->
-
-  <!--
-  body#hello {|} - if you press enter with cursor there you get this
-
-  body#hello {
-    |}
-  ==================================
-  with this macro you get this:
-    body#hello {
-      |
-    }
-
-   -->
-  <binding key="enter" command="runMacroFileSilently 'Packages/PowerUser/Macros/css_enter.sublime-macro'">
-    <context name="selector" value="source.css"/>
-    <context name="option" value="autoMatchEnabled"/>
-    <context name="allSelectionsEmpty" value="true"/>
-    <context name="allFollowingCharacter" value="}"/>
-  </binding>
 
   <!--
   <td>|</td> - if you press enter here you get the following:
@@ -175,18 +159,18 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
       |
     </td>
    -->
-  <binding key="enter" command="runMacroFileSilently 'Packages/PowerUser/Macros/htmltags_enter_indent.sublime-macro'">
+  <!-- <binding key="enter" command="runMacroFileSilently 'Packages/PowerUser/Macros/htmltags_enter_indent.sublime-macro'">
     <context name="selector" value="punctuation.definition.tag.html, meta.scope.between-tag-pair.html, punctuation.definition.tag.begin.html"/>
     <context name="option" value="autoMatchEnabled"/>
     <context name="allSelectionsEmpty" value="true"/>
     <context name="allFollowingCharacter" value="&lt;"/>
     <context name="allPreceedingText" value=">$"/>
-  </binding>
+  </binding> -->
 
   <!-- Copy current scope to clipboard - remember ctrl+alt+p shows scope in status bar -->
   <binding key="ctrl+shift+p" command="scopeToClipboard"/>
 
-  <!-- This one just paste whatever text is on clipboard to bookmark.
+  <!-- This one just paste whatever text is on clipboard to next bookmark.
   Usage: bookmark a line, go to any other line in the document copy something,
          press the shortcut key and it will paste whatever you copied to the position where cursor was when you bookmarked.
    -->
@@ -226,11 +210,8 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
 
   <!--
   Duplicates Line or Selected Text
-  by default, ctrl+d = Expand selection to word
-  I remapped to ctrl+shift+d
   -->
-  <binding key="ctrl+d" command="duplicateLine"/>
-  <binding key="ctrl+shift+d" command="expandSelectionTo word"/>
+  <binding key="ctrl+shift+d" command="duplicateLine"/>
 
   <!-- Revert Changes (reload file from disk) -->
   <binding key="ctrl+alt+shift+r" command="revert"/>
@@ -240,12 +221,14 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
   Whenever you add new files to your project you need to reload it in order for the files to be shown
   when you do ctrl+p "open file in project"
   -->
-  <binding key="ctrl+shift+r" command="reloadProject"/>
+  <binding key="ctrl+shift+r" command="scanProject"/>
 
   <!-- Date/Calendar/Weekdays Macros (snippets) -->
-  <binding key="/date/,tab" command="runMacroFileSilently 'Packages/PowerUser/Macros/notepad_date.sublime-macro'" />
+  <binding key="/ndate/,tab" command="runMacroFileSilently 'Packages/PowerUser/Macros/notepad_date.sublime-macro'" />
   <binding key="/cal/,tab" command="runMacroFileSilently 'Packages/PowerUser/Macros/calendar.sublime-macro'" />
   <binding key="/weekdays/,tab" command="runMacroFileSilently 'Packages/PowerUser/Macros/weekdays.sublime-macro'" />
+  <binding key="/time/,tab" command="runMacroFileSilently 'Packages/PowerUser/Macros/insert_time.sublime-macro'" />
+  <binding key="/adate/,tab" command="runMacroFileSilently 'Packages/PowerUser/Macros/archive_date.sublime-macro'" />
 
   <!-- PHP -->
     <!-- PHP (HTML) Snippets -->
@@ -466,11 +449,12 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
 
   <!-- Plain Text Snippets -->
   <!-- This is the "Comment Banner" snippet from textmate "Source" bundle -->
-  <binding key="/chead/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/Text/textheader.sublime-snippet'">
+  <binding key="/txthd/,tab" command="insertSnippet 'Packages/PowerUser/Snippets/Text/textheader.sublime-snippet'">
       <!-- <context name="selector" value="text.plain"/> -->
   </binding>
 
   <!--
+  BONUS:
   Example keybinding showing how you can do commands X amount of times
   Usage: type 5,q,q it will select 5 lines
   -->

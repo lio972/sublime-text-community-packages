@@ -634,7 +634,110 @@
                 <key>scope</key>
                 <string>label.ahk</string>
             </dict>
-	</array>
+            <dict>
+                <key>name</key>
+                <string>Todo Projects</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#63ACF6</string>
+                </dict>
+                <key>scope</key>
+                <string>project.todo</string>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Todo Items</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#B7DCFB</string>
+                </dict>
+                <key>scope</key>
+                <string>item.todo</string>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Todo Done Items</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#506D07</string>
+                </dict>
+                <key>scope</key>
+                <string>done.item.todo</string>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Todo Note Items</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#666666</string>
+                </dict>
+                <key>scope</key>
+                <string>comment.item.todo</string>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Todo Contexts</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#6C6C00</string>
+                </dict>
+                <key>scope</key>
+                <string>context.todo</string>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Todo Dates</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#777777</string>
+                    <key>background</key>
+                    <string>#333333</string>
+                </dict>
+                <key>scope</key>
+                <string>date.todo</string>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Todo Priority</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#9E7C00</string>
+                </dict>
+                <key>scope</key>
+                <string>item.priority.todo</string>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Todo Dates URGENT</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#ffffff</string>
+                    <key>background</key>
+                    <string>#993333</string>
+                </dict>
+                <key>scope</key>
+                <string>item.urgent.priority.todo</string>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Todo Keywords</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#8796F9</string>
+                </dict>
+                <key>scope</key>
+                <string>keywords.todo</string>
+            </dict>
+  </array>
 	<key>uuid</key>
 	<string>87F051F7-B6FB-408C-96F8-467B66C14E9F</string>
 </dict>

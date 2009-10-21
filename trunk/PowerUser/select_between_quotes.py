@@ -1,8 +1,7 @@
 """
 Sublime Text - PowerUser Package
-By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
-
-Plugin Code By: Nicholas (Sublimator)
+By: EJ12N
+Plugin Code By: Sublimator
 """
 import pprint, functools, re
 import sublime

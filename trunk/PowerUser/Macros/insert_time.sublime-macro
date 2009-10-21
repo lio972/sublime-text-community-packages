@@ -1,0 +1,4 @@
+insertAndDecodeCharacters "time.strftime(\"%I:%M:%S %p\", time.localtime())"
+times 16 move words -1 extend
+execSelReplace
+move characters 1
