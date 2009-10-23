@@ -1,6 +1,8 @@
 #!/usr/bin/python -u
-import sys, os, subprocess, traceback, datetime, util
+import sys, os, subprocess, traceback, datetime, util, zipfile
 from string import Template
+from fnmatch import fnmatch
+from os.path import basename, dirname, join, normpath
 
 print "Content-type: text/plain\n\n"
 
@@ -50,16 +52,41 @@ def copyReadmeFile(dirName, root, dest):
   util.saveFile(currentFile, pageContent)
   print "wrote web page for %s to %s" % (dirName, currentFile)
     
+    
+def create_package(folder_abs, pkgPath, ignore_dirs=(), ignore_files=()):
+    """ Takes a `folder_abs` absolute path to a folder and will create a
+        sublime-package of same name in the.parent.folders directory.
+    """
+    pkg = zipfile.ZipFile(pkgPath, 'w')
+
+    for pth, dirs, files in os.walk(folder_abs, topdown=True):
+
+        for ig in ignore_dirs:
+            if ig in dirs:
+                del dirs[dirs.index(ig)]
+
+        for file_name in files:
+            for i in ignore_files:
+              if fnmatch(file_name,i):
+                continue
+
+            f = normpath(join(pth, file_name))
+            pkg.write( f, arcname= f[len(normpath(folder_abs)):] )
+
+
+    pkg.close()
+
 def zipDirectory(dirName, root, dest):
   pathToPackageFiles = os.path.join(root, dirName) 
-  
   zipFileName = dirName + ".sublime-package"
   zipBuildPath = os.path.join(root, zipFileName)
   zipDestPath = os.path.join(dest, zipFileName)
-  util.run(["zip", "-r", zipBuildPath, ".", "-x", "-q", "*.svn*"], pathToPackageFiles)
-  print "built %s at %s"  % (dirName, zipDestPath)
-
-  os.rename(zipBuildPath, zipDestPath)
+  create_package (
+    folder_abs = pathToPackageFiles, 
+    pkgPath=zipDestPath,
+    ignore_dirs = ('.hg','.svn'),
+    ignore_files=['*.pyc', '.hgignore'])
+  #os.rename(zipBuildPath, zipDestPath)
 
 def partOfMainDistribution(packageDir, root):
   """Is this part of the main set of files to download?"""
