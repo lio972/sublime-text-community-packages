@@ -71,7 +71,7 @@ def create_package(folder_abs, pkgPath, ignore_dirs=(), ignore_files=()):
                 continue
 
             f = normpath(join(pth, file_name))
-            pkg.write( f, arcname= f[len(normpath(folder_abs)):] )
+            pkg.write( f, arcname= f[len(normpath(folder_abs))+1:] )
 
 
     pkg.close()
