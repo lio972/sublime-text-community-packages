@@ -1,9 +1,11 @@
 <!--
 Sublime Text - PowerUser Package
-By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
+By: EJ12N
 -->
 <bindings>
 
+
+  <!-- Get Online Help for PHP/CSS/XHTML -->
   <binding key="shift+f1" command="getOnlineHelp" />
 
   <!-- Select Tabs by numbers -->
@@ -38,7 +40,7 @@ By: Eblin "EJ12N" Lopez (ej12n at yahoo dot com)
   </binding>
 
   <!-- Reverse Selection Directions - very cool & useful :) -->
-  <binding key="ctrl+r" command="reverseSelectionDirections" />
+  <binding key="ctrl+k,r" command="reverseSelectionDirections" />
 
   <!-- Reverse String Command == dnammoC gnirtS esreveR -->
   <binding key="alt+k,r" command="reverseString" />
