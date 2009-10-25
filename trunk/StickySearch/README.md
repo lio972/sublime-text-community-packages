@@ -33,8 +33,10 @@ This is the official binding:
 		<binding key="ctrl+shift+keypad_multiply" command="stickySearch set" />
 		<binding key="ctrl+shift+keypad_plus" command="stickySearch add" />
 		<binding key="ctrl+shift+keypad_minus" command="stickySearch clear" />
+		<binding key="ctrl+shift+keypad_divide" command="findNext" />
 	</bindings>
 	
 * 'set' will mark the new item, after clearing the old markers
 * 'add' will mark the new item, leaving other marking as they were
 * 'clear' will clean all the markings
+* 'findNext' is equivalent to F3, it will ittirate over the last mark search results
