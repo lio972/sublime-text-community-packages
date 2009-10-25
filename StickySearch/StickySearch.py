@@ -26,7 +26,7 @@ class StickySearchCommand(sublimeplugin.TextCommand):
 	def mark(self, key, view, regions):
 		for s in view.sel():
 			regions.append(sublime.Region(s.begin(), s.end()))
-		view.addRegions(key, regions, "marker")
+		view.addRegions(key, regions, "marker", sublime.PERSISTENT)
 
 	def clear(self, key, view):
 		view.eraseRegions(key)   
