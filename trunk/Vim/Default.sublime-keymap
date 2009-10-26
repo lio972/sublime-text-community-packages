@@ -1,0 +1,38 @@
+<!--
+
+-->
+<bindings>
+	<!-- switch mode -->
+    <binding key="shift+escape" command="controlMode"/>
+    <binding key="shift+escape" command="normalMode"><context name="option" value="vimMode"/></binding>
+    		
+	<!-- d for delete -->
+	<binding key="D" command="deleteRange eol"><context name="option" value="vimMode"/></binding>
+	<binding key="d" command="deleteRange ${motion}"><context name="option" value="vimMode"/></binding>
+	<namespace name="motion">
+		<binding key="w" command="words 1"/>
+		<binding key="b" command="words -1"/>
+		<binding key="j" command="lines 1"/>
+		<binding key="k" command="lines -1"/>
+		<binding key="d" command="lines 1"/>
+		<binding key="h" command="characters -1"/>
+		<binding key="l" command="characters 1"/>
+		<binding key=" " command="characters 1"/>
+		<binding key="shift+space" command="characters 1"/>
+		<binding key="$" command="eol"/>
+		<binding key="^" command="bol"/>
+		<binding key="G" command="lines 1, eof"/>
+	</namespace>
+	
+	<!-- insert mode -->
+	<binding key="i" command="insertMode"><context name="option" value="vimMode"/></binding>
+	<binding key="I" command="insertMode bol"><context name="option" value="vimMode"/></binding>
+	<binding key="a" command="insertMode append"><context name="option" value="vimMode"/></binding>
+	<binding key="A" command="insertMode eol"><context name="option" value="vimMode"/></binding>	
+
+	<!-- arrows like move -->
+    <binding key="j" command="move lines -1"><context name="option" value="vimMode"/></binding>
+    <binding key="k" command="move lines 1"><context name="option" value="vimMode"/></binding>
+    <binding key="h" command="move characters -1"><context name="option" value="vimMode"/></binding>
+    <binding key="l" command="move characters 1"><context name="option" value="vimMode"/></binding>  	
+</bindings>
