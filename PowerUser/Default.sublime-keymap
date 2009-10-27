@@ -4,7 +4,6 @@ By: EJ12N
 -->
 <bindings>
 
-
   <!-- Get Online Help for PHP/CSS/XHTML -->
   <binding key="shift+f1" command="getOnlineHelp" />
 
@@ -70,22 +69,6 @@ By: EJ12N
     <context name="selector" value="text.html - source, text.xml"/>
   </binding>
 
-  <!-- Auto curly braces -->
-  <binding key="}" command="move characters 1">
-    <context name="option" value="autoMatchEnabled"/>
-    <context name="allSelectionsEmpty" value="true"/>
-    <context name="allFollowingCharacter" value="}"/>
-  </binding>
-  <binding key="{" command="insertSnippet 'Packages/PowerUser/Snippets/curly_braces.sublime-snippet'">
-    <context name="option" value="autoMatchEnabled"/>
-    <context name="allSelectionsEmpty" value="true"/>
-    <context name="allFollowingText" value="^(\t| |$)"/>
-  </binding>
-  <binding key="{" command="insertSnippet 'Packages/PowerUser/Snippets/curly_braces.sublime-snippet'">
-    <context name="option" value="autoMatchEnabled"/>
-    <context name="allSelectionsNonEmpty" value="true"/>
-  </binding>
-
   <!--
   When doing html, if you do this <div class=> (when you type [ = ] nothing happens)
   With this macro when you type the equal sign [ = ], you get the following
@@ -134,9 +117,9 @@ By: EJ12N
       <context name="selector" value="text.html - source"/>
   </binding>
 
-  <!-- Swap Lines -->
-  <binding key="ctrl+shift+up" command="swapLine up"/>
-  <binding key="ctrl+shift+down" command="swapLine down"/>
+  <!-- Swap Lines / default in sublime now... -->
+  <!-- <binding key="ctrl+shift+up" command="swapLine up"/> -->
+  <!-- <binding key="ctrl+shift+down" command="swapLine down"/> -->
 
   <!-- Strip Selection [strips whitespace from selection only :)] [Very useful!] -->
   <binding key="ctrl+alt+l" command="stripSelection"/>
@@ -147,6 +130,7 @@ By: EJ12N
   <!--
   This just goes to end of line adds a semicolon (;) and makes a new line (useful for snippets)
   Enable if you have a use for it...
+  If you use the WebDevelopment package, it has this already :)
   -->
   <!-- <binding key="alt+enter" command="runMacroFileSilently 'Packages/PowerUser/Macros/add_line_with_semicolon.sublime-macro'"/> -->
 
