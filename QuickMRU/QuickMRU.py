@@ -1,12 +1,30 @@
 from __future__ import with_statement
 
-import sublime, sublimeplugin
 import os, sys, stat
 from os import path
 import cPickle as pickle
 from datetime import datetime
-from pprint import pprint as pp
+# from pprint import pprint as pp
+import functools
 
+import sublime, sublimeplugin
+
+
+# Taken from Sublimator's AAALoadFirstExtensions
+def onIdle(ms=1000):
+	def decorator(func):
+		func.pending = 0
+		@functools.wraps(func)
+		def wrapped(*args, **kwargs):
+			def idle():
+				func.pending -= 1
+				if func.pending is 0:
+					func(*args, **kwargs)
+			func.pending +=1
+			sublime.setTimeout(idle, ms)
+		return wrapped
+	return decorator
+    
 class QuickMRUCommand(sublimeplugin.WindowCommand):
 	"""
 	Shows a quick panel with the most recently closed files and the	files closed most often.
@@ -38,11 +56,13 @@ class QuickMRUCommand(sublimeplugin.WindowCommand):
 			print "QuickMRU: DB not found, creating new one"
 			self.__db = {}
 
+	@onIdle(500)
 	def dumpDB(self):
 		# print "QuickMRU: dumping DB to disk"
 		with open(self.dbfilename, "w") as myfile:
 			pickle.dump(self.db, myfile)
 
+	@onIdle(500)
 	def trimDB(self):
 		print "QuickMRU: Trimming DB"
 		db = self.db
@@ -51,7 +71,7 @@ class QuickMRUCommand(sublimeplugin.WindowCommand):
 		files = set(mostFrequent[:200] + latest[:200])
 		newDB = {}
 		for x in files:
-			newDB[x]=db[x]
+			newDB[x] = db[x]
 		del newDB[None]
 
 		self.db = newDB
@@ -59,6 +79,10 @@ class QuickMRUCommand(sublimeplugin.WindowCommand):
 
 	def onClose(self, view):
 		if not view.fileName():
+			return
+		
+		if view.fileName().find('\\sublimescp_') != -1:
+			# skip WinSCP temporary files
 			return
 
 		now = datetime.utcnow()
@@ -73,7 +97,7 @@ class QuickMRUCommand(sublimeplugin.WindowCommand):
 		# if the DB is becoming too large, trim it
 		file_stats = os.stat(self.dbfilename)
 		file_size = file_stats[stat.ST_SIZE]
-		if file_size >= 256 * 1024**2:
+		if file_size >= 256 * 1024:
 			self.trimDB()
 
 	def getDesc(self, item):
@@ -110,4 +134,4 @@ class QuickMRUCommand(sublimeplugin.WindowCommand):
 		display = [self.getDesc(f) for f in files]
 		# pp(files)
 		# print len(db.keys())
-		window.showQuickPanel("", "open", files, display, sublime.QUICK_PANEL_FILES)
+		window.showQuickPanel("", "open", files, display, sublime.QUICK_PANEL_FILES | sublime.SELECT_PANEL_MONOSPACE_FONT)
