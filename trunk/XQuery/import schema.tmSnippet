@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>import schema "${1:http://example.com/xsd}" at "${2:foo.xsd}"
+</string>
+	<key>name</key>
+	<string>import schema</string>
+	<key>scope</key>
+	<string>source.xquery</string>
+	<key>tabTrigger</key>
+	<string>import</string>
+	<key>uuid</key>
+	<string>AB33BC15-885F-4A41-B973-20F2F4791BF6</string>
+</dict>
+</plist>

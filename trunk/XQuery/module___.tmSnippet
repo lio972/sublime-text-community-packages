@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>module "${1:http://www.w3.org/2003/05/xpath-functions}"
+</string>
+	<key>name</key>
+	<string>module "…"</string>
+	<key>scope</key>
+	<string>source.xquery</string>
+	<key>tabTrigger</key>
+	<string>mod</string>
+	<key>uuid</key>
+	<string>425459CA-101A-456E-ADD5-44F2DB81BDFC</string>
+</dict>
+</plist>
