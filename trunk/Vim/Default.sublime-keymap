@@ -1,38 +1,114 @@
 <!--
-
+    speacial control mode, in which what you type is not entered into the current buffer, 
+    but is used for control only, this allow to use shorter forms of command sequences
 -->
+    
 <bindings>
-	<!-- switch mode -->
-    <binding key="shift+escape" command="controlMode"/>
-    <binding key="shift+escape" command="normalMode"><context name="option" value="vimMode"/></binding>
-    		
-	<!-- d for delete -->
-	<binding key="D" command="deleteRange eol"><context name="option" value="vimMode"/></binding>
-	<binding key="d" command="deleteRange ${motion}"><context name="option" value="vimMode"/></binding>
-	<namespace name="motion">
-		<binding key="w" command="words 1"/>
-		<binding key="b" command="words -1"/>
-		<binding key="j" command="lines 1"/>
-		<binding key="k" command="lines -1"/>
-		<binding key="d" command="lines 1"/>
-		<binding key="h" command="characters -1"/>
-		<binding key="l" command="characters 1"/>
-		<binding key=" " command="characters 1"/>
-		<binding key="shift+space" command="characters 1"/>
-		<binding key="$" command="eol"/>
-		<binding key="^" command="bol"/>
-		<binding key="G" command="lines 1, eof"/>
-	</namespace>
-	
-	<!-- insert mode -->
-	<binding key="i" command="insertMode"><context name="option" value="vimMode"/></binding>
-	<binding key="I" command="insertMode bol"><context name="option" value="vimMode"/></binding>
-	<binding key="a" command="insertMode append"><context name="option" value="vimMode"/></binding>
-	<binding key="A" command="insertMode eol"><context name="option" value="vimMode"/></binding>	
+    <!-- ==================== CTRL mode switch ==================== -->
+    <binding key="alt+z" command="ctrlMode on"/>
+    <binding key="alt+z" command="ctrlMode off"><context name="option" value="ctrlMode"/></binding>
+    <binding key="escape" command="ctrlMode off"><context name="option" value="ctrlMode"/></binding>
+    <!-- ========================================================= -->
+    
+    
+    <!-- ==================== SUBLIME KEY BINDINGS ==================== -->
+    <!-- sublime draw center -->
+    <binding key="s,d,c" command="drawCenter"><context name="option" value="ctrlMode"/></binding>
 
-	<!-- arrows like move -->
-    <binding key="j" command="move lines -1"><context name="option" value="vimMode"/></binding>
-    <binding key="k" command="move lines 1"><context name="option" value="vimMode"/></binding>
-    <binding key="h" command="move characters -1"><context name="option" value="vimMode"/></binding>
-    <binding key="l" command="move characters 1"><context name="option" value="vimMode"/></binding>  	
+    <!-- sublime new window -->
+    <binding key="s,n,w" command="newWindow"><context name="option" value="ctrlMode"/></binding>
+    <!-- sublime new tab -->
+    <binding key="s,n,t" command="new"><context name="option" value="ctrlMode"/></binding>
+    <!-- sublime project reload -->
+    <binding key="s,p,r" command="scanProject"><context name="option" value="ctrlMode"/></binding>
+
+    <!-- sublime open file (with) explorer -->
+    <binding key="s,o,f,e" command="open"><context name="option" value="ctrlMode"/></binding> 
+    <!-- sublime open file (in) project -->
+    <binding key="s,o,f,p" command="openFileInProject"><context name="option" value="ctrlMode"/></binding> 
+    <!-- sublime open file (from) tabs -->
+    <binding key="s,o,f,t" command="promptSelectFile"><context name="option" value="ctrlMode"/></binding> 
+    <!-- sublime open file (in) directory -->
+    <binding key="s,o,f,d" command="promptOpenFileInCurrentDirectory"><context name="option" value="ctrlMode"/></binding> 
+    <!-- ========================================================= -->
+    
+    
+    <!-- ==================== VIM KEY BINDINGS ==================== -->  
+    <!-- insert mode -->
+    <binding key="i" command="insertMode"><context name="option" value="ctrlMode"/></binding>
+    <binding key="I" command="insertMode bol"><context name="option" value="ctrlMode"/></binding>
+    <binding key="a" command="insertMode append"><context name="option" value="ctrlMode"/></binding>
+    <binding key="A" command="insertMode eol"><context name="option" value="ctrlMode"/></binding>    
+
+    <!-- arrows like move -->
+    <binding key="j" command="move lines -1"><context name="option" value="ctrlMode"/></binding>
+    <binding key="k" command="move lines 1"><context name="option" value="ctrlMode"/></binding>
+    <binding key="h" command="move characters -1"><context name="option" value="ctrlMode"/></binding>
+    <binding key="l" command="move characters 1"><context name="option" value="ctrlMode"/></binding>      
+
+    <!-- change case -->
+    <binding key="g,U" command="upperCase"><context name="option" value="ctrlMode"/></binding>
+    <binding key="g,u" command="lowerCase"><context name="option" value="ctrlMode"/></binding>
+
+    <!-- search -->
+    <binding key="/" command="showPanel find"><context name="option" value="ctrlMode"/></binding>
+    <binding key="*" command="findAllUnder"><context name="option" value="ctrlMode"/></binding>
+
+    <!-- d for delete -->
+    <binding key="D" command="deleteRange eol"><context name="option" value="ctrlMode"/></binding>
+    <binding key="d" command="deleteRange ${motion}"><context name="option" value="ctrlMode"/></binding>
+    <namespace name="motion">
+        <binding key="w" command="words 1"/>
+        <binding key="b" command="words -1"/>
+        <binding key="j" command="lines 1"/>
+        <binding key="k" command="lines -1"/>
+        <binding key="d" command="lines 1"/>
+        <binding key="h" command="characters -1"/>
+        <binding key="l" command="characters 1"/>
+        <binding key=" " command="characters 1"/>
+        <binding key="shift+space" command="characters 1"/>
+        <binding key="$" command="eol"/>
+        <binding key="^" command="bol"/>
+        <binding key="G" command="lines 1, eof"/>
+    </namespace>    
+    <!-- ========================================================= -->
+
+    
+    <!-- ==================== EditPreferences ==================== -->
+    <!-- Edit Preferences options edit -->    
+    <binding key="e,p,o,e" command="editPackageFiles sublime-options"><context name="option" value="ctrlMode"/></binding>
+    <!-- Edit Preferences keymap edit -->    
+    <binding key="e,p,k,e" command="editPackageFiles sublime-keymap"><context name="option" value="ctrlMode"/></binding>
+    <!-- Edit Preferences snippet edit -->
+    <binding key="e,p,s,e" command="editPackageFiles sublime-snippet"><context name="option" value="ctrlMode"/></binding>
+    <!-- Edit Preferences snippet insert -->
+    <binding key="e,p,s,i" command="editPackageFiles sublime-snippet insertSnippet"><context name="option" value="ctrlMode"/></binding>
+    <!-- Edit Preferences plugins edit -->
+    <binding key="e,p,p,e" command="editPackageFiles py"><context name="option" value="ctrlMode"/></binding>
+    <!-- Edit Preferences keymap list -->
+    <binding key="e,p,k,l" command="listShortcutKeys"><context name="option" value="ctrlMode"/></binding>
+    <!-- Edit Preferences commands list -->
+    <binding key="e,p,c,l" command="listCommands"><context name="option" value="ctrlMode"/></binding>
+    <!-- Edit Preferences options list -->
+    <binding key="e,p,o,l" command="listOptions"><context name="option" value="ctrlMode"/></binding>
+    <!-- Edit Preferences menu edit -->
+    <binding key="e,p,m,e" command="editPackageFiles sublime-menu"><context name="option" value="ctrlMode"/></binding>
+    <!-- Edit Preferences languages list (syntax) -->
+    <binding key="e,p,l,l" command="editPackageFiles tmLanguage set syntax"><context name="option" value="ctrlMode"/></binding>
+    <!-- Edit Preferences languages edit (syntax) -->
+    <binding key="e,p,l,e"  command="editPackageFiles tmLanguage"><context name="option" value="ctrlMode"/></binding>    
+    <!-- ========================================================= -->
+
+
+    <!-- ==================== Misc ==================== -->
+    <!-- MRU file open -->
+    <binding key="m,r,u" command="quickMRU"><context name="option" value="ctrlMode"/></binding> 
+    
+    <!-- Mini Py eval -->
+    <binding key="m,p,e" command="miniPy"><context name="option" value="ctrlMode"/></binding>
+    
+    <!-- search selection in open files -->
+    <binding key="s,i,o,f" command="searchInOpenFiles"><context name="option" value="ctrlMode"/></binding>
+    <!-- ========================================================= -->
+     
 </bindings>

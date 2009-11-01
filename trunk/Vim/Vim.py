@@ -4,16 +4,15 @@ import sublime, sublimeplugin
 # and type: view.runCommand('vim')
 
 # ==========================================================================================
-class SelectModeCommand(sublimeplugin.TextCommand):
+class SelectCtrlModeCommand(sublimeplugin.TextCommand):
 	def run(self, view, args):
 		if args[0] == 'control':
 			self.switch(view, True)
-		elif args[0] == 'normal':
+		elif args[0] == 'edit':
 			self.switch(view, False)
 			
 	def switch(self, view, isCtrl):
 		if isCtrl:
-			print "entering Control mode"
 			# set restore point
 			view.runCommand('glueMarkedUndoGroups')
 			# set special color scheme
@@ -21,7 +20,6 @@ class SelectModeCommand(sublimeplugin.TextCommand):
 			view.options().set('Vim.original_colorscheme', colorscheme)
 			view.options().set('colorscheme', "Packages/Color Scheme - Default/Cobalt.tmTheme")			
 		else:
-			print "exiting Control mode"
 			# set restore point
 			view.runCommand('markUndoGroupsForGluing')			
 			# set back normal color scheme
@@ -29,22 +27,15 @@ class SelectModeCommand(sublimeplugin.TextCommand):
 			view.options().set('colorscheme', colorscheme)	
 			
 		# set modes
-		view.options().set('vimMode', isCtrl)
+		view.options().set('ctrlMode', isCtrl)
 		view.options().set('commandMode', isCtrl)
 		
-
-# ==========================================================================================
-class NormalModeCommand(sublimeplugin.TextCommand):
-	def run(self, view, args):
-		print "entering normal mode"
-		view.runCommand('selectMode normal')
-				
-				
+		
 # ==========================================================================================
 class InsertModeCommand(sublimeplugin.TextCommand):
 	def run(self, view, args):
 		print "entering insert mode"
-		view.runCommand('selectMode normal')
+		view.runCommand('selectCtrlMode edit')
 		if len(args) > 0:
 			if args[0] == 'bol':
 				view.runCommand('moveTo bol')
@@ -55,8 +46,12 @@ class InsertModeCommand(sublimeplugin.TextCommand):
 
 
 # ==========================================================================================
-class ControlModeCommand(sublimeplugin.TextCommand):
+class CtrlModeCommand(sublimeplugin.TextCommand):
 	def run(self, view, args):
-		print "starting Control Mode"
-		view.runCommand('selectMode control')
-		
+		if len(args) > 0:
+			if args[0] == 'on':
+				print "Control Mode ON"
+				view.runCommand('selectCtrlMode control')
+			elif args[0] == 'off':
+				print "Control Mode Off"
+				view.runCommand('selectCtrlMode edit')		
