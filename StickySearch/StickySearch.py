@@ -5,7 +5,7 @@ import sublime, sublimeplugin
 class StickySearchCommand(sublimeplugin.TextCommand):
 	def run(self, view, args):
 		# keep sticky per window (each window has its own set)
-		key = "StickySearch_" + str(view.window().id())
+		key = "StickySearch"
 		view.window().runCommand('findAllUnder')
 		
 		if 'add' in args:
