@@ -13,6 +13,7 @@ class SelectCtrlModeCommand(sublimeplugin.TextCommand):
 			
 	def switch(self, view, isCtrl):
 		if isCtrl:
+			sublime.statusMessage("Control Mode: ON")
 			# set restore point
 			view.runCommand('glueMarkedUndoGroups')
 			# set special color scheme
@@ -20,6 +21,7 @@ class SelectCtrlModeCommand(sublimeplugin.TextCommand):
 			view.options().set('Vim.original_colorscheme', colorscheme)
 			view.options().set('colorscheme', "Packages/Color Scheme - Default/Cobalt.tmTheme")			
 		else:
+			sublime.statusMessage("Control Mode: OFF")
 			# set restore point
 			view.runCommand('markUndoGroupsForGluing')			
 			# set back normal color scheme
@@ -34,7 +36,6 @@ class SelectCtrlModeCommand(sublimeplugin.TextCommand):
 # ==========================================================================================
 class InsertModeCommand(sublimeplugin.TextCommand):
 	def run(self, view, args):
-		print "entering insert mode"
 		view.runCommand('selectCtrlMode edit')
 		if len(args) > 0:
 			if args[0] == 'bol':
@@ -50,8 +51,6 @@ class CtrlModeCommand(sublimeplugin.TextCommand):
 	def run(self, view, args):
 		if len(args) > 0:
 			if args[0] == 'on':
-				print "Control Mode ON"
 				view.runCommand('selectCtrlMode control')
 			elif args[0] == 'off':
-				print "Control Mode Off"
 				view.runCommand('selectCtrlMode edit')		

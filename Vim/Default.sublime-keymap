@@ -54,6 +54,9 @@
     <binding key="/" command="showPanel find"><context name="option" value="ctrlMode"/></binding>
     <binding key="*" command="findAllUnder"><context name="option" value="ctrlMode"/></binding>
 
+    <!-- input panel -->
+    <binding key=":" command="inputPanel"><context name="option" value="ctrlMode"/></binding>
+
     <!-- d for delete -->
     <binding key="D" command="deleteRange eol"><context name="option" value="ctrlMode"/></binding>
     <binding key="d" command="deleteRange ${motion}"><context name="option" value="ctrlMode"/></binding>
