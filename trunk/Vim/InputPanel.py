@@ -9,8 +9,10 @@ class InputPanelCommand(sublimeplugin.TextCommand):
 	def on_done(self, input):
 		self.parse(input)
 	
-	def on_change(self, input):
-		pass
+	def on_change(self, cmd):
+		view = self.view
+		if cmd == "s" or cmd == r'%s':
+			view.window().runCommand('showPanel replace')
 
 	def on_cancel(self):
 		pass
