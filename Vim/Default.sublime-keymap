@@ -30,6 +30,9 @@
     <binding key="s,o,f,t" command="promptSelectFile"><context name="option" value="ctrlMode"/></binding> 
     <!-- sublime open file (in) directory -->
     <binding key="s,o,f,d" command="promptOpenFileInCurrentDirectory"><context name="option" value="ctrlMode"/></binding> 
+    
+    <!-- sublime show context -->
+    <binding key="s,d,c" command="displayName"><context name="option" value="ctrlMode"/></binding>
     <!-- ========================================================= -->
     
     

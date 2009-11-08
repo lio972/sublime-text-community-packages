@@ -13,20 +13,15 @@ class SelectCtrlModeCommand(sublimeplugin.TextCommand):
 			
 	def switch(self, view, isCtrl):
 		if isCtrl:
-			sublime.statusMessage("Control Mode: ON")
 			# set restore point
 			view.runCommand('glueMarkedUndoGroups')
-			# set special color scheme
-			colorscheme = view.options().get('colorscheme')
-			view.options().set('Vim.original_colorscheme', colorscheme)
-			view.options().set('colorscheme', "Packages/Color Scheme - Default/Cobalt.tmTheme")			
+			sublime.statusMessage("-- CTRL --")
+			view.setStatus('Vim.status', '-- CTRL --')
 		else:
-			sublime.statusMessage("Control Mode: OFF")
+			sublime.statusMessage("CTRL: OFF")
 			# set restore point
 			view.runCommand('markUndoGroupsForGluing')			
-			# set back normal color scheme
-			colorscheme = view.options().get('Vim.original_colorscheme')
-			view.options().set('colorscheme', colorscheme)	
+			view.eraseStatus('Vim.status')
 			
 		# set modes
 		view.options().set('ctrlMode', isCtrl)
