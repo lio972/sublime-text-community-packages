@@ -75,7 +75,7 @@
         <binding key="shift+space" command="characters 1"/>
         <binding key="$" command="eol"/>
         <binding key="^" command="bol"/>
-        <binding key="G" command="lines 1, eof"/>
+        <binding key="G" command="eof"/>
     </namespace>    
     <!-- ========================================================= -->
 
