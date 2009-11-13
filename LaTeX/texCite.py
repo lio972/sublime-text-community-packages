@@ -37,7 +37,7 @@ class TexCiteCommand(sublimeplugin.TextCommand):
 			bib = bibf.readlines()
 			bibf.close()
 		kp = re.compile(r'@[^\{]+\{(.+),')
-		tp = re.compile(r'\btitle\b[^\{]+\{(.+)\}', re.IGNORECASE)
+		tp = re.compile(r'\btitle\s*=\s*(.+)', re.IGNORECASE)
 		kp2 = re.compile(r'([^\t]+)\t*')
 		keywords = [kp.search(line).group(1) for line in bib if line[0] == '@']
 		titles = [tp.search(line).group(1) for line in bib if tp.search(line)]

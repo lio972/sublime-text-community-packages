@@ -29,11 +29,10 @@ class TexifyCommand(sublimeplugin.WindowCommand):
 		cmd = texify + quotes + texFile + texExt + quotes
 		print "\n\nTexify executing command:"
 		print cmd
-		sublime.statusMessage("Texifying %s..." % (texFile + texExt,))
-		p = Popen(cmd, stdout=PIPE, stderr=STDOUT, shell=False)
+		view.setStatus("Texifying", texFile+texExt)
+		p = Popen(cmd, stdout=PIPE, shell=True) # , stderr=STDOUT, shell=False)
 		(stdoutdata, stderrdata) = p.communicate()
 		window.runCommand('showTeXError')
-		sublime.statusMessage("Done")
 
 class ShowTeXErrorCommand(sublimeplugin.WindowCommand):
 	def run(self, window, args):
