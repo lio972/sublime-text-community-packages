@@ -10,15 +10,20 @@ def print_timing(func):
 	   	print '%s took %0.3f ms' % (func.func_name, (t2 - t1) * 1000.0)
 		return res
 	return wrapper
-    
-class HighlightCurrentWord(sublimeplugin.Plugin):
+
+KEY = "HighlightCurrentWord"
+
+class HighlightCurrentWord(sublimeplugin.ApplicationCommand):
+	enabled = True
+	
 	# @print_timing
 	def onSelectionModified(self, view):
-		key = "HighlightCurrentWord"
-
+		if not self.enabled:
+			return
+			
 		if len(view.sel()) != 1 or view.sel()[0].size() > 80 or view.options().getString("syntax") in [u"Packages/XML/XML.tmLanguage"]:
 			# Skip: multiple selection, very large selections, XML files
-			view.eraseRegions(key)
+			view.eraseRegions(KEY)
 			return
 
 		region = view.sel()[0]
@@ -30,7 +35,15 @@ class HighlightCurrentWord(sublimeplugin.Plugin):
 			regions = view.findAll(r"\b\Q%s\E\b" % currentWord)
 			# don't highlight word at cursor
 			regions.remove(region)
-			view.addRegions(key, regions, "comment")
+			view.addRegions(KEY, regions, "comment")
 		else:
-			view.eraseRegions(key)
-
+			view.eraseRegions(KEY)
+	
+	def run(self, args):
+		self.enabled = not self.enabled
+		for window in sublime.windows():
+			for view in window.views():
+				if self.enabled:					
+					self.onSelectionModified(view)
+				else:
+					view.eraseRegions(KEY)

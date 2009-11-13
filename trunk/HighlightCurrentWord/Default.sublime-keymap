@@ -1,0 +1,3 @@
+<bindings>
+	<binding key="ctrl+shift+H" command="highlightCurrentWord"/>
+</bindings>
