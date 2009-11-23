@@ -6,7 +6,7 @@ import functools
 class SearchInOpenViewsCommand(sublimeplugin.TextCommand):
    def run(self, view, args):
       view_list = self.get_view_list(view)
-      
+           
       first_selection = view.sel()[0]
       if first_selection.begin() - first_selection.end() != 0:
          init_pattern = view.substr(first_selection)
@@ -20,15 +20,14 @@ class SearchInOpenViewsCommand(sublimeplugin.TextCommand):
    #------------------------------------------------------------------
    def on_start_searching(self, view, view_list, pattern):
       result = []
-            
       for v in view_list:
          result += self.search_term(v, pattern)
-      
+           
       display = []
       for (file, line, txt, region) in result:
          display.append(file + ":" + str(line) + ": " + txt)
-                         
-      flags = sublime.QUICK_PANEL_FILES
+                                     
+      flags = 0
       view.window().showSelectPanel(display,
          functools.partial(self.open_selection, view, view_list, result), None,
          flags)
@@ -42,21 +41,16 @@ class SearchInOpenViewsCommand(sublimeplugin.TextCommand):
    #------------------------------------------------------------------
    def search_term(self, view, pattern):
       result = []
-      next_region = view.line(0) # start from 0
-      while next_region is not False:
-         region = view.find(pattern, next_region.begin(), 0)
-         if region is not None:
-            (row, col) = view.rowcol(region.begin())
-            
-            file_name = view.fileName()
-            line_number = row+1
-            line_text = view.substr(view.line(region))
-            res_tuple = (file_name, line_number, line_text, region)
-            
-            result.append(res_tuple)
-            next_region = self.advance_line(view, region)
-         else:
-            break
+      for region in view.findAll(pattern):
+         (row, col) = view.rowcol(region.begin())
+         # collect all the information
+         file_name = view.fileName()
+         line_number = row+1
+         line_text = view.substr(view.line(region))
+         res_tuple = (file_name, line_number, line_text, region)
+         # add the information tuple to result list
+         result.append(res_tuple)
+      
       return result
    
    #------------------------------------------------------------------
