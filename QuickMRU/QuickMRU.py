@@ -72,7 +72,6 @@ class QuickMRUCommand(sublimeplugin.WindowCommand):
 		newDB = {}
 		for x in files:
 			newDB[x] = db[x]
-		del newDB[None]
 
 		self.db = newDB
 
