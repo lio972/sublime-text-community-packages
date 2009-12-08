@@ -98,9 +98,9 @@ class PerlTidyCommand(sublimeplugin.TextCommand):
 		results.setScratch(True)
 		results.setName("Perl output")
 		
-		results.insert(-1, output + "\n")
+		results.insert(0, output + "\n")
 		if error:
-			results.insert(-1, "\nSTDERR:\n" + error)
+			results.insert(0, "\nSTDERR:\n" + error)
 
 	def isEnabled(self, view, args):
 		# enabled for Perl and Plain text files, with at most 1 selection region
