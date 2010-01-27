@@ -4,7 +4,7 @@
 #
 # see README.txt for usage instructions.
 
-import sublime, sublimeplugin, re, os
+import sublime, sublimeplugin, re, os, Hypergrammar
 
 class NavigateBase(sublimeplugin.TextCommand):
   def ensureFile(self, fileName):
@@ -137,3 +137,18 @@ class NavigateToWikiPageCommand(NavigateBase):
     if (match):
       return match.group(0)
     return None
+
+# class RefreshSyntaxHighlightingCommand(sublimeplugin.TextCommand):
+#   def run(self, view, args):
+    
+#     print view.syntaxName(view.sel()[0].begin())
+#     print view.fileName()
+#     folder = os.path.split(view.fileName())[0]
+#     if os.path.exists(folder) == False:
+#       print "no folder"
+#       return
+
+#     grammarGenerator = Hypergrammar.GrammarGenerator(folder)
+#     syntaxFile = grammarGenerator.run()    
+#     view.options().set('syntax', syntaxFile)
+#     print "set syntax file to %s" % syntaxFile
