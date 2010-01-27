@@ -6,16 +6,21 @@
 
 import sublime, sublimeplugin, re, os
 
-class NavigateToWikiIndexPageCommand(sublimeplugin.TextCommand):
-  """This command creates a new view containing all the files 
-  which can be visited from the currently-visible wiki file 
-  """
-
+class NavigateBase(sublimeplugin.TextCommand):
   def ensureFile(self, fileName):
     if os.path.exists(fileName) == False:
+      print "creating %s" % fileName
       f = open(fileName, 'w')
       f.write("")
       f.close()
+
+  def run(self, view, args):
+    print "base class!"
+
+class NavigateToWikiIndexPageCommand(NavigateBase):
+  """This command creates a new view containing all the files 
+  which can be visited from the currently-visible wiki file 
+  """
 
   def run(self, view, args):
     dirName = os.path.dirname(view.fileName())
@@ -27,13 +32,13 @@ class NavigateToWikiIndexPageCommand(sublimeplugin.TextCommand):
     wikiFiles.sort()
     bufferContent = "FILES IN " + dirName + "\r\n\r\n" + "\r\n".join( wikiFiles )
     newView = view.window().openFile(indexFileName)
-    # openFile() is asynchronous, so it returns None. Therefore we can't insert!
+    # openFile() is asynchronous, so it returns None. Therefore we can't insertfil
     #newView.insert(0, bufferContent)
 
   def isEnabled(self, view, args):
     return view.fileName()
     
-class NavigateToWikiPageCommand(sublimeplugin.TextCommand):
+class NavigateToWikiPageCommand(NavigateBase):
   """This command takes the user to a wiki page under the cursor. 
   Eg, if the cursor is in NewPa|geToNavigateTo, and the user executes
   the command, NewPageToNavigateTo.wiki in the same folder will be opened
@@ -70,7 +75,7 @@ class NavigateToWikiPageCommand(sublimeplugin.TextCommand):
         view.window().openFile(candidateFileName)
       else:
       	if sublime.questionBox("Do you want to create %s" % candidateFileName):
-          ensureFile(candidateFileName)
+          self.ensureFile(candidateFileName)
           sublime.statusMessage("No page at %s: starting new file" % candidateFileName)
           view.window().openFile(candidateFileName)
         
