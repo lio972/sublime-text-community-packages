@@ -25,15 +25,16 @@ class TexifyCommand(sublimeplugin.WindowCommand):
 			window.runCommand('save')
 		# --max-print-line makes sure that no line is truncated, or we would not catch
 		# line numbers in some warnings
-		texify = u'texifyXX -b -p --tex-option=\"--synctex=1\" --tex-option=\"--max-print-line=200\" '
+		texify = u'texify -b -p --tex-option=\"--synctex=1\" --tex-option=\"--max-print-line=200\" '
 		cmd = texify + quotes + texFile + texExt + quotes
 		print "\n\nTexify executing command:"
 		print cmd
 		p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
 		(stdoutdata, stderrdata) = p.communicate()
-		if stderrdata:
+		if stderrdata and not("see log file" in str(stderrdata)):
 			sublime.errorMessage("Could not invoke texify. Got the following error:\n%s" % (str(stderrdata),) )
 			print "texify invocation error:" + str(stderrdata)
+			print len(stdoutdata),len(stderrdata)
 		else:	
 			window.runCommand('showTeXError')
 
