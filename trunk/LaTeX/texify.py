@@ -25,14 +25,17 @@ class TexifyCommand(sublimeplugin.WindowCommand):
 			window.runCommand('save')
 		# --max-print-line makes sure that no line is truncated, or we would not catch
 		# line numbers in some warnings
-		texify = u'texify -b -p --tex-option=\"--synctex=1\" --tex-option=\"--max-print-line=200\" '
+		texify = u'texifyXX -b -p --tex-option=\"--synctex=1\" --tex-option=\"--max-print-line=200\" '
 		cmd = texify + quotes + texFile + texExt + quotes
 		print "\n\nTexify executing command:"
 		print cmd
-		view.setStatus("Texifying", texFile+texExt)
-		p = Popen(cmd, stdout=PIPE, shell=True) # , stderr=STDOUT, shell=False)
+		p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
 		(stdoutdata, stderrdata) = p.communicate()
-		window.runCommand('showTeXError')
+		if stderrdata:
+			sublime.errorMessage("Could not invoke texify. Got the following error:\n%s" % (str(stderrdata),) )
+			print "texify invocation error:" + str(stderrdata)
+		else:	
+			window.runCommand('showTeXError')
 
 class ShowTeXErrorCommand(sublimeplugin.WindowCommand):
 	def run(self, window, args):
@@ -87,7 +90,7 @@ class ShowTeXErrorCommand(sublimeplugin.WindowCommand):
 		else:
 			print "No warnings.\n"
 		
-		window.showQuickPanel("", "gotoTeXError", panelContent)
+		window.showQuickPanel("", "gotoTeXError", panelContent, panelContent, sublime.QUICK_PANEL_MONOSPACE_FONT)
 
 
 

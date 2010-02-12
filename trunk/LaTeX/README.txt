@@ -3,12 +3,13 @@ LaTeX Package for Sublime Text
 
 First draft "release" September 21, 2009
 
-Current revision October 15, 2009
+Current revision February 12, 2012
 
 Contributors:
 Marciano Siniscalchi
 (more to come I hope!)
 
+For more information, see <http://tekonomist.wordpress.com>
 
 Introduction
 ------------
@@ -71,6 +72,8 @@ If errors or warnings are detected, a quick panel is shown with a list of
 line number, and you will be taken to the offending line. The quick-panel is
 closed upon clicking one line, but you can reopen it via the "showTeXErrors"
 command.
+
+If the `texify` command cannot be invoked (typically because it is not on the path), an error dialog is shown.
 
 A "build system" profile is also provided; you can run pdflatex by hitting the standard F7 key (or whatever you use to build stuff) as well, but error detection is very flaky. Consider this experimental for the time being, and use the "texify" command instead.
 
