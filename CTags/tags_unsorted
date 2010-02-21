@@ -1,0 +1,77 @@
+CTagsTest	.\ctags.py	/^class CTagsTest(unittest.TestCase):$/;"	c
+Tag	.\ctags.py	/^class Tag(object):$/;"	c
+TagFile	.\ctags.py	/^class TagFile(object):$/;"	c
+__getitem__	.\ctags.py	/^    def __getitem__(self, index):$/;"	m	class:TagFile	file:
+__init__	.\ctags.py	/^    def __init__(self, p, column):$/;"	m	class:TagFile
+__init__	.\ctags.py	/^    def __init__(self, tag_dict):$/;"	m	class:Tag
+__len__	.\ctags.py	/^    def __len__(self):$/;"	m	class:TagFile	file:
+__repr__	.\ctags.py	/^    def __repr__(self):$/;"	m	class:Tag	file:
+build_ctags	.\ctags.py	/^def build_ctags(ctags_exe, tag_file):$/;"	f
+create_tag_path	.\ctags.py	/^def create_tag_path(tag):$/;"	f
+get	.\ctags.py	/^    def get(self, *tags):$/;"	m	class:TagFile
+get_tag_class	.\ctags.py	/^def get_tag_class(tag):$/;"	f
+get_tags_dict	.\ctags.py	/^    def get_tags_dict(self, *tags):$/;"	m	class:TagFile
+parse_tag_file	.\ctags.py	/^def parse_tag_file(tag_file):$/;"	f
+parse_tag_lines	.\ctags.py	/^def parse_tag_lines(lines, order_by='symbol'):$/;"	f
+post_process_tag	.\ctags.py	/^def post_process_tag(search_obj):$/;"	f
+process_ex_cmd	.\ctags.py	/^def process_ex_cmd(ex):$/;"	f
+process_fields	.\ctags.py	/^def process_fields(fields):$/;"	f
+resort_ctags	.\ctags.py	/^def resort_ctags(tag_file):$/;"	f
+splits	.\ctags.py	/^def splits(string, *splitters):$/;"	f
+test_all_search_strings_work	.\ctags.py	/^    def test_all_search_strings_work(self):$/;"	m	class:CTagsTest
+test_tags_files	.\ctags.py	/^    def test_tags_files(self):$/;"	m	class:CTagsTest
+unescape_ex	.\ctags.py	/^def unescape_ex(ex):$/;"	f
+JumpBack	.\ctags_plugin.py	/^class JumpBack(sublimeplugin.WindowCommand):$/;"	c
+NavigateToDefinition	.\ctags_plugin.py	/^class NavigateToDefinition(sublimeplugin.TextCommand):$/;"	c
+QuickPanel	.\ctags_plugin.py	/^class QuickPanel(sublimeplugin.WindowCommand):$/;"	c
+RebuildCTags	.\ctags_plugin.py	/^class RebuildCTags(sublimeplugin.TextCommand):$/;"	c
+ShowSymbolsForCurrentFile	.\ctags_plugin.py	/^class ShowSymbolsForCurrentFile(sublimeplugin.TextCommand):$/;"	c
+and_then	.\ctags_plugin.py	/^            def and_then(view):$/;"	f	function:JumpBack.run
+and_then	.\ctags_plugin.py	/^    def and_then(view):$/;"	f	function:scroll_to_tag
+append	.\ctags_plugin.py	/^    def append(cls, view):$/;"	m	class:JumpBack
+build_ctags	.\ctags_plugin.py	/^    def build_ctags(self, tag_file):$/;"	m	class:RebuildCTags
+checkIfBuilding	.\ctags_plugin.py	/^def checkIfBuilding(self, view, args):$/;"	f
+compile_lists	.\ctags_plugin.py	/^    def compile_lists(sorter):$/;"	f	function:prepared_4_quickpanel
+done_building	.\ctags_plugin.py	/^    def done_building(self, tag_file):$/;"	m	class:RebuildCTags
+find_tags_relative_to	.\ctags_plugin.py	/^def find_tags_relative_to(view, ask_to_build=True):$/;"	f
+follow_tag_path	.\ctags_plugin.py	/^def follow_tag_path(view, tag_path, pattern):$/;"	f
+format_tag_for_quickopen	.\ctags_plugin.py	/^def format_tag_for_quickopen(tag, file=1):$/;"	f
+method	.\ctags_plugin.py	/^    @classmethod$/;"	c	class:JumpBack
+method	.\ctags_plugin.py	/^    @classmethod$/;"	c	class:QuickPanel
+onModified	.\ctags_plugin.py	/^    def onModified(self, view):$/;"	m	class:JumpBack
+partial	.\ctags_plugin.py	/^    def partial(cls, f, *args, **kw):$/;"	m	class:QuickPanel
+prepared_4_quickpanel	.\ctags_plugin.py	/^def prepared_4_quickpanel(formatter=format_tag_for_quickopen):$/;"	f
+run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:NavigateToDefinition
+run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:RebuildCTags
+run	.\ctags_plugin.py	/^    def run(self, view, args):$/;"	m	class:ShowSymbolsForCurrentFile
+run	.\ctags_plugin.py	/^    def run(self, w, args):                    $/;"	m	class:JumpBack
+run	.\ctags_plugin.py	/^    def run(self, window, args):$/;"	m	class:QuickPanel
+scroll_to_tag	.\ctags_plugin.py	/^def scroll_to_tag(view, tag_dir, tag):$/;"	f
+select	.\ctags_plugin.py	/^def select(view, region):$/;"	f
+show	.\ctags_plugin.py	/^    def show(cls, args, display, skip_if_one=False):$/;"	m	class:QuickPanel
+sorted_tags	.\ctags_plugin.py	/^        def sorted_tags():$/;"	f	function:NavigateToDefinition.run
+sorted_tags	.\ctags_plugin.py	/^        def sorted_tags():$/;"	f	function:ShowSymbolsForCurrentFile.run
+view_fn	.\ctags_plugin.py	/^def view_fn(view, if_None = '.'):$/;"	f
+wait_until_loaded	.\ctags_plugin.py	/^def wait_until_loaded(file):$/;"	f
+wrapper	.\ctags_plugin.py	/^    def wrapper(f):$/;"	f	function:wait_until_loaded
+time_function	.\helpers.py	/^def time_function(f):$/;"	f
+wrapper	.\helpers.py	/^    def wrapper(*args, **kw):$/;"	f	function:time_function
+activeWindow	.\on_load.py	/^    def activeWindow():$/;"	f
+addOnLoadCallback	.\on_load.py	/^    def addOnLoadCallback(f, cb):$/;"	f
+onActivated	.\on_load.py	/^    def onActivated(f):        $/;"	f
+wrapper	.\on_load.py	/^        def wrapper(v):$/;"	f	function:onActivated
+FocusRestorer	.\plugin_helpers.py	/^class FocusRestorer(object):$/;"	c
+__call__	.\plugin_helpers.py	/^    def __call__(self, times=2, delay = 50):  $/;"	m	class:FocusRestorer	file:
+__init__	.\plugin_helpers.py	/^    def __init__(self):$/;"	m	class:FocusRestorer
+decorator	.\plugin_helpers.py	/^    def decorator(func):$/;"	f	function:threaded
+done_in_main	.\plugin_helpers.py	/^    def done_in_main(*args, **kw):$/;"	f	function:in_main
+in_main	.\plugin_helpers.py	/^def in_main(f):$/;"	f
+run	.\plugin_helpers.py	/^            def run():$/;"	f	function:threaded/decorator/threaded
+threaded	.\plugin_helpers.py	/^        def threaded(*args, **kwargs):$/;"	f	function:threaded/decorator
+threaded	.\plugin_helpers.py	/^def threaded(finish=None, msg="Thread already running"):$/;"	f
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_PROGRAM_VERSION	5.7	//
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
