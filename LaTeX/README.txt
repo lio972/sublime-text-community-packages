@@ -3,7 +3,7 @@ LaTeX Package for Sublime Text
 
 First draft "release" September 21, 2009
 
-Current revision February 12, 2012
+Current revision February 21, 2012
 
 Contributors:
 Marciano Siniscalchi
@@ -215,3 +215,9 @@ Miscellaneous commands/snippets
 braces. Hit tab to exit the braces.
 
 "Boldface" does the same, but enters `\textbf{}`.
+
+"Color" (`c,o,l,o,r,tab`) is intended to work in conjunction with the `xcolor` package. It enters `{\color{} }` and drops the cursor between the inner pair of braces; you can enter a color specification, then hit tab to move immediately before the last closing brace, where you can enter the text you want to be typeset in the color you specified. Finally, one last tab will move the cursor outside the braces.
+
+"Frame" (`f,r,a,m,e,tab`) is intended to work with the popular Beamer package. It enters `\begin{frame}[t]{title}`, a blank line, then `\end{frame}`. The `[t]` is highlighted; you can change the alignment specification if you wish (`t` is for top, `c` is for center, etc.). Hitting tab highlights the `title`, which of course you should adapt to suit your needs. Hitting `tab` again places the cursor on the blank line inside the frame environment.
+
+"Beamer box" (`b,o,x,tab`) is also meant for use with Beamer. It enters the `\begin{beamerboxesrounded}...` command, with some useful defaults and title; as above, hit tab to move to the different fields.
