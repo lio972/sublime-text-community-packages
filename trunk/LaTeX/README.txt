@@ -3,7 +3,7 @@ LaTeX Package for Sublime Text
 
 First draft "release" September 21, 2009
 
-Current revision February 21, 2012
+Current revision February 25, 2012
 
 Contributors:
 Marciano Siniscalchi
@@ -95,6 +95,8 @@ texSections : `ctrl+shift+s`
 ###Explanation
 
 Displays parts, chapters, sections, subsections, etc. in a quick panel, indented to emphasize the overall structure of the document.
+
+The command also finds Beamer `frame`s, and will display the frame title as long as it is provided *on the same line* as the `\begin{frame}` statement, either as part of the latter or in an explicit `\frametitle{...}` command. 
 
 Click on any line and you will be taken to the corresponding point in the source tex file.
 
