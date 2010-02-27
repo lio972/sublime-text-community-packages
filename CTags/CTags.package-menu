@@ -1,7 +1,0 @@
-<menu>
-    <item caption="Navigate To Definition" command="navigateToDefinition"/>
-    <item caption="Show Symbols For Current File" command="showSymbolsForCurrentFile"/>    
-    <item caption="Jump Back From Goto Definition" command="jumpBack"/>
-    <item caption="Jump Back To Last Modification Area" command="jumpBack toLastModification"/>
-    <item caption="Rebuild CTags" command="rebuildCTags"/>
-</menu>
