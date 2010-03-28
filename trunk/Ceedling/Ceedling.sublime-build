@@ -1,0 +1,2 @@
+build cd $ProjectDir && rake bullseye:$FileName
+lineNumberRegex ^(...*?):([0-9]*):?([0-9]*)
