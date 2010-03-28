@@ -1,0 +1,2 @@
+build rake test:unit:coverage:$FileName
+lineNumberRegex ^(...*?):([0-9]*):?([0-9]*)
