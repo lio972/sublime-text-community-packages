@@ -3,22 +3,25 @@ Default Ceedling key bindings...
 -->
 <bindings>
 
-    <binding key="f5"               command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake debug'" />
-    <binding key="f6"               command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake build:release'" />
-    <binding key="f7"               command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:$FileName'" />
-    <binding key="ctrl+f7"          command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake build'" />
-    <binding key="ctrl+shift+f7"    command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake app_clean build'" />
-    <binding key="f8"               command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake chronos:$FileName'" />
-    <binding key="ctrl+alt+period"  command="openCeedlingFile 'test_and_source'" />
-    <binding key="ctrl+period"      command="openCeedlingFile 'next'" />
-    <binding key="ctrl+alt+h"       command="openCeedlingFile 'header'" />
-    <binding key="ctrl+alt+s"       command="openCeedlingFile 'source'" />
-    <binding key="ctrl+alt+t"       command="openCeedlingFile 'test'" />
-    <binding key="ctrl+alt+m"       command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake module:create[$File]'" />
-    <binding key="f1"               command="openCeedlingFile 'config'" />
+    <binding key="f1"                   command="openCeedlingFile 'config'" />
+    <!-- <binding key="f5"                   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake debug'" /> -->
+    <binding key="f5"                   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake build:release'" />
+    <binding key="ctrl+f5"              command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake'" />
+    <binding key="f7"                   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:$FileName'" />
+    <binding key="ctrl+f7"              command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:all'" />
+    <binding key="ctrl+shift+f7"        command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake app_clean build'" />
+    <binding key="f8"                   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake chronos:$FileName'" />
+    <binding key="ctrl+alt+period"      command="openCeedlingFile 'test_and_source'" />
+    <binding key="ctrl+period"          command="openCeedlingFile 'next'" />
+    <binding key="ctrl+alt+h"           command="openCeedlingFile 'header'" />
+    <binding key="ctrl+alt+s"           command="openCeedlingFile 'source'" />
+    <binding key="ctrl+alt+t"           command="openCeedlingFile 'test'" />
+    <binding key="ctrl+alt+m"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake module:create[$File]'" />`
+    <binding key="ctrl+shift+backquote" command="showPanel output"/>
 
-    <binding key="ctrl+alt+x"       command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake clobber'" />
-    <binding key="alt+l"            command="exec '^(...*?)  ([0-9]+)  '                'rake lint:solo[$BaseName]'" />
-    <binding key="ctrl+alt+l"       command="exec '^([\.\\_A-Za-z0-9]+\.c)  ([0-9]+)  ' 'rake lint:all'" />
+    <binding key="ctrl+alt+x"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake clobber'" />
+    <binding key="alt+l"                command="exec '^(...*?)  ([0-9]+)  '                'rake lint:solo[$BaseName]'" />
+    <binding key="ctrl+alt+l"           command="exec '^([\.\\_A-Za-z0-9]+\.c)  ([0-9]+)  ' 'rake lint:all'" />
+    <binding key="ctrl+shift+l"         command="exec '^([\.\\_A-Za-z0-9]+\.c)  ([0-9]+)  ' 'rake lint:diff'" />
 
 </bindings>

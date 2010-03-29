@@ -7,6 +7,7 @@
 	<separator/>
     
     <item caption="Test Current Module"     command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake test:$FileName'" />
+    <item caption="Test All Modules"        command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake test:all'" />
     <item caption="Run Chronos Test"        command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake chronos:$FileName'" />
     
 	<separator/>
@@ -24,5 +25,6 @@
     <item caption="Clean Project"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake clobber'" />
     <item caption="Lint Scan (file)"        command="exec '^(...*?)  ([0-9]+)  '                'rake lint:solo[$BaseName]'" />
     <item caption="Lint Scan (project)"     command="exec '^([\.\\_A-Za-z0-9]+\.c)  ([0-9]+)  ' 'rake lint:all'" />
+    <item caption="Lint Diff (project)"     command="exec '^([\.\\_A-Za-z0-9]+\.c)  ([0-9]+)  ' 'rake lint:diff'" />
     
 </menu>
