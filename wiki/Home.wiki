@@ -1,5 +1,7 @@
 =Sublime Text Wiki=
 
+#sidebar TableOfContents
+
 This wiki is the home for packages (plugins) created for a really kick-ass and extensible editor, Sublime Text
 
 [http://www.sublimetext.com Sublime Text] is a sophisticated text editor for code, html and prose. You'll love the slick user interface and extraordinary features.
