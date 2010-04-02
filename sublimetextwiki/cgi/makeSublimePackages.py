@@ -12,7 +12,7 @@ gcode   = "http://sublime-text-community-packages.googlecode.com/svn/trunk/"
 
 dest    = site + "/sublime-packages/"
 pages   = site + "/pages"
-svn     = "/usr/bin/svn"
+svn     = "svn"
 args    = "co %s %s" % (gcode, root)
 cmdline = "%s %s" % (svn, args)
 

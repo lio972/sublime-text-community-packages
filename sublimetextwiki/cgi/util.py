@@ -1,7 +1,7 @@
 import subprocess, os, re, markdown
 
-root = "/homepages/25/d96254051/htdocs/sublime-subversion/trunk/"
-site  = "/homepages/25/d96254051/htdocs/sublime"
+root = "/svn/sublime/sublime-text-community-packages"
+site  = "/Program\ Files/Apache\ Software\ Foundation/Apache2.2/htdocs"
 
 def templateContent(filename):
   f = os.path.join(site, "templates", filename)
