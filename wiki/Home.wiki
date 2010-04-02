@@ -8,4 +8,42 @@ This wiki is the home for packages (plugins) created for a really kick-ass and e
 
 ==Packages==
 
-_need to add package listing_
+  * AAALoadFirstExtensions
+  * AutoFormat
+  * AutoIt
+  * AutomaticBackups
+  * Ceedling
+  * ChooseAnyCommand
+  * CTags
+  * EmacsKillRing
+  * HighlightCurrentWord
+  * Hyperlinking
+  * LaTeX
+  * Macros
+  * Mercurial
+  * Merge
+  * MiniPy
+  * Nitrogen
+  * PackageDownloader
+  * Parameterised Keybinding Example
+  * PasteColumn
+  * Perforce
+  * PerlTidy
+  * PowerShell
+  * PowerUser
+  * ProjectMRU
+  * QuickMRU
+  * RemoveWhitespace
+  * SearchInArea
+  * SearchInOpenViews
+  * Snippets
+  * StickySearch
+  * StripSelection
+  * Subversion
+  * Themes
+  * Vera
+  * Verilog
+  * Vim
+  * WordCount
+  * XQuery
+  * Zoom
