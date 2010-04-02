@@ -1,1 +1,13 @@
 please see [http://www.sublimetextwiki.com the sublime text wiki]
+
+h1. Sublime Text Wiki
+
+This wiki is the home for packages (plugins) created for a really kick-ass and extensible editor, Sublime Text
+
+[http://www.sublimetext.com Sublime Text] is a sophisticated text editor for code, html and prose. You'll love the slick user interface and extraordinary features.
+
+[http://www.sublimetext.com/download Download it NOW!]
+
+h2. Packages
+
+_need to add package listing_
