@@ -1,6 +1,6 @@
-=Sublime Text Wiki=
-
 #sidebar TableOfContents
+
+=Sublime Text Wiki=
 
 This wiki is the home for packages (plugins) created for a really kick-ass and extensible editor, Sublime Text
 
