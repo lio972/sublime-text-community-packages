@@ -10,7 +10,7 @@ root    = util.root
 site    = util.site
 gcode   = "http://sublime-text-community-packages.googlecode.com/svn/trunk/"
 
-dest    = site + "/sublime-packages/"
+dest    = site + "/packages/"
 pages   = site + "/pages"
 svn     = "svn"
 args    = "co %s %s" % (gcode, root)
