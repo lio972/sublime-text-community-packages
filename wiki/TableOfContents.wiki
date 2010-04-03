@@ -1,4 +1,0 @@
-#summary Table of Contents
-
-  * [http://www.sublimetext.com Sublime Text]
-  * [http://www.sublimetext.com Download Editor]
