@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>LaTeX</title>
+<link href="/templates/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div id="wrap">
+<div id="topbar">
+<h1><a href="/index.html">Sublime Text <span>Wiki</span></a></h1>
+
+</div>
+<div id="header">
+<div id="menu">
+  <ul>
+    <li><a href="/index.html">Welcome Page</a></li>
+    <li><a href="/pages/This-site.html">This Site</a></li>
+    <li><a href="/pages/Packages.html">Packages</a></li>
+    <li><a href="/pages/Documents.html">Documents</a></li>
+  </ul>
+</div>
+</div>
+<div id="mainpage">
+<div id="content">
+
+  <h1>The LaTeX Plugin</h1>
+
+<h1>LaTeX Package for Sublime Text</h1>
+<p>First draft "release" September 21, 2009
+</p>
+<p>Current revision February 25, 2012
+</p>
+<p>Contributors:
+   Marciano Siniscalchi
+   (more to come I hope!)
+</p>
+<p>For more information, see <a href="http://tekonomist.wordpress.com">http://tekonomist.wordpress.com</a>
+</p>
+
+<h2>Introduction</h2>
+<p>This package provides support for editing TeX / LaTeX files, emulating functionality
+   in TextMate's well-known LaTeX bundle. Like its TextMate counterpart, it is designed with the creation of <em>PDF</em> rather than <em>DVI</em> output in mind.
+</p>
+<p>While it is not(yet!) as powerful as its TextMate counterpart, it does offer a number of convenient features:
+</p>
+<ul>
+ <li>
+     A command to run tex &amp; friends, and then show the user any errors that might have occurred
+ </li>
+
+ <li>
+     A command to view the PDF file, setting things up so that <strong>PDF forward and inverse search</strong> work (see below for details)
+ </li>
+
+ <li>
+     Quick insertion of Greek letters and other LaTeX macros, e.c. <code>\sum</code>, <code>\bigcup</code> etc.
+ </li>
+
+ <li>
+     Insertion of references (<code>\ref{xxx}</code>) and citations (<code>\cite{xxx}</code>), listing the available labels or, respectively, keys in a pop-up menu or quick-panel
+ </li>
+
+ <li>
+     Closing the current environment
+ </li>
+
+ <li>
+     Inserting emphasize / boldface commands (more in the future)
+ </li>
+</ul>
+<p>The most useful feature is probably PDF forward/inverse search. The TeX/LaTeX world has moved beyond DVI; on the Mac, PDF output is the default for LaTeX documents, thanks to excellent built-in support for PDF rendering, and several great PDF previewers. The "SyncTeX" technology has finally brought reliable forward- and inverse-search to PDF documents. Luckily, SyncTeX is built into MikTeX from version 2.7 up, and
+   the <a href="http://blog.kowalczyk.info/software/sumatrapdf/" title="SumatraPDF">SumatraPDF</a> previewer. The same technology is also used by TextMate and the Skim
+   previewer on the Mac, and makes for a much more efficient and
+   enjoyable texing experience. 
+</p>
+<p><em>Inverse search</em> means that you can double-click anywhere in the PDF
+   window, and you jump right back to the corresponding point in the
+   source tex file. 
+</p>
+<p><em>Forward search</em> is the opposite: by invoking the appropriate command or shortcut ("jumpToPDF" and <code>ctrl+alt+j</code> in this package), the PDF file scrolls to the line corresponding to the current position of the cursor in the source tex file. 
+</p>
+<p>These are <em>huge</em> time savers! Sublime Text has a very sane command-line syntax, which makes it relatively easy to implement this feature.
+</p>
+<p>All commands are available both via keyboard shortcuts and from the <code>Tools|Packages|LaTeX Package</code> menu. (Invoking snippets from the menu does not seem to work right now: use the tab trigger)
+</p>
+<p>This document is divided into sections, each describing a different aspect of LaTeX editing and processing that this package aids or enhances. Each section begins with a list of <em>commands</em> and the corresponding <em>default shortcuts</em>, followed by an explanation of the features provided, and in some cases a list of requirements. The latter explanation always refers to <em>commands</em> rather than shortcuts. This way, if you choose to change one or more shortcuts, the text will still be accurate.
+</p>
+
+<h2>Compiling and viewing your document</h2>
+
+<h3>Commands and Shortcuts</h3>
+<p>texify : <code>ctrl+alt+t</code>
+</p>
+<p>showTeXErrors : <code>ctrl+alt+e</code>
+</p>
+<p>viewPDF : <code>ctrl+alt+v</code>
+</p>
+<p>jumpToPDF: <code>ctrl+alt+j</code>
+</p>
+
+<h3>Explanation</h3>
+<p>The "texify" command compiles the file in the current buffer, invoking <code>texify</code>
+   (which in turn takes care of invoking e.g. <code>bibtex</code>, <code>makeindex</code>, etc. as needed).
+   Furthermore, it sets up forward and inverse search with the SumatraPDF previewer, using
+   the SyncTeX technology. 
+</p>
+<p>The previewer is <em>not</em> automatically started; use the viewPDF command.
+</p>
+<p>If errors or warnings are detected, a quick panel is shown with a list of
+   "helpful" messages taken from tex's log file. Click on any line that contains a
+   line number, and you will be taken to the offending line. The quick-panel is
+   closed upon clicking one line, but you can reopen it via the "showTeXErrors"
+   command.
+</p>
+<p>If the <code>texify</code> command cannot be invoked (typically because it is not on the path), an error dialog is shown.
+</p>
+<p>A "build system" profile is also provided; you can run pdflatex by hitting the standard F7 key (or whatever you use to build stuff) as well, but error detection is very flaky. Consider this experimental for the time being, and use the "texify" command instead.
+</p>
+
+<h3>Requirements</h3>
+<ul>
+ <li>
+     MiKTeX distribution at <a href="http://www.miktex.org">http://www.miktex.org</a>; I have ver. 2.7; ver. 2.8 also works
+ </li>
+
+ <li>
+     SumatraPDF previewer, ver. 0.93, 0.94 or recent preview release
+      at <a href="http://blog.kowalczyk.info/software/sumatrapdf/">http://blog.kowalczyk.info/software/sumatrapdf/</a>
+ </li>
+
+ <li>
+     Make sure that both SumatraPDF and Sublime Text are on the <code>%PATH%</code>
+ </li>
+</ul>
+
+<h2>Show document structure</h2>
+
+<h3>Shortcut</h3>
+<p>texSections : <code>ctrl+shift+s</code>
+</p>
+
+<h3>Explanation</h3>
+<p>Displays parts, chapters, sections, subsections, etc. in a quick panel, indented to emphasize the overall structure of the document.
+</p>
+<p>The command also finds Beamer <code>frame</code>s, and will display the frame title as long as it is provided <em>on the same line</em> as the <code>\begin{frame}</code> statement, either as part of the latter or in an explicit <code>\frametitle{...}</code> command. 
+</p>
+<p>Click on any line and you will be taken to the corresponding point in the source tex file.
+</p>
+
+<h2>Easy insertion of tex math macros</h2>
+
+<h3>Shortcuts</h3>
+<p>texMacro : <code>ctrl+shift+\</code>
+</p>
+
+<h3>Explanation</h3>
+<p>This feature is also inspired by TextMate's LaTeX bundle, and implemented
+   stealing ideas from the html snippets. I used the Textmate keybindings, but
+   that can (and perhaps should) be changed. Basic idea, using Sublime Text
+   notation <code>key1, key2+key3</code> to mean "press <code>key1</code>, then press <code>key2</code> and <code>key3</code>
+   simultaneously":
+</p>
+<p><code>a, ctrl+backslash</code> gives <code>\alpha</code>
+</p>
+<p><code>b, ctrl+backslash</code> gives <code>\beta</code>
+</p>
+<p>...
+</p>
+<p><code>A, ctrl+backslash</code> gives <code>\forall</code>
+</p>
+<p>etc. Look at the <code>texMacro.py</code> file for a complete list of available shortcuts. You can also add your own shortcuts to the <code>macros</code> Python dictionary. Your shortcut can consists of letters or numbers, without spaces or other symbols. Remember to escape the leading backslash.
+</p>
+
+<h2>References and citations</h2>
+
+<h3>Shortcuts</h3>
+<p>texRef : <code>ctrl+alt+r</code>
+</p>
+<p>texCite : <code>ctrl+alt+c</code>
+</p>
+<p>lookupRefCite : <code>ctrl+alt+l</code>
+</p>
+
+<h3>Explanation</h3>
+<p>This is functionality that might perhaps be achieved with ctags. Suppose you
+   have something like:
+</p>
+<pre><code>\begin{lemma} \label{lem:result}
+...
+\end{lemma}
+</code></pre><p>in your file. You then need to reference this lemma later on. Invoke the
+   texRef command and pick from the list. In particular, if you begin writing
+   <code>lem</code> and then hit <code>ctrl+alt+r</code>, only labels beginning with "lem" are shown. The
+   <code>\ref{...}</code> command is NOT automatically inserted for you. So, the typical use
+   case is to enter <code>\ref{</code> (which generates a matching <code>}</code> and places the cursor
+   in between the braces), hit <code>ctrl+alt+r</code>, and choose the label. 
+</p>
+<p>If there are no more than 16 matches, then a pop-up completion menu is shown; otherwise, the quick panel will list all matches. 
+</p>
+<p>Similarly for citations: entries, however, are drawn from a bibtex file
+   (specified by the <code>\bibliography</code> command in your tex file). This pops up a
+   quick panel that shows both the key and the title of the article or book.
+   The <code>\cite{...}</code> command is automatically inserted, and the word <code>cite</code> is
+   highlighted so you can change it to, e.g. <code>citep</code> or <code>citet</code> if you use
+   natbib. Hitting Tab moves you after the closing brace.
+</p>
+<p>There is an attempt to handle multiple cites; if you start a cite command, then type a comma, as in
+</p>
+<pre><code>\cite{mycite1,}
+</code></pre><p>and invoke texCite again, the quick panel is shown with a list of all citations. But if you try to provide a prefix, it won't work.
+</p>
+<p>Finally, I often forget what a given label is associated with. If you are like me, no worries: that's what the "lookupRefCite" command is for! Position the cursor immediately after the brace in a <code>\ref{mystery_label}</code> command (or similar), invoke the "lookupRefCite" command, and a quick panel will pop up, displaying some text before and after the corresponding <code>\label{mystery_label}</code> command.
+</p>
+<p>This will be extended to <code>\cite{}</code> commands as well, but right now this functionality is not implemented.
+</p>
+
+<h2>Environment closer</h2>
+
+<h3>Shortcuts:</h3>
+<p>latexEnvCloser : <code>ctrl+alt+.</code>
+</p>
+
+<h3>Explanation</h3>
+<p>Looks for the last <code>\begin{...}</code> that is not matched by the corresponding <code>\end{...}</code>, and inserts the <code>\end{...}</code> statement automatically. It also checks for mismatched <code>begin/end</code> pairs, just in case.
+</p>
+
+<h2>Insert command or environment based on current word</h2>
+
+<h3>Shortcuts:</h3>
+<pre><code>
+</code></pre><p>latexEnvironment : <code>ctrl+shift+[</code>
+</p>
+<p>latexCommand : <code>ctrl+shift+]</code>
+</p>
+
+<h3>Explanation</h3>
+<p>Type <code>test</code>, invoke latexCommand, get <code>\test{}</code> with the cursor between braces; type something, then hit Tab to exit the braces. Similarly, type <code>test</code>, invoke latexEnvironment, get 
+</p>
+<pre><code>\begin{test}
+
+\end{test}
+</code></pre><p>with the cursor inside the environment. Again, Tab exits the environment.
+</p>
+
+<h2>Miscellaneous commands/snippets</h2>
+<p>"Emphasize" (<code>e,m,tab</code>) enters <code>\emph{}</code> and drops the cursor between the
+   braces. Hit tab to exit the braces.
+</p>
+<p>"Boldface" does the same, but enters <code>\textbf{}</code>.
+</p>
+<p>"Color" (<code>c,o,l,o,r,tab</code>) is intended to work in conjunction with the <code>xcolor</code> package. It enters <code>{\color{} }</code> and drops the cursor between the inner pair of braces; you can enter a color specification, then hit tab to move immediately before the last closing brace, where you can enter the text you want to be typeset in the color you specified. Finally, one last tab will move the cursor outside the braces.
+</p>
+<p>"Frame" (<code>f,r,a,m,e,tab</code>) is intended to work with the popular Beamer package. It enters <code>\begin{frame}[t]{title}</code>, a blank line, then <code>\end{frame}</code>. The <code>[t]</code> is highlighted; you can change the alignment specification if you wish (<code>t</code> is for top, <code>c</code> is for center, etc.). Hitting tab highlights the <code>title</code>, which of course you should adapt to suit your needs. Hitting <code>tab</code> again places the cursor on the blank line inside the frame environment.
+</p>
+<p>"Beamer box" (<code>b,o,x,tab</code>) is also meant for use with Beamer. It enters the <code>\begin{beamerboxesrounded}...</code> command, with some useful defaults and title; as above, hit tab to move to the different fields.
+</p>
+  
+<h2>To Install This Plugin</h2>
+
+<ol>
+<li>download the <a href="http://www.sublimetextwiki.com/sublime-packages/LaTeX.sublime-package ">LaTeX Plugin</a> to your local hard-drive.</li>
+ <li>double-click the package file</li>
+ <li>restart Sublime Text</li>
+</ol>
+
+<h2>For Developers</h2>
+
+<ul>
+<li>This source code for this plugin is available at <a href="http://sublime-text-community-packages.googlecode.com/svn/trunk/LaTeX">google code.</a></li>
+ <li>Google provide <a href="http://code.google.com/p/sublime-text-community-packages/source/checkout">Instructions for checking out the code</a></li>
+</ul>
+</div>
+<p class="clear2">&nbsp;</p>
+<span class="sidebarbottom">&nbsp;</span>
+</div>
+
+<p class="clear"></p>
+
+
+
+</div>
+
+
+</div>
+<div id="footer">
+<div id="footercontent">
+<p>Sublime Text Wiki &copy; All rights reserved | Valid XHTML | <a href="#">Put</a> | <a href="#">Any</a> | <a href="#">Links </a>| <a href="#">Here </a></p>
+<p class="smalldesc"><a href="http://www.ramblingsoul.com">CSS Layout</a> by Rambling Soul</p>
+  </div>
+
+</div>
+
+</body>
+</html>

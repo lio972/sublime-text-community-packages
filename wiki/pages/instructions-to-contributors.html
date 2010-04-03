@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>instructions to contributors</title>
+<link href="/templates/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div id="wrap">
+<div id="topbar">
+<h1><a href="/index.html">Sublime Text <span>Wiki</span></a></h1>
+
+</div>
+<div id="header">
+<div id="menu">
+  <ul>
+    <li><a href="/index.html">Welcome Page</a></li>
+    <li><a href="/pages/This-site.html">This Site</a></li>
+    <li><a href="/pages/Packages.html">Packages</a></li>
+    <li><a href="/pages/Documents.html">Documents</a></li>
+  </ul>
+</div>
+</div>
+<div id="mainpage">
+<div id="content">
+
+  <h1>instructions to contributors</h1>
+  
+<p>To contribute to the documents on this site, you'll need to be a contributor to the package collection. If so, you'll be largely set. 
+</p>
+<p>At the very root of the subversion tree, there is a directory called <code>sublimetextwiki</code>. This is the full content of the site. To edit, you'll need to;
+</p>
+<ul>
+ <li>
+     check out the source code from <code>https://sublime-text-community-packages.googlecode.com/svn/sublimetextwiki</code>
+ </li>
+
+ <li>
+     edit the site. 
+ </li>
+
+ <li>
+     commit changes back.
+ </li>
+</ul>
+<p>The site is set up to receive a callback every time the subversion repository, and this callback should refresh the site automatically. It may take 30 seconds or so for changes to appear -- more if you've committed something large like a screencast, so you may need to be a little patient.
+</p>
+<p>Editing the site is just a matter of knowing the subversion structure. The page content is build in <a href="http://daringfireball.net/projects/markdown/">Markdown</a>; all the page content is stored in <code>sublimetextwiki/pagesource</code>, and translated into html pages in <code>sublimetextwiki/pages</code>. 
+</p>
+<p>Since markdown doesn't feature a nice way to link to other markdown documents, I've added one. Source content that looks like so:
+</p>
+<pre><code>(@page-name)
+</code></pre><p>will be considered a link to another maarkdown page, and translated into a link to <code>page-name.html</code>.
+</p>
+  
+</div>
+<p class="clear2">&nbsp;</p>
+<span class="sidebarbottom">&nbsp;</span>
+</div>
+
+<p class="clear"></p>
+
+
+
+</div>
+
+
+</div>
+<div id="footer">
+<div id="footercontent">
+<p>Sublime Text Wiki &copy; All rights reserved | Valid XHTML | <a href="#">Put</a> | <a href="#">Any</a> | <a href="#">Links </a>| <a href="#">Here </a></p>
+<p class="smalldesc"><a href="http://www.ramblingsoul.com">CSS Layout</a> by Rambling Soul</p>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Parameterised Keybinding Example</title>
+<link href="/templates/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div id="wrap">
+<div id="topbar">
+<h1><a href="/index.html">Sublime Text <span>Wiki</span></a></h1>
+
+</div>
+<div id="header">
+<div id="menu">
+  <ul>
+    <li><a href="/index.html">Welcome Page</a></li>
+    <li><a href="/pages/This-site.html">This Site</a></li>
+    <li><a href="/pages/Packages.html">Packages</a></li>
+    <li><a href="/pages/Documents.html">Documents</a></li>
+  </ul>
+</div>
+</div>
+<div id="mainpage">
+<div id="content">
+
+  <h1>The Parameterised Keybinding Example Plugin</h1>
+
+<p>This is an example of what you can do with parameterised keybindings in Sublime Text. 
+</p>
+<p>This example was created from an example posted by Jon Skinner, developer of Sublime Text. Here's the original post in which Jon introduces the feature.
+</p>
+<hr />
+
+<p>Sublime Text has had 'parameterised keybindings' for some time, enabling one key binding be an input for another.
+</p>
+<p>The key binding file below best describes it. Firstly, it hijacks alt+letter keys for first person shooter inspired cursor movement: <code>Alt+WSAD</code> move the cursor up/down and left/right by words. <code>Alt+QE</code> move to the beginning and end of line, and <code>Alt+ZC</code> move forwards and back by characters. There are a few other movement related bindings in the surrounding keys, too.
+</p>
+<p>On the right hand side of the keyboard are some vi-style commands. Alt+J, followed by one of the above movement keys, will delete text till that point. For example, pressing <code>Alt+J,A</code> will delete a word to the left of the cursor. <code>Alt+J,E</code> will delete till the end of the line. As well as delete, there are a few other commands for copying a region of text, and pasting it at a given location.
+</p>
+<p>It's worth having a play around with at any rate, not having to use the arrow keys for cursor navigation at the least is worth the price of entry.
+</p>
+<pre><code>&lt;bindings&gt;
+   &lt;binding key="alt+a" command="move words -1"/&gt;
+   &lt;binding key="alt+d" command="move words 1"/&gt;
+   &lt;binding key="shift+alt+a" command="move words -1 extend"/&gt;
+   &lt;binding key="shift+alt+d" command="move words 1 extend"/&gt;
+   &lt;binding key="alt+z" command="move characters -1"/&gt;
+   &lt;binding key="alt+c" command="move characters 1"/&gt;
+   &lt;binding key="shift+alt+z" command="move characters -1 extend"/&gt;
+   &lt;binding key="shift+alt+c" command="move characters 1 extend"/&gt;
+   &lt;binding key="alt+w" command="move lines -1"/&gt;
+   &lt;binding key="alt+s" command="move lines 1"/&gt;
+   &lt;binding key="shift+alt+w" command="move lines -1 extend"/&gt;
+   &lt;binding key="shift+alt+s" command="move lines 1 extend"/&gt;
+   &lt;binding key="alt+x" command="expandSelectionTo line"/&gt;
+   &lt;binding key="shift+alt+x" command="expandSelectionTo line"/&gt;
+   &lt;binding key="alt+q" command="moveTo bol"/&gt;
+   &lt;binding key="alt+e" command="moveTo eol"/&gt;
+   &lt;binding key="shift+alt+q" command="moveTo bol extend"/&gt;
+   &lt;binding key="shift+alt+e" command="moveTo eol extend"/&gt;
+   &lt;binding key="alt+r" command="moveTo bof"/&gt;
+   &lt;binding key="alt+f" command="moveTo eof"/&gt;
+   &lt;binding key="shift+alt+r" command="moveTo bof extend"/&gt;
+   &lt;binding key="shift+alt+f" command="moveTo eof extend"/&gt;
+
+   &lt;binding key="alt+i" command="repeat"/&gt;
+   &lt;binding key="alt+j" command="deleteOver ${motion}"/&gt;
+   &lt;binding key="alt+l" command="cutOver ${motion}"/&gt;
+   &lt;binding key="alt+k" command="copyOver ${motion}"/&gt;
+   &lt;binding key="alt+semicolon" command="paste"/&gt;
+   &lt;binding key="alt+p" command="pasteAt ${motion}"/&gt;
+   &lt;binding key="alt+o" command="copy"/&gt;
+
+   &lt;namespace name="motion"&gt;
+      &lt;binding key="alt+a" command="words -1"/&gt;
+      &lt;binding key="a" command="words -1"/&gt;
+      &lt;binding key="alt+d" command="words 1"/&gt;
+      &lt;binding key="d" command="words 1"/&gt;
+      &lt;binding key="alt+z" command="characters -1"/&gt;
+      &lt;binding key="z" command="characters -1"/&gt;
+      &lt;binding key="alt+c" command="characters 1"/&gt;
+      &lt;binding key="c" command="characters 1"/&gt;
+      &lt;binding key="alt+w" command="lines -1"/&gt;
+      &lt;binding key="w" command="lines -1"/&gt;
+      &lt;binding key="alt+s" command="lines 1"/&gt;
+      &lt;binding key="s" command="characters 1"/&gt;
+      &lt;binding key="alt+x" command="entireline"/&gt;
+      &lt;binding key="x" command="entireline"/&gt;
+      &lt;binding key="alt+q" command="bol"/&gt;
+      &lt;binding key="q" command="bol"/&gt;
+      &lt;binding key="alt+e" command="eol"/&gt;
+      &lt;binding key="e" command="eol"/&gt;
+      &lt;binding key="alt+r" command="moveTo bof"/&gt;
+      &lt;binding key="r" command="moveTo bof"/&gt;
+      &lt;binding key="alt+f" command="moveTo eof"/&gt;
+      &lt;binding key="f" command="moveTo eof"/&gt;
+   &lt;/namespace&gt;
+&lt;/bindings&gt;
+</code></pre><p>You can see the parametrisation in action by looking at the commands like: 
+</p>
+<pre><code>&lt;binding key="alt+j" command="deleteOver ${motion}"/&gt;
+</code></pre><p>The <code>${motion}</code> indicates that the next key binding is expected to one of the entries in the 'motion' namespace, and the text <code>${motion}</code> will be replaced by the text of the next entered command.
+</p>
+  
+<h2>To Install This Plugin</h2>
+
+<ol>
+<li>download the <a href="http://www.sublimetextwiki.com/sublime-packages/Parameterised Keybinding Example.sublime-package ">Parameterised Keybinding Example Plugin</a> to your local hard-drive.</li>
+ <li>double-click the package file</li>
+ <li>restart Sublime Text</li>
+</ol>
+
+<h2>For Developers</h2>
+
+<ul>
+<li>This source code for this plugin is available at <a href="http://sublime-text-community-packages.googlecode.com/svn/trunk/Parameterised Keybinding Example">google code.</a></li>
+ <li>Google provide <a href="http://code.google.com/p/sublime-text-community-packages/source/checkout">Instructions for checking out the code</a></li>
+</ul>
+</div>
+<p class="clear2">&nbsp;</p>
+<span class="sidebarbottom">&nbsp;</span>
+</div>
+
+<p class="clear"></p>
+
+
+
+</div>
+
+
+</div>
+<div id="footer">
+<div id="footercontent">
+<p>Sublime Text Wiki &copy; All rights reserved | Valid XHTML | <a href="#">Put</a> | <a href="#">Any</a> | <a href="#">Links </a>| <a href="#">Here </a></p>
+<p class="smalldesc"><a href="http://www.ramblingsoul.com">CSS Layout</a> by Rambling Soul</p>
+  </div>
+
+</div>
+
+</body>
+</html>

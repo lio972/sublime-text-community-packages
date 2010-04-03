@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>EmacsKillRing</title>
+<link href="/templates/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div id="wrap">
+<div id="topbar">
+<h1><a href="/index.html">Sublime Text <span>Wiki</span></a></h1>
+
+</div>
+<div id="header">
+<div id="menu">
+  <ul>
+    <li><a href="/index.html">Welcome Page</a></li>
+    <li><a href="/pages/This-site.html">This Site</a></li>
+    <li><a href="/pages/Packages.html">Packages</a></li>
+    <li><a href="/pages/Documents.html">Documents</a></li>
+  </ul>
+</div>
+</div>
+<div id="mainpage">
+<div id="content">
+
+  <h1>The EmacsKillRing Plugin</h1>
+
+<p>If you've used emacs, you may be used to a text-manipulation system that is very different from windows cut-and-paste. This is the emacs kill ring, and if you are like me, you miss the ability to hit ctrl+k to kill lines, ctrl+y to yank text back, ctrl+space to set a mark, and ctrl+w to cut a region to the kill buffer.
+</p>
+<p>This package is for you; it implements these emacs commands;
+</p>
+<ul>
+ <li>
+     kill-line (ctrl+k)
+ </li>
+
+ <li>
+     yank (ctrl+y)
+ </li>
+
+ <li>
+     set-mark-command (ctrl+space)
+ </li>
+
+ <li>
+     kill-region (ctrl+w)
+ </li>
+
+ <li>
+     kill-ring-save (alt+w)
+ </li>
+</ul>
+<p>These are bound in Sublime Text to the same keys used by a default install of emacs.
+</p>
+<p>This is tightly integrated with the windows clipboard; the most-recent cut is copied to the windows clipboard, and yank is really just paste, remapped. 
+</p>
+<p>Additionally, there is another command in the package I'll call <code>yank-any</code>, which lets you yank any item in the kill ring.
+</p>
+<p>These mapping overwrite singleSelection (ctrl+k) and redo (ctrl+y) so I've remapped them;
+</p>
+<p>ctrl+shift+k is the new mapping for singleSelection, which was previously mapped to ctrl+k
+</p>
+<p>ctrl+shift+z is the new mapping for redo, which was previously mapped to ctrl+y
+</p>
+  
+<h2>To Install This Plugin</h2>
+
+<ol>
+<li>download the <a href="http://www.sublimetextwiki.com/sublime-packages/EmacsKillRing.sublime-package ">EmacsKillRing Plugin</a> to your local hard-drive.</li>
+ <li>double-click the package file</li>
+ <li>restart Sublime Text</li>
+</ol>
+
+<h2>For Developers</h2>
+
+<ul>
+<li>This source code for this plugin is available at <a href="http://sublime-text-community-packages.googlecode.com/svn/trunk/EmacsKillRing">google code.</a></li>
+ <li>Google provide <a href="http://code.google.com/p/sublime-text-community-packages/source/checkout">Instructions for checking out the code</a></li>
+</ul>
+</div>
+<p class="clear2">&nbsp;</p>
+<span class="sidebarbottom">&nbsp;</span>
+</div>
+
+<p class="clear"></p>
+
+
+
+</div>
+
+
+</div>
+<div id="footer">
+<div id="footercontent">
+<p>Sublime Text Wiki &copy; All rights reserved | Valid XHTML | <a href="#">Put</a> | <a href="#">Any</a> | <a href="#">Links </a>| <a href="#">Here </a></p>
+<p class="smalldesc"><a href="http://www.ramblingsoul.com">CSS Layout</a> by Rambling Soul</p>
+  </div>
+
+</div>
+
+</body>
+</html>

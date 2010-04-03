@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>AutomaticBackups</title>
+<link href="/templates/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div id="wrap">
+<div id="topbar">
+<h1><a href="/index.html">Sublime Text <span>Wiki</span></a></h1>
+
+</div>
+<div id="header">
+<div id="menu">
+  <ul>
+    <li><a href="/index.html">Welcome Page</a></li>
+    <li><a href="/pages/This-site.html">This Site</a></li>
+    <li><a href="/pages/Packages.html">Packages</a></li>
+    <li><a href="/pages/Documents.html">Documents</a></li>
+  </ul>
+</div>
+</div>
+<div id="mainpage">
+<div id="content">
+
+  <h1>The AutomaticBackups Plugin</h1>
+
+<p>"Automatic Backups" is a plugin by SteveCooper. 
+</p>
+<p>When you edit text files (scripts, prose, whatever) you often find yourself wishing for an older version. Ever accidentally deleted a chunk from an important configuration file, or wished you could roll back a document a few hours? This plugin takes a copy of every file you save and copies it into a backup directory structure, ensuring that you never lose an old version of the file. 
+</p>
+<p>Once installed, any file you save will be copied into your documents folder, eg <code>&lt;My Documents&gt;\Sublime Text Backups</code>. For example, if you change <code>c:\autoexec.bat</code>, you'll get a backup saved to:
+</p>
+<pre><code>c:\Documents and Settings\yourUserName\Sublime Text Backups\c-drive\autoexec-2008-03-22-22-22-46.bat
+</code></pre><p>That end bit is the timestamp, so you can see when the file was edited.
+</p>
+<p>If you want to back up your files somewhere other than your documents folder, you can add an option. To change where all backups are made, open the <code>Preferences</code> menu and choose <code>Preferences</code>. Then double-click <code>Application</code>, and add a line like this to the end of the file;
+</p>
+<pre><code>backupDir c:\my files\archive\
+</code></pre><p>To see if it's working, open the console with the <code>View</code> | <code>Console</code> menu item. When you save a file, you should see a line like this, indicating that the file has been backed up;
+</p>
+<pre><code>Automatic backup: backing up to d:\backups\C-drive\Documents and Settings\steve\Application Data\Sublime Text\Packages\User\AutomaticBackupsPlugin-2008-03-22-22-22-46.py
+</code></pre>
+  
+<h2>To Install This Plugin</h2>
+
+<ol>
+<li>download the <a href="http://www.sublimetextwiki.com/sublime-packages/AutomaticBackups.sublime-package ">AutomaticBackups Plugin</a> to your local hard-drive.</li>
+ <li>double-click the package file</li>
+ <li>restart Sublime Text</li>
+</ol>
+
+<h2>For Developers</h2>
+
+<ul>
+<li>This source code for this plugin is available at <a href="http://sublime-text-community-packages.googlecode.com/svn/trunk/AutomaticBackups">google code.</a></li>
+ <li>Google provide <a href="http://code.google.com/p/sublime-text-community-packages/source/checkout">Instructions for checking out the code</a></li>
+</ul>
+</div>
+<p class="clear2">&nbsp;</p>
+<span class="sidebarbottom">&nbsp;</span>
+</div>
+
+<p class="clear"></p>
+
+
+
+</div>
+
+
+</div>
+<div id="footer">
+<div id="footercontent">
+<p>Sublime Text Wiki &copy; All rights reserved | Valid XHTML | <a href="#">Put</a> | <a href="#">Any</a> | <a href="#">Links </a>| <a href="#">Here </a></p>
+<p class="smalldesc"><a href="http://www.ramblingsoul.com">CSS Layout</a> by Rambling Soul</p>
+  </div>
+
+</div>
+
+</body>
+</html>
