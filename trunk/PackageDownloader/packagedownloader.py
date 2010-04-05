@@ -50,7 +50,7 @@ def packageDir():
   return None
   
 def packageRoot():
-  return "http://www.sublimetextwiki.com/sublime-packages/"
+  return "http://sublime-text-community-packages.googlecode.com/svn/packages/"
 
 def listPackages():
   packageList = getUrl(packageRoot() + "all.sublime-distro")
@@ -63,7 +63,7 @@ def downloadPackages():
   print "SublimeTextWiki.com Package Downloader"
   
   packageContainerUrls = [ 
-    "http://www.sublimetextwiki.com/sublime-packages"
+    "http://sublime-text-community-packages.googlecode.com/svn/packages"
     ]
   
   completedPackageNames = []

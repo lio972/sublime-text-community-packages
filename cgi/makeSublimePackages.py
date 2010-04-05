@@ -1,5 +1,5 @@
 #!/usr/bin/python -u
-import sys, os, subprocess, traceback, datetime, util, zipfile
+import sys, os, subprocess, traceback, datetime, util, zipfile, googlecode_upload
 from string import Template
 from fnmatch import fnmatch
 from os.path import basename, dirname, join, normpath
