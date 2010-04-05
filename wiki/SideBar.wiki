@@ -2,3 +2,4 @@
 
   * [http://www.sublimetext.com Sublime Text]
   * [http://www.sublimetext.com Download Editor]
+  * [http://sublime-text-community-packages.googlecode.com/svn/index.html Browse Packages]
