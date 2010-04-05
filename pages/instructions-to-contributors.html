@@ -34,7 +34,7 @@
 </p>
 <ul>
  <li>
-     check out the source code from <code>https://sublime-text-community-packages.googlecode.com/svn/sublimetextwiki</code>
+     check out the source code from <code>https://sublime-text-community-packages.googlecode.com/svn</code>
  </li>
 
  <li>
@@ -45,14 +45,14 @@
      commit changes back.
  </li>
 </ul>
-<p>The site is set up to receive a callback every time the subversion repository, and this callback should refresh the site automatically. It may take 30 seconds or so for changes to appear -- more if you've committed something large like a screencast, so you may need to be a little patient.
+<p>The site is set up to receive a callback every time the subversion repository changes, and this callback should refresh the site automatically. It may take 30 seconds or so for changes to appear -- more if you've committed something large like a screencast, so you may need to be a little patient.
 </p>
 <p>Editing the site is just a matter of knowing the subversion structure. The page content is build in <a href="http://daringfireball.net/projects/markdown/">Markdown</a>; all the page content is stored in <code>sublimetextwiki/pagesource</code>, and translated into html pages in <code>sublimetextwiki/pages</code>. 
 </p>
 <p>Since markdown doesn't feature a nice way to link to other markdown documents, I've added one. Source content that looks like so:
 </p>
 <pre><code>(@page-name)
-</code></pre><p>will be considered a link to another maarkdown page, and translated into a link to <code>page-name.html</code>.
+</code></pre><p>will be considered a link to another markdown page, and translated into a link to <code>page-name.html</code>.
 </p>
   
 </div>
