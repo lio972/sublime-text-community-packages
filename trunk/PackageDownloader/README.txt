@@ -1,3 +1,3 @@
-Downloads any package at [http://www.sublimetextwiki.com](http://www.sublimetextwiki.com). 
+Downloads any package at [http://sublime-text-community-packages.googlecode.com/svn/index.html](http://sublime-text-community-packages.googlecode.com/svn/index.html). 
 
 Install it (see below for instructions) and there will now be a menu item to download packages at Tools | Packages | Package Downloader | Browse Packages. Choose a package to download. You should not need to restart Sublime Text -- the plugin should start working straight away.
