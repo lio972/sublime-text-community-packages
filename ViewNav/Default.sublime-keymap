@@ -1,0 +1,6 @@
+<bindings>
+    <binding key="alt+right" command="moveToBuffer 'right'"/>
+    <binding key="alt+left" command="moveToBuffer 'left'"/>
+    <binding key="alt+up" command="moveToBuffer 'up'"/>
+    <binding key="alt+down" command="moveToBuffer 'down'"/>
+</bindings>
