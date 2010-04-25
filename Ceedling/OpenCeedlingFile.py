@@ -1,14 +1,6 @@
-import sublime, sublimeplugin, re
-
-def open_project_file(file_matcher, window, auto_set_view=-1):
-    proj_files = window.project().mountPoints()[0]['files']
-    for f in proj_files:
-        if file_matcher.search(f):
-            file_view = window.openFile(f)
-            if auto_set_view >= 0: # don't set the view unless specified
-                window.setViewPosition(file_view, auto_set_view, 0)
-            print("Opened " + f)
-            return
+import sublime
+import sublimeplugin
+import re
 
 class OpenCeedlingFileCommand(sublimeplugin.TextCommand):
 
@@ -18,7 +10,7 @@ class OpenCeedlingFileCommand(sublimeplugin.TextCommand):
         
         if args[0] == 'config':
             config_matcher = re.compile(r"(\\\\)?(project|test)\.yml$")
-            open_project_file(config_matcher, window)
+            self.open_project_file(config_matcher, window)
         
         elif re.search(r"\w+\.[ch]\w*$", current_file_path):
             
@@ -32,18 +24,27 @@ class OpenCeedlingFileCommand(sublimeplugin.TextCommand):
             
             if args[0] == 'next':
                 if re.match("test_", current_file):
-                    open_project_file(source_matcher, window)
+                    self.open_project_file(source_matcher, window)
                 elif re.search(r"\.c", current_file):
-                    open_project_file(header_matcher, window)
+                    self.open_project_file(header_matcher, window)
                 elif re.search(r"\.h", current_file):
-                    open_project_file(test_matcher, window)
+                    self.open_project_file(test_matcher, window)
             elif args[0] == 'source':
-                open_project_file(source_matcher, window)
+                self.open_project_file(source_matcher, window)
             elif args[0] == 'test':
-                open_project_file(test_matcher, window)
+                self.open_project_file(test_matcher, window)
             elif args[0] == 'header':
-                open_project_file(header_matcher, window)
+                self.open_project_file(header_matcher, window)
             elif args[0] == 'test_and_source':
                 window.runCommand('layoutDoubleVert')
-                open_project_file(test_matcher, window, 0)
-                open_project_file(source_matcher, window, 1)
+                self.open_project_file(test_matcher, window, 0)
+                self.open_project_file(source_matcher, window, 1)
+                
+    def open_project_file(self, file_matcher, window, auto_set_view=-1):
+        proj_files = window.project().mountPoints()[0]['files']
+        for f in proj_files:
+            if file_matcher.search(f):
+                file_view = window.openFile(f)
+                if auto_set_view >= 0: # don't set the view unless specified
+                    window.setViewPosition(file_view, auto_set_view, 0)
+                print("Opened " + f)
