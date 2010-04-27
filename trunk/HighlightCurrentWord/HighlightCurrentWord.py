@@ -33,11 +33,17 @@ class HighlightCurrentWord(sublimeplugin.ApplicationCommand):
 		currentWord = view.substr(region)#.strip(" \t\r\n<>[]{}|&*+-/\\,.?'\":;=()^%#@!~`")
 		if re.match(r'^\w+$', currentWord):
 			regions = view.findAll(r"\b\Q%s\E\b" % currentWord)
+			if len(regions) > 1:
+				view.setStatus("HighlightCurrentWord", "%i matches" % len(regions))
+			else:
+				view.eraseStatus("HighlightCurrentWord")
 			# don't highlight word at cursor
 			regions.remove(region)
 			view.addRegions(KEY, regions, "comment")
+			# view.addRegions(KEY, regions, "comment", sublime.DRAW_OUTLINED)
 		else:
 			view.eraseRegions(KEY)
+			view.eraseStatus("HighlightCurrentWord")			
 	
 	def run(self, args):
 		self.enabled = not self.enabled
