@@ -23,6 +23,7 @@ Default Ceedling key bindings...
     <binding key="ctrl+alt+l"           command="exec '^([\.\\_A-Za-z0-9]+\.c)  ([0-9]+)  ' 'rake lint:all'" />
     <binding key="ctrl+shift+l"         command="exec '^([\.\\_A-Za-z0-9]+\.c)  ([0-9]+)  ' 'rake lint:diff'" />
     
+    
     <!-- Extra goodness -->
     <binding key="ctrl+shift+backquote" command="showPanel output"/>
 
