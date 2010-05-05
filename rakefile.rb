@@ -36,6 +36,6 @@ end
 desc "Commit changes to GoogleCode project"
 task :push_update do
   cd HERE do
-    sh "svn ci -m\"Auto updated packages via CI\""
+    sh "svn ci --username barney.williams --password Rd3uq8VW5bG2 -m\"Auto updated packages via CI\""
   end
 end
