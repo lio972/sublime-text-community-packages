@@ -4,7 +4,9 @@ require 'rake'
 require 'rake/clean'
 require 'fileutils'
 
-ENV['HOME'] = "C:\\cygwin\\home\\atomic"
+if ENV['COMPUTERNAME'] == 'STRAWBERRY'
+  ENV['HOME'] = "C:\\cygwin\\home\\atomic"
+end
 
 task :default => ['test:units', :build_packages, :build_pages]
 task :all => [:clobber, :default]
