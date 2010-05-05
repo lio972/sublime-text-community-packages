@@ -46,7 +46,8 @@ def copyReadmeFile(dirName, root, dest):
   else:
     readmeContent = "This package does not have a README.txt file. If you are the developer, please add one to improve this page. The file should be written in [Markdown](http://daringfireball.net/projects/markdown/)"
     
-  template = Template(util.loadFile("../templates/package.template.html"))
+  pkg_template = site + '/templates/package.template.html'
+  template = Template(util.loadFile(pkg_template))
   html = util.processMarkdown(readmeContent)
   pageContent = template.substitute(dict(pluginname=dirName, content=html))
   util.saveFile(currentFile, pageContent)
@@ -140,7 +141,7 @@ try:
 
   
   today = datetime.datetime.now().ctime()
-  template = Template(util.loadFile("../templates/index.template.html"))
+  template = Template(util.loadFile(site + "/templates/index.template.html"))
   homepage = template.substitute(dict(packagelist=homepageList, today=today))
   util.saveFile(os.path.join(site, "index.html"), homepage)
   print "Done. Please hit the 'back' button on your browser to browse the new pages."
