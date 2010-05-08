@@ -3,15 +3,17 @@ ViewNav is a handy plugin that adds a little extra awesomeness for moving and na
 # Parameters
 
 ##Action
-* __value__: _binding_ - _description_
+* __<value>__: _<binding>_ - _<description>_
 * _focus_: alt+arrow - makes a different group (pane) active
 * _move_: alt+shift+arrow - move the current view (buffer) to a different group (pane)
 
 ##Destination
+* __<value>__: _<description>_
 * _(default)_: next group
 * _right_: next group
 * _down_: next group
-* _next: next group
-* _left: previous group
+* _next_: next group
+* _left_: previous group
 * _up_: previous group
 * _previous_: previous group
+
