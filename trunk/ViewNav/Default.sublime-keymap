@@ -1,6 +1,11 @@
 <bindings>
-    <binding key="alt+right" command="moveToBuffer 'right'"/>
-    <binding key="alt+left" command="moveToBuffer 'left'"/>
-    <binding key="alt+up" command="moveToBuffer 'up'"/>
-    <binding key="alt+down" command="moveToBuffer 'down'"/>
+    <binding key="alt+right"            command="moveToBuffer focus right"/>
+    <binding key="alt+left"             command="moveToBuffer focus left"/>
+    <binding key="alt+up"               command="moveToBuffer focus up"/>
+    <binding key="alt+down"             command="moveToBuffer focus down"/>
+    
+    <binding key="alt+shift+right"      command="moveToBuffer move  right"/>
+    <binding key="alt+shift+left"       command="moveToBuffer move  left"/>
+    <binding key="alt+shift+up"         command="moveToBuffer move  up"/>
+    <binding key="alt+shift+down"       command="moveToBuffer move  down"/>
 </bindings>
