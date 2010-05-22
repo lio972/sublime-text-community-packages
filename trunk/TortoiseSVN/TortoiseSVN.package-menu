@@ -8,7 +8,7 @@
     
     <separator/>
     
-    <item caption="File">
+    <item caption="File" />
     <item caption="  Ignore"                            command="exec '' 'tortoiseproc /command:ignore  /path:$File /closeonend:4'" />
     <item caption="  Revert"                            command="exec '' 'tortoiseproc /command:revert  /path:$File /closeonend:4'" />
     <item caption="  Add"                               command="exec '' 'tortoiseproc /command:add     /path:$File /closeonend:4'" /> 
