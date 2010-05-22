@@ -17,6 +17,7 @@ Default Ceedling key bindings...
     <binding key="ctrl+alt+t"           command="openCeedlingFile 'test'" />
     <binding key="ctrl+alt+m"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake module:create[$File]'" />`
     <binding key="ctrl+alt+shift+m"     command="createCeedlingModule" />
+    <binding key="ctrl+alt+i"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake ide:open'" />
 
     <binding key="ctrl+alt+x"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake clobber'" />
     <binding key="alt+l"                command="exec '^(...*?)  ([0-9]+)  '                'rake lint:solo[$BaseName]'" />
