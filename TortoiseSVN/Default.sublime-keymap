@@ -2,10 +2,12 @@
 <bindings>  
     <binding key="ctrl+shift+r,u" command="exec '' 'tortoiseproc /command:update      /path:$ProjectDir /closeonend:4'" />
     <binding key="ctrl+shift+r,c" command="exec '' 'tortoiseproc /command:commit      /path:$ProjectDir /closeonend:4'" />
-    <binding key="ctrl+shift+r,d" command="exec '' 'tortoiseproc /command:showcompare /path:$ProjectDir /closeonend:0'" />
+    <binding key="ctrl+shift+r,?" command="exec '' 'tortoiseproc /command:showcompare /path:$ProjectDir /closeonend:0'" />
     <binding key="ctrl+shift+r,r" command="exec '' 'tortoiseproc /command:revert      /path:$ProjectDir /closeonend:4'" />
     
     <binding key="ctrl+shift+r,i" command="exec '' 'tortoiseproc /command:ignore  /path:$File /closeonend:4'" />
     <binding key="ctrl+shift+r,f" command="exec '' 'tortoiseproc /command:revert  /path:$File /closeonend:4'" />
-    <binding key="ctrl+shift+r,f" command="exec '' 'tortoiseproc /command:add     /path:$File /closeonend:4'" />
+    <binding key="ctrl+shift+r,a" command="exec '' 'tortoiseproc /command:add     /path:$File /closeonend:4'" />
+    <binding key="ctrl+shift+r,d" command="exec '' 'tortoiseproc /command:diff    /path:$File /closeonend:4'" />
+    <binding key="ctrl+shift+r,s" command="exec '' 'tortoiseproc /command:commit  /path:$File /closeonend:4'" />
 </bindings>
