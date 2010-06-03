@@ -47,4 +47,5 @@ class OpenCeedlingFileCommand(sublimeplugin.TextCommand):
                 file_view = window.openFile(f)
                 if auto_set_view >= 0: # don't set the view unless specified
                     window.setViewPosition(file_view, auto_set_view, 0)
+                window.focusView(file_view)
                 print("Opened " + f)
