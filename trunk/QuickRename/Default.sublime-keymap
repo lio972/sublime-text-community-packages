@@ -1,0 +1,3 @@
+<bindings>
+    <binding key="ctrl+r" command="quickRename"/>
+</bindings>

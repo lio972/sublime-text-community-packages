@@ -1,0 +1,4 @@
+<bindings>
+	<binding key="ctrl+d" command="duplicateLine"/>
+    <binding key="ctrl+shift+D" command="duplicateLineAndToggleComment"/>
+</bindings>
