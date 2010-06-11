@@ -1,1 +1,1 @@
-A simple syntax highlighter for Microsoft CIL. At the moment,  it hiughlights little more than comments and opcodes.
+A simple syntax highlighter and build system for Microsoft CIL. At the moment, it highlights little more than comments and opcodes.
