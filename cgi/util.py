@@ -1,7 +1,7 @@
 import subprocess, os, re, markdown
 
-site = os.environ['HOME'] + "\\svn\\sublimetext-wiki"
-root = os.environ['HOME'] + "\\svn\\sublimetext-wiki\\trunk"
+site = "C:\\svn\\sublimetext-wiki"
+root = "C:\\svn\\sublimetext-wiki\\trunk"
 
 def templateContent(filename):
   f = os.path.join(site, "templates", filename)
