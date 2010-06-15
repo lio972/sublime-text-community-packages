@@ -20,10 +20,15 @@ Default Ceedling key bindings...
     <binding key="ctrl+alt+i"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake ide:open'" />
 
     <binding key="ctrl+alt+x"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake clobber'" />
+
     <binding key="alt+l"                command="exec '^(...*?)  ([0-9]+)  '                'rake lint:solo[$BaseName]'" />
     <binding key="ctrl+alt+l"           command="exec '^([\.\\_A-Za-z0-9]+\.c)  ([0-9]+)  ' 'rake lint:all'" />
     <binding key="ctrl+shift+l"         command="exec '^([\.\\_A-Za-z0-9]+\.c)  ([0-9]+)  ' 'rake lint:diff'" />
     
+    <binding key="ctrl+alt+k,enter"     command="exec '^.+ ([A-Z]:.+):([0-9]+)'             'rake klocwork:fscan[$File]'" />
+    <binding key="ctrl+alt+k,/"         command="exec '^.+ ([A-Z]:.+):([0-9]+)'             'rake klocwork:flist[$File]'" />
+    <binding key="ctrl+alt+k,a"         command="exec '^.+ ([A-Z]:.+):([0-9]+)'             'rake klocwork:all'" />
+    <binding key="ctrl+alt+k,i"         command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake klocwork:view'" />
     
     <!-- Extra goodness -->
     <binding key="ctrl+shift+backquote" command="showPanel output"/>
