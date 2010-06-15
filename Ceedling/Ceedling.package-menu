@@ -1,31 +1,41 @@
 <menu>
 
-<!--     <item caption="Debug"                   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake debug'" /> -->
-    <item caption="Build Target"            command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake build:release'" />
-    <item caption="Full Test and Build"     command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake'" />
+    <item caption="Build" command="" />
+<!--     <item caption="Debug"                    command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake debug'" /> -->
+    <item caption="  Build Target"          command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake build:release'" />
+    <item caption="  Full Test and Build"   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake'" />
+    <item caption="  Clean Project"         command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake clobber'" />
+
+    <item caption="Test" command="" />
+    <item caption="  Test Current Module"   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake test:$FileName'" />
+    <item caption="  Test All Modules"      command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake test:all'" />
+    <item caption="  Run Chronos Test"      command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake chronos:$FileName'" />
     
-	<separator/>
+    <separator/>
+    <item caption="Navigation" command="" />
+    <item caption="  Open Test and Source"  command="openCeedlingFile 'test_and_source'" />
+    <item caption="  Open Next Module File" command="openCeedlingFile 'next'" />
+    <item caption="  Open Module Header"    command="openCeedlingFile 'header'" />
+    <item caption="  Open Module Source"    command="openCeedlingFile 'source'" />
+    <item caption="  Open Module Test"      command="openCeedlingFile 'test'" />
+
+    <separator/>
+    <item caption="Configuration" command="" />
+    <item caption="  Create New Module"     command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake module:create[$File]'" />
+    <item caption="  Create Module"         command="createCeedlingModule" />
+    <item caption="  Edit Configuration"    command="openCeedlingFile 'config'" />
     
-    <item caption="Test Current Module"     command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake test:$FileName'" />
-    <item caption="Test All Modules"        command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake test:all'" />
-    <item caption="Run Chronos Test"        command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake chronos:$FileName'" />
-    
-	<separator/>
-    
-    <item caption="Open Test and Source"    command="openCeedlingFile 'test_and_source'" />
-    <item caption="Open Next Module File"   command="openCeedlingFile 'next'" />
-    <item caption="Open Module Header"      command="openCeedlingFile 'header'" />
-    <item caption="Open Module Source"      command="openCeedlingFile 'source'" />
-    <item caption="Open Module Test"        command="openCeedlingFile 'test'" />
-    <item caption="Create New Module"       command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake module:create[$File]'" />
-    <item caption="Create Module"           command="createCeedlingModule" />
-    <item caption="Edit Configuration"      command="openCeedlingFile 'config'" />
-    
-	<separator/>
-    
-    <item caption="Clean Project"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake clobber'" />
-    <item caption="Lint Scan (file)"        command="exec '^(...*?)  ([0-9]+)  '                'rake lint:solo[$BaseName]'" />
-    <item caption="Lint Scan (project)"     command="exec '^([\.\\_A-Za-z0-9]+\.c)  ([0-9]+)  ' 'rake lint:all'" />
-    <item caption="Lint Diff (project)"     command="exec '^([\.\\_A-Za-z0-9]+\.c)  ([0-9]+)  ' 'rake lint:diff'" />
+    <separator/>
+    <item caption="PCLint" command="" />
+    <item caption="  Scan (file)"           command="exec '^(...*?)  ([0-9]+)  '                'rake lint:solo[$BaseName]'" />
+    <item caption="  Scan (project)"        command="exec '^([\.\\_A-Za-z0-9]+\.c)  ([0-9]+)  ' 'rake lint:all'" />
+    <item caption="  Diff (project)"        command="exec '^([\.\\_A-Za-z0-9]+\.c)  ([0-9]+)  ' 'rake lint:diff'" />
+
+    <separator/>
+    <item caption="Klocwork" command="" />
+    <item caption="  Scan (file)"           command="exec '^.+ ([A-Z]:.+):([0-9]+)'             'rake klocwork:fscan[$File]'" />
+    <item caption="  List (file)"           command="exec '^.+ ([A-Z]:.+):([0-9]+)'             'rake klocwork:flist[$File]'" />
+    <item caption="  Scan (project)"        command="exec '^.+ ([A-Z]:.+):([0-9]+)'             'rake klocwork:all'" />
+    <item caption="  Klocwork Desktop"      command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake klocwork:view'" />
     
 </menu>
