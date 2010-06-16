@@ -7,7 +7,7 @@ Learn more about Ceedling and get it [NOW](http://ceedling.sourceforge.net)!
 
 * [Ruby](http://www.ruby-lang.org)  - Another great scripting language (other than Python, that Sublime uses)
 * [Rake](http://rake.rubyforge.org/) - Ruby-based build system derived from the archaic Make project
-* [Ceedling](http://ceedling.sourceforge.net) - Ruby library that adds goodness for TDD in C
+* [Ceedling](http://ceedling.sourceforge.net) - Ruby library that adds plenty o' goodness for TDD in C
 
 The Ceedling package assumes that the project you are editing has Ceedling 
 
