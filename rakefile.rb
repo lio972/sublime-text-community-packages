@@ -54,6 +54,6 @@ end
 desc "Commit changes to GoogleCode project"
 task :push_update do
   cd HERE do
-    sh "svn ci -m\"Auto updated packages via CI\""
+    sh "svn ci --username #{ENV['SVN_ST_USER']} #{ENV['SVN_ST_PWD']} -m\"Auto updated packages via CI\""
   end
 end
