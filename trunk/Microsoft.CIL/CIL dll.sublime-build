@@ -1,0 +1,2 @@
+buildCommand exec ^(...*?):([0-9]*):?([0-9]*)' '"ilasm"' '"$File"' '/nologo' '/dll' '/noautoinherit'
+
