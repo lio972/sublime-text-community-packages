@@ -144,7 +144,7 @@ try:
   template = Template(util.loadFile(site + "/templates/index.template.html"))
   homepage = template.substitute(dict(packagelist=homepageList, today=today))
   util.saveFile(os.path.join(site, "index.html"), homepage)
-  print "Done. Please hit the 'back' button on your browser to browse the new pages."
+  print "Done."
   
 except:
   exc_info = sys.exc_info()

@@ -4,11 +4,7 @@ require 'rake'
 require 'rake/clean'
 require 'fileutils'
 
-if ENV['COMPUTERNAME'] == 'STRAWBERRY'
-  ENV['HOME'] = "C:\\cygwin\\home\\atomic"
-end
-
-task :default => ['test:units', :build_packages, :build_pages]
+task :default => ['test:units', :build_packages, :add_files, :build_pages]
 task :all => [:clobber, :default]
 task :ci => [:all, :push_update]
 
@@ -34,6 +30,23 @@ desc "Build SublimeText packages their pages"
 task :build_packages do
   cd HERE do
     sh "python cgi/makeSublimePackages.py"
+  end
+end
+
+desc "Add new files"
+task :add_files do
+  cd HERE do
+    svn_stat = `svn st`.split("\n")[0..-1]
+    svn_stat.each do |item|
+      file_match = item.match(/^\?\s+(.*)$/)
+      if file_match
+        new_file = file_match[1]
+        sh "svn add " + new_file
+        if new_file =~ /\.html$/
+          sh "svn propset svn:mime-type text/html " + new_file
+        end
+      end
+    end
   end
 end
 
