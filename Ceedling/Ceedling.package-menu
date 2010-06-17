@@ -2,13 +2,14 @@
 
     <item caption="Build" command="" />
 <!--     <item caption="Debug"                    command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake debug'" /> -->
-    <item caption="  Build Target"          command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake build:release'" />
+    <item caption="  Build Target"          command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake ide:build'" />
     <item caption="  Full Test and Build"   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake'" />
     <item caption="  Clean Project"         command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake clobber'" />
 
     <item caption="Test" command="" />
-    <item caption="  Test Current Module"   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake test:$FileName'" />
-    <item caption="  Test All Modules"      command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake test:all'" />
+    <item caption="  Test Current Module"   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:$FileName'" />
+    <item caption="  Test All Modules"      command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:all'" />
+    <item caption="  Clean Tests"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake app_clean'" />
     <item caption="  Run Chronos Test"      command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake chronos:$FileName'" />
     
     <separator/>
