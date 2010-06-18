@@ -32,6 +32,10 @@ Default Ceedling key bindings...
     <binding key="ctrl+alt+k,i"         command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake klocwork:view'" />
     
     <!-- Extra goodness -->
-    <binding key="ctrl+shift+backquote" command="showPanel output"/>
+    <binding key="ctrl+backslash"       command="showPanel output"/>
+    <binding key="ctrl+alt+space"       command="multiComplete" uuid="3abc75d3-3a48-11df-ab41-00037af1a101"/>
+    <binding key="ctrl+shift+s"         command="saveAll"/>
+    <binding key="ctrl+shift+w"         command="closeAll"/>
+    <binding key="ctrl+shift+backspace" command="runMacroFileSilently 'Packages/Default/Delete Line.sublime-macro'"/>
 
 </bindings>
