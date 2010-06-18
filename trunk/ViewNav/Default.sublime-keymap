@@ -8,4 +8,6 @@
     <binding key="alt+shift+left"       command="moveToBuffer move  left"/>
     <binding key="alt+shift+up"         command="moveToBuffer move  up"/>
     <binding key="alt+shift+down"       command="moveToBuffer move  down"/>
+
+    <binding key="alt+shift+n"          command="newWindow" />
 </bindings>
