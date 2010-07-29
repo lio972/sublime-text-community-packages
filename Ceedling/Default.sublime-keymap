@@ -1,6 +1,4 @@
-<!--
-Default Ceedling key bindings...
--->
+<!-- Ceedling Key Bindings -->
 <bindings>
 
     <binding key="f1"                   command="openCeedlingFile 'config'" />
@@ -8,6 +6,7 @@ Default Ceedling key bindings...
     <binding key="ctrl+f5"              command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake'" />
     <binding key="f7"                   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:$FileName'" />
     <binding key="ctrl+f7"              command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:all'" />
+    <binding key="ctrl+shift+b,o"       command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:open'" />
     <binding key="ctrl+shift+f7"        command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake app_clean build'" />
     <binding key="f8"                   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake chronos:$FileName'" />
     <binding key="ctrl+alt+period"      command="openCeedlingFile 'test_and_source'" />
@@ -17,7 +16,8 @@ Default Ceedling key bindings...
     <binding key="ctrl+alt+t"           command="openCeedlingFile 'test'" />
     <binding key="ctrl+alt+m"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake module:create[$File]'" />`
     <binding key="ctrl+alt+shift+m"     command="createCeedlingModule" />
-    <binding key="ctrl+alt+i"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake ide:open'" />
+    <binding key="ctrl+shift+i,o"       command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake ide:open'" />
+    <binding key="f5"                   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake ide:build'" />
 
     <binding key="ctrl+alt+x"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake app_clean'" />
     <binding key="ctrl+alt+shift+x"     command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake clobber'" />
@@ -33,6 +33,7 @@ Default Ceedling key bindings...
     
     <!-- Extra goodness -->
     <binding key="ctrl+backslash"       command="showPanel output"/>
+    <binding key="ctrl+alt+slash"       command="showPanel findResults"/>
     <binding key="ctrl+alt+space"       command="multiComplete" uuid="3abc75d3-3a48-11df-ab41-00037af1a101"/>
     <binding key="ctrl+shift+s"         command="saveAll"/>
     <binding key="ctrl+shift+w"         command="closeAll"/>
