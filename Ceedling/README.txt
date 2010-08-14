@@ -15,3 +15,4 @@ The Ceedling package assumes that the project you are editing has Ceedling
 * Initial package population
 * Added ablity to create a module by specifying the module path in the input panel
 * Added support for Klocwork static analysis
+* Fixed bug in open module files that prevented the appropriate buffers from getting focus occassionally
