@@ -16,7 +16,7 @@
     <binding key="ctrl+alt+t"           command="openCeedlingFile 'test'" />
     <binding key="ctrl+alt+m"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake module:create[$File]'" />`
     <binding key="ctrl+alt+shift+m"     command="createCeedlingModule" />
-    <binding key="ctrl+shift+i,o"       command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake ide:open'" />
+    <binding key="ctrl+alt+i,o"         command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake ide:open'" />
     <binding key="f5"                   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake ide:build'" />
 
     <binding key="ctrl+alt+x"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake app_clean'" />
@@ -37,6 +37,9 @@
     <binding key="ctrl+alt+space"       command="multiComplete" uuid="3abc75d3-3a48-11df-ab41-00037af1a101"/>
     <binding key="ctrl+shift+s"         command="saveAll"/>
     <binding key="ctrl+shift+w"         command="closeAll"/>
+    <binding key="ctrl+alt+w"           command="closeAllExceptUnder"/>
+    <binding key="ctrl+alt+r"           command="scanProject"/>
+    <binding key="ctrl+comma"           command="expandSelectionToParagraph"/>
     <binding key="ctrl+shift+backspace" command="runMacroFileSilently 'Packages/Default/Delete Line.sublime-macro'"/>
 
 </bindings>
