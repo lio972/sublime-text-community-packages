@@ -3,6 +3,7 @@ import sys, os, subprocess, traceback, datetime, util, zipfile, googlecode_uploa
 from string import Template
 from fnmatch import fnmatch
 from os.path import basename, dirname, join, normpath
+import externalPackages
 
 print "Content-type: text/plain\n\n"
 
@@ -125,9 +126,19 @@ try:
       if (partOfMainDistribution(dirName, root)):
         mainDistributionCOntents = mainDistributionCOntents + dirName + ".sublime-package\n\n"
       allPackagesContent = allPackagesContent + dirName + ".sublime-package\n\n"
-    
-  included.sort()
-  homepageList = "\n".join(["<li><a href=\"pages/%s.html\">%s</a></li>\n" % (dirName, dirName)   for dirName in included]) 
+
+  pkgDict = {}
+  for name in included:
+    pkgDict[name] = "pages/%s.html" % (name)
+  for name, url in externalPackages.pkgList.iteritems():
+    pkgDict[name] = url
+  
+  homepageList = ""
+  sortedPkgNames = pkgDict.keys()
+  sortedPkgNames.sort()
+  for name in sortedPkgNames:
+    homepageList += "        <li><a \"%s\">%s</a></li>\n" % (pkgDict[name], name)
+  
   print "%s packages built" % built
   print "The main distribution for PackageDownloader will comprise;"
   print mainDistributionCOntents
