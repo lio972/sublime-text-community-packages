@@ -137,7 +137,7 @@ try:
   sortedPkgNames = pkgDict.keys()
   sortedPkgNames.sort()
   for name in sortedPkgNames:
-    homepageList += "        <li><a \"%s\">%s</a></li>\n" % (pkgDict[name], name)
+    homepageList += "       <li><a href=\"%s\">%s</a></li>\n" % (pkgDict[name], name)
   
   print "%s packages built" % built
   print "The main distribution for PackageDownloader will comprise;"
