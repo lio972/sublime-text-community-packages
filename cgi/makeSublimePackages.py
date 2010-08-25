@@ -152,6 +152,7 @@ try:
 
   
   today = datetime.datetime.now().ctime()
+  today = datetime.datetime.now().strftime("%A, %B %d, %Y")
   template = Template(util.loadFile(site + "/templates/index.template.html"))
   homepage = template.substitute(dict(packagelist=homepageList, today=today))
   util.saveFile(os.path.join(site, "index.html"), homepage)
