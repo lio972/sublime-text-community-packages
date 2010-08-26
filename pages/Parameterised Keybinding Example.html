@@ -1,34 +1,42 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Parameterised Keybinding Example</title>
-<link href="../templates/style.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Parameterised Keybinding Example</title>
+    <link href="../templates/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+    <div id="nav"> 
+        <h1 id="sitename"><a href="#">Sublime Text Wiki</a></h1> 
+        <ul id="menu"> 
+            <li class="active"><a href="index.html" title="Home" accesskey="h"><span>H</span>ome</a></li> 
+            <li><a href="pages/This-site.html" title="About" accesskey="b"><span>A</span>bout</a></li>
+            <li><a href="pages/Documents.html" title="Documents" accesskey="c"><span>D</span>ocuments</a></li> 
+        </ul> 
+    </div>
 
-<div id="wrap">
-<div id="topbar">
-<h1><a href="../index.html">Sublime Text <span>Wiki</span></a></h1>
+    <div id="wrap">
 
-</div>
-<div id="header">
-<div id="menu">
-  <ul>
-    <li><a href="../index.html">Welcome Page</a></li>
-    <li><a href="../pages/This-site.html">This Site</a></li>
-    <li><a href="../pages/Packages.html">Packages</a></li>
-    <li><a href="../pages/Documents.html">Documents</a></li>
-  </ul>
-</div>
-</div>
-<div id="mainpage">
-<div id="content">
+        <div id="header">
+        </div>
 
-  <h1>The Parameterised Keybinding Example Plugin</h1>
+        <div id="topbar"> 
+            <ul class="breadcrumb"> 
+                <li>You Are Here &raquo;</li> 
+                <li>sublimetextwiki.com &raquo; Packages &raquo; <a href="http://sublime-text-community-packages.googlecode.com/svn/pages/Parameterised Keybinding Example.html">Parameterised Keybinding Example</a></li> 
+            </ul>
+        </div>
 
-<p>This is an example of what you can do with parameterised keybindings in Sublime Text. 
+        <div id="content">
+            <div class="post">
+
+                <div class="postheader">
+                    <h2>The Parameterised Keybinding Example Plugin</h2>
+                </div>
+
+                <p>This is an example of what you can do with parameterised keybindings in Sublime Text. 
 </p>
 <p>This example was created from an example posted by Jon Skinner, developer of Sublime Text. Here's the original post in which Jon introduces the feature.
 </p>
@@ -104,41 +112,43 @@
 <pre><code>&lt;binding key="alt+j" command="deleteOver ${motion}"/&gt;
 </code></pre><p>The <code>${motion}</code> indicates that the next key binding is expected to one of the entries in the 'motion' namespace, and the text <code>${motion}</code> will be replaced by the text of the next entered command.
 </p>
-  
-<h2>To Install This Plugin</h2>
 
-<ol>
-<li>download the <a href="http://sublime-text-community-packages.googlecode.com/svn/packages/Parameterised Keybinding Example.sublime-package ">Parameterised Keybinding Example Plugin</a> to your local hard-drive.</li>
- <li>double-click the package file</li>
- <li>restart Sublime Text</li>
-</ol>
+                <div class="clear"> &nbsp; </div> 
 
-<h2>For Developers</h2>
+                <h2>To Install This Plugin</h2>
 
-<ul>
-<li>This source code for this plugin is available at <a href="http://sublime-text-community-packages.googlecode.com/svn/trunk/Parameterised Keybinding Example">google code.</a></li>
- <li>Google provide <a href="http://code.google.com/p/sublime-text-community-packages/source/checkout">Instructions for checking out the code</a></li>
-</ul>
-</div>
-<p class="clear2">&nbsp;</p>
-<span class="sidebarbottom">&nbsp;</span>
-</div>
+                <ol>
+                    <li>download the <a href="http://sublime-text-community-packages.googlecode.com/svn/packages/Parameterised Keybinding Example.sublime-package ">Parameterised Keybinding Example Plugin</a> to your local hard-drive.</li>
+                    <li>double-click the package file</li>
+                    <li>restart Sublime Text</li>
+                </ol>
 
-<p class="clear"></p>
+                <h2>For Developers</h2>
 
+                <ul>
+                    <li>This source code for this plugin is available at <a href="http://sublime-text-community-packages.googlecode.com/svn/trunk/Parameterised Keybinding Example">google code.</a></li>
+                    <li>Google provides <a href="http://code.google.com/p/sublime-text-community-packages/source/checkout">instructions for checking out the code</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="footerlinks"> 
+            <ul id="footernav"> 
+                <li class="active"><a href="index.html" title="Home" accesskey="h"><span>H</span>ome</a></li> 
+                <li><a href="pages/This-site.html" title="About" accesskey="b"><span>A</span>bout</a></li> 
+                <li><a href="pages/Packages.html" title="Packages" accesskey="a"><span>P</span>ackages</a></li> 
+            </ul> 
+        </div>
+        
+        <div id="bottom">
+            <p>Sublime Text Wiki &copy; All rights reserved | Valid XHTML</p>
+            <!-- Do not alter or delete this from the template ================================================ -->  
+            <p class="credit"><a href="http://www.ramblingsoul.com" title="Download Free CSS Website Templates">CSS Template</a> By RamblingSoul</p> 
+            <!-- ============================================================================================== --> 
+        </div>
 
-
-</div>
-
-
-</div>
-<div id="footer">
-<div id="footercontent">
-<p>Sublime Text Wiki &copy; All rights reserved | Valid XHTML | <a href="#">Put</a> | <a href="#">Any</a> | <a href="#">Links </a>| <a href="#">Here </a></p>
-<p class="smalldesc"><a href="http://www.ramblingsoul.com">CSS Layout</a> by Rambling Soul</p>
-  </div>
-
-</div>
+    </div>
 
 </body>
+
 </html>
