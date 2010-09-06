@@ -1,9 +1,9 @@
 import subprocess, os, re, markdown
 
-# site = "C:\\svn\\sublimetext-wiki"
-# root = "C:\\svn\\sublimetext-wiki\\trunk"
-root = "http://sublime-text-community-packages.googlecode.com/svn/"
-site = "http://sublime-text-community-packages.googlecode.com"
+site = "C:\\svn\\sublimetext-wiki"
+root = "C:\\svn\\sublimetext-wiki\\trunk"
+# root = "http://sublime-text-community-packages.googlecode.com/svn/"
+# site = "http://sublime-text-community-packages.googlecode.com"
 
 
 def templateContent(filename):
