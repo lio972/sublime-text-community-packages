@@ -8,6 +8,6 @@ pkgList = {
 "TextButcher": "http://bitbucket.org/guillermooo/textbutcher",
 "AAALoadFirstExtensions": "http://bitbucket.org/sublimator/aaaloadfirstextensions",
 "CTags": "http://bitbucket.org/sublimator/ctags",
-"ZenCoding": "http://bitbucket.org/sublimator/zencoding"
+"ZenCoding": "http://bitbucket.org/sublimator/zencoding",
 "UberSelection": "http://bitbucket.org/guillermooo/uberselection"
 }
