@@ -3,7 +3,7 @@
 
     <binding key="f1"                   command="openCeedlingFile 'config'" />
     <binding key="f5"                   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake build:release'" />
-    <binding key="ctrl+f5"              command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake'" />
+    <binding key="f4"                   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake'" />
     <binding key="f7"                   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:$FileName'" />
     <binding key="ctrl+f7"              command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:all'" />
     <binding key="ctrl+shift+b,o"       command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:open'" />
@@ -17,7 +17,8 @@
     <binding key="ctrl+alt+m"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake module:create[$File]'" />`
     <binding key="ctrl+alt+shift+m"     command="createCeedlingModule" />
     <binding key="ctrl+alt+i,o"         command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake ide:open'" />
-    <binding key="f5"                   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake ide:build'" />
+    <binding key="f5"                   command="exec '^([:/\.\\_A-Za-z0-9]+\.[chp])\(([0-9]+)\)'         'rake ide:make'" />
+    <binding key="ctrl+f5"              command="exec '^([:/\.\\_A-Za-z0-9]+\.[chp])\(([0-9]+)\)'         'rake ide:build'" />
 
     <binding key="ctrl+alt+x"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake app_clean'" />
     <binding key="ctrl+alt+shift+x"     command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake clobber'" />

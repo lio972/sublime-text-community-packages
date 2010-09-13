@@ -15,12 +15,13 @@ class CreateCeedlingModuleCommand(sublimeplugin.TextCommand):
         window.showInputPanel("Enter module path", current_file_path,
             functools.partial(self.onDone, view), None, None)
         
-        cmd = "rake paths:source"
-        p = subprocess.Popen(cmd, shell=True, bufsize=1024, stdout=subprocess.PIPE)
-        p.wait()
-        lines = p.stdout.read().split("\n - ")[1:]
-        for line in lines:
-            print(line)
+        # cmd = "rake paths:source"
+        # print cmd
+        # p = subprocess.Popen(cmd, shell=True, bufsize=65536, stdout=subprocess.PIPE)
+        # p.wait()
+        # lines = p.stdout.read().split("\n - ")[1:]
+        # for line in lines:
+        #     print(line)
             
     # def onChange(self, view, text):
         # todo: tab completion
