@@ -7,6 +7,7 @@
 
     <separator/>
     <item caption="IDE" command="" />
+    <item caption="  Make Target"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake ide:make'" />
     <item caption="  Build Target"          command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake ide:build'" />
     <item caption="  Open IDE"              command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake ide:open'" />
 
