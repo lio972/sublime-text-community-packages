@@ -3,7 +3,7 @@
 	<description>New Unit Test Method (fail)</description>
 	<content><![CDATA[void test_${1:function}_should_${2:behavior}(void) //reqs: 
 {
-    TEST_FAIL("${3:Implement me!}");
+    TEST_FAIL_MESSAGE("${3:Implement me!}");
 }
 ]]></content>
 	<tabTrigger>testf</tabTrigger>
