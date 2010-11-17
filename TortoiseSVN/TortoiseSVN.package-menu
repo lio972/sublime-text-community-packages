@@ -1,20 +1,25 @@
 <menu>
-    
-    <item caption="Project" command="" />
-    <item caption="  Update"                  command="exec '' 'tortoiseproc /command:update      /path:$ProjectDir /closeonend:4'" />
-    <item caption="  Commit Changes"          command="exec '' 'tortoiseproc /command:commit      /path:$ProjectDir /closeonend:4'" />
-    <item caption="  Check for Modifications" command="exec '' 'tortoiseproc /command:showcompare /path:$ProjectDir /closeonend:0'" />
-    <item caption="  Revert Changes"          command="exec '' 'tortoiseproc /command:revert      /path:$ProjectDir /closeonend:4'" />
-    <item caption="  Log"                     command="exec '' 'tortoiseproc /command:log         /path:$ProjectDir /closeonend:4'" />
+
+    <item caption="Quick Panel"         command="tortoiseSvnQuickie" />
     
     <separator/>
     
     <item caption="File" command="" />
-    <item caption="  Ignore"                  command="exec '' 'tortoiseproc /command:ignore      /path:$File /closeonend:4'" />
-    <item caption="  Revert"                  command="exec '' 'tortoiseproc /command:revert      /path:$File /closeonend:4'" />
-    <item caption="  Add"                     command="exec '' 'tortoiseproc /command:add         /path:$File /closeonend:4'" />
-    <item caption="  Diff"                    command="exec '' 'tortoiseproc /command:diff        /path:$File /closeonend:4'" />
-    <item caption="  Commit"                  command="exec '' 'tortoiseproc /command:commit      /path:$File /closeonend:4'" />
-    <item caption="  Log"                     command="exec '' 'tortoiseproc /command:log         /path:$File /closeonend:4'" />
+    <item caption="  Update"            command="exec '' 'tortoiseproc /command:update      /path:$File       /closeonend:4'" />
+    <item caption="  Commit"            command="exec '' 'tortoiseproc /command:commit      /path:$File       /closeonend:4'" />
+    <item caption="  Diff"              command="exec '' 'tortoiseproc /command:diff        /path:$File       /closeonend:4'" />
+    <item caption="  Revert"            command="exec '' 'tortoiseproc /command:revert      /path:$File       /closeonend:4'" />
+    <item caption="  Log"               command="exec '' 'tortoiseproc /command:log         /path:$File       /closeonend:4'" />
+    <item caption="  Add"               command="exec '' 'tortoiseproc /command:add         /path:$File       /closeonend:4'" />
+    <item caption="  Ignore"            command="exec '' 'tortoiseproc /command:ignore      /path:$File       /closeonend:4'" />
+    
+    <separator/>
+    
+    <item caption="Project" command="" />
+    <item caption="  Update"            command="exec '' 'tortoiseproc /command:update      /path:$ProjectDir /closeonend:4'" />
+    <item caption="  Commit"            command="exec '' 'tortoiseproc /command:commit      /path:$ProjectDir /closeonend:4'" />
+    <item caption="  Diff"              command="exec '' 'tortoiseproc /command:showcompare /path:$ProjectDir /closeonend:0'" />
+    <item caption="  Revert"            command="exec '' 'tortoiseproc /command:revert      /path:$ProjectDir /closeonend:4'" />
+    <item caption="  Log"               command="exec '' 'tortoiseproc /command:log         /path:$ProjectDir /closeonend:4'" />
     
 </menu>
