@@ -14,12 +14,14 @@
     <separator/>
     <item caption="Test" command="" />
     <item caption="  Test Current Module"   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake test:$FileName'" />
+    <item caption="  Test Changed Modules"  command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake test:delta'" />
     <item caption="  Test All Modules"      command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake test:all'" />
     <item caption="  Clean Tests"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake app_clean'" />
 
     <separator/>
     <item caption="Bullseye" command="" />
     <item caption="  Test Current Module"   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:$FileName'" />
+    <item caption="  Test Changed Modules"  command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:delta'" />
     <item caption="  Test All Modules"      command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:all'" />
     <item caption="  Open Coverage Browser" command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:open'" />
 
