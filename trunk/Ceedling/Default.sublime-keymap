@@ -5,7 +5,8 @@
     <binding key="f5"                   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake build:release'" />
     <binding key="f4"                   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake'" />
     <binding key="f7"                   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:$FileName'" />
-    <binding key="ctrl+f7"              command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:all'" />
+    <binding key="ctrl+f7"              command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:delta'" />
+    <binding key="ctrl+alt+f7"          command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:all'" />
     <binding key="ctrl+shift+b,o"       command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake bullseye:open'" />
     <binding key="ctrl+shift+f7"        command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake app_clean build'" />
     <binding key="f8"                   command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake chronos:$FileName'" />
