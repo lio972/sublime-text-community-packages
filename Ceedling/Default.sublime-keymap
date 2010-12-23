@@ -24,9 +24,9 @@
     <binding key="ctrl+alt+x"           command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake app_clean'" />
     <binding key="ctrl+alt+shift+x"     command="exec '^(...*?):([0-9]*):?([0-9]*)'         'rake clobber'" />
 
-    <binding key="alt+l"                command="exec '^(...*?)  ([0-9]+)  '                'rake lint:solo[$BaseName]'" />
-    <binding key="ctrl+alt+l"           command="exec '^([\.\\_A-Za-z0-9]+\.c)  ([0-9]+)  ' 'rake lint:all'" />
-    <binding key="ctrl+shift+l"         command="exec '^([\.\\_A-Za-z0-9]+\.c)  ([0-9]+)  ' 'rake lint:diff'" />
+    <binding key="ctrl+alt+l,s"         command="exec '^(...*?)  ([0-9]+)  '                'rake lint:solo[$BaseName]'" />
+    <binding key="ctrl+alt+l,a"         command="exec '^([\.\\_A-Za-z0-9]+\.c)  ([0-9]+)  ' 'rake lint:all'" />
+    <binding key="ctrl+alt+l,d"         command="exec '^([\.\\_A-Za-z0-9]+\.c)  ([0-9]+)  ' 'rake lint:diff'" />
     
     <binding key="ctrl+alt+k,enter"     command="exec '^.+ ([A-Z]:.+):([0-9]+)'             'rake klocwork:fscan[$File]'" />
     <binding key="ctrl+alt+k,/"         command="exec '^.+ ([A-Z]:.+):([0-9]+)'             'rake klocwork:flist[$File]'" />
