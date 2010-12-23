@@ -9,5 +9,13 @@
     <binding key="alt+shift+up"    command="moveToBuffer move  up"/>
     <binding key="alt+shift+down"  command="moveToBuffer move  down"/>
 
+    <binding key="alt+l"           command="move characters 1"/>
+    <binding key="alt+h"           command="move characters -1"/>
+    <binding key="alt+j"           command="move lines 1"/>
+    <binding key="alt+k"           command="move lines -1"/>
+
+    <binding key="ctrl+alt+l"      command="move words 1"/>
+    <binding key="ctrl+alt+h"      command="move words -1"/>
+
     <binding key="ctrl+alt+n"      command="newWindow" />
 </bindings>
