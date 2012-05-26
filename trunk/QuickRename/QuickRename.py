@@ -42,8 +42,6 @@ class QuickRename(sublimeplugin.TextCommand):
         window.runCommand("close")
         shutil.move(old_file, new_file)
         window.openFile(new_file)
-        if old_file.endswith(".py"):
-            os.remove(old_file + "c")
 
     def setSelection(self, old_view, new_view):
         new_view.sel().clear()
