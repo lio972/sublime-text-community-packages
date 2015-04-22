@@ -1,0 +1,3 @@
+The Sublime Text editor (http://www.sublimetext.com) has an extension system that allows users to create their own commands and extensions. This project brings together packages contributed by users.
+
+Click [here](http://sublime-text-community-packages.googlecode.com/svn/index.html) to see what extra goodness is currently available. (http://sublime-text-community-packages.googlecode.com/svn/index.html)
